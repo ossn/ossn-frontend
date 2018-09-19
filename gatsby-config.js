@@ -4,6 +4,26 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/data/`,
+      },
+    },
+    {
+     resolve: `gatsby-plugin-sass`,
+     options: {
+       includePaths: [
+         "node_modules/breakpoint-sass/stylesheets",
+         "node_modules/chroma-sass/sass",
+         "node_modules/support-for/sass",
+         "node_modules/typey/stylesheets",
+         "src/sass",
+         "src"
+       ],
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
