@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'gatsby';
-import UserMenu from './user-menu';
+import UserMenu from './../components/user-menu/user-menu';
 
 
 class Navigation extends React.Component {

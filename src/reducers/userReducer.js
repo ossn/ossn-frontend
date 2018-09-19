@@ -15,8 +15,11 @@ const userReducer = (state=initial, action) => {
         location: action.payload.location,
         github: action.payload.github,
         page: action.payload.page,
-        leadership: [...action.payload.clubs]
+        clubLeader: action.payload.leader
+        //leadership: [...action.payload.clubs]
       }
+      console.log('user login');
+      return newState;
     default: return state;
   }
 }

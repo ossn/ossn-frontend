@@ -1,4 +1,6 @@
 import React from 'react';
+import {login} from './../../../actions/userActions';
+import store from './../../../store';
 
 class Login extends React.Component {
   constructor()  {
@@ -16,6 +18,11 @@ class Login extends React.Component {
 
   handlePassword = (event) => {
     this.setState({password: event.target.value});
+  }
+
+  handleLogin = () => {
+    console.log('handle login');
+    store.dispatch(login(this.state.username, this.state.password));
   }
 
   handleToRegister = () => {
@@ -37,7 +44,7 @@ class Login extends React.Component {
         <span> Not a member ? </span>
         <span onClick={this.handleToRegister}> Signup </span>
         <br/><br />
-        <button> Login </button>
+        <button onClick={this.handleLogin}> Login </button>
       </div>
     )
   }

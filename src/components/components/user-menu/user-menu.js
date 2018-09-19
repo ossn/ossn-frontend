@@ -1,6 +1,6 @@
 import React from 'react';
-import Login from './../forms/login';
-import Register from './../forms/register';
+import Login from './../../forms/login/login';
+import Register from './../../forms/register/register';
 
 class UserMenu extends React.Component {
   constructor() {

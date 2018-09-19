@@ -1,7 +1,7 @@
 import React from 'react';
-import Navigation from './../containers/main-navigation';
-import SecondaryNavigation from './../containers/small-navigation';
-import FooterNavigation from './../containers/footer-navigation';
+import Navigation from './../../navigation/main-navigation';
+import SecondaryNavigation from './../../navigation/small-navigation';
+import FooterNavigation from './../../navigation/footer-navigation';
 
 const Basic = ({children}) =>{
   return(

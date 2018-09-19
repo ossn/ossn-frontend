@@ -1,16 +1,16 @@
 import React from 'react'
-import BasicLayout from './../layouts/basic';
-
+import {Provider} from 'react-redux';
+import BasicLayout from './../components/layouts/base/base';
 
 const IndexPage = () => (
   <div>
-
-    <center>
-      <BasicLayout>
-        Welcome to a gatsby project!
-      </BasicLayout>
-    </center>
-
+    <Provider>
+      <center>
+        <BasicLayout>
+          Welcome to a gatsby project!
+        </BasicLayout>
+      </center>
+    </Provider>
   </div>
 )
 
