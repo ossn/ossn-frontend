@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'gatsby';
+import UserMenu from './user-menu';
+
 
 class Navigation extends React.Component {
   render() {
@@ -8,7 +10,8 @@ class Navigation extends React.Component {
         <Link to="/"> img here </Link> |
         <Link to="/clubs"> Clubs </Link> |
         <Link to="/opportunities"> Opportunities </Link> |
-        <Link to="/about"> About us </Link> 
+        <Link to="/about"> About us </Link>
+        <UserMenu />
       </div>
     )
   }
