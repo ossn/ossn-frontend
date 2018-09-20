@@ -11,13 +11,20 @@ function mapStateToProps(store) {
 }
 
 class UserMenu extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+		this.popup = React.createRef();
+		this.hideMenu = this.handleOutsideClick.bind(this);
+		document.addEventListener('mousedown', this.handleOutsideClick, false);
     this.state = {
       option: 'login',
       open: false
     }
   }
+
+	ComponentWillUnmount() {
+		document.removeEventListener('mousedown', this.handleOutsideClick, false);
+	}
 
   handleOpen = () => {
     this.setState({open: !this.state.open});
@@ -26,6 +33,13 @@ class UserMenu extends React.Component {
   handleOption = (newOption) => {
     this.setState({option: newOption});
   }
+
+	handleOutsideClick = (event) => {
+		if (!this.popup.current.contains(event.target)) {
+			this.setState({open: false});
+			return;
+		}
+	}
 
   render() {
     const snapshot = {...this.state};
@@ -42,7 +56,7 @@ class UserMenu extends React.Component {
     }
 
     return(
-      <div>
+      <div ref={ this.popup}>
         <div onClick={this.handleOpen}>
           {snapshot.open ? 'close' : 'open'}
           {extraContent}
