@@ -3,12 +3,12 @@ import BasicLayout from './../components/layouts/base/base';
 
 const IndexPage = () => (
   <div>
-    <center>
+    <div>
       <BasicLayout>
         Welcome to a gatsby project!
       </BasicLayout>
-    </center>
+    </div>
   </div>
-)
+);
 
 export default IndexPage
