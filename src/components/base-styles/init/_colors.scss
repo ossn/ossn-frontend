@@ -1,0 +1,125 @@
+// sass-lint:disable indentation, no-color-keywords
+
+// Colors
+//
+// Use the `color()` function to add colors to CSS properties. To learn more,
+// [read the Chroma documentation](http://johnalbin.github.io/chroma/).
+//
+// Markup: chroma.twig
+//
+// Weight: -1
+//
+// Style guide: sass.colors
+
+// Define the default color scheme's color names.
+$chroma: define-default-color-scheme('branding', 'The site main colors. Can be used to define colors in other color schemes.');
+
+$chroma: add-colors((
+        black:                  #000,
+        grey-dark:              mix(black, #4A4A4A, 60%),
+        'grey':                 #4A4A4A,
+        grey-light:             #ABABAB,
+        grey-extra-light:       #D2D2D2,
+
+        white:                  #fff,
+
+        blue:                   #0000FF,
+        blue-light:             lighten(#0000FF, 62%),
+        blue-dark:              mix(black, #0000FF, 30%),
+        red:                    #c00,
+        red-light:              lighten(#c00, 57%),
+        yellow:                 #fd0,
+        yellow-light:           lighten(#fd0, 43%),
+));
+
+// Define color names for functional uses.
+$chroma: define-color-scheme('functional', 'Colors used by functional parts of the design.');
+$chroma: add-colors('functional', (
+  // Colors used in the main content area.
+        brand:                  'blue',
+        brand-secondary:        'grey-light',
+
+        light:                  'white',
+        dark:                   'black',
+
+        text:                   'black',
+        text-bg:                'white',
+
+        link:                   'blue',
+        link-visited:           'blue',
+        link-active:            'blue-dark',
+
+        border:                 'grey-light',
+        border-hover:           'dark', // Applies at form items.
+        border-focus:           'brand', // Applies at form items.
+        border-disabled:        'grey-extra-light', // Applies at form items.
+
+        autocomplete:           'text',
+        autocomplete-bg:        'text-bg',
+        autocomplete-select:    'white',
+        autocomplete-select-bg: 'blue',
+
+        body-bg:                'text-bg',
+
+        button:                 light,
+        button-bg:              'grey',
+        button-disabled:        light,
+        button-disabled-bg:     'grey-extra-light',
+        button-submit:          light,
+        button-submit-bg:       brand,
+        button-reset:           dark,
+        button-reset-bg:        light,
+        button-reset-border:    'grey-light',
+        button-reset-hover-border:    'dark',
+        button-reset-active-border:   'brand',
+        button-reset-disabled:        'grey-extra-light',
+        button-reset-disabled-bg:     light,
+        button-reset-disabled-border: 'grey-extra-light',
+
+
+        fieldset-summary:       'grey',
+        form-error:             'red',
+        form-disabled:          'grey-extra-light',
+
+        mark-highlight:         'red',
+        mark-bg:                'yellow',
+
+        menu-active:            'text',
+
+        preview-bg:             'yellow-light',
+
+        progress-bar:           'blue',
+        progress-bar-bg:        'grey-light',
+        progress-bar-border:    'grey-dark',
+
+        resizable-grippie:      'grey-extra-light',
+
+        row-stripe:             'grey-extra-light',
+        row-disabled:           'grey-light',
+
+        skip-link:              'white',
+        skip-link-bg:           'grey-dark',
+
+        status:                 'blue',
+        status-bg:              mix(white, color(blue), 82%),
+        status-highlight:       text,
+        warning:                text,
+        warning-bg:             mix(white, color(yellow), 85%),
+        warning-border:         'yellow',
+        error:                  'red',
+        error-bg:               mix(white, color(red), 85%),
+
+        tabs-border:            'border',
+        tabs-bg:                'text-bg',
+        tab:                    'text',
+        tab-text-shadow:        'white',
+        tab-bg:                 lighten(color(grey-light), 6.66%),
+        tab-secondary:          'grey-dark',
+
+        table-drag:             'yellow-light',
+        table-select:           lighten(color(yellow), 47%),
+
+        watermark:              'grey-extra-light',
+));
+
+$chroma-active-scheme: 'functional';

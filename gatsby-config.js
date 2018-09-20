@@ -19,7 +19,7 @@ module.exports = {
          "node_modules/chroma-sass/sass",
          "node_modules/support-for/sass",
          "node_modules/typey/stylesheets",
-         "src/sass",
+         "src/components",
          "src"
        ],
       },
@@ -38,4 +38,4 @@ module.exports = {
     },
     'gatsby-plugin-offline',
   ],
-}
+};
