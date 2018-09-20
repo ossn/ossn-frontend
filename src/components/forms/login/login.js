@@ -21,7 +21,6 @@ class Login extends React.Component {
   }
 
   handleLogin = () => {
-    console.log('handle login');
     store.dispatch(login(this.state.username, this.state.password));
   }
 

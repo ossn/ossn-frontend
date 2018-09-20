@@ -8,7 +8,7 @@ const initial = {
 const userReducer = (state=initial, action) => {
   switch (action.type) {
     case 'USER_LOGIN':
-      let newState = {
+      let loggeInState = {
         ...state,
         loggedIn: true,
         user: {
@@ -22,7 +22,16 @@ const userReducer = (state=initial, action) => {
         }
       }
 
-      return newState;
+      return loggeInState;
+
+    case 'USER_LOGOUT':
+      let loggedOutState = {
+        ...state,
+        loggedIn: false,
+        user: {}
+      }
+
+      return loggedOutState;
 
     default:
       console.log(action);
