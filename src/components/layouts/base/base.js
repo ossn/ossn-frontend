@@ -15,12 +15,11 @@ import GatsbyConfig from './../../../../gatsby-config';
 import Styles from '../../init.scss'
 
 const Basic = ({children}) =>{
-  console.log(Styles);
   return(
 
     <Provider store={store} >
 
-      <div className="hello">
+      <div>
         <Helmet>
           <title>{GatsbyConfig.siteMetadata.title}</title>
         </Helmet>
