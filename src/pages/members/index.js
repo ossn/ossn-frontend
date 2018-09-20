@@ -1,15 +1,17 @@
 import React from 'react';
 
 class Member extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const path = this.props.location.pathname.split('/');
+    const username = path[path.length - 1];
+    console.log(username);
     this.state = {
-
+      username: username
     }
   }
 
   render() {
-
     const name = "Alice McKenzie";
     const place = "Planet Earth";
     const description = "this is a description";

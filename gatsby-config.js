@@ -3,6 +3,10 @@ module.exports = {
     title: 'Open Source Student Network',
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/members/*`, `/clubs/*`] },
+    },
     'gatsby-plugin-react-helmet',
     `gatsby-transformer-json`,
     {
