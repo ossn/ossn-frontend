@@ -4,6 +4,7 @@ import store from './../../../store';
 
 class LoggedInUserMenu extends React.Component {
 
+  // publish a logout event
   logout = () => {
     store.dispatch(logout());
   }

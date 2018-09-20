@@ -1,3 +1,10 @@
+/*
+  Supported user actions.
+  a user can login, logout, register, and check for an existing sesison.
+  all actions decide if they will use the login or the logout reducer action.
+*/
+
+// handle the login request
 export const login = (username, password) => {
   return (dispatch) => {
     // make the actual call
@@ -15,6 +22,7 @@ export const login = (username, password) => {
   }
 };
 
+// handles the logout request
 export const logout = () => {
   return (dispatch) => {
     // make the actual call
@@ -22,6 +30,7 @@ export const logout = () => {
   }
 }
 
+// checks if there is an active user session
 export const checkLogin = () => {
   return (dispatch) => {
     // make the actual call
@@ -29,6 +38,7 @@ export const checkLogin = () => {
   }
 }
 
+// handles a register request
 export const register = (user) => {
   const newUser = {
     username: 'user01',
@@ -46,6 +56,7 @@ export const register = (user) => {
   }
 }
 
+// dispatches the login data
 const confirmLogin = (dispatch, user) => {
   return dispatch({
     type: 'USER_LOGIN',
@@ -55,6 +66,7 @@ const confirmLogin = (dispatch, user) => {
   })
 }
 
+// dispatches the logout event
 const confirmLogout = (dispatch) =>  {
   return dispatch({
     type: 'USER_LOGOUT',

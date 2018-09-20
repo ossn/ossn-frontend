@@ -34,6 +34,7 @@ class Register extends React.Component {
     if (this.props.changeOption) this.props.changeOption('login');
   }
 
+  // publishes a register event
   register = () => {
     const snapshot = {...this.state};
     store.dispatch(register(snapshot.username, snapshot.password,

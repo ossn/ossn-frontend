@@ -25,12 +25,14 @@ class Login extends React.Component {
     this.setState({keepLoggedIn: event.target.checked});
   }
 
-  login = () => {
-    store.dispatch(login(this.state.username, this.state.password));
-  }
-
   handleToRegister = () => {
     if (this.props.changeOption) this.props.changeOption('register');
+  }
+
+  // publishes a login event
+  login = () => {
+    const snapshot = {...this.state};
+    store.dispatch(login(snapshot.username, snapshot.password));
   }
 
   render() {

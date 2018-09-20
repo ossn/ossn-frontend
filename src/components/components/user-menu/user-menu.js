@@ -17,10 +17,12 @@ class UserMenu extends React.Component {
     }
   }
 
+  // puts an event listener for the UI handling (not that unsafe)
 	UNSAFE_componentWillMount() {
 		document.addEventListener('mousedown', this.handleOutsideClick, false);
 	}
 
+  // remove the listener in absence of the component
 	ComponentWillUnmount() {
 		document.removeEventListener('mousedown', this.handleOutsideClick, false);
 	}
@@ -41,13 +43,20 @@ class UserMenu extends React.Component {
 	}
 
   render() {
+    // copy of the state
     const snapshot = {...this.state};
+
+    // menu place holder
     let content = <div> </div>;
+
+    // not actually needed
     let extraContent = '';
 
     if (this.props.user.loggedIn) {
       extraContent =  <span> logged in </span>;
     }
+
+    // decide which menu to show
     if (this.props.user.loggedIn) {
       content = <LogedInMenu />;
     } else  {

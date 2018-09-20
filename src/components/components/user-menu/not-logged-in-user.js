@@ -18,6 +18,7 @@ class NotLoggedInUserMenu extends React.Component {
   render() {
     const snapshot = {...this.state};
 
+    // decide which form to show
     const content = snapshot.option === 'login'
       ? <Login changeOption={(option)=>{this.handleOption(option)}} />
       : <Register changeOption={(option)=>{this.handleOption(option)}} /> ;
