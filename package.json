@@ -4,6 +4,8 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "breakpoint-sass": "^2.7.1",
+    "chroma-sass": "^1.2.6",
     "gatsby": "^2.0.0",
     "gatsby-plugin-manifest": "^2.0.2",
     "gatsby-plugin-offline": "^2.0.5",
@@ -16,7 +18,9 @@
     "react-dom": "^16.5.1",
     "react-helmet": "^5.2.0",
     "react-redux": "^5.0.7",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "support-for": "^1.0.7",
+    "typey": "^1.1.2"
   },
   "keywords": [
     "gatsby"

@@ -11,12 +11,16 @@ import store from './../../../store';
 // Import page title from gatsby config. TODO Remove and fid title another way.
 import GatsbyConfig from './../../../../gatsby-config';
 
+// Styles
+import Styles from '../../init.scss'
+
 const Basic = ({children}) =>{
+  console.log(Styles);
   return(
 
     <Provider store={store} >
 
-      <div>
+      <div className="hello">
         <Helmet>
           <title>{GatsbyConfig.siteMetadata.title}</title>
         </Helmet>
@@ -37,6 +41,6 @@ const Basic = ({children}) =>{
       </div>
     </Provider>
   );
-}
+};
 
 export default Basic;

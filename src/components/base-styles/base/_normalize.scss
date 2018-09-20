@@ -1,0 +1,34 @@
+// Normalize.css is intended to be used as an alternative to CSS resets.
+//
+// @see http://nicolasgallagher.com/about-normalize-css/
+//
+// Also: @see http://meiert.com/en/blog/20080419/reset-style-sheets-are-bad/
+//       @see http://snook.ca/archives/html_and_css/no_css_reset/
+//
+// This directory is a slight fork of this original source:
+// - normalize-scss 5.0.3 | MIT/GPLv2 License | bit.ly/normalize-scss
+
+
+// Normalize-scss is broken into modular pieces to make it easier to edit.
+@import 'root/root';
+@import 'html5';
+@import 'links/links';
+@import 'headings/headings';
+@import 'text/text';
+@import 'grouping/grouping';
+@import 'embedded/embedded';
+@import 'forms/components/button/button';
+@import 'forms/forms';
+@import 'forms/components/autocomplete/autocomplete';
+@import 'forms/components/collapsible-fieldset/collapsible-fieldset';
+@import 'forms/components/form-item/form-item';
+@import 'forms/components/form-table/form-table';
+@import 'forms/components/progress-bar/progress-bar';
+@import 'forms/components/progress-throbber/progress-throbber';
+@import 'forms/components/resizable-textarea/resizable-textarea';
+@import 'forms/components/table-drag/table-drag';
+
+@import 'tables/tables';
+
+// Note: we allow the .button component (loaded by forms) to override :link, by
+// loading links first.

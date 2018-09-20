@@ -1,0 +1,60 @@
+// Tables
+//
+// The `<table>` element displays tabular data in rows, columns, and cells.
+//
+
+table {
+  // Add vertical rhythm margins.
+  @include margin(1 0);
+  // Remove most spacing between table cells.
+  border-collapse: collapse;
+  border-spacing: 0;
+  // Prevent cramped-looking tables
+  width: 100%;
+}
+
+td,
+th {
+  // Remove most spacing between table cells.
+  padding: 0;
+  text-align: left;
+
+  &:last-child {
+    padding-right: 0;
+  }
+}
+
+td {
+  // Remove most spacing between table cells.
+  padding: 23px 35px 21px 0;
+  font-weight: normal;
+}
+
+// Add right distance to row titles.
+th {
+  padding: 19px 35px 17px 0;
+
+  &[scope='row'] {
+    border-right: 35px solid transparent;
+    white-space: nowrap;
+    border-collapse: separate;
+  }
+}
+
+thead {
+  th {
+    border-top: 3px solid color('brand');
+    border-bottom: 3px solid color('brand-secondary');
+
+    &[scope='row'] {
+      color: color('brand');
+    }
+  }
+}
+
+tbody {
+  td,
+  th {
+    border-bottom: 1px solid color('border');
+  }
+}
