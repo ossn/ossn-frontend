@@ -1,3 +1,5 @@
-export const mapStateToProps(associations) {
-  
+export const mapUserToProps = (store) => {
+	return {
+	      user: store.user
+	 };
 }

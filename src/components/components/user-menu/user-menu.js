@@ -4,11 +4,7 @@ import { connect } from 'react-redux';
 import LogedInMenu from './logged-in-user';
 import NotLoggedInMenu from './not-logged-in-user';
 
-function mapStateToProps(store) {
-	return {
-	      user: store.user
-	 };
-}
+import {mapUserToProps} from './../../../utils/redux-utils';
 
 class UserMenu extends React.Component {
   constructor(props) {
@@ -72,4 +68,4 @@ class UserMenu extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(UserMenu);
+export default connect(mapUserToProps)(UserMenu);
