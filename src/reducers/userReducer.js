@@ -36,8 +36,6 @@ const userReducer = (state=initial, action) => {
 
       return loggedOutState;
 
-    return state;
-
     default:
       return state;
   }
