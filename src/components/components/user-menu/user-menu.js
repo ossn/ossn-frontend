@@ -1,12 +1,19 @@
 import React from 'react';
-import Login from './../../forms/login/login';
-import Register from './../../forms/register/register';
+import { connect } from 'react-redux';
+
+import LogedInMenu from './logged-in-user';
+import NotLoggedInMenu from './not-logged-in-user';
+
+function mapStateToProps(store) {
+	return {
+	      user: store.user
+	 };
+}
 
 class UserMenu extends React.Component {
   constructor() {
     super();
     this.state = {
-      loggedIn: false,
       option: 'login',
       open: false
     }
@@ -22,26 +29,23 @@ class UserMenu extends React.Component {
 
   render() {
     const snapshot = {...this.state};
-
     let content = <div> </div>;
+    let extraContent = '';
 
-    if (snapshot.loggedIn) {
-      content =  <span> logged in </span>;
-    } else if (snapshot.option === 'login') {
-      content = (
-        <Login changeOption={(option)=>{this.handleOption(option)}} />
-      );
-    } else {
-      content = (
-        <Register changeOption={(option)=>{this.handleOption(option)}} />
-      );
+    if (this.props.user.loggedIn) {
+      extraContent =  <span> logged in </span>;
+    }
+    if (this.props.user.loggedIn) {
+      content = <LogedInMenu />;
+    } else  {
+      content = <NotLoggedInMenu />;
     }
 
-    // console.log(content);
     return(
       <div>
         <div onClick={this.handleOpen}>
           {snapshot.open ? 'close' : 'open'}
+          {extraContent}
         </div>
         <div>
           { snapshot.open ?  content : <div></div>  }
@@ -51,4 +55,4 @@ class UserMenu extends React.Component {
   }
 }
 
-export default UserMenu;
+export default connect(mapStateToProps)(UserMenu);

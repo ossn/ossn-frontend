@@ -2,6 +2,7 @@ const initial = {
   requestSent: false,
   requestSuccess: false,
   requestError: false,
+  loggedIn: false
 }
 
 const userReducer = (state=initial, action) => {
@@ -9,18 +10,23 @@ const userReducer = (state=initial, action) => {
     case 'USER_LOGIN':
       let newState = {
         ...state,
-        username: action.payload.username,
-        firstName: action.payload.firstName,
-        lastName: action.payload.lastName,
-        location: action.payload.location,
-        github: action.payload.github,
-        page: action.payload.page,
-        clubLeader: action.payload.leader
-        //leadership: [...action.payload.clubs]
+        loggedIn: true,
+        user: {
+          username: action.payload.username,
+          firstName: action.payload.firstName,
+          lastName: action.payload.lastName,
+          location: action.payload.location,
+          github: action.payload.github,
+          page: action.payload.page,
+          clubLeader: action.payload.leader
+        }
       }
-      console.log('user login');
+
       return newState;
-    default: return state;
+
+    default:
+      console.log(action);
+      return state;
   }
 }
 
