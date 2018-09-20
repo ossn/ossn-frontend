@@ -15,12 +15,15 @@ class UserMenu extends React.Component {
     super(props);
 		this.popup = React.createRef();
 		this.hideMenu = this.handleOutsideClick.bind(this);
-		document.addEventListener('mousedown', this.handleOutsideClick, false);
-    this.state = {
+		this.state = {
       option: 'login',
       open: false
     }
   }
+
+	UNSAFE_componentWillMount() {
+		document.addEventListener('mousedown', this.handleOutsideClick, false);
+	}
 
 	ComponentWillUnmount() {
 		document.removeEventListener('mousedown', this.handleOutsideClick, false);
@@ -35,7 +38,7 @@ class UserMenu extends React.Component {
   }
 
 	handleOutsideClick = (event) => {
-		if (!this.popup.current.contains(event.target)) {
+		if (this.state.open && !this.popup.current.contains(event.target)) {
 			this.setState({open: false});
 			return;
 		}
