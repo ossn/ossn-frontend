@@ -11,4 +11,4 @@ const IndexPage = () => (
   </div>
 );
 
-export default IndexPage
+export default IndexPage;
