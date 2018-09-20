@@ -5,9 +5,9 @@ class Navigation extends React.Component {
   render() {
     return(
       <div>
-        <Link to="/clubs"> Clubs </Link> <br/>
-        <Link to="/opportunities"> Opportunities </Link> <br/>
-        <Link to="/about"> About us </Link> <br/>
+        <Link to="/find-club"> Clubs </Link> <br/>
+        <Link to="/contribute"> Opportunities </Link> <br/>
+        <Link to="/about-us"> About us </Link> <br/>
         <Link to="/members"> Members </Link> <br/>
         <Link to="/organizations"> Organizations </Link>
       </div>

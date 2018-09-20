@@ -8,9 +8,9 @@ class Navigation extends React.Component {
     return(
       <div>
         <Link to="/"> img here </Link> |
-        <Link to="/clubs"> Clubs </Link> |
-        <Link to="/opportunities"> Opportunities </Link> |
-        <Link to="/about"> About us </Link>
+        <Link to="/find-club"> Clubs </Link> |
+        <Link to="/contribute"> Opportunities </Link> |
+        <Link to="/about-us"> About us </Link>
         <UserMenu />
       </div>
     )
