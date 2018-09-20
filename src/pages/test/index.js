@@ -12,6 +12,7 @@ class Member extends React.Component {
   }
 
   render() {
+    const username = "aliceM";
     const name = "Alice McKenzie";
     const place = "Planet Earth";
     const description = "this is a description";
@@ -21,8 +22,9 @@ class Member extends React.Component {
     return (
       <div>
         <div>
-          <img src="" alt="profile" />
+          <img src="#" alt="profile" />
         </div>
+        <div> {username} </div>
         <div> {name} </div>
         <div> {place} </div>
         <div> {description} </div>

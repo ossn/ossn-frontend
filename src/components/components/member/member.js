@@ -32,3 +32,5 @@ class Member extends React.Component {
     );
   }
 }
+
+export default Member;

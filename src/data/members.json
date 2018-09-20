@@ -1,0 +1,29 @@
+[
+  { "name": "Tim Frazier",
+    "username": "tim",
+    "isLeader": "true",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzRnceMxkmz_UR4adoepdwliGgMpjskXp7utCZs6KZJiAXnEAP"
+  },
+  { "name": "Sheryl Walsh",
+    "username": "sheryl",
+    "isLeader": "true",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlk1-l38zVeXwtwBPcsjoDzU06uzFCJwsb0dQK8jLAAU8qP6U1fQ"
+  },
+  { "name": "Alison Mackenzie",
+    "username": "alison",
+    "isLeader": "false",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlk1-l38zVeXwtwBPcsjoDzU06uzFCJwsb0dQK8jLAAU8qP6U1fQ"
+  },
+  {
+    "name": "Caleb Spencer",
+      "username": "caleb",
+    "isLeader": "false",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzRnceMxkmz_UR4adoepdwliGgMpjskXp7utCZs6KZJiAXnEAP"
+  },
+  {
+    "name": "Glenn Turner",
+      "username": "glenn",
+    "isLeader": "false",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzRnceMxkmz_UR4adoepdwliGgMpjskXp7utCZs6KZJiAXnEAP"
+  }
+]

@@ -6,6 +6,7 @@ class Club extends React.Component {
     super(props);
     const path = this.props.location.pathname.split('/');
     const club = path[path.length - 1];
+    console.log(club);
     this.state = {
       club: club
     }

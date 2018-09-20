@@ -1,7 +1,37 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require(`path`);
+// Implement the Gatsby API “onCreatePage”. This is
+// called after every page is created.
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage } = actions;
+}
 
-// You can delete this file if you're not using it
+
+// exports.createPages = ({ graphql, actions }) => {
+//   return new Promise((resolve, reject) => {
+//     graphql(`
+//       {
+//         allMembersJson {
+//           edges {
+//             node {
+//               name
+//               isLeader
+//             }
+//           }
+//         }
+//       }
+//     `).then(result => {
+//
+//       result.data.allMembersJson.edges.forEach(({node}) => {
+//         createPage({
+//           path: '/members/' + node.username,
+//           component: path.resolve(`./src/components/components/member/member.js`),
+//           context: {
+//             slug: member
+//           },
+//         })
+//       })
+//       console.log(JSON.stringify(result, null, 4))
+//       resolve()
+//     })
+//   })
+// }
