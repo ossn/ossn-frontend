@@ -10,6 +10,7 @@ export const login = (username, password) => {
       personalPage: 'https://duckduckgo.com',
       clubLeader: true
     }
+
     return confirmLogin(dispatch, user);
   }
 };
@@ -25,6 +26,23 @@ export const checkLogin = () => {
   return (dispatch) => {
     // make the actual call
     return confirmLogout(dispatch);
+  }
+}
+
+export const register = (user) => {
+  const newUser = {
+    username: 'user01',
+    firstName: 'User',
+    lastName: '01',
+    location: 'Planet Earth',
+    githubLink: 'https://github.com',
+    personalPage: 'https://duckduckgo.com',
+    clubLeader: true
+  }
+
+  return (dispatch) => {
+    // make the registration
+    return confirmLogin(dispatch, newUser);
   }
 }
 
