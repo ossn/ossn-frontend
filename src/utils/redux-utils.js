@@ -1,3 +1,5 @@
+import store from './../store';
+
 /*
 	A reusable `mapStateToProps` for user data
 */
