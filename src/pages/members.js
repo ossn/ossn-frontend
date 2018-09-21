@@ -1,6 +1,7 @@
 // external modules
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { graphql } from "gatsby"
 
 // local modules
 import BasicLayout from './../components/layouts/base/base';
