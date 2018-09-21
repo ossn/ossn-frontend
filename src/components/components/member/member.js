@@ -10,11 +10,11 @@ class Member extends React.Component {
 
   render() {
 
-    const name = "Alice McKenzie";
-    const place = "Planet Earth";
-    const description = "this is a description";
-    const githubLink = "This is a github link";
-    const personal = "this is personal";
+    const name = "------------------------------------";
+    const place = this.props.member.name;
+    const description = this.props.description;
+    const githubLink = this.props.github;
+    const personal = "------------------------------------";
 
     return (
       <div>
