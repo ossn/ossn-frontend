@@ -17,9 +17,6 @@ const Organizations = (props) => {
       <Helmet>
         <title>{['Organization', '|', GatsbyConfig.siteMetadata.title].join(" ")}</title>
       </Helmet>
-
-      Organization
-
       {
         props.data.allOrganizationsJson.edges.map((org, i)=>{
           return <Organization organization={org.node}  key={i}/>
