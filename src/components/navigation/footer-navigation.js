@@ -1,6 +1,5 @@
 // external modules
 import React from 'react';
-import {Link} from 'gatsby';
 
 // internal modules
 import {InternalLinkWithIcon} from './../components/text-with-icon/text-with-icon';
