@@ -12,7 +12,7 @@ import store from './../../../store';
 import GatsbyConfig from './../../../../gatsby-config';
 
 // Styles
-import Styles from '../../init.scss'
+import '../../init.scss'
 
 const Basic = ({children}) =>{
   return(
