@@ -7,10 +7,12 @@ class Navigation extends React.Component {
   render() {
     return(
       <div>
-        <Link to="/"> img here </Link> |
-        <Link to="/find-club"> Clubs </Link> |
-        <Link to="/contribute"> Opportunities </Link> |
-        <Link to="/about-us"> About us </Link>
+        <div> <Link to="/"> img here </Link>  </div>
+        <ul>
+          <li> <Link to="/find-club"> Clubs </Link> </li>
+          <li> <Link to="/contribute"> Opportunities </Link> </li>
+          <li> <Link to="/about-us"> About us </Link> </li>
+        </ul>
         <UserMenu />
       </div>
     )

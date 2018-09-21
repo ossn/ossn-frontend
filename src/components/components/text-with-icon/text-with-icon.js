@@ -4,8 +4,8 @@ import {Link} from 'gatsby';
 export const LabelWithIcon = (props) => {
   return(
     <div>
-      <div> o </div>
-      <div> {props.label} </div>
+
+      <div> <span> o </span> {props.label} </div>
     </div>
   );
 }
@@ -13,17 +13,15 @@ export const LabelWithIcon = (props) => {
 export const LinkWithIcon = (props) => {
   return(
     <a href={props.link}>
-      <div> o </div>
-      <div> {props.label} </div>
+      <div> <span> o </span> {props.label} </div>
     </a>
   );
 }
 
 export const InternalLinkWithIcon = (props) => {
   return(
-    <Link to={this.props.link}>
-      <div> o </div>
-      <div> {props.label} </div>
+    <Link to={props.link}>
+      <div> <span> o </span> {props.label} </div>
     </Link>
   );
 }

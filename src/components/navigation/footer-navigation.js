@@ -1,15 +1,22 @@
+// external modules
 import React from 'react';
 import {Link} from 'gatsby';
+
+// internal modules
+import {InternalLinkWithIcon} from './../components/text-with-icon/text-with-icon';
+
 
 class Navigation extends React.Component {
   render() {
     return(
       <div>
-        <Link to="/find-club"> Clubs </Link> <br/>
-        <Link to="/contribute"> Opportunities </Link> <br/>
-        <Link to="/about-us"> About us </Link> <br/>
-        <Link to="/members"> Members </Link> <br/>
-        <Link to="/organizations"> Organizations </Link>
+        <ul>
+          <li> <InternalLinkWithIcon link="/find-club" label="Clubs" /> </li>
+          <li> <InternalLinkWithIcon link="/contribute" label="Opportunities" /> </li>
+          <li> <InternalLinkWithIcon link="/about-us" label="About us" /> </li>
+          <li> <InternalLinkWithIcon link="/members" label="Members" /> </li>
+          <li> <InternalLinkWithIcon link="/organizations" label="Organizations" /> </li>
+        </ul>
       </div>
     )
   }
