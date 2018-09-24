@@ -1,5 +1,4 @@
 import React from 'react';
-import { graphql } from 'gatsby';
 
 const Organization = (props) => {
   if (!props.organization) {
