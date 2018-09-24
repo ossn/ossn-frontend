@@ -42,3 +42,11 @@
     @include visually-hidden--off;
   }
 }
+
+.visually-hidden {
+  @include visually-hidden;
+
+  &--focusable {
+    @include visually-hidden--focusable;
+  }
+}

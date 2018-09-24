@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 
 // improt local modules
 import Header from './../../components/header/header';
+import SkipLink from './../../components/skip-link/skip-link';
 import Footer from './../../components/footer/footer';
 import store from './../../../store';
 
@@ -22,13 +23,13 @@ const Basic = ({children}) =>{
         <Helmet>
           <title>{GatsbyConfig.siteMetadata.title}</title>
         </Helmet>
-
+        <SkipLink></SkipLink>
         <div>
           <Header />
         </div>
-
-        {children}
-
+        <div id="content">
+          {children}
+        </div>
         <div>
           <Footer />
         </div>

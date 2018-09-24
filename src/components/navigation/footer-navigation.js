@@ -8,7 +8,8 @@ import {InternalLinkWithIcon} from './../components/text-with-icon/text-with-ico
 class Navigation extends React.Component {
   render() {
     return(
-      <div>
+      <nav aria-labelledby="footer-navigation">
+        <h2 className="visually-hidden" id="footer-navigation"> Footer Navigation </h2>
         <ul>
           <li> <InternalLinkWithIcon link="/find-club" label="Clubs" /> </li>
           <li> <InternalLinkWithIcon link="/contribute" label="Opportunities" /> </li>
@@ -16,7 +17,7 @@ class Navigation extends React.Component {
           <li> <InternalLinkWithIcon link="/members" label="Members" /> </li>
           <li> <InternalLinkWithIcon link="/organizations" label="Organizations" /> </li>
         </ul>
-      </div>
+      </nav>
     )
   }
 }
