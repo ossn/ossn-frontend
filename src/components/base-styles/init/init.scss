@@ -17,8 +17,8 @@
 @import 'chroma/functions';
 @import 'support-for';
 
-@import 'base-styles/init/colors';
-@import 'base-styles/init/variables';
+@import 'colors';
+@import 'variables';
 
 
 
@@ -46,15 +46,11 @@
 //
 // Custom mixins used on this site.
 //
-@import 'base-styles/init/clearfix/clearfix';
-@import 'base-styles/init/visually-hidden/visually-hidden';
+@import 'clearfix/clearfix';
+@import 'visually-hidden/visually-hidden';
 
 // Functions
 //
 // Custom functions used on this site.
 //
-@import 'base-styles/init/image-url/image-url';
-
-
-// Normalize base components.
-@import 'base-styles/base/normalize';
+@import 'image-url/image-url';

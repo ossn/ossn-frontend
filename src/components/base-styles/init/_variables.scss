@@ -154,33 +154,18 @@ $padding-desktop: 40px;
 //
 // Style guide: sass.variables.breakpoints
 
-@include add-breakpoint(xxxs, (333px, 'no-query' true));
-@include add-breakpoint(xxs, (444px, 'no-query' true));
-@include add-breakpoint(xs, (555px, 'no-query' true));
-@include add-breakpoint(s, (666px, 'no-query' true));
-@include add-breakpoint(m, (777px, 'no-query' true));
-@include add-breakpoint(l, (888px, 'no-query' true));
-@include add-breakpoint(xl, (999px, 'no-query' true));
-@include add-breakpoint(xxl, (1111px));
-@include add-breakpoint(xxxl, (1222px));
+//@include add-breakpoint(xxxs, (333px, 'no-query' true));
+//@include add-breakpoint(xxs, (444px, 'no-query' true));
+//@include add-breakpoint(xs, (555px, 'no-query' true));
+//@include add-breakpoint(s, (666px, 'no-query' true));
+//@include add-breakpoint(m, (777px, 'no-query' true));
+//@include add-breakpoint(l, (888px, 'no-query' true));
+//@include add-breakpoint(xl, (999px, 'no-query' true));
+//@include add-breakpoint(xxl, (1111px));
+//@include add-breakpoint(xxxl, (1222px));
 
 // Output media queries where the above px are converted to ems.
 // @include breakpoint-set('to ems', true);
-
-
-// 6. Grid breakpoints
-//
-// Define the minimum dimensions at which your layout will change,
-// adapting to different screen sizes, for use in media queries.
-
-$grid-breakpoints: (
-  xs: 0,
-  sm: 576px,
-  md: 769px,
-  lg: 992px,
-  xl: 1200px
-) !default;
-
 
 
 // Miscellaneous variables
@@ -195,8 +180,3 @@ $grid-breakpoints: (
 
 $indent-amount: 2 * $base-font-size;
 
-$include-rtl: true;
-// Automatically turn off Zen Grids' RTL support if $include-rtl is false.
-@if not $include-rtl {
-  $zen-rtl-selector: false !global;
-}

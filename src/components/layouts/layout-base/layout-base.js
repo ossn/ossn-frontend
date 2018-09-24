@@ -12,7 +12,8 @@ import store from './../../../store';
 import GatsbyConfig from './../../../../gatsby-config';
 
 // Styles
-import '../../init.scss'
+import './../../base-styles/base/normalize.scss'
+import './layout-base.scss'
 
 const Basic = ({children}) =>{
   return(
