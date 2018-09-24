@@ -9,7 +9,12 @@ class Navigation extends React.Component {
       <nav aria-labelledby="primary-navigation">
         <h2 className="visually-hidden" id="primary-navigation"> Primary Navigation </h2>
         <ul>
-          <li> <Link to="/"> Logo </Link> </li>
+          <li>
+            <Link to="/">
+              <span>Open Source Student Network</span>
+              <span> mozilla</span>
+            </Link>
+          </li>
           <li> <Link to="/find-club"> Clubs </Link> </li>
           <li> <Link to="/contribute"> Opportunities </Link> </li>
           <li> <Link to="/about-us"> About us </Link> </li>

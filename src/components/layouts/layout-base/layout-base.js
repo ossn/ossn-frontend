@@ -12,6 +12,7 @@ import store from './../../../store';
 import GatsbyConfig from './../../../../gatsby-config';
 
 // Styles
+import './../../base-styles/fonts/fonts.scss'
 import './../../base-styles/base/normalize.scss'
 import './layout-base.scss'
 
