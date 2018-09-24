@@ -1,18 +1,27 @@
+// external modules
 import React from 'react';
-import BasicLayout from './../components/layouts/base/base';
 import { Helmet } from 'react-helmet';
+
+// local
+import BasicLayout from './../components/layouts/base/base';
+import Club from './../components/components/club-full/club-full';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.
 import GatsbyConfig from './../../gatsby-config';
 
 const Clubs = () => {
+  const singleClub = {
+    title: 'Single Club',
+    subtitle: 'this is a more wordy title for the cub '
+  }
   return (
     <BasicLayout>
       <Helmet>
         <title>{['Clubs', '|', GatsbyConfig.siteMetadata.title].join(" ")}</title>
       </Helmet>
 
-      Single club
+      <Club club={singleClub} />
+
     </BasicLayout>
   );
 };
