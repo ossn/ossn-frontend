@@ -1,4 +1,5 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 
 const Organization = (props) => {
   if (!props.organization) {
@@ -16,15 +17,3 @@ const Organization = (props) => {
 }
 
 export default Organization;
-
-export const query = graphql`
-{
-  allOrganizationsJson {
-    edges {
-      org: node {
-      ...organization
-	    }
-    }
-  }
-}
-`;
