@@ -9,7 +9,7 @@ import FaqGroup from './../components/components/faq-group/faq-group';
 
 const Questions = (props) => {
 
-  // FIXME: 
+  // FIXME:
   const resultGroups = props.data.allDataJson.edges[0] ? props.data.allDataJson.edges[0].node : {};
   const group0 = resultGroups.group0 ? resultGroups.group0 : [];
   const group1 = resultGroups.group1 ? resultGroups.group1 : [];
