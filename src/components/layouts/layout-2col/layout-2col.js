@@ -10,7 +10,7 @@ const Layout2Col = (props) => {
   const baseClass = 'layout-2col';
 
   const children = React.Children.map(props.children, (child) => {
-    const className = `${child.props.className} ${baseClass}__col`;
+    const className = `${child.props.className ? child.props.className : '' } ${baseClass}__col`;
     const props = { ...child.props, className: className };
     const newChild = React.cloneElement(child, props);
     return newChild;

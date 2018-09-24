@@ -24,10 +24,14 @@ const Questions = (props) => {
       </Helmet>
 
       <Layout2Cols>
-        <FaqGroup group={group0}  />
-        <FaqGroup group={group1}  />
-        <FaqGroup group={group2}  />
-        <FaqGroup group={group3}  />
+        <div>
+          <FaqGroup group={group0}  />
+          <FaqGroup group={group1}  />
+        </div>
+        <div>
+          <FaqGroup group={group2}  />
+          <FaqGroup group={group3}  />
+        </div>
       </Layout2Cols>
       Questions
     </BasicLayout>
