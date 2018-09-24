@@ -7,7 +7,7 @@ class Navigation extends React.Component {
   render() {
     return(
       <nav aria-labelledby="primary-navigation">
-        <h2 className="visually-hidden" itemID="primary-navigation"> Primary Navigation </h2>
+        <h2 className="visually-hidden" id="primary-navigation"> Primary Navigation </h2>
         <ul>
           <li> <Link to="/"> Logo </Link> </li>
           <li> <Link to="/find-club"> Clubs </Link> </li>

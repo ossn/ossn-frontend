@@ -5,13 +5,14 @@ import {Link} from 'gatsby';
 class Navigation extends React.Component {
   render() {
     return(
-      <div>
+      <nav aria-labelledby="secondary-navigation">
+        <h2 className="visually-hidden" id="primary-navigation"> Secondary Navigation </h2>
         <ul>
         <li> <Link to="/members"> Members </Link> </li>
         <li> <Link to="/organizations"> Organizations </Link> </li>
         <li> <Link to="/faq-page"> FAQ </Link> </li>
         </ul>
-      </div>
+      </nav>
     )
   }
 }
