@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 
 import BasicLayout from './../components/layouts/base/base';
 import OrganizationList from './../components/components/organizations-list/organizations-list';
+import BecomeMember from './../components/components/home-become-member/home-become-member';
 
 const IndexPage = (props) => {
   console.log();
@@ -14,6 +15,10 @@ const IndexPage = (props) => {
           <div>
             <OrganizationList  organizations={props.data.allOrganizationsJson.edges}/>
           </div>
+          <div>
+            <BecomeMember />
+          </div>
+
         </BasicLayout>
       </div>
     </div>
