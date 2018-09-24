@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.
 import BasicLayout from '../components/layouts/layout-base/layout-base';
+import Layout2Cols from './../components/layouts/layout-2col/layout-2col';
 import GatsbyConfig from './../../gatsby-config';
 import FaqGroup from './../components/components/faq-group/faq-group';
 
@@ -22,11 +23,12 @@ const Questions = (props) => {
         <title>{['FAQ', '|', GatsbyConfig.siteMetadata.title].join(" ")}</title>
       </Helmet>
 
-      <FaqGroup group={group0} />
-      <FaqGroup group={group1} />
-      <FaqGroup group={group2} />
-      <FaqGroup group={group3} />
-
+      <Layout2Cols>
+        <FaqGroup group={group0}  />
+        <FaqGroup group={group1}  />
+        <FaqGroup group={group2}  />
+        <FaqGroup group={group3}  />
+      </Layout2Cols>
       Questions
     </BasicLayout>
   );

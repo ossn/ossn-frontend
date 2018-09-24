@@ -8,8 +8,10 @@ export default (props) => {
   const items = props.group.map((item, i)=>{
     return <FaqItem item={item} key={i} />
   });
+
+  const classes = props.className
   return (
-    <div>
+    <div className={classes}>
       {items}
     </div>
   )
