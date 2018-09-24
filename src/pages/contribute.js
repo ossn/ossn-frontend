@@ -3,7 +3,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 // local modules
-import BasicLayout from './../components/layouts/base/base';
+import BasicLayout from '../components/layouts/layout-base/layout-base';
 import ModalBox from './../components/components/next-steps/next-steps';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.

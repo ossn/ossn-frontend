@@ -19,7 +19,7 @@ const Basic = ({children}) =>{
 
     <Provider store={store} >
 
-      <div>
+      <div className="layout-base">
         <Helmet>
           <title>{GatsbyConfig.siteMetadata.title}</title>
         </Helmet>
@@ -30,9 +30,9 @@ const Basic = ({children}) =>{
         <div id="content">
           {children}
         </div>
-        <div>
+        <footer>
           <Footer />
-        </div>
+        </footer>
 
       </div>
     </Provider>
