@@ -16,20 +16,26 @@ $chroma: define-default-color-scheme('branding', 'The site main colors. Can be u
 
 $chroma: add-colors((
         black:                  #000,
-        grey-dark:              mix(black, #4A4A4A, 60%),
+        grey-dark:              #262626,
         'grey':                 #4A4A4A,
         grey-light:             #ABABAB,
         grey-extra-light:       #D2D2D2,
 
         white:                  #fff,
+        white-smoke:            #F5F7F0,
 
-        blue:                   #0000FF,
-        blue-light:             lighten(#0000FF, 62%),
-        blue-dark:              mix(black, #0000FF, 30%),
+        blue:                   #122E63,
+        blue-light:             lighten(#122E63, 62%),
+        blue-dark:              mix(black, #122E63, 30%),
         red:                    #c00,
-        red-light:              lighten(#c00, 57%),
-        yellow:                 #fd0,
-        yellow-light:           lighten(#fd0, 43%),
+        red-light:              #FF5D5D,
+        yellow:                 #F8E71C,
+        yellow-light:           lighten(#F8E71C, 43%),
+
+        turquoise:              #59E1CF,
+
+        violet:                 #6806BD,
+        violet-electric:        #9013FE,
 ));
 
 // Define color names for functional uses.
@@ -43,7 +49,7 @@ $chroma: add-colors('functional', (
         dark:                   'black',
 
         text:                   'black',
-        text-bg:                'white',
+        text-bg:                'white-smoke',
 
         link:                   'blue',
         link-visited:           'blue',
