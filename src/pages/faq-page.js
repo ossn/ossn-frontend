@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.
-import BasicLayout from './../components/layouts/base/base';
+import BasicLayout from '../components/layouts/layout-base/layout-base';
 import GatsbyConfig from './../../gatsby-config';
 import FaqGroup from './../components/components/faq-group/faq-group';
 
