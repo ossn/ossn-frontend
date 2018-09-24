@@ -26,13 +26,13 @@ class Members extends React.Component {
 
     // puts an event listener for the UI handling (not that unsafe)
   UNSAFE_componentWillMount() {
-    if (typeof document)
+    if (typeof document !== 'undefined')
       document.addEventListener('mousedown', this.handleOutsideClick, false);
   }
 
   // remove the listener in absence of the component
   ComponentWillUnmount() {
-    if (typeof document)
+    if (typeof document !== 'undefined')
       document.removeEventListener('mousedown', this.handleOutsideClick, false);
   }
 
