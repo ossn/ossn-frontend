@@ -31,16 +31,13 @@ export default Organizations;
 
 
 export const query = graphql`
-  {
-    allOrganizationsJson {
-      edges {
-        node {
-          title
-          image
-          link
-          descripion
-        }
-      }
+{
+  allOrganizationsJson {
+    edges {
+      org: node {
+      ...organization
+	    }
     }
   }
+}
 `;

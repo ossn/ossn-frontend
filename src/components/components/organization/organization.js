@@ -13,3 +13,15 @@ const Organization = (props) => {
 }
 
 export default Organization;
+
+export const query = graphql`
+{
+  allOrganizationsJson {
+    edges {
+      org: node {
+      ...organization
+	    }
+    }
+  }
+}
+`;

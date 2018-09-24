@@ -1,17 +1,24 @@
 import React from 'react';
 import OrganizationTeaser from './../organization-teaser/organization-teaser';
+import { graphql } from "gatsby"
 
-const OrganizationList = (props) => {
-  const lalalist = props.organizations.map((org, i)=>{
-    return <OrganizationTeaser organization={org.node} key={i} />
+export default (props) => {
+  const organizations = props.organizations.map((node, i)=>{
+    return <OrganizationTeaser organization={node.org} key={i} />
   });
 
   return (
     <div>
-      {lalalist}
+      {organizations}
     </div>
   );
 }
 
-
-export default OrganizationList;
+export const query = graphql`
+  fragment organization on OrganizationsJson {
+    title
+    image
+    link
+    descripion
+  }
+`;
