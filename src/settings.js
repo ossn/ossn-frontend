@@ -20,6 +20,7 @@ export const link =  [
 		favicon('icon', `${favicon32x32}`, '32x32', 'image/png'),
 		favicon('icon', `${favicon16x16}`, '16x16', 'image/png'),
 		favicon('mask-icon', `${safari}`, null, null, '#5bbad5'),
+		{rel: 'stylesheet', href: 'https://unpkg.com/leaflet@1.3.3/dist/leaflet.css', integrity: 'sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==', crossorigin: ''}
 	];
 
 function meta(name, content) {
