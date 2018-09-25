@@ -11,6 +11,9 @@ import store from './../../../store';
 // Import page title from gatsby config. TODO Remove and fid title another way.
 import GatsbyConfig from './../../../../gatsby-config';
 
+// utils
+import {link, metadata} from './../../../settings';
+
 // Styles
 import './../../base-styles/fonts/fonts.scss'
 import './../../base-styles/base/normalize.scss'
@@ -22,7 +25,7 @@ const Basic = ({children}) =>{
     <Provider store={store} >
 
       <div className="layout-base">
-        <Helmet>
+        <Helmet meta={metadata} link={link}>
           <title>{GatsbyConfig.siteMetadata.title}</title>
         </Helmet>
         <SkipLink></SkipLink>
