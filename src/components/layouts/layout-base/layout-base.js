@@ -5,6 +5,7 @@ import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from 'react-apollo';
+import fetch from 'node-fetch';
 
 // improt local modules
 import Header from './../../components/header/header';
@@ -26,7 +27,7 @@ import './layout-base.scss'
 const Basic = ({children}) =>{
 
   const client = new ApolloClient({
-    link: new HttpLink({uri: 'https://07rqzpwj55.lp.gql.zone/graphql'}),
+    link: new HttpLink({uri: 'https://07rqzpwj55.lp.gql.zone/graphql', fetch: fetch}),
     cache: new InMemoryCache(),
   });
 
