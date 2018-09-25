@@ -6,6 +6,17 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     `gatsby-transformer-json`,
     {
+      resolve: "gatsby-source-graphql",
+      options: {
+        // This type will contain remote schema Query type
+        typeName: "SWAPI",
+        // This is field under which it's accessible
+        fieldName: "swapi",
+        // Url to query from
+        url: 'https://07rqzpwj55.lp.gql.zone/graphql',
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `./src/data/`,

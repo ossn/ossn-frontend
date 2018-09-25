@@ -13,6 +13,7 @@
     "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-sass": "^2.0.1",
     "gatsby-source-filesystem": "^2.0.1",
+    "gatsby-source-graphql": "^2.0.2",
     "gatsby-transformer-json": "^2.1.1",
     "node-sass": "^4.9.3",
     "path": "^0.12.7",
