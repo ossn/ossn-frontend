@@ -2,6 +2,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from "gatsby"
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+
 
 // local modules
 import BasicLayout from '../components/layouts/layout-base/layout-base';
@@ -65,6 +68,22 @@ class Members extends React.Component {
         </Helmet>
 
         <div >
+          <Query query={GET_MEMBERS}>
+            {({ loading, error, data })=>{
+              if (loading) return 'Loading....';
+              if (error) return <div> `Error ${error.message}` </div> ;
+              data.user = {
+                ...data.user,
+                username: data.user.userName
+              }
+              console.log(data.user);
+              return (
+                <div>
+                  <MemberTeaser member={data.user} />
+                </div>
+              );
+            }}
+          </Query>
           {
             members.map((member, i)=>{
               return  ( <div ref={this.popUpList[i]} key={i} >
@@ -80,6 +99,25 @@ class Members extends React.Component {
     );
   }
 }
+
+const GET_MEMBERS = gql`
+  {
+    user {
+      id
+      userName
+      email
+      firstName
+      lastName
+      imageUrl
+      receiveNewsletter
+      description
+      sortDescription
+      githubUrl
+      personalUrl
+    }
+  }
+`;
+
 
 export default Members;
 
