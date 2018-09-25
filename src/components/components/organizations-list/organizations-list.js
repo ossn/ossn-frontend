@@ -8,7 +8,7 @@ export default (props) => {
   });
 
   return (
-    <div>
+    <div className="test">
       {organizations}
     </div>
   );
