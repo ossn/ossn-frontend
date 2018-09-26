@@ -29,6 +29,7 @@ class Clubs extends React.Component {
 
   render() {
 
+    console.log(this.props.data.ossnApi.clubs);
     const clubs = <ShadowBox data={this.props.data.ossnApi.clubs} />
 
     const snapshot = {...this.state}
@@ -63,8 +64,8 @@ export const query = graphql`
     ossnApi {
       clubs {
         id
-        name
-        sortDescription
+        title:name
+        subtitle: sortDescription
         location {
           id
           lat
