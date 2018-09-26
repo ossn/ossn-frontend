@@ -1,0 +1,29 @@
+@import './../base-styles/init/init';
+
+.main-navigation {
+  background-color: color('white');
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 4px 0 color('black'); // Fallback.
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,0.25);
+  border-radius: 4px;
+  padding: 15px 20px;
+
+  ul {
+    list-style: none;
+  }
+
+  &__tab-wrapper {
+    display: flex;
+    margin-left: auto;
+  }
+
+  &__tab {
+    padding-left: 20px;
+    padding-right: 20px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

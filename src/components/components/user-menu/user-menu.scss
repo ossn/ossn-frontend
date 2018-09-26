@@ -1,0 +1,11 @@
+@import './../../base-styles/init/init';
+
+.user-menu {
+  position: relative;
+
+  &__popup {
+    position: absolute;
+    right: 0;
+    background-color: white;
+  }
+}

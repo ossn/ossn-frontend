@@ -6,6 +6,8 @@ import NotLoggedInMenu from './not-logged-in-user';
 
 import {mapUserToProps} from './../../../utils/redux-utils';
 
+import './user-menu.scss'
+
 class UserMenu extends React.Component {
   constructor(props) {
     super(props);
@@ -66,12 +68,12 @@ class UserMenu extends React.Component {
     }
 
     return(
-      <div ref={ this.popup}>
-        <div onClick={this.handleOpen}>
+      <div ref={ this.popup} className="user-menu">
+        <div onClick={this.handleOpen} className="button">
           {snapshot.open ? 'close' : 'open'}
           {extraContent}
         </div>
-        <div>
+        <div className="user-menu__popup">
           { snapshot.open ?  content : <div></div>  }
         </div>
       </div>

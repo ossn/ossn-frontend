@@ -30,7 +30,6 @@ body {
   @include typey-debug-grid;
   // Remove default margin and padding.
   margin: 0;
-  padding: 150px 0 0;
   color: color(text);
   background-color: color(text-bg);
 }

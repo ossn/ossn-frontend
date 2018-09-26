@@ -35,7 +35,7 @@ const Basic = ({children}) =>{
 
     <ApolloProvider client={client}>
       <Provider store={store} >
-        <div className="layout-base">
+        <div>
           <Helmet meta={metadata} link={link}>
             <title>{GatsbyConfig.siteMetadata.title}</title>
           </Helmet>
@@ -43,7 +43,7 @@ const Basic = ({children}) =>{
           <div>
             <Header />
           </div>
-          <div id="content">
+          <div id="content" className="layout-base">
             {children}
           </div>
           <footer>

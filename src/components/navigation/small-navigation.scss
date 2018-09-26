@@ -1,0 +1,23 @@
+@import './../base-styles/init/init';
+
+.small-navigation {
+
+  ul {
+    margin: 0;
+    list-style: none;
+  }
+
+
+  &__list {
+    height: 74px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 100px;
+  }
+
+  &__item {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
