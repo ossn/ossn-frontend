@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 
 // local modules
 import BasicLayout from '../components/layouts/layout-base/layout-base';
+import Layout3Col from './../components/layouts/layout-3col/layout-3col';
 import Map from './../components/components/map/map';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.
@@ -28,7 +29,17 @@ class Clubs extends React.Component {
     const snapshot = {...this.state}
     const content = snapshot.view === 'map'
       ? <Map />
-      : <div> This is not a map </div>;
+      : (
+        <Layout3Col>
+          <div> This is not a map </div>
+          <div> This is not a map </div>
+          <div> This is not a map </div>
+          <div> This is not a map </div>
+          <div> This is not a map </div>
+          <div> This is not a map </div>
+          <div> This is not a map </div>
+        </Layout3Col>
+      );
 
 
     return (
