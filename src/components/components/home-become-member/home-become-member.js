@@ -18,7 +18,7 @@ class BecomeMember extends React.Component {
             </p>
         </div>
         <div>
-          <div> Become a member </div>
+          <button className="button"> Become a member </button>
         </div>
       </div>
     )
