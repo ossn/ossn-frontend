@@ -27,13 +27,13 @@ class Members extends React.Component {
     this.ref = React.createRef();
   }
 
-    // puts an event listener for the UI handling (not that unsafe)
+  // Puts an event listener for the UI handling (not that unsafe).
   UNSAFE_componentWillMount() {
     if (typeof document !== 'undefined')
       document.addEventListener('mousedown', this.handleOutsideClick, false);
   }
 
-  // remove the listener in absence of the component
+  // Remove the listener in absence of the component.
   ComponentWillUnmount() {
     if (typeof document !== 'undefined')
       document.removeEventListener('mousedown', this.handleOutsideClick, false);
@@ -44,18 +44,18 @@ class Members extends React.Component {
     const snapshot = {...this.state};
     const newId = (id === snapshot.open ? -1 : id)
     this.setState({open: newId});
-  }
+  };
 
   handleOutsideClick = (event) => {
     const eventContainesClick = this.popUpList.some((popup)=>{
       return popup.current.contains(event.target);
-    })
+    });
 
 		if (this.state.open && !eventContainesClick) {
 			this.setState({open: -1});
 			return;
 		}
-	}
+	};
 
   render() {
     const snapshot = {...this.state};
@@ -75,7 +75,7 @@ class Members extends React.Component {
               data.user = {
                 ...data.user,
                 username: data.user.userName
-              }
+              };
               console.log(data.user);
               return (
                 <div>
@@ -118,9 +118,7 @@ const GET_MEMBERS = gql`
   }
 `;
 
-
 export default Members;
-
 
 export const query = graphql`
   query IndexQuery {

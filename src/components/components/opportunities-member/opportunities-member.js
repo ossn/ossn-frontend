@@ -22,9 +22,9 @@ export const jobBoardFragment = graphql`
 fragment JobBoardListing on OSSNAPI {
     jobs {
       id
-      sortDescription
+      text: sortDescription
       url
-      updatedAt
+      date: updatedAt
     }
   }
 `;

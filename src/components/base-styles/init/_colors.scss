@@ -17,7 +17,7 @@ $chroma: define-default-color-scheme('branding', 'The site main colors. Can be u
 $chroma: add-colors((
         black:                  #000,
         grey-dark:              #262626,
-        'grey':                 #4A4A4A,
+        'grey':                 #979797,
         grey-light:             #ABABAB,
         grey-extra-light:       #D2D2D2,
 
@@ -68,7 +68,7 @@ $chroma: add-colors('functional', (
         body-bg:                'text-bg',
 
         button:                 light,
-        button-bg:              'grey',
+        button-bg:              'turquoise',
         button-disabled:        light,
         button-disabled-bg:     'grey-extra-light',
         button-submit:          light,

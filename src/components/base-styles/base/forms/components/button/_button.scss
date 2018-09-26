@@ -49,7 +49,7 @@ button,
   cursor: pointer;
   color: color(button);
   background-color: color(button-bg);
-  border-radius: 5px;
+  border-radius: 4px;
   box-shadow: none;
   border: 0;
   transition: .2s cubic-bezier(.190, 1.000, .220, 1.000); /* easeOutExpo */
@@ -62,7 +62,7 @@ button,
 
   // Restore the focus styles unset by the previous rule.
   &:-moz-focusring { // sass-lint:disable-line no-vendor-prefixes
-    outline: 0;
+    outline-color: transparent;
   }
 
   &:hover,
@@ -71,7 +71,7 @@ button,
     text-decoration: none;
     color: color(button);
     background-color: mix(color('black'), color('button-bg'), 30%);
-    outline: 0;
+    outline-color: transparent;
   }
 
   &:active {
@@ -79,7 +79,7 @@ button,
     text-decoration: none;
     color: color(button);
     background-color: mix(color('black'), color('button-bg'), 60%);
-    outline: 0;
+    outline-color: transparent;
   }
 }
 
