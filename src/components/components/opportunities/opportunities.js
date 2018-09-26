@@ -10,14 +10,11 @@ import OpportunitiesGuest  from './../opportunities-guest/opportunities-guest';
 import {mapUserToProps} from './../../../utils/redux-utils';
 
 
-class Opportunties  extends React.Component {
-
-
+class Opportunities  extends React.Component {
   render() {
     const view = this.props.user.loggedIn
-      ? <OpportunitiesMemeber />
+      ? <OpportunitiesMemeber jobBoardListing={ this.props.jobBoardListing } />
       : <OpportunitiesGuest />;
-
     return (
       <div>
         {view}
@@ -26,4 +23,4 @@ class Opportunties  extends React.Component {
   }
 }
 
- export default connect(mapUserToProps)(Opportunties);
+export default connect(mapUserToProps)(Opportunities);

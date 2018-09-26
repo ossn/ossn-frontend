@@ -1,25 +1,34 @@
 // external modules
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { graphql } from 'gatsby';
 
 // local modules
-import Opportunties from './../components/components/opportunities/opportunities'
+import Opportunities from './../components/components/opportunities/opportunities'
 import BasicLayout from '../components/layouts/layout-base/layout-base';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.
 import GatsbyConfig from './../../gatsby-config';
 
-class  Opportunities extends React.Component {
+class Contribute extends React.Component {
   render() {
     return (
       <BasicLayout>
         <Helmet>
           <title>{['Opportunities', '|', GatsbyConfig.siteMetadata.title].join(" ")}</title>
         </Helmet>
-        <Opportunties />
+        <Opportunities jobBoardListing={ this.props.data.ossnApi.jobs } />
       </BasicLayout>
     );
   }
-};
+}
 
-export default Opportunities;
+export default Contribute;
+
+export const query = graphql`
+{
+  ossnApi {
+    ...JobBoardListing 
+  }
+}
+`;

@@ -9,9 +9,9 @@ module.exports = {
       resolve: "gatsby-source-graphql",
       options: {
         // This type will contain remote schema Query type
-        typeName: "SWAPI",
+        typeName: "OSSNAPI",
         // This is field under which it's accessible
-        fieldName: "swapi",
+        fieldName: "ossnApi",
         // Url to query from
         url: 'https://07rqzpwj55.lp.gql.zone/graphql',
       },

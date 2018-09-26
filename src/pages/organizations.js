@@ -11,7 +11,6 @@ import Organization from './../components/components/organization/organization';
 import GatsbyConfig from './../../gatsby-config';
 
 const Organizations = (props) => {
-
   return (
     <BasicLayout>
       <Helmet>
