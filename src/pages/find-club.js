@@ -1,10 +1,12 @@
 // external modules
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { graphql } from 'gatsby';
 
 // local modules
 import BasicLayout from '../components/layouts/layout-base/layout-base';
 import Layout3Col from './../components/layouts/layout-3col/layout-3col';
+import ShadowBox from './../components/components/shadow-box/shadow-box';
 import Map from './../components/components/map/map';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.
@@ -26,18 +28,15 @@ class Clubs extends React.Component {
   }
 
   render() {
+
+    const clubs = <ShadowBox data={this.props.data.ossnApi.clubs} />
+
     const snapshot = {...this.state}
     const content = snapshot.view === 'map'
       ? <Map />
       : (
         <Layout3Col>
-          <div> This is not a map </div>
-          <div> This is not a map </div>
-          <div> This is not a map </div>
-          <div> This is not a map </div>
-          <div> This is not a map </div>
-          <div> This is not a map </div>
-          <div> This is not a map </div>
+          {clubs}
         </Layout3Col>
       );
 
@@ -58,3 +57,20 @@ class Clubs extends React.Component {
 }
 
 export default Clubs;
+
+export const query = graphql`
+  {
+    ossnApi {
+      clubs {
+        id
+        name
+        sortDescription
+        location {
+          id
+          lat
+          lng
+        }
+      }
+    }
+  }
+`;
