@@ -13,6 +13,7 @@ const Layout2ColsUnequal = (props) =>{
 
   const baseClass = 'layout-3col';
 
+  // add the `Layout-2col-unequal__col` class to every child.
   const children = React.Children.map(props.children, (child) => {
     const className = `${child.props.className ? child.props.className : '' } ${baseClass}__col`;
     const props = { ...child.props, className: className };
@@ -20,6 +21,7 @@ const Layout2ColsUnequal = (props) =>{
     return newChild;
   });
 
+  // handle component classes. Add the variations found in props.
   let classes = [baseClass];
   if (props.horizontalGutters) classes.push(`${baseClass}--with-horizontal-gutters`);
   if (props.verticalGutters) classes.push(`${baseClass}--with-vertical-gutters`);
