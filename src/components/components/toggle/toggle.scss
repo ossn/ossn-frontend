@@ -1,0 +1,39 @@
+@import './../../base-styles/init/init';
+
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  cursor: pointer;
+  margin-left: 19px;
+  margin-right: 19px;
+
+  &__track {
+    position: absolute;
+    background-color: #cccccc;
+    width: 30px;
+    height: 8px;
+    border-radius: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__bullet {
+    height: 20px;
+    width: 20px;
+    background-color: color('turquoise');
+    border-radius: 100%;
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+    transition: .2s ease;
+  }
+
+  &--active {
+    .toggle__bullet {
+      left: 20px;
+    }
+  }
+}

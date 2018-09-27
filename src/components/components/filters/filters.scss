@@ -1,0 +1,11 @@
+@import './../../base-styles/init/init';
+
+.filter {
+  background-color: color('white');
+  display: inline-block;
+  padding: 15px;
+}
+
+.filter--toggle {
+  display: flex;
+}

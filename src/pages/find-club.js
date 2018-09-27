@@ -8,6 +8,7 @@ import BasicLayout from '../components/layouts/layout-base/layout-base';
 import Layout3Col from './../components/layouts/layout-3col/layout-3col';
 import ShadowBox from './../components/components/shadow-box/shadow-box';
 import Map from './../components/components/map/map';
+import {ToggleFilter, SearchFilter} from './../components/components/filters/filters';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.
 import GatsbyConfig from './../../gatsby-config';
@@ -17,19 +18,23 @@ class Clubs extends React.Component {
   constructor() {
     super();
     this.state = {
-      view: 'list'
-    }
+      view: 'list',
+      searchString: ''
+    };
+    this.handleSearch = this.handleSearch.bind(this)
   }
 
-  handleToggleMap = ()=> {
+  handleToggleMap = () => {
     const snapshot = {...this.state};
     this.setState({view: snapshot.view === 'map' ? 'list' : 'map'});
-    console.log('map toggle');
+  }
+
+  handleSearch = (event) => {
+    this.setState({searchString: event.target.value});
   }
 
   render() {
 
-    console.log(this.props.data.ossnApi.clubs);
     const clubs = <ShadowBox data={this.props.data.ossnApi.clubs} />
 
     const snapshot = {...this.state}
@@ -41,12 +46,18 @@ class Clubs extends React.Component {
         </Layout3Col>
       );
 
-
     return (
       <BasicLayout>
         <Helmet>
           <title>{['Clubs', '|', GatsbyConfig.siteMetadata.title].join(" ")}</title>
         </Helmet>
+        <div>
+        <ToggleFilter onClick={this.handleToggleMap}
+          active={snapshot.view === 'map'}
+          left="list" right="map" />
+          <SearchFilter placeholder="Filter" onChange={this.handleSearch}/>
+        </div>
+
         <div onClick={this.handleToggleMap}> Toggle map </div>
         <div>
           {content}
