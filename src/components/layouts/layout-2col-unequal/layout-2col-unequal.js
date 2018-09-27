@@ -1,3 +1,8 @@
+/*
+In order a LayoutXcol to take effect, the chilren have to accept `className` prop
+as their own. e.g. <Component className=`${props.className} newClass />`
+*/
+
 import React from 'react';
 
 // Styles
