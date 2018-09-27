@@ -11,6 +11,19 @@ class ClubMap extends React.Component {
     const phoenix = [42.500, -107.600];
     const dallas = [37.8155573, -108.4803483];
 
+    const clubs = [
+      {location: nevada, title: 'Club of nevada'},
+      {location: phoenix, title: 'Club of phoenix'},
+      {location: dallas, title: 'Club of Dallas'}];
+
+    const markers = clubs.map((club, i)=>{
+      return (
+        <Marker position={club.location} key={i}>
+          <Popup>{club.tititle}</Popup>
+        </Marker>)
+    });
+
+
     return(
       <div style={{height: '400px', overflow: 'hidden', minWidth: '200px', display: 'inline-block', width: '100%'}}>
         <Map center={position} zoom={5.25} style={{height: "400px"}}>
@@ -18,16 +31,7 @@ class ClubMap extends React.Component {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           />
-          <Marker position={nevada}>
-            <Popup> Club of Nevada </Popup>
-          </Marker>
-          <Marker position={phoenix}>
-            <Popup> Club of phoenix! </Popup>
-          </Marker>
-
-          <Marker position={dallas}>
-            <Popup> Club of Dallas! </Popup>
-          </Marker>
+          {markers}
         </Map>
       </div>
     )
