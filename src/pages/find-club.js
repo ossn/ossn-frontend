@@ -34,15 +34,20 @@ class Clubs extends React.Component {
   }
 
   render() {
-
-    const clubs = <ShadowBox data={this.props.data.ossnApi.clubs} />
-
     const snapshot = {...this.state}
+
+    let clubs  = this.props.data.ossnApi.clubs.slice();
+
+    if (snapshot.searchString !== '' || typeof snapshot.searchString !== 'undefined')
+        clubs = clubs.filter((club, i)=> {
+          return club.title.toLowerCase().indexOf(snapshot.searchString.toLowerCase().trim()) >= 0;
+        });
+
     const content = snapshot.view === 'map'
       ? <Map />
       : (
         <Layout3Col>
-          {clubs}
+          <ShadowBox data={clubs} />
         </Layout3Col>
       );
 
