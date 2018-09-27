@@ -1,3 +1,5 @@
+// add the number suffix for any given number
+// returns a string that contains the number and it's suffix
 export const numberWithSuffix = (num) => {
   const asStr = num.toString();
   const lastDigit = asStr[asStr.length - 1];

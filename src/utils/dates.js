@@ -1,5 +1,6 @@
 import {numberWithSuffix} from './numbers';
 
+// convert the `new Date().getDay()` number to it's verbose representation
 export const getDayName = (num) => {
   switch (num) {
     case 0: return 'Monday';
@@ -13,6 +14,7 @@ export const getDayName = (num) => {
   }
 }
 
+// conver the `new Date().getMonth()` number to it's verbose representation
 export const getMonthName = (num) => {
   switch (num) {
     case 0: return 'Jenuary';
@@ -31,6 +33,8 @@ export const getMonthName = (num) => {
   }
 }
 
+// project specific.
+// get the date string from the announcements and job listing
 export const verboseDate = (timestamp) => {
   const date = new Date(timestamp);
   const verboseDayName = getDayName(date.getDay());
