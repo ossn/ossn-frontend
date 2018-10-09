@@ -6,10 +6,6 @@
 // .form-item--tight  - Packs groups of form items closer together.
 // .is-error          - Highlight the form elements that caused a form
 //                      submission error.
-//
-// Markup: form-item.twig
-//
-// Style guide: forms.form-item
 
 // Form item (radio)
 //
@@ -18,10 +14,6 @@
 // the normal form item and is placed on each of the nested form items.
 //
 // .is-error - Highlight the form elements that caused a form submission error.
-//
-// Markup: form-item--radio.twig
-//
-// Style guide: forms.form-item--radio
 
 .form-item,
 %form-item {
@@ -84,61 +76,5 @@
     select {
       @extend %form-item--is-error__widget;
     }
-  }
-}
-
-//
-// Drupal selectors.
-//
-
-.form-item {
-  input.error, // sass-lint:disable-line no-qualifying-elements
-  textarea.error, // sass-lint:disable-line no-qualifying-elements
-  select.error { // sass-lint:disable-line no-qualifying-elements
-    @extend %form-item--is-error__widget;
-  }
-
-  .description {
-    @extend %form-item__description;
-  }
-}
-
-.form-required {
-  @extend %form-item__required;
-}
-
-// Password confirmation.
-.password-parent,
-.confirm-parent {
-  @extend %form-item--tight;
-}
-
-table {
-  .form-item { // sass-lint:disable-line no-qualifying-elements
-    @extend %form-item--tight;
-  }
-}
-
-.form-type-radio,
-.form-type-checkbox {
-  @extend %form-item--radio;
-
-  .description {
-    @extend %form-item--radio__description;
-  }
-}
-
-label.option { // sass-lint:disable-line no-qualifying-elements
-  @extend %form-item--radio__label;
-}
-
-.container-inline {
-  .form-item {
-    @extend %form-item--inline;
-  }
-
-  // Fieldset contents always need to be rendered as block.
-  .fieldset-wrapper {
-    @extend %form-item--inline__exception;
   }
 }

@@ -1,5 +1,11 @@
 @import './../../base-styles/init/init';
 
+// Horizontal toggle
+//
+// As the user clicks on it the bullet moves from left to right or right
+// to left.
+//
+// .toggle--active - The bullet is on the right.
 
 .toggle {
   position: relative;
@@ -22,7 +28,7 @@
   &__bullet {
     height: 20px;
     width: 20px;
-    background-color: color('turquoise');
+    background-color: color('seafoam-blue');
     border-radius: 100%;
     position: absolute;
     top: 50%;

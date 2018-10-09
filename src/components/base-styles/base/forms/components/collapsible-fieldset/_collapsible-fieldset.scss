@@ -6,11 +6,6 @@ $image-url-subdirectory: 'base/forms/components/collapsible-fieldset';
 // Fieldsets with optional entry fields can be hidden with collapsed fieldsets.
 //
 // .is-collapsed - The collapsed fieldset.
-//
-// Markup: collapsible-fieldset.twig
-//
-// Style guide: forms.collapsible-fieldset
-
 .collapsible-fieldset,
 %collapsible-fieldset {
   position: relative;
