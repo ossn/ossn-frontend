@@ -13,7 +13,7 @@ const ShadowBox = (props) => {
     const date = element.date ? verboseDate(element.date) : '';
     const url = element.url ? element.url : '';
     const text = element.text ? element.text : '';
-    const linkText = element.linkText ? element.linkText : '';
+    // const linkText = element.linkText ? element.linkText : '';
 
     const classes = `${props.className} shadow-box`;
     return (

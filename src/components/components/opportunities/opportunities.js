@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 // local modules
 import OpportunitiesMemeber from './../opportunities-member/opportunities-member';
-import OpportunitiesGuest  from './../opportunities-guest/opportunities-guest';
+// import OpportunitiesGuest  from './../opportunities-guest/opportunities-guest';
 
 // utils
 import {mapUserToProps} from './../../../utils/redux-utils';
@@ -12,9 +12,12 @@ import {mapUserToProps} from './../../../utils/redux-utils';
 
 class Opportunities  extends React.Component {
   render() {
-    const view = this.props.user.loggedIn
-      ? <OpportunitiesMemeber jobBoardListing={ this.props.jobBoardListing } />
-      : <OpportunitiesGuest />;
+    // const view = this.props.user.loggedIn
+    //   ? <OpportunitiesMemeber jobBoardListing={ this.props.jobBoardListing } />
+    //   : <OpportunitiesGuest />;
+
+    const view = <OpportunitiesMemeber jobBoardListing={ this.props.jobBoardListing } />;
+
     return (
       <div>
         {view}
