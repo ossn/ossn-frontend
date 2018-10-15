@@ -6,8 +6,7 @@ import { ExternalResourceList } from './../external-resource-teaser/external-res
 export default class Announcements extends React.Component {
 
   render() {
-    console.log(this.props.announcements);
-
+  
     return (
       <div>
         <ExternalResourceList items={this.props.announcements} />

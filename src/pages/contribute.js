@@ -13,7 +13,6 @@ import GatsbyConfig from './../../gatsby-config';
 
 class Contribute extends React.Component {
   render() {
-    console.log(this.props.data);
     const jobs = this.props.data.ossnApi.jobs;
     const announcements = this.props.data.allAnnouncementsJson.edges.map((node, i)=>{
        return node.node;
