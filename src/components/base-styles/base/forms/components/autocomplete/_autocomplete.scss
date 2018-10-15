@@ -7,11 +7,6 @@ $image-url-subdirectory: 'base/forms/components/autocomplete';
 // item allowing them to choose an option.
 //
 // .is-throbbing - Waiting for search result.
-//
-// Markup: autocomplete.twig
-//
-// Style guide: forms.autocomplete
-
 
 // Animated throbber
 .autocomplete,
@@ -51,34 +46,5 @@ $image-url-subdirectory: 'base/forms/components/autocomplete';
   &.is-throbbing,
   &--is-throbbing {
     background-image: image-url('throbber-active.gif');
-  }
-}
-
-//
-// Drupal selectors.
-//
-
-.form-autocomplete {
-  @extend %autocomplete;
-
-  &.throbbing {
-    @extend %autocomplete--is-throbbing;
-  }
-}
-
-// sass-lint:disable no-ids
-#autocomplete {
-  @extend %autocomplete__list-wrapper;
-
-  ul {
-    @extend %autocomplete__list;
-  }
-
-  li {
-    @extend %autocomplete__list-item;
-  }
-
-  .selected {
-    @extend %autocomplete__list-item--is-selected;
   }
 }

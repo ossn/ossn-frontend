@@ -21,39 +21,42 @@ $chroma: add-colors((
         grey-light:             #ABABAB,
         grey-extra-light:       #D2D2D2,
 
-        white:                  #fff,
-        white-smoke:            #F5F7F0,
+        brown-grey:             #929292,
 
-        blue:                   #122E63,
-        blue-light:             lighten(#122E63, 62%),
-        blue-dark:              mix(black, #122E63, 30%),
-        red:                    #c00,
-        red-light:              #FF5D5D,
-        yellow:                 #F8E71C,
-        yellow-light:           lighten(#F8E71C, 43%),
+        white:                  #FFF,
+        off-white:              #F5F7F0,
 
-        turquoise:              #59E1CF,
+        light-navy:             #122E63,
+        dark-sky-blue:          #4A90E2,
+        blue-light:             #12CACB,
 
-        violet:                 #6806BD,
-        violet-electric:        #9013FE,
+        red:                    #C00,
+        grapefruit:             #FF5D5D,
+        sunny-yellow:           #F8E71C,
+
+        seafoam-blue:           #59E1CF,
+        topaz:                  #12B3BC,
+
+        violet-blue:            #6806BD,
+        violet:                 #9013FE,
 ));
 
 // Define color names for functional uses.
 $chroma: define-color-scheme('functional', 'Colors used by functional parts of the design.');
 $chroma: add-colors('functional', (
   // Colors used in the main content area.
-        brand:                  'blue',
+        brand:                  'light-navy',
         brand-secondary:        'grey-light',
 
         light:                  'white',
         dark:                   'black',
 
         text:                   'black',
-        text-bg:                'white-smoke',
+        text-bg:                'off-white',
 
-        link:                   'blue',
-        link-visited:           'blue',
-        link-active:            'blue-dark',
+        link:                   'light-navy',
+        link-visited:           'light-navy',
+        link-active:            mix(black, #122E63, 30%),
 
         border:                 'grey-light',
         border-hover:           'dark', // Applies at form items.
@@ -63,12 +66,12 @@ $chroma: add-colors('functional', (
         autocomplete:           'text',
         autocomplete-bg:        'text-bg',
         autocomplete-select:    'white',
-        autocomplete-select-bg: 'blue',
+        autocomplete-select-bg: 'light-navy',
 
         body-bg:                'text-bg',
 
         button:                 light,
-        button-bg:              'turquoise',
+        button-bg:              'seafoam-blue',
         button-disabled:        light,
         button-disabled-bg:     'grey-extra-light',
         button-submit:          light,
@@ -88,13 +91,13 @@ $chroma: add-colors('functional', (
         form-disabled:          'grey-extra-light',
 
         mark-highlight:         'red',
-        mark-bg:                'yellow',
+        mark-bg:                'sunny-yellow',
 
         menu-active:            'text',
 
-        preview-bg:             'yellow-light',
+        preview-bg:             lighten(color('sunny-yellow'), 47%),
 
-        progress-bar:           'blue',
+        progress-bar:           'light-navy',
         progress-bar-bg:        'grey-light',
         progress-bar-border:    'grey-dark',
 
@@ -106,12 +109,12 @@ $chroma: add-colors('functional', (
         skip-link:              'white',
         skip-link-bg:           'grey-dark',
 
-        status:                 'blue',
-        status-bg:              mix(white, color(blue), 82%),
+        status:                 'light-navy',
+        status-bg:              mix(white, color('light-navy'), 82%),
         status-highlight:       text,
         warning:                text,
-        warning-bg:             mix(white, color(yellow), 85%),
-        warning-border:         'yellow',
+        warning-bg:             mix(white, color('sunny-yellow'), 85%),
+        warning-border:         'sunny-yellow',
         error:                  'red',
         error-bg:               mix(white, color(red), 85%),
 
@@ -122,10 +125,13 @@ $chroma: add-colors('functional', (
         tab-bg:                 lighten(color(grey-light), 6.66%),
         tab-secondary:          'grey-dark',
 
-        table-drag:             'yellow-light',
-        table-select:           lighten(color(yellow), 47%),
+        table-drag:             lighten(color('sunny-yellow'), 47%),
+        table-select:           lighten(color('sunny-yellow'), 47%),
 
         watermark:              'grey-extra-light',
+
+        footer-bg-dark:         'light-navy',
+        footer-bg-light:        'blue-light',
 ));
 
 $chroma-active-scheme: 'functional';

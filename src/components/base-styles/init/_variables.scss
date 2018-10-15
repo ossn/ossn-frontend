@@ -34,10 +34,10 @@ $support-for: (
 // Style guide: sass.variables.typey
 
 // The font size set on the root html element.
-$base-font-size:    17px;
+$base-font-size:    14px;
 
 // The base line height determines the basic unit of vertical rhythm.
-$base-line-height:  26px;
+$base-line-height:  21px;
 
 // Deprecated in this theme.
 // The font sizes in our type hierarchy as tee shirt sizes.
@@ -70,6 +70,7 @@ $font-weight: (
 $times-new-roman: 'Times New Roman', Times, Georgia, 'DejaVu Serif', serif;
 $times:           Times, 'Times New Roman', Georgia, 'DejaVu Serif', serif;
 $georgia:         Georgia, 'Times New Roman', 'DejaVu Serif', serif;
+$open-sans:       'Open Sans', Georgia, 'Times New Roman', 'DejaVu Serif', serif;
 
 // Sans-serif font stacks.
 $verdana:         Verdana, Tahoma, 'DejaVu Sans', sans-serif;
@@ -91,7 +92,7 @@ $pb-icon:         'PBicons';
 // typeface() mixin.
 $typefaces: (
   title: (
-    font-family: $georgia,
+    font-family: $zilla-slab,
   ),
   title-secondary: (
     font-family: $helvetica,
@@ -103,7 +104,7 @@ $typefaces: (
     style: italic,
   ),
   body: (
-    font-family: $zilla-slab,
+    font-family: $open-sans,
   ),
   pb-icon: (
     font-family: $pb-icon,

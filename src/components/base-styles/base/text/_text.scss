@@ -1,19 +1,11 @@
 // Text-level semantics
 //
 // The elements in this section give semantics to inline text.
-//
-// Weight: 1
-//
-// Style guide: base.text
 
 // Abbreviation / Acroynym
 //
 // The `<abbr>` element makes the meanings of abbreviations and acronyms visible
 // on hover.
-//
-// Markup: text-abbr.twig
-//
-// Style guide: base.text.abbr
 
 abbr[title] {
   // Remove the bottom border in Firefox <40.
@@ -36,12 +28,6 @@ abbr[title] {
 //
 // Feel free to use `<b>` in HTML5. `<b>` is meant to highlight words or phrases
 // without conveying additional importance.
-//
-// Markup: text-b.twig
-//
-// Weight: -1
-//
-// Style guide: base.text.b
 
 // Prevent the duplicate application of `bolder` by the next rule in Safari 6.
 
@@ -61,10 +47,6 @@ b {
 // Cite
 //
 // The `<cite>` element represents a reference to a creative work.
-//
-// Markup: text-cite.twig
-//
-// Style guide: base.text.cite
 
 cite { // sass-lint:disable-line no-empty-rulesets
   // Add your styles.
@@ -76,10 +58,6 @@ cite { // sass-lint:disable-line no-empty-rulesets
 // element represents a variable. The `<samp>` element represents (sample)
 // output from a program or computing system. The `<kbd>` element represents
 // user input (typically keyboard input.)
-//
-// Markup: text-code.twig
-//
-// Style guide: base.text.code
 
 %monospace,
 code,
@@ -96,10 +74,6 @@ var {
 // Deleted text
 //
 // The `<del>` element indicates blocks of text that have been deleted.
-//
-// Markup: text-del.twig
-//
-// Style guide: base.text.del
 
 del { // sass-lint:disable-line no-empty-rulesets
   // Add your styles.
@@ -108,10 +82,6 @@ del { // sass-lint:disable-line no-empty-rulesets
 // Definition
 //
 // The `<dfn>` element represents the defining instance of a term.
-//
-// Markup: text-dfn.twig
-//
-// Style guide: base.text.dfn
 
 dfn {
   // Add the correct font style in Android <4.4.
@@ -125,12 +95,6 @@ dfn {
 //
 // Feel free to use `<i>` element in HTML5. `<i>` is meant to convey voice,
 // technical terms, etc.
-//
-// Markup: text-i.twig
-//
-// Weight: -1
-//
-// Style guide: base.text.i
 
 i,
 em { // sass-lint:disable-line no-empty-rulesets
@@ -140,10 +104,6 @@ em { // sass-lint:disable-line no-empty-rulesets
 // Inserted text
 //
 // The `<ins>` element indicates additions to the document.
-//
-// Markup: text-ins.twig
-//
-// Style guide: base.text.ins
 
 ins { // sass-lint:disable-line no-empty-rulesets
   // Add your styles.
@@ -153,10 +113,6 @@ ins { // sass-lint:disable-line no-empty-rulesets
 //
 // The `<mark>` element highlights a run of text due to its relevance in another
 // context.
-//
-// Markup: text-mark.twig
-//
-// Style guide: base.text.mark
 
 mark {
   // Add the correct background and color in IE <10.
@@ -168,10 +124,6 @@ mark {
 //
 // The `<q>` element represents an inline quote from another source. Longer
 // quotes should use the `<blockquote>` element.
-//
-// Markup: text-q.twig
-//
-// Style guide: base.text.q
 
 q { // sass-lint:disable-line no-empty-rulesets
   // Add your styles.
@@ -180,10 +132,6 @@ q { // sass-lint:disable-line no-empty-rulesets
 // Strikethrough text
 //
 // The `<s>` element indicates blocks of text that are no longer relevant.
-//
-// Markup: text-s.twig
-//
-// Style guide: base.text.s
 
 s { // sass-lint:disable-line no-empty-rulesets
   // Add your styles.
@@ -193,10 +141,6 @@ s { // sass-lint:disable-line no-empty-rulesets
 //
 // For de-emphasizing inline or blocks of text, use the `<small>` element to set
 // text at 80% the size of the parent.
-//
-// Markup: text-small.twig
-//
-// Style guide: base.text.small
 
 small {
   // Add the correct font size in all browsers.
@@ -207,10 +151,6 @@ small {
 //
 // The `<sup>` element represents a superscript and the `<sub>` element
 // represents a subscript.
-//
-// Markup: text-sub.twig
-//
-// Style guide: base.text.sub
 
 sub,
 sup {
@@ -254,10 +194,6 @@ u { // sass-lint:disable-line no-empty-rulesets
 // .text--xlarge - XLarge text.
 // .text--xxlarge - XXLarge text.
 //
-//
-// Markup: text.twig
-//
-// Style guide: base.text.text-styles
 .text,
 %text {
   @include font-size($base-font-size);

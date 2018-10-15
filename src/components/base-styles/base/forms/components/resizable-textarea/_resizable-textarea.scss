@@ -6,8 +6,6 @@ $image-url-subdirectory: 'base/forms/components/resizable-textarea';
 // A textarea that can be resized with a "grippie" widget.
 //
 // Markup: resizable-textarea.twig
-//
-// Style guide: forms.resizable-textarea
 
 .resizable-textarea,
 %resizable-textarea {
@@ -21,19 +19,5 @@ $image-url-subdirectory: 'base/forms/components/resizable-textarea';
     cursor: s-resize;
     height: 9px;
     overflow: hidden;
-  }
-}
-
-//
-// Drupal selectors.
-//
-
-.resizable-textarea {
-  textarea {
-    @extend %resizable-textarea;
-  }
-
-  .grippie {
-    @extend %resizable-textarea__grippie;
   }
 }

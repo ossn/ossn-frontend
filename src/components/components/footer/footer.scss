@@ -3,7 +3,7 @@
 .footer {
   width: 100%;
   color: color('white');
-  background-image: linear-gradient(color('blue-dark'), color('turquoise'));
+  background-image: linear-gradient(color('footer-bg-dark'), color('footer-bg-light'));
 
   ul {
     list-style: none;
@@ -16,8 +16,6 @@
       text-decoration: underline;
     }
   }
-
-
 
   &__items-wrapper {
     display: flex;

@@ -4,15 +4,9 @@ $image-url-subdirectory: 'base/forms/components/progress-throbber';
 // Progress throbber
 //
 // Shows the progress of a task using a throbber.
-//
-// Markup: progress-throbber.twig
-//
-// Style guide: forms.progress-throbber
-
 .progress-throbber,
 %progress-throbber {
   display: inline-block;
-
 
   &__widget {
     background: image-url('progress-throbber.gif') no-repeat 0 -18px transparent;
@@ -29,25 +23,5 @@ $image-url-subdirectory: 'base/forms/components/progress-throbber';
 
   &__message {
     padding-left: 20px;
-  }
-}
-
-//
-// Drupal selectors.
-//
-
-.ajax-progress {
-  @extend %progress-throbber;
-
-  .throbber {
-    @extend %progress-throbber__widget;
-
-    tr & {
-      @extend %progress-throbber__widget-in-tr;
-    }
-  }
-
-  .message {
-    @extend %progress-throbber__message;
   }
 }
