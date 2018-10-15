@@ -1,6 +1,5 @@
 [
   {
-    "id": 1,
     "name": "Club 1",
     "shortDescription": "This is a short description",
     "email": "email@email.com",
@@ -11,9 +10,9 @@
     },
     "imageUrl": "http://blog.etonic.net/images/tux-nemo.png",
     "users": [
-      1,
-      2,
-      3
+      "1",
+      "2",
+      "3"
     ],
     "githubUrl": "#",
     "clubUrl": "#",
@@ -21,7 +20,6 @@
     "updatedAt": "2018-01-02"
   },
   {
-    "id": 2,
     "name": "Club 2",
     "shortDescription": "This is a short description",
     "email": "email@email.com",
@@ -32,9 +30,9 @@
     },
     "imageUrl": "http://blog.etonic.net/images/tux-nemo.png",
     "users": [
-      1,
-      2,
-      3
+      "1",
+      "2",
+      "3"
     ],
     "githubUrl": "#",
     "clubUrl": "#",
@@ -42,7 +40,6 @@
     "updatedAt": "2018-01-02"
   },
   {
-    "id": 3,
     "name": "Club 3",
     "shortDescription": "This is a short description",
     "email": "email@email.com",
@@ -53,9 +50,9 @@
     },
     "imageUrl": "http://blog.etonic.net/images/tux-nemo.png",
     "users": [
-      1,
-      2,
-      3
+      "1",
+      "2",
+      "3"
     ],
     "githubUrl": "#",
     "clubUrl": "#",
@@ -63,7 +60,6 @@
     "updatedAt": "2018-01-02"
   },
   {
-    "id": 4,
     "name": "Club 4",
     "shortDescription": "This is a short description",
     "email": "email@email.com",
@@ -74,9 +70,9 @@
     },
     "imageUrl": "http://blog.etonic.net/images/tux-nemo.png",
     "users": [
-      1,
-      2,
-      3
+      "1",
+      "2",
+      "3"
     ],
     "githubUrl": "#",
     "clubUrl": "#",
@@ -84,7 +80,6 @@
     "updatedAt": "2018-01-02"
   },
   {
-    "id": 5,
     "name": "Club 5",
     "shortDescription": "This is a short description",
     "email": "email@email.com",
@@ -94,10 +89,10 @@
       "lat": "22.9428139"
     },
     "imageUrl": "http://blog.etonic.net/images/tux-nemo.png",
-    "users": [
-      1,
-      2,
-      3
+    "users":[
+      "1",
+      "2",
+      "3"
     ],
     "githubUrl": "#",
     "clubUrl": "#",
