@@ -11,6 +11,7 @@ class Navigation extends React.Component {
         <h2 className="visually-hidden" id="primary-navigation"> Secondary Navigation </h2>
         <ul className="small-navigation__list">
           <li className="small-navigation__item"> <Link to="/members"> Members </Link> </li>
+          <li className="small-navigation__item"> <Link to="/leaders-corner"> Leader's Corder </Link> </li>
           <li className="small-navigation__item"> <Link to="/organizations"> Organizations </Link> </li>
           <li className="small-navigation__item"> <Link to="/faq-page"> FAQ </Link> </li>
         </ul>

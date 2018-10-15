@@ -5,16 +5,12 @@ import { graphql } from 'gatsby';
 
 // local modules
 import BasicLayout from '../components/layouts/layout-base/layout-base';
-import MemeberUpdates from './../components/components/member-updates/member-updates';
-import MemberTools from './../components/components/member-tools/member-tools';
-import MemberTrainingResources from './../components/components/member-training-resources/member-training-resources';
-
+import OpportunitiesMember from './../components/components/opportunities-member/opportunities-member';
 // Import page title from gatsby config. TODO Remove and fid title another way.
 import GatsbyConfig from './../../gatsby-config';
 
 class Contribute extends React.Component {
   render() {
-    console.log(this.props.data);
     const jobs = this.props.data.ossnApi.jobs;
     const announcements = this.props.data.ossnApi.announcements;
     const channels = this.props.data.allCommunicationChannelsJson;
@@ -34,9 +30,9 @@ class Contribute extends React.Component {
             Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet
           </p>
         </div>
-        <MemeberUpdates />
-        <MemberTools channels={channels} tools={tools} />
-        <MemberTrainingResources resources={resources}/>
+        <OpportunitiesMember jobs={jobs} announcements={announcements}
+                    channels={channels} tools={tools} resources={resources} />
+
       </BasicLayout>
     );
   }

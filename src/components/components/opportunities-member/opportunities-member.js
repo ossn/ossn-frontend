@@ -7,10 +7,12 @@ import MemberTools from './../member-tools/member-tools';
 import MemberTrainingResources from './../member-training-resources/member-training-resources';
 
 export default (props) => {
-
+  console.log(props);
   return (
     <div>
-      test
+      <MemberUpdates announcements={props.announcements} jobs={props.jobs} />
+      <MemberTools channels={props.channels} tools={props.tools} />
+      <MemberTrainingResources resources={props.resources}/>
     </div>
   );
 }
