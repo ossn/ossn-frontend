@@ -1,16 +1,16 @@
 import React from 'react'
 
-const ExternalResource = (props) => {
+export const ExternalResource = (props) => {
   const resource = props.resource;
-
+  const title = resource.shortdescription;
   return (
-    <div> Ext resource </div>
+    <div> {title} </div>
   )
 }
 
-const ExternalResourceList = (props) => {
+export const ExternalResourceList = (props) => {
 
-  const resources = props.resources.map((resource, i) => {
+  const resources = props.items.map((resource, i) => {
     return <ExternalResource key={i} resource={resource} />
   });
 
@@ -21,5 +21,5 @@ const ExternalResourceList = (props) => {
   )
 }
 
-export ExternalResource
-export ExternalResourceList
+// export ExternalResource;
+// export ExternalResourceList;

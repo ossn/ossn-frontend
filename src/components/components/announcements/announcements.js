@@ -1,23 +1,27 @@
 import React from 'react';
-import { ExternalResourceList } from './../external-resource-list';
+import {graphql} from 'gatsby';
+import { ExternalResourceList } from './../external-resource-teaser/external-resource-teaser';
 
 
-class Announcements extends React.Component {
+export default class Announcements extends React.Component {
 
   render() {
+    console.log(this.props.announcements);
+
     return (
       <div>
-        test
+        <ExternalResourceList items={this.props.announcements} />
       </div>
     )
   }
 }
 
-// export const query = graphql`
-//   fragment announcements on OrganizationsJson {
-//     title
-//     image
-//     link
-//     descripion
-//   }
-// `;
+export const query = graphql`
+  fragment announcements on AnnouncementsJson {
+    id
+    shortdescription
+    url
+    updatedAt
+    image
+  }
+`;

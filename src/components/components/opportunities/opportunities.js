@@ -16,7 +16,7 @@ class Opportunities  extends React.Component {
     //   ? <OpportunitiesMemeber jobBoardListing={ this.props.jobBoardListing } />
     //   : <OpportunitiesGuest />;
 
-    const view = <OpportunitiesMemeber jobBoardListing={ this.props.jobBoardListing } />;
+    const view = <OpportunitiesMemeber jobs={ this.props.jobs } />;
 
     return (
       <div>

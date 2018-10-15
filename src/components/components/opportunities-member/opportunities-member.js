@@ -11,7 +11,7 @@ export default (props) => {
       Opportunties page as a logged in user!
 
       <h2 className="title title-secondary"> Job board listing </h2>
-      <ShadowBox data={ props.jobBoardListing } />
+      <ShadowBox data={ props.jobs } />
     </div>
   )
 }
