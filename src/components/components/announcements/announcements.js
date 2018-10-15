@@ -7,7 +7,10 @@ export default (props) => {
 
   return (
     <div>
-      <ExternalResourceList items={items} />
+      <h2> Latest announcements </h2>
+      <div>
+        <ExternalResourceList items={items} />
+      </div>
     </div>
   );
 }

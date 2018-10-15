@@ -17,6 +17,9 @@ class Contribute extends React.Component {
     console.log(this.props.data);
     const jobs = this.props.data.ossnApi.jobs;
     const announcements = this.props.data.ossnApi.announcements;
+    const channels = this.props.data.allCommunicationChannelsJson;
+    const tools = this.props.data.allToolsForContributingJson;
+    const resources = this.props.data.allTrainingResourcesJson;
 
     return (
       <BasicLayout>
@@ -32,8 +35,8 @@ class Contribute extends React.Component {
           </p>
         </div>
         <MemeberUpdates />
-        <MemberTools channels={[]} tools={[]} />
-        <MemberTrainingResources />
+        <MemberTools channels={channels} tools={tools} />
+        <MemberTrainingResources resources={resources}/>
       </BasicLayout>
     );
   }
@@ -48,38 +51,26 @@ export const query = graphql`
     ...announcements
   }
 
-  allToolsForContributingJson {
+  allCommunicationChannelsJson {
     edges {
       node {
-        id
-  		  title
+        ...CommunicationChannel
       }
     }
   }
 
-  allLeadersToolsJson {
+  allToolsForContributingJson {
     edges {
       node {
-        Project_Management_tools {
-          title
-          url
-          icon
-        }
-        Code_of_Conduct_examples {
-          title
-          url
-          icon
-        }
-        Various_tools {
-          title
-          url
-          icon
-        }
-        Useful_resources_running_a_club {
-          title
-          url
-          icon
-        }
+        ...MemberTools
+      }
+    }
+  }
+
+  allTrainingResourcesJson {
+    edges {
+      node {
+        ...TrainingResources
       }
     }
   }

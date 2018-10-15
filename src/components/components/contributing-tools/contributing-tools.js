@@ -1,4 +1,5 @@
 import React from 'react';
+import {graphql} from 'gatsby';
 
 export const ContributingTool = (props) => {
   return  (
@@ -9,19 +10,27 @@ export const ContributingTool = (props) => {
   )
 }
 
-
 export const ContributingToolSet = (props) => {
 
-  const tools = props.tools.map((tool, i) => {
-    return <ContributingTool tool={tool} />;
+  const tools = props.tools.edges.map((toolNode, i) => {
+    const tool = toolNode.node;
+    return <ContributingTool tool={tool} key={i} />;
   });
 
   return (
     <div>
-      {tools}
+      <h2> Tools for contributing code to open source projects </h2>
+      <div>
+        {tools}
+      </div>
     </div>
   )
 }
 
-
-// TODO: implement graphql query
+export const query = graphql`
+  fragment MemberTools on ToolsForContributingJson {
+    title
+    url
+    icon
+  }
+`;

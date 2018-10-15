@@ -7,7 +7,10 @@ export default (props) => {
   const items = [];
   return (
     <div>
-      <ExternalResourceList items={items} />
+      <h2> Jobs & interships board </h2>
+      <div>
+        <ExternalResourceList items={items} />
+      </div>
     </div>
   )
 }
