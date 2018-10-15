@@ -5,26 +5,35 @@ import { graphql } from 'gatsby';
 
 // local modules
 import BasicLayout from '../components/layouts/layout-base/layout-base';
-import Opportunities from './../components/components/opportunities/opportunities';
-import Announcements from './../components/components/announcements/announcements';
+import MemeberUpdates from './../components/components/member-updates/member-updates';
+import MemberTools from './../components/components/member-tools/member-tools';
+import MemberTrainingResources from './../components/components/member-training-resources/member-training-resources';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.
 import GatsbyConfig from './../../gatsby-config';
 
 class Contribute extends React.Component {
   render() {
+    console.log(this.props.data);
     const jobs = this.props.data.ossnApi.jobs;
-    const announcements = this.props.data.allAnnouncementsJson.edges.map((node, i)=>{
-       return node.node;
-    });
+    const announcements = this.props.data.ossnApi.announcements;
 
     return (
       <BasicLayout>
         <Helmet>
           <title>{['Opportunities', '|', GatsbyConfig.siteMetadata.title].join(" ")}</title>
         </Helmet>
-        <Opportunities jobs={jobs} />
-        <Announcements  announcements={announcements} />
+
+        <div>
+          <h1> Opportunities </h1>
+          <p>
+            Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet
+            Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet
+          </p>
+        </div>
+        <MemeberUpdates />
+        <MemberTools channels={[]} tools={[]} />
+        <MemberTrainingResources />
       </BasicLayout>
     );
   }
@@ -36,13 +45,42 @@ export const query = graphql`
 {
   ossnApi {
     ...JobBoardListing
+    ...announcements
   }
 
-  allAnnouncementsJson {
+  allToolsForContributingJson {
     edges {
       node {
-        ...announcements
-     	 }
+        id
+  		  title
+      }
+    }
+  }
+
+  allLeadersToolsJson {
+    edges {
+      node {
+        Project_Management_tools {
+          title
+          url
+          icon
+        }
+        Code_of_Conduct_examples {
+          title
+          url
+          icon
+        }
+        Various_tools {
+          title
+          url
+          icon
+        }
+        Useful_resources_running_a_club {
+          title
+          url
+          icon
+        }
+      }
     }
   }
 }

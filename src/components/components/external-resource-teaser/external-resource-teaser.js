@@ -2,7 +2,8 @@ import React from 'react'
 
 export const ExternalResource = (props) => {
   const resource = props.resource;
-  const title = resource.shortdescription;
+  const title = resource.title;
+
   return (
     <div> {title} </div>
   )

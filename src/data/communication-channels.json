@@ -1,0 +1,15 @@
+[
+  {
+    "title": "Slack",
+    "url": "#",
+    "icon": "slack"
+  },{
+    "title": "Email",
+    "url": "#",
+    "icon": "email"
+  },{
+    "title": "Twitter",
+    "url": "#",
+    "icon": "twitter"
+  }
+]

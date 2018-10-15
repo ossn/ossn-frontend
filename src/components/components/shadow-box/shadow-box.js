@@ -1,37 +1,52 @@
 import React from 'react';
-
 import './shadow-box.scss'
 
-// utils
-import { verboseDate } from './../../../utils/dates';
+export default (props) => {
 
-const ShadowBox = (props) => {
-  const content = props.data.map((element, i) => {
-
-    const title = element.title ? element.title : '';
-    const subtitle = element.subtitle ? element.subtitle : '';
-    const date = element.date ? verboseDate(element.date) : '';
-    const url = element.url ? element.url : '';
-    const text = element.text ? element.text : '';
-    // const linkText = element.linkText ? element.linkText : '';
-
-    const classes = `${props.className} shadow-box`;
-    return (
-      <div className={classes} key={i}>
-        {title}     <br />
-        {subtitle}  <br />
-        {text}      <br />
-        {url}       <br />
-        {date}      <br />
-      </div>
-    )
-  });
+  const classes = `${props.className ? props.className : ''} shadow-box`;
 
   return (
-    <>
-    { content }
-    </>
+    <div className={classes}>
+      {props.children}
+    </div>
   )
-};
+}
 
-export default ShadowBox;
+
+
+
+//
+//
+// // utils
+// import { verboseDate } from './../../../utils/dates';
+//
+// const ShadowBox = (props) => {
+//   const content = props.data.map((element, i) => {
+//
+//     const title = element.title ? element.title : '';
+//     const subtitle = element.subtitle ? element.subtitle : '';
+//     const date = element.date ? verboseDate(element.date) : '';
+//     const url = element.url ? element.url : '';
+//     const text = element.text ? element.text : '';
+//     // const linkText = element.linkText ? element.linkText : '';
+//
+//     const classes = `${props.className} shadow-box`;
+//     return (
+//       <div className={classes} key={i}>
+//         {title}     <br />
+//         {subtitle}  <br />
+//         {text}      <br />
+//         {url}       <br />
+//         {date}      <br />
+//       </div>
+//     )
+//   });
+//
+//   return (
+//     <>
+//     { content }
+//     </>
+//   )
+// };
+//
+// export default ShadowBox;
