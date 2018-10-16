@@ -5,9 +5,8 @@ import { graphql } from 'gatsby';
 
 // local modules
 import BasicLayout from '../components/layouts/layout-base/layout-base';
-import Layout3Col from './../components/layouts/layout-3col/layout-3col';
-import ShadowBox from './../components/components/shadow-box/shadow-box';
 import Map from './../components/components/map/map';
+import {ClubTeaserList} from './../components/components/club-teaser-list/club-teaser-list';
 import {ToggleFilter, SearchFilter} from './../components/components/filters/filters';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.
@@ -44,19 +43,16 @@ class Clubs extends React.Component {
     let clubs  = this.props.data.ossnApi.clubs.slice();
 
     // filter clubs by the seaarch string
-    if (snapshot.searchString !== '' || typeof snapshot.searchString !== 'undefined')
-        clubs = clubs.filter((club, i)=> {
-          return club.title.toLowerCase().indexOf(snapshot.searchString.trim().toLowerCase()) >= 0;
-        });
+    if (snapshot.searchString !== '' || typeof snapshot.searchString !== 'undefined') {
+      clubs = clubs.filter((club, i)=> {
+        return club.title.toLowerCase().indexOf(snapshot.searchString.trim().toLowerCase()) >= 0;
+      });
+    }
 
     // decide which view to show
     const content = snapshot.view === 'map'
       ? <Map />
-      : (
-        <Layout3Col>
-          <ShadowBox data={clubs} />
-        </Layout3Col>
-      );
+      : <ClubTeaserList clubs={clubs} />;
 
     return (
       <BasicLayout>
@@ -89,6 +85,8 @@ export const query = graphql`
         id
         title:name
         subtitle: sortDescription
+        imageUrl
+        clubUrl
         location {
           id
           lat
