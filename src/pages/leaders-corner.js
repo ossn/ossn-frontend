@@ -19,14 +19,11 @@ class Contribute extends React.Component {
     const tools = this.props.data.allToolsForContributingJson;
     const resources = this.props.data.allTrainingResourcesJson;
 
-    // TODO: Data should be represented better
+    // HACK: : Data should be represented better
     const prManagement = this.props.data.leadersToolsJson.Project_Management_tools;
     const codeOfConduct = this.props.data.leadersToolsJson.Code_of_Conduct_examples;
     const leadersTools = this.props.data.leadersToolsJson.Various_tools;
     const leadersResources = this.props.data.leadersToolsJson.Useful_resources_running_a_club;
-
-    console.log('Variou tools');
-    console.log(this.props.data);
 
     return (
       <BasicLayout>

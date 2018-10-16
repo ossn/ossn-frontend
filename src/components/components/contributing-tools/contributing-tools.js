@@ -2,12 +2,16 @@ import React from 'react';
 import {graphql} from 'gatsby';
 
 export const ContributingTool = (props) => {
+  const title = props.tool.title;
+  const url = props.tool.url;
+  const icon = props.tool.icon;
+
   return  (
-    <div>
-      <img src="#" alt="channel" />
-      <span> {props.tool.title} </span>
-    </div>
-  )
+    <a href={url}>
+      <img src={icon} alt={title} />
+      <span> {title} </span>
+    </a>
+  );
 }
 
 export const ContributingToolSet = (props) => {

@@ -41,7 +41,7 @@ export const verboseDate = (timestamp) => {
   const verboseMonthName = getMonthName(date.getMonth());
   const suffixedDate = numberWithSuffix(date.getDate());
 
-  const dateString = `Date: ${verboseDayName}, ${verboseMonthName} ${suffixedDate} ${date.getFullYear()}`;
+  const dateString = `${verboseDayName}, ${verboseMonthName} ${suffixedDate} ${date.getFullYear()}`;
 
   return dateString;
 }

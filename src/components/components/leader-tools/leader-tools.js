@@ -1,3 +1,5 @@
+// TODO: remove the linter disable once the image url is fixed.
+/* eslint-disable */
 import React from 'react';
 
 // local modules
