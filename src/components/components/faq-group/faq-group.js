@@ -3,6 +3,7 @@ import React from 'react';
 
 // local modules
 import FaqItem from './../faq-item/faq-item';
+import ShadowBox from './../shadow-box/shadow-box';
 
 export default (props) => {
   const items = props.group.map((item, i)=>{
@@ -11,8 +12,8 @@ export default (props) => {
 
   const classes = props.className
   return (
-    <div className={classes}>
+    <ShadowBox className={classes}>
       {items}
-    </div>
+    </ShadowBox>
   )
 }

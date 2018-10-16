@@ -10,7 +10,7 @@ import FaqGroup from './../components/components/faq-group/faq-group';
 
 const Questions = (props) => {
 
-  // FIXME:
+  // REVIEW:
   const resultGroups = props.data.allDataJson.edges[0] ? props.data.allDataJson.edges[0].node : {};
   const group0 = resultGroups.group0 ? resultGroups.group0 : [];
   const group1 = resultGroups.group1 ? resultGroups.group1 : [];
@@ -23,6 +23,14 @@ const Questions = (props) => {
         <title>{['FAQ', '|', GatsbyConfig.siteMetadata.title].join(" ")}</title>
       </Helmet>
 
+      <div>
+        <h1> FAQ </h1>
+        <p>
+          The most Frequently Asked Questions on OSSN. <br />
+          And their answers!
+        </p>
+      </div>
+
       <Layout2Cols>
         <div>
           <FaqGroup group={group0}  />
@@ -33,7 +41,16 @@ const Questions = (props) => {
           <FaqGroup group={group3}  />
         </div>
       </Layout2Cols>
-      Questions
+
+      <div>
+        <h2> Have more questions? </h2>
+        <p>
+          Cool! Reach out to us to
+          <span> <a href="#"> Facebok </a> </span> or
+          <span> <a href="#"> Twitter </a> </span>
+        </p>
+      </div>
+
     </BasicLayout>
   );
 };
