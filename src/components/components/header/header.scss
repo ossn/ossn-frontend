@@ -21,6 +21,7 @@
     &-inner {
       @extend %layout-base;
       @extend %layout-base--only-containment;
+      overflow: visible;
       display: flex;
     }
   }

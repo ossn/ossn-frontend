@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'gatsby';
-import UserMenu from './../../components/user-menu/user-menu';
 
 import './main-navigation.scss';
 
@@ -14,7 +13,6 @@ class Navigation extends React.Component {
           <li className="main-navigation__item"> <Link to="/contribute" className="main-navigation__link" activeClassName="is-active"> Opportunities </Link> </li>
           <li className="main-navigation__item"> <Link to="/members" className="main-navigation__link" activeClassName="is-active"> Members </Link> </li>
         </ul>
-        <UserMenu />
       </nav>
     )
   }

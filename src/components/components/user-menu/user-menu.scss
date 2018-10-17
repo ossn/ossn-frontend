@@ -6,6 +6,8 @@
   &__popup {
     position: absolute;
     right: 0;
+    bottom: -25px;
     background-color: white;
+    transform: translateY(100%);
   }
 }

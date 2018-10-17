@@ -60,7 +60,8 @@ class Clubs extends React.Component {
           <title>{['Clubs', '|', GatsbyConfig.siteMetadata.title].join(" ")}</title>
         </Helmet>
         <div>
-        <ToggleFilter onClick={this.handleToggleMap}
+          <h1> Clubs </h1>
+          <ToggleFilter onClick={this.handleToggleMap}
           active={snapshot.view === 'map'}
           left="list" right="map" />
           <SearchFilter placeholder="Filter" onChange={this.handleSearch}/>

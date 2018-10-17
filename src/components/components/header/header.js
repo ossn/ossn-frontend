@@ -5,6 +5,7 @@ import {Link} from 'gatsby';
 // Local modules.
 import PreNavigation from './../../navigation/secondary-navigation/secondary-navigation';
 import Navigation from './../../navigation/main-navigation/main-navigation';
+import UserMenu from './../../components/user-menu/user-menu';
 
 // Styles.
 import './header.scss';
@@ -24,6 +25,7 @@ const Header = (props) => {
             <span className="header__mozilla-logo">mozilla</span>
           </Link>
           <Navigation />
+          <UserMenu />
         </div>
       </div>
     </header>
