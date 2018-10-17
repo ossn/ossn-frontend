@@ -1,0 +1,57 @@
+@import './../../base-styles/init/init';
+
+// Main header navigation
+//
+// These are the default styles applied to tha main mage navigation.
+
+.main-navigation {
+  display: flex;
+  align-items: center;
+
+  ul {
+    list-style: none;
+  }
+
+  &__item-wrapper {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    padding-top: 2px;
+
+  }
+
+  &__item {
+    padding-right: 22px;
+  }
+
+  &__link {
+    @include font-size(18px);
+    @include line-height(27px);
+    color: color('navigation');
+    transition: .3s cubic-bezier(0.19, 1, 0.22, 1);
+
+    &:hover {
+      color: color('navigation-hover');
+    }
+
+    &.is-active {
+      color: color('navigation-hover');
+    }
+  }
+
+  // Logos.
+
+  //&__mozilla-logo {
+  //  width: 45px;
+  //  height: 17px;
+  //  font-family: ZillaSlabHighlight;
+  //  font-size: 13px;
+  //  font-weight: bold;
+  //  font-style: normal;
+  //  font-stretch: normal;
+  //  line-height: 1.31;
+  //  letter-spacing: 0.2px;
+  //  color: #000000;
+  //}
+}

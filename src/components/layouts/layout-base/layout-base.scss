@@ -1,6 +1,15 @@
 @import "../../base-styles/init/init";
 
-.layout-base {
+// Basic layout component.
+// Add containment and paddings from the sides of the page.
+//
+// In addition to the containment it adds distances as well so a variant without
+// extra distances is needed.
+//
+// .layout-base--only-containment - Resets the top and bottom paddings.
+
+.layout-base,
+%layout-base {
   padding-top: 100px;
   padding-bottom: 100px;
   margin: 0 auto;
@@ -20,5 +29,10 @@
     max-width: 1110px + ($padding-desktop * 2);
     padding-left: $padding-desktop;
     padding-right: $padding-desktop;
+  }
+
+  &--only-containment {
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }

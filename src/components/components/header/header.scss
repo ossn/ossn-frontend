@@ -1,5 +1,55 @@
 @import './../../base-styles/init/init';
+@import './../shadow-box/shadow-box';
+@import './../../layouts/layout-base/layout-base';
 
+// Header nase styling.
+// Adds header styles and layout.
 .header {
+  &__top {
+    &-inner {
+      @extend %layout-base;
+      @extend %layout-base--only-containment;
+    }
+  }
 
+  &__bottom {
+    @extend %shadow-box;
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 0;
+
+    &-inner {
+      @extend %layout-base;
+      @extend %layout-base--only-containment;
+      display: flex;
+    }
+  }
+
+  &__logo {
+    margin-right: auto;
+  }
+
+  &__ossn-logo {
+    font-family: $zilla-slab;
+    width: 145px;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: color('black');
+    display: block;
+  }
+
+  &__mozilla-logo {
+    width: 48px;
+    height: 16px;
+    transition: background-size .3s cubic-bezier(0.19, 1, 0.22, 1);
+    background-image: url('./mozilla-wordmark-black.svg');
+    background-repeat: no-repeat;
+    display: block;
+    background-size: contain;
+    overflow: hidden;
+    text-indent: 120%;
+    white-space: nowrap;
+  }
 }

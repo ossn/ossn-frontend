@@ -1,0 +1,38 @@
+@import './../../base-styles/init/init';
+
+.secondary-navigation {
+  ul {
+    margin: 0;
+    list-style: none;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 11px;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      padding-right: 22px;
+    }
+  }
+
+  &__link {
+    @include font-size(14px);
+    @include line-height(21px);
+    font-weight: 600;
+    color: color('navigation');
+    transition: .3s cubic-bezier(0.19, 1, 0.22, 1);
+
+    &:hover {
+      color: color('navigation-hover');
+    }
+
+    &.is-active {
+      color: color('navigation-hover');
+    }
+  }
+}

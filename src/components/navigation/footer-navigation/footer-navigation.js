@@ -2,7 +2,7 @@
 import React from 'react';
 
 // internal modules
-import {InternalLinkWithIcon} from './../components/text-with-icon/text-with-icon';
+import {InternalLinkWithIcon} from './../../components/text-with-icon/text-with-icon';
 
 
 class Navigation extends React.Component {
