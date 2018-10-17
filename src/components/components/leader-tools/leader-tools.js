@@ -2,7 +2,7 @@
 /* eslint-disable */
 import React from 'react';
 
-// local modules
+// Local modules.
 import Layout2Col from './../../layouts/layout-2col/layout-2col';
 import ShadowBox from './../shadow-box/shadow-box';
 
@@ -20,7 +20,7 @@ const LeaderTool = (props) => {
       </a>
     </ShadowBox>
   );
-}
+};
 
 export const LeaderToolList = (props) => {
 
@@ -30,19 +30,15 @@ export const LeaderToolList = (props) => {
     return <LeaderTool tool={tool} key={i} />
   });
 
-
-  console.log('leader tool set');
-  console.log(props);
-
- return (
-   <div>
-     {title}
-     <div>
-       {tools}
-     </div>
-   </div>
- )
-}
+  return (
+    <div>
+      {title}
+      <div>
+        {tools}
+      </div>
+    </div>
+  )
+};
 
 export const AllLeaderTools = (props) => {
   const variousTools = props.variousTools;
@@ -59,8 +55,8 @@ export const AllLeaderTools = (props) => {
       </div>
       <div>
         <LeaderToolList title="Useful resources running a club"
-                                                    tools={usefullResources} />
+                        tools={usefullResources} />
       </div>
     </Layout2Col>
   )
-}
+};

@@ -6,7 +6,6 @@ import OrganizationList from './../components/components/organizations-list/orga
 import BecomeMember from './../components/components/home-become-member/home-become-member';
 
 const IndexPage = (props) => {
-  console.log();
   return (
     <div>
       <div>
@@ -30,7 +29,7 @@ const IndexPage = (props) => {
           <div>
             <OrganizationList  organizations={props.data.allOrganizationsJson.edges}/>
           </div>
-          
+
         </BasicLayout>
       </div>
     </div>

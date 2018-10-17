@@ -1,10 +1,10 @@
-// external modules
+// External modules.
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from "gatsby"
 
 
-// local modules
+// Local modules.
 import BasicLayout from '../components/layouts/layout-base/layout-base';
 import MemberTeaser from './../components/components/member-teaser/member-teaser';
 import Layout2Col from './../components/layouts/layout-2col/layout-2col';
@@ -27,22 +27,22 @@ class Members extends React.Component {
   changeView = (view) => {
     const snapshot = {...this.state};
     this.setState({view: snapshot.view === 'grid' ? 'list' : 'grid'});
-  }
+  };
 
   changeSearch = (event) => {
     this.setState({searchString: event.target.value});
-  }
+  };
 
   render() {
     const snapshot = {...this.state};
     let members = this.props.data.allMembersJson.edges.slice();
 
     const memberList = members.map((member, i)=>{
-        return  (
-          <div key={i} >
-            <MemberTeaser member={member.node}  id={i} />
-          </div>)
-      });
+      return  (
+        <div key={i} >
+          <MemberTeaser member={member.node}  id={i} />
+        </div>)
+    });
 
     return (
       <BasicLayout>
@@ -67,10 +67,10 @@ class Members extends React.Component {
                 <SearchFilter />
               </BoxShadow>
 
-                <Layout2Col>
-                  {memberList}
-                </Layout2Col>
-              </div>
+              <Layout2Col>
+                {memberList}
+              </Layout2Col>
+            </div>
           </div>
           <div>
             <img src="#" alt="guys with a laptop pretending to be busy" />
@@ -126,20 +126,20 @@ export const query = graphql`
 // import { Query } from 'react-apollo';
 //import gql from 'graphql-tag';
 /*
-<Query query={GET_MEMBERS}>
-  {({ loading, error, data })=>{
-    if (loading) return 'Loading....';
-    if (error) return <div> `Error ${error.message}` </div> ;
-    data.user = {
-      ...data.user,
-      username: data.user.userName
-    };
-    console.log(data.user);
-    return (
-      <div>
-        <MemberTeaser member={data.user} />
-      </div>
-    );
-  }}
-</Query>
-*/
+ <Query query={GET_MEMBERS}>
+ {({ loading, error, data })=>{
+ if (loading) return 'Loading....';
+ if (error) return <div> `Error ${error.message}` </div> ;
+ data.user = {
+ ...data.user,
+ username: data.user.userName
+ };
+
+ return (
+ <div>
+ <MemberTeaser member={data.user} />
+ </div>
+ );
+ }}
+ </Query>
+ */

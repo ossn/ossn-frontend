@@ -1,6 +1,6 @@
 import React from 'react';
 
-// local modules
+// Local modules.
 import Layout3Col from './../../layouts/layout-3col/layout-3col';
 import ShadowBox from './../shadow-box/shadow-box';
 
@@ -10,9 +10,6 @@ export const ClubTeaser = (props) => {
   const subtitle = props.club.subtitle;
   const link = props.club.clubUrl;
   const image = props.club.imageUrl;
-
-  console.log('teaser');
-  console.log(props);
 
   return (
     <ShadowBox>
@@ -30,8 +27,7 @@ export const ClubTeaser = (props) => {
       </div>
     </ShadowBox>
   )
-}
-
+};
 
 export const ClubTeaserList = (props) => {
 
@@ -46,4 +42,4 @@ export const ClubTeaserList = (props) => {
       {clubs}
     </Layout3Col>
   )
-}
+};
