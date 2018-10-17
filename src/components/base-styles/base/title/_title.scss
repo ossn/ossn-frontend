@@ -1,0 +1,68 @@
+@import "../headings/headings";
+
+// Title
+//
+// The reusable title styles across the page.
+//
+// Title styles used.
+//
+// .title--x-large - Extra large title used in above the fold.
+// .title--large -  Large title used in banners.
+// .title--medium - Medium sized title.
+// .title--small - Title smaller than the default title.
+// .title--x-small - Extra small title.
+// .title--xx-small - Extra extra small title.
+// .title--xx-small - 3 * Extra small title.
+// .title--light - Title with light color.
+.title,
+%title {
+  @extend %h1; // Font size 36px.
+
+  &--x-large {
+    @include font-size(48px);
+    @include line-height(72px);
+    letter-spacing: 0;
+    font-weight: 600;
+  }
+
+  &--large {
+    @include font-size(42px);
+    @include line-height(42px);
+    letter-spacing: .4px;
+    font-weight: 700;
+  }
+
+  &--medium {
+    @include font-size(40px);
+    @include line-height(60px);
+    letter-spacing: .3px;
+    font-weight: 600;
+  }
+
+  &--small {
+    @include font-size(34px);
+    @include line-height(51px);
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  &--x-small {
+    @extend %h2; // Font size 20px.
+  }
+
+  &--xx-small {
+    @extend %h3; // Font size 17px.
+  }
+
+  &--xxx-small {
+    @include font-size(14px);
+    @include line-height(21px);
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  // Color Variant.
+  &--light {
+    color: color('white');
+  }
+}
