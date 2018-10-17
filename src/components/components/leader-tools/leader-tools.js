@@ -44,7 +44,7 @@ export const AllLeaderTools = (props) => {
   const variousTools = props.variousTools;
   const prManagement = props.prManagement;
   const codeOfConduct = props.codeOfConduct;
-  const usefullResources = props.usefulResources;
+  const usefulResources = props.usefulResources;
 
   return (
     <Layout2Col>
@@ -55,7 +55,7 @@ export const AllLeaderTools = (props) => {
       </div>
       <div>
         <LeaderToolList title="Useful resources running a club"
-                        tools={usefullResources} />
+                        tools={usefulResources} />
       </div>
     </Layout2Col>
   )

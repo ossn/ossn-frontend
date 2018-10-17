@@ -1,7 +1,7 @@
 /*
-Lists the communication channels.
-Is responsible to handle transformation from the gatsby-jsom to usable data
-*/
+ Lists the communication channels.
+ Is responsible to handle transformation from the gatsby-jsom to usable data
+ */
 
 import React from 'react';
 import {graphql} from 'gatsby';
@@ -17,11 +17,9 @@ export const Channel = (props) => {
       <span> {title} </span>
     </a>
   );
-}
-
+};
 
 export const ChannelList = (props) => {
-
   const channels = props.channels.edges.map((channelNode, i) => {
     const channel = channelNode.node;
     return <Channel channel={channel} key={i} />;
@@ -35,7 +33,7 @@ export const ChannelList = (props) => {
       </div>
     </div>
   )
-}
+};
 
 export const query = graphql`
   fragment CommunicationChannel on CommunicationChannelsJson {
