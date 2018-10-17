@@ -1,4 +1,5 @@
 @import './../../base-styles/init/init';
+@import './../../layouts/layout-base/layout-base';
 
 .footer {
   width: 100%;
@@ -17,9 +18,16 @@
     }
   }
 
+  // Footer top region.
+  &__top {
+    @extend %layout-base;
+    @extend %layout-base--only-containment;
+  }
+
   &__items-wrapper {
     display: flex;
-    padding: 30px;
+    padding: 75px 0 30px;
+    justify-content: space-between;
   }
 
   &__item {
@@ -48,9 +56,49 @@
     padding-right: 30px;
   }
 
-  &__copyrights {
+  // Logo.
+  &__logo {
+    margin-right: auto;
+  }
+
+  &__ossn-logo {
+    font-family: $zilla-slab;
+    width: 202px;
+    font-size: 26px;
+    line-height: 28px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: color('white');
+    display: block;
+  }
+
+  &__mozilla-logo {
+    width: 65px;
+    height: 21px;
+    transition: background-size .3s cubic-bezier(0.19, 1, 0.22, 1);
+    background-image: url('./mozilla-wordmark-black.svg');
+    background-repeat: no-repeat;
+    display: block;
+    background-size: contain;
+    overflow: hidden;
+    text-indent: 120%;
+    white-space: nowrap;
+    background-color: color('white');
+  }
+
+  // Footer bottom region.
+  &__bottom {
     width: 100%;
     background: rgba(0,0,0,0.10);
     text-align: center;
+  }
+
+  &__copyrights {
+    @extend %layout-base;
+    @extend %layout-base--only-containment;
+    @include line-height(19px);
+    opacity: .75;
+    padding-top: 14px;
+    padding-bottom: 17px;
   }
 }

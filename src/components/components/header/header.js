@@ -23,7 +23,6 @@ const Header = (props) => {
             <span className="header__ossn-logo">Open Source Student Network</span>
             <span className="header__mozilla-logo">mozilla</span>
           </Link>
-
           <Navigation />
         </div>
       </div>
