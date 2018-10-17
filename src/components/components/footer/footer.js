@@ -1,5 +1,5 @@
 import React from 'react';
-import Navigation from './../../navigation/footer-navigation';
+import Navigation from './../../navigation/footer-navigation/footer-navigation';
 import {LinkWithIcon} from './../text-with-icon/text-with-icon';
 
 // styles

@@ -3,11 +3,11 @@
 
 // external modules
 import React from 'react';
-import BasicLayout from '../components/layouts/layout-base/layout-base';
 import { Helmet } from 'react-helmet';
 import { graphql } from "gatsby"
 
 // local modules
+import BasicLayout from '../components/layouts/layout-base/layout-base';
 import Organization from './../components/components/organization/organization';
 import Layout3Col from './../components/layouts/layout-3col/layout-3col';
 import Layout2Col from './../components/layouts/layout-2col/layout-2col';

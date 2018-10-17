@@ -1,8 +1,9 @@
 @import './../../base-styles/init/init';
 
 // Shadow box component.
-// Adds styling to elements with shadow and white backgound.
-.shadow-box {
+// Adds styling to elements with shadow and white background.
+.shadow-box,
+%shadow-box {
   background: color('white');
   box-shadow: 0 1px 4px 0 color('black'); // Fallback.
   box-shadow: 0 1px 4px 0 rgba(0,0,0,0.25);

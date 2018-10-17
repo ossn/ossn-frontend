@@ -23,7 +23,7 @@ a,
 // safely lower this selector's specificity. This also ensures visited links
 // with additional styles won't have their styles overridden.
 :visited {
-  color: color(link-visited);
+  //color: color(link-visited);
 }
 
 a:hover,
