@@ -66,7 +66,6 @@ class Clubs extends React.Component {
           <SearchFilter placeholder="Filter" onChange={this.handleSearch}/>
         </div>
 
-        <div onClick={this.handleToggleMap}> Toggle map </div>
         <div>
           {content}
         </div>

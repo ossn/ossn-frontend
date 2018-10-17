@@ -1,5 +1,6 @@
 import React from 'react';
 import Member from './../member/member';
+import ShadowBox from './../shadow-box/shadow-box';
 
 const MemberTeaser = (props) =>{
 
@@ -13,14 +14,14 @@ const MemberTeaser = (props) =>{
   }
 
   return (
-    <div>
+    <ShadowBox className={props.className}>
       <div>
         {preview}
       </div>
       <div onClick={handleClick}>
         teaser for: {props.member.username}
       </div>
-    </div>
+    </ShadowBox>
   )
 }
 

@@ -1,3 +1,6 @@
+// TODO: rmeove the linter disablement after updating the links
+/* eslint-disable */
+
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';

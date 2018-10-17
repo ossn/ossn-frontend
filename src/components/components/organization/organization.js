@@ -1,4 +1,5 @@
 import React from 'react';
+import ShadowBox from './../shadow-box/shadow-box';
 
 const Organization = (props) => {
   if (!props.organization) {
@@ -7,13 +8,13 @@ const Organization = (props) => {
 
   const classes = `${props.className}`
   return (
-    <div className={classes}>
+    <ShadowBox className={classes}>
       <img  src={props.organization.image || "#"} width="100px" alt={props.organization.title}/> <br />
       <a href={props.organization.link || "#"} > {props.organization.title} </a>
       <p>
         {props.organization.descripion}
       </p>
-    </div>
+    </ShadowBox>
   );
 }
 
