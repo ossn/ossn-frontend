@@ -4,7 +4,8 @@ import { ExternalResourceList } from './../external-resource-teaser/external-res
 
 
 export default (props) => {
-  const items = [];
+  const items = props.jobs;
+  
   return (
     <div>
       <h2> Jobs & interships board </h2>
@@ -16,7 +17,7 @@ export default (props) => {
 }
 
 export const query = graphql`
-  fragment jobs on OSSNAPI {
+  fragment JobBoardListing on OSSNAPI {
     jobs {
       description
       sortDescription

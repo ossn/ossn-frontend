@@ -5,13 +5,20 @@ import {graphql} from 'gatsby';
 import Layout2Col from './../../layouts/layout-2col/layout-2col';
 import ShadowBox from './../shadow-box/shadow-box';
 
-
 const TrainingResource = (props) => {
-  return (
-    <ShadowBox className={props.className}>
-      {props.resource.title}
+  const title = props.resource.title;
+  const url = props.resource.url;
+  const icon = props.resource.icon;
+
+  const classes=`${props.className}`
+  return  (
+    <ShadowBox className={classes}>
+      <a href={url}>
+        <img src={icon} alt={title} />
+        <span> {title} </span>
+      </a>
     </ShadowBox>
-  )
+  );
 }
 
 

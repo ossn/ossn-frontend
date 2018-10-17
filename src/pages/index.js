@@ -11,14 +11,26 @@ const IndexPage = (props) => {
     <div>
       <div>
         <BasicLayout>
-          Welcome to a gatsby project!
+
+          {/* New section */}
           <div>
-            <OrganizationList  organizations={props.data.allOrganizationsJson.edges}/>
+            <h1> What's happening </h1>
+            <div>
+              The pretty news section goes here :)
+
+            </div>
           </div>
+
+          {/* why join the OSSN? */}
           <div>
             <BecomeMember />
           </div>
 
+          {/* Organizations */}
+          <div>
+            <OrganizationList  organizations={props.data.allOrganizationsJson.edges}/>
+          </div>
+          
         </BasicLayout>
       </div>
     </div>

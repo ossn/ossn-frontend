@@ -24,11 +24,22 @@ class Contribute extends React.Component {
         </Helmet>
 
         <div>
+          <div>
           <h1> Opportunities </h1>
           <p>
             Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet
             Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet
           </p>
+          </div>
+          <div>
+              <h3> Next steps after signing up </h3>
+            <ol>
+              <li> Explore contribution opportunities </li>
+              <li> Reach out to  us </li>
+              <li> Explore available interships/jobs </li>
+              <li> Check the latest announcements </li>
+            </ol>
+          </div>
         </div>
         <OpportunitiesMember jobs={jobs} announcements={announcements}
                     channels={channels} tools={tools} resources={resources} />

@@ -3,8 +3,7 @@ import {graphql} from 'gatsby';
 import { ExternalResourceList } from './../external-resource-teaser/external-resource-teaser';
 
 export default (props) => {
-  // TODO: add announcements
-  const items = [];
+  const items = props.announcements;
 
   return (
     <div>

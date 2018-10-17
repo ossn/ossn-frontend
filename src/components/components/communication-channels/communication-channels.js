@@ -7,12 +7,16 @@ import React from 'react';
 import {graphql} from 'gatsby';
 
 export const Channel = (props) => {
+  const title = props.channel.title;
+  const url = props.channel.url;
+  const icon = props.channel.icon;
+
   return  (
-    <div>
-      <img src="#" alt="channel" />
-      <span> {props.channel.title} </span>
-    </div>
-  )
+    <a href={url}>
+      <img src={icon} alt={title} />
+      <span> {title} </span>
+    </a>
+  );
 }
 
 

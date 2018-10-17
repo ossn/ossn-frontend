@@ -1,19 +1,25 @@
+// TODO: remove the linter disable once the image url is fixed.
+/* eslint-disable */
 import React from 'react';
 
 // local modules
 import Layout2Col from './../../layouts/layout-2col/layout-2col';
+import ShadowBox from './../shadow-box/shadow-box';
 
 const LeaderTool = (props) => {
 
   const title = props.tool.title;
   const icon = props.tool.icon;
+  const url = props.tool.url;
 
   return (
-    <a href="">
-      <div> {icon} </div>
-      <div> {title} </div>
-    </a>
-  )
+    <ShadowBox>
+      <a href="">
+        <div> {icon} </div>
+        <div> {title} </div>
+      </a>
+    </ShadowBox>
+  );
 }
 
 export const LeaderToolList = (props) => {

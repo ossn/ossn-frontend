@@ -6,10 +6,11 @@ import Announcements from './../announcements/announcements';
 import JobListing from './../job-listing/job-listing';
 
 export default (props) => {
+
   return(
     <Layout2Col>
-      <div> <Announcements /> </div>
-      <div> <JobListing /> </div>
+      <div> <Announcements announcements={props.announcements} /> </div>
+      <div> <JobListing jobs={props.jobs} /> </div>
     </Layout2Col>
   );
 }
