@@ -63,7 +63,7 @@ class Members extends React.Component {
 
             <div>
               <BoxShadow >
-                <ToggleFilter left="Grid view" right="List view" active={snapshot.view === 'grid'} onClick={this.changeView}/>
+                <ToggleFilter left="Grid view" right="List view" active={snapshot.view !== 'grid'} onClick={this.changeView}/>
                 <SearchFilter />
               </BoxShadow>
 
