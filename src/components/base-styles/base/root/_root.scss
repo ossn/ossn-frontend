@@ -22,6 +22,8 @@ html {
   // On short pages, we want any background gradients to fill the entire height
   // of the browser.
   min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
