@@ -11,15 +11,12 @@ import GatsbyConfig from './../../gatsby-config';
 
 
 class Clubs extends React.Component {
-
-
   render() {
     const singleClub = {
       title: 'Single Club',
       subtitle: 'this is a more wordy title for the cub '
-    }
+    };
 
-    
     return (
       <BasicLayout>
         <Helmet>

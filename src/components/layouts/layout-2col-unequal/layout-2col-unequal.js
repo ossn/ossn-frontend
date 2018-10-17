@@ -1,7 +1,7 @@
 /*
-In order a LayoutXcol to take effect, the chilren have to accept `className` prop
-as their own. e.g. <Component className=`${props.className} newClass />`
-*/
+ In order a LayoutXcol to take effect, the chilren have to accept `className` prop
+ as their own. e.g. <Component className=`${props.className} newClass />`
+ */
 
 import React from 'react';
 
@@ -30,10 +30,10 @@ const Layout2ColsUnequal = (props) =>{
   if (props.secondNarrow) classes.push(`${baseClass}--second-is-narrow`);
   if (props.inverse) classes.push(`${baseClass}--inverse`);
 
-  const classString = classes.join(" ")
+  const classString = classes.join(" ");
 
   return(
-  <div className={classString}>
+    <div className={classString}>
       {children}
     </div>
   );

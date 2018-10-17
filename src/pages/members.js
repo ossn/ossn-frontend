@@ -67,7 +67,7 @@ class Members extends React.Component {
                 <SearchFilter />
               </BoxShadow>
 
-              <Layout2Col>
+              <Layout2Col horizontalGutters verticalGutters>
                 {memberList}
               </Layout2Col>
             </div>

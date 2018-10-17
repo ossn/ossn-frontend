@@ -33,12 +33,14 @@ export const ClubTeaserList = (props) => {
 
   const clubs = props.clubs.map((club, i) => {
     return (
-      <ClubTeaser club={club} key={i} />
+      <div key={i} >
+        <ClubTeaser club={club} />
+      </div>
     );
   });
 
   return (
-    <Layout3Col>
+    <Layout3Col horizontalGutters verticalGutters>
       {clubs}
     </Layout3Col>
   )

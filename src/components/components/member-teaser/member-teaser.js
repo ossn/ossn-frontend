@@ -6,7 +6,7 @@ const MemberTeaser = (props) =>{
 
   const handleClick = () => {
     if (props.onClick) props.onClick(props.id);
-  }
+  };
 
   let preview = <div></div>;
   if (props.open) {
@@ -23,6 +23,6 @@ const MemberTeaser = (props) =>{
       </div>
     </ShadowBox>
   )
-}
+};
 
 export default MemberTeaser;

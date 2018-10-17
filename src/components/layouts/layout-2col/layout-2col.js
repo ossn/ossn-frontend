@@ -1,7 +1,7 @@
 /*
-In order a LayoutXcol to take effect, the chilren have to accept `className` prop
-as their own. e.g. <Component className=`${props.className} newClass />`
-*/
+ In order a LayoutXcol to take effect, the chilren have to accept `className` prop
+ as their own. e.g. <Component className=`${props.className} newClass />`
+ */
 
 import React from 'react';
 
@@ -26,13 +26,13 @@ const Layout2Col = (props) => {
   let classes = [baseClass];
   if (props.horizontalGutters) classes.push(`${baseClass}--with-horizontal-gutters`);
   if (props.verticalGutters) classes.push(`${baseClass}--with-vertical-gutters`);
-  const classString = classes.join(" ")
+  const classString = classes.join(" ");
 
   return (
     <div className={classString}>
       {children}
-     </div>
+    </div>
   )
-}
+};
 
 export default Layout2Col;

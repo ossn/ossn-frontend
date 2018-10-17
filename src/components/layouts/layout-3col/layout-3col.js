@@ -1,7 +1,7 @@
 /*
-In order a LayoutXcol to take effect, the chilren have to accept `className` prop
-as their own. e.g. <Component className=`${props.className} newClass />`
-*/
+ In order a LayoutXcol to take effect, the chilren have to accept `className` prop
+ as their own. e.g. <Component className=`${props.className} newClass />`
+ */
 
 import React from 'react';
 
@@ -28,9 +28,9 @@ const Layout2ColsUnequal = (props) =>{
   if (props.noTabletBreak) classes.push(`${baseClass}--no-tablet-break`);
   if (props.onlyDesktop3) classes.push(`${baseClass}--only-desktop-3`);
 
-  const classString = classes.join(" ")
+  const classString = classes.join(" ");
   return(
-  <div className={classString}>
+    <div className={classString}>
       {children}
     </div>
   );
