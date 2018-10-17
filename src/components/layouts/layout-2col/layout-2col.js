@@ -26,6 +26,7 @@ const Layout2Col = (props) => {
   let classes = [baseClass];
   if (props.horizontalGutters) classes.push(`${baseClass}--with-horizontal-gutters`);
   if (props.verticalGutters) classes.push(`${baseClass}--with-vertical-gutters`);
+  if (props.smallVerticalGutters) classes.push(`${baseClass}--with-small-vertical-gutters`);
   const classString = classes.join(" ");
 
   return (

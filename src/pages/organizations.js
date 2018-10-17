@@ -43,7 +43,7 @@ const Organizations = (props) => {
           </div>
 
           <div>
-            <Layout2Col>
+            <Layout2Col verticalGutters horizontalGutters>
               <div>
                 <h3>Who helps us?</h3>
                 <p>

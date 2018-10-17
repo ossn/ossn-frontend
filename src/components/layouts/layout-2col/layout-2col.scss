@@ -12,6 +12,7 @@
 //
 // .layout-2col--with-horizontal-gutters - Gutters on both sides, needs wrapper with overflow hidden.
 // .layout-2col--with-vertical-gutters - Gutters on top and bottom.
+// .layout-2col--with-small-vertical-gutters - Half gutters on top and bottom.
 
 .layout-2col,
 %layout-2col {
@@ -26,7 +27,6 @@
     &__col {
       width: (100 / 2) * 1%;
       float: left;
-      //flex-grow: 2; // If a column is missing it will grow to cover it.
 
       &:nth-child(2n + 1) {
         clear: left;
@@ -105,6 +105,50 @@
         &__col {
           padding-top: $gutters-desktop / 2;
           padding-bottom: $gutters-desktop / 2;
+        }
+      }
+    }
+  }
+
+  // Variant with top and bottom gutters.
+  &--with-small-vertical-gutters {
+    padding-top: $gutters-mobile / 4;
+    padding-bottom: $gutters-mobile / 4;
+
+    .layout-2col,
+    %layout-2col {
+      &--col,
+      &__col {
+        padding-top: $gutters-mobile / 4;
+        padding-bottom: $gutters-mobile / 4;
+      }
+    }
+
+    // Two columns
+    @include breakpoint($tablet) {
+      padding-top: $gutters-tablet / 4;
+      padding-bottom: $gutters-tablet / 4;
+
+      .layout-2col,
+      %layout-2col {
+        &--col,
+        &__col {
+          padding-top: $gutters-tablet / 4;
+          padding-bottom: $gutters-tablet / 4;
+        }
+      }
+    }
+
+    @include breakpoint($desktop-large) {
+      padding-top: $gutters-desktop / 4;
+      padding-bottom: $gutters-desktop / 4;
+
+      .layout-2col,
+      %layout-2col {
+        &--col,
+        &__col {
+          padding-top: $gutters-desktop / 4;
+          padding-bottom: $gutters-desktop / 4;
         }
       }
     }

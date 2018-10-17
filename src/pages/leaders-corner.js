@@ -28,7 +28,7 @@ class Contribute extends React.Component {
     return (
       <BasicLayout>
         <Helmet>
-          <title>{['Opportunities', '|', GatsbyConfig.siteMetadata.title].join(" ")}</title>
+          <title>{["Leader's Corner", '|', GatsbyConfig.siteMetadata.title].join(" ")}</title>
         </Helmet>
 
         <div>

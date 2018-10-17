@@ -47,7 +47,7 @@ export const AllLeaderTools = (props) => {
   const usefulResources = props.usefulResources;
 
   return (
-    <Layout2Col>
+    <Layout2Col verticalGutters horizontalGutters>
       <div>
         <LeaderToolList title="Project Management Tools" tools={prManagement} />
         <LeaderToolList title="Code of conduct" tools={codeOfConduct} />
