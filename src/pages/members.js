@@ -45,7 +45,7 @@ class Members extends React.Component {
 
   changeSorting = (selected) => {
     this.setState({currentSortOption: selected});
-  }
+  };
 
   render() {
     const snapshot = {...this.state};
@@ -79,7 +79,7 @@ class Members extends React.Component {
               <BoxShadow >
                 <ToggleFilter left="Grid view" right="List view" active={snapshot.view !== 'grid'} onClick={this.changeView}/>
                 <SelectFilter options={snapshot.sortOptions} value={snapshot.currentSortOption}
-                  onChange={this.changeSorting}/>
+                              onChange={this.changeSorting}/>
                 <SearchFilter />
               </BoxShadow>
 
@@ -94,7 +94,6 @@ class Members extends React.Component {
             <img src="#" alt="join the network" />
           </div>
         </Layout2ColsUnequal>
-
 
       </BasicLayout>
     );
