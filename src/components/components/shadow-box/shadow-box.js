@@ -4,6 +4,9 @@ import './shadow-box.scss'
 export default (props) => {
   let classes = ['shadow-box'];
   if (props.className) classes.push(props.className);
+
+  if (props.noPaddings) classes.push('shadow-box--no-paddings');
+  if (props.smallPaddings) classes.push('shadow-box--small-paddings');
   // TODO  Check what and where we need.
   // if (props.fullWidth) classes.push('shadow-box--full-width');
   // if (props.fullHeight) classes.push('shadow-box--full-height');

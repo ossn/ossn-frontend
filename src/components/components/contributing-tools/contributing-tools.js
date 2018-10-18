@@ -10,7 +10,7 @@ export const ContributingTool = (props) => {
   const icon = props.tool.icon;
 
   return  (
-    <ShadowBox>
+    <ShadowBox noPaddings>
       <a href={url}>
         <img src={icon} alt={title} />
         <span> {title} </span>
