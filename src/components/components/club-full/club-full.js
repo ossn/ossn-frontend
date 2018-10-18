@@ -1,8 +1,29 @@
 /* eslint-disable */
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 
+// local modules
 import Layout2ColsUnequal from './../../layouts/layout-2col-unequal/layout-2col-unequal';
 import Layout2Col from './../../layouts/layout-2col/layout-2col';
+
+const source1 = `
+Lorem ipsum dolor sit amet, et vim modo bonorum, has inani tractatos ne, scripta prodesset nam ei. Ea porro meliore gloriatur pro, ei rebum integre sea. Rebum laudem graece mea te, usu esse argumentum ut, sea persecuti incorrupte in. At nullam percipit pro. Populo nonumes ne nec, eu ius oratio moderatius.
+
+Lorem ipsum dolor sit amet, et vim modo bonorum, has inani tractatos ne, scripta prodesset nam ei. Ea porro meliore gloriatur pro, ei rebum integre sea. Rebum laudem graece mea te, usu esse argumentum ut, sea persecuti incorrupte in. At nullam percipit pro. Populo nonumes ne nec, eu ius oratio moderatius.
+
+
+[this is a link](#)
+
+**this is bold**
+
+_make this text italic_ this is not
+`;
+
+const source2 = `
+Lorem ipsum dolor sit amet, et vim modo bonorum, has inani tractatos ne, scripta prodesset nam ei. Ea porro meliore gloriatur pro, ei rebum integre sea. Rebum laudem graece mea te, usu esse argumentum ut, sea persecuti incorrupte in. At nullam percipit pro. Populo nonumes ne nec, eu ius oratio moderatius.
+
+Lorem ipsum dolor sit amet, et vim modo bonorum, has inani tractatos ne, scripta prodesset nam ei. Ea porro meliore gloriatur pro, ei rebum integre sea. Rebum laudem graece mea te, usu esse argumentum ut, sea persecuti incorrupte in. At nullam percipit pro. Populo nonumes ne nec, eu ius oratio moderatius.
+`;
 
 export default class Club extends React.Component {
   render() {
@@ -29,27 +50,11 @@ export default class Club extends React.Component {
             <div>
               <div>
                 <h2> Description </h2>
-                <p>
-                  The RIT Linux Users Group (RITlug) is a community of students and faculty at the Rochester Institute of Technology dedicated to teaching and sharing the Linux operating system and open source software with others. RITlug also works on various other projects, such as a Linux distribution customized for students and faculty at RIT.
-                </p>
-                <p>
-                  Meetings are open to anyone interested, new members and old. RITlug meets on every Friday, from 4:00PM until 6:00PM in GOL/70-2650 (Large DB Lab). If you can’t make the whole time, that’s fine! Meetings typically have a presentation first, then we open the floor to discussion and technical help. Interested? Just show up!
-                </p>
-                <p>
-                  Looking for more information? Email us!
-                </p>
+                <ReactMarkdown source={source1} />
               </div>
               <div>
                 <h2> Code of conduct </h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus non orci feugiat vulputate quis non est. Mauris posuere, nulla id congue bibendum, nibh risus accumsan metus, at iaculis eros sem quis odio.
-                </p>
-                <p>
-                  Pellentesque gravida rhoncus erat, eu porta arcu ultrices eu. Vivamus quis fringilla ex. Pellentesque et mauris purus. Vestibulum at turpis non est condimentum vehicula. Nulla non vulputate sapien, aliquet commodo elit.
-                </p>
-                <p>
-                  Curabitur tempus ligula id nulla facilisis, quis gravida ante dictum. Ut tincidunt sed massa vel elementum. Donec commodo tellus maximus viverra dignissim. Vestibulum sollicitudin a erat vel imperdiet. Fusce at mi in nunc fermentum rutrum. Morbi tempor aliquam posuere. Mauris in commodo lectus, eget mollis neque. Maecenas sollicitudin nulla quis sapien ultricies, quis sagittis ante mattis. In tincidunt metus et nunc sollicitudin dignissim.
-                </p>
+                <ReactMarkdown source={source2} />
               </div>
               <div>
                 <h2> Members </h2>
