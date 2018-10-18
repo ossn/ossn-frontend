@@ -67,8 +67,6 @@ const Organizations = (props) => {
       <Layout3Col horizontalGutters verticalGutters >
         {content}
       </Layout3Col>
-
-
     </BasicLayout>
   );
 };

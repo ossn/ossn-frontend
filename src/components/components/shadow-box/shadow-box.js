@@ -2,11 +2,13 @@ import React from 'react';
 import './shadow-box.scss'
 
 export default (props) => {
-
-  const classes = `${props.className ? props.className : ''} shadow-box`;
+  let classes = ['shadow-box'];
+  if (props.className) classes.push(props.className);
+  if (props.fullWidth) classes.push('shadow-box--full-width');
+  if (props.fullHeight) classes.push('shadow-box--full-height');
 
   return (
-    <div className={classes}>
+    <div className={classes.join(' ')}>
       {props.children}
     </div>
   )

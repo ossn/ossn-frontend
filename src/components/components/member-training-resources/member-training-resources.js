@@ -12,12 +12,14 @@ const TrainingResource = (props) => {
 
   const classes=`${props.className}`
   return  (
-    <ShadowBox className={classes}>
-      <a href={url}>
-        <img src={icon} alt={title} />
-        <span> {title} </span>
-      </a>
-    </ShadowBox>
+    <div className={classes}>
+      <ShadowBox fullWidth fullHeight>
+        <a href={url}>
+          <img src={icon} alt={title} />
+          <span> {title} </span>
+        </a>
+      </ShadowBox>
+    </div>
   );
 }
 
