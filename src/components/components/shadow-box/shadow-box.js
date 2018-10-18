@@ -7,6 +7,8 @@ export default (props) => {
   // TODO  Check what and where we need.
   // if (props.fullWidth) classes.push('shadow-box--full-width');
   // if (props.fullHeight) classes.push('shadow-box--full-height');
+  if (props.className) classes.push(props.className);
+  if (props.zeroRadius) classes.push(`shadow-box--zero-radius`)
 
   return (
     <div className={classes.join(' ')}>
