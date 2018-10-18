@@ -10,10 +10,10 @@ const TrainingResource = (props) => {
   const url = props.resource.url;
   const icon = props.resource.icon;
 
-  const classes=`${props.className}`
+  const classes=`${props.className}`;
   return  (
     <div className={classes}>
-      <ShadowBox fullWidth fullHeight>
+      <ShadowBox>
         <a href={url}>
           <img src={icon} alt={title} />
           <span> {title} </span>
@@ -21,9 +21,7 @@ const TrainingResource = (props) => {
       </ShadowBox>
     </div>
   );
-}
-
-
+};
 
 export default (props) => {
 
@@ -40,7 +38,7 @@ export default (props) => {
       </Layout2Col>
     </div>
   );
-}
+};
 
 export const query = graphql`
   fragment TrainingResources on TrainingResourcesJson {

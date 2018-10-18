@@ -14,7 +14,7 @@ export const ExternalResource = (props) => {
 
   return (
     <div className={props.className}>
-      <ShadowBox fullWidth fullHeight>
+      <ShadowBox>
         <a href={target}>
           <div>
             <img src="#" alt="external resource" />

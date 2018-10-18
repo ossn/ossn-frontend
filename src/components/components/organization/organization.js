@@ -6,10 +6,10 @@ const Organization = (props) => {
     return <div> organization not found error </div>
   }
 
-  const classes = `${props.className}`
+  const classes = `${props.className}`;
   return (
     <div className={classes}>
-      <ShadowBox fullWidth fullHeight>
+      <ShadowBox>
         <img  src={props.organization.image || "#"} width="100px" alt={props.organization.title}/> <br />
         <a href={props.organization.link || "#"} > {props.organization.title} </a>
         <p>
@@ -18,6 +18,6 @@ const Organization = (props) => {
       </ShadowBox>
     </div>
   );
-}
+};
 
 export default Organization;
