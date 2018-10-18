@@ -1,0 +1,27 @@
+// Highlighted text
+//
+// The reusable highlighted text styles across the page.
+//
+// Highlighted text styles used.
+//
+// .title--x-large - Extra large title used in above the fold.
+// .title--large -  Large title used in banners.
+// .title--medium - Medium sized title.
+
+.highlighted-text,
+%highlighted-text {
+  @include font-size(24px);
+  @include line-height(35px);
+  color: color('highlighted-text');
+
+  &--intense {
+    font-weight: 600;
+    letter-spacing: .2px;
+  }
+
+  &--small {
+    @include font-size(18px);
+    @include line-height(27px);
+    letter-spacing: .2px;
+  }
+}

@@ -17,7 +17,7 @@
 .button,
 %button,
 button,
-// 1
+  // 1
 html [type='button'],
 [type='reset'],
 [type='submit'] {
@@ -33,19 +33,19 @@ button,
 [type='reset'],
 [type='submit'] {
   @extend %button--disabled;
+  @include font-size(20px);
+  @include line-height(24px);
+  font-weight: 600;
+  letter-spacing: .9px;
   // Some styles don't apply to <a> links since they are inline elements by default.
   display: inline-block;
-  padding: 15px;
-  // Address Firefox 4+ setting `line-height` on `input` using `!important` in
-  // the UA stylesheet. And prevent its "line-height: normal" rule below from
-  // breaking the "appearance: button" styling on the input elements.
-  line-height: inherit;
+  padding: 13px;
   text-decoration: none;
   // Improve usability and consistency of cursor style between image-type `input` and others.
   cursor: pointer;
-  color: color(button);
-  background-color: color(button-bg);
-  border-radius: 4px;
+  color: color('button');
+  background-color: color('button-bg');
+  border-radius: 6px;
   box-shadow: none;
   border: 0;
   transition: .2s cubic-bezier(.190, 1.000, .220, 1.000); /* easeOutExpo */
@@ -82,8 +82,10 @@ button,
 // Add button variations here.
 .button,
 %button {
+
+
   &--submit {
-    padding: 20px;
+    @extend %button--small;
     color: color('button-submit');
     background-color: color('button-submit-bg');
 
@@ -117,6 +119,25 @@ button,
       border: 1px solid color('button-reset-active-border');
     }
 
+  }
+
+  &--cta {
+    @include font-size(32px);
+    @include line-height(43px);
+    letter-spacing: 0;
+    padding: 16px 45px 18px;
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  &--small {
+    @include font-size(12px);
+    @include line-height(21px);
+    padding: 8px 17px;
+    border-radius: 2px;
+    letter-spacing: 0;
   }
 }
 

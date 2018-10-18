@@ -72,7 +72,7 @@ $chroma: add-colors('functional', (
 
         body-bg:                'text-bg',
 
-        button:                 light,
+        button:                 'brand',
         button-bg:              'seafoam-blue',
         button-disabled:        light,
         button-disabled-bg:     'grey-extra-light',
@@ -137,6 +137,8 @@ $chroma: add-colors('functional', (
 
         navigation:             'grey',
         navigation-hover:       'brand',
+
+        highlighted-text:        'brand',
 ));
 
 $chroma-active-scheme: 'functional';
