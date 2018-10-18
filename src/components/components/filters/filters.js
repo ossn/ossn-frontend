@@ -1,8 +1,10 @@
 // external modules
 import React from 'react';
+import Select from 'react-select';
 
 // local modules
 import Toggle from './../toggle/toggle';
+
 
 // styles
 import './filters.scss';
@@ -35,5 +37,15 @@ export class SearchFilter extends React.Component {
         <input type="text" placeholder={this.props.placeholder} onChange={this.handleSearch}/>
       </div>
     )
+  }
+}
+
+export class SelectFilter extends React.Component {
+  render() {
+    const options = this.props.options || [];
+
+    return (
+      <Select options={options} onChange={this.props.onChange} value={this.props.value} />
+    );
   }
 }

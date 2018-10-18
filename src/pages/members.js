@@ -10,17 +10,27 @@ import MemberTeaser from './../components/components/member-teaser/member-teaser
 import Layout2Col from './../components/layouts/layout-2col/layout-2col';
 import Layout2ColsUnequal from './../components/layouts/layout-2col-unequal/layout-2col-unequal';
 import BoxShadow from './../components/components/shadow-box/shadow-box';
-import {ToggleFilter, SearchFilter} from './../components/components/filters/filters';
+import {ToggleFilter, SearchFilter, SelectFilter} from './../components/components/filters/filters';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.
 import GatsbyConfig from './../../gatsby-config';
 
 class Members extends React.Component {
+
   constructor(props) {
     super(props);
+
+    const options = [
+      {value: 'defualt', label: 'default'},
+      {value: 'name', label: 'name'},
+      {value: 'club', label:'club'}
+    ];
+
     this.state = {
       view: 'grid',
-      'searchString': ''
+      searchString: '',
+      sortOptions: options,
+      currentSortOption: options[0],
     }
   }
 
@@ -32,6 +42,10 @@ class Members extends React.Component {
   changeSearch = (event) => {
     this.setState({searchString: event.target.value});
   };
+
+  changeSorting = (selected) => {
+    this.setState({currentSortOption: selected});
+  }
 
   render() {
     const snapshot = {...this.state};
@@ -64,6 +78,8 @@ class Members extends React.Component {
             <div>
               <BoxShadow >
                 <ToggleFilter left="Grid view" right="List view" active={snapshot.view !== 'grid'} onClick={this.changeView}/>
+                <SelectFilter options={snapshot.sortOptions} value={snapshot.currentSortOption}
+                  onChange={this.changeSorting}/>
                 <SearchFilter />
               </BoxShadow>
 
