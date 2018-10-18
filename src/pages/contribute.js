@@ -6,8 +6,12 @@ import { graphql } from 'gatsby';
 // local modules
 import BasicLayout from '../components/layouts/layout-base/layout-base';
 import OpportunitiesMember from './../components/components/opportunities-member/opportunities-member';
+
 // Import page title from gatsby config. TODO Remove and fid title another way.
 import GatsbyConfig from './../../gatsby-config';
+
+// import style
+import './../components/components/promoted-box/promoted-box.scss';
 
 class Contribute extends React.Component {
   render() {
@@ -31,9 +35,9 @@ class Contribute extends React.Component {
             Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet
           </p>
           </div>
-          <div>
-              <h3> Next steps after signing up </h3>
-            <ol>
+          <div className="promoted-box">
+              <h3 className="promoted-box__title"> Next steps after signing up </h3>
+            <ol className="promoted-box__content">
               <li> Explore contribution opportunities </li>
               <li> Reach out to  us </li>
               <li> Explore available interships/jobs </li>
