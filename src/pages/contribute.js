@@ -12,6 +12,7 @@ import GatsbyConfig from './../../gatsby-config';
 
 // import style
 import './../components/components/promoted-box/promoted-box.scss';
+// import './../components/base-styles/base/highlighted-text/_highlighted-text.scss'
 
 class Contribute extends React.Component {
   render() {
@@ -30,7 +31,7 @@ class Contribute extends React.Component {
         <div>
           <div>
           <h1> Opportunities </h1>
-          <p>
+          <p className="highlighted-text highlighted-text--intense">
             Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet
             Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet
           </p>
