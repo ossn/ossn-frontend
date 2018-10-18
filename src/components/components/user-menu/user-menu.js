@@ -69,8 +69,8 @@ class UserMenu extends React.Component {
 
     return(
       <div ref={ this.popup} className="user-menu">
-        <div onClick={this.handleOpen} className="button">
-          {snapshot.open ? 'close' : 'open'}
+        <div onClick={this.handleOpen} className="button button--header">
+          {snapshot.open ? 'close' : 'Login/Signup'}
           {extraContent}
         </div>
         <div className="user-menu__popup">

@@ -23,6 +23,7 @@
       @extend %layout-base--only-containment;
       overflow: visible;
       display: flex;
+      align-items: center;
     }
   }
 
