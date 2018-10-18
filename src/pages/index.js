@@ -15,8 +15,22 @@ const IndexPage = (props) => {
           <div>
             <h1> What's happening </h1>
             <div>
-              The pretty news section goes here :)
-
+              <div >
+                <div>
+                  <div>
+                    <img src="#" alt="read our blog update" />
+                    <img src="#" alt="Mozilla news" />
+                  </div>
+                  <div>
+                    <img src="#" alt="In open source, we feel strongly..." />
+                    <img src="#" alt="opportunities" />
+                  </div>
+                </div>
+                <div>
+                  <img src="#" alt="fix me" />
+                  <img src="#" alt="liste to our podcast" />
+                </div>
+              </div>
             </div>
           </div>
 
