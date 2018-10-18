@@ -1,0 +1,17 @@
+@import './../../base-styles/init/init.scss';
+@import './../../base-styles/base/title/_title.scss';
+
+.communication-channel {
+  // display: inline-block;
+  text-align: center;
+
+  &__title {
+    @extend %title;
+    @extend %title--x-small;
+    display: block;
+    width: 100%;
+    margin-top: 18px;
+  }
+
+
+}

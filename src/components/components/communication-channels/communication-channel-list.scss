@@ -1,0 +1,9 @@
+.communication-channel-list {
+  width: 100%;
+
+  &__list-wrapper {
+    margin-top: 32px;
+    display: flex;
+    justify-content: space-around;
+  }
+}
