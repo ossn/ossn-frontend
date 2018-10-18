@@ -2,7 +2,7 @@ import React from 'react';
 import {graphql} from 'gatsby';
 
 // local modules
-import ShadowBox from './../shadow-box/shadow-box';
+// import ShadowBox from './../shadow-box/shadow-box';
 
 // styles
 import './../teaser-box/teaser-box';
@@ -19,7 +19,7 @@ export const ContributingTool = (props) => {
           <img src={icon} alt={title} className="teaser-box__image" />
         </div>
         <div className="teaser-box__text">
-          <span className="teaser-box__title"> {title} </span>
+          <h3 className="teaser-box__title"> {title} </h3>
           <span className="teaser-box__url"> {url} </span>
         </div>
     </a>

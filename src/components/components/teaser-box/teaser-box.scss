@@ -1,3 +1,6 @@
+@import './../../base-styles/init/init.scss';
+@import './../../base-styles/base/title/_title.scss';
+
 .teaser-box {
   width: 100%;
   margin-bottom: 15px;
@@ -37,13 +40,11 @@
 
   &__list {
     display: flex;
-    // justify-content: flex-start;
-    // align-items: center;
   }
 
   &--short {
     margin-top: 26px;
-    
+
     .teaser-box {
       &__wrapper-link {
         border-top-left-radius: 4px;
@@ -84,5 +85,14 @@
         display: block;
       }
     }
+  }
+
+  &--large {
+    padding: 25px;
+
+    &__list {
+      margin-top: 25px;
+    }
+
   }
 }
