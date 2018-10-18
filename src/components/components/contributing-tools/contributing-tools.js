@@ -4,18 +4,26 @@ import {graphql} from 'gatsby';
 // local modules
 import ShadowBox from './../shadow-box/shadow-box';
 
+// styles
+import './../teaser-box/teaser-box';
+
 export const ContributingTool = (props) => {
   const title = props.tool.title;
   const url = props.tool.url;
   const icon = props.tool.icon;
 
   return  (
-    <ShadowBox noPaddings>
-      <a href={url}>
-        <img src={icon} alt={title} />
-        <span> {title} </span>
-      </a>
-    </ShadowBox>
+    <div className="teaser-box teaser-box--short">
+      <a href={url} className="teaser-box__wrapper-link">
+        <div noPaddings className="teaser-box__image-wrapper">
+          <img src={icon} alt={title} className="teaser-box__image" />
+        </div>
+        <div className="teaser-box__text">
+          <span className="teaser-box__title"> {title} </span>
+          <span className="teaser-box__url"> {url} </span>
+        </div>
+    </a>
+  </div>
   );
 }
 
@@ -29,7 +37,7 @@ export const ContributingToolSet = (props) => {
   return (
     <div>
       <h2> Tools for contributing code to open source projects </h2>
-      <div>
+      <div className="teaser-box__list">
         {tools}
       </div>
     </div>

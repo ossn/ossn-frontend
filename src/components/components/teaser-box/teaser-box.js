@@ -42,7 +42,7 @@ export const TeaserBoxList = (props) => {
   });
 
   return (
-    <div>
+    <div className="">
       {resources}
     </div>
   )

@@ -34,4 +34,55 @@
     // TODO: add me to colors
     color: #9b9b9b;
   }
+
+  &__list {
+    display: flex;
+    // justify-content: flex-start;
+    // align-items: center;
+  }
+
+  &--short {
+    margin-top: 26px;
+    
+    .teaser-box {
+      &__wrapper-link {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        background-color: #ffffff;
+        max-width: 160px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        height: 100%;
+      }
+
+      &__image-wrapper {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      &__image {
+        display: block;
+
+      }
+
+      &__text {
+        font-size: 14px;
+        line-height: 11px;
+        text-align: left;
+        width: 100%;
+        display: block;
+        padding: 10px;
+        background-color: #d8d8d825;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+
+      &__url {
+        font-size: 10px;
+        line-height: 11px;
+        display: block;
+      }
+    }
+  }
 }
