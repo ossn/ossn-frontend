@@ -17,7 +17,7 @@ $chroma: define-default-color-scheme('branding', 'The site main colors. Can be u
 $chroma: add-colors((
         black:                  #000,
         grey-dark:              #262626,
-        'grey':                 #4D4D4D,
+        'grey':                 #4A4A4A,
         grey-light:             #ABABAB,
         grey-extra-light:       #D2D2D2,
 
@@ -76,16 +76,15 @@ $chroma: add-colors('functional', (
         button-bg:              'seafoam-blue',
         button-disabled:        light,
         button-disabled-bg:     'grey-extra-light',
-        button-submit:          light,
-        button-submit-bg:       brand,
-        button-reset:           dark,
+        button-submit:          'seafoam-blue',
+        button-submit-bg:       'brand',
+        button-reset:           'brand',
+        button-reset-bg-hover:     'seafoam-blue',
         button-reset-bg:        light,
-        button-reset-border:    'grey-light',
-        button-reset-hover-border:    'dark',
-        button-reset-active-border:   'brand',
         button-reset-disabled:        'grey-extra-light',
         button-reset-disabled-bg:     light,
-        button-reset-disabled-border: 'grey-extra-light',
+        button-header:          'grey',
+        button-header-hover:    'white',
 
 
         fieldset-summary:       'grey',

@@ -10,6 +10,14 @@
 //
 // :hover  - Hover styling.
 // :active - Depressed button styling.
+// .button--disabled - Disabled button style.
+// .button--submit - Submit button style.
+// .button--reset - Reset button style.
+// .button--small - Small button style.
+// .button--cta - Call to action button style.
+// .button--full - Full width button style.
+// .button--header - Header button style.
+
 
 // 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
 //    controls in Android 4.
@@ -82,12 +90,11 @@ button,
 // Add button variations here.
 .button,
 %button {
-
-
   &--submit {
     @extend %button--small;
     color: color('button-submit');
     background-color: color('button-submit-bg');
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.25);
 
     &:hover,
     &:focus {
@@ -102,21 +109,20 @@ button,
   }
 
   &--reset {
+    @extend %button--small;
     color: color('button-reset');
     background-color: color('button-reset-bg');
-    border: 1px solid color('button-reset-border');
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.25);
 
     &:hover,
     &:focus {
       color: color('button-reset');
-      background-color: color('button-reset-bg');
-      border: 1px solid color('button-reset-hover-border');
+      background-color: color('button-reset-bg-hover');
     }
 
     &:active {
       color: color('button-reset');
       background-color: color('button-reset-bg');
-      border: 1px solid color('button-reset-active-border');
     }
 
   }
@@ -138,6 +144,23 @@ button,
     padding: 8px 17px;
     border-radius: 2px;
     letter-spacing: 0;
+  }
+
+  &--header {
+    @include font-size(18px);
+    @include line-height(24px);
+    padding: 5px 13px 7px;
+    font-weight: normal;
+    letter-spacing: .3px;
+    color: color('button-header');
+
+    &:hover,
+    &:focus,
+    &:active,
+    .active {
+      color: color('button-header-hover');
+    }
+
   }
 }
 
@@ -169,14 +192,12 @@ button,
   &[type='reset'] {
     background-color: color('button-reset-disabled-bg');
     color: color('button-reset-disabled');
-    border-color: color('button-reset-disabled-border');
 
     &:hover,
     &:focus,
     &:active {
       background-color: color('button-reset-disabled-bg');
       color: color('button-reset-disabled');
-      border-color: color('button-reset-disabled-border');
     }
   }
 }
