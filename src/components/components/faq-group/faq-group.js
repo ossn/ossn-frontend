@@ -12,8 +12,10 @@ export default (props) => {
 
   const classes = props.className
   return (
-    <ShadowBox className={classes}>
-      {items}
-    </ShadowBox>
+    <div className={classes}>
+      <ShadowBox fullWidth fullHeight>
+        {items}
+      </ShadowBox>
+    </div>
   )
 }

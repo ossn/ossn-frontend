@@ -64,11 +64,9 @@ const Organizations = (props) => {
         </div>
       </Layout2ColsUnequal>
 
-      <Layout3Col>
+      <Layout3Col horizontalGutters verticalGutters >
         {content}
       </Layout3Col>
-
-
     </BasicLayout>
   );
 };

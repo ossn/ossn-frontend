@@ -7,7 +7,7 @@ import {ContributingToolSet} from './../contributing-tools/contributing-tools';
 
 export default (props) => {
   return (
-    <Layout2Col>
+    <Layout2Col verticalGutters>
       <div> <ChannelList channels={props.channels}/> </div>
       <div> <ContributingToolSet tools={props.tools}/> </div>
     </Layout2Col>

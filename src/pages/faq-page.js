@@ -34,7 +34,7 @@ const Questions = (props) => {
         </p>
       </div>
 
-      <Layout2Cols>
+      <Layout2Cols   horizontalGutters>
         <div>
           <FaqGroup group={group0}  />
           <FaqGroup group={group1}  />
