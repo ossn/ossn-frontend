@@ -33,7 +33,7 @@ export default (props) => {
   return (
     <div>
       <h2> Training & various resources </h2>
-      <Layout2Col>
+      <Layout2Col horizontalGutters verticalGutters>
         {resources}
       </Layout2Col>
     </div>
