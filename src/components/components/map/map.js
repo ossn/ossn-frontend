@@ -1,12 +1,27 @@
 import React from 'react';
 
 // local modules
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
+import { Map, Marker, Popup, TileLayer } from './map-handler'
 import {ClubTeaser} from './../club-teaser-list/club-teaser-list';
 
 class ClubMap extends React.Component {
 
+  constructor() {
+    super();
+    this.state = {
+      firstTime: true
+    }
+  }
+
+  componentDidMount() {
+    const snapshot = {...this.state};
+    snapshot.firstTime && this.setState({firstTime: false});
+  }
+
+
   render() {
+    const snapshot = {...this.state};
+    if (snapshot.firstTime) console.log('test');
     // lat: 38.8299196, lng: 20.7036168
     const position = [38.3345123, -99.5218668];
     const nevada = [38.0582213, -115.6058512];
