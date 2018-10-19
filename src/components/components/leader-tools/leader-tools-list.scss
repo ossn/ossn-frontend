@@ -1,0 +1,9 @@
+@import './../../base-styles/init/init.scss';
+
+.leader-tools-list {
+    @include margin-top(23px);
+
+    &__title {
+      @include margin-top(20px);
+    }
+}

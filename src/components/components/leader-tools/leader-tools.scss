@@ -1,0 +1,17 @@
+@import './../../base-styles/init/init.scss';
+
+.leader-tool {
+  @include line-height(39px);
+  @include margin-left(40px);
+  border-bottom: 1px solid color('grey-underline');
+  position: relative;
+
+  &::before {
+    content: 'O';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+}
