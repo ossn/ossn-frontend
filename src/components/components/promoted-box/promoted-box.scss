@@ -1,0 +1,15 @@
+@import './../../base-styles/init/init.scss';
+
+.promoted-box {
+  padding: 22px 35px 40px;
+  background-color: color('light-green');
+  display: inline-block;
+
+  &__title {
+    text-align: left;
+  }
+
+  &__content {
+    text-align: center;
+  }
+}

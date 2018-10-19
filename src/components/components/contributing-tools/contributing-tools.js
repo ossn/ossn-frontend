@@ -1,40 +1,30 @@
 import React from 'react';
 import {graphql} from 'gatsby';
 
-// local modules
-import ShadowBox from './../shadow-box/shadow-box';
-
-export const ContributingTool = (props) => {
-  const title = props.tool.title;
-  const url = props.tool.url;
-  const icon = props.tool.icon;
-
-  return  (
-    <ShadowBox>
-      <a href={url}>
-        <img src={icon} alt={title} />
-        <span> {title} </span>
-      </a>
-    </ShadowBox>
-  );
-}
+// Local modules.
+import ExternalLinkBox from './../external-link-box/external-link-box';
+import Layout3Col from './../../layouts/layout-3col/layout-3col';
 
 export const ContributingToolSet = (props) => {
 
   const tools = props.tools.edges.map((toolNode, i) => {
     const tool = toolNode.node;
-    return <ContributingTool tool={tool} key={i} />;
+    return (
+        <div key={i}>
+          <ExternalLinkBox resource={tool}/>
+        </div>
+      );
   });
 
   return (
     <div>
       <h2> Tools for contributing code to open source projects </h2>
-      <div>
+      <Layout3Col horizontalGutters verticalGutters>
         {tools}
-      </div>
+      </Layout3Col>
     </div>
   )
-}
+};
 
 export const query = graphql`
   fragment MemberTools on ToolsForContributingJson {

@@ -9,6 +9,7 @@
   box-shadow: 0 1px 4px 0 rgba(0,0,0,0.25);
   border-radius: 4px;
   padding: 15px 20px;
+  display: block;
 
   &--zero-radius {
     border-radius: 0;
@@ -16,5 +17,16 @@
 
   &--zero-padding {
     padding: 0;
+  }
+
+  &--small-paddings {
+    padding: 10px;
+  }
+
+  a & {
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
   }
 }

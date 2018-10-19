@@ -16,8 +16,10 @@ $chroma: define-default-color-scheme('branding', 'The site main colors. Can be u
 
 $chroma: add-colors((
         black:                  #000,
+        grey-dark-another:      #D8D8D8,
         grey-dark:              #262626,
         'grey':                 #4A4A4A,
+        grey-another:           #9b9b9b,
         grey-light:             #ABABAB,
         grey-extra-light:       #D2D2D2,
 
@@ -30,6 +32,7 @@ $chroma: add-colors((
         dark-sky-blue:          #4A90E2,
         blue-light:             #12CACB,
 
+        light-green:            #D6F2E9,
         red:                    #C00,
         grapefruit:             #FF5D5D,
         sunny-yellow:           #F8E71C,

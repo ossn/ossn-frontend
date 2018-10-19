@@ -1,6 +1,6 @@
 import React from 'react';
 import {graphql} from 'gatsby';
-import { ExternalResourceList } from './../external-resource-teaser/external-resource-teaser';
+import { TeaserBoxList } from './../teaser-box/teaser-box';
 
 export default (props) => {
   const items = props.announcements;
@@ -9,7 +9,7 @@ export default (props) => {
     <div>
       <h2> Latest announcements </h2>
       <div>
-        <ExternalResourceList items={items} />
+        <TeaserBoxList items={items} />
       </div>
     </div>
   );

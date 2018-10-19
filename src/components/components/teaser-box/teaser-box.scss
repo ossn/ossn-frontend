@@ -1,0 +1,63 @@
+@import './../../base-styles/init/init.scss';
+
+.teaser-box {
+  width: 100%;
+  margin-bottom: 15px;
+
+  &__wrapper-link {
+  }
+
+  &__image-wrapper {
+    width: 100px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__image {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+
+  }
+
+  &__text {
+    display: flex;
+    padding: 10px 20px 10px 15px;
+    flex-direction: column;
+  }
+
+  &__title {
+
+  }
+
+  &__inner {
+    display: flex;
+  }
+
+  &__date {
+    display: block;
+    text-align: right;
+    color: color('grey-another');
+    margin-top: auto;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__list-wrapper {
+    margin-top: 35px;
+  }
+
+  &--large {
+    padding: 25px;
+
+    &__list {
+      margin-top: 25px;
+    }
+
+  }
+}

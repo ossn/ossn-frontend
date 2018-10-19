@@ -24,14 +24,14 @@ const MemberTeaser = (props) =>{
     </ShadowBox>
   )
 };
-
-export const MemberTeaserShort = (props) => {
-  return (
-    <div>
-      <img src="#" alt="profile" />
-      <span> {props.title} </span>
-    </div>
-  )
-}
+//
+// export const MemberTeaserShort = (props) => {
+//   return (
+//     <div>
+//       <img src="#" alt="profile" />
+//       <span> {props.title} </span>
+//     </div>
+//   )
+// }
 
 export default MemberTeaser;

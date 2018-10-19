@@ -6,15 +6,19 @@
 import React from 'react';
 import {graphql} from 'gatsby';
 
+// styles
+import './communication-channels.scss';
+import './communication-channel-list.scss';
+
 export const Channel = (props) => {
   const title = props.channel.title;
   const url = props.channel.url;
   const icon = props.channel.icon;
 
   return  (
-    <a href={url}>
-      <img src={icon} alt={title} />
-      <span> {title} </span>
+    <a href={url} className="communication-channel">
+      <img src={icon} alt={title} className="communication-channel__image"/>
+      <span className="communication-channel__title"> {title} </span>
     </a>
   );
 };
@@ -26,9 +30,9 @@ export const ChannelList = (props) => {
   });
 
   return (
-    <div>
-      <h2> Communication channels </h2>
-      <div>
+    <div className="communication-channel-list">
+      <h2 className="communication-channel-list__title title title--x-small"> Communication channels </h2>
+      <div className="communication-channel-list__list-wrapper">
         {channels}
       </div>
     </div>
