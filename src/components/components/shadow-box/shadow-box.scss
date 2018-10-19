@@ -11,6 +11,10 @@
   padding: 15px 20px;
 
   &--zero-radius {
-    border-radius: 0px;
+    border-radius: 0;
+  }
+
+  &--zero-padding {
+    padding: 0;
   }
 }

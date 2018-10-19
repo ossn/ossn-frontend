@@ -33,10 +33,8 @@ export const LeaderToolList = (props) => {
   return (
     <div>
         <h2> {title} </h2>
-        <ShadowBox zeroRadius>
-        <div>
+        <ShadowBox zeroRadius zeroPadding>
           {tools}
-        </div>
       </ShadowBox>
     </div>
   )
