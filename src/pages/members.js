@@ -77,7 +77,6 @@ class Members extends React.Component {
 
             <div>
               <BoxShadow >
-                <ToggleFilter left="Grid view" right="List view" active={snapshot.view !== 'grid'} onClick={this.changeView}/>
                 <SelectFilter options={snapshot.sortOptions} value={snapshot.currentSortOption}
                               onChange={this.changeSorting}/>
                 <SearchFilter />
