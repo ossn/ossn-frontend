@@ -13,12 +13,12 @@ const LeaderTool = (props) => {
   const url = props.tool.url;
 
   return (
-    <ShadowBox>
+    <div>
       <a href="">
         <div> {icon} </div>
         <div> {title} </div>
       </a>
-    </ShadowBox>
+    </div>
   );
 };
 
@@ -32,10 +32,12 @@ export const LeaderToolList = (props) => {
 
   return (
     <div>
-      {title}
-      <div>
-        {tools}
-      </div>
+        <h2> {title} </h2>
+        <ShadowBox zeroRadius>
+        <div>
+          {tools}
+        </div>
+      </ShadowBox>
     </div>
   )
 };
