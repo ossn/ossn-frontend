@@ -12,21 +12,23 @@ export const ClubTeaser = (props) => {
   const image = props.club.imageUrl;
 
   return (
-    <ShadowBox>
-      <div>
+    <div className={props.className}>
+      <ShadowBox fullWidth fullHeight>
         <div>
-          <img src={image} alt={title} />
+          <div>
+            <img src={image} alt={title} />
+          </div>
+          <div>
+            <span> {title} </span>
+            <span> {subtitle}  </span>
+            <a href={link} >
+              Club page
+            </a>
+          </div>
         </div>
-        <div>
-          <span> {title} </span>
-          <span> {subtitle}  </span>
-          <a href={link} >
-            Club page
-          </a>
-        </div>
-      </div>
-    </ShadowBox>
-  )
+      </ShadowBox>
+    </div>
+  );
 };
 
 export const ClubTeaserList = (props) => {

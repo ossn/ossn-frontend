@@ -1,6 +1,8 @@
 import React from 'react';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
 
+// local modules
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
+import {ClubTeaser} from './../club-teaser-list/club-teaser-list';
 
 class ClubMap extends React.Component {
 
@@ -16,10 +18,17 @@ class ClubMap extends React.Component {
       {location: phoenix, title: 'Club of phoenix'},
       {location: dallas, title: 'Club of Dallas'}];
 
+    const MOCKCLUB = {
+      title: 'title',
+      subtitle: 'subtitle',
+      link: '#',
+      image: '#'
+    }
+
     const markers = clubs.map((club, i)=>{
       return (
         <Marker position={club.location} key={i}>
-          <Popup>{club.tititle}</Popup>
+          <Popup> <ClubTeaser club={MOCKCLUB} /> </Popup>
         </Marker>)
     });
 
