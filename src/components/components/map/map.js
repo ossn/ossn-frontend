@@ -7,7 +7,7 @@ import {ClubTeaser} from './../club-teaser-list/club-teaser-list';
 class ClubMap extends React.Component {
 
   render() {
-   // lat: 38.8299196, lng: 20.7036168
+    // lat: 38.8299196, lng: 20.7036168
     const position = [38.3345123, -99.5218668];
     const nevada = [38.0582213, -115.6058512];
     const phoenix = [42.500, -107.600];
@@ -23,7 +23,7 @@ class ClubMap extends React.Component {
       subtitle: 'subtitle',
       link: '#',
       image: '#'
-    }
+    };
 
     const markers = clubs.map((club, i)=>{
       return (

@@ -13,7 +13,7 @@ export const ClubTeaser = (props) => {
 
   return (
     <div className={props.className}>
-      <ShadowBox fullWidth fullHeight>
+      <ShadowBox>
         <div>
           <div>
             <img src={image} alt={title} />
