@@ -10,7 +10,7 @@ import MemberTeaser from './../components/components/member-teaser/member-teaser
 import Layout2Col from './../components/layouts/layout-2col/layout-2col';
 import Layout2ColsUnequal from './../components/layouts/layout-2col-unequal/layout-2col-unequal';
 import BoxShadow from './../components/components/shadow-box/shadow-box';
-import {ToggleFilter, SearchFilter, SelectFilter} from './../components/components/filters/filters';
+import {SearchFilter, SelectFilter} from './../components/components/filters/filters';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.
 import GatsbyConfig from './../../gatsby-config';
@@ -33,15 +33,10 @@ class Members extends React.Component {
       currentSortOption: options[0],
     }
   }
-
-  changeView = (view) => {
-    const snapshot = {...this.state};
-    this.setState({view: snapshot.view === 'grid' ? 'list' : 'grid'});
-  };
-
-  changeSearch = (event) => {
-    this.setState({searchString: event.target.value});
-  };
+  //
+  // changeSearch = (event) => {
+  //   this.setState({searchString: event.target.value});
+  // };
 
   changeSorting = (selected) => {
     this.setState({currentSortOption: selected});
@@ -50,6 +45,7 @@ class Members extends React.Component {
   render() {
     const snapshot = {...this.state};
     let members = this.props.data.allMembersJson.edges.slice();
+    let totalCount = this.props.data.allMembersJson.totalCount;
 
     const memberList = members.map((member, i)=>{
       return  (
@@ -77,6 +73,7 @@ class Members extends React.Component {
 
             <div>
               <BoxShadow >
+                <h2 className="title title--x-small title--centered">Showing {memberList.length} out of {totalCount} members</h2>
                 <SelectFilter options={snapshot.sortOptions} value={snapshot.currentSortOption}
                               onChange={this.changeSorting}/>
                 <SearchFilter />
@@ -121,7 +118,8 @@ export default Members;
 
 export const query = graphql`
   query IndexQuery {
-    allMembersJson {
+    allMembersJson(limit:2) {
+    totalCount
       edges {
         node {
           name

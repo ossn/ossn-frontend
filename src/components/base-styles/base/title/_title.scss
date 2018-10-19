@@ -14,6 +14,7 @@
 // .title--xx-small - Extra extra small title.
 // .title--xx-small - 3 * Extra small title.
 // .title--light - Title with light color.
+// .title--centered - Title aligned at the center.
 .title,
 %title {
   @extend %h1; // Font size 36px.
@@ -64,5 +65,10 @@
   // Color Variant.
   &--light {
     color: color('white');
+  }
+
+  // Layout Variant.
+  &--centered {
+    text-align: center;
   }
 }
