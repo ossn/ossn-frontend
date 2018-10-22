@@ -43,7 +43,7 @@
   }
 
   &__title {
-
+    color: color('grey-dark');
   }
 
   &__date {
@@ -60,9 +60,11 @@
     margin-top: 35px;
   }
 
+
   &__url {
     @include font-size(10px);
     @include line-height(11px);
     display: block;
+    color: color('grey-another');
   }
 }
