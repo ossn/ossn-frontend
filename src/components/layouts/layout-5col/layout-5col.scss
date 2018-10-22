@@ -1,16 +1,17 @@
 @import "../../base-styles/init/init";
 
-// Responsive 3-column grid
+// Responsive 5-column grid
 //
 // The `.layout-5col` layout is a responsive grid layout that is:
 // - 1 column at mobile sizes.
 // - 2 columns at tablet sizes.
-// - 3 columns at desktop sizes.
+// - 5 columns at desktop sizes.
 //
 // The `.layout-5col` class is used on the container div for the layout. A *grid
 // item* in the container can be created using the following class:
 // - `.layout-5col__col` : 1-column wide grid item spanning  1 åcolumn.
 //
+// REVIEW: the variants
 // .layout-5col--only-desktop-3 - 3 columns only on desktop. There is no intermediate 2 column step.
 // .layout-5col--no-tablet-break - 3 columns on tablet. There is no intermediate 2 column step.
 // .layout-5col--with-horizontal-gutters - Gutters on both sides, needs wrapper with overflow hidden (like layout-center).
@@ -52,7 +53,7 @@
 
   // --only-desktop-3 variant. It makes the 3 columns appear on desktop.
   // There is no intermediate 2 column step.
-  &--only-desktop-3 {
+  &--only-desktop-5 {
     %layout-5col__col,
     .layout-5col--col,
     .layout-5col__col {
@@ -66,7 +67,7 @@
   @include breakpoint($tablet ($desktop - 1px)) {
     &--col,
     &__col {
-      &:nth-child(2n + 1) {
+      &:nth-child(4n + 1) {
         clear: left;
       }
     }
@@ -78,7 +79,7 @@
     &__col {
       width: (100 / 5) * 1%;
 
-      &:nth-child(3n + 1) {
+      &:nth-child(5n + 1) {
         clear: left;
       }
     }
