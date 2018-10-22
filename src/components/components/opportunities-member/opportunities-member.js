@@ -19,7 +19,7 @@ export default (props) => {
         </h1>
 
         <div className="opportunities-member__info">
-          <p  className="opportunities-member__text highlighted-text">
+          <p  className="opportunities-member__text highlighted-text highlighted-text--intense">
             We bring you the best opportunities to contribute code. Practice your skills by taking part in compelling Open Source projects that match your interests!
           </p>
           <div className="promoted-box">
