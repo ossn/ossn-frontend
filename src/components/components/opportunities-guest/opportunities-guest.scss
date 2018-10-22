@@ -1,0 +1,24 @@
+.opportunities-guest {
+  text-align: center;
+  display: block;
+
+  &__title {
+    max-width: 545px;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+
+  &__text {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__link {
+    margin-top: 365px;
+    display: inline-block;
+    max-width: 600px;
+    width: 100%;
+  }
+}

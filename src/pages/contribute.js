@@ -5,8 +5,7 @@ import { graphql } from 'gatsby';
 
 // Local modules.
 import BasicLayout from '../components/layouts/layout-base/layout-base';
-import LayoutContained from './../components/layouts/layout-contained/layout-contained';
-import OpportunitiesMember from './../components/components/opportunities-member/opportunities-member';
+import Opportunities from './../components/components/opportunities/opportunities';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.
 import GatsbyConfig from './../../gatsby-config';
@@ -28,26 +27,11 @@ class Contribute extends React.Component {
           <title>{['Opportunities', '|', GatsbyConfig.siteMetadata.title].join(" ")}</title>
         </Helmet>
 
-        <LayoutContained>
-          <div>
-          <h1> Opportunities </h1>
-          <p className="highlighted-text highlighted-text--intense">
-            Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet
-            Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet
-          </p>
-          </div>
-          <div className="promoted-box">
-              <h3 className="promoted-box__title"> Next steps after signing up </h3>
-            <ol className="promoted-box__content">
-              <li> Explore contribution opportunities </li>
-              <li> Reach out to  us </li>
-              <li> Explore available interships/jobs </li>
-              <li> Check the latest announcements </li>
-            </ol>
-          </div>
-        </LayoutContained>
-        <OpportunitiesMember jobs={jobs} announcements={announcements}
-                    channels={channels} tools={tools} resources={resources} />
+        <Opportunities jobs={jobs} announcements={announcements}
+                      channels={channels} tools={tools} resources={resources} />
+
+        {/* <OpportunitiesMember jobs={jobs} announcements={announcements}
+                    channels={channels} tools={tools} resources={resources} /> */}
 
       </BasicLayout>
     );

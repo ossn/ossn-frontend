@@ -10,7 +10,7 @@ export default (props) => {
     <div>
       <h2> Jobs & interships board </h2>
       <div>
-        <TeaserBoxList items={items} />
+        <TeaserBoxList items={items} dummyData={props.dummyData} />
       </div>
     </div>
   )
