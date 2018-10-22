@@ -7,7 +7,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from 'react-apollo';
 import fetch from 'node-fetch';
 
-// improt local modules
+// Import local modules.
+// import LayoutContained from "./../layout-contained/layout-contained";
 import Header from './../../components/header/header';
 import SkipLink from './../../components/skip-link/skip-link';
 import Footer from './../../components/footer/footer';

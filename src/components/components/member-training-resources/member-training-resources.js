@@ -1,7 +1,8 @@
 import React from 'react';
 import {graphql} from 'gatsby';
 
-// local modules
+// Local modules.
+import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import Layout2Col from './../../layouts/layout-2col/layout-2col';
 import ShadowBox from './../shadow-box/shadow-box';
 
@@ -43,12 +44,14 @@ export default (props) => {
 
   return (
     <div>
-      <h2> Training & various resources </h2>
-      <div className="teaser-box--large__list">
-        <Layout2Col horizontalGutters verticalGutters>
-          {resources}
-        </Layout2Col>
-      </div>
+      <LayoutContained>
+        <h2> Training & various resources </h2>
+        <div className="teaser-box--large__list">
+          <Layout2Col horizontalGutters verticalGutters>
+            {resources}
+          </Layout2Col>
+        </div>
+      </LayoutContained>
     </div>
   );
 };

@@ -3,8 +3,9 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
 
-// local modules
+// Local modules.
 import BasicLayout from '../components/layouts/layout-base/layout-base';
+import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 import OpportunitiesMember from './../components/components/opportunities-member/opportunities-member';
 import {AllLeaderTools} from './../components/components/leader-tools/leader-tools';
 
@@ -31,11 +32,11 @@ class Contribute extends React.Component {
           <title>{["Leader's Corner", '|', GatsbyConfig.siteMetadata.title].join(" ")}</title>
         </Helmet>
 
-        <div>
+        <LayoutContained>
           <h1> Leader's Corner </h1>
           <AllLeaderTools prManagement={prManagement} codeOfConduct={codeOfConduct}
             variousTools={leadersTools} usefulResources={leadersResources} />
-        </div>
+        </LayoutContained>
         <OpportunitiesMember jobs={jobs} announcements={announcements}
                     channels={channels} tools={tools} resources={resources} />
 

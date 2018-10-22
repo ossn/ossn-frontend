@@ -3,8 +3,9 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
 
-// local modules
+// Local modules.
 import BasicLayout from '../components/layouts/layout-base/layout-base';
+import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 import OpportunitiesMember from './../components/components/opportunities-member/opportunities-member';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.
@@ -27,7 +28,7 @@ class Contribute extends React.Component {
           <title>{['Opportunities', '|', GatsbyConfig.siteMetadata.title].join(" ")}</title>
         </Helmet>
 
-        <div>
+        <LayoutContained>
           <div>
           <h1> Opportunities </h1>
           <p className="highlighted-text highlighted-text--intense">
@@ -44,7 +45,7 @@ class Contribute extends React.Component {
               <li> Check the latest announcements </li>
             </ol>
           </div>
-        </div>
+        </LayoutContained>
         <OpportunitiesMember jobs={jobs} announcements={announcements}
                     channels={channels} tools={tools} resources={resources} />
 

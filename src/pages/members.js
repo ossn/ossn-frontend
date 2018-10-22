@@ -6,6 +6,7 @@ import { graphql } from "gatsby"
 
 // Local modules.
 import BasicLayout from '../components/layouts/layout-base/layout-base';
+import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 import MemberTeaser from './../components/components/member-teaser/member-teaser';
 import Layout2Col from './../components/layouts/layout-2col/layout-2col';
 import Layout2ColsUnequal from './../components/layouts/layout-2col-unequal/layout-2col-unequal';
@@ -60,37 +61,38 @@ class Members extends React.Component {
           <title>{['Members', '|', GatsbyConfig.siteMetadata.title].join(" ")}</title>
         </Helmet>
 
-        <Layout2ColsUnequal secondNarrow>
-          <div>
-            <h1> Members </h1>
-            <p>
-              Lorem ipsum dolor sit amet, nonumy lucilius et pro. Mel ut diam choro, propriae lucilius efficiendi an nam, suas facer qualisque no nec. An fugit soluta per. Ad mei debitis electram, officiis intellegat usu ei, ius eu zril intellegam consequuntur. Sumo delectus te nam, eam placerat salutandi no, nibh aperiam no ius. Id volumus sententiae interesset quo, natum scriptorem accommodare nam id, semper blandit ius ea.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, nonumy lucilius et pro. Mel ut diam choro, propriae lucilius efficiendi an nam, suas facer qualisque no nec. An fugit soluta per. Ad mei debitis electram, officiis intellegat usu ei, ius eu zril intellegam consequuntur. Sumo delectus te nam, eam placerat salutandi no, nibh aperiam no ius. Id volumus sententiae interesset quo, natum scriptorem accommodare nam id, semper blandit ius ea.
-            </p>
-
-
+        <LayoutContained>
+          <Layout2ColsUnequal secondNarrow>
             <div>
-              <BoxShadow >
-                <h2 className="title title--x-small title--centered">Showing {memberList.length} out of {totalCount} members</h2>
-                <SelectFilter options={snapshot.sortOptions} value={snapshot.currentSortOption}
-                              onChange={this.changeSorting}/>
-                <SearchFilter />
-              </BoxShadow>
+              <h1> Members </h1>
+              <p>
+                Lorem ipsum dolor sit amet, nonumy lucilius et pro. Mel ut diam choro, propriae lucilius efficiendi an nam, suas facer qualisque no nec. An fugit soluta per. Ad mei debitis electram, officiis intellegat usu ei, ius eu zril intellegam consequuntur. Sumo delectus te nam, eam placerat salutandi no, nibh aperiam no ius. Id volumus sententiae interesset quo, natum scriptorem accommodare nam id, semper blandit ius ea.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet, nonumy lucilius et pro. Mel ut diam choro, propriae lucilius efficiendi an nam, suas facer qualisque no nec. An fugit soluta per. Ad mei debitis electram, officiis intellegat usu ei, ius eu zril intellegam consequuntur. Sumo delectus te nam, eam placerat salutandi no, nibh aperiam no ius. Id volumus sententiae interesset quo, natum scriptorem accommodare nam id, semper blandit ius ea.
+              </p>
 
-              <Layout2Col horizontalGutters verticalGutters>
-                {memberList}
-              </Layout2Col>
+
+              <div>
+                <BoxShadow >
+                  <h2 className="title title--x-small title--centered">Showing {memberList.length} out of {totalCount} members</h2>
+                  <SelectFilter options={snapshot.sortOptions} value={snapshot.currentSortOption}
+                                onChange={this.changeSorting}/>
+                  <SearchFilter />
+                </BoxShadow>
+
+                <Layout2Col horizontalGutters verticalGutters>
+                  {memberList}
+                </Layout2Col>
+              </div>
             </div>
-          </div>
-          <div>
-            <img src="#" alt="guys with a laptop pretending to be busy" />
-            <br />
-            <img src="#" alt="join the network" />
-          </div>
-        </Layout2ColsUnequal>
-
+            <div>
+              <img src="#" alt="guys with a laptop pretending to be busy" />
+              <br />
+              <img src="#" alt="join the network" />
+            </div>
+          </Layout2ColsUnequal>
+        </LayoutContained>
       </BasicLayout>
     );
   }

@@ -5,6 +5,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
 
+import LayoutContained from './../components/layouts/layout-contained/layout-contained';
+
 // Import page title from gatsby config. TODO Remove and fid title another way.
 import BasicLayout from '../components/layouts/layout-base/layout-base';
 import Layout2Cols from './../components/layouts/layout-2col/layout-2col';
@@ -26,34 +28,35 @@ const Questions = (props) => {
         <title>{['FAQ', '|', GatsbyConfig.siteMetadata.title].join(" ")}</title>
       </Helmet>
 
-      <div>
-        <h1> FAQ </h1>
-        <p>
-          The most Frequently Asked Questions on OSSN. <br />
-          And their answers!
-        </p>
-      </div>
-
-      <Layout2Cols   horizontalGutters>
+      <LayoutContained>
         <div>
-          <FaqGroup group={group0}  />
-          <FaqGroup group={group1}  />
+          <h1> FAQ </h1>
+          <p>
+            The most Frequently Asked Questions on OSSN. <br />
+            And their answers!
+          </p>
         </div>
+
+        <Layout2Cols   horizontalGutters>
+          <div>
+            <FaqGroup group={group0}  />
+            <FaqGroup group={group1}  />
+          </div>
+          <div>
+            <FaqGroup group={group2}  />
+            <FaqGroup group={group3}  />
+          </div>
+        </Layout2Cols>
+
         <div>
-          <FaqGroup group={group2}  />
-          <FaqGroup group={group3}  />
+          <h2> Have more questions? </h2>
+          <p>
+            Cool! Reach out to us to
+            <span> <a href="#"> Facebok </a> </span> or
+            <span> <a href="#"> Twitter </a> </span>
+          </p>
         </div>
-      </Layout2Cols>
-
-      <div>
-        <h2> Have more questions? </h2>
-        <p>
-          Cool! Reach out to us to
-          <span> <a href="#"> Facebok </a> </span> or
-          <span> <a href="#"> Twitter </a> </span>
-        </p>
-      </div>
-
+      </LayoutContained>
     </BasicLayout>
   );
 };

@@ -5,6 +5,7 @@ import { graphql } from 'gatsby';
 
 // Local modules.
 import BasicLayout from '../components/layouts/layout-base/layout-base';
+import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 import Map from './../components/components/map/map';
 import {ClubTeaserList} from './../components/components/club-teaser-list/club-teaser-list';
 import {ToggleFilter, SearchFilter} from './../components/components/filters/filters';
@@ -59,16 +60,14 @@ class Clubs extends React.Component {
         <Helmet>
           <title>{['Clubs', '|', GatsbyConfig.siteMetadata.title].join(" ")}</title>
         </Helmet>
-        <div>
+        <LayoutContained>
           <h1> Clubs </h1>
           <ToggleFilter onClick={this.handleToggleMap}
           active={snapshot.view === 'list'}
           left="map" right="list" />
           <SearchFilter placeholder="Filter" onChange={this.handleSearch}/>
-        </div>
-        <div>
           {content}
-        </div>
+        </LayoutContained>
       </BasicLayout>
     )
   }

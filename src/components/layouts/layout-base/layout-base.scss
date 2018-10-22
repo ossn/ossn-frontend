@@ -1,11 +1,6 @@
-@import "../../base-styles/init/init";
-@import "./../layout-contained/layout-contained";
-
 // Basic layout component.
-// Add Add
-// Is
-
 .layout-base,
 %layout-base {
-  @extend %layout-contained;
+  padding-top: 100px;
+  padding-bottom: 100px;
 }

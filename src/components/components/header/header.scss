@@ -1,17 +1,8 @@
 @import './../../base-styles/init/init';
 @import './../shadow-box/shadow-box';
-@import './../../layouts/layout-contained/layout-contained';
-
 // Header nase styling.
 // Adds header styles and layout.
 .header {
-  &__top {
-    &-inner {
-      @extend %layout-contained;
-      @extend %layout-contained--only-containment;
-    }
-  }
-
   &__bottom {
     @extend %shadow-box;
     padding-left: 0;
@@ -19,8 +10,6 @@
     border-radius: 0;
 
     &-inner {
-      @extend %layout-contained;
-      @extend %layout-contained--only-containment;
       overflow: visible;
       display: flex;
       align-items: center;

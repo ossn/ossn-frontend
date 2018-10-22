@@ -3,6 +3,7 @@ import React from 'react';
 import {Link} from 'gatsby';
 
 // Local modules.
+import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import Navigation from './../../navigation/footer-navigation/footer-navigation';
 import {LinkWithIcon} from './../text-with-icon/text-with-icon';
 
@@ -12,7 +13,7 @@ import './footer.scss';
 const Footer = (props) => {
   return (
     <div className="footer">
-      <div className="footer__top">
+      <LayoutContained className="footer__top">
         <div className="footer__items-wrapper">
           <div className="footer__item footer__item--information">
             <Link to="/" className="footer__logo" activeClassName="is-active">
@@ -36,11 +37,11 @@ const Footer = (props) => {
             <div> @ossn_club </div>
           </div>
         </div>
-      </div>
+      </LayoutContained>
       <div className="footer__bottom">
-        <div className="footer__copyrights">
+        <LayoutContained className="footer__copyrights">
           <span> Copyright © 2018 Mozilla.com — All rights reserved. </span>
-        </div>
+        </LayoutContained>
       </div>
     </div>
   );
