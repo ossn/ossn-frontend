@@ -1,7 +1,11 @@
 import React from 'react';
-import OrganizationTeaser from './../organization-teaser/organization-teaser';
 import { graphql } from "gatsby"
 
+// local modules
+import OrganizationTeaser from './../organization-teaser/organization-teaser';
+import Layout5Col from './../../layouts/layout-5col/layout-5col';
+
+// styles
 import './organizations-list.scss';
 
 export default (props) => {
@@ -10,8 +14,10 @@ export default (props) => {
   });
 
   return (
-    <div className="organizations-list">
-      {organizations}
+    <div className="">
+      <Layout5Col>
+        {organizations}
+      </Layout5Col>
     </div>
   );
 }
