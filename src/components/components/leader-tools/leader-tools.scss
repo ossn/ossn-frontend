@@ -1,8 +1,9 @@
 @import './../../base-styles/init/init.scss';
 
 .leader-tool {
-  @include line-height(39px);
   @include margin-left(40px);
+  @include padding-top(9px);
+  @include padding-bottom(9px);
   border-bottom: 1px solid color('grey-underline');
   position: relative;
 
@@ -10,8 +11,6 @@
     content: 'O';
     position: absolute;
     left: -20px;
-    top: 50%;
-    transform: translateY(-50%);
   }
 
 }
