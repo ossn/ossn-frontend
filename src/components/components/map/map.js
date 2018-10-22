@@ -4,6 +4,9 @@ import React from 'react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
 import {ClubTeaser} from './../club-teaser-list/club-teaser-list';
 
+// styles
+import './map.scss';
+
 class ClubMap extends React.Component {
 
   render() {
@@ -13,10 +16,13 @@ class ClubMap extends React.Component {
     const phoenix = [42.500, -107.600];
     const dallas = [37.8155573, -108.4803483];
 
-    const clubs = [
+    const clubs = this.props.clubs || [];
+
+    const mockLocations = [
       {location: nevada, title: 'Club of nevada'},
       {location: phoenix, title: 'Club of phoenix'},
-      {location: dallas, title: 'Club of Dallas'}];
+      {location: dallas, title: 'Club of Dallas'}
+    ];
 
     const MOCKCLUB = {
       title: 'title',
@@ -27,14 +33,14 @@ class ClubMap extends React.Component {
 
     const markers = clubs.map((club, i)=>{
       return (
-        <Marker position={club.location} key={i}>
-          <Popup> <ClubTeaser club={MOCKCLUB} /> </Popup>
+        <Marker position={mockLocations[i].location} key={i}>
+          <Popup> <ClubTeaser club={club} /> </Popup>
         </Marker>)
     });
 
 
     return(
-      <div style={{height: '400px', overflow: 'hidden', minWidth: '200px', display: 'inline-block', width: '100%'}}>
+      <div style={{height: '400px', overflow: 'hidden', minWidth: '200px', display: 'inline-block', width: '100%'}} className="map">
         <Map center={position} zoom={5.25} style={{height: "400px"}}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

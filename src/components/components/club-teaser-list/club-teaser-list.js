@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'gatsby';
 
 // Local modules.
 import Layout3Col from './../../layouts/layout-3col/layout-3col';
@@ -12,18 +13,18 @@ export const ClubTeaser = (props) => {
   const image = props.club.imageUrl;
 
   return (
-    <div className={props.className}>
+    <div className={`${props.className} teaser-box`}>
       <ShadowBox>
-        <div>
-          <div>
-            <img src={image} alt={title} />
+        <div className="teaser-box__inner">
+          <div className="teaser-box__image-wrapper">
+            <img src={image} alt={title} className="teaser-box__image"/>
           </div>
-          <div>
-            <span> {title} </span>
-            <span> {subtitle}  </span>
-            <a href={link} >
-              Club page
-            </a>
+          <div className="teaser-box__text">
+            <span className="highlighted-text highlighted-text--small club-teaser__title"> {title} </span>
+            <span className=""> {subtitle}  </span>
+            <Link to="/club" className="button button--x-small">
+              Club page >
+            </Link>
           </div>
         </div>
       </ShadowBox>

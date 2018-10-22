@@ -1,0 +1,42 @@
+@import './../../base-styles/init/init';
+@import './../../base-styles/base/highlighted-text/highlighted-text';
+
+
+%map,
+.map {
+  &__popup {
+    border-radius: 2px;
+  }
+
+  &__content-wrapper {
+    margin: 0;
+  }
+
+  &__popup-title {
+    @extend %highlighted-text;
+    @extend %highlighted-text--small;
+  }
+
+  .shadow-box {
+    box-shadow: none;
+  }
+
+
+}
+
+
+// fugly
+
+.map {
+  .leaflet-popup-content-wrapper {
+    @extend %map__popup;
+  }
+
+  .leaflet-popup-content {
+    @extend %map__content-wrapper;
+  }
+
+  .club-teaser__title {
+    @extend %map__popup-title;
+  }
+}
