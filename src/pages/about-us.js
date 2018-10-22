@@ -10,6 +10,9 @@ import LayoutContained from './../components/layouts/layout-contained/layout-con
 import GatsbyConfig from './../../gatsby-config';
 import Layout2ColsUnequal from './../components/layouts/layout-2col-unequal/layout-2col-unequal';
 
+//styles
+import './../components/pages-styles/about.scss';
+
 const About = () => {
   return(
     <BasicLayout>
@@ -31,10 +34,12 @@ const About = () => {
             </p>
 
             <h2 className="title title--x-small"> What do we want to achieve? </h2>
-            <p className="text text--small">
+            <p className="text text--small about__text">
               At Mozilla, our mission is to promote openness, innovation and opportunity on the Internet. Through our Open Source Student Network (OSSN) we aim to encourage students and Clubs to fuel the Open Source movement.
+            </p>
+            <p className="text text--small  about__text">
               Our goal is to empower you to:
-              <ul>
+              <ul className="about__list">
                 <li> Build a safe and inclusive community where you can connect, collaborate and share </li>
                 <li> Contribute code to meaningful Open Source projects from around the world while advancing your skills </li>
                 <li> Set up Open Source projects that solve local problems and at the same time foster the global ecosystem </li>
@@ -53,11 +58,12 @@ const About = () => {
           </div>
           <div>
             <h2 className="title title--x-small"> What do we do? </h2>
-            <p className="text text--small">
+            <p className="text text--small  about__text">
               We’ve designed a Network that makes it easy for students to learn about and contribute to Open Source on their campuses.
-
+            </p>
+            <p className="text text--small  about__text">
               We provide you with the rclassName="text text--small"ight activities and assistance, but also with motivating challenges:
-              <ul>
+              <ul className="about__list">
                 <li> We connect your Club with resources that will help you develop new skills, </li>
                 <li> We offer ongoing support to members in the form of online 1:1 discussions, network calls and newsletters, </li>
                 <li> We present you with opportunities that match your interests, let you contribute code and therefore improve your expertise. </li>
@@ -66,10 +72,10 @@ const About = () => {
           </div>
         </Layout2ColsUnequal>
 
-        <Layout2ColsUnequal secondNarrow>
+        <Layout2ColsUnequal>
           <div>
             <h2 className="title title--x-small"> Who helps us?  </h2>
-            <p className="text text--small">
+            <p className="text text--small  about__text">
               Open Source is all about community, so we work closely with major groups and organizations already in this space like POSSE, GitHub, The GNOME Project and Red Hat. Go to our Collaborators page to discover who is sharing our mission and to find out how other contributors can get involved. We’re always looking for new organizations and individuals to drive our Network forward.
             </p>
           </div>
