@@ -21,9 +21,6 @@ class FaqItem extends React.Component {
       <div className="faq__item">
         <div>
           <div className="faq__item-title"> {this.props.item.header} </div>
-          <div onClick={this.handleToggle}> {/* Here goes the arrow */}
-            Arrow
-          </div>
         </div>
         <div className="faq__item-content"> {content} </div>
       </div>
