@@ -1,5 +1,5 @@
 @import './../../base-styles/init/init';
-@import './../../layouts/layout-base/layout-base';
+@import './../../layouts/layout-contained/layout-contained';
 
 .footer {
   width: 100%;
@@ -20,8 +20,8 @@
 
   // Footer top region.
   &__top {
-    @extend %layout-base;
-    @extend %layout-base--only-containment;
+    @extend %layout-contained;
+    @extend %layout-contained--only-containment;
   }
 
   &__items-wrapper {
@@ -94,8 +94,8 @@
   }
 
   &__copyrights {
-    @extend %layout-base;
-    @extend %layout-base--only-containment;
+    @extend %layout-contained;
+    @extend %layout-contained--only-containment;
     @include line-height(19px);
     opacity: .75;
     padding-top: 14px;

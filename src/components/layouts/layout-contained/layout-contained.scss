@@ -1,0 +1,36 @@
+// Basic layout component.
+// Add containment and paddings from the sides of the page.
+//
+// In addition to the containment it adds distances as well so a variant without
+// extra distances is needed.
+//
+// .laytout-contained - Resets the top and bottom paddings.
+
+%layout-contained,
+.laytout-contained {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 1110px + ($padding-mobile * 2);
+  padding-left: $padding-mobile;
+  padding-right: $padding-mobile;
+
+  @include breakpoint($tablet) {
+    max-width: 1110px + ($padding-tablet * 2);
+    padding-left: $padding-tablet;
+    padding-right: $padding-tablet;
+  }
+
+  @include breakpoint($desktop-large) {
+    max-width: 1110px + ($padding-desktop * 2);
+    padding-left: $padding-desktop;
+    padding-right: $padding-desktop;
+  }
+
+  &--only-containment {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
