@@ -6,10 +6,15 @@
   display: inline-block;
 
   &__title {
+    @include font-size(20px);
     text-align: left;
+    padding-bottom: 3px;
   }
 
   &__content {
-    text-align: center;
+  }
+
+  &__item {
+    margin-top: 17px;
   }
 }

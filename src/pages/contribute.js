@@ -72,3 +72,25 @@ export const query = graphql`
   }
 }
 `;
+
+
+
+// TODO: is being used as reference. Delete
+/* <div>
+  <div>
+  <h1> Opportunities </h1>
+  <p className="highlighted-text highlighted-text--intense">
+    Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet
+    Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet
+  </p>
+  </div>
+  <div className="promoted-box">
+      <h3 className="promoted-box__title"> Next steps after signing up </h3>
+    <ol className="promoted-box__content">
+      <li> Explore contribution opportunities </li>
+      <li> Reach out to  us </li>
+      <li> Explore available interships/jobs </li>
+      <li> Check the latest announcements </li>
+    </ol>
+  </div>
+</div> */
