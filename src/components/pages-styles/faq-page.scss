@@ -37,6 +37,7 @@
   &__footer {
     text-align: center;
     color: color('light-navy');
+    @include margin-top(90px);
   }
 
   &__footer-title {
