@@ -1,23 +1,34 @@
 // external modules
 import React from 'react';
-
-// internal modules
-import {InternalLinkWithIcon} from './../../components/text-with-icon/text-with-icon';
-
+import {Link} from 'gatsby';
 
 class Navigation extends React.Component {
   render() {
     return(
-      <nav aria-labelledby="footer-navigation">
-        <h2 className="visually-hidden" id="footer-navigation"> Footer Navigation </h2>
-        <ul>
-          <li> <InternalLinkWithIcon link="/find-club" label="Clubs" /> </li>
-          <li> <InternalLinkWithIcon link="/contribute" label="Opportunities" /> </li>
-          <li> <InternalLinkWithIcon link="/about-us" label="About us" /> </li>
-          <li> <InternalLinkWithIcon link="/members" label="Members" /> </li>
-          <li> <InternalLinkWithIcon link="/organizations" label="Organizations" /> </li>
+      <section className="footer__section footer__section--navigation">
+        <h5 className="footer__heading"> Navigate </h5>
+        <ul  className="footer__list">
+          <li>
+            <Link className="footer__link" link="/find-club">Clubs</Link>
+          </li>
+          <li>
+            <Link className="footer__link" link="/members">Members</Link>
+          </li>
+          <li>
+            <Link className="footer__link" link="/contribute">Opportunities</Link>
+          </li>
+          {/*TODO Add correct link*/}
+          <li>
+            <Link className="footer__link" link="/">Login/Signup</Link>
+          </li>
+          <li>
+            <Link className="footer__link" link="/organizations">Affiliations</Link>
+          </li>
+          <li>
+            <Link className="footer__link" link="/about-us">About us</Link>
+          </li>
         </ul>
-      </nav>
+      </section>
     )
   }
 }

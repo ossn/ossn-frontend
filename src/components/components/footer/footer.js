@@ -5,7 +5,6 @@ import {Link} from 'gatsby';
 // Local modules.
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import Navigation from './../../navigation/footer-navigation/footer-navigation';
-import {LinkWithIcon} from './../text-with-icon/text-with-icon';
 
 // Styles.
 import './footer.scss';
@@ -13,36 +12,53 @@ import './footer.scss';
 const Footer = (props) => {
   return (
     <div className="footer">
-      <LayoutContained className="footer__top">
-        <div className="footer__items-wrapper">
-          <div className="footer__item footer__item--information">
-            <Link to="/" className="footer__logo" activeClassName="is-active">
-              <span className="footer__ossn-logo">Open Source Student Network</span>
-              <span className="footer__mozilla-logo">mozilla</span>
-            </Link>
-            <p> A global non-profit dedicated to putting you in control of your online experience and shaping the future of the web for the public good. Visit us at mozilla.org </p>
-            <ul className="footer__information-link-list">
-              <li className="footer__information-link"> <LinkWithIcon label="License" link="https://google.com" /> </li>
-              <li className="footer__information-link"> <LinkWithIcon label="Legal" link="https://google.com" /> </li>
-              <li className="footer__information-link"> <LinkWithIcon label="Community" link="https://google.com" /> </li>
-              <li className="footer__information-link"> <LinkWithIcon label="Privacy" link="https://google.com" /> </li>
+      <LayoutContained className="footer__inner">
+        <nav className="footer__primary">
+          <Link to="/" className="footer__primary-logo" activeClassName="is-active">
+            <span className="footer__ossn-logo">Open Source Student Network</span>
+            <span className="footer__mozilla-logo">Mozilla</span>
+          </Link>
+
+          <div className="footer__sections">
+            <Navigation />
+            <section className="footer__section footer__section--social">
+              <h5 className="footer__heading"> Keep in touch </h5>
+              <ul className="footer__list">
+                <li>
+                  {/*TODO add correct url*/}
+                  <a className="footer__link" href="/">Our blog</a>
+                </li>
+                <li>
+                  <a className="footer__link" href="/">Facebook page</a>
+                </li>
+                <li>
+                  <a  className="footer__link"href="/">Twitter page</a>
+                </li>
+              </ul>
+            </section>
+          </div>
+        </nav>
+
+        <nav className="footer__secondary">
+          <div className="footer__legal">
+            <p className="footer__license">
+              Portions of this content are ©1998–2018 by individual mozilla.org contributors.
+              Content available under a <a rel="license" href="https://www.mozilla.org/foundation/licensing/website-content/">Creative Commons license</a>.
+            </p>
+            <ul className="footer__terms">
+              <li>
+                <a rel="nofollow" href="https://www.mozilla.org/privacy/websites/">Website Privacy Notice</a>
+              </li>
+              <li>
+                <a rel="nofollow" href="https://www.mozilla.org/privacy/websites/#cookies">Cookies</a>
+              </li>
+              <li>
+                <a rel="nofollow" href="https://www.mozilla.org/about/legal/">Legal</a>
+              </li>
             </ul>
           </div>
-          <div className="footer__item footer__item--navigation">
-            <Navigation />
-          </div>
-          <div className="footer__item footer__item--social">
-            <div> Our blog</div>
-            <div> Facebook page </div>
-            <div> @ossn_club </div>
-          </div>
-        </div>
+        </nav>
       </LayoutContained>
-      <div className="footer__bottom">
-        <LayoutContained className="footer__copyrights">
-          <span> Copyright © 2018 Mozilla.com — All rights reserved. </span>
-        </LayoutContained>
-      </div>
     </div>
   );
 };

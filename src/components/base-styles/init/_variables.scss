@@ -134,9 +134,11 @@ $rem-fallback:      false;
 // Breakpoints used.
 // Use with @include breakpoint($tablet) syntax.
 // Use with @include breakpoint(0 ($tablet - 1)) syntax.
+$mobile-small: 480px;
 $mobile: 576px;
 $tablet: 768px;
 $desktop: 992px;
+$desktop-medium: 1056px;
 $desktop-large: 1200px;
 
 // Custom Grid Gutters.

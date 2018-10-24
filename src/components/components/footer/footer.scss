@@ -3,94 +3,217 @@
 .footer {
   width: 100%;
   color: color('white');
-  background-image: linear-gradient(color('footer-bg-dark'), color('footer-bg-light'));
-
-  ul {
-    list-style: none;
-  }
+  background-color: color('black');
+  @include padding-top(24px);
 
   a {
     color: color('white');
 
-    &:hover {
+    &:hover,
+    &:focus {
+      color: color('white');
       text-decoration: underline;
     }
   }
 
-  // Footer top region.
-  &__items-wrapper {
-    display: flex;
-    padding: 75px 0 30px;
-    justify-content: space-between;
+  &__inner {
+    @include padding-top(24px);
+    @include padding-bottom(24px);
+    min-width: 304px;
   }
 
-  &__item {
-    min-width: 30%;
+  // Footer top region.
+  &__primary {
+    @include margin(0 auto 48px);
 
-    &--information {
-      flex-grow: 1;
+    @include breakpoint($tablet) {
+      @include padding-bottom(64px);
+      border-bottom: 1px solid color('grey-mozilla');
+    }
+
+    @include breakpoint($desktop-medium) {
+      @include padding-bottom(48px);
+      @include margin-bottom(32px);
+      display: flex;
+    }
+  }
+
+  &__sections {
+    @include breakpoint($mobile-small) {
+      display: flex;
+    }
+
+    @include breakpoint($desktop-medium) {
+      width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &__section {
+    width: 100%;
+    @include breakpoint($mobile-small) {
+
+      &:nth-child(2n + 1) {
+        padding-right: 24px;
+      }
+
+      &:nth-child(2n) {
+        padding-left: 24px;
+      }
+    }
+
+    @include breakpoint($desktop-medium) {
+      &:nth-child(2n + 1) {
+        padding-right: 0;
+      }
+
+      &:nth-child(2n) {
+        padding-left: 0;
+      }
+    }
+
+
+    &--social {
+      @include breakpoint($desktop-medium) {
+        width: 33.34%;
+      }
     }
 
     &--navigation {
-      flex-grow: 2;
+      @include breakpoint($desktop-medium) {
+        width: 66.66%;
+
+        .footer__list {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          height: 97px;
+          max-height: 97px;
+
+          li {
+            width: 50%;
+            padding-right: 24px;
+          }
+        }
+      }
     }
 
-    &--social {
-      flex-grow: 1;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+  }
+
+  // Footer headings.
+  &__heading {
+    @include font-size(16px);
+    @include line-height(24px);
+    letter-spacing: 0;
+    font-family: $open-sans;
+    font-weight: bold;
+    color: color('white');
+    border-bottom: 1px solid color('grey-mozilla');
+    padding: 16px 0;
+
+    @include breakpoint($tablet) {
+      border-bottom: 0;
+      padding: 8px 0;
     }
   }
 
-  &__information-link-list {
-    display: flex;
-    justify-content: space-between;
+  // Footer lists.
+  &__list {
+    @include margin-bottom(32px);
+    margin-top: 0;
+    list-style: none;
     padding: 0;
-    padding-right: 30px;
+
+    li {
+      margin: 0;
+      padding: 4px 0;
+
+      &:first-child {
+        margin-top: 8px;
+      }
+    }
+
+    @include breakpoint($tablet) {
+      li {
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
   }
 
-  // Logo.
-  &__logo {
-    margin-right: auto;
+  // Footer navigation links.
+  &__link {
+    @include font-size(16px);
+    @include line-height(24px);
+  }
+
+  &__primary-logo {
+    color: color('white');
+    width: 302px;
+    display: block;
+    margin-bottom: 32px;
+
+    @include breakpoint($desktop-medium) {
+      margin-right: 55px;
+      margin-bottom: 0;
+    }
   }
 
   &__ossn-logo {
     font-family: $zilla-slab;
-    width: 202px;
-    font-size: 26px;
-    line-height: 28px;
+    font-size: 34px;
+    line-height: 35px;
     font-weight: 600;
-    letter-spacing: 0.3px;
-    color: color('white');
+    padding-bottom: 5px;
     display: block;
   }
 
   &__mozilla-logo {
-    width: 65px;
-    height: 21px;
-    transition: background-size .3s cubic-bezier(0.19, 1, 0.22, 1);
-    background-image: url('./mozilla-wordmark-black.svg');
-    background-repeat: no-repeat;
+    width: 85px;
+    height: 27px;
     display: block;
+    transition: background-size .3s cubic-bezier(0.19, 1, 0.22, 1);
+    background-image: url('mozilla-wordmark-white.svg');
+    background-repeat: no-repeat;
     background-size: contain;
     overflow: hidden;
     text-indent: 120%;
     white-space: nowrap;
-    background-color: color('white');
   }
 
   // Footer bottom region.
-  &__bottom {
-    width: 100%;
-    background: rgba(0,0,0,0.10);
-    text-align: center;
+  &__secondary {
+    @include font-size(12px);
+    @include line-height(16px);
+
+    a {
+      text-decoration: underline;
+    }
   }
 
-  &__copyrights {
-    @include line-height(19px);
-    opacity: .75;
-    padding-top: 14px;
-    padding-bottom: 17px;
+  &__licence {
+    @include margin-bottom(32px);
+
+
+    @include breakpoint($tablet) {
+      max-width: 66%;
+    }
+  }
+
+  &__terms {
+    margin: 0 0 15px 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      @include padding(0 24px 16px 0);
+      display: inline-block;
+    }
+
+    @include breakpoint($tablet) {
+      max-width: 66%;
+    }
   }
 }
