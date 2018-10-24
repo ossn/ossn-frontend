@@ -1,0 +1,10 @@
+@import './../init/init';
+
+.slice {
+  width: 100%;
+  background-color: color('slice-bg');
+
+  &--light {
+    background-color: color('slice-bg-light');
+  }
+}
