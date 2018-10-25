@@ -29,7 +29,7 @@ const About = () => {
             <p className="highlighted-text">
               We believe Open Source is the engine that powers innovation. That’s why we’re building and supporting a Network of university and college Clubs eager to learn about, contribute to and create Open Source projects.
             </p>
-            <p className="highlighted-text--small">
+            <p className="highlighted-text highlighted-text--small">
               Focused on campuses in the US and Canada, our program brings students together with mentors, organizations and professionals who are actively engaged in advancing Open Source.
             </p>
 
