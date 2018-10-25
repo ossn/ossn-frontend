@@ -6,6 +6,7 @@ import BasicLayout from '../components/layouts/layout-base/layout-base';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 import OrganizationList from './../components/components/organizations-list/organizations-list';
 import BecomeMember from './../components/components/home-become-member/home-become-member';
+import ImageBox from './../components/components/image-box/image-box';
 
 const IndexPage = (props) => {
   return (
@@ -18,6 +19,7 @@ const IndexPage = (props) => {
           <div >
             <div>
               <div>
+                <ImageBox titleLargeTop="Read" titleLargeBottom="blog!" image="./images/panel-typewriter.jpg"/>
                 <img src="#" alt="read our blog update" />
                 <img src="#" alt="Mozilla news" />
               </div>
