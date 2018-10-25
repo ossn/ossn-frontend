@@ -10,12 +10,13 @@ import './organizations-list.scss';
 
 export default (props) => {
   const organizations = props.organizations.map((node, i)=>{
-    return <OrganizationTeaser organization={node.org} key={i} />
+    return <div key={i}><OrganizationTeaser organization={node.org}/></div>
   });
 
   return (
     <div className="">
-      <Layout5Col>
+      <h3 className="title title--medium title--centered">Our partners</h3>
+      <Layout5Col horizontalGutters verticalGutters>
         {organizations}
       </Layout5Col>
     </div>
@@ -27,6 +28,6 @@ export const query = graphql`
     title
     image
     link
-    descripion
+    description
   }
 `;

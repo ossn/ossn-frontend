@@ -6,7 +6,7 @@ const OrganizationTeaser = (props) => {
   }
   return (
     <a href={props.organization.link || "#"} className={props.className || ''}>
-      <img scr={props.organization.image || "#"} alt={props.organization.title} width="100px"/>
+      <img src={props.organization.image || "#"} alt={props.organization.title} width="100px"/>
     </a>
   );
 };
