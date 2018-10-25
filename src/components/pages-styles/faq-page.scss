@@ -29,9 +29,14 @@
 
   }
 
+  &__item-content {
+    color: color('grey-dark');
+  }
+
   &__item-title {
     @extend %text;
     @extend %text--small;
+    color: color('grey-dark');
   }
 
   &__footer {
