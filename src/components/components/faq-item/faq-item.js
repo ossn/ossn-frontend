@@ -20,7 +20,7 @@ class FaqItem extends React.Component {
     return (
       <div className="faq__item">
         <div>
-          <div className="faq__item-title"> {this.props.item.header} </div>
+          <div className="faq__item-title" onClick={this.handleToggle}> {this.props.item.header} </div>
         </div>
         <div className="faq__item-content"> {content} </div>
       </div>
