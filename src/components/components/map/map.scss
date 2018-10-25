@@ -6,9 +6,14 @@
 .map {
   &__popup {
     border-radius: 2px;
+
+    .teaser-box {
+      margin: 0;
+    }
   }
 
   &__content-wrapper {
+    margin: 0;
     margin: 0;
   }
 
