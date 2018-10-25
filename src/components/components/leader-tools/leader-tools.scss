@@ -15,6 +15,10 @@
 
   &__title {
     color: color('grey-dark');
-  }
 
+    &:hover,
+    &:focus {
+      color: color('brand');
+    }
+  }
 }
