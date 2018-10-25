@@ -7,6 +7,7 @@ import LayoutContained from './../components/layouts/layout-contained/layout-con
 import OrganizationList from './../components/components/organizations-list/organizations-list';
 import BecomeMember from './../components/components/home-become-member/home-become-member';
 import ImageBox from './../components/components/image-box/image-box';
+import BlockquoteBox from './../components/components/blockquote-box/blockquote-box';
 
 const IndexPage = (props) => {
   return (
@@ -19,18 +20,12 @@ const IndexPage = (props) => {
           <div >
             <div>
               <div>
-                <ImageBox titleLargeTop="Read" titleLargeBottom="blog!" image="./images/panel-typewriter.jpg"/>
-                <img src="#" alt="read our blog update" />
-                <img src="#" alt="Mozilla news" />
+                <ImageBox titleLargeTop="Read" titleSmall="our updated" titleLargeBottom="blog!" image="./../components/components/image-box/image-box/images/panel-typewriter.jpg"/>               <ImageBox titleLargeTop="MozFest is over :-(" titleSmall="But you can re-live it with our photos!"/>
+                <ImageBox titleLargeTop="Fixme" titleSmall="New kid on the block!"/>
+                <ImageBox titleSmall="See the all-new" titleLargeBottom="Opportunities!"/>
+                <ImageBox titleLargeTop="Listen" titleSmall="to our" titleLargeBottom="podcast!"/>
+                <BlockquoteBox blockquote="In open source, we feel strongly that to really do something well, you have to get a lot of people involved." author="Linus Torvalds" />
               </div>
-              <div>
-                <img src="#" alt="In open source, we feel strongly..." />
-                <img src="#" alt="opportunities" />
-              </div>
-            </div>
-            <div>
-              <img src="#" alt="fix me" />
-              <img src="#" alt="liste to our podcast" />
             </div>
           </div>
         </div>
