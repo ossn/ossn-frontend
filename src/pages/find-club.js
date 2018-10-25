@@ -21,7 +21,7 @@ class Clubs extends React.Component {
   constructor() {
     super();
     this.state = {
-      view: 'map',
+      view: 'list',
       searchString: ''
     };
     this.handleSearch = this.handleSearch.bind(this)
@@ -63,8 +63,8 @@ class Clubs extends React.Component {
         <LayoutContained>
           <h1> Clubs </h1>
           <ToggleFilter onClick={this.handleToggleMap}
-          active={snapshot.view === 'list'}
-          left="map" right="list" />
+          active={snapshot.view === 'map'}
+          left="list" right="map" />
           <SearchFilter placeholder="Filter" onChange={this.handleSearch}/>
           {content}
         </LayoutContained>
