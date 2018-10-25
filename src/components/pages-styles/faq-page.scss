@@ -1,11 +1,11 @@
-@import './../base-styles/init/init.scss';
+@import './../base-styles/init/init';
 @import './../base-styles/base/normalize';
 
 .faq {
 
   &__header {
-      text-align: center;
-      margin-bottom: 84px;
+    text-align: center;
+    margin-bottom: 84px;
   }
 
   &__title {
@@ -23,6 +23,7 @@
   &__group-header {
     width: 100%;
     text-align: center;
+    padding-top: 15px;
   }
 
   &__item {
@@ -30,13 +31,12 @@
   }
 
   &__item-content {
-    color: color('grey-dark');
+    color: color('grey');
   }
 
   &__item-title {
     @extend %text;
-    @extend %text--small;
-    color: color('grey-dark');
+    @extend %text--medium;
   }
 
   &__footer {
