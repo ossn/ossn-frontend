@@ -26,13 +26,15 @@ const About = () => {
             <p className="highlighted-text">
               We believe Open Source is the engine that powers innovation. That’s why we’re building and supporting a Network of university and college Clubs eager to learn about, contribute to and create Open Source projects.
             </p>
-            <p className="highlighted-text--small">
+            <p className="highlighted-text highlighted-text--small">
               Focused on campuses in the US and Canada, our program brings students together with mentors, organizations and professionals who are actively engaged in advancing Open Source.
             </p>
 
             <h2 className="title title--x-small"> What do we want to achieve? </h2>
             <p className="text text--small">
               At Mozilla, our mission is to promote openness, innovation and opportunity on the Internet. Through our Open Source Student Network (OSSN) we aim to encourage students and Clubs to fuel the Open Source movement.
+            </p>
+            <p className="text text--small">
               Our goal is to empower you to:
               <ul>
                 <li> Build a safe and inclusive community where you can connect, collaborate and share </li>
@@ -55,7 +57,8 @@ const About = () => {
             <h2 className="title title--x-small"> What do we do? </h2>
             <p className="text text--small">
               We’ve designed a Network that makes it easy for students to learn about and contribute to Open Source on their campuses.
-
+            </p>
+            <p className="text text--small">
               We provide you with the rclassName="text text--small"ight activities and assistance, but also with motivating challenges:
               <ul>
                 <li> We connect your Club with resources that will help you develop new skills, </li>
@@ -66,7 +69,7 @@ const About = () => {
           </div>
         </Layout2ColsUnequal>
 
-        <Layout2ColsUnequal secondNarrow>
+        <Layout2ColsUnequal>
           <div>
             <h2 className="title title--x-small"> Who helps us?  </h2>
             <p className="text text--small">
