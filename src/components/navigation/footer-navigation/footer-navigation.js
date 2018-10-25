@@ -4,8 +4,11 @@ import {Link} from 'gatsby';
 
 class Navigation extends React.Component {
   render() {
+    let classes = ['footer__section', 'footer__section--navigation'];
+    if (this.props.collapsible) classes.push('is-collapsible');
+
     return(
-      <section className="footer__section footer__section--navigation">
+      <section className={classes.join(' ')}>
         <h5 className="footer__heading"> Navigate </h5>
         <ul  className="footer__list">
           <li>
