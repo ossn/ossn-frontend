@@ -10,11 +10,18 @@ export default (props) => {
     return <FaqItem item={item} key={i} />
   });
 
-  const classes = props.className
+  const classes = `${props.className} faq__group`;
   return (
     <div className={classes}>
       <ShadowBox>
-        {items}
+        <div className="faq__group-header">
+          <h2 title="title title--x-small">
+            This is a header
+          </h2>
+        </div>
+        <div>
+          {items}
+        </div>
       </ShadowBox>
     </div>
   )

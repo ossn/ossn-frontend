@@ -13,6 +13,9 @@ import Layout2Cols from './../components/layouts/layout-2col/layout-2col';
 import GatsbyConfig from './../../gatsby-config';
 import FaqGroup from './../components/components/faq-group/faq-group';
 
+// styles
+import './../components/pages-styles/faq-page.scss';
+
 const Questions = (props) => {
 
   // REVIEW:
@@ -29,13 +32,13 @@ const Questions = (props) => {
       </Helmet>
 
       <LayoutContained>
-        <div>
-          <h1> FAQ </h1>
-          <p>
-            The most Frequently Asked Questions on OSSN. <br />
-            And their answers!
-          </p>
-        </div>
+        <div className="faq__header">
+        <h1 className="faq__title"> FAQ </h1>
+        <p className="faq__subtitle">
+          The most Frequently Asked Questions on OSSN. <br />
+          And their answers!
+        </p>
+      </div>
 
         <Layout2Cols   horizontalGutters>
           <div>
@@ -47,15 +50,15 @@ const Questions = (props) => {
             <FaqGroup group={group3}  />
           </div>
         </Layout2Cols>
-
-        <div>
-          <h2> Have more questions? </h2>
-          <p>
-            Cool! Reach out to us to
-            <span> <a href="#"> Facebok </a> </span> or
-            <span> <a href="#"> Twitter </a> </span>
-          </p>
-        </div>
+        
+        <div className="faq__footer">
+        <h2 className="faq__footer-title"> Have more questions? </h2>
+        <p className="faq__footer-text">
+          Cool! Reach out to us to
+          <span> <a href="#"> Facebok </a> </span> or
+          <span> <a href="#"> Twitter </a> </span>
+        </p>
+      </div>
       </LayoutContained>
     </BasicLayout>
   );

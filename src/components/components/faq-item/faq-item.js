@@ -18,14 +18,11 @@ class FaqItem extends React.Component {
     const content = snapshot.open ? this.props.item.body : '';
 
     return (
-      <div>
+      <div className="faq__item">
         <div>
-          <div> {this.props.item.header} </div>
-          <div onClick={this.handleToggle}> {/* Here goes the arrow */}
-            Arrow
-          </div>
+          <div className="faq__item-title" onClick={this.handleToggle}> {this.props.item.header} </div>
         </div>
-        <div> {content} </div>
+        <div className="faq__item-content"> {content} </div>
       </div>
     );
   }
