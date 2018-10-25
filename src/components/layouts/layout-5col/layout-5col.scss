@@ -35,22 +35,6 @@
     }
   }
 
-  // --no-tablet-break variant. It makes the 3 columns appear on tablet.
-  // There is no intermediate 2 column step.
-  &--no-tablet-break {
-    %layout-5col__col,
-    .layout-5col--col,
-    .layout-5col__col {
-      @include breakpoint($tablet) {
-        width: (100 / 5) * 1%;
-
-        &:nth-child(3n + 1) {
-          clear: left;
-        }
-      }
-    }
-  }
-
   // --only-desktop-3 variant. It makes the 3 columns appear on desktop.
   // There is no intermediate 2 column step.
   &--only-desktop-5 {
