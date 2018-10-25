@@ -6,17 +6,20 @@ import React from 'react';
 import Layout2Col from './../../layouts/layout-2col/layout-2col';
 import ShadowBox from './../shadow-box/shadow-box';
 
+import './leader-tools-list.scss';
+import './leader-tools.scss';
+
 const LeaderTool = (props) => {
 
   const title = props.tool.title;
   const icon = props.tool.icon;
   const url = props.tool.url;
 
+  // <div className="leader-tool__icon"> {icon} </div>
   return (
-    <div>
-      <a href="">
-        <div> {icon} </div>
-        <div> {title} </div>
+    <div className="leader-tool">
+      <a href="#" className="leader-tool__link">
+        <div className="leader-tool__title"> {title} </div>
       </a>
     </div>
   );
@@ -31,10 +34,12 @@ export const LeaderToolList = (props) => {
   });
 
   return (
-    <div>
-        <h2> {title} </h2>
+    <div className="leader-tools-list__wrapper">
+        <h2 className="leader-tools-list__title"> {title} </h2>
         <ShadowBox zeroRadius zeroPadding>
-          {tools}
+          <div className="leader-tools-list">
+            {tools}
+          </div>
       </ShadowBox>
     </div>
   )

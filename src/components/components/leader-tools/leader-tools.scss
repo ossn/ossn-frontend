@@ -1,0 +1,20 @@
+@import './../../base-styles/init/init.scss';
+
+.leader-tool {
+  @include margin-left(40px);
+  @include padding-top(9px);
+  @include padding-bottom(9px);
+  border-bottom: 1px solid color('grey-underline');
+  position: relative;
+
+  &::before {
+    content: 'O';
+    position: absolute;
+    left: -20px;
+  }
+
+  &__title {
+    color: color('grey-dark');
+  }
+
+}
