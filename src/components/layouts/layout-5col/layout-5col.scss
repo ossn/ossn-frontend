@@ -1,0 +1,148 @@
+@import "../../base-styles/init/init";
+
+// Responsive 5-column grid
+//
+// The `.layout-5col` layout is a responsive grid layout that is:
+// - 1 column at mobile sizes.
+// - 2 columns at tablet sizes.
+// - 5 columns at desktop sizes.
+//
+// The `.layout-5col` class is used on the container div for the layout. A *grid
+// item* in the container can be created using the following class:
+// - `.layout-5col__col` : 1-column wide grid item spanning  1 åcolumn.
+//
+// REVIEW: the variants
+// .layout-5col--only-desktop-3 - 3 columns only on desktop. There is no intermediate 2 column step.
+// .layout-5col--no-tablet-break - 3 columns on tablet. There is no intermediate 2 column step.
+// .layout-5col--with-horizontal-gutters - Gutters on both sides, needs wrapper with overflow hidden (like layout-center).
+// .layout-5col--with-vertical-gutters - Gutters on top and bottom.
+
+
+.layout-5col,
+%layout-5col {
+  min-width: 100%;
+
+  // Two columns
+  @include breakpoint($tablet) {
+    display: flex;
+    flex-wrap: wrap;
+
+    &--col,
+    &__col {
+      width: (100 / 2) * 1%;
+      float: left;
+      //flex-grow: 2; // If a column is missing it will grow to cover it.
+    }
+  }
+
+  // --only-desktop-3 variant. It makes the 3 columns appear on desktop.
+  // There is no intermediate 2 column step.
+  &--only-desktop-5 {
+    %layout-5col__col,
+    .layout-5col--col,
+    .layout-5col__col {
+      @include breakpoint($tablet ($desktop - 1px)) {
+        width: 100%;
+        float: none;
+      }
+    }
+  }
+
+  @include breakpoint($tablet ($desktop - 1px)) {
+    &--col,
+    &__col {
+      &:nth-child(4n + 1) {
+        clear: left;
+      }
+    }
+  }
+
+  // Three columns.
+  @include breakpoint($desktop) {
+    &--col,
+    &__col {
+      width: (100 / 5) * 1%;
+
+      &:nth-child(5n + 1) {
+        clear: left;
+      }
+    }
+  }
+
+  // Variant with horizontal gutters.
+  &--with-horizontal-gutters {
+    // Two columns.
+    @include breakpoint($tablet ($desktop-large - 1px)) {
+      margin-left: -$gutters-tablet / 2;
+      margin-right: -$gutters-tablet / 2;
+
+      .layout-5col,
+      %layout-5col {
+        &--col,
+        &__col {
+          padding-left: $gutters-tablet / 2;
+          padding-right: $gutters-tablet / 2;
+        }
+      }
+    }
+
+    // Three columns.
+    @include breakpoint($desktop-large) {
+      margin-left: -$gutters-desktop / 2;
+      margin-right: -$gutters-desktop / 2;
+
+      .layout-5col,
+      %layout-5col {
+        &--col,
+        &__col {
+          padding-left: $gutters-desktop / 2;
+          padding-right: $gutters-desktop / 2;
+        }
+      }
+    }
+  }
+
+  // Variant with top and bottom gutters.
+  &--with-vertical-gutters {
+    padding-top: $gutters-mobile / 2;
+    padding-bottom: $gutters-mobile / 2;
+
+    .layout-5col,
+    %layout-5col {
+      &--col,
+      &__col {
+        padding-top: $gutters-mobile / 2;
+        padding-bottom: $gutters-mobile / 2;
+      }
+    }
+
+    // Two columns.
+    @include breakpoint($tablet) {
+      padding-top: $gutters-tablet / 2;
+      padding-bottom: $gutters-tablet / 2;
+
+      .layout-5col,
+      %layout-5col {
+        &--col,
+        &__col {
+          padding-top: $gutters-tablet / 2;
+          padding-bottom: $gutters-tablet / 2;
+        }
+      }
+    }
+
+    @include breakpoint($desktop-large) {
+      padding-top: $gutters-desktop / 2;
+      padding-bottom: $gutters-desktop / 2;
+
+      .layout-5col,
+      %layout-5col {
+        &--col,
+        &__col {
+          padding-top: $gutters-desktop / 2;
+          padding-bottom: $gutters-desktop / 2;
+        }
+      }
+    }
+  }
+}
