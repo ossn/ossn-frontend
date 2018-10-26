@@ -11,7 +11,7 @@ import './../teaser-box/teaser-box';
 
 const TrainingResource = (props) => {
   const title = props.resource.title;
-  const url = props.resource.url;
+  const url = props.resource.link;
   const icon = props.resource.imageUrl;
 
   const classes=`${props.className}`;
