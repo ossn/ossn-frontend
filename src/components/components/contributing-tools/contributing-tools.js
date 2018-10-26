@@ -29,7 +29,7 @@ export const ContributingToolSet = (props) => {
 export const query = graphql`
   fragment MemberTools on ToolsForContributingJson {
     title
-    url
-    icon
+    link
+    imageUrl
   }
 `;

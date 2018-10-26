@@ -11,11 +11,10 @@ import './teaser-box.scss';
 
 export const TeaserBox = (props) => {
   const resource = props.resource;
-  // TODO: remove the Lorem ipsum
-  const title = resource.shortDescription || 'Project GNOME maps was just added into the list of the available projects for contributions.';
-  const date = verboseDate(resource.updatedAt) ;
-  const target = resource.url;
-  const image = resource.image || 'https://www.publicdomainpictures.net/pictures/230000/nahled/eins-bis-null-1498972707SZr.jpg';
+  const title = resource.title;
+  const date = verboseDate(resource.date) ;
+  const target = resource.link;
+  const image = resource.imageUrl;
 
   const classes = [props.className, 'teaser-box'];
   return (

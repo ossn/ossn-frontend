@@ -19,10 +19,11 @@ export default (props) => {
 export const query = graphql`
   fragment JobBoardListing on OSSNAPI {
     jobs {
-      description
-      sortDescription
-      url
-      updatedAt
+      description: description
+      title: sortDescription
+      link: url
+      date: updatedAt
+      imageUrl
     }
   }
 `;

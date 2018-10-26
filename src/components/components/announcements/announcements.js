@@ -15,13 +15,15 @@ export default (props) => {
   );
 }
 
+// TODO: request the shortDescription typo fix
 export const query = graphql`
   fragment announcements on OSSNAPI {
     announcements {
-      description
-      sortDescription
-      url
-      updatedAt
+      description: description
+      title: sortDescription
+      link: url
+      date: updatedAt
+      imageUrl
     }
   }
 `;

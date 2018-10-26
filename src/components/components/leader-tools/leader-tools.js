@@ -10,15 +10,14 @@ import './leader-tools-list.scss';
 import './leader-tools.scss';
 
 const LeaderTool = (props) => {
-
+  console.log(props.tool);
   const title = props.tool.title;
-  const icon = props.tool.icon;
-  const url = props.tool.url;
+  const icon = props.tool.imageUrl;
+  const url = props.tool.link;
 
-  // <div className="leader-tool__icon"> {icon} </div>
   return (
     <div className="leader-tool">
-      <a href="#" className="leader-tool__link">
+      <a href={url} className="leader-tool__link">
         <div className="leader-tool__title"> {title} </div>
       </a>
     </div>

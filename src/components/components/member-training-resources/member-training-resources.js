@@ -12,8 +12,7 @@ import './../teaser-box/teaser-box';
 const TrainingResource = (props) => {
   const title = props.resource.title;
   const url = props.resource.url;
-  // TODO: remove the fallback image
-  const icon = props.resource.icon || 'https://www.publicdomainpictures.net/pictures/230000/nahled/eins-bis-null-1498972707SZr.jpg';
+  const icon = props.resource.imageUrl;
 
   const classes=`${props.className}`;
   return  (
@@ -60,7 +59,7 @@ export const query = graphql`
   fragment TrainingResources on TrainingResourcesJson {
     title
     description
-    image
-    url
+    imageUrl
+    link
   }
 `;

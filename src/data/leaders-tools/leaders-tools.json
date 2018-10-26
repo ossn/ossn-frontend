@@ -2,64 +2,64 @@
   "Project Management tools": [
     {
       "title": "SRCT Trello Board",
-      "url": "#",
-      "icon": "trello"
+      "link": "#",
+      "imageUrl": "trello"
     },{
       "title": "ACM Gitlab board",
-      "url": "#",
-      "icon": "gitlab"
+      "link": "#",
+      "imageUrl": "gitlab"
     },{
       "title": "Zenhab Issue Management",
-      "url": "#",
-      "icon": "zenhub"
+      "link": "#",
+      "imageUrl": "zenhub"
     },{
       "title": "Geekbot Asynchronous Slack Meetings",
-      "url": "#",
-      "icon": "geekbot"
+      "link": "#",
+      "imageUrl": "geekbot"
     }
   ],
 
   "Code of Conduct examples": [
     {
       "title": "RCOS Conde of Conduct",
-      "url": "#",
-      "icon": "trello"
+      "link": "#",
+      "imageUrl": "trello"
     },{
       "title": "UF OSC Code of Conduct",
-      "url": "#",
-      "icon": "gitlab"
+      "link": "#",
+      "imageUrl": "gitlab"
     }
   ],
 
   "Various tools": [
     {
       "title": "Voting software",
-      "url": "#",
-      "icon": "trello"
+      "link": "#",
+      "imageUrl": "trello"
     },{
       "title": "Build your club's website using github pages",
-      "url": "#",
-      "icon": "trello"
+      "link": "#",
+      "imageUrl": "trello"
     }
   ],
 
   "Useful resources running a club": [
     {
       "title": "tips for safe and inclusive events",
-      "url": "#",
-      "icon": "trello"
+      "link": "#",
+      "imageUrl": "trello"
     },{
       "title": "Year planning guidance",
-      "url": "#",
-      "icon": "gitlab"
+      "link": "#",
+      "imageUrl": "gitlab"
     },{
       "title": "Encouraging participatory & Playful Learning",
-      "url": "#",
-      "icon": "zenhub"
+      "link": "#",
+      "imageUrl": "zenhub"
     },{
       "title": "Uf OSC Resources repo",
-      "url": "#",
-      "icon": "geekbot"
+      "link": "#",
+      "imageUrl": "geekbot"
     }
   ]
 }

@@ -32,8 +32,7 @@ class Contribute extends React.Component {
           <div>
           <h1> Opportunities </h1>
           <p className="highlighted-text highlighted-text--intense">
-            Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet
-            Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet
+            We bring you the best opportunities to contribute code. Practice your skills by taking part in compelling Open Source projects that match your interests! 
           </p>
           </div>
           <div className="promoted-box">

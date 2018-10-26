@@ -12,8 +12,8 @@ import './communication-channel-list.scss';
 
 export const Channel = (props) => {
   const title = props.channel.title;
-  const url = props.channel.url;
-  const icon = props.channel.icon;
+  const url = props.channel.link;
+  const icon = props.channel.imageUrl;
 
   return  (
     <a href={url} className="communication-channel">
@@ -42,7 +42,7 @@ export const ChannelList = (props) => {
 export const query = graphql`
   fragment CommunicationChannel on CommunicationChannelsJson {
     title
-    url
-    icon
+    link
+    imageUrl
   }
 `;
