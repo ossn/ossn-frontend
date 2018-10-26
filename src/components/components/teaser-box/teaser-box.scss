@@ -59,5 +59,16 @@
       margin-top: 25px;
     }
 
+    .teaser-box {
+
+      &__description {
+        color: color('grey-dark');
+      }
+
+      &__wrapper-link {
+        display: flex;
+      }
+    }
+
   }
 }
