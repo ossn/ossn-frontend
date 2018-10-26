@@ -18,7 +18,9 @@ export const Channel = (props) => {
   return  (
     <a href={url} className="communication-channel">
       <img src={icon} alt={title} className="communication-channel__image"/>
-      <span className="communication-channel__title"> {title} </span>
+      <span className="communication-channel__title">
+        {title}
+      </span>
     </a>
   );
 };

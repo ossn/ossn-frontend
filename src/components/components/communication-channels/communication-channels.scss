@@ -1,10 +1,17 @@
+@import './../../base-styles/init/init.scss';
+
 .communication-channel {
-  // display: inline-block;
   text-align: center;
 
   &__title {
+    @include font-size(20px);
     display: block;
     width: 100%;
-    margin-top: 18px;
+    color: black;
+  }
+
+  &__image {
+    max-width: 64px;
+    margin-bottom: 18px;
   }
 }

@@ -2,14 +2,14 @@
   {
     "title": "Slack",
     "link": "#",
-    "imageUrl": "slack"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/76/Slack_Icon.png"
   },{
     "title": "Email",
     "link": "#",
-    "imageUrl": "email"
+    "imageUrl": "http://pngimg.com/uploads/email/email_PNG15.png"
   },{
     "title": "Twitter",
     "link": "#",
-    "imageUrl": "twitter"
+    "imageUrl": "http://pngimg.com/uploads/twitter/twitter_PNG28.png"
   }
 ]
