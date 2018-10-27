@@ -1,3 +1,7 @@
+/*
+  A wrapper for announcements and job listing section.
+  Appears at /contribute and /leaders-corber.
+*/
 import React from 'react';
 
 // Local modules.

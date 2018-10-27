@@ -1,3 +1,7 @@
+/*
+  Contains organization teaser.
+*/
+
 import React from 'react';
 
 const OrganizationTeaser = (props) => {

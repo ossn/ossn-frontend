@@ -1,3 +1,8 @@
+/*
+  Contains the graphQL query for the organizations.
+  A wrapper for organizations
+*/
+
 import React from 'react';
 import { graphql } from "gatsby"
 

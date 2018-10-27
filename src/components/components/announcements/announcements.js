@@ -1,3 +1,9 @@
+/*
+Contains the announcements graphQL query fragment.
+Returns the list of the announcements with their title.
+Appears at /contribute and /leaders-corner
+*/
+
 import React from 'react';
 import {graphql} from 'gatsby';
 import { TeaserBoxList } from './../teaser-box/teaser-box';

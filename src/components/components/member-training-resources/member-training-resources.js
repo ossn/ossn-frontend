@@ -1,3 +1,9 @@
+/*
+  Contains graphQL query for training resources.
+  Contains TrainingResource and TrainingResourceList components.
+  Appears at /contribute and /leaders-corber.
+*/
+
 import React from 'react';
 import {graphql} from 'gatsby';
 
@@ -9,6 +15,7 @@ import ShadowBox from './../shadow-box/shadow-box';
 // styles
 import './../teaser-box/teaser-box';
 
+// A single training resource.
 const TrainingResource = (props) => {
   const title = props.resource.title;
   const url = props.resource.link;
@@ -34,6 +41,7 @@ const TrainingResource = (props) => {
   );
 };
 
+// A wrpaper for all training resources.
 export default (props) => {
 
   const resources = props.resources.edges.map((resourceNode, i)=>{

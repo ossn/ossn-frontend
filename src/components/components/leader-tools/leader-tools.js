@@ -1,5 +1,8 @@
-// TODO: remove the linter disable once the image url is fixed.
 /* eslint-disable */
+/*
+  LeaderToolList, LeaderTool and AllLeaderTools components.
+  Appears at /leaders-corner.
+*/
 import React from 'react';
 
 // Local modules.
@@ -9,6 +12,7 @@ import ShadowBox from './../shadow-box/shadow-box';
 import './leader-tools-list.scss';
 import './leader-tools.scss';
 
+//  A single tool entry.
 const LeaderTool = (props) => {
   console.log(props.tool);
   const title = props.tool.title;
@@ -24,6 +28,7 @@ const LeaderTool = (props) => {
   );
 };
 
+// Wraps a list of tools with title.
 export const LeaderToolList = (props) => {
 
   const title = props.title;
@@ -44,6 +49,7 @@ export const LeaderToolList = (props) => {
   )
 };
 
+// Wraps all the tool lists.
 export const AllLeaderTools = (props) => {
   const variousTools = props.variousTools;
   const prManagement = props.prManagement;

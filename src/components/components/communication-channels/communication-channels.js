@@ -1,6 +1,7 @@
 /*
  Lists the communication channels.
  Is responsible to handle transformation from the gatsby-jsom to usable data
+ Appears at /contribute and /leaders-corner
  */
 
 import React from 'react';

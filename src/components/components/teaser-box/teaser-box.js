@@ -1,3 +1,7 @@
+/*
+  The template for announcements and job listing components.
+*/
+
 import React from 'react';
 
 // local modules

@@ -1,17 +1,21 @@
 @import './../../base-styles/init/init.scss';
 
+/*
+  Channel logo with it's title underneath.
+*/
+
 .communication-channel {
   text-align: center;
+
+  &__image {
+    max-width: 64px;
+    margin-bottom: 18px;
+  }
 
   &__title {
     @include font-size(20px);
     display: block;
     width: 100%;
     color: black;
-  }
-
-  &__image {
-    max-width: 64px;
-    margin-bottom: 18px;
   }
 }

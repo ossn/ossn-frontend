@@ -1,3 +1,8 @@
+/*
+  A wrapper for channels and tools for contributing list.
+  Appears at /contribute and /leaders-corber.
+*/
+
 import React from 'react';
 
 // Local modules.

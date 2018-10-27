@@ -1,4 +1,8 @@
 import React from 'react';
+/*
+Contains basic information for a club.
+Appears at /find-club
+*/
 
 // Local modules.
 import Layout3Col from './../../layouts/layout-3col/layout-3col';

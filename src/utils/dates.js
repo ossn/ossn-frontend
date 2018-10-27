@@ -1,6 +1,6 @@
 import {numberWithSuffix} from './numbers';
 
-// convert the `new Date().getDay()` number to it's verbose representation
+// convert the `new Date().getDay()` number to it's verbose representation.
 export const getDayName = (num) => {
   switch (num) {
     case 0: return 'Monday';
@@ -14,7 +14,7 @@ export const getDayName = (num) => {
   }
 }
 
-// conver the `new Date().getMonth()` number to it's verbose representation
+// conver the `new Date().getMonth()` number to it's verbose representation.
 export const getMonthName = (num) => {
   switch (num) {
     case 0: return 'Jenuary';

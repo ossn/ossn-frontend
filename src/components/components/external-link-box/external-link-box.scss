@@ -1,5 +1,9 @@
 @import './../../base-styles/init/init.scss';
 
+/*
+  
+*/
+
 .external-link-box {
   width: 100%;
   margin-bottom: 15px;
@@ -7,9 +11,6 @@
   &__wrapper-link {
     display: flex;
     width: 100%;
-    //border-top-left-radius: 4px;
-    //border-top-right-radius: 4px;
-    //max-width: 160px;
     height: 100%;
     flex-direction: column;
 
