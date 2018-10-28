@@ -4,6 +4,7 @@
   Appears at /leaders-corner.
 */
 import React from 'react';
+import {Briefcase, FileText, Archive, Clipboard} from 'react-feather';
 
 // Local modules.
 import Layout2Col from './../../layouts/layout-2col/layout-2col';
@@ -39,8 +40,11 @@ export const LeaderToolList = (props) => {
 
   return (
     <div className="leader-tools-list__wrapper">
-        <h2 className="leader-tools-list__title"> {title} </h2>
-        <ShadowBox zeroRadius zeroPadding>
+        <h2 className="leader-tools-list__title">
+          {props.icon ? <props.icon className="leader-tools-list__title-icon" /> : ''}
+          {title}
+        </h2>
+        <ShadowBox zeroRadius zeroPadding className="leader-tools-list__content-wrapper">
           <div className="leader-tools-list">
             {tools}
           </div>
@@ -59,13 +63,13 @@ export const AllLeaderTools = (props) => {
   return (
     <Layout2Col verticalGutters horizontalGutters>
       <div>
-        <LeaderToolList title="Project Management Tools" tools={prManagement} />
-        <LeaderToolList title="Code of conduct" tools={codeOfConduct} />
-        <LeaderToolList title="Various tools" tools={variousTools} />
+        <LeaderToolList title="Project Management Tools" tools={prManagement} icon={Briefcase} />
+        <LeaderToolList title="Code of conduct" tools={codeOfConduct} icon={FileText} />
+        <LeaderToolList title="Various tools" tools={variousTools} icon={Archive} />
       </div>
       <div>
         <LeaderToolList title="Useful resources running a club"
-                        tools={usefulResources} />
+                        tools={usefulResources} icon={Clipboard}/>
       </div>
     </Layout2Col>
   )

@@ -6,4 +6,13 @@
     &__title {
       @include margin-top(20px);
     }
+
+    &__title-icon {
+      @include margin-right(10px);
+      vertical-align: top;
+    }
+
+    &__content-wrapper {
+      @include margin-left(33px);
+    }
 }
