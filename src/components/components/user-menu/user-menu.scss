@@ -10,4 +10,8 @@
     background-color: white;
     transform: translateY(100%);
   }
+
+  &__icon {
+    @include margin-right(7px);
+  }
 }

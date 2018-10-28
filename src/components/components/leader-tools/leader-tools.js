@@ -4,7 +4,7 @@
   Appears at /leaders-corner.
 */
 import React from 'react';
-import {Briefcase, FileText, Archive, Clipboard} from 'react-feather';
+import {Briefcase, FileText, Archive, Clipboard, ExternalLink} from 'react-feather';
 
 // Local modules.
 import Layout2Col from './../../layouts/layout-2col/layout-2col';
@@ -22,8 +22,10 @@ const LeaderTool = (props) => {
 
   return (
     <div className="leader-tool">
+      <img src={icon} className="leader-tool__icon"/>
       <a href={url} className="leader-tool__link">
         <div className="leader-tool__title"> {title} </div>
+        <ExternalLink className="leader-tool__link-icon"/>
       </a>
     </div>
   );

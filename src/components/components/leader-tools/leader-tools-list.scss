@@ -10,9 +10,11 @@
     &__title-icon {
       @include margin-right(10px);
       vertical-align: top;
+      width: 26px;
+      height: 26px;
     }
 
     &__content-wrapper {
-      @include margin-left(33px);
+      @include margin-left(36px); // icon-width + icon padding
     }
 }
