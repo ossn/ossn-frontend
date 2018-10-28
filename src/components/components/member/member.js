@@ -3,17 +3,21 @@ import React from 'react';
 // Local modules.
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import TextInput from './../../forms/text-input/text-input';
+import ShadowBox from  './../shadow-box/shadow-box';
+import './member.scss';
 
 class Member extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      name: '',
-      location: '',
-      github: '',
-      personal: '',
-      description: '',
-      edit: false
+      name: 'Alce McKenzie',
+      location: 'Planet earth',
+      club: 'RIT Linux Users Group',
+      github: 'dpliakos',
+      personal: 'duckduckgo.com',
+      description: 'this is a line of text. And this continues',
+      edit: false,
+      edit: true
     }
   }
 
@@ -55,48 +59,92 @@ class Member extends React.Component {
     const fullName = this.props.member.firstName + " " + this.props.member.lastName;
 
     const name = snapshot.edit
-      ?  <TextInput lablel="Name" onChange={this.handleName} value={snapshot.name} />
-      : <div> {fullName} </div>;
+      ?  <TextInput lablel="Name" onChange={this.handleName} value={snapshot.name}
+        className="form-input--member form-input--member-name" placeholder="name"
+        />
+      : <div> {snapshot.name} </div>;
 
     const location = snapshot.edit
       ? <TextInput label="Location" onChange={this.handleLocation} value={snapshot.location} />
-      : <div> {this.props.member.location} </div>;
+      : <div> {snapshot.location} </div>;
 
     const description = snapshot.edit
       ? <TextInput multiline label="description" onChange={this.handleDescription} value={snapshot.description} />
-      : <div> {this.props.description} </div>;
+      : <div> {snapshot.description} </div>;
 
     const github = snapshot.edit
       ? (<div> <span>github.com/</span> <TextInput label="profile" onChange={this.handleGithub} value={snapshot.github} /> </div>)
-      : <div> {this.props.member.github} </div>;
+      : (<a href="#">
+          <span className="member__link-prefix">github.com/</span>
+          <span>{snapshot.github}</span>
+        </a>);
 
     const personal = snapshot.edit
       ? <TextInput label="personal web page" onChange={this.handlePersonal} value={snapshot.personal} />
-      : <div> {this.props.member.personalPage} </div>;
+      : (<a href="#">
+          <span className="member__link-prefix">http://</span>
+          <span>{snapshot.personal}</span>
+        </a>);
 
     let buttonList = [];
 
     if (snapshot.edit) {
-      buttonList.push(<div onClick={this.handleCancel} key={0} > Cancel </div>);
-      buttonList.push(<div onClick={this.handleSave} key={1} > Save changes </div>);
+      buttonList.push(
+        <div onClick={this.handleCancel} key={0}
+          className="member__button member__button--cancel" > Cancel
+        </div>
+      );
+
+      buttonList.push(
+        <div onClick={this.handleSave} key={1}
+          className="member__button member__button--save"> Save changes
+        </div>
+      );
+
     } else if (this.props.editable) {
-      buttonList.push(<div onClick={this.handleEdit} key={2} > Edit my profile </div>);
+      buttonList.push(
+        <div onClick={this.handleEdit} key={2}
+          className="member__button member__button--edit" > Edit my profile
+        </div>
+      );
     }
 
     return (
-      <LayoutContained>
-        <div>
-          <img src="" alt="profile" />
+        <div className="member">
+          <ShadowBox>
+            <div className="member__image-wrapper">
+              <img src="http://assets.nydailynews.com/polopoly_fs/1.2479149.1451350340!/img/httpImage/image.jpg_gen/derivatives/article_750/motorhead29n-2-web.jpg" alt="profile" className="member__image" />
+            </div>
+
+            <div className="title title--small member__name">
+              {name}
+            </div>
+
+            <div className="member__location">
+              {location}
+            </div>
+
+            <div className="member__description">
+              {description}
+            </div>
+
+            <div className="member__club">
+              {snapshot.club}
+            </div>
+
+            <div className="member__link member__link--github">
+              {github}
+            </div>
+
+            <div className="member__link member__link--personal-page">
+                {personal}
+            </div>
+           </ShadowBox>
+
+            <div className="member__button-list">
+              {buttonList}
+            </div>
         </div>
-        <div> {name} </div>
-        <div> {location} </div>
-        <div> {description} </div>
-        <div> {github} </div>
-        <div> {personal} </div>
-        <div>
-          {buttonList}
-        </div>
-      </LayoutContained>
     );
   }
 }
