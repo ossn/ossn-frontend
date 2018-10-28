@@ -5,7 +5,7 @@ import './text-input.scss';
 export default (props) => {
 
   const type = props.password ? 'password' : 'text';
-  const label = props.label ? props.latbel : '';
+  const label = props.label ? props.label : '';
   let classes = ['text-input'];
   if (props.multiline) classes.push('text-input--multiline');
   if (props.className) classes.push(props.className);

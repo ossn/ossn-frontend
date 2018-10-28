@@ -14,11 +14,14 @@
   be undone.
 */
 import React from 'react';
+import {Feather, Check, X, GitHub, Users, Link, } from 'react-feather';
 
 // Local modules.
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import TextInput from './../../forms/text-input/text-input';
 import ShadowBox from  './../shadow-box/shadow-box';
+
+// styles
 import './member.scss';
 
 class Member extends React.Component {
@@ -112,13 +115,14 @@ class Member extends React.Component {
     this.reverse(history);
   };
 
+
   render() {
     const snapshot = {...this.state};
 
     const fullName = this.props.member.firstName + " " + this.props.member.lastName;
 
     const name = snapshot.edit
-      ?  <TextInput lablel="Name" onChange={this.handleName} value={snapshot.name}
+      ?  <TextInput label="Name" onChange={this.handleName} value={snapshot.name}
         className="form-input--member form-input--member-name" placeholder="name"
         />
       : <div> {snapshot.name} </div>;
@@ -131,39 +135,51 @@ class Member extends React.Component {
       ? <TextInput multiline label="description" onChange={this.handleDescription} value={snapshot.description} />
       : <div> {snapshot.description} </div>;
 
+    const club = snapshot.edit
+      ? <div> Club handling </div>
+      : <div>
+          <Users className="member__icon" />
+          {snapshot.club}
+       </div>;
+
     const github = snapshot.edit
       ? (<div> <span>github.com/</span> <TextInput label="profile" onChange={this.handleGithub} value={snapshot.github} /> </div>)
       : (<a href="#">
+          <GitHub className="member__icon" />
           <span className="member__link-prefix">github.com/</span>
-          <span>{snapshot.github}</span>
+          <span className="member__link-content">{snapshot.github}</span>
         </a>);
 
     const personal = snapshot.edit
       ? <TextInput label="personal web page" onChange={this.handlePersonal} value={snapshot.personal} />
       : (<a href="#">
+          <Link className="member__icon" />
           <span className="member__link-prefix">http://</span>
-          <span>{snapshot.personal}</span>
+          <span className="member__link-content">{snapshot.personal}</span>
         </a>);
 
     let buttonList = [];
 
     if (snapshot.edit) {
       buttonList.push(
-        <div onClick={this.handleCancel} key={0}
-          className="member__button member__button--cancel" > Cancel
+        <div onClick={this.handleCancel} className="member__button" key={0} >
+          <X />
+          <span> Cancel </span>
         </div>
       );
 
       buttonList.push(
-        <div onClick={this.handleSave} key={1}
-          className="member__button member__button--save"> Save changes
+        <div onClick={this.handleSave} className="member__button member__button--colored" key={1}>
+          <Check />
+          <span> Save changes </span>
         </div>
       );
 
     } else if (this.props.editable) {
       buttonList.push(
-        <div onClick={this.handleEdit} key={2}
-          className="member__button member__button--edit" > Edit my profile
+        <div onClick={this.handleEdit} className="member__button"  key={2} >
+          <Feather />
+          <span> Edit my profile </span>
         </div>
       );
     }
@@ -188,7 +204,7 @@ class Member extends React.Component {
             </div>
 
             <div className="member__club">
-              {snapshot.club}
+              {club}
             </div>
 
             <div className="member__link member__link--github">
