@@ -1,3 +1,18 @@
+/*
+  Profile page template.
+  This component is used for showing and editing a memeber's profile.
+
+  handling props:
+    ediatble: if true, shows the 'edit' button. This button can triger the edit
+    state of the component.
+
+  The state has the profile information and the edit flag.
+  If the edit flag is true, every field is an input element.
+  else is a lebel.
+
+  The state also stores the state of the compnent, so modifications on edit can
+  be undone.
+*/
 import React from 'react';
 
 // Local modules.
@@ -9,16 +24,58 @@ import './member.scss';
 class Member extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: 'Alce McKenzie',
+
+    const mockInit = {
+      name: 'Alice McKenzie',
+      imageUrl: 'http://assets.nydailynews.com/polopoly_fs/1.2479149.1451350340!/img/httpImage/image.jpg_gen/derivatives/article_750/motorhead29n-2-web.jpg',
       location: 'Planet earth',
       club: 'RIT Linux Users Group',
       github: 'dpliakos',
       personal: 'duckduckgo.com',
       description: 'this is a line of text. And this continues',
-      edit: false,
-      edit: true
     }
+
+    this.state = {
+      ...mockInit,
+      edit: false,
+      // edit: true,
+      history: {
+        ...mockInit
+      }
+    }
+  }
+
+  // Replace the state with a the value of the `state.history`.
+  // can be called from the `cancel` button.
+  reverse({name, imageUrl, location, club, github, personal, description}) {
+    const oldState = {
+      name,
+      imageUrl,
+      location,
+      club,
+      github,
+      personal,
+      description,
+      edit: false
+    }
+
+    this.setState(oldState);
+  }
+
+  // saves the currect state as the state.history field.
+  // The history is reversed if the user pushes cancel.
+  saveToHistoryAndEdit({name, imageUrl, location, club, github, personal, description}) {
+    const newHistory = {
+      name,
+      imageUrl,
+      location,
+      club,
+      github,
+      personal,
+      description
+    }
+
+    this.setState({history: newHistory, edit: true});
   }
 
   handleName = (event) => {
@@ -42,15 +99,17 @@ class Member extends React.Component {
   };
 
   handleEdit = () => {
-    this.setState({edit: true});
+    const snapshot = {...this.state};
+    this.saveToHistoryAndEdit(snapshot);
   };
 
   handleSave = () => {
-    this.handleCancel();
+    this.setState({edit: false});
   };
 
   handleCancel = () => {
-    this.setState({edit: false})
+    const history = {...this.state.history};
+    this.reverse(history);
   };
 
   render() {
@@ -113,7 +172,7 @@ class Member extends React.Component {
         <div className="member">
           <ShadowBox>
             <div className="member__image-wrapper">
-              <img src="http://assets.nydailynews.com/polopoly_fs/1.2479149.1451350340!/img/httpImage/image.jpg_gen/derivatives/article_750/motorhead29n-2-web.jpg" alt="profile" className="member__image" />
+              <img src={snapshot.imageUrl} alt="profile" className="member__image" />
             </div>
 
             <div className="title title--small member__name">
