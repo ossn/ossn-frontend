@@ -1,3 +1,7 @@
+/*
+  Leader's corner is the opportunities page, plus the leaders tools.
+*/
+
 // external modules
 import React from 'react';
 import { Helmet } from 'react-helmet';
@@ -37,8 +41,11 @@ class Contribute extends React.Component {
           <AllLeaderTools prManagement={prManagement} codeOfConduct={codeOfConduct}
             variousTools={leadersTools} usefulResources={leadersResources} />
         </LayoutContained>
-        <OpportunitiesMember jobs={jobs} announcements={announcements}
-                    channels={channels} tools={tools} resources={resources} />
+
+        {/* Call opportunities-member with the skipTitle flag */}
+        <OpportunitiesMember skipTitle
+          jobs={jobs} announcements={announcements} channels={channels}
+          tools={tools} resources={resources} />
 
       </BasicLayout>
     );
