@@ -2,14 +2,17 @@
   {
     "title": "Slack",
     "link": "#",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/76/Slack_Icon.png"
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/76/Slack_Icon.png",
+    "attachment": "./icon-slack.svg"
   },{
     "title": "Email",
     "link": "#",
-    "imageUrl": "http://pngimg.com/uploads/email/email_PNG15.png"
+    "imageUrl": "http://pngimg.com/uploads/email/email_PNG15.png",
+    "attachment": "./icon-email.svg"
   },{
     "title": "Twitter",
     "link": "#",
-    "imageUrl": "http://pngimg.com/uploads/twitter/twitter_PNG28.png"
+    "imageUrl": "http://pngimg.com/uploads/twitter/twitter_PNG28.png",
+    "attachment": "./icon-twitter.svg"
   }
 ]

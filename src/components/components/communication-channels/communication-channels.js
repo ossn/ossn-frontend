@@ -14,11 +14,13 @@ import './communication-channel-list.scss';
 export const Channel = (props) => {
   const title = props.channel.title;
   const url = props.channel.link;
-  const icon = props.channel.imageUrl;
+  const icon = props.channel.attachment.publicURL;
 
   return  (
     <a href={url} className="communication-channel">
-      <img src={icon} alt={title} className="communication-channel__image"/>
+      <span className="communication-channel__image-wrapper">
+        <img src={icon} alt={title} className="communication-channel__image"/>
+      </span>
       <span className="communication-channel__title">
         {title}
       </span>
@@ -47,5 +49,8 @@ export const query = graphql`
     title
     link
     imageUrl
+    attachment {
+      publicURL
+    }
   }
 `;
