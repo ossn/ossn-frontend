@@ -19,9 +19,10 @@ import './member-training-resources.scss';
 const TrainingResource = (props) => {
   const title = props.resource.title;
   const url = props.resource.link;
-  const icon = props.resource.imageUrl;
+  const icon = props.resource.attachment.publicURL;
 
   const classes=`${props.className}`;
+
   return  (
     <div className={classes}>
       <ShadowBox className="member-training-resources">
@@ -67,7 +68,9 @@ export const query = graphql`
   fragment TrainingResources on TrainingResourcesJson {
     title
     description
-    imageUrl
+    attachment {
+      publicURL
+    }
     link
   }
 `;

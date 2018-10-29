@@ -12,7 +12,7 @@
 
   &__image-wrapper {
     width: 100px;
-    height: 80px;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,7 +27,7 @@
 
   &__text {
     display: flex;
-    padding: 10px 20px 10px 15px;
+    padding: 13px 20px 10px 15px;
     flex-direction: column;
     color: color('grey-dark');
     width: 100%;
