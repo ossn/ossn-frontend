@@ -1,5 +1,10 @@
 @import './../../base-styles/init/init.scss';
 
+/*
+  A white box with image on the left and text on the right.
+
+  &--dummy: Do not display data, but a grey horizontal placeholder line.
+*/
 .teaser-box {
   width: 100%;
   margin-bottom: 15px;

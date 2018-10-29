@@ -1,3 +1,12 @@
+/*
+  Page for member opportunities under '/contribute' url.
+  gets the opportunities component and fetches the data for
+  job listing
+  announcements
+  tools for contributing
+  communication channels
+*/
+
 // external modules
 import React from 'react';
 import { Helmet } from 'react-helmet';

@@ -1,3 +1,9 @@
+/*
+  This compoenent is a placeholder for the the contribute page
+  as is shown to members and non members.
+
+  Subscribed to User redux reducer.
+*/
 // external modules
 import React from 'react';
 import { connect } from 'react-redux';
@@ -18,16 +24,20 @@ class Opportunities  extends React.Component {
     const tools = this.props.tools;
     const resources = this.props.resources;
 
+    // view is the placeholder variabe.
+    // the redux store holds the information for a logged in user.
+    // The value of the view variabe is loaded acording to that information.
     // const loggedIn = this.props.user.loggedIn;// || true;
 
     // TODO commend out to implement logged in check.
+
     // const view = loggedIn
     //   ? <OpportunitiesMemeber jobs={jobs} announcements={announcements}
     //                 channels={channels} tools={tools} resources={resources}  />
     //   : <OpportunitiesGuest />;
 
     const view = <OpportunitiesMemeber jobs={jobs} announcements={announcements}
-                                       channels={channels} tools={tools} resources={resources}  />;
+                    channels={channels} tools={tools} resources={resources}  />;
 
     return (
       <div>

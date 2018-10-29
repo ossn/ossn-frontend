@@ -2,6 +2,12 @@
 Contains the jobs graphQL query fragment.
 Returns the list of the jobs with their title.
 Appears at /contribute and /leaders-corner
+
+  props
+    dummyData: If present, lines with grey background is shown.
+    jobs: A list of job and interships opportunities to be shown.
+
+  The fields of the jobs should be the same as the graphQL query below.
 */
 
 import React from 'react';

@@ -1,4 +1,8 @@
 /* eslint-disable */
+
+/*
+  Shows the become a member CTA.
+*/
 import React from 'react';
 
 import MemberUpdates from './../member-updates/member-updates';

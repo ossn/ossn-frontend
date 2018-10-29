@@ -2,6 +2,13 @@
 Contains the announcements graphQL query fragment.
 Returns the list of the announcements with their title.
 Appears at /contribute and /leaders-corner
+
+  props
+    dummyData: If present, lines with grey background is shown.
+    announcements: A list of announcements to be shown.
+
+  The fields of the announcements should be the same as the graphQL query below.
+
 */
 
 import React from 'react';
