@@ -1,13 +1,25 @@
 @import './../../base-styles/init/init.scss';
 
+// overide layout-2col__col paddings
+.layout-2col__col.member-training-resources {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
 .member-training-resources {
   @include margin-top(25px);
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 25px;
+
+  p {
+    @include margin(0);
+    @include margin-top(14px);
+  }
+
+  &__content {
+    display: flex;
+  }
 
   &__wrapper-link {
-    display: flex;
+    padding: 0;
   }
 
   &__image-wrapper {
@@ -26,11 +38,16 @@
   }
 
   &__text {
+    @include padding-top(10px);
+    @include padding-left(23px);
     display: flex;
-    padding: 13px 20px 10px 15px;
     flex-direction: column;
     color: color('grey-dark');
     width: 100%;
+
+    &:last-child {
+      @include margin(0);
+    }
   }
 
   &__inner {
