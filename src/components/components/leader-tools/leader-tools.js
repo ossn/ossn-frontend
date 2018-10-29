@@ -1,6 +1,10 @@
-// TODO: remove the linter disable once the image url is fixed.
 /* eslint-disable */
+/*
+  LeaderToolList, LeaderTool and AllLeaderTools components.
+  Appears at /leaders-corner.
+*/
 import React from 'react';
+import {Briefcase, FileText, Archive, Clipboard, ExternalLink} from 'react-feather';
 
 // Local modules.
 import Layout2Col from './../../layouts/layout-2col/layout-2col';
@@ -9,22 +13,25 @@ import ShadowBox from './../shadow-box/shadow-box';
 import './leader-tools-list.scss';
 import './leader-tools.scss';
 
+//  A single tool entry.
 const LeaderTool = (props) => {
-
+  console.log(props.tool);
   const title = props.tool.title;
-  const icon = props.tool.icon;
-  const url = props.tool.url;
+  const icon = props.tool.imageUrl;
+  const url = props.tool.link;
 
-  // <div className="leader-tool__icon"> {icon} </div>
   return (
     <div className="leader-tool">
-      <a href="#" className="leader-tool__link">
+      <img src={icon} className="leader-tool__icon"/>
+      <a href={url} className="leader-tool__link">
         <div className="leader-tool__title"> {title} </div>
+        <ExternalLink className="leader-tool__link-icon"/>
       </a>
     </div>
   );
 };
 
+// Wraps a list of tools with title.
 export const LeaderToolList = (props) => {
 
   const title = props.title;
@@ -35,8 +42,11 @@ export const LeaderToolList = (props) => {
 
   return (
     <div className="leader-tools-list__wrapper">
-        <h2 className="leader-tools-list__title"> {title} </h2>
-        <ShadowBox zeroRadius zeroPadding>
+        <h2 className="leader-tools-list__title">
+          {props.icon ? <props.icon className="leader-tools-list__title-icon" /> : ''}
+          {title}
+        </h2>
+        <ShadowBox zeroRadius zeroPadding className="leader-tools-list__content-wrapper">
           <div className="leader-tools-list">
             {tools}
           </div>
@@ -45,6 +55,7 @@ export const LeaderToolList = (props) => {
   )
 };
 
+// Wraps all the tool lists.
 export const AllLeaderTools = (props) => {
   const variousTools = props.variousTools;
   const prManagement = props.prManagement;
@@ -54,13 +65,13 @@ export const AllLeaderTools = (props) => {
   return (
     <Layout2Col verticalGutters horizontalGutters>
       <div>
-        <LeaderToolList title="Project Management Tools" tools={prManagement} />
-        <LeaderToolList title="Code of conduct" tools={codeOfConduct} />
-        <LeaderToolList title="Various tools" tools={variousTools} />
+        <LeaderToolList title="Project Management Tools" tools={prManagement} icon={Briefcase} />
+        <LeaderToolList title="Code of conduct" tools={codeOfConduct} icon={FileText} />
+        <LeaderToolList title="Various tools" tools={variousTools} icon={Archive} />
       </div>
       <div>
         <LeaderToolList title="Useful resources running a club"
-                        tools={usefulResources} />
+                        tools={usefulResources} icon={Clipboard}/>
       </div>
     </Layout2Col>
   )

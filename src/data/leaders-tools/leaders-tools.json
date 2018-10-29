@@ -2,64 +2,64 @@
   "Project Management tools": [
     {
       "title": "SRCT Trello Board",
-      "url": "#",
-      "icon": "trello"
+      "link": "#",
+      "imageUrl": "https://cdn.grahamcluley.com/wp-content/uploads/2017/02/gitlab-600.jpeg"
     },{
       "title": "ACM Gitlab board",
-      "url": "#",
-      "icon": "gitlab"
+      "link": "#",
+      "imageUrl": "https://proxy.duckduckgo.com/iur/?f=1&image_host=http%3A%2F%2Fwww.unixmen.com%2Fwp-content%2Fuploads%2F2016%2F02%2Fgitlab-logo-square.png&u=https://www.unixmen.com/wp-content/uploads/2016/02/gitlab-logo-square.png"
     },{
       "title": "Zenhab Issue Management",
-      "url": "#",
-      "icon": "zenhub"
+      "link": "#",
+      "imageUrl": "https://proxy.duckduckgo.com/iur/?f=1&image_host=http%3A%2F%2Fwww.unixmen.com%2Fwp-content%2Fuploads%2F2016%2F02%2Fgitlab-logo-square.png&u=https://www.unixmen.com/wp-content/uploads/2016/02/gitlab-logo-square.png"
     },{
       "title": "Geekbot Asynchronous Slack Meetings",
-      "url": "#",
-      "icon": "geekbot"
+      "link": "#",
+      "imageUrl": "https://proxy.duckduckgo.com/iur/?f=1&image_host=http%3A%2F%2Fwww.unixmen.com%2Fwp-content%2Fuploads%2F2016%2F02%2Fgitlab-logo-square.png&u=https://www.unixmen.com/wp-content/uploads/2016/02/gitlab-logo-square.png"
     }
   ],
 
   "Code of Conduct examples": [
     {
       "title": "RCOS Conde of Conduct",
-      "url": "#",
-      "icon": "trello"
+      "link": "#",
+      "imageUrl": "https://proxy.duckduckgo.com/iur/?f=1&image_host=http%3A%2F%2Fwww.unixmen.com%2Fwp-content%2Fuploads%2F2016%2F02%2Fgitlab-logo-square.png&u=https://www.unixmen.com/wp-content/uploads/2016/02/gitlab-logo-square.png"
     },{
       "title": "UF OSC Code of Conduct",
-      "url": "#",
-      "icon": "gitlab"
+      "link": "#",
+      "imageUrl": "https://proxy.duckduckgo.com/iur/?f=1&image_host=http%3A%2F%2Fwww.unixmen.com%2Fwp-content%2Fuploads%2F2016%2F02%2Fgitlab-logo-square.png&u=https://www.unixmen.com/wp-content/uploads/2016/02/gitlab-logo-square.png"
     }
   ],
 
   "Various tools": [
     {
       "title": "Voting software",
-      "url": "#",
-      "icon": "trello"
+      "link": "#",
+      "imageUrl": "https://proxy.duckduckgo.com/iur/?f=1&image_host=http%3A%2F%2Fwww.unixmen.com%2Fwp-content%2Fuploads%2F2016%2F02%2Fgitlab-logo-square.png&u=https://www.unixmen.com/wp-content/uploads/2016/02/gitlab-logo-square.png"
     },{
       "title": "Build your club's website using github pages",
-      "url": "#",
-      "icon": "trello"
+      "link": "#",
+      "imageUrl": "https://proxy.duckduckgo.com/iur/?f=1&image_host=http%3A%2F%2Fwww.unixmen.com%2Fwp-content%2Fuploads%2F2016%2F02%2Fgitlab-logo-square.png&u=https://www.unixmen.com/wp-content/uploads/2016/02/gitlab-logo-square.png"
     }
   ],
 
   "Useful resources running a club": [
     {
       "title": "tips for safe and inclusive events",
-      "url": "#",
-      "icon": "trello"
+      "link": "#",
+      "imageUrl": "https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Flh6.ggpht.com%2FwG3RSgReZcIcKsqFfsKSibR-j1UYfOekNmtY8x0n0mjWJT84U2V3l2lh3TmxeXfJis0z%3Dw300&f=1"
     },{
       "title": "Year planning guidance",
-      "url": "#",
-      "icon": "gitlab"
+      "link": "#",
+      "imageUrl": "https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Flh6.ggpht.com%2FwG3RSgReZcIcKsqFfsKSibR-j1UYfOekNmtY8x0n0mjWJT84U2V3l2lh3TmxeXfJis0z%3Dw300&f=1"
     },{
       "title": "Encouraging participatory & Playful Learning",
-      "url": "#",
-      "icon": "zenhub"
+      "link": "#",
+      "imageUrl": "https://proxy.duckduckgo.com/iur/?f=1&image_host=http%3A%2F%2Fwww.unixmen.com%2Fwp-content%2Fuploads%2F2016%2F02%2Fgitlab-logo-square.png&u=https://www.unixmen.com/wp-content/uploads/2016/02/gitlab-logo-square.png"
     },{
       "title": "Uf OSC Resources repo",
-      "url": "#",
-      "icon": "geekbot"
+      "link": "#",
+      "imageUrl": "https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Flh6.ggpht.com%2FwG3RSgReZcIcKsqFfsKSibR-j1UYfOekNmtY8x0n0mjWJT84U2V3l2lh3TmxeXfJis0z%3Dw300&f=1"
     }
   ]
 }

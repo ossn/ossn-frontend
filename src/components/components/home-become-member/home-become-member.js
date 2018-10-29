@@ -1,3 +1,8 @@
+/*
+  Contains a become a member CTA.
+  Appears at /  (home page)
+*/
+
 // external modules
 import React from 'react';
 import { connect } from 'react-redux';

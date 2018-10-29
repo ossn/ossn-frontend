@@ -5,10 +5,14 @@ import Select from 'react-select';
 // local modules
 import Toggle from './../toggle/toggle';
 
-
 // styles
 import './filters.scss';
 
+
+/*
+  Uses a horizontal toggle item and puts their labels.
+  The implementation of the logic has to be at an higher level.
+*/
 export class ToggleFilter extends React.Component {
 
   handleToggle = this.props.onClick;
@@ -27,6 +31,10 @@ export class ToggleFilter extends React.Component {
   }
 }
 
+/*
+  Uses an input element.
+  The implementation of the logic has to be at an higher level.
+*/
 export class SearchFilter extends React.Component {
 
   handleSearch = this.props.onChange;
@@ -40,6 +48,10 @@ export class SearchFilter extends React.Component {
   }
 }
 
+/*
+  Uses a select element and list the given options.
+  The implementation of the logic has to be at an higher level.
+*/
 export class SelectFilter extends React.Component {
   render() {
     const options = this.props.options || [];

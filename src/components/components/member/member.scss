@@ -16,15 +16,24 @@
   }
 
   &__image-wrapper {
+    margin-top: -20%;
+    width: 136px + 16px;
+    height: 136px + 16px;
+    border: 1px solid color('grey-another-extra-light');
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 100%;
+    background-color: color('white');
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.1);
+
+  }
+
+  &__image-inner {
     width: 136px + 14px;
     height: 136px + 14px;
     border-radius: 100%;
     border: 7px solid color('white');
-    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.1);
-    margin-top: -20%;
     overflow: hidden;
-    margin-left: auto;
-    margin-right: auto;
   }
 
   &__image {

@@ -1,3 +1,7 @@
+/*
+  Hidden anchor to content for screen readers.
+*/
+
 import React from 'react';
 
 class SkipLink extends React.Component {

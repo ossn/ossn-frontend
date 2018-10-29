@@ -1,3 +1,8 @@
+/*
+  Contains the fragment for the contributing tools.
+  Returns a list of contributing tools.
+  Appears at /contribute and /leaders-corner.
+*/
 import React from 'react';
 import {graphql} from 'gatsby';
 
@@ -29,7 +34,7 @@ export const ContributingToolSet = (props) => {
 export const query = graphql`
   fragment MemberTools on ToolsForContributingJson {
     title
-    url
-    icon
+    link
+    imageUrl
   }
 `;

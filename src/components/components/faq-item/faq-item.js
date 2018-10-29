@@ -1,3 +1,7 @@
+/*
+  A single FAQ question and answer.
+  Appears at /faq-page
+*/
 import React from 'react';
 
 class FaqItem extends React.Component {
@@ -8,6 +12,7 @@ class FaqItem extends React.Component {
     }
   }
 
+  // handles the collapse actions.
   handleToggle = () => {
     const snapshot = {...this.state};
     this.setState({open: !snapshot.open});

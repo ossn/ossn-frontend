@@ -1,3 +1,7 @@
+/*
+   A single organization page.
+*/
+
 import React from 'react';
 import ShadowBox from './../shadow-box/shadow-box';
 

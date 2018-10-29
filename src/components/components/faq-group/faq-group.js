@@ -1,3 +1,8 @@
+/*
+  A wrapper for a list of FAQ entries.
+  Appears at /faq-page
+*/
+
 // external modules
 import React from 'react';
 

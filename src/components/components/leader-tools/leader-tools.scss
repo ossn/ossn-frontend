@@ -1,24 +1,51 @@
 @import './../../base-styles/init/init.scss';
 
 .leader-tool {
-  @include margin-left(40px);
-  @include padding-top(9px);
-  @include padding-bottom(9px);
-  border-bottom: 1px solid color('grey-underline');
   position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
 
   &::before {
-    content: 'O';
+    content: '';
     position: absolute;
     left: -20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  &__icon {
+    @include margin-left(10px);
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+  }
+
+  a {
+    @include padding-top(9px);
+    @include padding-bottom(9px);
+    @include margin-left(10px);
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-right: 10px;
+    align-items: center;
+    border-bottom: 1px solid color('grey-underline');
   }
 
   &__title {
     color: color('grey-dark');
+    display: inline-block;
+
 
     &:hover,
     &:focus {
       color: color('brand');
     }
+  }
+
+  &__link-icon {
+    width: 16px;
+    color: color('seafoam-blue');
   }
 }

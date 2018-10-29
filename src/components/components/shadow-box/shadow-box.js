@@ -1,3 +1,6 @@
+/*
+  Wrapper it's children and adds a white background and shadow.
+*/
 import React from 'react';
 import './shadow-box.scss'
 

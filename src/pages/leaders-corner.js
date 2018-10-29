@@ -81,26 +81,26 @@ export const query = graphql`
   leadersToolsJson {
     Project_Management_tools {
       title
-      url
-      icon
+      link
+      imageUrl
     }
 
     Code_of_Conduct_examples {
       title
-      url
-      icon
+      link
+      imageUrl
     }
 
     Various_tools {
-      url
       title
-      icon
+      link
+      imageUrl
     }
 
     Useful_resources_running_a_club {
-      url
       title
-      icon
+      link
+      imageUrl
     }
  }
 }

@@ -22,9 +22,9 @@ class Opportunities  extends React.Component {
 
     // TODO commend out to implement logged in check.
     // const view = loggedIn
-      // ? <OpportunitiesMemeber jobs={jobs} announcements={announcements}
-      //               channels={channels} tools={tools} resources={resources}  />
-      // : <OpportunitiesGuest />;
+    //   ? <OpportunitiesMemeber jobs={jobs} announcements={announcements}
+    //                 channels={channels} tools={tools} resources={resources}  />
+    //   : <OpportunitiesGuest />;
 
     const view = <OpportunitiesMemeber jobs={jobs} announcements={announcements}
                                        channels={channels} tools={tools} resources={resources}  />;

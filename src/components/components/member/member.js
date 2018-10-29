@@ -188,7 +188,9 @@ class Member extends React.Component {
         <div className="member">
           <ShadowBox>
             <div className="member__image-wrapper">
-              <img src={snapshot.imageUrl} alt="profile" className="member__image" />
+              <div className="member__image-inner">
+                <img src={snapshot.imageUrl} alt="profile" className="member__image" />
+              </div>
             </div>
 
             <div className="title title--small member__name">

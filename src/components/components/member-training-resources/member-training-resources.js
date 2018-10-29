@@ -1,3 +1,9 @@
+/*
+  Contains graphQL query for training resources.
+  Contains TrainingResource and TrainingResourceList components.
+  Appears at /contribute and /leaders-corber.
+*/
+
 import React from 'react';
 import {graphql} from 'gatsby';
 
@@ -9,11 +15,11 @@ import ShadowBox from './../shadow-box/shadow-box';
 // styles
 import './../teaser-box/teaser-box';
 
+// A single training resource.
 const TrainingResource = (props) => {
   const title = props.resource.title;
-  const url = props.resource.url;
-  // TODO: remove the fallback image
-  const icon = props.resource.icon || 'https://www.publicdomainpictures.net/pictures/230000/nahled/eins-bis-null-1498972707SZr.jpg';
+  const url = props.resource.link;
+  const icon = props.resource.imageUrl;
 
   const classes=`${props.className}`;
   return  (
@@ -35,6 +41,7 @@ const TrainingResource = (props) => {
   );
 };
 
+// A wrpaper for all training resources.
 export default (props) => {
 
   const resources = props.resources.edges.map((resourceNode, i)=>{
@@ -60,7 +67,7 @@ export const query = graphql`
   fragment TrainingResources on TrainingResourcesJson {
     title
     description
-    image
-    url
+    imageUrl
+    link
   }
 `;

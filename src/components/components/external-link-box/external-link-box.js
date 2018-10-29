@@ -1,3 +1,6 @@
+/*
+  
+*/
 import React from 'react';
 
 // local modules
@@ -8,10 +11,9 @@ import './external-link-box.scss';
 
 export const ExternalLinkBox = (props) => {
   const resource = props.resource;
-  // TODO: remove the Lorem ipsum
   const title = resource.title;
-  const target = resource.url;
-  const image = resource.icon || 'https://www.publicdomainpictures.net/pictures/230000/nahled/eins-bis-null-1498972707SZr.jpg';
+  const target = resource.link;
+  const image = resource.imageUrl;
 
   const classes = [props.className, 'external-link-box'];
   return (

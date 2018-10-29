@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { User } from 'react-feather';
 
 import LogedInMenu from './logged-in-user';
 import NotLoggedInMenu from './not-logged-in-user';
@@ -70,6 +71,7 @@ class UserMenu extends React.Component {
     return(
       <div ref={ this.popup} className="user-menu">
         <div onClick={this.handleOpen} className="button button--header">
+          <User className="user-menu__icon" />
           {snapshot.open ? 'close' : 'Login/Signup'}
           {extraContent}
         </div>

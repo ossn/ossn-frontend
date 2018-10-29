@@ -29,6 +29,7 @@ class Contribute extends React.Component {
 
         <Opportunities jobs={jobs} announcements={announcements}
                       channels={channels} tools={tools} resources={resources} />
+
       </BasicLayout>
     );
   }

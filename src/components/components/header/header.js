@@ -1,3 +1,6 @@
+/*
+  Cotains the header section.
+*/
 // External modules.
 import React from 'react';
 import {Link} from 'gatsby';

@@ -1,3 +1,8 @@
+/*
+ Contains basic information for a club.
+ Appears at /find-club
+ */
+
 import React from 'react';
 import {Link} from 'gatsby';
 

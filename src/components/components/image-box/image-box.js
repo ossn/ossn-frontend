@@ -1,3 +1,8 @@
+/*
+  The news tiles.
+  Appears at / (home page)
+*/
+
 // External modules.
 import React from 'react';
 
@@ -36,4 +41,3 @@ export default (props) => {
     </div>
   )
 }
-

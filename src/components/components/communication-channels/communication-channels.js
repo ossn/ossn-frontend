@@ -1,6 +1,7 @@
 /*
  Lists the communication channels.
- Is responsible to handle transformation from the gatsby-jsom to usable data
+ Is responsible to handle transformation from the gatsby-json to usable data
+ Appears at /contribute and /leaders-corner
  */
 
 import React from 'react';
@@ -12,13 +13,15 @@ import './communication-channel-list.scss';
 
 export const Channel = (props) => {
   const title = props.channel.title;
-  const url = props.channel.url;
-  const icon = props.channel.icon;
+  const url = props.channel.link;
+  const icon = props.channel.imageUrl;
 
   return  (
     <a href={url} className="communication-channel">
       <img src={icon} alt={title} className="communication-channel__image"/>
-      <span className="communication-channel__title"> {title} </span>
+      <span className="communication-channel__title">
+        {title}
+      </span>
     </a>
   );
 };
@@ -42,7 +45,7 @@ export const ChannelList = (props) => {
 export const query = graphql`
   fragment CommunicationChannel on CommunicationChannelsJson {
     title
-    url
-    icon
+    link
+    imageUrl
   }
 `;

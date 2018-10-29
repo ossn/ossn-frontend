@@ -1,4 +1,7 @@
 /* eslint-disable */
+/*
+This is the template for a single club view.
+*/
 import React from 'react';
 
 // Local modules.
