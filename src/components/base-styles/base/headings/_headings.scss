@@ -14,7 +14,8 @@ h1,
   @include line-height(54px);
   color: color('title');
   font-weight: 600;
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 h2,
@@ -24,7 +25,8 @@ h2,
   @include line-height(30px);
   color: color('title');
   font-weight: 500;
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 h3,
@@ -35,7 +37,8 @@ h3,
   letter-spacing: 0.5px;
   color: color('title');
   font-weight: 500;
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 h4,
@@ -49,5 +52,6 @@ h6,
   @include line-height($base-line-height);
   color: color('title');
   font-weight: 500;
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }

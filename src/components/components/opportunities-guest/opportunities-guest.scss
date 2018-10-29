@@ -1,0 +1,39 @@
+@import './../../base-styles/init/init';
+
+.opportunities-guest {
+  &__header-section {
+    text-align: center;
+    display: block;
+  }
+
+  &__title {
+    max-width: 545px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__text {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  &__announcements-section {
+    position: relative;
+  }
+
+  &__link {
+    margin-top: 180px;
+
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background-image: linear-gradient(to bottom, rgba(245, 247, 240, 0), color('off-white'));
+    text-align: center;
+  }
+}

@@ -1,0 +1,18 @@
+@import './../../base-styles/init/init.scss';
+
+.opportunities-member {
+
+  &__title {
+    text-align: left;
+  }
+
+  &__text {
+    display: inline-block;
+    max-width: 730px;
+    padding-right: 30px;
+  }
+
+  &__info {
+    display: flex;
+  }
+}

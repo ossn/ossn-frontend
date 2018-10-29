@@ -59,6 +59,25 @@
     &__list {
       margin-top: 25px;
     }
+  }
 
+  &__dummy-row {
+    width: 95%;
+    height: 10px;
+    display: block;
+    border-radius: 5px;
+    background-color: #f5f7f0;
+
+    &--small {
+      margin-top: 10px;
+      margin-bottom: 40px;
+      width: 65%;
+    }
+  }
+
+  &__list-wrapper--dummy {
+    .teaser-box__inner {
+      flex-wrap: wrap;
+    }
   }
 }

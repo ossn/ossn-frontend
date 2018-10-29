@@ -7,12 +7,11 @@ import Announcements from './../announcements/announcements';
 import JobListing from './../job-listing/job-listing';
 
 export default (props) => {
-
   return(
     <LayoutContained>
       <Layout2Col horizontalGutters verticalGutters>
-        <div> <Announcements announcements={props.announcements} /> </div>
-        <div> <JobListing jobs={props.jobs} /> </div>
+        <div> <Announcements announcements={props.announcements || [] } dummyData={props.dummyData} /> </div>
+        <div> <JobListing jobs={props.jobs  || [] } dummyData={props.dummyData} /> </div>
       </Layout2Col>
     </LayoutContained>
   );
