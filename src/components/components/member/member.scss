@@ -1,0 +1,99 @@
+@import './../../base-styles/init/init';
+
+.member {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 330px;
+  text-align: center;
+
+  &__name {
+    @include font-size(30px);
+    max-width: 275px;
+    word-wrap: break-word;
+  }
+
+  &__image {
+    width: 136px;
+    height: 136px;
+    border-radius: 100%;
+    border: 7px solid color('white');
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.1);
+    margin-top: -20%;
+  }
+
+  &__location {
+    @include margin-top(8px);
+    max-width: 275px;
+    opacity: .6;
+  }
+
+  &__description {
+    @include margin-top(19px);
+    max-width: 275px;
+  }
+
+  &__club {
+    @include margin-top(64px);
+    @include margin-bottom(58px);
+    max-width: 275px;
+  }
+
+  &__link-prefix {
+    color: rgba(0,0,0,0.25);
+  }
+
+  &__link {
+    @include margin-top(12px);
+    max-width: 275px;
+    word-break: break-all;
+    max-width: 275px; // width of the description at design
+
+
+    &--personal-page {
+      @include margin-bottom(26px);
+    }
+  }
+
+  &__link-content {
+    font-weight: 600;
+  }
+
+  &__icon {
+    @include margin-right(10px);
+    width: 24px;
+    height: 24px;
+    color: color('light-navy');
+  }
+
+  &__button-list {
+    @include margin-top(23px);
+  }
+
+  &__button {
+    @include margin(10px);
+    @include margin-top(35px);
+    background-color: color('white');
+    font-weight: 600;
+    border-radius: 2px;
+    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.25);
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+
+    svg,
+    span {
+      vertical-align: middle;
+    }
+
+    &--colored {
+      background-color: color('light-navy');
+      color: color('seafoam-blue');
+    }
+  }
+
+  &__form-input {
+    padding: 0;
+  }
+
+}
