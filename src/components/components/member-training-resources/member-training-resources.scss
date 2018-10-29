@@ -15,6 +15,7 @@
   }
 
   &__content {
+    @include padding-bottom(25px);
     display: flex;
   }
 
@@ -38,7 +39,7 @@
   }
 
   &__text {
-    @include padding-top(10px);
+    @include padding-top(5px);
     @include padding-left(23px);
     display: flex;
     flex-direction: column;
