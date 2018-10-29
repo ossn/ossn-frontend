@@ -7,8 +7,12 @@
 
   &__title {
     @include font-size(20px);
+    @include line-height(27px);
+    font-family: $open-sans;
+    font-weight: 600;
     text-align: left;
-    padding-bottom: 3px;
+    padding-bottom: 5px;
+    letter-spacing: 0;
   }
 
   &__content {
@@ -17,7 +21,7 @@
   }
 
   &__item {
-    margin-top: 17px;
+    margin-top: 12px;
     counter-increment: step-counter;
     list-style: none;
     position: relative;
@@ -26,8 +30,9 @@
       content: counter(step-counter);
       color: color('light-navy');
       opacity: 0.3;
-      font-size: 20px;
-      font-weight: 600;
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 800;
       border: 2px solid color('light-navy');
       border-radius: 100%;
       width: 25px;
@@ -35,10 +40,15 @@
       display: inline-block;
       text-align: center;
       vertical-align: middle;
+      margin-right: 5px;
+      box-sizing: border-box;
+      opacity: .3;
+
     }
 
     &::after {
       content: '';
+      box-sizing: border-box;
       position: absolute;
       width: 25px;
       height: 25px;
@@ -47,12 +57,13 @@
       opacity: 0.1;
       top: 0;
       left: 0;
+
     }
 
     &:nth-child(1) {
       &::after {
-        top: 0;
-        left: 3.5px;
+        top: 1px;
+        left: 4px;
       }
     }
 
@@ -60,15 +71,15 @@
       @include margin-left(45px);
 
       &::after {
-        top: 1.5px;
-        left: -0.5px;
+        top: 2px;
+        left: -2px;
       }
     }
 
     &:nth-child(3) {
       &::after {
-        top: 2px;
-        left: 4px;
+        top: 0px;
+        left: 3px;
       }
     }
 
@@ -76,8 +87,8 @@
       @include margin-left(25px);
       
       &::after {
-        top: -0.5px;
-        left: -0.5px;
+        top: -1px;
+        left: -3px;
       }
     }
   }
