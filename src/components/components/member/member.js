@@ -1,3 +1,4 @@
+/* eslint-disable */
 /*
   Profile page template.
   This component is used for showing and editing a memeber's profile.
@@ -17,7 +18,6 @@ import React from 'react';
 import {Feather, Check, X, GitHub, Users, Link, } from 'react-feather';
 
 // Local modules.
-import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import TextInput from './../../forms/text-input/text-input';
 import ShadowBox from  './../shadow-box/shadow-box';
 
@@ -118,8 +118,6 @@ class Member extends React.Component {
 
   render() {
     const snapshot = {...this.state};
-
-    const fullName = this.props.member.firstName + " " + this.props.member.lastName;
 
     const name = snapshot.edit
       ?  <TextInput label="Name" onChange={this.handleName} value={snapshot.name}
