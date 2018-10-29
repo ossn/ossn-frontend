@@ -15,7 +15,6 @@ import './leader-tools.scss';
 
 //  A single tool entry.
 const LeaderTool = (props) => {
-  console.log(props.tool);
   const title = props.tool.title;
   const icon = props.tool.imageUrl;
   const url = props.tool.link;

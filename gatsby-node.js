@@ -13,7 +13,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
       },
     })
   }
-}
+};
 
 // const path = require(`path`);
 // // Implement the Gatsby API “onCreatePage”. This is

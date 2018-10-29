@@ -42,7 +42,6 @@ export const TeaserBox = (props) => {
 };
 
 export const DummyTeaserBox = (props) => {
-  console.log('this is a line ');
   return (
     <div className="teaser-box teaser-box--dummy">
       <div className="teaser-box__wrapper-link">
@@ -55,7 +54,7 @@ export const DummyTeaserBox = (props) => {
       </div>
     </div>
   );
-}
+};
 
 export const TeaserBoxList = (props) => {
 
@@ -80,7 +79,4 @@ export const TeaserBoxList = (props) => {
       {resources}
     </div>
   )
-}
-
-// export ExternalResource;
-// export ExternalResourceList;
+};
