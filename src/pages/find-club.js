@@ -52,7 +52,7 @@ class Clubs extends React.Component {
 
     // Decide which view to show.
     const content = snapshot.view === 'map'
-      ? <Map />
+      ? <Map clubs={clubs} />
       : <ClubTeaserList clubs={clubs} />;
 
     return (

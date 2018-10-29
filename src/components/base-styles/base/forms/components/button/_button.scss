@@ -146,6 +146,14 @@ button,
     letter-spacing: 0;
   }
 
+  &--x-small {
+    @include font-size(11px);
+    @include line-height(6px);
+    padding: 8px 10px;
+    border-radius: 2px;
+    letter-spacing: 0;
+  }
+
   &--header {
     @include font-size(18px);
     @include line-height(24px);
