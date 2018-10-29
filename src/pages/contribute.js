@@ -6,6 +6,7 @@ import { graphql } from 'gatsby';
 // Local modules.
 import BasicLayout from '../components/layouts/layout-base/layout-base';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
+import Layout2ColsUnequal from './../components/layouts/layout-2col-unequal/layout-2col-unequal';
 import OpportunitiesMember from './../components/components/opportunities-member/opportunities-member';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.
@@ -29,25 +30,28 @@ class Contribute extends React.Component {
         </Helmet>
 
         <LayoutContained>
-          <div>
-          <h1> Opportunities </h1>
-          <p className="highlighted-text highlighted-text--intense">
-            Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet
-            Lorem ipsum donor sit amet Lorem ipsum donor sit amet Lorem ipsum donor sit amet
-          </p>
-          </div>
-          <div className="promoted-box">
-              <h3 className="promoted-box__title"> Next steps after signing up </h3>
-            <ol className="promoted-box__content">
-              <li> Explore contribution opportunities </li>
-              <li> Reach out to  us </li>
-              <li> Explore available interships/jobs </li>
-              <li> Check the latest announcements </li>
-            </ol>
-          </div>
+          <Layout2ColsUnequal secondNarrow horizontalGutters verticalGutters>
+            <div>
+              <h1> Opportunities </h1>
+              <p className="highlighted-text highlighted-text--intense">
+                We bring you the best opportunities to contribute code. Practice your skills by taking part in compelling Open Source projects that match your interests!
+              </p>
+            </div>
+            <div>
+              <div className="promoted-box">
+                <h3 className="promoted-box__title title title--x-small"> Next steps after signing up </h3>
+                <ol className="promoted-box__content">
+                  <li> Explore contribution opportunities </li>
+                  <li> Reach out to us </li>
+                  <li> Explore available interships/jobs </li>
+                  <li> Check the latest announcements </li>
+                </ol>
+              </div>
+            </div>
+          </Layout2ColsUnequal>
         </LayoutContained>
         <OpportunitiesMember jobs={jobs} announcements={announcements}
-                    channels={channels} tools={tools} resources={resources} />
+                             channels={channels} tools={tools} resources={resources} />
 
       </BasicLayout>
     );
