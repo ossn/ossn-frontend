@@ -13,7 +13,7 @@ export const ExternalLinkBox = (props) => {
   const resource = props.resource;
   const title = resource.title;
   const target = resource.link;
-  const image = resource.imageUrl;
+  const image = resource.attachment.publicURL;
 
   const classes = [props.className, 'external-link-box'];
   return (

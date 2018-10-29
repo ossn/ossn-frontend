@@ -2,14 +2,14 @@
   {
     "title": "Fix me",
     "link": "#",
-    "imageUrl": "fixme"
+    "attachment": "./logo-fixme.svg"
   },{
     "title": "Excercism",
     "link": "#",
-    "imageUrl": "excercism"
+    "attachment": "./exercism.png"
   },{
     "title": "Tools Dashboard",
     "link": "#",
-    "imageUrl": "toolsdashboard"
+    "attachment": "./tools-dashboard.svg"
   }
 ]

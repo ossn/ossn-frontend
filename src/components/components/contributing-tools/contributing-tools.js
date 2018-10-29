@@ -35,6 +35,8 @@ export const query = graphql`
   fragment MemberTools on ToolsForContributingJson {
     title
     link
-    imageUrl
+    attachment {
+      publicURL
+    }
   }
 `;

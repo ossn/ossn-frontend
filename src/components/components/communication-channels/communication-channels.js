@@ -48,7 +48,6 @@ export const query = graphql`
   fragment CommunicationChannel on CommunicationChannelsJson {
     title
     link
-    imageUrl
     attachment {
       publicURL
     }
