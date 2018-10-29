@@ -14,7 +14,6 @@ export const ClubTeaser = (props) => {
 
   const title = props.club.title;
   const subtitle = props.club.subtitle;
-  const link = props.club.clubUrl;
   const image = props.club.imageUrl;
 
   return (

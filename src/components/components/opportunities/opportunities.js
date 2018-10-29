@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 // local modules
 import OpportunitiesMemeber from './../opportunities-member/opportunities-member';
-import OpportunitiesGuest  from './../opportunities-guest/opportunities-guest';
+// import OpportunitiesGuest  from './../opportunities-guest/opportunities-guest';
 
 // utils
 import {mapUserToProps} from './../../../utils/redux-utils';
@@ -18,7 +18,7 @@ class Opportunities  extends React.Component {
     const tools = this.props.tools;
     const resources = this.props.resources;
 
-    const loggedIn = this.props.user.loggedIn;// || true;
+    // const loggedIn = this.props.user.loggedIn;// || true;
 
     // TODO commend out to implement logged in check.
     // const view = loggedIn
