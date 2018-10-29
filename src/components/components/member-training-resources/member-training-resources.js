@@ -21,12 +21,12 @@ const TrainingResource = (props) => {
   const url = props.resource.link;
   const icon = props.resource.attachment.publicURL;
 
-  const classes=`${props.className}`;
+  const classes=`${props.className || ''} member-training-resources`;
 
   return  (
     <div className={classes}>
-      <ShadowBox className="member-training-resources">
-        <a href={url} className="member-training-resources__wrapper-link">
+      <a href={url} className="member-training-resources__wrapper-link">
+        <ShadowBox className="member-training-resources__content">
           <div className="member-training-resources__image-wrapper">
             <img src={icon} alt={title} className="member-training-resources__image"/>
           </div>
@@ -36,8 +36,8 @@ const TrainingResource = (props) => {
               Got 15 minutes and want to learn Git? Git allows groups of people to work on the same documents at the same time, and without stepping on each other's toes.
             </p>
           </div>
-        </a>
-      </ShadowBox>
+        </ShadowBox>
+      </a>
     </div>
   );
 };
