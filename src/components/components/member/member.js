@@ -162,23 +162,23 @@ class Member extends React.Component {
 
     if (snapshot.edit) {
       buttonList.push(
-        <div onClick={this.handleCancel} className="member__button" key={0} >
-          <X />
+        <div onClick={this.handleCancel} className="member__button button button--reset" key={0} >
+          <X size={21} />
           <span> Cancel </span>
         </div>
       );
 
       buttonList.push(
-        <div onClick={this.handleSave} className="member__button member__button--colored" key={1}>
-          <Check />
+        <div onClick={this.handleSave} className="member__button  button button--submit" key={1}>
+          <Check size={20} />
           <span> Save changes </span>
         </div>
       );
 
     } else if (this.props.editable) {
       buttonList.push(
-        <div onClick={this.handleEdit} className="member__button"  key={2} >
-          <Feather />
+        <div onClick={this.handleEdit} className="member__button  button button--reset"  key={2} >
+          <Feather size={18} />
           <span> Edit my profile </span>
         </div>
       );

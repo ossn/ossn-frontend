@@ -7,6 +7,7 @@
 // .title--x-large - Extra large title used in above the fold.
 // .title--large -  Large title used in banners.
 // .title--medium - Medium sized title.
+// .title--m-small - Title smaller than the default title, larger than the small.
 // .title--small - Title smaller than the default title.
 // .title--x-small - Extra small title.
 // .title--xx-small - Extra extra small title.
@@ -38,9 +39,16 @@
     font-weight: 600;
   }
 
-  &--small {
+  &--m-small {
     @include font-size(34px);
     @include line-height(51px);
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  &--small {
+    @include font-size(30px);
+    @include line-height(36px);
     font-weight: 600;
     letter-spacing: 0;
   }

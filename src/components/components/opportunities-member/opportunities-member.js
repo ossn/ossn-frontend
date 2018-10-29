@@ -14,7 +14,7 @@ export default (props) => {
     <div className="opportunities-member">
 
       <LayoutContained>
-        <h1 className="title title--small opportunities-member__title">
+        <h1 className="title title--m-small opportunities-member__title">
           Opportunities
         </h1>
 
