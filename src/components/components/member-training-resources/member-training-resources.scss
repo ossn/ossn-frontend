@@ -1,15 +1,18 @@
 @import './../../base-styles/init/init.scss';
 
-.teaser-box {
+.member-training-resources {
+  @include margin-top(25px);
   width: 100%;
   margin-bottom: 15px;
+  padding: 25px;
 
   &__wrapper-link {
+    display: flex;
   }
 
   &__image-wrapper {
     width: 100px;
-    height: 80px;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,30 +23,18 @@
     height: auto;
     max-width: 100%;
     max-height: 100%;
-
   }
 
   &__text {
     display: flex;
-    padding: 10px 20px 10px 15px;
+    padding: 13px 20px 10px 15px;
     flex-direction: column;
     color: color('grey-dark');
     width: 100%;
   }
 
-  &__title {
-
-  }
-
   &__inner {
     display: flex;
-  }
-
-  &__date {
-    display: block;
-    text-align: right;
-    color: color('grey-another');
-    margin-top: auto;
   }
 
   &__list {
@@ -52,29 +43,5 @@
 
   &__list-wrapper {
     margin-top: 35px;
-  }
-
-  &__dummy-row {
-    width: 95%;
-    height: 10px;
-    display: block;
-    border-radius: 5px;
-    background-color: #f5f7f0;
-
-    //&--small {
-    //  margin-top: 10px;
-    //  margin-bottom: 40px;
-    //  width: 65%;
-    //}
-  }
-
-  &__list-wrapper--dummy {
-
-    .teaser-box__inner {
-
-      flex-wrap: wrap;
-
-    }
-
   }
 }
