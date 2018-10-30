@@ -5,6 +5,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from "gatsby"
+import Img from 'gatsby-image';
 
 // Local modules.
 import BasicLayout from '../components/layouts/layout-base/layout-base';
@@ -13,12 +14,12 @@ import Organization from './../components/components/organization/organization';
 import Layout3Col from './../components/layouts/layout-3col/layout-3col';
 import Layout2Col from './../components/layouts/layout-2col/layout-2col';
 import Layout2ColsUnequal from './../components/layouts/layout-2col-unequal/layout-2col-unequal';
-import TopBanner from './../components/components/top-banner/top-banner';
+// import TopBanner from './../components/components/top-banner/top-banner';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.
 import GatsbyConfig from './../../gatsby-config';
 
-import bannerImage from './../images/affiliationsBanner.png';
+// import bannerImage from './../images/affiliationsBanner.png';
 
 const Organizations = (props) => {
 
@@ -33,7 +34,8 @@ const Organizations = (props) => {
       </Helmet>
       <LayoutContained>
         <div>
-          <TopBanner src={bannerImage} alt="In unity there is strength" page="organizations" />
+          {/* <TopBanner src={bannerImage} alt="In unity there is strength" page="organizations" /> */}
+            <Img fluid={props.data.organizationsBanner.childImageSharp.fluid} />
         </div>
 
 
@@ -80,13 +82,30 @@ export default Organizations;
 
 
 export const query = graphql`
-{
-  allOrganizationsJson {
-    edges {
-      org: node {
-      ...organization
-	    }
+  {
+    allOrganizationsJson {
+      edges {
+        org: node {
+        ...organization
+  	    }
+      }
+    }
+
+    organizationsBanner: file(relativePath: {eq: "organizationsBanner.png"}) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          base64
+          tracedSVG
+          aspectRatio
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+          sizes
+          originalImg
+          originalName
+        }
+      }
     }
   }
-}
 `;

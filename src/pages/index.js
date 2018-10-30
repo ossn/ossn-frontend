@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql } from "gatsby";
+import Img from 'gatsby-image'
 
 // Local modules.
 import BasicLayout from '../components/layouts/layout-base/layout-base';
@@ -22,7 +23,8 @@ const IndexPage = (props) => {
       {/* New section */}
       <LayoutContained>
         <div>
-          <TopBanner src={bannerImage} alt="Open source clubs" page="home" />
+          <Img fluid={props.data.imageOne.childImageSharp.fluid} />
+          {/* <TopBanner src={bannerImage} alt="Open source clubs" page="home" /> */}
         </div>
 
         <h1> What's happening </h1>
@@ -78,6 +80,23 @@ export const query = graphql`
         org: node {
         ...organization
   	    }
+      }
+    }
+
+    imageOne: file(relativePath: {eq: "home.png"}) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          base64
+          tracedSVG
+          aspectRatio
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+          sizes
+          originalImg
+          originalName
+        }
       }
     }
   }

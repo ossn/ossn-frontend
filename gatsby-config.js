@@ -1,8 +1,12 @@
+const path = require('path');
+
 module.exports = {
   siteMetadata: {
     title: 'Open Source Student Network',
   },
   plugins: [
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     'gatsby-plugin-react-helmet',
     `gatsby-transformer-json`,
     {
@@ -19,7 +23,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: 'data',
         path: `./src/data/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: 'images',
+        path: path.join(__dirname, `src`, `images`),
       },
     },
     {
