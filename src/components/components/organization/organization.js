@@ -31,7 +31,7 @@ const Organization = (props) => {
           <div className="organization__image-wrapper">
             <img  src={icon} className="organization__image" alt={title}/>
           </div>
-          <a href={url} className="title title--x-small organization__title" target="_blank" >
+          <a href={url} className="title title--x-small organization__title" target="_blank" rel="noopener noreferrer">
             <Link size={18} className="icon organization__icon" /> {title}
           </a>
           <p className="organization__description">

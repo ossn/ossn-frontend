@@ -9,12 +9,9 @@ import OrganizationList from './../components/components/organizations-list/orga
 import BecomeMember from './../components/components/home-become-member/home-become-member';
 import ImageBox from './../components/components/image-box/image-box';
 import BlockquoteBox from './../components/components/blockquote-box/blockquote-box';
-import TopBanner from './../components/components/top-banner/top-banner';
 
 // styles
 import '../components/layouts/layout-custom-grid/layout-custom-grid.scss'
-
-import bannerImage from './../images/home.png';
 
 const IndexPage = (props) => {
   return (
@@ -87,7 +84,6 @@ export const query = graphql`
       childImageSharp {
         fluid(maxWidth: 1000) {
           base64
-          tracedSVG
           aspectRatio
           src
           srcSet

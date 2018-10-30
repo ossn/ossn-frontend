@@ -14,7 +14,6 @@ import Organization from './../components/components/organization/organization';
 import Layout3Col from './../components/layouts/layout-3col/layout-3col';
 import Layout2Col from './../components/layouts/layout-2col/layout-2col';
 import Layout2ColsUnequal from './../components/layouts/layout-2col-unequal/layout-2col-unequal';
-// import TopBanner from './../components/components/top-banner/top-banner';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.
 import GatsbyConfig from './../../gatsby-config';
@@ -34,8 +33,7 @@ const Organizations = (props) => {
       </Helmet>
       <LayoutContained>
         <div>
-          {/* <TopBanner src={bannerImage} alt="In unity there is strength" page="organizations" /> */}
-            <Img fluid={props.data.organizationsBanner.childImageSharp.fluid} />
+          <Img fluid={props.data.organizationsBanner.childImageSharp.fluid} />
         </div>
 
 

@@ -21,7 +21,7 @@ const OrganizationTeaser = (props) => {
   let classString = classes.join(" ");
 
   return (
-    <a href={url} className={classString} title={title} target="_blank">
+    <a href={url} className={classString} title={title} target="_blank" rel="noopener noreferrer">
       <img src={icon} alt={title} />
     </a>
   );
