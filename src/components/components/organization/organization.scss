@@ -1,0 +1,35 @@
+.organization {
+  display: flex;
+
+  &__inner {
+    padding: 5px;
+
+    p {
+      &:first-child {
+      }
+
+      &:last-child {
+      }
+    }
+  }
+
+  &__image {
+    // Center image in both axes.
+    &-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 15px 25px;
+      height: 138px;
+    }
+  }
+
+  &__description {
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  &__icon {
+    transform: translateY(-4px);
+  }
+}

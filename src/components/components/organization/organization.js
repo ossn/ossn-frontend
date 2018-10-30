@@ -1,9 +1,14 @@
 /*
-   A single organization.
-*/
+ A single organization.
+ */
 
 import React from 'react';
+import { Link } from 'react-feather';
+
 import ShadowBox from './../shadow-box/shadow-box';
+
+// Style.
+import './organization.scss'
 
 const Organization = (props) => {
   if (!props.organization) {
@@ -14,16 +19,25 @@ const Organization = (props) => {
   const url = props.organization.link;
   const icon = props.organization.attachment.publicURL;
   const description = props.organization.description;
-  const classes = `${props.className}`;
+
+  let classes = ['organization'];
+  if (props.className) classes.push(props.className);
+  let classString = classes.join(" ");
 
   return (
-    <div className={classes}>
+    <div className={classString}>
       <ShadowBox>
-        <img  src={icon} width="100px" alt={title}/> <br />
-        <a href={url} > {title} </a>
-        <p>
-          {description}
-        </p>
+        <div className="organization__inner">
+          <div className="organization__image-wrapper">
+            <img  src={icon} className="organization__image" alt={title}/>
+          </div>
+          <a href={url} className="title title--x-small organization__title" >
+            <Link size={18} className="icon organization__icon" /> {title}
+          </a>
+          <p className="organization__description">
+            {description}
+          </p>
+        </div>
       </ShadowBox>
     </div>
   );
