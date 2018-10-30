@@ -16,7 +16,7 @@ import {SearchFilter, SelectFilter} from './../components/components/filters/fil
 // Import page title from gatsby config. TODO Remove and fid title another way.
 import GatsbyConfig from './../../gatsby-config';
 
-class Members extends React.Component {
+class Members extends React.PureComponent {
 
   constructor(props) {
     super(props);

@@ -1,46 +1,45 @@
-import React from 'react';
-import {Provider} from 'react-redux';
-import { Helmet } from 'react-helmet';
-import { ApolloClient } from 'apollo-client';
-import { HttpLink } from 'apollo-link-http';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { ApolloProvider } from 'react-apollo';
-import fetch from 'node-fetch';
-
-// Import local modules.
-// import LayoutContained from "./../layout-contained/layout-contained";
-import Header from './../../components/header/header';
-import SkipLink from './../../components/skip-link/skip-link';
-import Footer from './../../components/footer/footer';
-import store from './../../../store';
-
-// Import page title from gatsby config. TODO Remove and fid title another way.
-import GatsbyConfig from './../../../../gatsby-config';
+// Styles
+import './../../base-styles/base/normalize.scss';
+import './../../base-styles/fonts/fonts.scss';
+import './layout-base.scss';
 
 // utils
-import {link, metadata} from './../../../settings';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloClient } from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
+import fetch from 'node-fetch';
+import React, { memo } from 'react';
+import { ApolloProvider } from 'react-apollo';
+import { Helmet } from 'react-helmet';
+import { Provider } from 'react-redux';
 
-// Styles
-import './../../base-styles/fonts/fonts.scss'
-import './../../base-styles/base/normalize.scss'
-import './layout-base.scss'
+// Import local modules
+import GatsbyConfig from './../../../../gatsby-config';
+import { link, metadata } from './../../../settings';
+import store from './../../../store';
+import Footer from './../../components/footer/footer';
+import Header from './../../components/header/header';
+import SkipLink from './../../components/skip-link/skip-link';
+// import LayoutContained from "./../layout-contained/layout-contained";
 
-const Basic = ({children}) =>{
-
+// TODO: Remove and fid title another way.
+const Basic = ({ children }) => {
   const client = new ApolloClient({
-    link: new HttpLink({uri: 'https://07rqzpwj55.lp.gql.zone/graphql', fetch: fetch}),
+    link: new HttpLink({
+      uri: 'https://07rqzpwj55.lp.gql.zone/graphql',
+      fetch: fetch,
+    }),
     cache: new InMemoryCache(),
-  });
+  })
 
-  return(
-
+  return (
     <ApolloProvider client={client}>
-      <Provider store={store} >
+      <Provider store={store}>
         <div>
           <Helmet meta={metadata} link={link}>
             <title>{GatsbyConfig.siteMetadata.title}</title>
           </Helmet>
-          <SkipLink></SkipLink>
+          <SkipLink />
           <div>
             <Header />
           </div>
@@ -50,11 +49,10 @@ const Basic = ({children}) =>{
           <footer>
             <Footer />
           </footer>
-
         </div>
       </Provider>
     </ApolloProvider>
-  );
-};
+  )
+}
 
-export default Basic;
+export default memo(Basic)

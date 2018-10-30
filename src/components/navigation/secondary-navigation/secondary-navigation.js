@@ -1,24 +1,52 @@
-// External modules.
-import React from 'react';
-import {Link} from 'gatsby';
-
-// Internal modules.
 import './secondary-navigation.scss';
 
-class Navigation extends React.Component {
-  render() {
-    return(
-      <nav aria-labelledby="secondary-navigation" className="secondary-navigation">
-        <h2 className="visually-hidden" id="secondary-navigation"> Secondary Navigation </h2>
-        <ul className="secondary-navigation__list">
-          <li className="secondary-navigation__item"> <Link to="/leaders-corner" className="secondary-navigation__link" activeClassName="is-active"> Leader's Corner </Link> </li>
-          <li className="secondary-navigation__item"> <Link to="/about-us" className="secondary-navigation__link" activeClassName="is-active"> About us </Link> </li>
-          <li className="secondary-navigation__item"> <Link to="/organizations" className="secondary-navigation__link" activeClassName="is-active"> Organizations </Link> </li>
-          <li className="secondary-navigation__item"> <Link to="/faq-page" className="secondary-navigation__link" activeClassName="is-active"> FAQ </Link> </li>
-        </ul>
-      </nav>
-    )
-  }
-}
+import { Link } from 'gatsby';
+import React from 'react';
 
-export default Navigation;
+const Navigation = () => (
+  <nav aria-labelledby="secondary-navigation" className="secondary-navigation">
+    <h2 className="visually-hidden" id="secondary-navigation">
+      Secondary Navigation
+    </h2>
+    <ul className="secondary-navigation__list">
+      <li className="secondary-navigation__item">
+        <Link
+          to="/leaders-corner"
+          className="secondary-navigation__link"
+          activeClassName="is-active"
+        >
+          Leader's Corner
+        </Link>
+      </li>
+      <li className="secondary-navigation__item">
+        <Link
+          to="/about-us"
+          className="secondary-navigation__link"
+          activeClassName="is-active"
+        >
+          About us
+        </Link>
+      </li>
+      <li className="secondary-navigation__item">
+        <Link
+          to="/organizations"
+          className="secondary-navigation__link"
+          activeClassName="is-active"
+        >
+          Organizations
+        </Link>
+      </li>
+      <li className="secondary-navigation__item">
+        <Link
+          to="/faq-page"
+          className="secondary-navigation__link"
+          activeClassName="is-active"
+        >
+          FAQ
+        </Link>
+      </li>
+    </ul>
+  </nav>
+)
+
+export default Navigation

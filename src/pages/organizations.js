@@ -1,8 +1,8 @@
-// TODO: rmeove the linter disablement after updating the images
+// TODO: remove the linter disablement after updating the images
 /* eslint-disable */
 
 // external modules
-import React from 'react';
+import React, {memo} from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from "gatsby"
 import Img from 'gatsby-image';
@@ -15,7 +15,8 @@ import Layout3Col from './../components/layouts/layout-3col/layout-3col';
 import Layout2Col from './../components/layouts/layout-2col/layout-2col';
 import Layout2ColsUnequal from './../components/layouts/layout-2col-unequal/layout-2col-unequal';
 
-// Import page title from gatsby config. TODO Remove and fid title another way.
+// Import page title from gatsby config.
+//TODO: Remove and fid title another way.
 import GatsbyConfig from './../../gatsby-config';
 
 // import bannerImage from './../images/affiliationsBanner.png';
@@ -76,7 +77,7 @@ const Organizations = (props) => {
   );
 };
 
-export default Organizations;
+export default memo(Organizations);
 
 
 export const query = graphql`
