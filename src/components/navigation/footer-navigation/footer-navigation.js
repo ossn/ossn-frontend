@@ -7,7 +7,7 @@ class Navigation extends React.Component {
     return(
       <section className="footer__section footer__section--navigation">
         <h5 className="footer__heading"> Navigate </h5>
-        <ul  className="footer__list">
+        <ul className="footer__list">
           <li>
             <Link className="footer__link" link="/find-club">Clubs</Link>
           </li>
@@ -19,7 +19,7 @@ class Navigation extends React.Component {
           </li>
           {/*TODO Add correct link*/}
           <li>
-            <Link className="footer__link" link="/">Login/Signup</Link>
+            <Link className="footer__link" link="/member">Login/Signup</Link>
           </li>
           <li>
             <Link className="footer__link" link="/organizations">Affiliations</Link>

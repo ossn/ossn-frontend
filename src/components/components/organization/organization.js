@@ -1,5 +1,5 @@
 /*
-   A single organization page.
+   A single organization.
 */
 
 import React from 'react';
@@ -10,14 +10,19 @@ const Organization = (props) => {
     return <div> organization not found error </div>
   }
 
+  const title = props.organization.title;
+  const url = props.organization.link;
+  const icon = props.organization.attachment.publicURL;
+  const description = props.organization.description;
   const classes = `${props.className}`;
+
   return (
     <div className={classes}>
       <ShadowBox>
-        <img  src={props.organization.image || "#"} width="100px" alt={props.organization.title}/> <br />
-        <a href={props.organization.link || "#"} > {props.organization.title} </a>
+        <img  src={icon} width="100px" alt={title}/> <br />
+        <a href={url} > {title} </a>
         <p>
-          {props.organization.description}
+          {description}
         </p>
       </ShadowBox>
     </div>

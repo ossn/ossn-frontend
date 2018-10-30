@@ -34,5 +34,8 @@ export const query = graphql`
     image
     link
     description
+    attachment {
+      publicURL
+    }
   }
 `;

@@ -20,7 +20,6 @@ const TrainingResource = (props) => {
   const title = props.resource.title;
   const url = props.resource.link;
   const icon = props.resource.attachment.publicURL;
-
   const classes=`${props.className || ''} member-training-resources`;
 
   return  (
@@ -42,7 +41,7 @@ const TrainingResource = (props) => {
   );
 };
 
-// A wrpaper for all training resources.
+// A wrapper for all training resources.
 export default (props) => {
 
   const resources = props.resources.edges.map((resourceNode, i)=>{

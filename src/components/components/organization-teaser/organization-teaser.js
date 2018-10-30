@@ -8,9 +8,14 @@ const OrganizationTeaser = (props) => {
   if (!props.organization) {
     return <div> No organization found </div>;
   }
+
+  const title = props.organization.title;
+  const url = props.organization.link;
+  const icon = props.organization.attachment.publicURL;
+
   return (
-    <a href={props.organization.link || "#"} className={props.className || ''}>
-      <img src={props.organization.image || "#"} alt={props.organization.title} width="100px"/>
+    <a href={url} className={props.className || ''}>
+      <img src={icon} alt={title} />
     </a>
   );
 };
