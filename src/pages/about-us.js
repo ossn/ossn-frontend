@@ -121,7 +121,7 @@ const About = () => {
         </Layout2ColsUnequal>
       </LayoutContained>
     </BasicLayout>
-  )
-}
+  );
+};
 
-export default About
+export default About;
