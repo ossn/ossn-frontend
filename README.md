@@ -18,7 +18,7 @@ Welcome to Open Source Student Network page repository!
 
 ### <a name="develop"></a> Develop
 1. Open development server.
-At the repository directory run `gatsby develop`
+At the repository directory run `npm run develop`
 - The page will be available at [localhost:8000](htpp://localhost:8000) by default
 
 ### <a name="build"></a> Build
