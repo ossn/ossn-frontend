@@ -1,5 +1,5 @@
 // External modules.
-import React from 'react'
+import React from 'react';
 import { Helmet } from 'react-helmet';
 
 // Local modules.
@@ -12,7 +12,9 @@ import GatsbyConfig from './../../gatsby-config';
 const NotFoundPage = () => (
   <BasicLayout>
     <Helmet>
-      <title>{['NOT FOUND', '|', GatsbyConfig.siteMetadata.title].join(" ")}</title>
+      <title>
+        {['NOT FOUND', '|', GatsbyConfig.siteMetadata.title].join(' ')}
+      </title>
     </Helmet>
 
     <LayoutContained>

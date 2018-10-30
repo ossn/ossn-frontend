@@ -11,8 +11,8 @@ class Clubs extends React.PureComponent {
   render() {
     const singleClub = {
       title: 'Single Club',
-      subtitle: 'this is a more wordy title for the cub ',
-    }
+      subtitle: 'this is a more wordy title for the cub '
+    };
 
     return (
       <BasicLayout>
@@ -24,8 +24,8 @@ class Clubs extends React.PureComponent {
 
         <Club club={singleClub} />
       </BasicLayout>
-    )
+    );
   }
 }
 
-export default Clubs
+export default Clubs;

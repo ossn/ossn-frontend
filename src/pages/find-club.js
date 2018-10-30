@@ -6,7 +6,10 @@ import { Helmet } from 'react-helmet';
 import BasicLayout from '../components/layouts/layout-base/layout-base';
 import GatsbyConfig from './../../gatsby-config';
 import { ClubTeaserList } from './../components/components/club-teaser-list/club-teaser-list';
-import { SearchFilter, ToggleFilter } from './../components/components/filters/filters';
+import {
+  SearchFilter,
+  ToggleFilter
+} from './../components/components/filters/filters';
 import Map from './../components/components/map/map';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 
@@ -16,29 +19,29 @@ class Clubs extends React.PureComponent {
     Handle the value of th search and the toggle button from state.
   */
   constructor() {
-    super()
+    super();
     this.state = {
       view: 'list',
-      searchString: '',
-    }
-    this.handleSearch = this.handleSearch.bind(this)
+      searchString: ''
+    };
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   // State management functions. Used by children components.
   handleToggleMap = () => {
-    const snapshot = { ...this.state }
-    this.setState({ view: snapshot.view === 'map' ? 'list' : 'map' })
-  }
+    const snapshot = { ...this.state };
+    this.setState({ view: snapshot.view === 'map' ? 'list' : 'map' });
+  };
 
   handleSearch = event => {
-    this.setState({ searchString: event.target.value })
-  }
+    this.setState({ searchString: event.target.value });
+  };
 
   render() {
-    const snapshot = { ...this.state }
+    const snapshot = { ...this.state };
 
     // Take a copy of the function.
-    let clubs = this.props.data.ossnApi.clubs.slice()
+    let clubs = this.props.data.ossnApi.clubs.slice();
 
     // Filter clubs by the search string.
     if (
@@ -50,8 +53,8 @@ class Clubs extends React.PureComponent {
           club.title
             .toLowerCase()
             .indexOf(snapshot.searchString.trim().toLowerCase()) >= 0
-        )
-      })
+        );
+      });
     }
 
     // Decide which view to show.
@@ -60,7 +63,7 @@ class Clubs extends React.PureComponent {
         <Map clubs={clubs} />
       ) : (
         <ClubTeaserList clubs={clubs} />
-      )
+      );
 
     return (
       <BasicLayout>
@@ -81,11 +84,11 @@ class Clubs extends React.PureComponent {
           {content}
         </LayoutContained>
       </BasicLayout>
-    )
+    );
   }
 }
 
-export default Clubs
+export default Clubs;
 
 export const query = graphql`
   {
@@ -104,4 +107,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

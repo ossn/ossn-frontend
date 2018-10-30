@@ -20,11 +20,11 @@ import Opportunities from './../components/components/opportunities/opportunitie
 // TODO: Remove and fid title another way.
 class Contribute extends React.PureComponent {
   render() {
-    const jobs = this.props.data.ossnApi.jobs
-    const announcements = this.props.data.ossnApi.announcements
-    const channels = this.props.data.allCommunicationChannelsJson
-    const tools = this.props.data.allToolsForContributingJson
-    const resources = this.props.data.allTrainingResourcesJson
+    const jobs = this.props.data.ossnApi.jobs;
+    const announcements = this.props.data.ossnApi.announcements;
+    const channels = this.props.data.allCommunicationChannelsJson;
+    const tools = this.props.data.allToolsForContributingJson;
+    const resources = this.props.data.allTrainingResourcesJson;
 
     return (
       <BasicLayout>
@@ -42,11 +42,11 @@ class Contribute extends React.PureComponent {
           resources={resources}
         />
       </BasicLayout>
-    )
+    );
   }
 }
 
-export default Contribute
+export default Contribute;
 
 export const query = graphql`
   {
@@ -79,4 +79,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

@@ -21,7 +21,7 @@ const IndexPage = props => {
           <Img fluid={props.data.imageOne.childImageSharp.fluid} />
           {/* <TopBanner src={bannerImage} alt="Open source clubs" page="home" /> */}
         </div>
-        <h1> What's happening </h1>
+        <h1> What&apos;s happening </h1>
         <div>
           <div>
             <div>
@@ -85,10 +85,10 @@ const IndexPage = props => {
         />
       </LayoutContained>
     </BasicLayout>
-  )
-}
+  );
+};
 
-export default memo(IndexPage)
+export default memo(IndexPage);
 
 export const query = graphql`
   {
@@ -116,4 +116,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

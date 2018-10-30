@@ -6,7 +6,7 @@
 
 // handle the login request
 export const login = (username, password) => {
-  return (dispatch) => {
+  return dispatch => {
     // make the actual call
     const user = {
       username: 'user01',
@@ -16,30 +16,30 @@ export const login = (username, password) => {
       githubLink: 'https://github.com',
       personalPage: 'https://duckduckgo.com',
       clubLeader: true
-    }
+    };
 
     return confirmLogin(dispatch, user);
-  }
+  };
 };
 
 // handles the logout request
 export const logout = () => {
-  return (dispatch) => {
+  return dispatch => {
     // make the actual call
     return confirmLogout(dispatch);
-  }
-}
+  };
+};
 
 // checks if there is an active user session
 export const checkLogin = () => {
-  return (dispatch) => {
+  return dispatch => {
     // make the actual call
     return confirmLogout(dispatch);
-  }
-}
+  };
+};
 
 // handles a register request
-export const register = (user) => {
+export const register = user => {
   const newUser = {
     username: 'user01',
     firstName: 'User',
@@ -48,13 +48,13 @@ export const register = (user) => {
     githubLink: 'https://github.com',
     personalPage: 'https://duckduckgo.com',
     clubLeader: true
-  }
+  };
 
-  return (dispatch) => {
+  return dispatch => {
     // make the registration
     return confirmLogin(dispatch, newUser);
-  }
-}
+  };
+};
 
 // dispatches the login data
 const confirmLogin = (dispatch, user) => {
@@ -63,15 +63,13 @@ const confirmLogin = (dispatch, user) => {
     payload: {
       ...user
     }
-  })
-}
+  });
+};
 
 // dispatches the logout event
-const confirmLogout = (dispatch) =>  {
+const confirmLogout = dispatch => {
   return dispatch({
     type: 'USER_LOGOUT',
-    payload: {
-
-    }
-  })
-}
+    payload: {}
+  });
+};

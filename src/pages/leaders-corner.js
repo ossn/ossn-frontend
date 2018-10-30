@@ -16,20 +16,20 @@ import LayoutContained from './../components/layouts/layout-contained/layout-con
 // TODO: Remove and fid title another way.
 class Contribute extends React.PureComponent {
   render() {
-    const jobs = this.props.data.ossnApi.jobs
-    const announcements = this.props.data.ossnApi.announcements
-    const channels = this.props.data.allCommunicationChannelsJson
-    const tools = this.props.data.allToolsForContributingJson
-    const resources = this.props.data.allTrainingResourcesJson
+    const jobs = this.props.data.ossnApi.jobs;
+    const announcements = this.props.data.ossnApi.announcements;
+    const channels = this.props.data.allCommunicationChannelsJson;
+    const tools = this.props.data.allToolsForContributingJson;
+    const resources = this.props.data.allTrainingResourcesJson;
 
     // HACK: : Data should be represented better
     const prManagement = this.props.data.leadersToolsJson
-      .Project_Management_tools
+      .Project_Management_tools;
     const codeOfConduct = this.props.data.leadersToolsJson
-      .Code_of_Conduct_examples
-    const leadersTools = this.props.data.leadersToolsJson.Various_tools
+      .Code_of_Conduct_examples;
+    const leadersTools = this.props.data.leadersToolsJson.Various_tools;
     const leadersResources = this.props.data.leadersToolsJson
-      .Useful_resources_running_a_club
+      .Useful_resources_running_a_club;
 
     return (
       <BasicLayout>
@@ -42,7 +42,7 @@ class Contribute extends React.PureComponent {
         </Helmet>
 
         <LayoutContained>
-          <h1> Leader's Corner </h1>
+          <h1> Leader&apos;s Corner </h1>
           <AllLeaderTools
             prManagement={prManagement}
             codeOfConduct={codeOfConduct}
@@ -61,11 +61,11 @@ class Contribute extends React.PureComponent {
           resources={resources}
         />
       </BasicLayout>
-    )
+    );
   }
 }
 
-export default Contribute
+export default Contribute;
 
 export const query = graphql`
   {
@@ -124,4 +124,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;
