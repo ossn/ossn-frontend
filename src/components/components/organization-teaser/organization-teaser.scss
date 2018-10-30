@@ -1,0 +1,14 @@
+// Organization for front page listing.
+.organization-teaser {
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  opacity: .5;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}

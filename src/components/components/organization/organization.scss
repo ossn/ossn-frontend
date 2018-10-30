@@ -1,16 +1,9 @@
+// Organization for organization page listing.
 .organization {
   display: flex;
 
   &__inner {
     padding: 5px;
-
-    p {
-      &:first-child {
-      }
-
-      &:last-child {
-      }
-    }
   }
 
   &__image {
