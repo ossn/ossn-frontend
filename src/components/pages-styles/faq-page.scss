@@ -1,42 +1,49 @@
 @import './../base-styles/init/init';
-@import './../base-styles/base/normalize';
 
 .faq {
-
   &__header {
     text-align: center;
     margin-bottom: 84px;
   }
 
-  &__title {
-    @extend %title;
-  }
+  &__group {
+    margin-bottom: 31px;
 
-  &__subtitle {
-    @extend %highlighted-text;
   }
 
   &__group {
-    margin-bottom: 31px;
+    &-header {
+      width: 100%;
+      text-align: center;
+      padding-top: 15px;
+      padding-left: 36px;
+      padding-right: 15px;
+      position: relative;
+    }
+
+    &-content {
+      padding-left: 36px;
+      padding-right: 15px
+    }
   }
 
-  &__group-header {
-    width: 100%;
-    text-align: center;
-    padding-top: 15px;
+  &__icon {
+    position: absolute;
+    left: -21px;
+    top: 5px;
+    color: color('brand');
   }
 
   &__item {
+    list-style: none;
 
-  }
+    &-content {
+      color: color('grey');
+    }
 
-  &__item-content {
-    color: color('grey');
-  }
-
-  &__item-title {
-    @extend %text;
-    @extend %text--medium;
+    &-title {
+      position: relative;
+    }
   }
 
   &__footer {
@@ -48,9 +55,5 @@
   &__footer-title {
     @include font-size(28px);
     @include line-height(35px);
-  }
-
-  &__footer-text {
-    @include font-size(20px);
   }
 }

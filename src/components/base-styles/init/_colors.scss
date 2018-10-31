@@ -59,6 +59,8 @@ $chroma: add-colors('functional', (
         text:                   'grey-dark',
         text-bg:                'off-white',
 
+        highlighted-text:        'grey',
+
         slice-bg:               'grey-dark-another',
         slice-bg-light:         'white',
 
@@ -144,8 +146,6 @@ $chroma: add-colors('functional', (
 
         navigation:             'grey',
         navigation-hover:       'brand',
-
-        highlighted-text:        'brand',
 ));
 
 $chroma-active-scheme: 'functional';
