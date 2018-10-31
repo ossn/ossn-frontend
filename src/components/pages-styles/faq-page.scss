@@ -32,28 +32,40 @@
     left: -21px;
     top: 5px;
     color: color('brand');
+    transition: .2s cubic-bezier(.190, 1.000, .220, 1.000); /* easeOutExpo */
   }
 
   &__item {
     list-style: none;
+    margin-bottom: 18px;
 
     &-content {
       color: color('grey');
+      margin-top: 18px;
     }
 
     &-title {
+      @include font-size(16px);
+      @include line-height(24px);
       position: relative;
     }
   }
 
   &__footer {
+    @include margin-top(90px);
     text-align: center;
     color: color('light-navy');
-    @include margin-top(90px);
   }
 
   &__footer-title {
     @include font-size(28px);
     @include line-height(35px);
+  }
+}
+
+// Expanded state.
+.is-expanded {
+  .faq__icon {
+    transform: rotate(90deg);
   }
 }

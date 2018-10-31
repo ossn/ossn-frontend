@@ -39,12 +39,12 @@ const Questions = props => {
 
         <Layout2Cols horizontalGutters>
           <div>
-            <FaqGroup group={group0} />
-            <FaqGroup group={group1} />
+            <FaqGroup group={group0} id="faq-group-1" />
+            <FaqGroup group={group1} id="faq-group-2" />
           </div>
           <div>
-            <FaqGroup group={group2} />
-            <FaqGroup group={group3} />
+            <FaqGroup group={group2} id="faq-group-3" />
+            <FaqGroup group={group3} id="faq-group-4" />
           </div>
         </Layout2Cols>
 

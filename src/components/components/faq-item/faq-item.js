@@ -1,11 +1,9 @@
-/* eslint-disable */
-
 /*
   A single FAQ question and answer.
   Appears at /faq-page
 */
 import React from 'react';
-import {ChevronRight} from 'react-feather';
+import { ChevronRight } from 'react-feather';
 
 class FaqItem extends React.Component {
   constructor(props) {
@@ -21,28 +19,39 @@ class FaqItem extends React.Component {
     this.setState({ open: !snapshot.open });
   };
 
-  handleKeyPress = () => {
-    const snapshot = { ...this.state };
-    this.setState({ open: !snapshot.open });
+  handleKeyPress = e => {
+    if (e.key === 'Enter') this.handleToggle;
   };
 
   render() {
     const snapshot = { ...this.state };
-    const content = snapshot.open ? this.props.item.body : '';
+    const isExpanded = !!snapshot.open;
+    const stateClass = snapshot.open ? 'is-expanded' : 'is-collapsed';
+    const isHidden = !snapshot.open;
+    const id = this.props.id;
+
+    let classes = ['faq__item'];
+    if (stateClass) classes.push(stateClass);
+    let classString = classes.join(' ');
 
     return (
-      <li className="faq__item">
-        <div>
-          <h3
-            className="faq__item-title text text--medium"
+      <li className={classString}>
+        <h3>
+          <button
+            className="faq__item-title button button--no-style"
             onClick={this.handleToggle}
             onKeyPress={this.handleKeyPress}
+            aria-controls={id}
+            aria-expanded={isExpanded}
           >
-            <ChevronRight size={16} className="faq__icon icon"/>
+            <ChevronRight size={16} className="faq__icon icon" />
             {this.props.item.header}
-          </h3>
+          </button>
+        </h3>
+        <div id={id} className="faq__item-content" hidden={isHidden}>
+          {' '}
+          {this.props.item.body}{' '}
         </div>
-        <div className="faq__item-content"> {content} </div>
       </li>
     );
   }
