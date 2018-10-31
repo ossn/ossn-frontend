@@ -10,24 +10,20 @@ import React from 'react';
 import FaqItem from './../faq-item/faq-item';
 import ShadowBox from './../shadow-box/shadow-box';
 
-export default (props) => {
-  const items = props.group.map((item, i)=>{
-    return <FaqItem item={item} key={i} />
+export default props => {
+  const items = props.group.map((item, i) => {
+    return <FaqItem item={item} key={i} />;
   });
 
-  const classes = `${props.className} faq__group`;
+  const classes = `${props.className || ''} faq__group`;
   return (
     <div className={classes}>
       <ShadowBox>
         <div className="faq__group-header">
-          <h2 title="title title--x-small">
-            This is a header
-          </h2>
+          <h2 title="title title--x-small">This is a header</h2>
         </div>
-        <div>
-          {items}
-        </div>
+        <ul className="faq__group-content">{items}</ul>
       </ShadowBox>
     </div>
-  )
-}
+  );
+};

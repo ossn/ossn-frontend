@@ -91,7 +91,7 @@ $pb-icon:         'PBicons';
 // The font faces you specify in the $typefaces map can be used in the
 // typeface() mixin.
 $typefaces: (
-  title: (
+    title: (
     font-family: $zilla-slab,
   ),
   title-secondary: (
@@ -100,8 +100,7 @@ $typefaces: (
     case: uppercase,
   ),
   text-highlighted: (
-    font-family: $georgia,
-    style: italic,
+    font-family: $open-sans,
   ),
   body: (
     font-family: $open-sans,

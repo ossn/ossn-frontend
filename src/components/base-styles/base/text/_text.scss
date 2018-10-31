@@ -198,8 +198,10 @@ u { // sass-lint:disable-line no-empty-rulesets
 %text {
   @include font-size($base-font-size);
   @include line-height($base-line-height);
+  @include typeface(body);
   @include margin-top(1);
   @include margin-bottom(1);
+  color: color('text');
 
   p,
   ul,
