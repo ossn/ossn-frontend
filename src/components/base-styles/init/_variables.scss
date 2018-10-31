@@ -104,6 +104,8 @@ $typefaces: (
   ),
   body: (
     font-family: $open-sans,
+    letter-spacing: 0,
+    weight: normal,
   ),
   pb-icon: (
     font-family: $pb-icon,

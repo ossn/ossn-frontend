@@ -12,7 +12,8 @@ import ShadowBox from './../shadow-box/shadow-box';
 
 export default props => {
   const items = props.group.map((item, i) => {
-    return <FaqItem item={item} key={i} />;
+    let groupId = props.id + '-child-' + i;
+    return <FaqItem item={item} key={i} id={groupId} />;
   });
 
   const classes = `${props.className || ''} faq__group`;

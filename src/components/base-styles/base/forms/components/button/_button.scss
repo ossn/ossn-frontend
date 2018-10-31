@@ -17,6 +17,7 @@
 // .button--cta - Call to action button style.
 // .button--full - Full width button style.
 // .button--header - Header button style.
+// .button--no-style - Seems like simple text with hover, used in faq titles.
 
 
 // 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
@@ -169,6 +170,20 @@ button,
       color: color('button-header-hover');
     }
 
+  }
+
+  &--no-style {
+    @include typeface(body);
+    padding: 0;
+    background: transparent;
+    color: color('text');
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+    }
   }
 }
 
