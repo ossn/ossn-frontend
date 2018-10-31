@@ -30,7 +30,7 @@ class Member extends React.Component {
 
     const mockInit = {
       name: 'Alice McKenzie',
-      imageUrl: 'http://assets.nydailynews.com/polopoly_fs/1.2479149.1451350340!/img/httpImage/image.jpg_gen/derivatives/article_750/motorhead29n-2-web.jpg',
+      imageUrl: 'https://images.pexels.com/photos/1545510/pexels-photo-1545510.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
       location: 'Planet earth',
       club: 'RIT Linux Users Group',
       github: 'dpliakos',
