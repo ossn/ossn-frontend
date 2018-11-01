@@ -5,6 +5,11 @@
 
     &__title {
       @include margin-top(20px);
+      display: flex;
+
+      @include breakpoint($tablet) {
+        display: inline-block;
+      }
     }
 
     &__title-icon {
@@ -15,6 +20,55 @@
     }
 
     &__content-wrapper {
-      @include margin-left(36px); // icon-width + icon padding
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 36px;  // icon-width + icon padding
+        right: 0;
+        height: 1px;
+        bottom: -5px;
+
+        // REVIEW: the color. is light-navy with 0.2 opacity
+        background-color: rgba(18,46,99, 0.2);
+      }
+
+      @include breakpoint($tablet) {
+        @include margin-left(36px); // icon-width + icon padding
+
+        &::after {
+          content: none;
+        }
+      }
+    }
+
+    &__title-button {
+      background-color: transparent;
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: transparent;
+      }
+    }
+
+    &__title-symbol {
+      font-size: 24px;
+    }
+
+    &__wrapper--open  {
+      .leader-tools-list__content-wrapper {
+
+        &::after {
+          content: none
+        }
+
+
+      }
     }
 }
