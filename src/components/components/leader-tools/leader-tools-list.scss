@@ -58,6 +58,10 @@
       &:active {
         background-color: transparent;
       }
+
+      &:focus {
+        outline: auto;
+      }
     }
 
     &__title-symbol {
