@@ -5,6 +5,7 @@
 */
 import React from 'react';
 import {Briefcase, FileText, Archive, Clipboard, ExternalLink} from 'react-feather';
+import MediaQuery from 'react-responsive';
 
 // Local modules.
 import Layout2Col from './../../layouts/layout-2col/layout-2col';
@@ -31,28 +32,63 @@ const LeaderTool = (props) => {
 };
 
 // Wraps a list of tools with title.
-export const LeaderToolList = (props) => {
+export class LeaderToolList extends React.Component {
 
-  const title = props.title;
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false
+    }
+  }
 
-  const tools = props.tools.map((tool, i) => {
-    return <LeaderTool tool={tool} key={i} />
-  });
+  getSimpleHeader() {
+    return <span> {this.props.title} </span>;
+  }
 
-  return (
-    <div className="leader-tools-list__wrapper">
-        <h2 className="leader-tools-list__title">
-          {props.icon ? <props.icon className="leader-tools-list__title-icon" /> : ''}
-          {title}
-        </h2>
-        <ShadowBox zeroRadius zeroPadding className="leader-tools-list__content-wrapper">
-          <div className="leader-tools-list">
-            {tools}
-          </div>
-      </ShadowBox>
-    </div>
-  )
-};
+  getResponsiveHeader() {
+    const button = (
+      <button onClick={()=>this.handleOpen()} className="leader-tools-list__title-button">
+        {this.getSimpleHeader()}
+        <span className="leader-tools-list__title-symbol">
+          {this.state.isOpen ? '-' : '+'}
+        </span>
+      </button>
+    );
+
+    return button;
+  }
+
+  handleOpen() {
+    const snapshot = {...this.state};
+    this.setState({isOpen: !snapshot.isOpen})
+  }
+
+  render() {
+    const snapshot = {...this.state};
+    const title = this.props.title;
+
+    const tools = this.props.tools.map((tool, i) => {
+      return <LeaderTool tool={tool} key={i} />
+    });
+
+    const listClasses = ['leader-tools-list__wrapper'];
+    if (snapshot.isOpen) listClasses.push('leader-tools-list__wrapper--open');
+
+    return (
+      <div className={listClasses.join(' ')} >
+          <h2 className="leader-tools-list__title">
+            {this.props.icon ? <this.props.icon className="leader-tools-list__title-icon" /> : ''}
+            {this.props.isMobile ? this.getResponsiveHeader() : this.getSimpleHeader()}
+          </h2>
+          <ShadowBox zeroRadius zeroPadding className="leader-tools-list__content-wrapper">
+            <div className="leader-tools-list"  hidden={!snapshot.isOpen && this.props.isMobile}>
+              {tools}
+            </div>
+        </ShadowBox>
+      </div>
+    )
+  }
+}
 
 // Wraps all the tool lists.
 export const AllLeaderTools = (props) => {
@@ -64,13 +100,26 @@ export const AllLeaderTools = (props) => {
   return (
     <Layout2Col verticalGutters horizontalGutters>
       <div>
-        <LeaderToolList title="Project Management Tools" tools={prManagement} icon={Briefcase} />
-        <LeaderToolList title="Code of conduct" tools={codeOfConduct} icon={FileText} />
-        <LeaderToolList title="Various tools" tools={variousTools} icon={Archive} />
+        <MediaQuery minWidth={768}>
+          <LeaderToolList title="Project Management Tools" tools={prManagement} icon={Briefcase} />
+          <LeaderToolList title="Code of conduct" tools={codeOfConduct} icon={FileText} />
+          <LeaderToolList title="Various tools" tools={variousTools} icon={Archive} />
+        </MediaQuery>
+        <MediaQuery maxWidth={767}>
+         <LeaderToolList isMobile title="Project Management Tools" tools={prManagement} icon={Briefcase} />
+         <LeaderToolList isMobile title="Code of conduct" tools={codeOfConduct} icon={FileText} />
+         <LeaderToolList isMobile title="Various tools" tools={variousTools} icon={Archive} />
+       </MediaQuery>
       </div>
       <div>
-        <LeaderToolList title="Useful resources running a club"
-                        tools={usefulResources} icon={Clipboard}/>
+        <MediaQuery minWidth={768}>
+          <LeaderToolList title="Useful resources running a club"
+                          tools={usefulResources} icon={Clipboard}/>
+        </MediaQuery>
+        <MediaQuery maxWidth={767}>
+          <LeaderToolList isMobile title="Useful resources running a club"
+                            tools={usefulResources} icon={Clipboard}/>
+        </MediaQuery>
       </div>
     </Layout2Col>
   )
