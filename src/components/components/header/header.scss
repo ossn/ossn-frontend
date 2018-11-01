@@ -1,32 +1,32 @@
 @import './../../base-styles/init/init';
 @import './../shadow-box/shadow-box';
-// Header nase styling.
+
+// Header styling.
 // Adds header styles and layout.
 .header {
-  &__bottom {
-    @extend %shadow-box;
-    padding-left: 0;
-    padding-right: 0;
-    border-radius: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 5;
 
-    &-inner {
-      overflow: visible;
-      display: flex;
-      align-items: center;
-    }
+  // leaves only capital letters visible on mobile.
+  &__ossn-logo-letters {
+    @include visually-hidden;
   }
 
   &__logo {
-    margin-right: auto;
+    position: absolute;
+    top: 19px;
+    z-index: 2;
   }
 
   &__ossn-logo {
     font-family: $zilla-slab;
     width: 145px;
-    font-size: 18px;
-    line-height: 18px;
+    font-size: 27px;
+    line-height: 26px;
     font-weight: 600;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.4px;
     color: color('black');
     display: block;
   }
@@ -42,5 +42,139 @@
     overflow: hidden;
     text-indent: 120%;
     white-space: nowrap;
+  }
+
+  &__inner {
+    @extend %shadow-box;
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 0;
+    padding-top: 0;
+    min-height: 80px;
+  }
+
+  &__button {
+    float: right;
+    margin-right: 19px;
+    position: relative;
+    z-index: 2;
+    margin-top: 20px;
+  }
+
+  &__navigation-container {
+    position: relative;
+    padding-bottom: 0;
+  }
+
+  &__bottom {
+    &-inner {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      padding-top: 50px;
+
+      >*:nth-child(1) {
+        order: 2;
+        width: 100%;
+      }
+
+      >*:nth-child(2) {
+        order: 1;
+        width: 100%;
+      }
+    }
+  }
+
+  @include breakpoint($tablet) {
+    margin-top: 40px;
+
+    &__inner {
+      padding-bottom: 0;
+    }
+
+    // TODO REMOVE.
+    &__navigation-container {
+      display: block !important;
+    }
+
+    &__button {
+      display: none;
+    }
+
+    &__ossn-logo-letters {
+      @include visually-hidden--off;
+    }
+
+    &__top {
+      position: absolute;
+      top: 0;
+      transform: translateY(-100%);
+      width: 100%;
+    }
+
+    &__bottom {
+      //@extend %shadow-box;
+
+      &-inner {
+        overflow: visible;
+        display: flex;
+        align-items: center;
+        height: 100px;
+      }
+    }
+
+    &__logo {
+      margin-right: auto;
+      top: 17px;
+    }
+
+    &__ossn-logo {
+      font-family: $zilla-slab;
+      width: 183px;
+      font-size: 23px;
+      line-height: 23px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      color: color('black');
+      display: block;
+
+      &-word {
+        display: inline-block;
+        margin-right: 4px;
+      }
+    }
+
+    &__mozilla-logo {
+      width: 58px;
+      height: 18px;
+      margin-top: 2px;
+      transition: background-size .3s cubic-bezier(0.19, 1, 0.22, 1);
+      background-image: url('./mozilla-wordmark-black.svg');
+      background-repeat: no-repeat;
+      display: block;
+      background-size: contain;
+      overflow: hidden;
+      text-indent: 120%;
+      white-space: nowrap;
+    }
+
+    &__bottom {
+      &-inner {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-top: 0;
+        justify-content: flex-end;
+
+        >*:nth-child(1) {
+          order: 1;
+          width: auto;
+        }
+
+        >*:nth-child(2) {
+          order: 2;
+          width: auto;
+        }
+      }
+    }
   }
 }

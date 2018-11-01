@@ -15,7 +15,7 @@ const Navigation = () => (
           className="secondary-navigation__link"
           activeClassName="is-active"
         >
-          Leader's Corner
+          Leader&apos;s Corner
         </Link>
       </li>
       <li className="secondary-navigation__item">
@@ -47,6 +47,6 @@ const Navigation = () => (
       </li>
     </ul>
   </nav>
-)
+);
 
-export default Navigation
+export default Navigation;

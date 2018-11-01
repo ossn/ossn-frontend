@@ -1,6 +1,12 @@
+@import './../../base-styles/init/init';
+
 // Basic layout component.
 .layout-base,
 %layout-base {
-  padding-top: 100px;
+  padding-top: 120px;
   padding-bottom: 100px;
+
+  @include breakpoint($tablet) {
+    padding-top: 190px;
+  }
 }

@@ -1,39 +1,42 @@
 /*
-  Cotains the header section.
-*/
+ Contains the header section.
+ */
 // External modules.
 import React from 'react';
-import {Link} from 'gatsby';
+import { Link } from 'gatsby';
 
 // Local modules.
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
-import PreNavigation from './../../navigation/secondary-navigation/secondary-navigation';
-import Navigation from './../../navigation/main-navigation/main-navigation';
-import UserMenu from './../../components/user-menu/user-menu';
+import HeaderNavigation from './../header-navigation/header-navigation';
 
 // Styles.
 import './header.scss';
 
-const Header = (props) => {
+const Header = props => {
   return (
     <header className="header">
-      <div className="header__top">
-        <LayoutContained>
-          <PreNavigation />
-        </LayoutContained>
-      </div>
-      <div className="header__bottom">
-        <LayoutContained className="header__bottom-inner">
-          <Link to="/" className="header__logo" activeClassName="is-active">
-            <span className="header__ossn-logo">Open Source Student Network</span>
-            <span className="header__mozilla-logo">mozilla</span>
-          </Link>
-          <Navigation />
-          <UserMenu />
-        </LayoutContained>
-      </div>
+      <LayoutContained className="header__logo-wrapper">
+        <Link to="/" className="header__logo" activeClassName="is-active">
+          <span className="header__ossn-logo">
+            <span className="header__ossn-logo-word">
+              O<span className="header__ossn-logo-letters">pen</span>
+            </span>
+            <span className="header__ossn-logo-word">
+              S<span className="header__ossn-logo-letters">ource</span>
+            </span>
+            <span className="header__ossn-logo-word">
+              S<span className="header__ossn-logo-letters">tudent</span>
+            </span>
+            <span className="header__ossn-logo-word">
+              N<span className="header__ossn-logo-letters">etwork</span>
+            </span>
+          </span>
+          <span className="header__mozilla-logo">mozilla</span>
+        </Link>
+      </LayoutContained>
+      <HeaderNavigation />
     </header>
-  )
+  );
 };
 
 export default Header;
