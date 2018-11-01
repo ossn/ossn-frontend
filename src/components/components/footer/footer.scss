@@ -29,21 +29,22 @@
     @include breakpoint($tablet) {
       @include padding-bottom(64px);
       border-bottom: 1px solid color('grey-mozilla');
+      display: flex;
     }
 
     @include breakpoint($desktop-medium) {
       @include padding-bottom(48px);
       @include margin-bottom(32px);
-      display: flex;
     }
   }
 
   &__sections {
     @include breakpoint($mobile-small) {
       display: flex;
+      flex-wrap: wrap;
     }
-
     @include breakpoint($desktop-medium) {
+      flex-wrap: nowrap;
       width: 600px;
       margin-left: auto;
       margin-right: auto;
@@ -55,14 +56,13 @@
     @include breakpoint($mobile-small) {
 
       &:nth-child(2n + 1) {
-        padding-right: 24px;
+        // padding-right: 24px;
       }
 
       &:nth-child(2n) {
-        padding-left: 24px;
+        // padding-left: 24px;
       }
     }
-
     @include breakpoint($desktop-medium) {
       &:nth-child(2n + 1) {
         padding-right: 0;
@@ -101,6 +101,10 @@
 
   }
 
+  &__section-item {
+    width: 100%;
+  }
+
   // Footer headings.
   &__heading {
     @include font-size(16px);
@@ -110,11 +114,31 @@
     font-weight: bold;
     color: color('white');
     border-bottom: 1px solid color('grey-mozilla');
-    padding: 16px 0;
+    padding: 0;
 
     @include breakpoint($tablet) {
       border-bottom: 0;
       padding: 8px 0;
+    }
+
+    &--button {
+      padding: 16px 0;
+      background-color: transparent;
+      border: none;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      span {
+        font-size: 24px;
+      }
+
+      &:focus,
+      &:hover,
+      &:active {
+        background-color: transparent;
+        color: inherit;
+      }
     }
   }
 
@@ -163,20 +187,22 @@
 
   &__ossn-logo {
     font-family: $zilla-slab;
-    font-size: 34px;
-    line-height: 35px;
+    width: 145px;
+    font-size: 18px;
+    line-height: 18px;
     font-weight: 600;
-    padding-bottom: 5px;
+    letter-spacing: 0.3px;
+    color: color('white');
     display: block;
   }
 
   &__mozilla-logo {
-    width: 85px;
-    height: 27px;
-    display: block;
+    width: 48px;
+    height: 16px;
     transition: background-size .3s cubic-bezier(0.19, 1, 0.22, 1);
-    background-image: url('mozilla-wordmark-white.svg');
+    background-image: url('./mozilla-wordmark-white.svg');
     background-repeat: no-repeat;
+    display: block;
     background-size: contain;
     overflow: hidden;
     text-indent: 120%;
