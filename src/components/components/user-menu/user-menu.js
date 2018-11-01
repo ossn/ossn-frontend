@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import React from 'react';
 import { connect } from 'react-redux';
 import { User } from 'react-feather';
@@ -48,9 +46,20 @@ class UserMenu extends React.Component {
     }
   };
 
+  handleKeyPress = e => {
+    if (e.key === 'Enter') return this.handleOpen;
+  };
+
   render() {
     // copy of the state
     const snapshot = { ...this.state };
+    const isExpanded = snapshot.open;
+    const stateClass = snapshot.open ? 'is-expanded' : 'is-collapsed';
+    const isHidden = !snapshot.open;
+
+    let classes = ['user-menu'];
+    if (stateClass) classes.push(stateClass);
+    let classString = classes.join(' ');
 
     // menu place holder
     let content = <div> </div>;
@@ -70,13 +79,25 @@ class UserMenu extends React.Component {
     }
 
     return (
-      <div className="user-menu">
-        <button onClick={this.handleOpen} onKeyPress={this.handleOpen} className="button button--header">
+      <div ref={this.popup} className={classString}>
+        <button
+          onClick={this.handleOpen}
+          onKeyPress={this.handleKeyPress}
+          className="button button--header"
+          aria-controls={'user-menu-wrapper'}
+          aria-expanded={isExpanded}
+        >
           <User className="user-menu__icon" />
           {snapshot.open ? 'close' : 'Login/Signup'}
           {extraContent}
         </button>
-        <div className="user-menu__popup">{snapshot.open ? content : ''}</div>
+        <div
+          id="user-menu-wrapper"
+          className="user-menu__popup"
+          hidden={isHidden}
+        >
+          {content}
+        </div>
       </div>
     );
   }

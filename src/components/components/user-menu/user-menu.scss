@@ -1,17 +1,24 @@
 @import './../../base-styles/init/init';
 
 .user-menu {
-  position: relative;
-
   &__popup {
-    position: absolute;
-    right: 0;
-    bottom: -25px;
     background-color: white;
-    transform: translateY(100%);
   }
 
   &__icon {
     @include margin-right(7px);
+  }
+
+  @include breakpoint($tablet) {
+    position: relative;
+    bottom: auto;
+
+    &__popup {
+      position: absolute;
+      right: 0;
+      bottom: -25px;
+      background-color: white;
+      transform: translateY(100%);
+    }
   }
 }
