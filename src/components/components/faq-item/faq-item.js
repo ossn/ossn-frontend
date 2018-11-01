@@ -20,12 +20,12 @@ class FaqItem extends React.Component {
   };
 
   handleKeyPress = e => {
-    if (e.key === 'Enter') this.handleToggle;
+    if (e.key === 'Enter') return this.handleToggle;
   };
 
   render() {
     const snapshot = { ...this.state };
-    const isExpanded = !!snapshot.open;
+    const isExpanded = snapshot.open;
     const stateClass = snapshot.open ? 'is-expanded' : 'is-collapsed';
     const isHidden = !snapshot.open;
     const id = this.props.id;
@@ -49,8 +49,7 @@ class FaqItem extends React.Component {
           </button>
         </h3>
         <div id={id} className="faq__item-content" hidden={isHidden}>
-          {' '}
-          {this.props.item.body}{' '}
+          {this.props.item.body}
         </div>
       </li>
     );

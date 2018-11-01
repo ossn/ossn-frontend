@@ -2,26 +2,22 @@
   {
     "title": "Learn How to Master Git",
     "description": "Got 15 minutes and want to learn Git? Git allows groups of people to work on the same documents at the same time, and without stepping on each other's toes.",
-    "imageUrl": "http://mmbrandagency.com/wp-content/uploads/icon-brandidentity.png",
     "link": "#",
     "attachment": "./git-icon.png"
   },{
     "title": "Introduction to browser extensions",
     "description": "Add-ons provide a safe, simple, and powerful way to personalize your browsing experience. Now, it’s easier than ever to create add-ons",
-    "imageUrl": "https://freeloadbalancer.com/wp-content/uploads/2015/01/Layer-4-7-icon-update.png",
     "link": "#",
     "attachment": "./octopus-icon.png"
   },{
     "title": "Build Your Virtual World",
     "description": "Help bring Virtual Reality to the web by learning and using an awesome open source web framework, A-FRAME, with HTML!",
-    "imageUrl": "https://freeloadbalancer.com/wp-content/uploads/2015/01/Layer-4-7-icon-update.png",
     "link": "#",
     "attachment": "./fox-icon.png"
 
   },{
     "title": "Learn to contribute on GitHub",
     "description": "Want to contribute to open source through GitHub? A guide to making open source contributions, for first-timers and for veterans.",
-    "imageUrl": "http://mmbrandagency.com/wp-content/uploads/icon-brandidentity.png",
     "link": "#",
     "attachment": "./github-icon.png"
   }

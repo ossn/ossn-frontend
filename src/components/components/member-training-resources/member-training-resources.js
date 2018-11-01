@@ -5,7 +5,7 @@
 */
 
 import React from 'react';
-import {graphql} from 'gatsby';
+import { graphql } from 'gatsby';
 
 // Local modules.
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
@@ -16,23 +16,28 @@ import ShadowBox from './../shadow-box/shadow-box';
 import './member-training-resources.scss';
 
 // A single training resource.
-const TrainingResource = (props) => {
+const TrainingResource = props => {
   const title = props.resource.title;
   const url = props.resource.link;
   const icon = props.resource.attachment.publicURL;
-  const classes=`${props.className || ''} member-training-resources`;
+  const classes = `${props.className || ''} member-training-resources`;
+  const description = props.resource.description;
 
-  return  (
+  return (
     <div className={classes}>
       <a href={url} className="member-training-resources__wrapper-link">
         <ShadowBox className="member-training-resources__content">
           <div className="member-training-resources__image-wrapper">
-            <img src={icon} alt={title} className="member-training-resources__image"/>
+            <img
+              src={icon}
+              alt={title}
+              className="member-training-resources__image"
+            />
           </div>
           <div className="member-training-resources__text">
             <h3 className="member-training-resources__title"> {title} </h3>
             <p className="member-training-resources__description">
-              Got 15 minutes and want to learn Git? Git allows groups of people to work on the same documents at the same time, and without stepping on each other's toes.
+              {description}
             </p>
           </div>
         </ShadowBox>
@@ -42,11 +47,10 @@ const TrainingResource = (props) => {
 };
 
 // A wrapper for all training resources.
-export default (props) => {
-
-  const resources = props.resources.edges.map((resourceNode, i)=>{
+export default props => {
+  const resources = props.resources.edges.map((resourceNode, i) => {
     const resource = resourceNode.node;
-    return <TrainingResource resource={resource} key={i} />
+    return <TrainingResource resource={resource} key={i} />;
   });
 
   return (

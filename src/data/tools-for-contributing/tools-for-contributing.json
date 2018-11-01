@@ -1,15 +1,15 @@
 [
   {
     "title": "Fix me",
-    "link": "#",
+    "link": "https://fixme.ossn.club/",
     "attachment": "./logo-fixme.svg"
   },{
     "title": "Excercism",
-    "link": "#",
+    "link": "https://exercism.io/",
     "attachment": "./exercism.png"
   },{
     "title": "Tools Dashboard",
-    "link": "#",
+    "link": "https://tools-dashboard.io/",
     "attachment": "./tools-dashboard.svg"
   }
 ]
