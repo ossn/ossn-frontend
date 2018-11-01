@@ -74,14 +74,15 @@ export class LeaderToolList extends React.Component {
     const listClasses = ['leader-tools-list__wrapper'];
     if (snapshot.isOpen) listClasses.push('leader-tools-list__wrapper--open');
 
+    const hideDetails = !snapshot.isOpen && this.props.isMobile;
     return (
       <div className={listClasses.join(' ')} >
-          <h2 className="leader-tools-list__title">
+          <h2 className="leader-tools-list__title" aria-controls={this.props.detailsId} aria-expanded={snapshot.isOpen}>
             {this.props.icon ? <this.props.icon className="leader-tools-list__title-icon" /> : ''}
             {this.props.isMobile ? this.getResponsiveHeader() : this.getSimpleHeader()}
           </h2>
           <ShadowBox zeroRadius zeroPadding className="leader-tools-list__content-wrapper">
-            <div className="leader-tools-list"  hidden={!snapshot.isOpen && this.props.isMobile}>
+            <div className="leader-tools-list" hidden={hideDetails}  aria-hidden={hideDetails}>
               {tools}
             </div>
         </ShadowBox>
@@ -101,24 +102,24 @@ export const AllLeaderTools = (props) => {
     <Layout2Col verticalGutters horizontalGutters>
       <div>
         <MediaQuery minWidth={768}>
-          <LeaderToolList title="Project Management Tools" tools={prManagement} icon={Briefcase} />
-          <LeaderToolList title="Code of conduct" tools={codeOfConduct} icon={FileText} />
-          <LeaderToolList title="Various tools" tools={variousTools} icon={Archive} />
+          <LeaderToolList title="Project Management Tools" tools={prManagement} icon={Briefcase} detailsId="project-management-tools"   />
+          <LeaderToolList title="Code of conduct" tools={codeOfConduct} icon={FileText}  detailsId="code-of-conduct"  />
+          <LeaderToolList title="Various tools" tools={variousTools} icon={Archive} detailsId="various-tools" />
         </MediaQuery>
         <MediaQuery maxWidth={767}>
-         <LeaderToolList isMobile title="Project Management Tools" tools={prManagement} icon={Briefcase} />
-         <LeaderToolList isMobile title="Code of conduct" tools={codeOfConduct} icon={FileText} />
-         <LeaderToolList isMobile title="Various tools" tools={variousTools} icon={Archive} />
+         <LeaderToolList isMobile title="Project Management Tools" tools={prManagement} icon={Briefcase} detailsId="project-management-tools" />
+         <LeaderToolList isMobile title="Code of conduct" tools={codeOfConduct} icon={FileText} detailsId="code-of-conduct" />
+         <LeaderToolList isMobile title="Various tools" tools={variousTools} icon={Archive} detailsId="various-tools" />
        </MediaQuery>
       </div>
       <div>
         <MediaQuery minWidth={768}>
           <LeaderToolList title="Useful resources running a club"
-                          tools={usefulResources} icon={Clipboard}/>
+                          tools={usefulResources} icon={Clipboard} detailsId="useful-resources" />
         </MediaQuery>
         <MediaQuery maxWidth={767}>
           <LeaderToolList isMobile title="Useful resources running a club"
-                            tools={usefulResources} icon={Clipboard}/>
+                            tools={usefulResources} icon={Clipboard} detailsId="useful-resources" />
         </MediaQuery>
       </div>
     </Layout2Col>
