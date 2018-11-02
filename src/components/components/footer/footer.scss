@@ -12,13 +12,11 @@
     &:hover,
     &:focus {
       color: color('white');
-      text-decoration: underline;
     }
   }
 
   &__inner {
     @include padding-top(24px);
-    @include padding-bottom(24px);
     min-width: 304px;
   }
 
@@ -41,8 +39,14 @@
   &__sections {
     @include breakpoint($mobile-small) {
       display: flex;
-      flex-wrap: wrap;
     }
+
+    @include breakpoint($tablet) {
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     @include breakpoint($desktop-medium) {
       flex-wrap: nowrap;
       width: 600px;
@@ -53,17 +57,29 @@
 
   &__section {
     width: 100%;
+
+    a {
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+
     @include breakpoint($mobile-small) {
+      width: 50%;
 
       &:nth-child(2n + 1) {
-        // padding-right: 24px;
+        padding-right: 24px;
       }
 
       &:nth-child(2n) {
-        // padding-left: 24px;
+        padding-left: 24px;
       }
     }
+
     @include breakpoint($desktop-medium) {
+      width: auto;
+
       &:nth-child(2n + 1) {
         padding-right: 0;
       }
@@ -115,6 +131,10 @@
     color: color('white');
     border-bottom: 1px solid color('grey-mozilla');
     padding: 0;
+
+    @include breakpoint($mobile-small) {
+      padding: 16px 0;
+    }
 
     @include breakpoint($tablet) {
       border-bottom: 0;
@@ -179,6 +199,11 @@
     display: block;
     margin-bottom: 32px;
 
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+
     @include breakpoint($desktop-medium) {
       margin-right: 55px;
       margin-bottom: 0;
@@ -187,9 +212,9 @@
 
   &__ossn-logo {
     font-family: $zilla-slab;
-    width: 145px;
-    font-size: 18px;
-    line-height: 18px;
+    width: 156px;
+    font-size: 19px;
+    line-height: 20px;
     font-weight: 600;
     letter-spacing: 0.3px;
     color: color('white');
@@ -207,6 +232,7 @@
     overflow: hidden;
     text-indent: 120%;
     white-space: nowrap;
+    margin-top: 2px;
   }
 
   // Footer bottom region.
@@ -220,11 +246,15 @@
   }
 
   &__licence {
-    @include margin-bottom(32px);
+    @include margin-bottom(47px);
 
 
     @include breakpoint($tablet) {
       max-width: 66%;
+    }
+
+    @include breakpoint($desktop-medium) {
+      max-width: 100%;
     }
   }
 

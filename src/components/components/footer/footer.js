@@ -1,6 +1,6 @@
 /*
-  Contains the footer section.
-*/
+ Contains the footer section.
+ */
 
 // External modules.
 import React from 'react';
@@ -31,20 +31,32 @@ const Footer = props => {
           </Link>
 
           <div className="footer__sections">
-            <MediaQuery minWidth={768} className="footer__section-item">
-              <Navigation title="Navigation" links={footerNavigationList1} />
-              <Navigation title="Keep in touch" links={footerNavigationList2} />
+            <MediaQuery minWidth={480} className="footer__section-item">
+              <Navigation
+                title="Navigation"
+                links={footerNavigationList1}
+                className="footer__section--navigation"
+                id="footer-section-navigation"
+              />
+              <Navigation
+                title="Keep in touch"
+                links={footerNavigationList2}
+                className="footer__section--social"
+                id="footer-section-social"
+              />
             </MediaQuery>
-            <MediaQuery maxWidth={767} className="footer__section-item">
+            <MediaQuery maxWidth={479} className="footer__section-item">
               <Navigation
                 title="Navigation"
                 isMobile
                 links={footerNavigationList1}
+                className="footer__section--navigation"
               />
               <Navigation
                 title="Keep in touch"
                 isMobile
                 links={footerNavigationList2}
+                className="footer__section--social"
               />
             </MediaQuery>
           </div>
@@ -52,7 +64,7 @@ const Footer = props => {
 
         <nav className="footer__secondary">
           <div className="footer__legal">
-            <p className="footer__license">
+            <p className="footer__licence">
               Portions of this content are ©1998–2018 by individual mozilla.org
               contributors. Content available under a{' '}
               <a
@@ -83,6 +95,11 @@ const Footer = props => {
               <li>
                 <a rel="nofollow" href="https://www.mozilla.org/about/legal/">
                   Legal
+                </a>
+              </li>
+              <li>
+                <a rel="nofollow" href="https://github.com/mozilla/coss">
+                  Community Participation Guidelines
                 </a>
               </li>
             </ul>
@@ -126,17 +143,17 @@ const footerNavigationList1 = [
 const footerNavigationList2 = [
   {
     title: 'Our blog',
-    target: '',
+    target: 'https://opensource.mozilla.community',
     external: true
   },
   {
     title: 'Facebook page',
-    target: '',
+    target: 'https://opensource.mozilla.community',
     external: true
   },
   {
     title: 'Twitter page',
-    target: '',
+    target: 'https://opensource.mozilla.community',
     external: true
   }
 ];
