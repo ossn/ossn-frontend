@@ -4,7 +4,7 @@
  props:
  title: the title of the list.
  links: the list of the links to be displayed.
-
+ id: the id of the expanding element
  a link attribute = {
  title (str): the text to be displayed
  target (str): the `to` or `href` attribute of the `Link` or `a` element.
@@ -15,6 +15,7 @@
 // external modules
 import { Link } from 'gatsby';
 import React from 'react';
+import { Plus, Minus } from 'react-feather';
 
 // returns just the title
 const SimpleHeader = props => {
@@ -24,7 +25,7 @@ const SimpleHeader = props => {
 // if the screen is mobile, wraps the SimpleHeader with a button to handle the
 // click action
 const ResponsiveHeader = props => {
-  const icon = props.isOpen ? '-' : '+';
+  const icon = props.isOpen ? <Minus /> : <Plus />;
   return (
     <button
       className="footer__heading footer__heading--button"
