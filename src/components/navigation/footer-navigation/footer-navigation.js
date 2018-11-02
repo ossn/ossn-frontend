@@ -1,16 +1,16 @@
 /*
-  Constructs a collapsible list of entries at the mobile.
+ Constructs a collapsible list of entries at the mobile.
 
-  props:
-    title: the title of the list.
-    links: the list of the links to be displayed.
+ props:
+ title: the title of the list.
+ links: the list of the links to be displayed.
 
-  a link attribute = {
-    title (str): the text to be displayed
-    target (str): the `to` or `href` attribute of the `Link` or `a` element.
-    external (boolean):  if true, the component will be `<a>` else `<Link>`.
-  }
-*/
+ a link attribute = {
+ title (str): the text to be displayed
+ target (str): the `to` or `href` attribute of the `Link` or `a` element.
+ external (boolean):  if true, the component will be `<a>` else `<Link>`.
+ }
+ */
 
 // external modules
 import { Link } from 'gatsby';
@@ -58,6 +58,7 @@ export default class Navigation extends React.Component {
   constructor(props) {
     super(props);
     const isMobile = this.props.isMobile;
+    this.expandable = React.createRef();
     this.state = {
       isOpen: false,
       isMobile: isMobile
@@ -70,6 +71,10 @@ export default class Navigation extends React.Component {
     this.setState({
       isOpen: !snapshot.isOpen
     });
+  };
+
+  handleKeyPress = e => {
+    if (e.key === 'Enter') return this.handleClick;
   };
 
   parseLinks = linkList => {
@@ -90,24 +95,35 @@ export default class Navigation extends React.Component {
   render() {
     const snapshot = { ...this.state };
     const links = this.parseLinks(this.props.links);
+    const isExpanded = snapshot.isOpen && snapshot.isMobile;
+    let classes = ['footer__section footer__section--mobile'];
+    if (this.props.className) classes.push(this.props.className);
+    let classString = classes.join(' ');
+    const id = this.props.id;
     const header = snapshot.isMobile ? (
       <ResponsiveHeader
         onClick={() => {
           this.handleClick();
         }}
+        onKeyPress={this.handleKeyPress}
         title={this.props.title}
         isOpen={snapshot.isOpen}
+        aria-controls={id}
+        aria-expanded={isExpanded}
       />
     ) : (
       <SimpleHeader title={this.props.title} />
     );
 
+    const ref = snapshot.isMobile ? { ...this.expandable } : '';
+
     return (
-      <section className="footer__section footer__section--navigation footer__section--mobile">
+      <section className={classString} ref={ref}>
         <h5 className="footer__heading">{header}</h5>
         <ul
           className="footer__list"
           hidden={!snapshot.isOpen && snapshot.isMobile}
+          id={id}
         >
           {links}
         </ul>
