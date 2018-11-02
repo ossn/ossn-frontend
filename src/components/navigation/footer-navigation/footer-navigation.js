@@ -102,8 +102,12 @@ export default class Navigation extends React.Component {
       <SimpleHeader title={this.props.title} />
     );
 
+    let classes = ['footer__section footer__section--mobile'];
+    if (this.props.className) classes.push(this.props.className);
+    let classString = classes.join(' ');
+
     return (
-      <section className="footer__section footer__section--navigation footer__section--mobile">
+      <section className={classString}>
         <h5 className="footer__heading">{header}</h5>
         <ul
           className="footer__list"

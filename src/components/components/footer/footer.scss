@@ -18,7 +18,6 @@
 
   &__inner {
     @include padding-top(24px);
-    @include padding-bottom(24px);
     min-width: 304px;
   }
 
@@ -41,8 +40,14 @@
   &__sections {
     @include breakpoint($mobile-small) {
       display: flex;
-      flex-wrap: wrap;
     }
+
+    @include breakpoint($tablet) {
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     @include breakpoint($desktop-medium) {
       flex-wrap: nowrap;
       width: 600px;
@@ -53,17 +58,22 @@
 
   &__section {
     width: 100%;
+
     @include breakpoint($mobile-small) {
+      width: 50%;
 
       &:nth-child(2n + 1) {
-        // padding-right: 24px;
+         padding-right: 24px;
       }
 
       &:nth-child(2n) {
-        // padding-left: 24px;
+         padding-left: 24px;
       }
     }
+
     @include breakpoint($desktop-medium) {
+      width: auto;
+
       &:nth-child(2n + 1) {
         padding-right: 0;
       }
@@ -115,6 +125,10 @@
     color: color('white');
     border-bottom: 1px solid color('grey-mozilla');
     padding: 0;
+
+    @include breakpoint($mobile-small) {
+      padding: 16px 0;
+    }
 
     @include breakpoint($tablet) {
       border-bottom: 0;
@@ -220,11 +234,15 @@
   }
 
   &__licence {
-    @include margin-bottom(32px);
+    @include margin-bottom(47px);
 
 
     @include breakpoint($tablet) {
       max-width: 66%;
+    }
+
+    @include breakpoint($desktop-medium) {
+      max-width: 100%;
     }
   }
 
