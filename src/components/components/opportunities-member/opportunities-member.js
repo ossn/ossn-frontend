@@ -22,7 +22,7 @@ import './opportunities-member.scss';
 
 // A simple wrapper for the upper section i.e. the title, description and propmoted box.
 // UpperSection is the place holder for
-const UpperSection = (props) =>  {
+const UpperSection = props => {
   return (
     <LayoutContained>
       <h1 className="title title--m-small opportunities-member__title">
@@ -30,37 +30,48 @@ const UpperSection = (props) =>  {
       </h1>
 
       <div className="opportunities-member__info">
-        <p  className="opportunities-member__text highlighted-text highlighted-text--intense">
-          We bring you the best opportunities to contribute code. Practice your skills by taking part in compelling Open Source projects that match your interests!
+        <p className="opportunities-member__text highlighted-text highlighted-text--intense">
+          We bring you the best opportunities to contribute code. Practice your
+          skills by taking part in compelling Open Source projects that match
+          your interests!
         </p>
         <div className="promoted-box">
-            <h3 className="promoted-box__title"> Next steps after signing up </h3>
+          <h3 className="promoted-box__title"> Next steps after signing up </h3>
           <ol className="promoted-box__content">
-            <li className="promoted-box__item"> Explore contribution opportunities </li>
-            <li className="promoted-box__item"> Reach out to  us </li>
-            <li className="promoted-box__item"> Explore available interships/jobs </li>
-            <li className="promoted-box__item"> Check the latest announcements </li>
+            <li className="promoted-box__item">
+              {' '}
+              Explore contribution opportunities{' '}
+            </li>
+            <li className="promoted-box__item"> Reach out to us </li>
+            <li className="promoted-box__item">
+              {' '}
+              Explore available interships/jobs{' '}
+            </li>
+            <li className="promoted-box__item">
+              {' '}
+              Check the latest announcements{' '}
+            </li>
           </ol>
         </div>
       </div>
     </LayoutContained>
   );
-}
+};
 
-
-export default (props) => {
-
-  // placeholder for the UpperSection compoenent.
-  const upperSection = props.skipTitle
-    ? ''
-    : <UpperSection />;
+export default props => {
+  // placeholder for the UpperSection component.
+  const upperSection = props.skipTitle ? '' : <UpperSection />;
 
   return (
     <div className="opportunities-member">
       {upperSection}
-      <MemberUpdates announcements={props.announcements} jobs={props.jobs} />
+      <div className="slice slice--dark">
+        <MemberUpdates announcements={props.announcements} jobs={props.jobs} />
+      </div>
       <MemberTools channels={props.channels} tools={props.tools} />
-      <MemberTrainingResources resources={props.resources}/>
+      <div className="slice slice--dark">
+        <MemberTrainingResources resources={props.resources} />
+      </div>
     </div>
   );
-}
+};

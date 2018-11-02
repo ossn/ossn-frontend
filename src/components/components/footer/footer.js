@@ -124,7 +124,7 @@ const footerNavigationList1 = [
   },
   {
     title: 'Opportunities',
-    ttarget: '/contribute'
+    target: '/contribute'
   },
   {
     title: 'Log In/SignUp',
