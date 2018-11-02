@@ -51,6 +51,7 @@ const UpperSection = props => {
   );
 };
 
+
 export default props => {
   // placeholder for the UpperSection component.
   const upperSection = props.skipTitle ? '' : <UpperSection />;
