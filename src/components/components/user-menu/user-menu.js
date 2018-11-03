@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { User } from 'react-feather';
 
 import LoggedInMenu from './logged-in-user';
 import NotLoggedInMenu from './not-logged-in-user';
@@ -64,13 +63,6 @@ class UserMenu extends React.Component {
     // menu place holder
     let content = <div> </div>;
 
-    // not actually needed
-    let extraContent = '';
-
-    if (this.props.user.loggedIn) {
-      extraContent = <span> logged in </span>;
-    }
-
     // decide which menu to show
     if (this.props.user.loggedIn) {
       content = <LoggedInMenu />;
@@ -87,9 +79,7 @@ class UserMenu extends React.Component {
           aria-controls={'user-menu-wrapper'}
           aria-expanded={isExpanded}
         >
-          <User className="user-menu__icon" />
-          {snapshot.open ? 'close' : 'Login/Signup'}
-          {extraContent}
+          {this.props.user.loggedIn ? 'Logged In' : 'Log In/Sign Up'}
         </button>
         <div
           id="user-menu-wrapper"
