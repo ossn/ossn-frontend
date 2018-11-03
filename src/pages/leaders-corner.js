@@ -103,24 +103,36 @@ export const query = graphql`
         title
         link
         imageUrl
+        attachment {
+          publicURL
+        }
       }
 
       Code_of_Conduct_examples {
         title
         link
         imageUrl
+        attachment {
+          publicURL
+        }
       }
 
       Various_tools {
         title
         link
         imageUrl
+        attachment {
+          publicURL
+        }
       }
 
       Useful_resources_running_a_club {
         title
         link
         imageUrl
+        attachment {
+          publicURL
+        }
       }
     }
   }

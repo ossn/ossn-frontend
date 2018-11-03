@@ -22,7 +22,7 @@ import './leader-tools.scss';
 //  A single tool entry.
 const LeaderTool = props => {
   const title = props.tool.title;
-  const icon = props.tool.imageUrl;
+  const icon = props.tool.attachment.publicURL;
   const url = props.tool.link;
 
   return (
