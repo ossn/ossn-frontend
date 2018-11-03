@@ -12,21 +12,21 @@ Appears at /contribute and /leaders-corner
 */
 
 import React from 'react';
-import {graphql} from 'gatsby';
+import { graphql } from 'gatsby';
 import { TeaserBoxList } from './../teaser-box/teaser-box';
 
-export default (props) => {
+export default props => {
   const items = props.announcements;
 
   return (
     <div>
-      <h2> Latest announcements </h2>
+      <h2 className="teaser-box__list-title"> Latest announcements </h2>
       <div>
-        <TeaserBoxList items={items} dummyData={props.dummyData}/>
+        <TeaserBoxList items={items} dummyData={props.dummyData} />
       </div>
     </div>
   );
-}
+};
 
 // TODO: request the shortDescription typo fix
 export const query = graphql`
