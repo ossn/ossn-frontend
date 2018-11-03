@@ -3,6 +3,25 @@
 .leader-tools-list {
     @include margin-top(23px);
 
+    &__section {
+      &:last-child {
+        .leader-tools-list__title {
+          margin-top: 0;
+        }
+      }
+    }
+
+    @include breakpoint($tablet) {
+      &__section {
+        &:last-child {
+          .leader-tools-list__title {
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+
+
     &__title {
       @include margin-top(20px);
       display: flex;
@@ -57,10 +76,6 @@
       &:focus,
       &:active {
         background-color: transparent;
-      }
-
-      &:focus {
-        outline: auto;
       }
     }
 
