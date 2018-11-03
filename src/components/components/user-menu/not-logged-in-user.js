@@ -7,27 +7,34 @@ class NotLoggedInUserMenu extends React.Component {
   constructor() {
     super();
     this.state = {
-      option: 'login',
-    }
+      option: 'login'
+    };
   }
 
-  handleOption = (option) =>{
-    this.setState({option: option});
-  }
+  handleOption = option => {
+    this.setState({ option: option });
+  };
 
   render() {
-    const snapshot = {...this.state};
+    const snapshot = { ...this.state };
 
     // decide which form to show
-    const content = snapshot.option === 'login'
-      ? <Login changeOption={(option)=>{this.handleOption(option)}} />
-      : <Register changeOption={(option)=>{this.handleOption(option)}} /> ;
+    const content =
+      snapshot.option === 'login' ? (
+        <Login
+          changeOption={option => {
+            this.handleOption(option);
+          }}
+        />
+      ) : (
+        <Register
+          changeOption={option => {
+            this.handleOption(option);
+          }}
+        />
+      );
 
-    return (
-      <div>
-        {content}
-      </div>
-    );
+    return <div>{content}</div>;
   }
 }
 

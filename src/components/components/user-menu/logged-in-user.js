@@ -1,13 +1,12 @@
 import React from 'react';
-import {logout} from './../../../actions/userActions';
+import { logout } from './../../../actions/userActions';
 import store from './../../../store';
 
 class LoggedInUserMenu extends React.Component {
-
   // publish a logout event
   logout = () => {
     store.dispatch(logout());
-  }
+  };
 
   render() {
     return (
@@ -16,7 +15,7 @@ class LoggedInUserMenu extends React.Component {
           <li> Create club </li>
           <li> My profile </li>
           <li> Settings </li>
-          <li onClick={this.logout} > LOGOUT </li>
+          <li onClick={this.logout}> LOGOUT </li>
         </ul>
       </div>
     );

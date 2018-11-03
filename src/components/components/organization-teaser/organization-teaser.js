@@ -5,9 +5,9 @@
 import React from 'react';
 
 // Style.
-import './organization-teaser.scss'
+import './organization-teaser.scss';
 
-const OrganizationTeaser = (props) => {
+const OrganizationTeaser = props => {
   if (!props.organization) {
     return <div> No organization found </div>;
   }
@@ -18,10 +18,16 @@ const OrganizationTeaser = (props) => {
 
   let classes = ['organization-teaser'];
   if (props.className) classes.push(props.className);
-  let classString = classes.join(" ");
+  let classString = classes.join(' ');
 
   return (
-    <a href={url} className={classString} title={title} target="_blank" rel="noopener noreferrer">
+    <a
+      href={url}
+      className={classString}
+      title={title}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <img src={icon} alt={title} />
     </a>
   );

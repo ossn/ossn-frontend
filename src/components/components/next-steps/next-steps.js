@@ -1,8 +1,8 @@
 // TODO: remove me
 import React from 'react';
 
-const ModalBox = (props) => {
-  return(
+const ModalBox = props => {
+  return (
     <div>
       <ul>
         <li>one</li>
@@ -12,7 +12,7 @@ const ModalBox = (props) => {
       </ul>
       <span onClick={props.dismiss}> Dismiss </span>
     </div>
-  )
-}
+  );
+};
 
 export default ModalBox;

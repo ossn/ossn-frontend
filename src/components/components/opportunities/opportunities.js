@@ -13,10 +13,9 @@ import OpportunitiesMemeber from './../opportunities-member/opportunities-member
 // import OpportunitiesGuest  from './../opportunities-guest/opportunities-guest';
 
 // utils
-import {mapUserToProps} from './../../../utils/redux-utils';
+import { mapUserToProps } from './../../../utils/redux-utils';
 
-
-class Opportunities  extends React.Component {
+class Opportunities extends React.Component {
   render() {
     const jobs = this.props.jobs;
     const announcements = this.props.announcements;
@@ -36,14 +35,17 @@ class Opportunities  extends React.Component {
     //                 channels={channels} tools={tools} resources={resources}  />
     //   : <OpportunitiesGuest />;
 
-    const view = <OpportunitiesMemeber jobs={jobs} announcements={announcements}
-                    channels={channels} tools={tools} resources={resources}  />;
+    const view = (
+      <OpportunitiesMemeber
+        jobs={jobs}
+        announcements={announcements}
+        channels={channels}
+        tools={tools}
+        resources={resources}
+      />
+    );
 
-    return (
-      <div>
-        {view}
-      </div>
-    )
+    return <div>{view}</div>;
   }
 }
 
