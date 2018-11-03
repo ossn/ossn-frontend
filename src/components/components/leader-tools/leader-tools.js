@@ -1,10 +1,15 @@
-/* eslint-disable */
 /*
   LeaderToolList, LeaderTool and AllLeaderTools components.
   Appears at /leaders-corner.
 */
 import React from 'react';
-import {Briefcase, FileText, Archive, Clipboard, ExternalLink} from 'react-feather';
+import {
+  Briefcase,
+  FileText,
+  Archive,
+  Clipboard,
+  ExternalLink
+} from 'react-feather';
 import MediaQuery from 'react-responsive';
 
 // Local modules.
@@ -15,17 +20,17 @@ import './leader-tools-list.scss';
 import './leader-tools.scss';
 
 //  A single tool entry.
-const LeaderTool = (props) => {
+const LeaderTool = props => {
   const title = props.tool.title;
   const icon = props.tool.imageUrl;
   const url = props.tool.link;
 
   return (
     <div className="leader-tool">
-      <img src={icon} className="leader-tool__icon"/>
+      <img src={icon} className="leader-tool__icon" alt={title} />
       <a href={url} className="leader-tool__link">
         <div className="leader-tool__title"> {title} </div>
-        <ExternalLink className="leader-tool__link-icon"/>
+        <ExternalLink className="leader-tool__link-icon" />
       </a>
     </div>
   );
@@ -33,12 +38,11 @@ const LeaderTool = (props) => {
 
 // Wraps a list of tools with title.
 export class LeaderToolList extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
       isOpen: false
-    }
+    };
   }
 
   getSimpleHeader() {
@@ -47,7 +51,10 @@ export class LeaderToolList extends React.Component {
 
   getResponsiveHeader() {
     const button = (
-      <button onClick={()=>this.handleOpen()} className="leader-tools-list__title-button">
+      <button
+        onClick={() => this.handleOpen()}
+        className="leader-tools-list__title-button"
+      >
         {this.getSimpleHeader()}
         <span className="leader-tools-list__title-symbol">
           {this.state.isOpen ? '-' : '+'}
@@ -59,16 +66,15 @@ export class LeaderToolList extends React.Component {
   }
 
   handleOpen() {
-    const snapshot = {...this.state};
-    this.setState({isOpen: !snapshot.isOpen})
+    const snapshot = { ...this.state };
+    this.setState({ isOpen: !snapshot.isOpen });
   }
 
   render() {
-    const snapshot = {...this.state};
-    const title = this.props.title;
+    const snapshot = { ...this.state };
 
     const tools = this.props.tools.map((tool, i) => {
-      return <LeaderTool tool={tool} key={i} />
+      return <LeaderTool tool={tool} key={i} />;
     });
 
     const listClasses = ['leader-tools-list__wrapper'];
@@ -76,23 +82,41 @@ export class LeaderToolList extends React.Component {
 
     const hideDetails = !snapshot.isOpen && this.props.isMobile;
     return (
-      <div className={listClasses.join(' ')} >
-          <h2 className="leader-tools-list__title" aria-controls={this.props.detailsId} aria-expanded={snapshot.isOpen}>
-            {this.props.icon ? <this.props.icon className="leader-tools-list__title-icon" /> : ''}
-            {this.props.isMobile ? this.getResponsiveHeader() : this.getSimpleHeader()}
-          </h2>
-          <ShadowBox zeroRadius zeroPadding className="leader-tools-list__content-wrapper">
-            <div className="leader-tools-list" hidden={hideDetails}  aria-hidden={hideDetails}>
-              {tools}
-            </div>
+      <div className={listClasses.join(' ')}>
+        <h2
+          className="leader-tools-list__title"
+          aria-controls={this.props.detailsId}
+          aria-expanded={snapshot.isOpen}
+        >
+          {this.props.icon ? (
+            <this.props.icon className="leader-tools-list__title-icon" />
+          ) : (
+            ''
+          )}
+          {this.props.isMobile
+            ? this.getResponsiveHeader()
+            : this.getSimpleHeader()}
+        </h2>
+        <ShadowBox
+          zeroRadius
+          zeroPadding
+          className="leader-tools-list__content-wrapper"
+        >
+          <div
+            className="leader-tools-list"
+            hidden={hideDetails}
+            aria-hidden={hideDetails}
+          >
+            {tools}
+          </div>
         </ShadowBox>
       </div>
-    )
+    );
   }
 }
 
 // Wraps all the tool lists.
-export const AllLeaderTools = (props) => {
+export const AllLeaderTools = props => {
   const variousTools = props.variousTools;
   const prManagement = props.prManagement;
   const codeOfConduct = props.codeOfConduct;
@@ -102,26 +126,68 @@ export const AllLeaderTools = (props) => {
     <Layout2Col verticalGutters horizontalGutters>
       <div>
         <MediaQuery minWidth={768}>
-          <LeaderToolList title="Project Management Tools" tools={prManagement} icon={Briefcase} detailsId="project-management-tools"   />
-          <LeaderToolList title="Code of conduct" tools={codeOfConduct} icon={FileText}  detailsId="code-of-conduct"  />
-          <LeaderToolList title="Various tools" tools={variousTools} icon={Archive} detailsId="various-tools" />
+          <LeaderToolList
+            title="Project Management Tools"
+            tools={prManagement}
+            icon={Briefcase}
+            detailsId="project-management-tools"
+          />
+          <LeaderToolList
+            title="Code of conduct"
+            tools={codeOfConduct}
+            icon={FileText}
+            detailsId="code-of-conduct"
+          />
+          <LeaderToolList
+            title="Various tools"
+            tools={variousTools}
+            icon={Archive}
+            detailsId="various-tools"
+          />
         </MediaQuery>
         <MediaQuery maxWidth={767}>
-         <LeaderToolList isMobile title="Project Management Tools" tools={prManagement} icon={Briefcase} detailsId="project-management-tools" />
-         <LeaderToolList isMobile title="Code of conduct" tools={codeOfConduct} icon={FileText} detailsId="code-of-conduct" />
-         <LeaderToolList isMobile title="Various tools" tools={variousTools} icon={Archive} detailsId="various-tools" />
-       </MediaQuery>
+          <LeaderToolList
+            isMobile
+            title="Project Management Tools"
+            tools={prManagement}
+            icon={Briefcase}
+            detailsId="project-management-tools"
+          />
+          <LeaderToolList
+            isMobile
+            title="Code of conduct"
+            tools={codeOfConduct}
+            icon={FileText}
+            detailsId="code-of-conduct"
+          />
+          <LeaderToolList
+            isMobile
+            title="Various tools"
+            tools={variousTools}
+            icon={Archive}
+            detailsId="various-tools"
+          />
+        </MediaQuery>
       </div>
       <div>
         <MediaQuery minWidth={768}>
-          <LeaderToolList title="Useful resources running a club"
-                          tools={usefulResources} icon={Clipboard} detailsId="useful-resources" />
+          <LeaderToolList
+            title="Useful resources running a club"
+            tools={usefulResources}
+            icon={Clipboard}
+            detailsId="useful-resources"
+          />
         </MediaQuery>
         <MediaQuery maxWidth={767}>
-          <LeaderToolList isMobile title="Useful resources running a club"
-                            tools={usefulResources} icon={Clipboard} detailsId="useful-resources" />
+          <LeaderToolList
+            isMobile
+            title="Useful resources running a club"
+            tools={usefulResources}
+            icon={Clipboard}
+            detailsId="useful-resources"
+          />
         </MediaQuery>
       </div>
     </Layout2Col>
-  )
+  );
 };
