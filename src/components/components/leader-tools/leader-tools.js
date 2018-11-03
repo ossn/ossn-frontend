@@ -8,7 +8,9 @@ import {
   FileText,
   Archive,
   Clipboard,
-  ExternalLink
+  ExternalLink,
+  Plus,
+  Minus
 } from 'react-feather';
 import MediaQuery from 'react-responsive';
 
@@ -57,7 +59,7 @@ export class LeaderToolList extends React.Component {
       >
         {this.getSimpleHeader()}
         <span className="leader-tools-list__title-symbol">
-          {this.state.isOpen ? '-' : '+'}
+          {this.state.isOpen ? <Minus /> : <Plus />}
         </span>
       </button>
     );
