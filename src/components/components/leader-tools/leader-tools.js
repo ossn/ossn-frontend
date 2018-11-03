@@ -126,7 +126,7 @@ export const AllLeaderTools = props => {
 
   return (
     <Layout2Col verticalGutters horizontalGutters>
-      <div>
+      <div className="leader-tools-list__section">
         <MediaQuery minWidth={768}>
           <LeaderToolList
             title="Project Management Tools"
@@ -171,7 +171,7 @@ export const AllLeaderTools = props => {
           />
         </MediaQuery>
       </div>
-      <div>
+      <div className="leader-tools-list__section">
         <MediaQuery minWidth={768}>
           <LeaderToolList
             title="Useful resources running a club"
