@@ -26,8 +26,7 @@ class ClubMap extends React.Component {
       return (
         <Marker position={mockLocations[i].location} key={i}>
           <Popup>
-            {' '}
-            <MapPopup club={club} />{' '}
+            <MapPopup club={club} />
           </Popup>
         </Marker>
       );

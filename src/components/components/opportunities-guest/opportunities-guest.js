@@ -29,7 +29,7 @@ export default props => {
 
           <div className="opportunities-guest__overlay">
             <a
-              href="#"
+              href="#passLinter"
               className="button button--cta opportunities-guest__link"
             >
               Become a member to get access!

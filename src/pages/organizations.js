@@ -82,7 +82,7 @@ const Organizations = props => {
             </div>
           </div>
           <div>
-            <img src="#" alt="balloon image" />
+            <img src="#" alt="balloon" />
           </div>
         </Layout2ColsUnequal>
 

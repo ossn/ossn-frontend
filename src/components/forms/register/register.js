@@ -51,38 +51,44 @@ class Register extends React.Component {
 
     return (
       <div>
-        <label> username: </label>
-        <input
-          type="text"
-          onChange={this.handleUsername}
-          value={snapshot.username}
-        />
-        <br />
-        <br />
-        <label> email: </label>
-        <input type="text" onChange={this.handleEmail} value={snapshot.email} />
-        <br />
-        <br />
-        <label> password: </label>
-        <input
-          type="password"
-          onChange={this.handlePassword}
-          value={snapshot.password}
-        />
-        <br />
-        <br />
-        <label> I wish to receive monthly newsletter </label>
-        <input
-          type="checkbox"
-          onChange={this.handleNewsletter}
-          checked={snapshot.receiveNewsletter}
-        />
-        <br />
-        <br />
+        <label htmlFor="register-username">
+          username:
+          <input
+            type="text"
+            onChange={this.handleUsername}
+            value={snapshot.username}
+            id="register-username"
+          />
+        </label>
+        <label htmlFor="register-email">
+          email:
+          <input
+            type="text"
+            onChange={this.handleEmail}
+            value={snapshot.email}
+            id="register-email"
+          />
+        </label>
+
+        <label htmlFor="register-password">
+          password:
+          <input
+            type="password"
+            onChange={this.handlePassword}
+            value={snapshot.password}
+          />
+        </label>
+        <label htmlFor="register-receive-emails">
+          I wish to receive monthly newsletter
+          <input
+            type="checkbox"
+            onChange={this.handleNewsletter}
+            checked={snapshot.receiveNewsletter}
+            id="register-receive-emails"
+          />
+        </label>
         <span> Already a member ? </span>
-        <span onClick={this.handleToLogin}> Login </span>
-        <br />
-        <br />
+        <button onClick={this.handleToLogin}> Login </button>
         <button onClick={this.register}> Register </button>
       </div>
     );

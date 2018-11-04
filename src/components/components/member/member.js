@@ -23,6 +23,9 @@ import ShadowBox from './../shadow-box/shadow-box';
 // styles
 import './member.scss';
 
+// utils
+import { returnKeyCheck } from './../../../utils/accessibility';
+
 class Member extends React.Component {
   constructor(props) {
     super(props);
@@ -170,16 +173,15 @@ class Member extends React.Component {
 
     const github = snapshot.edit ? (
       <div>
-        {' '}
         <span>github.com/</span>{' '}
         <TextInput
           label="profile"
           onChange={this.handleGithub}
           value={snapshot.github}
-        />{' '}
+        />
       </div>
     ) : (
-      <a href="#">
+      <a href="#passLinter">
         <GitHub className="member__icon" />
         <span className="member__link-prefix">github.com/</span>
         <span className="member__link-content">{snapshot.github}</span>
@@ -193,7 +195,7 @@ class Member extends React.Component {
         value={snapshot.personal}
       />
     ) : (
-      <a href="#">
+      <a href="#passLinter">
         <Link className="member__icon" />
         <span className="member__link-prefix">http://</span>
         <span className="member__link-content">{snapshot.personal}</span>
@@ -205,7 +207,12 @@ class Member extends React.Component {
     if (snapshot.edit) {
       buttonList.push(
         <div
+          tabIndex={0}
+          role="button"
           onClick={this.handleCancel}
+          onKeyDown={e => {
+            returnKeyCheck(e, this.handleCancel);
+          }}
           className="member__button button button--reset"
           key={0}
         >
@@ -216,7 +223,12 @@ class Member extends React.Component {
 
       buttonList.push(
         <div
+          tabIndex={0}
+          role="button"
           onClick={this.handleSave}
+          onKeyDown={e => {
+            returnKeyCheck(e, this.handleSave);
+          }}
           className="member__button  button button--submit"
           key={1}
         >
@@ -227,7 +239,12 @@ class Member extends React.Component {
     } else if (this.props.editable) {
       buttonList.push(
         <div
+          tabIndex={0}
+          role="button"
           onClick={this.handleEdit}
+          onKeyDown={e => {
+            returnKeyCheck(e, this.handleEdit);
+          }}
           className="member__button  button button--reset"
           key={2}
         >

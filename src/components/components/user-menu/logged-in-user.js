@@ -15,7 +15,10 @@ class LoggedInUserMenu extends React.Component {
           <li> Create club </li>
           <li> My profile </li>
           <li> Settings </li>
-          <li onClick={this.logout}> LOGOUT </li>
+          <li>
+            {' '}
+            <button onClick={this.logout}> LOGOUT </button>{' '}
+          </li>
         </ul>
       </div>
     );

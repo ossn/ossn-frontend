@@ -86,26 +86,20 @@ export default class Club extends React.Component {
             {clubAction}
             <ul>
               <li>
-                {' '}
-                <a href=""> Club location </a>{' '}
+                <a href="#passLinter"> Club location </a>
               </li>
               <li>
-                {' '}
-                <a href="">
-                  {' '}
-                  <span>github.com/</span>{' '}
+                <a href="#passLinter">
+                  <span>github.com/</span>
                 </a>
               </li>
               <li>
-                {' '}
-                <a href="">
-                  {' '}
-                  <span>http://</span>{' '}
-                </a>{' '}
+                <a href="#passLinter">
+                  <span>http://</span>
+                </a>
               </li>
               <li>
-                {' '}
-                <a href=""> email@email.com </a>{' '}
+                <a href="#passLinter"> email@email.com </a>
               </li>
               <li> Meeting dates </li>
             </ul>

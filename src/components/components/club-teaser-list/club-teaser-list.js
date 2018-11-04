@@ -5,6 +5,7 @@
 
 import React from 'react';
 import { Link } from 'gatsby';
+import { ChevronRight } from 'react-feather';
 
 // Local modules.
 import Layout3Col from './../../layouts/layout-3col/layout-3col';
@@ -29,7 +30,7 @@ export const ClubTeaser = props => {
             </span>
             <span className=""> {subtitle} </span>
             <Link to="/club" className="button button--x-small">
-              Club page >
+              Club page <ChevronRight />
             </Link>
           </div>
         </div>

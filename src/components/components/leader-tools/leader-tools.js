@@ -27,7 +27,7 @@ const LeaderTool = props => {
 
   return (
     <div className="leader-tool">
-      <img src={icon} className="leader-tool__icon" />
+      <img src={icon} className="leader-tool__icon" alt={title} />
       <a href={url} className="leader-tool__link">
         <div className="leader-tool__title"> {title} </div>
         <ExternalLink className="leader-tool__link-icon" />
@@ -72,7 +72,6 @@ export class LeaderToolList extends React.Component {
 
   render() {
     const snapshot = { ...this.state };
-    const title = this.props.title;
 
     const tools = this.props.tools.map((tool, i) => {
       return <LeaderTool tool={tool} key={i} />;

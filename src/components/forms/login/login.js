@@ -39,34 +39,35 @@ class Login extends React.Component {
 
     return (
       <div>
-        <label> username: </label>
-        <input
-          type="text"
-          onChange={this.handleUsername}
-          value={snapshot.username}
-        />
-        <br />
-        <br />
-        <label> password: </label>
-        <input
-          type="password"
-          onChange={this.handlePassword}
-          value={snapshot.password}
-        />
-        <br />
-        <br />
-        <label> Keep me logged in </label>
-        <input
-          type="checkbox"
-          onChange={this.handleKeepLoggedIn}
-          checked={snapshot.keepLoggedIn}
-        />
-        <br />
-        <br />
+        <label htmlFor="login-username">
+          username:
+          <input
+            type="text"
+            onChange={this.handleUsername}
+            value={snapshot.username}
+            id="login-username"
+          />
+        </label>
+        <label htmlFor="login-password">
+          password:
+          <input
+            type="password"
+            onChange={this.handlePassword}
+            value={snapshot.password}
+            id="login-password"
+          />
+        </label>
+        <label htmlFor="login-keep-logged-in">
+          Keep me logged in
+          <input
+            type="checkbox"
+            onChange={this.handleKeepLoggedIn}
+            checked={snapshot.keepLoggedIn}
+            id="login-keep-logged-in"
+          />
+        </label>
         <span> Not a member ? </span>
-        <span onClick={this.handleToRegister}> Signup </span>
-        <br />
-        <br />
+        <button onClick={this.handleToRegister}> Signup </button>
         <button onClick={this.login}> Login </button>
       </div>
     );

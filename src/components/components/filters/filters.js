@@ -40,15 +40,19 @@ export class ToggleFilter extends React.Component {
 */
 export class SearchFilter extends React.Component {
   handleSearch = this.props.onChange;
+
   render() {
     return (
       <div className="filter filter--search">
-        <label> Search </label>
-        <input
-          type="text"
-          placeholder={this.props.placeholder}
-          onChange={this.handleSearch}
-        />
+        <label htmlFor={`${this.props.id}`}>
+          Search
+          <input
+            type="text"
+            placeholder={this.props.placeholder}
+            onChange={this.handleSearch}
+            id={this.props.id}
+          />
+        </label>
       </div>
     );
   }
