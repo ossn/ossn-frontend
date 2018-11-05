@@ -59,6 +59,17 @@
     position: relative;
     z-index: 2;
     margin-top: 20px;
+    background-color: transparent;
+
+    &:focus,
+    &:hover {
+      background-color: transparent;
+      color: color('brand');
+    }
+
+    // @include breakpoint($tablet) {
+    //
+    // }
   }
 
   &__navigation-container {
@@ -83,6 +94,10 @@
         width: 100%;
       }
     }
+  }
+
+  &__menu-icon {
+    background-color: transparent;
   }
 
   @include breakpoint($tablet) {
