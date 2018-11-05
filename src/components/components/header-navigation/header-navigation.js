@@ -4,6 +4,8 @@ import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import PreNavigation from './../../navigation/secondary-navigation/secondary-navigation';
 import Navigation from './../../navigation/main-navigation/main-navigation';
 import UserMenu from './../user-menu/user-menu';
+import { Menu } from 'react-feather';
+import MediaQuery from 'react-responsive';
 
 class HeaderNavigation extends React.Component {
   constructor(props) {
@@ -56,15 +58,17 @@ class HeaderNavigation extends React.Component {
 
     return (
       <div className="header__inner" ref={this.expandable}>
-        <button
-          onClick={this.handleOpen}
-          onKeyPress={this.handleKeyPress}
-          className="button button--header header__button"
-          aria-controls={'header-navigation-container'}
-          aria-expanded={isExpanded}
-        >
-          <span>Menu</span>
-        </button>
+        <MediaQuery maxWidth={767}>
+          <button
+            onClick={this.handleOpen}
+            onKeyPress={this.handleKeyPress}
+            className="button button--header header__button"
+            aria-controls={'header-navigation-container'}
+            aria-expanded={isExpanded}
+          >
+            <Menu className="header__menu-icon" />
+          </button>
+        </MediaQuery>
         <div
           className={classString}
           id="header-navigation-container"
