@@ -230,6 +230,11 @@ u { // sass-lint:disable-line no-empty-rulesets
     @include line-height(24px);
   }
 
+  &--m-large {
+    @include font-size(18px);
+    @include line-height(24px);
+  }
+
   &--large {
     @include font-size(21px);
     @include line-height(26px);

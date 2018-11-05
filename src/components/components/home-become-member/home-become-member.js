@@ -10,21 +10,29 @@ import { connect } from 'react-redux';
 // local  modules
 import { mapUserToProps } from './../../../utils/redux-utils';
 
+import './home-become-member.scss';
+
 class BecomeMember extends React.Component {
   render() {
     if (this.props.user.loggedIn) return <div />;
     return (
-      <div>
-        <div>
-          <h2> Why join the Open Source Student Network? </h2>
-          <p>
-            By joining, you get access to our chat channel, ongoing support and
-            mentorship, as well as leadership training. Moreover, you will
-            regularly get our latest opportunities in your mailbox.
-          </p>
-        </div>
-        <div>
-          <button className="button"> Become a member </button>
+      <div className="home-become-member__wrapper">
+        <div className="home-become-member">
+          <div className="home-become-member__text">
+            <h2 className="title title--m-small">
+              Why join the Open Source Student Network?
+            </h2>
+            <p className="text text--m-large">
+              By joining, you get access to our chat channel, ongoing support
+              and mentorship, as well as leadership training. Moreover, you will
+              regularly get our latest opportunities in your mailbox.
+            </p>
+          </div>
+          <div className="home-become-member__cta">
+            <button className="button button--cta home-become-member__button">
+              Become a member
+            </button>
+          </div>
         </div>
       </div>
     );

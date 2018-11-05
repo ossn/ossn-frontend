@@ -1,0 +1,22 @@
+@import './../../base-styles/init/init';
+
+.home-become-member {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__wrapper {
+    @include margin-top(73px);
+    @include padding-top(54px);
+    @include padding-bottom(54px);
+  }
+
+  &__text {
+    max-width: 667px;
+
+    p {
+      @include margin-top(13px);
+      color: color('grey');
+    }
+  }
+}
