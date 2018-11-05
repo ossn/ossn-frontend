@@ -10,13 +10,25 @@ import Layout2Col from './../../layouts/layout-2col/layout-2col';
 import Announcements from './../announcements/announcements';
 import JobListing from './../job-listing/job-listing';
 
-export default (props) => {
-  return(
+export default props => {
+  return (
     <LayoutContained>
       <Layout2Col horizontalGutters verticalGutters>
-        <div> <Announcements announcements={props.announcements || [] } dummyData={props.dummyData} /> </div>
-        <div> <JobListing jobs={props.jobs  || [] } dummyData={props.dummyData} /> </div>
+        <div>
+          {' '}
+          <Announcements
+            announcements={props.announcements || []}
+            dummyData={props.dummyData}
+          />{' '}
+        </div>
+        <div>
+          {' '}
+          <JobListing
+            jobs={props.jobs || []}
+            dummyData={props.dummyData}
+          />{' '}
+        </div>
       </Layout2Col>
     </LayoutContained>
   );
-}
+};

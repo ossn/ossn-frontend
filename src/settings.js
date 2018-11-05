@@ -9,14 +9,14 @@ import safari from './favicon/safari-pinned-tab.svg';
 // import faviconIcon from './favicon/favicon.ico';
 // import siteWebmanifest from './favicon/site.webmanifest';
 export const activeEnv =
-  process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development'
+  process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development';
 
-export const api = 'https://07rqzpwj55.lp.gql.zone/graphql'
+export const api = 'https://07rqzpwj55.lp.gql.zone/graphql';
 
 export const metadata = [
   meta('msapplication-TileColor', '#000000'),
-  meta('theme-color', '#ffffff'),
-]
+  meta('theme-color', '#ffffff')
+];
 
 export const link = [
   favicon('apple-touch-icon', `${appleTouch}`, '180x180'),
@@ -28,15 +28,15 @@ export const link = [
     href: 'https://unpkg.com/leaflet@1.3.3/dist/leaflet.css',
     integrity:
       'sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==',
-    crossorigin: '',
-  },
-]
+    crossorigin: ''
+  }
+];
 
 function meta(name, content) {
   return {
     name: name,
-    content: content,
-  }
+    content: content
+  };
 }
 
 function favicon(
@@ -46,11 +46,11 @@ function favicon(
   type = null,
   color = null
 ) {
-  let bundle = {}
-  if (rel) bundle.rel = rel
-  if (href) bundle.href = href
-  if (sizes) bundle.sizes = sizes
-  if (type) bundle.type = type
-  if (color) bundle.color = color
-  return bundle
+  let bundle = {};
+  if (rel) bundle.rel = rel;
+  if (href) bundle.href = href;
+  if (sizes) bundle.sizes = sizes;
+  if (type) bundle.type = type;
+  if (color) bundle.color = color;
+  return bundle;
 }

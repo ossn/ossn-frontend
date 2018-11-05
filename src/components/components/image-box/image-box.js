@@ -7,16 +7,23 @@
 import React from 'react';
 
 // Local modules.
-import './image-box.scss'
+import './image-box.scss';
 // import Image from './images/panel-typewriter.jpg'
 
-export default (props) => {
+export default props => {
   const baseClass = 'image-box';
 
-
-  const titleLargeTop = props.titleLargeTop ? <span>{props.titleLargeTop}</span> : '';
+  const titleLargeTop = props.titleLargeTop ? (
+    <span>{props.titleLargeTop}</span>
+  ) : (
+    ''
+  );
   const titleSmall = props.titleSmall ? <span>{props.titleSmall}</span> : '';
-  const titleLargeBottom = props.titleLargeBottom ? <span>{props.titleLargeBottom}</span> : '';
+  const titleLargeBottom = props.titleLargeBottom ? (
+    <span>{props.titleLargeBottom}</span>
+  ) : (
+    ''
+  );
   // const image = props.image ? props.image : Image;
   // const image = Image;
   // const quotedText = props.quotedText;
@@ -26,7 +33,7 @@ export default (props) => {
   // handle component classes. Add the variations found in props.
   let classes = [baseClass];
   if (props.tall) classes.push(`${baseClass}--tall`);
-  const classString = classes.join(" ");
+  const classString = classes.join(' ');
 
   return (
     <div className={classString}>
@@ -39,5 +46,5 @@ export default (props) => {
         </h3>
       </div>
     </div>
-  )
-}
+  );
+};

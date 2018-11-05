@@ -1,17 +1,29 @@
 import React from 'react';
 import './toggle.scss';
 
-export default (props) => {
+//utils
+import { returnKeyCheck } from './../../../utils/accessibility';
 
+export default props => {
   const onClick = props.onClick;
   const classes = [props.className, 'toggle'];
   if (props.active) classes.push('toggle--active');
-  const classString = classes.join(" ");
+  const classString = classes.join(' ');
+  const ariaPressed = props.active;
 
   return (
-    <div onClick={onClick} className={classString}>
-      <div className="toggle__track"></div>
-      <div className="toggle__bullet"></div>
+    <div
+      onClick={onClick}
+      onKeyDown={event => {
+        returnKeyCheck(event, props.onClick);
+      }}
+      role="button"
+      aria-pressed={ariaPressed}
+      className={classString}
+      tabIndex={0}
+    >
+      <div className="toggle__track" />
+      <div className="toggle__bullet" />
     </div>
-  )
-}
+  );
+};

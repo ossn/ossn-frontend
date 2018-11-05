@@ -2,9 +2,9 @@
 import React from 'react';
 
 // Local modules.
-import './blockquote-box.scss'
+import './blockquote-box.scss';
 
-export default (props) => {
+export default props => {
   const blockquote = props.blockquote;
   const author = props.author;
 
@@ -15,6 +15,5 @@ export default (props) => {
         <cite>{author}</cite>
       </footer>
     </blockquote>
-  )
-}
-
+  );
+};

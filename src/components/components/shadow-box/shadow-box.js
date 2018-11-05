@@ -2,9 +2,9 @@
   Wrapper it's children and adds a white background and shadow.
 */
 import React from 'react';
-import './shadow-box.scss'
+import './shadow-box.scss';
 
-export default (props) => {
+export default props => {
   let classes = ['shadow-box'];
   if (props.className) classes.push(props.className);
 
@@ -16,9 +16,5 @@ export default (props) => {
   if (props.zeroPadding) classes.push(`shadow-box--zero-padding`);
   if (props.smallPaddings) classes.push('shadow-box--small-paddings');
 
-  return (
-    <div className={classes.join(' ')}>
-      {props.children}
-    </div>
-  )
-}
+  return <div className={classes.join(' ')}>{props.children}</div>;
+};

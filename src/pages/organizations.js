@@ -1,10 +1,7 @@
-// TODO: remove the linter disablement after updating the images
-/* eslint-disable */
-
 // external modules
-import React, {memo} from 'react';
+import React, { memo } from 'react';
 import { Helmet } from 'react-helmet';
-import { graphql } from "gatsby"
+import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 // Local modules.
@@ -21,29 +18,35 @@ import GatsbyConfig from './../../gatsby-config';
 
 // import bannerImage from './../images/affiliationsBanner.png';
 
-const Organizations = (props) => {
-
-  const content = props.data.allOrganizationsJson.edges.map((node, i)=>{
-    return <Organization organization={node.org}  key={i}/>
+const Organizations = props => {
+  const content = props.data.allOrganizationsJson.edges.map((node, i) => {
+    return <Organization organization={node.org} key={i} />;
   });
 
   return (
     <BasicLayout>
       <Helmet>
-        <title>{['Organization', '|', GatsbyConfig.siteMetadata.title].join(" ")}</title>
+        <title>
+          {['Organization', '|', GatsbyConfig.siteMetadata.title].join(' ')}
+        </title>
       </Helmet>
       <LayoutContained>
         <div>
           <Img fluid={props.data.organizationsBanner.childImageSharp.fluid} />
         </div>
 
-
         <Layout2ColsUnequal secondNarrow>
           <div>
             <div>
               <h1> Affiliations </h1>
               <p>
-                Lorem ipsum dolor sit amet, nonumy lucilius et pro. Mel ut diam choro, propriae lucilius efficiendi an nam, suas facer qualisque no nec. An fugit soluta per. Ad mei debitis electram, officiis intellegat usu ei, ius eu zril intellegam consequuntur. Sumo delectus te nam, eam placerat salutandi no, nibh aperiam no ius. Id volumus sententiae interesset quo, natum scriptorem accommodare nam id, semper blandit ius ea.
+                Lorem ipsum dolor sit amet, nonumy lucilius et pro. Mel ut diam
+                choro, propriae lucilius efficiendi an nam, suas facer qualisque
+                no nec. An fugit soluta per. Ad mei debitis electram, officiis
+                intellegat usu ei, ius eu zril intellegam consequuntur. Sumo
+                delectus te nam, eam placerat salutandi no, nibh aperiam no ius.
+                Id volumus sententiae interesset quo, natum scriptorem
+                accommodare nam id, semper blandit ius ea.
               </p>
             </div>
 
@@ -52,24 +55,38 @@ const Organizations = (props) => {
                 <div>
                   <h3>Who helps us?</h3>
                   <p>
-                    Lorem ipsum dolor sit amet, nonumy lucilius et pro. Mel ut diam choro, propriae lucilius efficiendi an nam, suas facer qualisque no nec. An fugit soluta per. Ad mei debitis electram, officiis intellegat usu ei, ius eu zril intellegam consequuntur. Sumo delectus te nam, eam placerat salutandi no, nibh aperiam no ius. Id volumus sententiae interesset quo, natum scriptorem accommodare nam id, semper blandit ius ea.
+                    Lorem ipsum dolor sit amet, nonumy lucilius et pro. Mel ut
+                    diam choro, propriae lucilius efficiendi an nam, suas facer
+                    qualisque no nec. An fugit soluta per. Ad mei debitis
+                    electram, officiis intellegat usu ei, ius eu zril intellegam
+                    consequuntur. Sumo delectus te nam, eam placerat salutandi
+                    no, nibh aperiam no ius. Id volumus sententiae interesset
+                    quo, natum scriptorem accommodare nam id, semper blandit ius
+                    ea.
                   </p>
                 </div>
                 <div>
                   <h3>Opportunities</h3>
                   <p>
-                    Lorem ipsum dolor sit amet, nonumy lucilius et pro. Mel ut diam choro, propriae lucilius efficiendi an nam, suas facer qualisque no nec. An fugit soluta per. Ad mei debitis electram, officiis intellegat usu ei, ius eu zril intellegam consequuntur. Sumo delectus te nam, eam placerat salutandi no, nibh aperiam no ius. Id volumus sententiae interesset quo, natum scriptorem accommodare nam id, semper blandit ius ea.
+                    Lorem ipsum dolor sit amet, nonumy lucilius et pro. Mel ut
+                    diam choro, propriae lucilius efficiendi an nam, suas facer
+                    qualisque no nec. An fugit soluta per. Ad mei debitis
+                    electram, officiis intellegat usu ei, ius eu zril intellegam
+                    consequuntur. Sumo delectus te nam, eam placerat salutandi
+                    no, nibh aperiam no ius. Id volumus sententiae interesset
+                    quo, natum scriptorem accommodare nam id, semper blandit ius
+                    ea.
                   </p>
                 </div>
               </Layout2Col>
             </div>
           </div>
           <div>
-            <img src="#" alt="balloon image" />
+            <img src="#" alt="balloon" />
           </div>
         </Layout2ColsUnequal>
 
-        <Layout3Col horizontalGutters verticalGutters >
+        <Layout3Col horizontalGutters verticalGutters>
           {content}
         </Layout3Col>
       </LayoutContained>
@@ -79,18 +96,17 @@ const Organizations = (props) => {
 
 export default memo(Organizations);
 
-
 export const query = graphql`
   {
     allOrganizationsJson {
       edges {
         org: node {
-        ...organization
-  	    }
+          ...organization
+        }
       }
     }
 
-    organizationsBanner: file(relativePath: {eq: "organizationsBanner.png"}) {
+    organizationsBanner: file(relativePath: { eq: "organizationsBanner.png" }) {
       childImageSharp {
         fluid(maxWidth: 1000) {
           base64

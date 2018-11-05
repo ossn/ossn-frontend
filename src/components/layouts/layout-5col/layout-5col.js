@@ -9,28 +9,29 @@ import './layout-5col.scss';
 import React, { memo } from 'react';
 
 const Layout5Col = props => {
-  const baseClass = 'layout-5col'
+  const baseClass = 'layout-5col';
 
   // add the `Layout-2col-unequal__col` class to every child.
   const children = React.Children.map(props.children, child => {
     const className = `${
       child.props.className ? child.props.className : ''
-    } ${baseClass}__col`
-    const props = { ...child.props, className: className }
-    const newChild = React.cloneElement(child, props)
-    return newChild
-  })
+    } ${baseClass}__col`;
+    const props = { ...child.props, className: className };
+    const newChild = React.cloneElement(child, props);
+    return newChild;
+  });
 
   // handle component classes. Add the variations found in props.
-  let classes = [baseClass]
+  let classes = [baseClass];
   if (props.horizontalGutters)
-    classes.push(`${baseClass}--with-horizontal-gutters`)
-  if (props.verticalGutters) classes.push(`${baseClass}--with-vertical-gutters`)
-  if (props.noTabletBreak) classes.push(`${baseClass}--no-tablet-break`)
-  if (props.onlyDesktop3) classes.push(`${baseClass}--only-desktop-3`)
+    classes.push(`${baseClass}--with-horizontal-gutters`);
+  if (props.verticalGutters)
+    classes.push(`${baseClass}--with-vertical-gutters`);
+  if (props.noTabletBreak) classes.push(`${baseClass}--no-tablet-break`);
+  if (props.onlyDesktop3) classes.push(`${baseClass}--only-desktop-3`);
 
-  const classString = classes.join(' ')
-  return <div className={classString}>{children}</div>
-}
+  const classString = classes.join(' ');
+  return <div className={classString}>{children}</div>;
+};
 
-export default memo(Layout5Col)
+export default memo(Layout5Col);

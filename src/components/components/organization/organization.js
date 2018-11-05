@@ -8,11 +8,11 @@ import { Link } from 'react-feather';
 import ShadowBox from './../shadow-box/shadow-box';
 
 // Style.
-import './organization.scss'
+import './organization.scss';
 
-const Organization = (props) => {
+const Organization = props => {
   if (!props.organization) {
-    return <div> organization not found error </div>
+    return <div> organization not found error </div>;
   }
 
   const title = props.organization.title;
@@ -22,21 +22,24 @@ const Organization = (props) => {
 
   let classes = ['organization'];
   if (props.className) classes.push(props.className);
-  let classString = classes.join(" ");
+  let classString = classes.join(' ');
 
   return (
     <div className={classString}>
       <ShadowBox>
         <div className="organization__inner">
           <div className="organization__image-wrapper">
-            <img  src={icon} className="organization__image" alt={title}/>
+            <img src={icon} className="organization__image" alt={title} />
           </div>
-          <a href={url} className="title title--x-small organization__title" target="_blank" rel="noopener noreferrer">
+          <a
+            href={url}
+            className="title title--x-small organization__title"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Link size={18} className="icon organization__icon" /> {title}
           </a>
-          <p className="organization__description">
-            {description}
-          </p>
+          <p className="organization__description">{description}</p>
         </div>
       </ShadowBox>
     </div>

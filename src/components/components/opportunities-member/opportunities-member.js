@@ -1,14 +1,14 @@
 /*
-  Wraps the contribute page as shown to a user with the member role and add
-  some content at the upper section.
+ Wraps the contribute page as shown to a user with the member role and add
+ some content at the upper section.
 
-  props:
-   skipTitle, if present, the component does not add extra data.
-   announcements, the list of the announcements objects.
-   jobs, the list of the job objects.
-   resources, the list of the resources objects.
+ props:
+ skipTitle, if present, the component does not add extra data.
+ announcements, the list of the announcements objects.
+ jobs, the list of the job objects.
+ resources, the list of the resources objects.
 
-*/
+ */
 import React from 'react';
 
 // Local modules.
@@ -43,6 +43,7 @@ const UpperSection = props => {
             match your interests!
           </p>
         </div>
+
         <div className="promoted-box__wrapper">
           <PromotedBox />
         </div>
