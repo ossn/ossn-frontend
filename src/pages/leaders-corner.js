@@ -102,7 +102,6 @@ export const query = graphql`
       Project_Management_tools {
         title
         link
-        imageUrl
         attachment {
           publicURL
         }
@@ -111,7 +110,6 @@ export const query = graphql`
       Code_of_Conduct_examples {
         title
         link
-        imageUrl
         attachment {
           publicURL
         }
@@ -120,7 +118,6 @@ export const query = graphql`
       Various_tools {
         title
         link
-        imageUrl
         attachment {
           publicURL
         }
@@ -129,7 +126,6 @@ export const query = graphql`
       Useful_resources_running_a_club {
         title
         link
-        imageUrl
         attachment {
           publicURL
         }

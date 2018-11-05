@@ -1,99 +1,110 @@
 @import './../../base-styles/init/init.scss';
 
 .leader-tools-list {
-    @include margin-top(23px);
+  @include margin-top(12px);
+  padding-left: 0;
 
+  @include breakpoint($tablet) {
+    @include margin-top(23px);
+  }
+
+  &__section {
+    &:last-child {
+      .leader-tools-list__title {
+        margin-top: 0;
+      }
+    }
+  }
+
+  @include breakpoint($tablet) {
     &__section {
       &:last-child {
         .leader-tools-list__title {
-          margin-top: 0;
+          margin-top: 20px;
         }
       }
     }
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
 
     @include breakpoint($tablet) {
-      &__section {
-        &:last-child {
-          .leader-tools-list__title {
-            margin-top: 20px;
-          }
-        }
-      }
-    }
-
-    &__title {
       @include margin-top(20px);
-      display: flex;
-      align-items: center;
-
-      @include breakpoint($tablet) {
-        display: inline-block;
-      }
+      display: inline-block;
     }
+  }
 
-    &__title-icon {
-      @include margin-right(10px);
-      vertical-align: top;
-      width: 26px;
-      height: 26px;
+  &__title-icon {
+    @include margin-right(10px);
+    @include margin-left(4px);
+    vertical-align: top;
+    width: 26px;
+    height: 26px;
+
+    @include breakpoint($tablet) {
+      @include margin-right(6px);
     }
+  }
 
-    &__content-wrapper {
-      position: relative;
+  &__content-wrapper {
+    position: relative;
+
+    @include breakpoint($tablet) {
+      @include margin-left(36px); // icon-width + icon padding
 
       &::after {
-        content: '';
-        position: absolute;
-        left: 36px;  // icon-width + icon padding
-        right: 0;
-        height: 1px;
-        bottom: -5px;
-
-        // REVIEW: the color. is light-navy with 0.2 opacity
-        background-color: rgba(18,46,99, 0.2);
-      }
-
-      @include breakpoint($tablet) {
-        @include margin-left(36px); // icon-width + icon padding
-
-        &::after {
-          content: none;
-        }
+        content: none;
       }
     }
+  }
 
-    &__title-button {
+  // The icon is outside the button so we move the button above the icon to make
+  // it seem clickable.
+  &__title-button {
+    background-color: transparent;
+    padding: 12px 0 11px 40px;
+    margin-left: -40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+
+    &:hover,
+    &:focus,
+    &:active {
       background-color: transparent;
-      padding: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      text-align: left;
+    }
+  }
 
-      &:hover,
-      &:focus,
-      &:active {
-        background-color: transparent;
+  &__title-symbol {
+    font-size: 24px;
+    width: 24px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: center;
+  }
+
+  &__wrapper {
+    position: relative;
+    margin-bottom: 1px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 40px;
+      right: 0;
+      top: auto;
+      border-bottom: 1px solid color('grey-underline');
+    }
+
+    &--open  {
+      &:after {
+        border-bottom: 1px solid transparent;
       }
     }
-
-    &__title-symbol {
-      font-size: 24px;
-      width: 24px;
-      display: inline-block;
-      text-align: center;
-      vertical-align: center;
-    }
-
-    &__wrapper--open  {
-      .leader-tools-list__content-wrapper {
-
-        &::after {
-          content: none
-        }
-
-
-      }
-    }
+  }
 }
