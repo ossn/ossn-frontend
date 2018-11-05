@@ -2,11 +2,11 @@ import React from 'react';
 
 // local modules
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
-// import {ClubTeaser} from './../club-teaser-list/club-teaser-list';
-import MapPopup from './../map-popup/map-popup';
+import { ClubTeaser } from './../club-teaser-list/club-teaser-list';
 
 // styles
 import './map.scss';
+
 class ClubMap extends React.Component {
   render() {
     const position = [38.3345123, -99.5218668];
@@ -25,8 +25,8 @@ class ClubMap extends React.Component {
     const markers = clubs.map((club, i) => {
       return (
         <Marker position={mockLocations[i].location} key={i}>
-          <Popup>
-            <MapPopup club={club} />
+          <Popup className="map__popup">
+            <ClubTeaser club={club} />
           </Popup>
         </Marker>
       );

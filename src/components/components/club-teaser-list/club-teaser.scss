@@ -1,3 +1,47 @@
+@import './../../base-styles/init/init';
+
 .club-teaser {
-    
+  @include padding(25px);
+  min-width: 360px;
+  display: flex;
+  flex-wrap: wrap;
+
+  &__content-wrapper {
+    border-radius: 2px;
+  }
+
+  &__content {
+    width: auto;
+    border-radius: 2px;
+    margin: 0;
+  }
+
+  &__image {
+    width: 73px;
+    height: 73px;
+  }
+
+  &__text {
+    @include padding-left(17px);
+  }
+
+  &__title {
+    font-weight: 600;
+    display: block;
+  }
+
+  &__description {
+    @include font-size(12px);
+    display: block;
+  }
+
+  &__button {
+    @include margin-top(8px);
+    font-weight: 600;
+
+    .icon {
+      margin-left: 4px;
+      margin-right: -4px;
+    }
+  }
 }
