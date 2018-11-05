@@ -22,8 +22,9 @@ h2,
 %h2 {
   @include typeface(title);
   @include font-size(20px);
-  @include line-height(30px);
+  @include line-height(25px);
   color: color('title');
+  letter-spacing: 0;
   font-weight: 500;
   margin-top: 0;
   margin-bottom: 0;

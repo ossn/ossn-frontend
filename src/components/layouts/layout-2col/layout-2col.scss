@@ -10,9 +10,13 @@
 // item* in the container can be created using the following class:
 //  - '.layout-2col__col' : 1-column wide grid item.
 //
-// .layout-2col--with-horizontal-gutters - Gutters on both sides, needs wrapper with overflow hidden.
+// .layout-2col--with-horizontal-gutters - Gutters on both sides, needs wrapper
+// with overflow hidden.
 // .layout-2col--with-vertical-gutters - Gutters on top and bottom.
 // .layout-2col--with-small-vertical-gutters - Half gutters on top and bottom.
+// .layout-2col--groups - When the layout is used for groups of content and not
+// only a single teaser per column, the vertical gutters need to be removed
+// on mobile.
 
 .layout-2col,
 %layout-2col {
@@ -149,6 +153,19 @@
         &__col {
           padding-top: $gutters-desktop / 4;
           padding-bottom: $gutters-desktop / 4;
+        }
+      }
+    }
+  }
+
+  &--groups  {
+    @include breakpoint(0 $tablet - 1px) {
+      .layout-2col,
+      %layout-2col {
+        &--col,
+        &__col {
+          padding-top: 0;
+          padding-bottom: 0;
         }
       }
     }

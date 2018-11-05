@@ -28,13 +28,15 @@ const LeaderTool = props => {
   const url = props.tool.link;
 
   return (
-    <div className="leader-tool">
-      <img src={icon} className="leader-tool__icon" alt={title} />
-      <a href={url} className="leader-tool__link">
+    <li className="leader-tool">
+      <a href={url} className="leader-tool__link" title={title}>
+        <div className="leader-tool__icon-wrapper">
+          <img src={icon} className="leader-tool__icon" alt={title} />
+        </div>
         <div className="leader-tool__title"> {title} </div>
-        <ExternalLink className="leader-tool__link-icon" />
+        <ExternalLink className="leader-tool__link-icon icon" />
       </a>
-    </div>
+    </li>
   );
 };
 
@@ -48,7 +50,7 @@ export class LeaderToolList extends React.Component {
   }
 
   getSimpleHeader() {
-    return <span> {this.props.title} </span>;
+    return <span className="title title--x-small"> {this.props.title} </span>;
   }
 
   getResponsiveHeader() {
@@ -104,13 +106,13 @@ export class LeaderToolList extends React.Component {
           zeroPadding
           className="leader-tools-list__content-wrapper"
         >
-          <div
+          <ul
             className="leader-tools-list"
             hidden={hideDetails}
             aria-hidden={hideDetails}
           >
             {tools}
-          </div>
+          </ul>
         </ShadowBox>
       </div>
     );
@@ -125,28 +127,8 @@ export const AllLeaderTools = props => {
   const usefulResources = props.usefulResources;
 
   return (
-    <Layout2Col verticalGutters horizontalGutters>
+    <Layout2Col verticalGutters horizontalGutters groups>
       <div className="leader-tools-list__section">
-        <MediaQuery minWidth={768}>
-          <LeaderToolList
-            title="Project Management Tools"
-            tools={prManagement}
-            icon={Briefcase}
-            detailsId="project-management-tools"
-          />
-          <LeaderToolList
-            title="Code of conduct"
-            tools={codeOfConduct}
-            icon={FileText}
-            detailsId="code-of-conduct"
-          />
-          <LeaderToolList
-            title="Various tools"
-            tools={variousTools}
-            icon={Archive}
-            detailsId="various-tools"
-          />
-        </MediaQuery>
         <MediaQuery maxWidth={767}>
           <LeaderToolList
             isMobile
@@ -164,6 +146,26 @@ export const AllLeaderTools = props => {
           />
           <LeaderToolList
             isMobile
+            title="Various tools"
+            tools={variousTools}
+            icon={Archive}
+            detailsId="various-tools"
+          />
+        </MediaQuery>
+        <MediaQuery minWidth={768}>
+          <LeaderToolList
+            title="Project Management Tools"
+            tools={prManagement}
+            icon={Briefcase}
+            detailsId="project-management-tools"
+          />
+          <LeaderToolList
+            title="Code of conduct"
+            tools={codeOfConduct}
+            icon={FileText}
+            detailsId="code-of-conduct"
+          />
+          <LeaderToolList
             title="Various tools"
             tools={variousTools}
             icon={Archive}
@@ -172,14 +174,6 @@ export const AllLeaderTools = props => {
         </MediaQuery>
       </div>
       <div className="leader-tools-list__section">
-        <MediaQuery minWidth={768}>
-          <LeaderToolList
-            title="Useful resources running a club"
-            tools={usefulResources}
-            icon={Clipboard}
-            detailsId="useful-resources"
-          />
-        </MediaQuery>
         <MediaQuery maxWidth={767}>
           <LeaderToolList
             isMobile
@@ -188,6 +182,14 @@ export const AllLeaderTools = props => {
             icon={Clipboard}
             detailsId="useful-resources"
           />
+          <MediaQuery minWidth={768}>
+            <LeaderToolList
+              title="Useful resources running a club"
+              tools={usefulResources}
+              icon={Clipboard}
+              detailsId="useful-resources"
+            />
+          </MediaQuery>
         </MediaQuery>
       </div>
     </Layout2Col>
