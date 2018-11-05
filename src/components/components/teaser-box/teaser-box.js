@@ -6,6 +6,7 @@ import React from 'react';
 
 // local modules
 import ShadowBox from './../shadow-box/shadow-box';
+import LayoutScroll from './../../layouts/layout-scroll/layout-scroll';
 
 // utils
 import { verboseDate } from './../../../utils/dates';
@@ -75,5 +76,5 @@ export const TeaserBoxList = props => {
   if (props.dummyData) classes.push('teaser-box__list-wrapper--dummy');
   classes.push(props.className || '');
 
-  return <div className={classes.join(' ')}>{resources}</div>;
+  return <LayoutScroll className={classes.join(' ')}>{resources}</LayoutScroll>;
 };

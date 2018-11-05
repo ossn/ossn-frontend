@@ -1,6 +1,6 @@
 /*
   A wrapper for announcements and job listing section.
-  Appears at /contribute and /leaders-corber.
+  Appears at /contribute and /leaders-corner.
 */
 import React from 'react';
 
