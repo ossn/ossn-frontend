@@ -52,15 +52,20 @@ const UpperSection = props => {
 };
 
 export default props => {
-  // placeholder for the UpperSection compoenent.
+  // placeholder for the UpperSection component.
   const upperSection = props.skipTitle ? '' : <UpperSection />;
 
   return (
     <div className="opportunities-member">
       {upperSection}
-      <MemberUpdates announcements={props.announcements} jobs={props.jobs} />
+      <div className="slice slice--dark">
+        <MemberUpdates announcements={props.announcements} jobs={props.jobs} />
+      </div>
       <MemberTools channels={props.channels} tools={props.tools} />
       <MemberTrainingResources resources={props.resources} />
+      <div className="slice slice--dark">
+        <MemberTrainingResources resources={props.resources} />
+      </div>
     </div>
   );
 };

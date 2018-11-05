@@ -2,9 +2,18 @@
 
 .slice {
   width: 100%;
-  background-color: color('slice-bg');
 
-  &--light {
-    background-color: color('slice-bg-light');
+  &--dark {
+    @include breakpoint($tablet) {
+      background-color: color('slice-bg');
+    }
+  }
+
+  &--always-dark {
+    background-color: color('slice-bg');
+  }
+
+  &--uncontained-on-mobile {
+    display: flex;
   }
 }

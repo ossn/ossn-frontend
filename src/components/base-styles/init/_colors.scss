@@ -22,9 +22,11 @@ $chroma: add-colors((
         grey-another:           #9b9b9b,
         grey-underline:         #e6e6e6,
         grey-light:             #ABABAB,
+        grey-another-light:     #efeff2,
         grey-another-extra-light: #E3E3E3,
         grey-extra-light:       #D2D2D2,
         grey-mozilla:           #38383d,
+        pale-grey:              #f9f9fa,
         brown-grey:             #929292,
 
         white:                  #FFF,
@@ -58,12 +60,11 @@ $chroma: add-colors('functional', (
         dark:                   'black',
 
         text:                   'grey-dark',
-        text-bg:                'off-white',
+        text-bg:                'pale-grey',
 
         highlighted-text:        'grey',
 
-        slice-bg:               'grey-dark-another',
-        slice-bg-light:         'white',
+        slice-bg:               'grey-another-light',
 
         title:                  'brand',
 
