@@ -9,13 +9,15 @@
 //
 // The `.layout-3col` class is used on the container div for the layout. A *grid
 // item* in the container can be created using the following class:
-// - `.layout-3col__col` : 1-column wide grid item spanning  1 åcolumn.
+// - `.layout-3col__col` : 1-column wide grid item spanning  1 column.
 //
-// .layout-3col--only-desktop-3 - 3 columns only on desktop. There is no intermediate 2 column step.
-// .layout-3col--no-tablet-break - 3 columns on tablet. There is no intermediate 2 column step.
-// .layout-3col--with-horizontal-gutters - Gutters on both sides, needs wrapper with overflow hidden (like layout-center).
+// .layout-3col--only-desktop-3 - 3 columns only on desktop. There is no
+// intermediate 2 column step.
+// .layout-3col--no-tablet-break - 3 columns on tablet. There is no intermediate
+// 2 column step.
+// .layout-3col--with-horizontal-gutters - Gutters on both sides, needs wrapper
+// with overflow hidden (like layout-center).
 // .layout-3col--with-vertical-gutters - Gutters on top and bottom.
-
 
 .layout-3col,
 %layout-3col {
@@ -38,7 +40,6 @@
   // There is no intermediate 2 column step.
   &--no-tablet-break {
     %layout-3col__col,
-    .layout-3col--col,
     .layout-3col__col {
       @include breakpoint($tablet) {
         width: (100 / 3) * 1%;
@@ -54,7 +55,6 @@
   // There is no intermediate 2 column step.
   &--only-desktop-3 {
     %layout-3col__col,
-    .layout-3col--col,
     .layout-3col__col {
       @include breakpoint($tablet ($desktop - 1px)) {
         width: 100%;

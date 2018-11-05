@@ -17,6 +17,8 @@
 // .layout-2col--groups - When the layout is used for groups of content and not
 // only a single teaser per column, the vertical gutters need to be removed
 // on mobile.
+// .layout-2col--always - Always remains three columns, even if it does not fit
+// in the container.
 
 .layout-2col,
 %layout-2col {

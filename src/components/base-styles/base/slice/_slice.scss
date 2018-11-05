@@ -13,7 +13,12 @@
     background-color: color('slice-bg');
   }
 
-  &--uncontained-on-mobile {
-    display: flex;
+  // Last element on page content. Needs to cover the bottom-padding.
+  // The negative margin is equal to base layout padding.
+  &--last {
+    @include breakpoint($tablet) {
+      padding-bottom: 100px;
+      margin-bottom: -100px;
+    }
   }
 }
