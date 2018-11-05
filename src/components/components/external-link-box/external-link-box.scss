@@ -5,15 +5,18 @@
 */
 
 .external-link-box {
-  width: 100%;
-  margin-bottom: 15px;
-
   &__wrapper-link {
     display: flex;
-    width: 100%;
+    width: 160px;
     height: 100%;
     flex-direction: column;
+    max-width: 160px;
+    min-height: 120px;
 
+    @include breakpoint($tablet) {
+      max-width: 100%;
+      width: 100%;
+    }
   }
 
   &__image-wrapper {
@@ -44,7 +47,7 @@
   }
 
   &__title {
-
+    color: color('black');
   }
 
   &__date {
@@ -64,6 +67,7 @@
   &__url {
     @include font-size(10px);
     @include line-height(11px);
+    color: color('grey-another');
     display: block;
   }
 }

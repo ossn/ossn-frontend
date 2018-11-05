@@ -4,9 +4,10 @@
 .layout-base,
 %layout-base {
   padding-top: 120px;
-  padding-bottom: 100px;
+  padding-bottom: 60px;
 
   @include breakpoint($tablet) {
     padding-top: 190px;
+    padding-bottom: 100px;
   }
 }

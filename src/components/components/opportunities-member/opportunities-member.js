@@ -63,7 +63,7 @@ export default props => {
         <MemberUpdates announcements={props.announcements} jobs={props.jobs} />
       </div>
       <MemberTools channels={props.channels} tools={props.tools} />
-      <div className="slice slice--dark">
+      <div className="slice slice--dark slice--last">
         <MemberTrainingResources resources={props.resources} />
       </div>
     </div>

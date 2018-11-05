@@ -1,6 +1,6 @@
 /*
-  The template for announcements and job listing components.
-*/
+ The template for announcements and job listing components.
+ */
 
 import React from 'react';
 
@@ -76,5 +76,9 @@ export const TeaserBoxList = props => {
   if (props.dummyData) classes.push('teaser-box__list-wrapper--dummy');
   classes.push(props.className || '');
 
-  return <LayoutScroll className={classes.join(' ')}>{resources}</LayoutScroll>;
+  return (
+    <LayoutScroll className={classes.join(' ')} stretchItems>
+      {resources}
+    </LayoutScroll>
+  );
 };

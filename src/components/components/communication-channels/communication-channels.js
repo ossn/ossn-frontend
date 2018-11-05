@@ -35,8 +35,7 @@ export const ChannelList = props => {
   return (
     <div className="communication-channel-list">
       <h2 className="communication-channel-list__title title title--x-small">
-        {' '}
-        Communication channels{' '}
+        Communication channels
       </h2>
       <div className="communication-channel-list__list-wrapper">{channels}</div>
     </div>

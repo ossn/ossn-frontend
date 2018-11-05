@@ -16,12 +16,10 @@ export default props => {
     <LayoutContained>
       <Layout2Col horizontalGutters verticalGutters>
         <div>
-          {' '}
-          <ChannelList channels={props.channels} />{' '}
+          <ChannelList channels={props.channels} />
         </div>
         <div>
-          {' '}
-          <ContributingToolSet tools={props.tools} />{' '}
+          <ContributingToolSet tools={props.tools} />
         </div>
       </Layout2Col>
     </LayoutContained>

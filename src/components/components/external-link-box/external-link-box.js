@@ -2,6 +2,7 @@
   
 */
 import React from 'react';
+import { Link } from 'react-feather';
 
 // local modules
 import ShadowBox from './../shadow-box/shadow-box';
@@ -25,7 +26,9 @@ export const ExternalLinkBox = props => {
           </div>
           <div className="external-link-box__text">
             <div className="external-link-box__title"> {title} </div>
-            <div className="external-link-box__url"> {target} </div>
+            <div className="external-link-box__url">
+              <Link size={12} /> {target}{' '}
+            </div>
           </div>
         </ShadowBox>
       </a>

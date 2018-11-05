@@ -3,10 +3,6 @@
 .member-training-resources {
   @include margin-top(0px);
 
-  @include breakpoint($tablet) {
-    @include margin-top(25px);
-  }
-
   p {
     @include margin(0);
     @include margin-top(14px);
@@ -72,5 +68,11 @@
 
   &__list {
     display: flex;
+
+    &-title {
+      @include breakpoint($tablet) {
+        @include padding-top(30px);
+      }
+    }
   }
 }

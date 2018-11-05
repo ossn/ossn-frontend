@@ -6,11 +6,13 @@
 
 import React from 'react';
 import { graphql } from 'gatsby';
+import MediaQuery from 'react-responsive';
 
 // Local modules.
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import Layout2Col from './../../layouts/layout-2col/layout-2col';
 import ShadowBox from './../shadow-box/shadow-box';
+import LayoutScroll from './../../layouts/layout-scroll/layout-scroll';
 
 // styles
 import './member-training-resources.scss';
@@ -59,9 +61,15 @@ export default props => {
         Training & various resources
       </h2>
       <div className="member-training-resources__list">
-        <Layout2Col horizontalGutters verticalGutters>
-          {resources}
-        </Layout2Col>
+        <MediaQuery maxWidth={767}>
+          <LayoutScroll stretchItems>{resources}</LayoutScroll>
+        </MediaQuery>
+
+        <MediaQuery minWidth={768}>
+          <Layout2Col horizontalGutters verticalGutters>
+            {resources}
+          </Layout2Col>
+        </MediaQuery>
       </div>
     </LayoutContained>
   );

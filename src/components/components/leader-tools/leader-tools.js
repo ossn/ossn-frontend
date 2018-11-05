@@ -182,14 +182,14 @@ export const AllLeaderTools = props => {
             icon={Clipboard}
             detailsId="useful-resources"
           />
-          <MediaQuery minWidth={768}>
-            <LeaderToolList
-              title="Useful resources running a club"
-              tools={usefulResources}
-              icon={Clipboard}
-              detailsId="useful-resources"
-            />
-          </MediaQuery>
+        </MediaQuery>
+        <MediaQuery minWidth={768}>
+          <LeaderToolList
+            title="Useful resources running a club"
+            tools={usefulResources}
+            icon={Clipboard}
+            detailsId="useful-resources"
+          />
         </MediaQuery>
       </div>
     </Layout2Col>
