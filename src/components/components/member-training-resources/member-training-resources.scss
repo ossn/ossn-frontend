@@ -1,13 +1,11 @@
 @import './../../base-styles/init/init.scss';
 
-// overide layout-2col__col paddings
-.layout-2col__col.member-training-resources {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
 .member-training-resources {
-  @include margin-top(25px);
+  @include margin-top(0px);
+
+  @include breakpoint($tablet) {
+    @include margin-top(25px);
+  }
 
   p {
     @include margin(0);
@@ -15,8 +13,15 @@
   }
 
   &__content {
-    @include padding-bottom(25px);
+    @include padding-left(15px);
+    @include padding-right(15px);
+    @include padding-bottom(26px);
+    @include padding-top(26px);
     display: flex;
+
+    @include breakpoint($tablet) {
+      @include padding-bottom(25px);
+    }
   }
 
   &__wrapper-link {
@@ -24,11 +29,17 @@
   }
 
   &__image-wrapper {
-    width: 100px;
-    height: 100px;
+    min-width: 53px;
+    width: 53px;
+    height: 53px;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include breakpoint($tablet) {
+      height: 100px;
+      width: 100px;
+    }
   }
 
   &__image {
@@ -40,7 +51,7 @@
 
   &__text {
     @include padding-top(5px);
-    @include padding-left(23px);
+    @include padding-left(12px);
     display: flex;
     flex-direction: column;
     color: color('grey-dark');
@@ -48,6 +59,10 @@
 
     &:last-child {
       @include margin(0);
+    }
+
+    @include breakpoint($tablet) {
+      @include padding-left(23px);
     }
   }
 
@@ -57,9 +72,5 @@
 
   &__list {
     display: flex;
-  }
-
-  &__list-wrapper {
-    margin-top: 35px;
   }
 }

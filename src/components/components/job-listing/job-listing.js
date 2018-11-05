@@ -19,7 +19,7 @@ export default props => {
 
   return (
     <div>
-      <h2> Jobs & interships board </h2>
+      <h2 className="teaser-box__list-title"> Jobs & interships board </h2>
       <div>
         <TeaserBoxList items={items} dummyData={props.dummyData} />
       </div>

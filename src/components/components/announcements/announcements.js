@@ -20,7 +20,7 @@ export default props => {
 
   return (
     <div>
-      <h2> Latest announcements </h2>
+      <h2 className="teaser-box__list-title"> Latest announcements </h2>
       <div>
         <TeaserBoxList items={items} dummyData={props.dummyData} />
       </div>

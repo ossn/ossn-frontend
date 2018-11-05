@@ -5,18 +5,50 @@
 // .teaser-box--dummy: Do not display data, but a grey horizontal placeholder line.
 
 .teaser-box {
-  width: 100%;
+  @include margin-left(21px);
   margin-bottom: 15px;
+  min-width: 265px;
+
+  &:last-child {
+    // REVIEW: The rule is accepted. It won't take effect though.
+    @include margin-right(21px);
+  }
+
+  @include breakpoint($tablet) {
+    @include margin-left(0);
+    // @include margin-bottom(0);
+    min-width: none;
+    width: 100%;
+  }
+
+  &__list {
+    display: flex;
+  }
+
+  &__list-title {
+    @include margin-top(19px);
+    @include padding-left(20px);
+
+    @include breakpoint($tablet) {
+      margin-top: auto;
+      padding-left: 0;
+
+    }
+  }
 
   &__wrapper-link {
   }
 
   &__image-wrapper {
-    width: 100px;
+    width: 100%;
     height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include breakpoint($tablet) {
+      width: 100px;
+    }
   }
 
   &__image {
@@ -24,38 +56,38 @@
     height: auto;
     max-width: 100%;
     max-height: 100%;
-
   }
 
   &__text {
     display: flex;
-    padding: 10px 20px 10px 15px;
+    padding: 10px 20px 10px 0;
     flex-direction: column;
     color: color('grey-dark');
     width: 100%;
-  }
 
-  &__title {
-
+    @include breakpoint($tablet) {
+      padding: 10px 20px 10px 15px;
+    }
   }
 
   &__inner {
     display: flex;
+    flex-wrap: wrap;
+
+    @include breakpoint($tablet) {
+      flex-wrap: nowrap;
+    }
   }
 
   &__date {
     display: block;
     text-align: right;
     color: color('grey-another');
-    margin-top: auto;
-  }
+    @include margin-top(2);
 
-  &__list {
-    display: flex;
-  }
-
-  &__list-wrapper {
-    margin-top: 35px;
+    @include breakpoint($tablet) {
+      margin-top: auto;
+    }
   }
 
   &__dummy-row {
@@ -64,21 +96,11 @@
     display: block;
     border-radius: 5px;
     background-color: #f5f7f0;
-
-    //&--small {
-    //  margin-top: 10px;
-    //  margin-bottom: 40px;
-    //  width: 65%;
-    //}
   }
 
   &__list-wrapper--dummy {
-
     .teaser-box__inner {
-
       flex-wrap: wrap;
-
     }
-
   }
 }

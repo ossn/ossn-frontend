@@ -54,16 +54,16 @@ export default props => {
   });
 
   return (
-    <div>
-      <LayoutContained>
-        <h2> Training & various resources </h2>
-        <div className="member-training-resources--large__list">
-          <Layout2Col horizontalGutters verticalGutters>
-            {resources}
-          </Layout2Col>
-        </div>
-      </LayoutContained>
-    </div>
+    <LayoutContained>
+      <h2 className="member-training-resources__list-title">
+        Training & various resources
+      </h2>
+      <div className="member-training-resources__list">
+        <Layout2Col horizontalGutters verticalGutters>
+          {resources}
+        </Layout2Col>
+      </div>
+    </LayoutContained>
   );
 };
 
