@@ -8,6 +8,12 @@
   @include margin-left(21px);
   margin-bottom: 15px;
   min-width: 265px;
+  min-height: 220px;
+
+  @include breakpoint($tablet) {
+    min-height: 100px;
+  }
+
 
   &:last-child {
     // REVIEW: The rule is accepted. It won't take effect though.
@@ -35,6 +41,15 @@
   }
 
   &__wrapper-link {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__link-inner {
+    display: flex;
+    height: 100%;
   }
 
   &__image-wrapper {
@@ -58,7 +73,8 @@
 
   &__text {
     display: flex;
-    padding: 10px 20px 10px 0;
+    padding: 10px 0;
+    flex-grow: 2;
     flex-direction: column;
     color: color('grey-dark');
     width: 100%;
@@ -71,6 +87,8 @@
   &__inner {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
+    flex-direction: column;
 
     @include breakpoint($tablet) {
       flex-wrap: nowrap;
@@ -81,11 +99,8 @@
     display: block;
     text-align: right;
     color: color('grey-another');
-    @include margin-top(2);
-
-    @include breakpoint($tablet) {
-      margin-top: auto;
-    }
+    padding-top: 5px;
+    margin-top: auto;
   }
 
   &__dummy-row {
