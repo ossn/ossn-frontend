@@ -55,21 +55,18 @@
 
   &__button {
     float: right;
-    margin-right: 19px;
+    margin-right: 10px;
     position: relative;
     z-index: 2;
     margin-top: 20px;
     background-color: transparent;
+    color: color('brand');
 
     &:focus,
     &:hover {
       background-color: transparent;
       color: color('brand');
     }
-
-    // @include breakpoint($tablet) {
-    //
-    // }
   }
 
   &__navigation-container {
@@ -105,11 +102,6 @@
 
     &__inner {
       padding-bottom: 0;
-    }
-
-    // TODO REMOVE.
-    &__navigation-container {
-      display: block !important;
     }
 
     &__button {

@@ -4,8 +4,27 @@ import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import PreNavigation from './../../navigation/secondary-navigation/secondary-navigation';
 import Navigation from './../../navigation/main-navigation/main-navigation';
 import UserMenu from './../user-menu/user-menu';
-import { Menu } from 'react-feather';
+import { Menu, X } from 'react-feather';
 import MediaQuery from 'react-responsive';
+
+//  A single tool entry.
+const HeaderNavigationInner = props => {
+  return (
+    <div className={props.className} id={props.id} hidden={props.hiddenState}>
+      <div className="header__bottom">
+        <LayoutContained className="header__bottom-inner">
+          <Navigation />
+          <UserMenu />
+        </LayoutContained>
+      </div>
+      <div className="header__top">
+        <LayoutContained>
+          <PreNavigation />
+        </LayoutContained>
+      </div>
+    </div>
+  );
+};
 
 class HeaderNavigation extends React.Component {
   constructor(props) {
@@ -52,6 +71,14 @@ class HeaderNavigation extends React.Component {
     const stateClass = snapshot.open ? 'is-expanded' : 'is-collapsed';
     const isHidden = !snapshot.open;
 
+    const menuToggle = expandedState => {
+      if (expandedState) {
+        return <X className="header__menu-icon" size={20} />;
+      } else {
+        return <Menu className="header__menu-icon" size={20} />;
+      }
+    };
+
     let classes = ['header__navigation-container'];
     if (stateClass) classes.push(stateClass);
     let classString = classes.join(' ');
@@ -66,26 +93,20 @@ class HeaderNavigation extends React.Component {
             aria-controls={'header-navigation-container'}
             aria-expanded={isExpanded}
           >
-            <Menu className="header__menu-icon" />
+            {menuToggle(isExpanded)}
           </button>
+          <HeaderNavigationInner
+            className={classString}
+            id="header-navigation-container"
+            hiddenState={isHidden}
+          />
         </MediaQuery>
-        <div
-          className={classString}
-          id="header-navigation-container"
-          hidden={isHidden}
-        >
-          <div className="header__bottom">
-            <LayoutContained className="header__bottom-inner">
-              <Navigation />
-              <UserMenu />
-            </LayoutContained>
-          </div>
-          <div className="header__top">
-            <LayoutContained>
-              <PreNavigation />
-            </LayoutContained>
-          </div>
-        </div>
+        <MediaQuery minWidth={768}>
+          <HeaderNavigationInner
+            className={classString}
+            id="header-navigation-container"
+          />
+        </MediaQuery>
       </div>
     );
   }

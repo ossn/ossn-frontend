@@ -27,12 +27,10 @@
 
   &__list-title {
     @include margin-top(19px);
-    @include padding-left(20px);
 
     @include breakpoint($tablet) {
       @include margin-bottom(30px);
       margin-top: auto;
-      padding-left: 0;
     }
   }
 
