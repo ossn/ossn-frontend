@@ -1,0 +1,19 @@
+@import './../../base-styles/init/init.scss';
+// Shape
+//
+// Decorative shapes.
+//
+// .shape--triangle: a yellow triangle.
+
+.shape {
+  display: block;
+
+  &--triangle {
+    width: 0;
+    height: 0;
+    opacity: 0.2;
+    border-left: 56px solid transparent;
+    border-right: 56px solid transparent;
+    border-bottom: 128px solid color(sunny-yellow);;
+  }
+}

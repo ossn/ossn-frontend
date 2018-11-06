@@ -16,6 +16,7 @@ import MemberUpdates from './../member-updates/member-updates';
 import MemberTools from './../member-tools/member-tools';
 import MemberTrainingResources from './../member-training-resources/member-training-resources';
 import PromotedBox from './../promoted-box/promoted-box';
+import Shape from './../shape/shape';
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import Layout2ColUnequal from './../../layouts/layout-2col-unequal/layout-2col-unequal';
 
@@ -37,11 +38,14 @@ const UpperSection = props => {
         className="opportunities-member__info"
       >
         <div>
-          <p className="opportunities-member__text highlighted-text">
-            We bring you the best opportunities to contribute code. Practice
-            your skills by taking part in compelling Open Source projects that
-            match your interests!
-          </p>
+          <div className="opportunities-member__text highlighted-text">
+            <p>
+              We bring you the best opportunities to contribute code. Practice
+              your skills by taking part in compelling Open Source projects that
+              match your interests!
+            </p>
+            <Shape className="opportunities-member__shape" triangle />
+          </div>
         </div>
 
         <div className="promoted-box__wrapper">
