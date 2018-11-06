@@ -25,7 +25,7 @@ export const TeaserBox = props => {
   return (
     <div className={classes.join(' ')}>
       <a href={target} className="teaser-box__wrapper-link">
-        <ShadowBox smallPaddings>
+        <ShadowBox smallPaddings className="teaser-box__link-inner">
           <div className="teaser-box__inner">
             <div className="teaser-box__image-wrapper">
               <img
@@ -49,7 +49,7 @@ export const DummyTeaserBox = props => {
   return (
     <div className="teaser-box teaser-box--dummy">
       <div className="teaser-box__wrapper-link">
-        <ShadowBox smallPaddings>
+        <ShadowBox smallPaddings className="teaser-box__link-inner">
           <div className="teaser-box__inner">
             <div className="teaser-box__dummy-row" />
             <div className="teaser-box__dummy-row teaser-box__dummy-row--small" />
