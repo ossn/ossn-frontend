@@ -9,11 +9,14 @@
   &__text {
     display: inline-block;
     max-width: 730px;
-    padding-right: 30px;
-    margin-top: 0;
+    margin-top: 20px;
   }
 
   &__info {
-    display: flex;
+    margin-bottom: 20px;
+
+    @include breakpoint($tablet) {
+      margin-bottom: 40px;
+    }
   }
 }

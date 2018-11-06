@@ -7,7 +7,7 @@ import UserMenu from './../user-menu/user-menu';
 import { Menu, X } from 'react-feather';
 import MediaQuery from 'react-responsive';
 
-//  A single tool entry.
+// Header navigation content
 const HeaderNavigationInner = props => {
   return (
     <div className={props.className} id={props.id} hidden={props.hiddenState}>
@@ -105,6 +105,7 @@ class HeaderNavigation extends React.Component {
           <HeaderNavigationInner
             className={classString}
             id="header-navigation-container"
+            hiddenState={false}
           />
         </MediaQuery>
       </div>

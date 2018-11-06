@@ -30,6 +30,7 @@ const Layout2Col = props => {
   if (props.smallVerticalGutters)
     classes.push(`${baseClass}--with-small-vertical-gutters`);
   if (props.groups) classes.push(`${baseClass}--groups`);
+  if (props.className) classes.push(props.className);
   const classString = classes.join(' ');
 
   return <div className={classString}>{children}</div>;

@@ -17,7 +17,7 @@ import MemberTools from './../member-tools/member-tools';
 import MemberTrainingResources from './../member-training-resources/member-training-resources';
 import PromotedBox from './../promoted-box/promoted-box';
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
-import Layout2Col from './../../layouts/layout-2col/layout-2col';
+import Layout2ColUnequal from './../../layouts/layout-2col-unequal/layout-2col-unequal';
 
 // styles
 import './opportunities-member.scss';
@@ -31,9 +31,9 @@ const UpperSection = props => {
         Opportunities
       </h1>
 
-      <Layout2Col
-        verticalGutters
+      <Layout2ColUnequal
         horizontalGutters
+        secondNarrow
         className="opportunities-member__info"
       >
         <div>
@@ -47,7 +47,7 @@ const UpperSection = props => {
         <div className="promoted-box__wrapper">
           <PromotedBox />
         </div>
-      </Layout2Col>
+      </Layout2ColUnequal>
     </LayoutContained>
   );
 };
