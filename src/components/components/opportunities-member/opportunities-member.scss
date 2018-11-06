@@ -14,9 +14,18 @@
 
   &__info {
     margin-bottom: 20px;
+    position: relative;
 
     @include breakpoint($tablet) {
       margin-bottom: 40px;
     }
+  }
+
+  &__shape {
+    position: absolute;
+    right: 0;
+    bottom: -22px;
+    transform: rotate(-105deg);
+    z-index: -1;
   }
 }
