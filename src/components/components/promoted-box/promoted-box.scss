@@ -16,13 +16,12 @@
 
   &__wrapper {
     display: flex;
-    //justify-content: center;
-    //flex-shrink: 0;
-    //flex-grow: 1;
-    //min-width: 350px;
+    justify-content: flex-start;
+    margin-top: 10px;
 
-    @include breakpoint($tablet) {
+    @include breakpoint($desktop) {
       justify-content: flex-end;
+      margin-top: 0;
     }
   }
 

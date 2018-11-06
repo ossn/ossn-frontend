@@ -9,8 +9,8 @@
     display: inline-block;
     max-width: 730px;
 
-    @include breakpoint($tablet) {
-      padding-right: 20px;
+    @include breakpoint($desktop) {
+      padding-right: 40px;
     }
   }
 
