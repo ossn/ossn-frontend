@@ -2,14 +2,17 @@
   {
     "title": "Fix me",
     "link": "https://fixme.ossn.club/",
+    "description": "fixme.ossn.club",
     "attachment": "./logo-fixme.svg"
   },{
     "title": "Excercism",
     "link": "https://exercism.io/",
+    "description": "exercism.io",
     "attachment": "./exercism.png"
   },{
     "title": "Tools Dashboard",
     "link": "https://tools-dashboard.io/",
+    "description": "tools-dashboard.io",
     "attachment": "./tools-dashboard.svg"
   }
 ]

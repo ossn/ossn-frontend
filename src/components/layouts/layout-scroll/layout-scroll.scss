@@ -19,13 +19,11 @@
     overflow: auto;
     box-shadow: inset 0 -1px 1px 0 rgba(0, 0, 0, 0.0525), inset 0 1px 1px 0 rgba(0, 0, 0, 0.0525);
 
-    .layout-scroll,
-    %layout-scroll {
-      &__item {
-        margin-left: $gutters-mobile/2;
-        margin-right: $gutters-mobile/2;
-        margin-bottom: 15px;
-      }
+    &__item {
+      margin-left: $gutters-mobile/2;
+      margin-right: $gutters-mobile/2;
+      margin-bottom: 15px;
+      display: flex;
     }
 
     &--stretch-items {
