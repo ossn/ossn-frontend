@@ -29,6 +29,7 @@ const Layout2ColsUnequal = props => {
   if (props.onTablet) classes.push(`${baseClass}--two-columns-on-tablet`);
   if (props.secondNarrow) classes.push(`${baseClass}--second-is-narrow`);
   if (props.inverse) classes.push(`${baseClass}--inverse`);
+  if (props.className) classes.push(props.className);
 
   const classString = classes.join(' ');
 

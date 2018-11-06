@@ -29,6 +29,7 @@ const Layout5Col = props => {
     classes.push(`${baseClass}--with-vertical-gutters`);
   if (props.noTabletBreak) classes.push(`${baseClass}--no-tablet-break`);
   if (props.onlyDesktop3) classes.push(`${baseClass}--only-desktop-3`);
+  if (props.className) classes.push(props.className);
 
   const classString = classes.join(' ');
   return <div className={classString}>{children}</div>;
