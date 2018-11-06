@@ -28,6 +28,14 @@
     @include font-size(20px);
     display: block;
     width: 100%;
-    color: black;
+    color: color('black');
+    transition: .2s cubic-bezier(.190, 1.000, .220, 1.000); /* easeOutExpo */
+  }
+
+  &:hover,
+  &:focus {
+    .communication-channel__title {
+      color: color('brand')
+    }
   }
 }
