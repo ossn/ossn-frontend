@@ -16,7 +16,6 @@ import MemberUpdates from './../member-updates/member-updates';
 import MemberTools from './../member-tools/member-tools';
 import MemberTrainingResources from './../member-training-resources/member-training-resources';
 import PromotedBox from './../promoted-box/promoted-box';
-import Shape from './../shape/shape';
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import Layout2ColUnequal from './../../layouts/layout-2col-unequal/layout-2col-unequal';
 
@@ -32,11 +31,7 @@ const UpperSection = props => {
         Opportunities
       </h1>
 
-      <Layout2ColUnequal
-        horizontalGutters
-        secondNarrow
-        className="opportunities-member__info"
-      >
+      <Layout2ColUnequal secondNarrow className="opportunities-member__info">
         <div>
           <div className="opportunities-member__text highlighted-text">
             <p>
@@ -44,7 +39,6 @@ const UpperSection = props => {
               your skills by taking part in compelling Open Source projects that
               match your interests!
             </p>
-            <Shape className="opportunities-member__shape" triangle />
           </div>
         </div>
 

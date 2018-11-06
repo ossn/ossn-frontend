@@ -1,7 +1,6 @@
 @import './../../base-styles/init/init.scss';
 
 .opportunities-member {
-
   &__title {
     text-align: left;
   }
@@ -9,23 +8,17 @@
   &__text {
     display: inline-block;
     max-width: 730px;
-    margin-top: 20px;
+
+    @include breakpoint($tablet) {
+      padding-right: 20px;
+    }
   }
 
   &__info {
     margin-bottom: 20px;
-    position: relative;
 
     @include breakpoint($tablet) {
       margin-bottom: 40px;
     }
-  }
-
-  &__shape {
-    position: absolute;
-    right: 0;
-    bottom: -22px;
-    transform: rotate(-105deg);
-    z-index: -1;
   }
 }
