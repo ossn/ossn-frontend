@@ -33,17 +33,29 @@
   }
 
   &--medium {
-    @include font-size(40px);
-    @include line-height(60px);
-    letter-spacing: .3px;
+    @include font-size(24px);
+    @include line-height(29px);
+    letter-spacing: .2px;
     font-weight: 600;
+
+    @include breakpoint($tablet) {
+      @include font-size(40px);
+      @include line-height(60px);
+      letter-spacing: .3px;
+    }
+
   }
 
   &--m-small {
-    @include font-size(34px);
-    @include line-height(51px);
+    @include font-size(22px);
+    @include line-height(27px);
     font-weight: 600;
     letter-spacing: 0;
+
+    @include breakpoint($tablet) {
+      @include font-size(34px);
+      @include line-height(44px);
+    }
   }
 
   &--small {
