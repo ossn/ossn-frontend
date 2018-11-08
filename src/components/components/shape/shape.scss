@@ -3,7 +3,19 @@
 //
 // Decorative shapes.
 //
-// .shape--triangle: a yellow triangle.
+// Their size and transformation should be applied by the components that use them.
+//
+// .shape--triangle: a css triangle.
+// .shape--circle: a css circle.
+// .shape--square: a css square.
+// .shape--wave-large: a svg long wave.
+// .shape--wave: a svg short wave.
+// .shape--waves: three svg waves.
+// .shape--cube: three svg waves.
+// .shape--seafoam-blue: shape color is seafoam blue.
+// .shape--dark-sky-blue: shape color is dark sky blue.
+// .shape--sunny-yellow: shape color is sunny yellow.
+// .shape--light-navy: shape color is light navy.
 
 .shape {
   display: block;
@@ -14,25 +26,119 @@
     opacity: 0.2;
     border-left: 56px solid transparent;
     border-right: 56px solid transparent;
-    border-bottom: 128px solid color(sunny-yellow);
+    border-bottom: 128px solid color('white');
   }
 
-  &--wave-large {
-    .shape__svg-inner {
-      stroke-width: 3;
-      stroke: color('white');
-      fill: none;
-    }
+  &--circle {
+    width: 86px;
+    height: 86px;
+    opacity: 0.55;
+    background-color: color('white');
+  }
+
+  &--square {
+    width: 83px;
+    height: 83px;
+    opacity: 0.44;
+    background-color: color('white');
   }
 
   &--seafoam-blue {
     &.shape {
-      &--wave-large {
+      &--waves,
+      &--wave-large,
+      &--wave {
         .shape__svg-inner {
-          stroke-width: 3;
           stroke: color('seafoam-blue');
-          fill: none;
         }
+      }
+
+      &--cube {
+        fill: color('seafoam-blue');
+      }
+
+      &--triangle {
+        border-bottom-color: color('seafoam-blue');
+      }
+
+      &--square,
+      &--circle {
+        background-color: color('seafoam-blue');
+      }
+    }
+  }
+
+  &--dark-sky-blue {
+    &.shape {
+      &--waves,
+      &--wave-large,
+      &--wave {
+        .shape__svg-inner {
+          stroke: color('dark-sky-blue');
+        }
+      }
+
+      &--cube {
+        fill: color('dark-sky-blue');
+      }
+
+      &--triangle {
+        border-bottom-color: color('dark-sky-blue');
+      }
+
+      &--square,
+      &--circle {
+        background-color: color('dark-sky-blue');
+      }
+    }
+  }
+
+  &--sunny-yellow {
+    &.shape {
+      &--waves,
+      &--wave-large,
+      &--wave {
+        .shape__svg-inner {
+          stroke: color('sunny-yellow');
+        }
+      }
+
+      &--cube {
+        fill: color('sunny-yellow');
+      }
+
+      &--triangle {
+        border-bottom-color: color('sunny-yellow');
+      }
+
+      &--square,
+      &--circle {
+        background-color: color('sunny-yellow');
+      }
+    }
+  }
+
+  &--light-navy {
+    &.shape {
+      &--waves,
+      &--wave-large,
+      &--wave {
+        .shape__svg-inner {
+          stroke: color('light-navy');
+        }
+      }
+
+      &--cube {
+        fill: color('light-navy');
+      }
+
+      &--triangle {
+        border-bottom-color: color('light-navy');
+      }
+
+      &--square,
+      &--circle {
+        background-color: color('light-navy');
       }
     }
   }

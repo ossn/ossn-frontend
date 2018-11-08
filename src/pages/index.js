@@ -83,9 +83,11 @@ const IndexPage = props => {
       </LayoutContained>
 
       {/* why join the OSSN? */}
-      <LayoutContained>
-        <BecomeMember />
-      </LayoutContained>
+      <div className="slice slice--always-dark">
+        <LayoutContained>
+          <BecomeMember />
+        </LayoutContained>
+      </div>
 
       {/* Organizations */}
       <LayoutContained>
