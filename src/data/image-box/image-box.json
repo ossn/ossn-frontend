@@ -1,0 +1,59 @@
+{
+  "box0": [
+    {
+      "titleLargeTop": "Read",
+      "titleSmall": "our updated",
+      "titleLargeBottom": "blog!",
+      "link": "#",
+      "internalLink": false,
+      "image": {
+        "src": "../../images/image-box/box-0.jpg"
+      }
+    }
+  ],
+  "box1": [
+    {
+      "titleSmall": "See the all-new",
+      "titleLargeBottom": "Opportunities!",
+      "link": "#",
+      "internalLink": true,
+      "image": {
+        "src": "../../images/image-box/box-1.jpg"
+      }
+    }
+  ],
+  "box2": [
+    {
+      "titleLargeTop": "Listen",
+      "titleSmall": "to our",
+      "titleLargeBottom": "podcast!",
+      "link": "#",
+      "internalLink": false,
+      "image": {
+        "src": "../../images/image-box/box-2.jpg"
+      }
+    }
+  ],
+  "box3": [
+    {
+      "titleLargeTop": "Fixme",
+      "titleSmall": "New kid on the block!",
+      "link": "#",
+      "internalLink": false,
+      "image": {
+        "src": "../../images/image-box/box-3.jpg"
+      }
+    }
+  ],
+  "box4": [
+    {
+      "titleLargeTop": "MozFest is over :-(",
+      "titleSmall": "But you can re-live it with our photos",
+      "link": "https://www.mozilla.org",
+      "internalLink": false,
+      "image": {
+        "src": "../../images/image-box/box-4.jpg"
+      }
+    }
+  ]
+}
