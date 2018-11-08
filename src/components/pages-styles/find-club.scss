@@ -1,0 +1,18 @@
+@import './../base-styles/init/init';
+
+.find-club {
+
+  &__header {
+    @include margin-bottom(50px);
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    @include breakpoint($tablet) {
+      flex-wrap: no-wrap;
+      justify-content: space-between;
+    }
+
+  }
+}

@@ -12,6 +12,10 @@ import {
 } from './../components/components/filters/filters';
 import Map from './../components/components/map/map';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
+import Layout2Col from './../components/layouts/layout-2col/layout-2col';
+import { Search } from 'react-feather';
+
+import './../components/pages-styles/find-club.scss';
 
 // TODO: Remove and fid title another way.
 class Clubs extends React.PureComponent {
@@ -73,14 +77,27 @@ class Clubs extends React.PureComponent {
           </title>
         </Helmet>
         <LayoutContained>
-          <h1> Clubs </h1>
-          <ToggleFilter
-            onClick={this.handleToggleMap}
-            active={snapshot.view === 'map'}
-            left="list"
-            right="map"
-          />
-          <SearchFilter placeholder="Filter" onChange={this.handleSearch} />
+          <div className="find-club__header">
+            <h1> Clubs </h1>
+            <div className="filter__wrapper filter__wrapper--clubs">
+              <Layout2Col className="filter__wrapper-inner">
+                <ToggleFilter
+                  onClick={this.handleToggleMap}
+                  active={snapshot.view === 'map'}
+                  left="list"
+                  right="map"
+                />
+                <SearchFilter
+                  placeholder="Filter"
+                  onChange={this.handleSearch}
+                  id="find-club-search"
+                  hideLabel
+                  icon={Search}
+                />
+              </Layout2Col>
+            </div>
+          </div>
+
           {content}
         </LayoutContained>
       </BasicLayout>
