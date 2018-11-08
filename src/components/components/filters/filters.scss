@@ -8,6 +8,78 @@
   background-color: color('white');
   display: inline-block;
   padding: 15px;
+
+  &__wrapper {
+    @include margin-top(20px);
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+
+    @include breakpoint($tablet) {
+      justify-content: flex-end;
+      margin-top: 0;
+    }
+
+    .filter {
+      @include padding(10px);
+      @include padding-left(25px);
+      @include padding-right(25px);
+      position: relative;
+      width: 100%;
+      
+      @include breakpoint($mobile) {
+        width: 50%;
+        &::before {
+          content: '';
+          position: absolute;
+          height: 100%;
+          width: 1px;
+          display: inline-block;
+          background-color: black;
+          top: 0;
+          left: 0;
+        }
+      }
+
+      &:first-child {
+        &::before {
+          content: none;
+        }
+      }
+
+      &--search {
+        label {
+          padding: 0;
+          color: color('blue-dark');
+        }
+
+        input {
+          padding: 0;
+          padding-top: 2px;
+          padding-bottom: 2px;
+          border: none;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  &__wrapper-inner {
+
+    min-width: unset;
+    width: 100%;
+    width: 100%;
+    background: color('white');
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    @include breakpoint($tablet) {
+      max-width: 540px;
+      flex-wrap: nowrap;
+    }
+
+  }
 }
 
 .filter--toggle {

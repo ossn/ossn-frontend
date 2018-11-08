@@ -18,9 +18,11 @@ export class ToggleFilter extends React.Component {
   render() {
     const left = this.props.left ? this.props.left : 'left item';
     const right = this.props.right ? this.props.right : 'right item';
+    const inheritedClass = this.props.className ? this.props.className : '';
+    const classes = [inheritedClass, 'filter', 'filter--toggle'];
 
     return (
-      <div className="filter filter--toggle">
+      <div className={classes.join(' ')}>
         <span> {left} </span>
         <Toggle
           onClick={this.handleToggle}
@@ -42,10 +44,20 @@ export class SearchFilter extends React.Component {
   handleSearch = this.props.onChange;
 
   render() {
+    const icon = this.props.icon ? <this.props.icon /> : '';
+    const inheritedClass = this.props.className ? this.props.className : '';
+    const classes = [inheritedClass, 'filter', 'filter--search'];
+    const label = this.props.hideLabel
+      ? ''
+      : this.props.label
+        ? this.props.label
+        : 'Search';
+
     return (
-      <div className="filter filter--search">
+      <div className={classes.join(' ')}>
         <label htmlFor={`${this.props.id}`}>
-          Search
+          {icon}
+          {label}
           <input
             type="text"
             placeholder={this.props.placeholder}
