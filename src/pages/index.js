@@ -1,5 +1,6 @@
 // styles
 import '../components/layouts/layout-custom-grid/layout-custom-grid.scss';
+import '../components/pages-styles/home-page.scss';
 
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
@@ -11,6 +12,7 @@ import BecomeMember from './../components/components/home-become-member/home-bec
 import ImageBox from './../components/components/image-box/image-box';
 import OrganizationList from './../components/components/organizations-list/organizations-list';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
+import Shape from './../components/components/shape/shape';
 
 const IndexPage = props => {
   return (
@@ -21,7 +23,26 @@ const IndexPage = props => {
           <Img fluid={props.data.imageOne.childImageSharp.fluid} />
           {/* <TopBanner src={bannerImage} alt="Open source clubs" page="home" /> */}
         </div>
-        <h1> What&apos;s happening </h1>
+        <div className="home-page__page-title-wrapper">
+          <h1 className="home-page__page-title">
+            <Shape
+              circle
+              seafoamBlue
+              className="home-page__page-title-circle"
+            />
+            What&apos;s happening
+            <Shape
+              waveLarge
+              sunnyYellow
+              className="home-page__page-title-wave-large"
+            />
+            <Shape
+              triangle
+              lightNavy
+              className="home-page__page-title-triangle"
+            />
+          </h1>
+        </div>
         <div>
           <div>
             <div>

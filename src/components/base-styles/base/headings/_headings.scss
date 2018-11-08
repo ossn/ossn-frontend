@@ -10,12 +10,19 @@
 h1,
 %h1 {
   @include typeface(title);
-  @include font-size(36px);
-  @include line-height(43px);
+  @include font-size(32px);
+  @include line-height(38px);
   color: color('title');
   font-weight: 600;
   margin-top: 0;
   margin-bottom: 0;
+  letter-spacing: .2px;
+
+  @include breakpoint($tablet) {
+    @include font-size(36px);
+    @include line-height(43px);
+    letter-spacing: 0;
+  }
 }
 
 h2,
