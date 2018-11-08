@@ -26,39 +26,48 @@ const IndexPage = props => {
           <div>
             <div>
               <div className="layout-custom-grid">
+                {/*Read our blog*/}
                 <div className="layout-custom-grid__item layout-custom-grid__item--1">
                   <ImageBox
-                    tall
-                    titleLargeTop="Read"
-                    titleSmall="our updated"
-                    titleLargeBottom="blog!"
-                    image="./../components/components/image-box/image-box/images/panel-typewriter.jpg"
+                    centered
+                    resource={props.data.allImageBoxJson.edges[0].node.box0}
+                    className="image-box--1"
                   />
                 </div>
+                {/*See new opportunities*/}
                 <div className="layout-custom-grid__item layout-custom-grid__item--2">
                   <ImageBox
-                    titleSmall="See the all-new"
-                    titleLargeBottom="Opportunities!"
+                    orange
+                    offset
+                    resource={props.data.allImageBoxJson.edges[0].node.box1}
+                    className="image-box--2"
                   />
                 </div>
+                {/*Listen to podcast*/}
                 <div className="layout-custom-grid__item layout-custom-grid__item--3">
                   <ImageBox
-                    tall
-                    titleLargeTop="Listen"
-                    titleSmall="to our"
-                    titleLargeBottom="podcast!"
+                    light
+                    end
+                    resource={props.data.allImageBoxJson.edges[0].node.box2}
+                    className="image-box--3"
                   />
                 </div>
+                {/*New kid on the block*/}
                 <div className="layout-custom-grid__item layout-custom-grid__item--4">
                   <ImageBox
-                    titleLargeTop="Fixme"
-                    titleSmall="New kid on the block!"
+                    orange
+                    resource={props.data.allImageBoxJson.edges[0].node.box3}
+                    className="image-box--4"
                   />
                 </div>
+                {/*News*/}
                 <div className="layout-custom-grid__item layout-custom-grid__item--5">
                   <ImageBox
-                    titleLargeTop="MozFest is over :-("
-                    titleSmall="But you can re-live it with our photos!"
+                    light
+                    large
+                    end
+                    resource={props.data.allImageBoxJson.edges[0].node.box4}
+                    className="image-box--5"
                   />
                 </div>
                 <div className="layout-custom-grid__item layout-custom-grid__item--6">
@@ -112,6 +121,90 @@ export const query = graphql`
           sizes
           originalImg
           originalName
+        }
+      }
+    }
+
+    allImageBoxJson {
+      edges {
+        node {
+          box0 {
+            titleLargeTop
+            titleSmall
+            titleLargeBottom
+            link
+            internalLink
+            image {
+              src {
+                childImageSharp {
+                  fluid(maxWidth: 352) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+          box1 {
+            titleSmall
+            titleLargeBottom
+            link
+            internalLink
+            image {
+              src {
+                childImageSharp {
+                  fluid(maxWidth: 352) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+          box2 {
+            titleLargeTop
+            titleSmall
+            titleLargeBottom
+            link
+            internalLink
+            image {
+              src {
+                childImageSharp {
+                  fluid(maxWidth: 352) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+          box3 {
+            titleLargeTop
+            titleSmall
+            link
+            internalLink
+            image {
+              src {
+                childImageSharp {
+                  fluid(maxWidth: 352) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+          box4 {
+            titleLargeTop
+            titleSmall
+            link
+            internalLink
+            image {
+              src {
+                childImageSharp {
+                  fluid(maxWidth: 728) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }

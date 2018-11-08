@@ -11,7 +11,7 @@ h1,
 %h1 {
   @include typeface(title);
   @include font-size(36px);
-  @include line-height(54px);
+  @include line-height(43px);
   color: color('title');
   font-weight: 600;
   margin-top: 0;

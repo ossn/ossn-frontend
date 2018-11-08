@@ -1,32 +1,191 @@
+@import './../../base-styles/init/init';
+// Image Box
+//
+// Image Box is used to styles the linked tiles that appear on the front page in
+// the custom grid layout.
+//
+// .image-box--large    - The large box that is used for the news teaser.
+// .image-box--light    - The text color is white.
+// .image-box--orange   - The text color is grapefruit.
+// .image-box--end      - The text is aligned to the bottom.
+// .image-box--centered - The text is centered and aligned close to the bottom.
+// .image-box--offset   - The text has a left offset and large title has smaller
+//                        font size to allow the text to fit.
+//
+
 .image-box {
   position: relative;
-
-  height: 0;
-  padding-top: 100%;
+  border-radius: 4px;
   overflow: hidden;
+  display: flex;
+  width: 100%;
 
   &__image {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
+    display: flex;
+    width: 100%;
+
+    > .gatsby-image-wrapper {
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  &__link {
+    display: flex;
+    width: 100%;
   }
 
   &__text {
     position: absolute;
     z-index: 1;
-    bottom: 40px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 9px 14px 24px;
+    display: flex;
+
+    @include breakpoint($mobile-small) {
+      padding: 10px 19px 32px;
+    }
+
+    @include breakpoint($desktop) {
+      padding: 12px 25px 40px;
+    }
 
     span {
       display: block;
     }
   }
 
-  &--tall {
-    padding-top: 200%;
+  &__title {
+    @include font-size(22px);
+    @include line-height(29px);
+    @include typeface(body);
+    font-weight: bold;
+    color: color('dark-sky-blue');
+    margin-top: 0;
+    margin-bottom: 0;
+
+    @include breakpoint($mobile-small) {
+      @include font-size(30px);
+      @include line-height(36px);
+    }
+
+    @include breakpoint($desktop) {
+      @include font-size(36px);
+      @include line-height(43px);
+    }
+  }
+
+  &__title-small {
+    @include font-size(12px);
+    @include line-height(15px);
+    font-weight: 600;
+
+    @include breakpoint($mobile-small) {
+      @include font-size(17px);
+      @include line-height(20px);
+    }
+
+    @include breakpoint($desktop) {
+      @include font-size(19px);
+      @include line-height(26px);
+    }
+
+    + .image-box__title-large {
+      margin-top: -6px;
+    }
+  }
+
+  .image-box__title-large {
+    + .image-box__title-small {
+      margin-top: -2px;
+    }
+  }
+
+  &--large {
+    .image-box {
+      &__text {
+        padding-left: 21px;
+        padding-right: 21px;
+
+        @include breakpoint($mobile-small) {
+          padding-left: 28px;
+          padding-right: 28px;
+        }
+
+        @include breakpoint($desktop) {
+          padding-left: 35px;
+          padding-right: 35px;
+        }
+      }
+    }
+  }
+
+  // Themes.
+  &--light {
+    .image-box {
+      &__title-small,
+      &__title-large {
+        color: color('white');
+      }
+    }
+  }
+
+  &--orange {
+    .image-box {
+      &__title-small,
+      &__title-large {
+        color: color('grapefruit');
+      }
+    }
+  }
+
+  // Order numbers
+  &--end {
+    .image-box {
+      &__text {
+        align-items: flex-end;
+      }
+    }
+  }
+
+  &--centered {
+    .image-box {
+      &__text {
+        align-items: flex-end;
+        justify-content: center;
+        text-align: center;
+        padding-bottom: 36%;
+
+        //@include breakpoint($desktop) {
+        //  padding-bottom: 91px;
+        //}
+      }
+    }
+  }
+
+  &--offset {
+    .image-box {
+      &__text {
+        padding-top: 26%;
+      }
+
+      &__title-large {
+        @include font-size(19px);
+        margin-left: -6px;
+
+        @include breakpoint($mobile-small) {
+          @include font-size(28px);
+          margin-left: -8px;
+        }
+
+        @include breakpoint($desktop) {
+          @include font-size(32px);
+          margin-left: -12px;
+        }
+      }
+    }
   }
 }

@@ -91,7 +91,7 @@ $pb-icon:         'PBicons';
 // The font faces you specify in the $typefaces map can be used in the
 // typeface() mixin.
 $typefaces: (
-    title: (
+  title: (
     font-family: $zilla-slab,
   ),
   title-secondary: (
@@ -143,12 +143,12 @@ $desktop-medium: 1056px;
 $desktop-large: 1200px;
 
 // Custom Grid Gutters.
-$gutters-mobile: 20px;
+$gutters-mobile: 10px;
 $gutters-tablet: 20px;
 $gutters-desktop: 30px;
 
 $padding-mobile: 20px;
-$padding-tablet: 20px;
+$padding-tablet: 30px;
 $padding-desktop: 40px;
 
 // Breakpoints

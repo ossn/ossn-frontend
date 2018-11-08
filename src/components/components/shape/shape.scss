@@ -16,4 +16,24 @@
     border-right: 56px solid transparent;
     border-bottom: 128px solid color(sunny-yellow);
   }
+
+  &--wave-large {
+    .shape__svg-inner {
+      stroke-width: 3;
+      stroke: color('white');
+      fill: none;
+    }
+  }
+
+  &--seafoam-blue {
+    &.shape {
+      &--wave-large {
+        .shape__svg-inner {
+          stroke-width: 3;
+          stroke: color('seafoam-blue');
+          fill: none;
+        }
+      }
+    }
+  }
 }
