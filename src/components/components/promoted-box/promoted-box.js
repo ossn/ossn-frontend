@@ -14,13 +14,10 @@ export default props => {
           <li className="promoted-box__item">
             Explore available interships/jobs
           </li>
-          <li className="promoted-box__item">
-            {' '}
-            Check the latest announcements{' '}
-          </li>
+          <li className="promoted-box__item">Check the latest announcements</li>
         </ol>
       </div>
-      <Shape className="promoted-box__shape" triangle />
+      <Shape className="promoted-box__shape" triangle sunnyYellow />
     </div>
   );
 };
