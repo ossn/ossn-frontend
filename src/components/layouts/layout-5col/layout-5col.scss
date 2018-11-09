@@ -23,13 +23,34 @@
   min-width: 100%;
 
   // Two columns
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &--col,
+  &__col {
+    width: (100 / 2) * 1%;
+    float: left;
+    //flex-grow: 2; // If a column is missing it will grow to cover it.
+  }
+
+  @include breakpoint($mobile) {
+    &--col,
+    &__col {
+      width: (100 / 3) * 1%;
+      float: left;
+      //flex-grow: 2; // If a column is missing it will grow to cover it.
+    }
+  }
+
+
   @include breakpoint($tablet) {
     display: flex;
     flex-wrap: wrap;
 
     &--col,
     &__col {
-      width: (100 / 2) * 1%;
+      width: (100 / 4) * 1%;
       float: left;
       //flex-grow: 2; // If a column is missing it will grow to cover it.
     }
@@ -71,7 +92,19 @@
 
   // Variant with horizontal gutters.
   &--with-horizontal-gutters {
-    // Two columns.
+    margin-left: -$gutters-mobile / 2;
+    margin-right: -$gutters-mobile / 2;
+
+    .layout-5col,
+    %layout-5col {
+      &--col,
+      &__col {
+        padding-left: $gutters-mobile / 2;
+        padding-right: $gutters-mobile / 2;
+      }
+    }
+
+
     @include breakpoint($tablet ($desktop-large - 1px)) {
       margin-left: -$gutters-tablet / 2;
       margin-right: -$gutters-tablet / 2;

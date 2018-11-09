@@ -2,15 +2,13 @@
   Contains the graphQL query for the organizations.
   A wrapper for organizations
 */
-
 import React from 'react';
 import { graphql } from 'gatsby';
 
-// local modules
 import OrganizationTeaser from './../organization-teaser/organization-teaser';
 import Layout5Col from './../../layouts/layout-5col/layout-5col';
+import Shape from './../../components/shape/shape';
 
-// styles
 import './organizations-list.scss';
 
 export default props => {
@@ -23,12 +21,17 @@ export default props => {
   });
 
   return (
-    <div className="">
-      <h3 className="title title--medium title--centered">Our partners</h3>
+    <section className="organizations-list">
+      <div className="organizations-list__title-wrapper">
+        <h3 className="title title--medium title--centered organizations-list__title">
+          <Shape waves darkSkyBlue className="organizations-list__shape" />
+          Our partners
+        </h3>
+      </div>
       <Layout5Col horizontalGutters verticalGutters>
         {organizations}
       </Layout5Col>
-    </div>
+    </section>
   );
 };
 
