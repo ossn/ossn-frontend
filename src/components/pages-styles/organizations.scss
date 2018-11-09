@@ -1,0 +1,30 @@
+@import './../base-styles/init/init';
+
+.organizations {
+  &__content {
+    @include padding-top(1.5);
+    padding-bottom: 0;
+
+    @include breakpoint($tablet) {
+      @include padding-top(2);
+    }
+
+    @include breakpoint($desktop) {
+      @include padding-top(3.5);
+    }
+  }
+
+  &__inner-image {
+    @include margin-bottom(3);
+    padding-top: 10px;
+    position: relative;
+  }
+
+  &__shape {
+    position: absolute;
+    right: 30px;
+    transform: scale(2.785) rotate(15deg);
+    z-index: -1;
+    bottom: -50px;
+  }
+}

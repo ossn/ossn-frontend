@@ -18,6 +18,7 @@
 // .layout-3col--with-horizontal-gutters - Gutters on both sides, needs wrapper
 // with overflow hidden (like layout-center).
 // .layout-3col--with-vertical-gutters - Gutters on top and bottom.
+// .layout-2col--early - Becomes two columns at mobile screen width.
 
 .layout-3col,
 %layout-3col {
@@ -156,6 +157,44 @@
         &__col {
           padding-top: $gutters-desktop / 2;
           padding-bottom: $gutters-desktop / 2;
+        }
+      }
+    }
+  }
+
+  &--early {
+    @include breakpoint($mobile ($tablet - 1px)) {
+      display: flex;
+      flex-wrap: wrap;
+
+      .layout-3col,
+      %layout-3col {
+        &--col,
+        &__col {
+          width: (100 / 2) * 1%;
+          float: left;
+
+          &:nth-child(2n + 1) {
+            clear: left;
+          }
+        }
+      }
+    }
+
+    // Variant with horizontal gutters.
+    &.layout-3col--with-horizontal-gutters {
+      @include breakpoint($mobile ($tablet - 1px)) {
+        margin-left: -$gutters-mobile / 2;
+        margin-right: -$gutters-mobile / 2;
+
+        .layout-3col,
+        %layout-3col {
+          // Two columns
+          &--col,
+          &__col {
+            padding-left: $gutters-mobile / 2;
+            padding-right: $gutters-mobile / 2;
+          }
         }
       }
     }
