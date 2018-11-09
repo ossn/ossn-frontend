@@ -111,7 +111,7 @@ const IndexPage = props => {
       </div>
 
       {/* Organizations */}
-      <LayoutContained>
+      <LayoutContained className="home-page__partners-section">
         <OrganizationList
           organizations={props.data.allOrganizationsJson.edges}
         />

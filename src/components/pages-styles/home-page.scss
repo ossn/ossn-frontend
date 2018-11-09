@@ -54,4 +54,17 @@
       }
     }
   }
+
+  &__partners-section {
+    @include padding-top(30px);
+
+    @include breakpoint($tablet) {
+
+      @include padding-top(2);
+    }
+
+    @include breakpoint($desktop) {
+      @include padding-top(48px);
+    }
+  }
 }
