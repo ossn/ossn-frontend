@@ -129,10 +129,24 @@ button,
   }
 
   &--cta {
-    @include font-size(32px);
-    @include line-height(43px);
+    @include font-size(19px);
+    @include line-height(26px);
+    border-radius: 2.4px;
     letter-spacing: 0;
-    padding: 16px 45px 18px;
+    padding: 8px 18px 9px;
+
+    @include breakpoint($tablet) {
+      @include font-size(25px);
+      @include line-height(35px);
+      padding: 12px 24px 14px;
+    }
+
+    @include breakpoint($desktop) {
+      @include font-size(32px);
+      @include line-height(43px);
+      padding: 16px 30px 18px;
+    }
+
   }
 
   &--full {

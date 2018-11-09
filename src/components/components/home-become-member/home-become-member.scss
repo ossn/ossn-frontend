@@ -4,19 +4,56 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+
+  @include breakpoint($desktop) {
+    flex-wrap: nowrap;
+  }
 
   &__wrapper {
-    @include margin-top(73px);
-    @include padding-top(54px);
-    @include padding-bottom(54px);
+    @include margin-top(1);
+    @include padding-top(1.3);
+    @include padding-bottom(1.5);
+
+    @include breakpoint($tablet) {
+      @include margin-top(2.5);
+      @include padding-top(2);
+      @include padding-bottom(2.2);
+    }
+
+    @include breakpoint($desktop) {
+      @include margin-top(73px);
+      @include padding-top(54px);
+      @include padding-bottom(54px);
+    }
   }
 
   &__text {
-    max-width: 667px;
-
-    p {
+    .text {
       @include margin-top(13px);
+      max-width: 800px;
+      margin-bottom: 0;
       color: color('grey');
+    }
+
+    @include breakpoint($desktop) {
+      max-width: 667px + $gutters-desktop;
+      padding-right: $gutters-desktop;
+    }
+  }
+
+  &__cta {
+    @include margin-top(1);
+    flex-shrink: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include breakpoint($tablet) {
+      @include margin-top(1.2);
+    }
+
+    @include breakpoint($desktop) {
+      margin: 0;
     }
   }
 }

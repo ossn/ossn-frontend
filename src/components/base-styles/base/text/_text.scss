@@ -231,8 +231,14 @@ u { // sass-lint:disable-line no-empty-rulesets
   }
 
   &--m-large {
-    @include font-size(18px);
-    @include line-height(24px);
+    @include font-size(14px);
+    @include line-height(19px);
+    letter-spacing: .2px;
+
+    @include breakpoint($tablet) {
+      @include font-size(18px);
+      @include line-height(24px);
+    }
   }
 
   &--large {
