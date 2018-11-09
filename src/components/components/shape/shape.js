@@ -113,6 +113,8 @@ const Shape = props => {
   if (props.sunnyYellow) classes.push(`${baseClass}--sunny-yellow`);
   if (props.darkSkyBlue) classes.push(`${baseClass}--dark-sky-blue`);
   if (props.lightNavy) classes.push(`${baseClass}--light-navy`);
+  // Role variants.
+  if (props.divider) classes.push(`${baseClass}--divider`);
 
   if (props.className) classes.push(props.className);
   const classString = classes.join(' ');

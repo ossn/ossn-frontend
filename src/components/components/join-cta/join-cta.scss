@@ -1,0 +1,60 @@
+@import './../../base-styles/init/init.scss';
+
+.join-cta {
+  display: flex;
+  width: 100%;
+  max-width: 350px;
+
+  &__image {
+    @include margin-bottom(1);
+    width: 100%;
+    min-width: 100%;
+  }
+
+  &__text {
+    @include typeface(title);
+    min-width: 100%;
+    width: 100%;
+    transform: translateX(-100%);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 26px 30px;
+
+    &-small {
+      @include font-size(39px);
+      @include line-height(47px);
+      color: color('light-navy');
+
+      + .join-cta__text-medium {
+        margin-top: -18px;
+      }
+    }
+
+    &-medium {
+      @include font-size(59px);
+      @include line-height(70px);
+      color: color('light-navy');
+    }
+
+    &-large {
+      @include font-size(88px);
+      @include line-height(106px);
+      color: color('pale-grey');
+
+      + .join-cta__text-small {
+        margin-top: -20px;
+      }
+    }
+  }
+
+  &__shape {
+    width: 125px;
+    margin-top: -9px;
+
+    svg {
+      width: 100%;
+    }
+  }
+}
