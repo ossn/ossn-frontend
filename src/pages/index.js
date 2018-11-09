@@ -37,7 +37,7 @@ const IndexPage = props => {
               className="home-page__page-title-wave-large"
             />
             <Shape
-              triangle
+              triangle2
               lightNavy
               className="home-page__page-title-triangle"
             />

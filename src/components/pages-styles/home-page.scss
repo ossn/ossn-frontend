@@ -26,7 +26,7 @@
       z-index: -1;
 
       @include breakpoint($tablet) {
-        transform: scale(1);
+        transform: scale(.95);
       }
     }
 
@@ -43,13 +43,14 @@
       left: auto;
       top: auto;
       bottom: -75px;
-      right: -60px;
+      right: -73px;
       transform: scale(.27);
       z-index: -2;
 
       @include breakpoint($tablet) {
-        right: -65px;
-        transform: scale(.36);
+        right: -77px;
+        bottom: -78px;
+        transform: scale(0.423);
       }
     }
   }
