@@ -1,4 +1,5 @@
 // External modules.
+import { graphql } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
@@ -8,9 +9,11 @@ import GatsbyConfig from './../../gatsby-config';
 import Layout2ColsUnequal from './../components/layouts/layout-2col-unequal/layout-2col-unequal';
 import Layout3Col from './../components/layouts/layout-3col/layout-3col';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
+import JoinCta from './../components/components/join-cta/join-cta';
+import Shape from './../components/components//shape/shape';
 
 // TODO: Remove and fid title another way.
-const About = () => {
+const About = props => {
   return (
     <BasicLayout>
       <Helmet>
@@ -18,11 +21,10 @@ const About = () => {
           {['About', '|', GatsbyConfig.siteMetadata.title].join(' ')}
         </title>
       </Helmet>
-      <LayoutContained>
+      <LayoutContained className="about-us">
         <div>
           <img src="#" alt="student + network + open source = ossn" />
         </div>
-
         <Layout2ColsUnequal secondNarrow horizontalGutters verticalGutters>
           <div>
             <p className="highlighted-text">
@@ -36,7 +38,6 @@ const About = () => {
               students together with mentors, organizations and professionals
               who are actively engaged in advancing Open Source.
             </p>
-
             <h2 className="title title--x-small">
               What do we want to achieve?
             </h2>
@@ -46,7 +47,7 @@ const About = () => {
               Network (OSSN) we aim to encourage students and Clubs to fuel the
               Open Source movement.
             </p>
-            <p className="text">
+            <div className="text">
               Our goal is to empower you to:
               <ul>
                 <li>
@@ -65,17 +66,14 @@ const About = () => {
                   Advocate for software that is open and accessible to all
                 </li>
               </ul>
-            </p>
+            </div>
           </div>
           <div>
-            <img src="#" alt="Too many people" />
+            <JoinCta imageJoinCta={props.data.imageJoinCta} />
           </div>
         </Layout2ColsUnequal>
-
-        <Layout2ColsUnequal horizontalGutters verticalGutters>
-          <div>
-            <img src="#" alt="join the network" />
-          </div>
+        <Shape seafoamBlue waveLarge divider />
+        <div>
           <div>
             <h2 className="title title--x-small"> What do we do? </h2>
             <p className="text">
@@ -84,24 +82,23 @@ const About = () => {
               you with the right activities and assistance, but also with
               motivating challenges:
             </p>
-            <p className="text">
-              <Layout3Col horizontalGutters verticalGutters>
-                <div>
-                  We provide your club with many resources that will help you
-                  develop new skills.
-                </div>
-                <div>
-                  We offer ongoing support to members in the form of online 1:1
-                  discussions, network calls and newsletters.
-                </div>
-                <div>
-                  We present you with opportunities that match your interests,
-                  let you contribute code and therefore improve your expertise.
-                </div>
-              </Layout3Col>
-            </p>
+            <Layout3Col horizontalGutters verticalGutters className="text">
+              <div>
+                We provide your club with many resources that will help you
+                develop new skills.
+              </div>
+              <div>
+                We offer ongoing support to members in the form of online 1:1
+                discussions, network calls and newsletters.
+              </div>
+              <div>
+                We present you with opportunities that match your interests, let
+                you contribute code and therefore improve your expertise.
+              </div>
+            </Layout3Col>
           </div>
-        </Layout2ColsUnequal>
+        </div>
+        <Shape seafoamBlue waveLarge divider />
 
         <Layout2ColsUnequal secondNarrow horizontalGutters verticalGutters>
           <div>
@@ -125,3 +122,25 @@ const About = () => {
 };
 
 export default About;
+
+export const query = graphql`
+  {
+    imageJoinCta: file(
+      relativePath: { eq: "join-cta/join-the-network-tall.jpg" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 728) {
+          base64
+          aspectRatio
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+          sizes
+          originalImg
+          originalName
+        }
+      }
+    }
+  }
+`;

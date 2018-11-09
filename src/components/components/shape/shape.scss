@@ -18,6 +18,7 @@
 // .shape--dark-sky-blue: shape color is dark sky blue.
 // .shape--sunny-yellow: shape color is sunny yellow.
 // .shape--light-navy: shape color is light navy.
+// .shape--divider: shape works as visual section divider.
 
 .shape {
   display: block;
@@ -157,5 +158,10 @@
         background-color: color('light-navy');
       }
     }
+  }
+
+  &--divider {
+    @include margin(1 auto);
+    text-align: center;
   }
 }

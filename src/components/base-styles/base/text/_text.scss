@@ -215,6 +215,19 @@ u { // sass-lint:disable-line no-empty-rulesets
     }
   }
 
+  ul {
+    list-style: none;
+  }
+
+  li {
+    &:before {
+      content: "•";
+      width: $indent-amount/2;
+      margin-left: -$indent-amount/2;
+      display: inline-block;
+    }
+  }
+
   &--xsmall {
     @include font-size(13px);
     @include line-height(17px);

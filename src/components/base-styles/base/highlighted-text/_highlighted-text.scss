@@ -10,10 +10,15 @@
 
 .highlighted-text,
 %highlighted-text {
-  @include font-size(24px);
-  @include line-height(35px);
+  @include font-size(20px);
+  @include line-height(28px);
   @include typeface(text-highlighted);
   color: color('highlighted-text');
+
+  @include breakpoint($tablet) {
+    @include font-size(24px);
+    @include line-height(35px);
+  }
 
   &--intense {
     font-weight: 600;
@@ -21,8 +26,13 @@
   }
 
   &--small {
-    @include font-size(18px);
-    @include line-height(27px);
+    @include font-size(16px);
+    @include line-height(25px);
     letter-spacing: .2px;
+
+    @include breakpoint($tablet) {
+      @include font-size(18px);
+      @include line-height(27px);
+    }
   }
 }
