@@ -23,15 +23,19 @@ class BecomeMember extends React.Component {
               Why join the Open Source Student Network?
             </h2>
             <p className="text text--m-large">
-              By joining, you get access to our chat channel, ongoing support
-              and mentorship, as well as leadership training. Moreover, you will
-              regularly get our latest opportunities in your mailbox.
+              Get access to our chat channel, ongoing support and mentorship, as
+              well as leadership training. Plus, the latest opportunities in
+              your mailbox.
             </p>
           </div>
           <div className="home-become-member__cta">
-            <button className="button button--cta home-become-member__button">
+            {/*TODO change the link target*/}
+            <a
+              href="https://www.mozilla.org"
+              className="button button--cta home-become-member__button"
+            >
               Become a member
-            </button>
+            </a>
           </div>
         </div>
       </div>
