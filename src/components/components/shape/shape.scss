@@ -3,9 +3,11 @@
 //
 // Decorative shapes.
 //
-// Their size and transformation should be applied by the components that use them.
+// Their size and transformation should be applied by the components that use
+// them.
 //
-// .shape--triangle: a css triangle.
+// .shape--triangle: an oxygen css triangle.
+// .shape--triangle-2: an oxygen css triangle with larger angle.
 // .shape--circle: a css circle.
 // .shape--square: a css square.
 // .shape--wave-large: a svg long wave.
@@ -26,6 +28,15 @@
     opacity: 0.15;
     border-left: 56px solid transparent;
     border-right: 56px solid transparent;
+    border-bottom: 128px solid color('white');
+  }
+
+  &--triangle-2 {
+    width: 0;
+    height: 0;
+    opacity: 0.15;
+    border-left: 64px solid transparent;
+    border-right: 64px solid transparent;
     border-bottom: 128px solid color('white');
   }
 
@@ -58,6 +69,7 @@
         fill: color('seafoam-blue');
       }
 
+      &--triangle-2,
       &--triangle {
         border-bottom-color: color('seafoam-blue');
       }
@@ -83,6 +95,7 @@
         fill: color('dark-sky-blue');
       }
 
+      &--triangle-2,
       &--triangle {
         border-bottom-color: color('dark-sky-blue');
       }
@@ -108,6 +121,7 @@
         fill: color('sunny-yellow');
       }
 
+      &--triangle-2,
       &--triangle {
         border-bottom-color: color('sunny-yellow');
       }
@@ -133,6 +147,7 @@
         fill: color('light-navy');
       }
 
+      &--triangle-2,
       &--triangle {
         border-bottom-color: color('light-navy');
       }

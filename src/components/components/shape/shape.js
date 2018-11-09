@@ -13,6 +13,7 @@ const Shape = props => {
   let classes = [baseClass];
   // Css shapes.
   if (props.triangle) classes.push(`${baseClass}--triangle`);
+  if (props.triangle2) classes.push(`${baseClass}--triangle-2`);
   if (props.circle) classes.push(`${baseClass}--circle`);
   if (props.square) classes.push(`${baseClass}--square`);
   // Svg shapes.
