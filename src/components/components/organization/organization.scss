@@ -1,4 +1,7 @@
-// Organization for organization page listing.
+@import './../../base-styles/init/init';
+// Organization
+//
+// Used for organization page listing.
 .organization {
   display: flex;
 
@@ -7,13 +10,24 @@
   }
 
   &__image {
+    max-height: 100%;
+    width: auto;
+
     // Center image in both axes.
     &-wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 10px 15px 25px;
-      height: 138px;
+      padding: 0 15px 15px;
+      height: 110px;
+
+      @include breakpoint($tablet) {
+        padding: 10px 15px 25px;
+      }
+
+      @include breakpoint($desktop) {
+        height: 138px;
+      }
     }
   }
 

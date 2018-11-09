@@ -11,12 +11,14 @@ import Organization from './../components/components/organization/organization';
 import Layout3Col from './../components/layouts/layout-3col/layout-3col';
 import Layout2Col from './../components/layouts/layout-2col/layout-2col';
 import Layout2ColsUnequal from './../components/layouts/layout-2col-unequal/layout-2col-unequal';
+import MediaQuery from 'react-responsive';
+import Shape from './../components/components/shape/shape';
+
+import '../components/pages-styles/organizations.scss';
 
 // Import page title from gatsby config.
 //TODO: Remove and fid title another way.
 import GatsbyConfig from './../../gatsby-config';
-
-// import bannerImage from './../images/affiliationsBanner.png';
 
 const Organizations = props => {
   const content = props.data.allOrganizationsJson.edges.map((node, i) => {
@@ -30,12 +32,16 @@ const Organizations = props => {
           {['Organization', '|', GatsbyConfig.siteMetadata.title].join(' ')}
         </title>
       </Helmet>
-      <LayoutContained>
-        <div>
+      <LayoutContained className="organizations">
+        <div className="organizations__banner">
           <Img fluid={props.data.organizationsBanner.childImageSharp.fluid} />
         </div>
 
-        <Layout2ColsUnequal secondNarrow>
+        <Layout2ColsUnequal
+          secondNarrow
+          horizontalGutters
+          className="organizations__content"
+        >
           <div>
             <div>
               <h1> Affiliations </h1>
@@ -53,7 +59,7 @@ const Organizations = props => {
             <div>
               <Layout2Col verticalGutters horizontalGutters>
                 <div>
-                  <h3>Who helps us?</h3>
+                  <h2>Who helps us?</h2>
                   <p>
                     Lorem ipsum dolor sit amet, nonumy lucilius et pro. Mel ut
                     diam choro, propriae lucilius efficiendi an nam, suas facer
@@ -66,7 +72,7 @@ const Organizations = props => {
                   </p>
                 </div>
                 <div>
-                  <h3>Opportunities</h3>
+                  <h2>Opportunities</h2>
                   <p>
                     Lorem ipsum dolor sit amet, nonumy lucilius et pro. Mel ut
                     diam choro, propriae lucilius efficiendi an nam, suas facer
@@ -82,11 +88,20 @@ const Organizations = props => {
             </div>
           </div>
           <div>
-            <img src="#" alt="balloon" />
+            <MediaQuery minWidth={992}>
+              <div className="organizations__inner-image">
+                <Img
+                  fluid={
+                    props.data.organizationsContentImage.childImageSharp.fluid
+                  }
+                />
+                <Shape square seafoamBlue className="organizations__shape" />
+              </div>
+            </MediaQuery>
           </div>
         </Layout2ColsUnequal>
 
-        <Layout3Col horizontalGutters verticalGutters>
+        <Layout3Col horizontalGutters verticalGutters early>
           {content}
         </Layout3Col>
       </LayoutContained>
@@ -109,6 +124,23 @@ export const query = graphql`
     organizationsBanner: file(relativePath: { eq: "organizationsBanner.png" }) {
       childImageSharp {
         fluid(maxWidth: 1000) {
+          base64
+          tracedSVG
+          aspectRatio
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+          sizes
+          originalImg
+          originalName
+        }
+      }
+    }
+
+    organizationsContentImage: file(relativePath: { eq: "affiliations.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 350) {
           base64
           tracedSVG
           aspectRatio

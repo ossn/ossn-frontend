@@ -28,25 +28,36 @@ h1,
 h2,
 %h2 {
   @include typeface(title);
-  @include font-size(20px);
-  @include line-height(25px);
+  @include font-size(18px);
+  @include line-height(22px);
   color: color('title');
   letter-spacing: 0;
   font-weight: 500;
   margin-top: 0;
   margin-bottom: 0;
+
+  @include breakpoint($tablet) {
+    @include font-size(20px);
+    @include line-height(25px);
+  }
 }
 
 h3,
 %h3 {
   @include typeface(title);
-  @include font-size(17px);
-  @include line-height(19px);
-  letter-spacing: 0.5px;
+  @include font-size(15px);
+  @include line-height(17px);
+  letter-spacing: 0.3px;
   color: color('title');
   font-weight: 500;
   margin-top: 0;
   margin-bottom: 0;
+
+  @include breakpoint($tablet) {
+    @include font-size(17px);
+    @include line-height(19px);
+    letter-spacing: 0.5px;
+  }
 }
 
 h4,

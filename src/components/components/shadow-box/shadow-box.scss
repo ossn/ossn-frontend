@@ -8,9 +8,14 @@
   box-shadow: 0 1px 4px 0 color('black'); // Fallback.
   box-shadow: 0 1px 4px 0 rgba(0,0,0,0.25);
   border-radius: 4px;
-  padding: 15px 20px;
+  padding: 10px 15px;
   display: block;
   transition: .2s cubic-bezier(.190, 1.000, .220, 1.000); /* easeOutExpo */
+
+
+  @include breakpoint($tablet) {
+    padding: 15px 20px;
+  }
 
   &--zero-radius {
     border-radius: 0;
