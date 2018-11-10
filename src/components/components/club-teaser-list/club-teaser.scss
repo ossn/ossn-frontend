@@ -1,10 +1,11 @@
 @import './../../base-styles/init/init';
 
 .club-teaser {
-  @include padding(25px);
-  min-width: 360px;
-  display: flex;
-  flex-wrap: wrap;
+
+  &__inner {
+    display: flex;
+    width: 100%;
+  }
 
   &__content-wrapper {
     border-radius: 2px;
@@ -16,9 +17,24 @@
     margin: 0;
   }
 
+  &__image-wrapper {
+    min-width: 80px;
+    min-height: 80px;
+    width: 80px;
+    height: 80px;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 4px solid color('white');
+    position: relative;
+    text-align: center;
+    box-shadow: 0px 0px 1px 1px rgba(0,0,0,0.2);
+  }
+
   &__image {
-    width: 73px;
-    height: 73px;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
   }
 
   &__text {
@@ -36,7 +52,7 @@
   }
 
   &__button {
-    @include margin-top(8px);
+    @include margin-top(4.5px);
     font-weight: 600;
 
     .icon {
