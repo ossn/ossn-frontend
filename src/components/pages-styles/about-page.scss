@@ -2,15 +2,41 @@
 
 .about-us {
 
-  .text-column {
+  &__break {
+    @include margin-top(30px);
+    @include margin-bottom(30px);
+  }
 
+  &__divider {
+    &--first {
+      margin-top: 0;
+      @include margin-bottom(30px);
+    }
+
+    &--second {
+      @include margin-top(37.6px);
+      @include margin-bottom(59.4px);
+    }
+  }
+
+  .text-column {
     &__icon {
-      @include margin-bottom(26px);
+      @include margin-top(20px);
+      @include margin-bottom(10px);
       width: 100%;
       display: block;
       text-align: center;
-    }
 
+      @include breakpoint($tablet) {
+        @include margin-bottom(26px);
+        margin-top: 0;
+      }
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
   }
 
 }

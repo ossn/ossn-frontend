@@ -54,7 +54,7 @@ const About = props => {
               students together with mentors, organizations and professionals
               who are actively engaged in advancing Open Source.
             </p>
-            <h2 className="title title--x-small">
+            <h2 className="title title--x-small about-us__break">
               What do we want to achieve?
             </h2>
             <p className="text">
@@ -88,7 +88,12 @@ const About = props => {
             <JoinCta imageJoinCta={props.data.imageJoinCta} />
           </div>
         </Layout2ColsUnequal>
-        <Shape seafoamBlue waveLarge divider />
+        <Shape
+          seafoamBlue
+          waveLarge
+          divider
+          className="about-us__divider about-us__divider--first"
+        />
         <div>
           <div className="about-us__section--what-we-do">
             <h2 className="title title--x-small"> What do we do? </h2>
@@ -123,7 +128,12 @@ const About = props => {
             </Layout3Col>
           </div>
         </div>
-        <Shape seafoamBlue waveLarge divider />
+        <Shape
+          seafoamBlue
+          waveLarge
+          divider
+          className="about-us__divider about-us__divider--second"
+        />
 
         <Layout2ColsUnequal secondNarrow horizontalGutters verticalGutters>
           <div>
