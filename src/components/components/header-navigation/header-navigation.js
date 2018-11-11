@@ -3,7 +3,7 @@ import React from 'react';
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import PreNavigation from './../../navigation/secondary-navigation/secondary-navigation';
 import Navigation from './../../navigation/main-navigation/main-navigation';
-import UserMenu from './../user-menu/user-menu';
+// import UserMenu from './../user-menu/user-menu';
 import { Menu, X } from 'react-feather';
 import MediaQuery from 'react-responsive';
 
@@ -14,7 +14,7 @@ const HeaderNavigationInner = props => {
       <div className="header__bottom">
         <LayoutContained className="header__bottom-inner">
           <Navigation />
-          <UserMenu />
+          {/*<UserMenu />*/}
         </LayoutContained>
       </div>
       <div className="header__top">
