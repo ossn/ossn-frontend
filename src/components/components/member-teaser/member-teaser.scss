@@ -1,0 +1,79 @@
+@import './../../base-styles/init/init.scss';
+
+.member-teaser {
+  position: relative;
+
+  &__inner {
+    display: flex;
+  }
+
+  &__image-wrapper {
+    width: 70px;
+    height: 70px;
+    min-height: 70px;
+    min-width: 70px;
+    border-radius: 100%;
+    text-align: center;
+    overflow: hidden;
+    vertical-align: middle;
+  }
+
+  &__image {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    // max-height: 100%;
+    vertical-align: middle;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__text {
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-right: 74px;
+  }
+
+  &__name {
+    @include padding-bottom(1);
+    display: block;
+    font-size: 15px;
+    line-height: 18px;
+    min-height: 50px;
+  }
+
+  &__clubs {
+    display: block;
+    font-size: 13px;
+    line-height: 21px;
+    color: color('grey-dark');
+
+    svg {
+      @include margin-right(6px);
+      height: 20px;
+      width: 20px;
+      color: color('grey-dark');
+    }
+  }
+
+  &__leader-tag {
+    position: absolute;
+    background-color: color('blue-dark');
+    color: color('white');
+    font-size: 11px;
+    font-weight: bold;
+    top: 0;
+    right: 0;
+    padding: 3px;
+    text-transform: uppercase;
+  }
+
+  &--leader {
+    position: relative;
+
+
+  }
+}
