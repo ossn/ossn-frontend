@@ -1,0 +1,63 @@
+@import "../../base-styles/init/init";
+
+.banner {
+  position: relative;
+
+  &__image {
+   position: absolute;
+   top: 0;
+   left: 0;
+  }
+
+  &__text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: color('white');
+  }
+
+  .text,
+  .title {
+    color: color('white');
+  }
+
+  &--home {
+    .banner__text {
+      bottom: 42px;
+      left: 95px;
+      max-width: 350px;
+    }
+  }
+
+  &--organizations {
+    .banner__text {
+      right: 80px;
+      max-width: 220px;
+    }
+  }
+
+  &--about {
+    .banner__text {
+      left: 115px;
+      max-width: 245px;
+    }
+
+    span {
+      display: block;
+      position: relative;
+
+      &:not(:first-child)::before {
+        content: '+';
+        position: absolute;
+        bottom: 0;
+        left: -30px;
+      }
+
+      &:last-child::before {
+        content: '=';
+      }
+
+
+    }
+  }
+}

@@ -11,9 +11,19 @@ import Layout3Col from './../components/layouts/layout-3col/layout-3col';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 import JoinCta from './../components/components/join-cta/join-cta';
 import Shape from './../components/components//shape/shape';
+import Banner from './../components/components/banner/banner';
 
 // TODO: Remove and fid title another way.
 const About = props => {
+  const bannerContent = (
+    <div className="title title--large">
+      <span> student </span>
+      <span> network </span>
+      <span> open source </span>
+      <span> ossn </span>
+    </div>
+  );
+
   return (
     <BasicLayout>
       <Helmet>
@@ -22,9 +32,11 @@ const About = props => {
         </title>
       </Helmet>
       <LayoutContained className="about-us">
-        <div>
-          <img src="#" alt="student + network + open source = ossn" />
-        </div>
+        <Banner
+          image={props.data.aboutBanner.childImageSharp.fluid}
+          text={bannerContent}
+          forPage="about"
+        />
         <Layout2ColsUnequal secondNarrow horizontalGutters verticalGutters>
           <div>
             <p className="highlighted-text">
@@ -125,6 +137,22 @@ export default About;
 
 export const query = graphql`
   {
+    aboutBanner: file(relativePath: { eq: "homepage-header_3x.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          base64
+          aspectRatio
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+          sizes
+          originalImg
+          originalName
+        }
+      }
+    }
+
     imageJoinCta: file(
       relativePath: { eq: "join-cta/join-the-network-tall.jpg" }
     ) {
