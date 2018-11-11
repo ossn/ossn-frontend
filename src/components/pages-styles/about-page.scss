@@ -1,0 +1,16 @@
+@import './../base-styles/init/init';
+
+.about-us {
+
+  .text-column {
+
+    &__icon {
+      @include margin-bottom(26px);
+      width: 100%;
+      display: block;
+      text-align: center;
+    }
+
+  }
+
+}
