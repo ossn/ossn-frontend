@@ -105,23 +105,44 @@ const About = props => {
             </p>
             <Layout3Col horizontalGutters verticalGutters className="text">
               <div className="text-column">
-                <span className="text-column__icon">
-                  <Clipboard />
-                </span>
+                <div className="text-column__icon-wrapper">
+                  <div className="text-column__icon">
+                    <Clipboard />
+                    <Shape
+                      circle
+                      sunnyYellow
+                      className="text-column__shape text-column__shape--first"
+                    />
+                  </div>
+                </div>
                 We provide your club with many resources that will help you
                 develop new skills.
               </div>
               <div className="text-column">
-                <span className="text-column__icon">
-                  <MessageSquare />
-                </span>
+                <div className="text-column__icon-wrapper">
+                  <div className="text-column__icon">
+                    <MessageSquare />
+                    <Shape
+                      triangle2
+                      seafoamBlue
+                      className="text-column__shape text-column__shape--second"
+                    />
+                  </div>
+                </div>
                 We offer ongoing support to members in the form of online 1:1
                 discussions, network calls and newsletters.
               </div>
               <div className="text-column">
-                <span className="text-column__icon">
-                  <GitPullRequest />
-                </span>
+                <div className="text-column__icon-wrapper">
+                  <div className="text-column__icon">
+                    <GitPullRequest />
+                    <Shape
+                      square
+                      darkSkyBlue
+                      className="text-column__shape text-column__shape--third"
+                    />
+                  </div>
+                </div>
                 We present you with opportunities that match your interests, let
                 you contribute code and therefore improve your expertise.
               </div>

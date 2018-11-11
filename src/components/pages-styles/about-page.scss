@@ -1,5 +1,10 @@
 @import './../base-styles/init/init';
 
+/*
+  Styles for the about page.
+  Distances and basic layout.
+*/
+
 .about-us {
 
   &__break {
@@ -20,21 +25,54 @@
   }
 
   .text-column {
-    &__icon {
+    &__icon-wrapper {
       @include margin-top(20px);
       @include margin-bottom(10px);
       width: 100%;
       display: block;
       text-align: center;
+      position: relative;
 
       @include breakpoint($tablet) {
         @include margin-bottom(26px);
         margin-top: 0;
       }
 
+
+    }
+
+    &__icon {
+      position: relative;
+      display: inline-block;
+
       svg {
-        width: 24px;
-        height: 24px;
+        width: 34px;
+        height: 34px;
+      }
+    }
+
+    &__shape {
+      opacity: .2;
+      width: 45px;
+      height: 45px;
+      position: absolute;
+      top: -10px;
+      left: -20px;
+
+      &--second {
+        border-left-width: 26px;
+        border-right-width: 18px;
+        border-bottom-width: 40px;
+        transform: rotate(26deg);
+        left: 0;
+        top: -10px;
+      }
+
+      &--third {
+        width: 36px;
+        height: 36px;
+        left: 5px;
+        transform: rotate(15deg);
       }
     }
   }
