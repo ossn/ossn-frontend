@@ -2,6 +2,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import Img from 'gatsby-image';
 
 // Local modules.
 import BasicLayout from '../components/layouts/layout-base/layout-base';
@@ -125,7 +126,10 @@ const About = props => {
             </p>
           </div>
           <div>
-            <img src="#" alt="I believe in the open internet" />
+            <Img
+              fluid={props.data.iBelieveInTheOpenInternet.childImageSharp.fluid}
+              className="about__decorative-image"
+            />
           </div>
         </Layout2ColsUnequal>
       </LayoutContained>
@@ -155,6 +159,24 @@ export const query = graphql`
 
     imageJoinCta: file(
       relativePath: { eq: "join-cta/join-the-network-tall.jpg" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 728) {
+          base64
+          aspectRatio
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+          sizes
+          originalImg
+          originalName
+        }
+      }
+    }
+
+    iBelieveInTheOpenInternet: file(
+      relativePath: { eq: "I_believe_in_the_open_internet.jpg" }
     ) {
       childImageSharp {
         fluid(maxWidth: 728) {
