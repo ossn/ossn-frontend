@@ -10,6 +10,7 @@ import GatsbyConfig from './../../gatsby-config';
 import FaqGroup from './../components/components/faq-group/faq-group';
 import Layout2Cols from './../components/layouts/layout-2col/layout-2col';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
+import Shape from './../components/components//shape/shape';
 
 // TODO: Remove and fid title another way.
 const Questions = props => {
@@ -32,8 +33,16 @@ const Questions = props => {
         <div className="faq__header">
           <h1 className="faq__title title"> FAQ </h1>
           <h2 className="faq__subtitle highlighted-text">
-            The most Frequently Asked Questions on OSSN. <br />
-            And their answers!
+            <div className="faq__subtitle-text">
+              The most Frequently Asked Questions on OSSN. <br />
+              And their answers!
+              <span className="faq__header-shape faq__header-shape--square">
+                <Shape square seafoamBlue />
+              </span>
+              <span className="faq__header-shape faq__header-shape--waves">
+                <Shape waves darkSkyBlue />
+              </span>
+            </div>
           </h2>
         </div>
 
@@ -55,6 +64,7 @@ const Questions = props => {
             <a href="https://www.facebook.com/"> Facebook </a>
             or
             <a href="https://twitter.com/"> Twitter </a>
+            <Shape waveLarge sunnyYellow className="faq__footer-shape" />
           </p>
         </div>
       </LayoutContained>
