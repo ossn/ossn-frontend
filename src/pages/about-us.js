@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import Img from 'gatsby-image';
+import { Clipboard, MessageSquare, GitPullRequest } from 'react-feather';
 
 // Local modules.
 import BasicLayout from '../components/layouts/layout-base/layout-base';
@@ -12,6 +13,8 @@ import Layout3Col from './../components/layouts/layout-3col/layout-3col';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 import JoinCta from './../components/components/join-cta/join-cta';
 import Shape from './../components/components//shape/shape';
+
+import './../components/pages-styles/faq-page.scss';
 
 // TODO: Remove and fid title another way.
 const About = props => {
@@ -75,7 +78,7 @@ const About = props => {
         </Layout2ColsUnequal>
         <Shape seafoamBlue waveLarge divider />
         <div>
-          <div>
+          <div className="about-us__section--what-we-do">
             <h2 className="title title--x-small"> What do we do? </h2>
             <p className="text">
               We’ve designed a Network that makes it easy for students to learn
@@ -84,15 +87,24 @@ const About = props => {
               motivating challenges:
             </p>
             <Layout3Col horizontalGutters verticalGutters className="text">
-              <div>
+              <div className="text-column">
+                <span className="text-column__icon">
+                  <Clipboard />
+                </span>
                 We provide your club with many resources that will help you
                 develop new skills.
               </div>
-              <div>
+              <div className="text-column">
+                <span className="text-column__icon">
+                  <MessageSquare />
+                </span>
                 We offer ongoing support to members in the form of online 1:1
                 discussions, network calls and newsletters.
               </div>
-              <div>
+              <div className="text-column">
+                <span className="text-column__icon">
+                  <GitPullRequest />
+                </span>
                 We present you with opportunities that match your interests, let
                 you contribute code and therefore improve your expertise.
               </div>

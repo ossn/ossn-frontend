@@ -1,5 +1,5 @@
 // styles
-import './../components/pages-styles/faq-page.scss';
+import './../components/pages-styles/about-page.scss';
 
 import { graphql } from 'gatsby';
 import React, { memo } from 'react';
