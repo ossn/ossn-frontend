@@ -30,16 +30,11 @@ class Members extends React.PureComponent {
     ];
 
     this.state = {
-      view: 'grid',
       searchString: '',
       sortOptions: options,
       currentSortOption: options[0]
     };
   }
-  //
-  // changeSearch = (event) => {
-  //   this.setState({searchString: event.target.value});
-  // };
 
   changeSorting = selected => {
     this.setState({ currentSortOption: selected });
@@ -47,16 +42,20 @@ class Members extends React.PureComponent {
 
   render() {
     const snapshot = { ...this.state };
-    let members = this.props.data.allMembersJson.edges.slice();
-    let totalCount = this.props.data.allMembersJson.totalCount;
+    let members = this.props.data.ossnApi.users.slice();
+    let totalCount = this.props.data.ossnApi.users.length;
 
     const memberList = members.map((member, i) => {
+      // console.log(member);
       return (
         <div key={i}>
-          <MemberTeaser member={member.node} id={i} />
+          <MemberTeaser member={member} id={i} />
         </div>
       );
     });
+
+    // console.log(this.props.data.ossnApi.users);
+    // return <div> This is the meber list </div>;
 
     return (
       <BasicLayout>
@@ -121,37 +120,21 @@ class Members extends React.PureComponent {
   }
 }
 
-// const GET_MEMBERS = gql`
-//   {
-//     user {
-//       id
-//       userName
-//       email
-//       firstName
-//       lastName
-//       imageUrl
-//       receiveNewsletter
-//       description
-//       sortDescription
-//       githubUrl
-//       personalUrl
-//     }
-//   }
-// `;
-
 export default Members;
 
 export const query = graphql`
-  query IndexQuery {
-    allMembersJson(limit: 2) {
-      totalCount
-      edges {
-        node {
-          name
-          isLeader
-          image
-          username
-        }
+  {
+    ossnApi {
+      users {
+        userName
+        firstName
+        lastName
+        imageUrl
+        receiveNewsletter
+        description
+        githubUrl
+        personalUrl
+        email
       }
     }
 

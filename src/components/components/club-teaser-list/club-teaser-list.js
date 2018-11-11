@@ -1,6 +1,6 @@
 /*
  Contains basic information for a club.
- Appears at /find-club
+ Appears at /find-clubs
  */
 
 import React from 'react';
