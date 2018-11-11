@@ -14,6 +14,7 @@ import {
   SearchFilter,
   SelectFilter
 } from './../components/components/filters/filters';
+import JoinCta from './../components/components/join-cta/join-cta';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.
 import GatsbyConfig from './../../gatsby-config';
@@ -109,7 +110,9 @@ class Members extends React.PureComponent {
             <div>
               <img src="#" alt="guys with a laptop pretending to be busy" />
               <br />
-              <img src="#" alt="join the network" />
+              <div>
+                <JoinCta imageJoinCta={this.props.data.imageJoinCta} />
+              </div>
             </div>
           </Layout2ColsUnequal>
         </LayoutContained>
@@ -148,6 +151,24 @@ export const query = graphql`
           isLeader
           image
           username
+        }
+      }
+    }
+
+    imageJoinCta: file(
+      relativePath: { eq: "join-cta/join-the-network-tall.jpg" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 728) {
+          base64
+          aspectRatio
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+          sizes
+          originalImg
+          originalName
         }
       }
     }
