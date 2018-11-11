@@ -10,9 +10,18 @@
   }
 
   &__text {
+
+    .title {
+      @include font-size(36px);
+
+      @include breakpoint($tablet) {
+        @include font-size(42px);
+      }
+    }
+
+
+
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     color: color('white');
   }
 
@@ -23,23 +32,58 @@
 
   &--home {
     .banner__text {
-      bottom: 42px;
-      left: 95px;
-      max-width: 350px;
+      // max-width: 320px;
+      left: 20px;
+      top: 0;
+
+      .title {
+        max-width: 220px;
+      }
+
+      @include breakpoint($tablet) {
+        max-width: 350px;
+        bottom: 42px;
+        left: 95px;
+        top: auto;
+
+        .title {
+          max-width: 350px;
+        }
+      }
     }
   }
 
   &--organizations {
     .banner__text {
-      right: 80px;
-      max-width: 220px;
+      right: 20px;
+      top: 20px;
+      max-width: 160px;
+
+      @include breakpoint($tablet) {
+        max-width: 220px;
+        right: 40px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      @include breakpoint($desktop) {
+        right: 80px;
+      }
     }
   }
 
   &--about {
     .banner__text {
-      left: 115px;
-      max-width: 245px;
+      top: 0;
+      left: 50px; // icon-width (30px)  +  padding.
+
+
+      @include breakpoint($tablet) {
+        top: 50%;
+        transform: translateY(-50%);
+        left: 115px;
+        max-width: 245px;
+      }
     }
 
     span {
