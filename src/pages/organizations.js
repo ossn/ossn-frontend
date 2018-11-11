@@ -13,6 +13,7 @@ import Layout2Col from './../components/layouts/layout-2col/layout-2col';
 import Layout2ColsUnequal from './../components/layouts/layout-2col-unequal/layout-2col-unequal';
 import MediaQuery from 'react-responsive';
 import Shape from './../components/components/shape/shape';
+import Banner from './../components/components/banner/banner';
 
 import '../components/pages-styles/organizations.scss';
 
@@ -25,6 +26,12 @@ const Organizations = props => {
     return <Organization organization={node.org} key={i} />;
   });
 
+  const bannerContent = (
+    <>
+      <div className="title title--large"> in unity there is strength </div>
+    </>
+  );
+
   return (
     <BasicLayout>
       <Helmet>
@@ -33,9 +40,11 @@ const Organizations = props => {
         </title>
       </Helmet>
       <LayoutContained className="organizations">
-        <div className="organizations__banner">
-          <Img fluid={props.data.organizationsBanner.childImageSharp.fluid} />
-        </div>
+        <Banner
+          image={props.data.organizationsBanner.childImageSharp.fluid}
+          text={bannerContent}
+          forPage="organizations"
+        />
 
         <Layout2ColsUnequal
           secondNarrow
@@ -121,7 +130,9 @@ export const query = graphql`
       }
     }
 
-    organizationsBanner: file(relativePath: { eq: "organizationsBanner.png" }) {
+    organizationsBanner: file(
+      relativePath: { eq: "affiliations-header_3x.jpg" }
+    ) {
       childImageSharp {
         fluid(maxWidth: 1000) {
           base64

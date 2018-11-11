@@ -3,7 +3,6 @@ import '../components/layouts/layout-custom-grid/layout-custom-grid.scss';
 import '../components/pages-styles/home-page.scss';
 
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
 import React, { memo } from 'react';
 
 import BasicLayout from '../components/layouts/layout-base/layout-base';
@@ -13,16 +12,28 @@ import ImageBox from './../components/components/image-box/image-box';
 import OrganizationList from './../components/components/organizations-list/organizations-list';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 import Shape from './../components/components/shape/shape';
+import Banner from './../components/components/banner/banner';
 
 const IndexPage = props => {
+  const bannerContent = (
+    <>
+      <div className="title title--large"> Open source clubs </div>
+      <div className="text text--m-large">
+        A network of university students and clubs who share the belief that
+        open source software is the engine that powers innovation.
+      </div>
+    </>
+  );
+
   return (
     <BasicLayout>
       {/* New section */}
       <LayoutContained>
-        <div>
-          <Img fluid={props.data.imageOne.childImageSharp.fluid} />
-          {/* <TopBanner src={bannerImage} alt="Open source clubs" page="home" /> */}
-        </div>
+        <Banner
+          image={props.data.imageOne.childImageSharp.fluid}
+          text={bannerContent}
+          forPage="home"
+        />
         <div className="home-page__page-title-wrapper">
           <h1 className="home-page__page-title">
             <Shape
@@ -132,7 +143,7 @@ export const query = graphql`
       }
     }
 
-    imageOne: file(relativePath: { eq: "home.png" }) {
+    imageOne: file(relativePath: { eq: "homepage-header_3x.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1000) {
           base64
