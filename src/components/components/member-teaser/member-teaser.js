@@ -43,7 +43,7 @@ const MemberTeaser = props => {
   if (props.member.isLeader) classes.push('member-teaser--leader');
 
   return (
-    <ShadowBox className={classes.join(' ')}>
+    <ShadowBox smallPaddings className={classes.join(' ')}>
       <div> {preview} </div>
       <div
         onClick={handleClick}
