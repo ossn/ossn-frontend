@@ -1,0 +1,44 @@
+@import './../../base-styles/init/init';
+
+.club-full {
+  &__cover-wrapper {
+    background: red;
+    min-height: 200px;
+    max-height: 200px;
+  }
+
+  &__title-wrapper {
+    @include padding-left(20px);
+    display: inline-block;
+  }
+
+  &__profile-picture-section {
+    display: inline-block;
+    width: 265px;
+    position: relative;
+  }
+
+  &__profile-picture-wrapper {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 180px;
+    height: 180px;
+    border: 10px solid color('white');
+    border-radius: 50px;
+    overflow: hidden;
+    background: black;
+  }
+
+  &__profile-picture {
+    margin: auto;
+    max-height: 100%;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+  }
+
+  &__body {
+    @include margin-top(68px);
+  }
+}
