@@ -1,16 +1,18 @@
 @import './../base-styles/init/init';
-/*
-  Themes the FAQ page.
-
-  states
-    is-expanded: rotates the icon near faq question.
-
-*/
+//  Faq
+//
+//  Themes the FAQ page.
+//
+//  is-expanded: expanded state, rotates the icon near faq question.
 
 .faq {
   &__header {
     text-align: center;
-    margin-bottom: 84px;
+    margin-bottom: 44px;
+
+    @include breakpoint($tablet) {
+      margin-bottom: 84px;
+    }
   }
 
   &__subtitle-text {
@@ -27,16 +29,23 @@
       left: 32px;
       width: 82px;
       height: 82px;
-      transform: translateX(-50%) rotate(25deg);
+      transform: translate(-50%, 10px) rotate(25deg) scale(.7);
       z-index: -1;
+
+      @include breakpoint($tablet) {
+        transform: translateX(-50%) rotate(25deg) scale(1);
+      }
     }
 
     &--waves {
       width: 132px;
       height: 78px;
+      right: -60px;
+      transform: scale(.7);
 
       @include breakpoint($tablet) {
         right: -160px;
+        transform: scale(1);
       }
     }
   }
@@ -48,12 +57,11 @@
       @include margin-bottom(31px);
     }
 
-
     &-header {
       width: 100%;
       text-align: center;
       padding-top: 15px;
-      padding-left: 36px;
+      padding-left: 15px;
       padding-right: 15px;
       position: relative;
     }
@@ -89,10 +97,14 @@
   }
 
   &__footer {
-    @include margin-top(90px);
+    @include margin-top(50px);
     text-align: center;
     color: color('light-navy');
     font-family: $zilla-slab;
+
+    @include breakpoint($tablet) {
+      @include margin-top(90px);
+    }
 
     p {
       @include font-size(20px);
@@ -104,36 +116,41 @@
   }
 
   &__footer-title {
-    @include font-size(28px);
-    @include line-height(35px);
-    font-family: 'Open Sans';
-    font-size: 28px;
+    @include typeface(body);
+    @include font-size(20px);
+    @include line-height(28px);
     font-weight: 600;
     font-style: normal;
     font-stretch: normal;
     line-height: 35px;
     letter-spacing: normal;
     text-align: center;
+    padding-bottom: 5px;
+
+    @include breakpoint($tablet) {
+      @include font-size(28px);
+      @include line-height(35px);
+    }
   }
 
   &__footer-text {
     position: relative;
     display: inline-block;
+    padding-bottom: 35px;
   }
 
   &__footer-shape {
     opacity: .5;
     position: absolute;
-    bottom: -30px;
-    left: -20px;
+    bottom: 0;
+    left: -28px;
     right: auto;
-
-    svg {
-      width: 85px;
-    }
+    width: 95px;
+    transform: scale(.7);
 
     @include breakpoint($tablet) {
-      left: -20px;
+      left: -23px;
+      transform: scale(1);
     }
   }
 }
