@@ -1,3 +1,9 @@
+/*
+
+  This page shows the list of the student members.
+
+*/
+
 // External modules.
 import React from 'react';
 import { Helmet } from 'react-helmet';
@@ -46,16 +52,12 @@ class Members extends React.PureComponent {
     let totalCount = this.props.data.ossnApi.users.length;
 
     const memberList = members.map((member, i) => {
-      // console.log(member);
       return (
         <div key={i}>
           <MemberTeaser member={member} id={i} />
         </div>
       );
     });
-
-    // console.log(this.props.data.ossnApi.users);
-    // return <div> This is the meber list </div>;
 
     return (
       <BasicLayout>
@@ -130,7 +132,7 @@ export const query = graphql`
         firstName
         lastName
         imageUrl
-        receiveNewsletter
+        receiveNewsletterz
         description
         githubUrl
         personalUrl
