@@ -1,6 +1,9 @@
 @import './../../base-styles/init/init';
 
-// Basic layout component.
+// Layout base
+//
+// Basic layout component, wraps all content and adds default top and bottom
+// distances.
 .layout-base,
 %layout-base {
   padding-top: 120px;

@@ -26,10 +26,15 @@
   }
 
   &--large {
-    @include font-size(42px);
-    @include line-height(42px);
+    @include font-size(36px);
+    @include line-height(36px);
+    font-weight: bold;
     letter-spacing: .4px;
-    font-weight: 700;
+
+    @include breakpoint($tablet) {
+      @include font-size(42px);
+      @include line-height(42px);
+    }
   }
 
   &--medium {

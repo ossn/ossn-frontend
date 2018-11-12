@@ -1,26 +1,29 @@
 @import "../../base-styles/init/init";
-
+// Banner
+//
+// Banner is used on landing pages to highlight content. It appears on home,
+// about-us and organizations pages.
+//
+// .banner--home          - The home page banner and banner decorations.
+// .banner--about         - The about page banner and banner decorations.
+// .banner--organizations - The organizations page banner and banner
+//                             decorations.
+//
 .banner {
   position: relative;
+  margin-top: -40px;
+
+  @include breakpoint($tablet) {
+    margin-top: -50px;
+  }
 
   &__image {
-   position: absolute;
-   top: 0;
-   left: 0;
+    top: 0;
+    position: absolute;
+    left: 0;
   }
 
   &__text {
-
-    .title {
-      @include font-size(36px);
-
-      @include breakpoint($tablet) {
-        @include font-size(42px);
-      }
-    }
-
-
-
     position: absolute;
     color: color('white');
   }
