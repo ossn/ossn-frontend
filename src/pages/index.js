@@ -26,7 +26,7 @@ const IndexPage = props => {
   );
 
   return (
-    <BasicLayout>
+    <BasicLayout noDistanceTop>
       {/* New section */}
       <LayoutContained>
         <Banner
