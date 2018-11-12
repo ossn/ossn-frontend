@@ -1,10 +1,10 @@
 @import './../../base-styles/init/init';
 
 .club-teaser {
-  @include padding-top(5px);
-  @include padding-bottom(5px);
 
   &__inner {
+    @include padding-top(20px);
+    @include padding-bottom(20px);
     display: flex;
     width: 100%;
   }
@@ -46,10 +46,11 @@
 
   &__title {
     @include typeface('title');
+    color: color('light-navy');
     letter-spacing: .2px;
     font-weight: 600;
-    display: block;
     font-size: 18px;
+    display: block;
   }
 
   &__description {

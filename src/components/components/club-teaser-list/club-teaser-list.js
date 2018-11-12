@@ -26,9 +26,7 @@ export const ClubTeaser = props => {
           <img src={image} alt={title} className="club-teaser__image" />
         </div>
         <div className="club-teaser__text">
-          <span className="title title--x-small club-teaser__title">
-            {title}
-          </span>
+          <span className="club-teaser__title">{title}</span>
           <span className="club-teaser__description"> {subtitle} </span>
           <div className="button button--x-small club-teaser__button">
             <Link to="/club" className="club-teaser__link">
