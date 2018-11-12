@@ -23,7 +23,7 @@
     .filter {
       @include padding(10px);
       @include padding-left(25px);
-      @include padding-right(25px);
+      @include padding-right(32px);
       position: relative;
       width: 100%;
 
@@ -85,7 +85,7 @@
         justify-content: flex-start;
 
         @include breakpoint($tablet) {
-          justify-content: center;
+          justify-content: space-between;
         }
       }
     }
@@ -108,8 +108,4 @@
     }
 
   }
-}
-
-.filter--toggle {
-  display: flex;
 }
