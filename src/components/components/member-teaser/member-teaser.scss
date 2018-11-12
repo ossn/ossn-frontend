@@ -33,16 +33,20 @@
     padding-left: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    padding-right: 74px;
+    justify-content: space-between;
+
+    .title {
+      padding-right: 74px;
+    }
   }
 
   &__name {
-    @include padding-bottom(1);
+    @include padding-top(5px);
+    @include font-size(15px)
+    @include line-height(18px);
     display: block;
-    font-size: 15px;
-    line-height: 18px;
-    min-height: 50px;
+    align-self: flex-start;
+    font-weight: 600;
   }
 
   &__clubs {
@@ -55,7 +59,7 @@
       @include margin-right(6px);
       height: 20px;
       width: 20px;
-      color: color('grey-dark');
+      color: color('light-navy');
     }
   }
 
