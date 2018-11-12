@@ -1,4 +1,11 @@
 @import './../base-styles/init/init';
+/*
+  Themes the FAQ page.
+
+  states
+    is-expanded: rotates the icon near faq question.
+
+*/
 
 .faq {
   &__header {
@@ -7,6 +14,7 @@
   }
 
   &__subtitle-text {
+    @include margin-top(22px);
     display: inline-block;
     position: relative;
   }
@@ -21,7 +29,6 @@
       height: 82px;
       transform: translateX(-50%) rotate(25deg);
       z-index: -1;
-      opacity: 0.44;
     }
 
     &--waves {
@@ -99,6 +106,14 @@
   &__footer-title {
     @include font-size(28px);
     @include line-height(35px);
+    font-family: 'Open Sans';
+    font-size: 28px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 35px;
+    letter-spacing: normal;
+    text-align: center;
   }
 
   &__footer-text {
@@ -108,10 +123,14 @@
 
   &__footer-shape {
     opacity: .5;
-    width: 68px;
     position: absolute;
     bottom: -30px;
-    left: 0px;
+    left: -20px;
+    right: auto;
+
+    svg {
+      width: 85px;
+    }
 
     @include breakpoint($tablet) {
       left: -20px;
