@@ -155,9 +155,7 @@ export const query = graphql`
       }
     }
 
-    imageJoinCta: file(
-      relativePath: { eq: "join-cta/join-the-network-tall.jpg" }
-    ) {
+    imageJoinCta: file(relativePath: { eq: "join-cta/join-the-network.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 728) {
           base64
