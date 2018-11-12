@@ -26,8 +26,8 @@
       @include padding-right(25px);
       position: relative;
       width: 100%;
-      
-      @include breakpoint($mobile) {
+
+      @include breakpoint($tablet) {
         width: 50%;
         &::before {
           content: '';
@@ -35,7 +35,7 @@
           height: 100%;
           width: 1px;
           display: inline-block;
-          background-color: black;
+          background-color: #cccccc;
           top: 0;
           left: 0;
         }
@@ -48,9 +48,23 @@
       }
 
       &--search {
+        border-top: 1px solid #ccc;
+        width:100%;
+
+        @include breakpoint($tablet) {
+          border: none;
+          width: auto;
+        }
+
         label {
           padding: 0;
           color: color('blue-dark');
+
+          svg {
+            width: 15px;
+            height: 15px;
+            vertical-align: middle;
+          }
         }
 
         input {
@@ -59,6 +73,19 @@
           padding-bottom: 2px;
           border: none;
           margin-left: 10px;
+
+          &::placeholder {
+            opacity: 1;
+          }
+        }
+      }
+
+      &--toggle {
+        display: flex;
+        justify-content: flex-start;
+
+        @include breakpoint($tablet) {
+          justify-content: center;
         }
       }
     }
@@ -73,6 +100,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    padding: 0;
 
     @include breakpoint($tablet) {
       max-width: 540px;
