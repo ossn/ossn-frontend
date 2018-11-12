@@ -14,6 +14,7 @@ import Map from './../components/components/map/map';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 import Layout2Col from './../components/layouts/layout-2col/layout-2col';
 import { Search } from 'react-feather';
+import ShadowBox from './../components/components/shadow-box/shadow-box';
 
 import './../components/pages-styles/find-club.scss';
 
@@ -80,21 +81,23 @@ class Clubs extends React.PureComponent {
           <div className="find-club__header">
             <h1> Clubs </h1>
             <div className="filter__wrapper filter__wrapper--clubs">
-              <Layout2Col className="filter__wrapper-inner">
-                <ToggleFilter
-                  onClick={this.handleToggleMap}
-                  active={snapshot.view === 'map'}
-                  left="list"
-                  right="map"
-                />
-                <SearchFilter
-                  placeholder="Filter"
-                  onChange={this.handleSearch}
-                  id="find-club-search"
-                  hideLabel
-                  icon={Search}
-                />
-              </Layout2Col>
+              <ShadowBox className="filter__wrapper-inner">
+                <Layout2Col>
+                  <ToggleFilter
+                    onClick={this.handleToggleMap}
+                    active={snapshot.view === 'map'}
+                    left="List view"
+                    right="Map View"
+                  />
+                  <SearchFilter
+                    placeholder="Filter"
+                    onChange={this.handleSearch}
+                    id="find-club-search"
+                    hideLabel
+                    icon={Search}
+                  />
+                </Layout2Col>
+              </ShadowBox>
             </div>
           </div>
 

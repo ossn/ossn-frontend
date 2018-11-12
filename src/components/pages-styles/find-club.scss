@@ -10,7 +10,7 @@
     justify-content: flex-start;
 
     @include breakpoint($tablet) {
-      flex-wrap: no-wrap;
+      flex-wrap: nowrap;
       justify-content: space-between;
     }
 
