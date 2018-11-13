@@ -33,9 +33,23 @@ const MemberTeaser = props => {
 
   // Show the leader tag for leaders.
   const leaderTag = props.member.isLeader ? (
-    <span className="member-teaser__leader-tag"> Club Leader </span>
+    <span className="member-teaser__leader-tag">
+      <span className="member-teaser__leader-tag-bg">
+        <span className="member-teaser__leader-tag-top" />
+        <span className="member-teaser__leader-tag-bottom" />
+        <span className="member-teaser__leader-tag-bg-bottom" />
+      </span>
+      Club Leader
+    </span>
   ) : (
-    ''
+    <span className="member-teaser__leader-tag">
+      <span className="member-teaser__leader-tag-bg">
+        <span className="member-teaser__leader-tag-top" />
+        <span className="member-teaser__leader-tag-bottom" />
+        <span className="member-teaser__leader-tag-bg-bottom" />
+      </span>
+      Club Leader
+    </span>
   );
 
   const inheritedClass = props.className ? props.className : '';
