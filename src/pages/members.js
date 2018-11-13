@@ -132,7 +132,7 @@ export const query = graphql`
         firstName
         lastName
         imageUrl
-        receiveNewsletterz
+        receiveNewsletter
         description
         githubUrl
         personalUrl
