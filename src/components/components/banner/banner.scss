@@ -12,15 +12,19 @@
 .banner {
   position: relative;
   margin-top: -40px;
+  overflow: hidden;
 
   @include breakpoint($tablet) {
     margin-top: -50px;
   }
 
   &__image {
-    top: 0;
-    position: absolute;
-    left: 0;
+    //top: 0;
+    //position: absolute;
+    //left: 0;
+    >div {
+      height: 350px;
+    }
   }
 
   &__text {
@@ -103,8 +107,6 @@
       &:last-child::before {
         content: '=';
       }
-
-
     }
   }
 }

@@ -52,11 +52,11 @@ const About = props => {
             <p className="highlighted-text highlighted-text--small">
               Focused on campuses in the US and Canada, our program brings
               students together with mentors, organizations and professionals
-              who are actively engaged in advancing Open Source.
+              who are actively engaged in advancing Open Source. -{' '}
+              <h2 className="title title--x-small about-us__break">
+                What do we want to achieve?
+              </h2>
             </p>
-            <h2 className="title title--x-small about-us__break">
-              What do we want to achieve?
-            </h2>
             <p className="text">
               At Mozilla, our mission is to promote openness, innovation and
               opportunity on the Internet. Through our Open Source Student
