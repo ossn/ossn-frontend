@@ -15,23 +15,16 @@ import Shape from './../components/components/shape/shape';
 import Banner from './../components/components/banner/banner';
 
 const IndexPage = props => {
-  const bannerContent = (
-    <>
-      <div className="title title--large"> Open source clubs </div>
-      <div className="text text--m-large">
-        A network of university students and clubs who share the belief that
-        open source software is the engine that powers innovation.
-      </div>
-    </>
-  );
-
   return (
     <BasicLayout noDistanceTop>
       {/* New section */}
       <LayoutContained>
         <Banner
-          image={props.data.imageOne.childImageSharp.fluid}
-          text={bannerContent}
+          imageMobile={props.data.bannerImageMobile.childImageSharp.resolutions}
+          image={props.data.bannerImageDesktop.childImageSharp.fluid}
+          text="A network of university students and clubs who share the belief that
+        open source software is the engine that powers innovation."
+          title={['Open source clubs']}
           forPage="home"
         />
         <div className="home-page__page-title-wrapper">
@@ -143,9 +136,11 @@ export const query = graphql`
       }
     }
 
-    imageOne: file(relativePath: { eq: "homepage-header_3x.jpg" }) {
+    bannerImageDesktop: file(
+      relativePath: { eq: "banners/homepage-header_3x.jpg" }
+    ) {
       childImageSharp {
-        fluid(maxWidth: 1000) {
+        fluid(maxWidth: 1110, srcSetBreakpoints: [768]) {
           base64
           aspectRatio
           src
@@ -155,6 +150,16 @@ export const query = graphql`
           sizes
           originalImg
           originalName
+        }
+      }
+    }
+
+    bannerImageMobile: file(
+      relativePath: { eq: "banners/homepage-header_3x.jpg" }
+    ) {
+      childImageSharp {
+        resolutions(height: 300, width: 728, cropFocus: CENTER) {
+          ...GatsbyImageSharpResolutions
         }
       }
     }

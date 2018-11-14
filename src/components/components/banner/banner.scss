@@ -12,48 +12,85 @@
 .banner {
   position: relative;
   margin-top: -40px;
+  overflow: hidden;
+  display: flex;
+  width: 100%;
 
   @include breakpoint($tablet) {
     margin-top: -50px;
   }
 
   &__image {
-    top: 0;
-    position: absolute;
-    left: 0;
+    height: 250px;
+    position: relative;
+
+    > div {
+      width: 100%;
+    }
+
+    @include breakpoint(0 $tablet - 1px) {
+      margin-top: -25px;
+      margin-bottom: -25px;
+    }
+
+    @include breakpoint($tablet) {
+      height: 300px;
+    }
+
+    @include breakpoint($desktop) {
+      height: 350px;
+    }
+
+    &-wrapper {
+      width: 100%;
+      min-width: 100%;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    min-width: 100%;
+    transform: translateX(-100%);
+    color: color('white');
+    padding: 28px 20px;
+    display: flex;
+    align-items: flex-end;
+
+    @include breakpoint($tablet) {
+      padding: 30px 30px;
+    }
+
+    @include breakpoint($desktop) {
+      padding: 42px 95px;
+    }
+
+    &-inner {
+      max-width: 400px;
+    }
   }
 
   &__text {
-    position: absolute;
-    color: color('white');
+    @include font-size(16px);
+    @include line-height(21px);
+    font-weight: bold;
+    margin-top: 9px;
+
+    @include breakpoint($tablet) {
+      @include font-size(17px);
+      @include line-height(22px);
+      letter-spacing: .4px;
+    }
+
+    @include breakpoint($desktop) {
+      @include font-size(18px);
+      @include line-height(24px);
+      letter-spacing: .8px;
+    }
   }
 
   .text,
   .title {
     color: color('white');
-  }
-
-  &--home {
-    .banner__text {
-      // max-width: 320px;
-      left: 20px;
-      top: 0;
-
-      .title {
-        max-width: 220px;
-      }
-
-      @include breakpoint($tablet) {
-        max-width: 350px;
-        bottom: 42px;
-        left: 95px;
-        top: auto;
-
-        .title {
-          max-width: 350px;
-        }
-      }
-    }
   }
 
   &--organizations {
@@ -103,8 +140,6 @@
       &:last-child::before {
         content: '=';
       }
-
-
     }
   }
 }
