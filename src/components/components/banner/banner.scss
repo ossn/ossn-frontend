@@ -4,7 +4,6 @@
 // Banner is used on landing pages to highlight content. It appears on home,
 // about-us and organizations pages.
 //
-// .banner--home          - The home page banner and banner decorations.
 // .banner--about         - The about page banner and banner decorations.
 // .banner--organizations - The organizations page banner and banner
 //                             decorations.
@@ -18,6 +17,14 @@
 
   @include breakpoint($tablet) {
     margin-top: -50px;
+  }
+
+  &__title-element {
+    display: block;
+
+    + .banner__title-element {
+      margin-top: -6px;
+    }
   }
 
   &__image {
@@ -66,6 +73,7 @@
 
     &-inner {
       max-width: 400px;
+      position: relative;
     }
   }
 
@@ -94,41 +102,93 @@
   }
 
   &--organizations {
-    .banner__text {
-      right: 20px;
-      top: 20px;
-      max-width: 160px;
+    picture,
+    img {
+      object-position: right center !important;
+    }
 
-      @include breakpoint($tablet) {
-        max-width: 220px;
-        right: 40px;
-        top: 50%;
-        transform: translateY(-50%);
+    .banner__image {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .banner {
+      &__content {
+        align-items: center;
+        justify-content: flex-end;
+
+
+        &-inner {
+          padding-right: 60px;
+        }
       }
 
-      @include breakpoint($desktop) {
-        right: 80px;
+      &__wave-large {
+        position: absolute;
+        top: -60px;
+        left: 50px;
+        transform: rotate(15deg);
+      }
+
+      &__wave {
+        position: absolute;
+        top: 45px;
+        right: -10px;
+
+        @include breakpoint($desktop) {
+          right: -30px;
+        }
+      }
+
+      &__cube {
+        position: absolute;
+        bottom: -60px;
+        right: -10px;
+
+        @include breakpoint($tablet) {
+          bottom: -60px;
+          right: -20px;
+        }
       }
     }
   }
 
   &--about {
-    .banner__text {
-      top: 0;
-      left: 50px; // icon-width (30px)  +  padding.
+    .banner {
+      &__wave-large {
+        position: absolute;
+        top: -30px;
+        right: 20px;
+        transform: rotate(15deg);
+      }
 
+      &__wave {
+        position: absolute;
+        bottom: -50px;
+        left: -10px;
 
-      @include breakpoint($tablet) {
-        top: 50%;
-        transform: translateY(-50%);
-        left: 115px;
-        max-width: 245px;
+        @include breakpoint($desktop) {
+          bottom: -30px;
+          left: -50px;
+        }
+      }
+
+      &__cube {
+        position: absolute;
+        bottom: -60px;
+        right: -20px;
+      }
+
+      &__content {
+        align-items: center;
+        margin-top: -25px;
       }
     }
 
-    span {
+    .banner__title-element {
       display: block;
       position: relative;
+      margin-left: 30px;
 
       &:not(:first-child)::before {
         content: '+';
