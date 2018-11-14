@@ -30,6 +30,7 @@ const IndexPage = props => {
       {/* New section */}
       <LayoutContained>
         <Banner
+          imageMobile={props.data.imageOneMobile.childImageSharp.resolutions}
           image={props.data.imageOne.childImageSharp.fluid}
           text={bannerContent}
           forPage="home"
@@ -145,7 +146,7 @@ export const query = graphql`
 
     imageOne: file(relativePath: { eq: "homepage-header_3x.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1000) {
+        fluid(maxWidth: 1110, srcSetBreakpoints: [992]) {
           base64
           aspectRatio
           src
@@ -155,6 +156,14 @@ export const query = graphql`
           sizes
           originalImg
           originalName
+        }
+      }
+    }
+
+    imageOneMobile: file(relativePath: { eq: "homepage-header_3x.jpg" }) {
+      childImageSharp {
+        resolutions(height: 350, width: 992) {
+          ...GatsbyImageSharpResolutions
         }
       }
     }
