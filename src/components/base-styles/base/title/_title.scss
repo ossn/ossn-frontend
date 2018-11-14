@@ -27,13 +27,18 @@
 
   &--large {
     @include font-size(36px);
-    @include line-height(36px);
+    @include line-height(41px);
     font-weight: bold;
     letter-spacing: .4px;
 
     @include breakpoint($tablet) {
-      @include font-size(42px);
+      @include font-size(39px);
       @include line-height(42px);
+    }
+
+    @include breakpoint($desktop) {
+      @include font-size(42px);
+      @include line-height(47px);
     }
   }
 

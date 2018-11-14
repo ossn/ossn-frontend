@@ -12,22 +12,13 @@ import Layout2ColsUnequal from './../components/layouts/layout-2col-unequal/layo
 import Layout3Col from './../components/layouts/layout-3col/layout-3col';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 import JoinCta from './../components/components/join-cta/join-cta';
-import Shape from './../components/components//shape/shape';
+import Shape from './../components/components/shape/shape';
 import Banner from './../components/components/banner/banner';
 
 import './../components/pages-styles/faq-page.scss';
 
 // TODO: Remove and fid title another way.
 const About = props => {
-  const bannerContent = (
-    <div className="title title--large">
-      <span> student </span>
-      <span> network </span>
-      <span> open source </span>
-      <span> ossn </span>
-    </div>
-  );
-
   return (
     <BasicLayout>
       <Helmet>
@@ -37,8 +28,11 @@ const About = props => {
       </Helmet>
       <LayoutContained className="about-us">
         <Banner
-          image={props.data.aboutBanner.childImageSharp.fluid}
-          text={bannerContent}
+          imageMobile={
+            props.data.aboutBannerImageMobile.childImageSharp.resolutions
+          }
+          image={props.data.aboutBannerImageDesktop.childImageSharp.fluid}
+          title={['student', 'network', 'open source', 'ossn']}
           forPage="about"
         />
         <Layout2ColsUnequal secondNarrow horizontalGutters verticalGutters>
@@ -184,6 +178,34 @@ export default About;
 
 export const query = graphql`
   {
+    aboutBannerImageDesktop: file(
+      relativePath: { eq: "banners/header-about-us_3x.jpg" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 1110, srcSetBreakpoints: [768]) {
+          base64
+          aspectRatio
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+          sizes
+          originalImg
+          originalName
+        }
+      }
+    }
+
+    aboutBannerImageMobile: file(
+      relativePath: { eq: "banners/header-about-us_3x.jpg" }
+    ) {
+      childImageSharp {
+        resolutions(height: 300, width: 728, cropFocus: CENTER) {
+          ...GatsbyImageSharpResolutions
+        }
+      }
+    }
+
     aboutBanner: file(relativePath: { eq: "homepage-header_3x.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1000) {
