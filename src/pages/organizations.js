@@ -26,12 +26,6 @@ const Organizations = props => {
     return <Organization organization={node.org} key={i} />;
   });
 
-  const bannerContent = (
-    <>
-      <div className="title title--large"> in unity there is strength </div>
-    </>
-  );
-
   return (
     <BasicLayout>
       <Helmet>
@@ -41,8 +35,15 @@ const Organizations = props => {
       </Helmet>
       <LayoutContained className="organizations">
         <Banner
-          image={props.data.organizationsBanner.childImageSharp.fluid}
-          text={bannerContent}
+          imageMobile={
+            props.data.organizationsBannerImageMobile.childImageSharp
+              .resolutions
+          }
+          image={
+            props.data.organizationsBannerImageDesktop.childImageSharp.fluid
+          }
+          text=""
+          title={['in unity,', 'there is', 'strength']}
           forPage="organizations"
         />
 
@@ -130,8 +131,8 @@ export const query = graphql`
       }
     }
 
-    organizationsBanner: file(
-      relativePath: { eq: "affiliations-header_3x.jpg" }
+    organizationsBannerImageDesktop: file(
+      relativePath: { eq: "banners/affiliations-header_3x.jpg" }
     ) {
       childImageSharp {
         fluid(maxWidth: 1000) {
@@ -145,6 +146,16 @@ export const query = graphql`
           sizes
           originalImg
           originalName
+        }
+      }
+    }
+
+    organizationsBannerImageMobile: file(
+      relativePath: { eq: "banners/affiliations-header_3x.jpg" }
+    ) {
+      childImageSharp {
+        resolutions(height: 300, width: 728, cropFocus: CENTER) {
+          ...GatsbyImageSharpResolutions
         }
       }
     }
