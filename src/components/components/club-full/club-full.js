@@ -7,6 +7,8 @@ import React from 'react';
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import Layout2ColsUnequal from './../../layouts/layout-2col-unequal/layout-2col-unequal';
 import MemberList from './../member-list/member-list';
+import ClubInfo from './../club-info/club-info';
+import { PlusCircle } from 'react-feather';
 
 import './club-full.scss';
 
@@ -16,8 +18,7 @@ export default class Club extends React.Component {
   }
 
   render() {
-    const clubAction = <div className="button"> Become a member </div>;
-
+    const club = { ...this.props.club };
     const clubMembers = [...this.props.club.users];
 
     return (
@@ -42,33 +43,20 @@ export default class Club extends React.Component {
           </div>
 
           <div className="club-full__title-wrapper">
-            <h1 className="club-full__title"> Club Title </h1>
-            <h2 className="club-full__subtitle"> Club sub title </h2>
+            <h1 className="club-full__title"> {club.title} </h1>
+            <h2 className="club-full__subtitle"> {club.subtitle} </h2>
           </div>
         </div>
 
         <Layout2ColsUnequal inverse className="club-full__body">
-          <div>
-            {clubAction}
-            <ul>
-              <li>
-                <a href="#passLinter"> Club location </a>
-              </li>
-              <li>
-                <a href="#passLinter">
-                  <span>github.com/</span>
-                </a>
-              </li>
-              <li>
-                <a href="#passLinter">
-                  <span>http://</span>
-                </a>
-              </li>
-              <li>
-                <a href="#passLinter"> email@email.com </a>
-              </li>
-              <li> Meeting dates </li>
-            </ul>
+          <div className="club-full__info-container">
+            <div className="button club-full__cta">
+              <span className="club-full__cta-icon">
+                <PlusCircle />
+              </span>
+              Become a member
+            </div>
+            <ClubInfo club={club} />
           </div>
           <div>
             <div>

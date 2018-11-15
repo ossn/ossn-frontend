@@ -1,9 +1,11 @@
 import React from 'react';
 import './formated-text.scss';
 import {
-  Github as GithubIcon,
+  GitHub as GithubIcon,
   Calendar as CalendarIcon,
-  Link as LinkIcon
+  Link as LinkIcon,
+  Map as MapIcon,
+  AtSign
 } from 'react-feather';
 
 // TODO: find a way to pass the icon
@@ -11,7 +13,7 @@ export default class FormatedText extends React.PureComponent {
   render() {
     const prefix = this.props.prefix || '';
     const value = this.props.value;
-    const icon = this.props.icon ? this.props.icon : 'O';
+    const icon = this.props.icon ? <this.props.icon /> : '';
     const secondary = this.props.secondary || '';
 
     return (
@@ -29,6 +31,7 @@ export default class FormatedText extends React.PureComponent {
   }
 }
 
+// shortcut wrapper for github links.
 export class Github extends React.PureComponent {
   render() {
     const value = this.props.value;
@@ -39,6 +42,7 @@ export class Github extends React.PureComponent {
   }
 }
 
+// shortcut wrapper for links.
 export class Link extends React.PureComponent {
   render() {
     const value = this.props.value;
@@ -47,6 +51,7 @@ export class Link extends React.PureComponent {
   }
 }
 
+// shortcut wrapper for plain text.
 export class Text extends React.PureComponent {
   render() {
     const value = this.props.value;
@@ -54,6 +59,7 @@ export class Text extends React.PureComponent {
   }
 }
 
+// shortcut wrapper for events.
 export class Event extends React.PureComponent {
   render() {
     const value = this.props.value;
@@ -62,5 +68,21 @@ export class Event extends React.PureComponent {
     return (
       <FormatedText value={value} secondary={secondary} icon={CalendarIcon} />
     );
+  }
+}
+
+// shortcut wrapper for Map.
+export class Map extends React.PureComponent {
+  render() {
+    const value = this.props.value;
+    return <FormatedText prefix="" value={value} icon={MapIcon} />;
+  }
+}
+
+// shortcut wrapper for email.
+export class Email extends React.PureComponent {
+  render() {
+    const value = this.props.value;
+    return <FormatedText prefix="" value={value} icon={AtSign} />;
   }
 }

@@ -2,10 +2,18 @@
 
 .formated-text {
   display: inline-block;
+  margin-top: auto;
+  margin-bottom: auto;
+  position: relative;
 
   &__icon {
     display: inline-block;
     vertical-align: middle;
+    color: color('brand');
+    position: absolute;
+    left: -33px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   &__text {
