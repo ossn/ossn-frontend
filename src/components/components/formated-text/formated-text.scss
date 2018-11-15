@@ -1,0 +1,27 @@
+@import './../../base-styles/init/init.scss';
+
+.formated-text {
+  display: inline-block;
+
+  &__icon {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__text {
+    display: inline-block;
+  }
+
+  &__prefix {
+    font-weight: 300;
+  }
+
+  &__value {
+    font-weight: 600;
+  }
+
+  &__secondary {
+    display: block;
+    font-weight: 300;
+  }
+}
