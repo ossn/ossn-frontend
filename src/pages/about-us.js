@@ -15,7 +15,7 @@ import JoinCta from './../components/components/join-cta/join-cta';
 import Shape from './../components/components/shape/shape';
 import Banner from './../components/components/banner/banner';
 
-import './../components/pages-styles/faq-page.scss';
+import './../components/pages-styles/about-us.scss';
 
 // TODO: Remove and fid title another way.
 const About = props => {
@@ -35,15 +35,20 @@ const About = props => {
           title={['student', 'network', 'open source', 'ossn']}
           forPage="about"
         />
-        <Layout2ColsUnequal secondNarrow horizontalGutters verticalGutters>
+        <Layout2ColsUnequal
+          secondNarrow
+          horizontalGutters
+          verticalGutters
+          className="about-us__slice about-us__slice--first"
+        >
           <div>
-            <p className="highlighted-text">
+            <p className="highlighted-text about-us__highlighted">
               We believe Open Source is the engine that powers innovation.
               That’s why we’re building and supporting a Network of university
               and college Clubs eager to learn about, contribute to and create
               Open Source projects.
             </p>
-            <p className="highlighted-text highlighted-text--small">
+            <p className="highlighted-text highlighted-text--small about-us__highlighted-small">
               Focused on campuses in the US and Canada, our program brings
               students together with mentors, organizations and professionals
               who are actively engaged in advancing Open Source. -{' '}
@@ -51,14 +56,16 @@ const About = props => {
                 What do we want to achieve?
               </h2>
             </p>
-            <p className="text">
-              At Mozilla, our mission is to promote openness, innovation and
-              opportunity on the Internet. Through our Open Source Student
-              Network (OSSN) we aim to encourage students and Clubs to fuel the
-              Open Source movement.
-            </p>
-            <div className="text">
-              Our goal is to empower you to:
+            <div className="text about-us__text">
+              <p>
+                At Mozilla, our mission is to promote openness, innovation and
+                opportunity on the Internet. Through our Open Source Student
+                Network (OSSN) we aim to encourage students and Clubs to fuel
+                the Open Source movement.
+              </p>
+              <p className="about-us__list-title">
+                Our goal is to empower you to:
+              </p>
               <ul>
                 <li>
                   Build a safe and inclusive community where you can connect,
@@ -88,7 +95,7 @@ const About = props => {
           divider
           className="about-us__divider about-us__divider--first"
         />
-        <div>
+        <div className="about-us__slice">
           <div className="about-us__section--what-we-do">
             <h2 className="title title--x-small"> What do we do? </h2>
             <p className="text">
@@ -97,48 +104,48 @@ const About = props => {
               you with the right activities and assistance, but also with
               motivating challenges:
             </p>
-            <Layout3Col horizontalGutters verticalGutters className="text">
+            <Layout3Col horizontalGutters verticalGutters>
               <div className="text-column">
                 <div className="text-column__icon-wrapper">
                   <div className="text-column__icon">
-                    <Clipboard />
-                    <Shape
-                      circle
-                      sunnyYellow
-                      className="text-column__shape text-column__shape--first"
-                    />
+                    <Clipboard size={34} />
+                    <div className="text-column__shape text-column__shape--circle">
+                      <Shape circle sunnyYellow />
+                    </div>
                   </div>
                 </div>
-                We provide your club with many resources that will help you
-                develop new skills.
+                <p>
+                  We provide your club with many resources that will help you
+                  develop new skills.
+                </p>
               </div>
               <div className="text-column">
                 <div className="text-column__icon-wrapper">
                   <div className="text-column__icon">
-                    <MessageSquare />
-                    <Shape
-                      triangle2
-                      seafoamBlue
-                      className="text-column__shape text-column__shape--second"
-                    />
+                    <MessageSquare size={34} />
+                    <div className="text-column__shape text-column__shape--triangle">
+                      <Shape triangle seafoamBlue />
+                    </div>
                   </div>
                 </div>
-                We offer ongoing support to members in the form of online 1:1
-                discussions, network calls and newsletters.
+                <p>
+                  We offer ongoing support to members in the form of online 1:1
+                  discussions, network calls and newsletters.
+                </p>
               </div>
               <div className="text-column">
                 <div className="text-column__icon-wrapper">
                   <div className="text-column__icon">
-                    <GitPullRequest />
-                    <Shape
-                      square
-                      darkSkyBlue
-                      className="text-column__shape text-column__shape--third"
-                    />
+                    <GitPullRequest size={34} />
+                    <div className="text-column__shape text-column__shape--square">
+                      <Shape square darkSkyBlue />
+                    </div>
                   </div>
                 </div>
-                We present you with opportunities that match your interests, let
-                you contribute code and therefore improve your expertise.
+                <p>
+                  We present you with opportunities that match your interests,
+                  let you contribute code and therefore improve your expertise.
+                </p>
               </div>
             </Layout3Col>
           </div>
@@ -150,7 +157,12 @@ const About = props => {
           className="about-us__divider about-us__divider--second"
         />
 
-        <Layout2ColsUnequal secondNarrow horizontalGutters verticalGutters>
+        <Layout2ColsUnequal
+          secondNarrow
+          horizontalGutters
+          verticalGutters
+          className="about-us__slice"
+        >
           <div>
             <h2 className="title title--x-small"> Who helps us? </h2>
             <p className="text">

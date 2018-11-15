@@ -167,5 +167,7 @@
   &--divider {
     @include margin(1 auto);
     text-align: center;
+    width: 76px;
+    display: block;
   }
 }
