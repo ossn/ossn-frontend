@@ -1,0 +1,59 @@
+@import './../base-styles/init/init';
+
+/*
+  Styles for the about page.
+  Distances and basic layout.
+*/
+
+.about-us {
+  &__break {
+    @include margin-top(30px);
+    @include margin-bottom(30px);
+  }
+
+  &__text {
+    margin-bottom: 0;
+
+    ul {
+      margin-top: 0;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__list-title {
+    margin-bottom: 0;
+  }
+
+  &__divider {
+    &--first {
+    }
+
+    &--second {
+      //@include margin-top(37.6px);
+      //@include margin-bottom(59.4px);
+    }
+  }
+
+  &__highlighted {
+    margin-top: 0;
+  }
+
+  &__slice {
+    @include margin-top(1.5);
+
+    @include breakpoint($desktop) {
+      @include margin-top(2);
+    }
+
+    &--first {
+      @include margin-top(1.5);
+
+      @include breakpoint($desktop) {
+        @include margin-top(2.5);
+      }
+    }
+  }
+}

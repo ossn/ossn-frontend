@@ -1,0 +1,63 @@
+// Text column
+//
+// Normal text in a container with icon.
+.text-column {
+  &__icon-wrapper {
+    @include margin-top(20px);
+    @include margin-bottom(10px);
+    width: 100%;
+    display: block;
+    text-align: center;
+    position: relative;
+
+    @include breakpoint($tablet) {
+      @include margin-bottom(26px);
+      margin-top: 0;
+    }
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  &__icon {
+    position: relative;
+    display: inline-block;
+    color: color('brand');
+  }
+
+  &__shape {
+    position: absolute;
+    z-index: -1;
+
+    &--circle {
+      transform: scale(.5) translate(-80%, -70%);
+      top: 0;
+      left: 0;
+
+      .shape {
+        opacity: .2;
+      }
+    }
+
+    &--triangle {
+      transform: scale(.4) rotate(-90deg) translate(-110%, -70%);
+      left: 0;
+      bottom: 0;
+
+      .shape {
+        opacity: .44;
+      }
+    }
+
+    &--square {
+      left: 0;
+      bottom: 0;
+      transform: scale(.45) rotate(-75deg) translate(-55%, -30%);
+
+      .shape {
+        opacity: .2;
+      }
+    }
+  }
+}

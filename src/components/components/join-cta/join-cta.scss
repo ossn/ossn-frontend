@@ -6,9 +6,14 @@
   max-width: 350px;
 
   &__image {
-    @include margin-bottom(1);
+    @include margin-top(1);
     width: 100%;
     min-width: 100%;
+
+    @include breakpoint($desktop) {
+      @include margin-bottom(1);
+      @include margin-top(0);
+    }
   }
 
   &__text {
@@ -20,12 +25,27 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    padding: 26px 30px;
+    padding: 27px 30px;
 
     &-small {
-      @include font-size(39px);
-      @include line-height(47px);
+      @include font-size(29px);
+      @include line-height(37px);
       color: color('light-navy');
+
+      @include breakpoint($mobile) {
+        @include font-size(39px);
+        @include line-height(47px);
+      }
+
+      @include breakpoint($desktop) {
+        @include font-size(29px);
+        @include line-height(37px);
+      }
+
+      @include breakpoint($desktop-large) {
+        @include font-size(39px);
+        @include line-height(47px);
+      }
 
       + .join-cta__text-medium {
         margin-top: -18px;
@@ -33,15 +53,45 @@
     }
 
     &-medium {
-      @include font-size(59px);
-      @include line-height(70px);
+      @include font-size(49px);
+      @include line-height(60px);
       color: color('light-navy');
+
+      @include breakpoint($mobile) {
+        @include font-size(59px);
+        @include line-height(70px);
+      }
+
+      @include breakpoint($desktop) {
+        @include font-size(49px);
+        @include line-height(60px);
+      }
+
+      @include breakpoint($desktop-large) {
+        @include font-size(59px);
+        @include line-height(70px);
+      }
     }
 
     &-large {
-      @include font-size(88px);
-      @include line-height(106px);
+      @include font-size(78px);
+      @include line-height(96px);
       color: color('pale-grey');
+
+      @include breakpoint($mobile) {
+        @include font-size(88px);
+        @include line-height(106px);
+      }
+
+      @include breakpoint($desktop) {
+        @include font-size(78px);
+        @include line-height(96px);
+      }
+
+      @include breakpoint($desktop-large) {
+        @include font-size(88px);
+        @include line-height(106px);
+      }
 
       + .join-cta__text-small {
         margin-top: -20px;
