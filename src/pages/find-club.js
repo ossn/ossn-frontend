@@ -43,9 +43,11 @@ class Clubs extends React.PureComponent {
   };
 
   render() {
+    // console.log(this.props.data);
+
     const snapshot = { ...this.state };
 
-    // Take a copy of the function.
+    // Keep the props object unmodified for later reference (sorting undo sorting etc)
     let clubs = this.props.data.ossnApi.clubs.slice();
 
     // Filter clubs by the search string.
@@ -123,6 +125,17 @@ export const query = graphql`
           id
           lat
           lng
+        }
+        users {
+          userName
+          firstName
+          lastName
+          imageUrl
+          receiveNewsletter
+          description
+          githubUrl
+          personalUrl
+          email
         }
       }
     }

@@ -6,13 +6,19 @@ import React from 'react';
 // Local modules.
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import Layout2ColsUnequal from './../../layouts/layout-2col-unequal/layout-2col-unequal';
-import Layout2Col from './../../layouts/layout-2col/layout-2col';
+import MemberList from './../member-list/member-list';
 
 import './club-full.scss';
 
 export default class Club extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     const clubAction = <div className="button"> Become a member </div>;
+
+    const clubMembers = [...this.props.club.users];
 
     return (
       <LayoutContained className="club-full">
@@ -112,10 +118,7 @@ export default class Club extends React.Component {
             </div>
             <div>
               <h2> Members </h2>
-              <Layout2Col>
-                <div> member 1 </div>
-                <div> member 2 </div>
-              </Layout2Col>
+              <MemberList members={clubMembers} />
             </div>
           </div>
         </Layout2ColsUnequal>
