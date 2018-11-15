@@ -1,0 +1,42 @@
+@import './../base-styles/init/init';
+
+// Members
+//
+// All the custom styles needed for the members listing page.
+.members {
+  &__divider {
+    @include breakpoint($desktop) {
+      position: relative;
+      top: -15px
+    }
+  }
+
+  &__image {
+    @include margin-bottom(15px);
+    position: relative;
+  }
+
+  &__triangle {
+    position: absolute;
+    top: -17px;
+    right: -15px;
+    z-index: -1;
+    opacity: .3;
+    transform: rotate(190deg);
+  }
+
+  &__intro {
+    p,
+    ul,
+    ol {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__list-title {
+    padding-top: 13px;
+    padding-bottom: 10px;
+  }
+}

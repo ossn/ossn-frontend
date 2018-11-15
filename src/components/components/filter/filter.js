@@ -6,7 +6,7 @@ import Select from 'react-select';
 import Toggle from './../toggle/toggle';
 
 // styles
-import './filters.scss';
+import './filter.scss';
 
 /*
   Uses a horizontal toggle item and puts their labels.

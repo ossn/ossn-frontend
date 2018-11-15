@@ -86,7 +86,7 @@ const About = props => {
             </div>
           </div>
           <div>
-            <JoinCta imageJoinCta={props.data.imageJoinCta} />
+            <JoinCta imageJoinCta={props.data.imageJoinCta} tall />
           </div>
         </Layout2ColsUnequal>
         <Shape

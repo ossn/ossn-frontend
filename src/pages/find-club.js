@@ -9,7 +9,7 @@ import { ClubTeaserList } from './../components/components/club-teaser-list/club
 import {
   SearchFilter,
   ToggleFilter
-} from './../components/components/filters/filters';
+} from '../components/components/filter/filter';
 import Map from './../components/components/map/map';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 import Layout2Col from './../components/layouts/layout-2col/layout-2col';

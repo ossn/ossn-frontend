@@ -4,16 +4,16 @@
   display: flex;
   width: 100%;
   max-width: 350px;
+  @include margin-top(1);
+
+  @include breakpoint($desktop) {
+    @include margin-bottom(1);
+    @include margin-top(0);
+  }
 
   &__image {
-    @include margin-top(1);
     width: 100%;
     min-width: 100%;
-
-    @include breakpoint($desktop) {
-      @include margin-bottom(1);
-      @include margin-top(0);
-    }
   }
 
   &__text {
@@ -25,86 +25,104 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    padding: 27px 30px;
+    padding: 4px 24px;
 
     &-small {
-      @include font-size(29px);
-      @include line-height(37px);
+      @include font-size(32px);
+      @include line-height(38px);
       color: color('light-navy');
 
-      @include breakpoint($mobile) {
-        @include font-size(39px);
-        @include line-height(47px);
-      }
-
-      @include breakpoint($desktop) {
-        @include font-size(29px);
-        @include line-height(37px);
-      }
-
-      @include breakpoint($desktop-large) {
-        @include font-size(39px);
-        @include line-height(47px);
-      }
-
       + .join-cta__text-medium {
-        margin-top: -18px;
+        margin-top: -15px;
       }
     }
 
     &-medium {
-      @include font-size(49px);
-      @include line-height(60px);
+      @include font-size(48px);
+      @include line-height(57px);
       color: color('light-navy');
-
-      @include breakpoint($mobile) {
-        @include font-size(59px);
-        @include line-height(70px);
-      }
-
-      @include breakpoint($desktop) {
-        @include font-size(49px);
-        @include line-height(60px);
-      }
-
-      @include breakpoint($desktop-large) {
-        @include font-size(59px);
-        @include line-height(70px);
-      }
     }
 
     &-large {
-      @include font-size(78px);
-      @include line-height(96px);
+      @include font-size(72px);
+      @include line-height(86px);
       color: color('pale-grey');
 
-      @include breakpoint($mobile) {
-        @include font-size(88px);
-        @include line-height(106px);
-      }
-
-      @include breakpoint($desktop) {
-        @include font-size(78px);
-        @include line-height(96px);
-      }
-
-      @include breakpoint($desktop-large) {
-        @include font-size(88px);
-        @include line-height(106px);
-      }
-
       + .join-cta__text-small {
-        margin-top: -20px;
+        margin-top: -15px;
       }
     }
   }
 
   &__shape {
-    width: 125px;
+    width: 103px;
     margin-top: -9px;
 
     svg {
       width: 100%;
+    }
+  }
+
+  &--tall {
+    .join-cta {
+      &__text {
+        padding: 27px 30px;
+
+        &-small {
+
+          @include breakpoint($mobile $desktop - 1px) {
+            @include font-size(39px);
+            @include line-height(47px);
+          }
+
+          @include breakpoint($desktop-large) {
+            @include font-size(39px);
+            @include line-height(47px);
+          }
+
+          + .join-cta__text-medium {
+            margin-top: -18px;
+          }
+        }
+
+        &-medium {
+          @include breakpoint($mobile $desktop - 1px) {
+            @include font-size(59px);
+            @include line-height(70px);
+          }
+
+          @include breakpoint($desktop-large) {
+            @include font-size(59px);
+            @include line-height(70px);
+          }
+        }
+
+        &-large {
+          @include breakpoint($mobile $desktop - 1px) {
+            @include font-size(88px);
+            @include line-height(106px);
+          }
+
+          @include breakpoint($desktop-large) {
+            @include font-size(88px);
+            @include line-height(106px);
+          }
+
+          + .join-cta__text-small {
+            margin-top: -20px;
+          }
+        }
+      }
+
+      &__shape {
+        @include breakpoint($mobile $desktop - 1px) {
+          width: 125px;
+        }
+
+        @include breakpoint($desktop-large) {
+          width: 125px;
+        }
+      }
     }
   }
 }

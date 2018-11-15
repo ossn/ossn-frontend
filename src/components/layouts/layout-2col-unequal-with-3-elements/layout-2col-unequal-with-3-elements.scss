@@ -1,0 +1,96 @@
+@import "../../base-styles/init/init";
+// Responsive 2-column, not equal grid.
+//
+// The `.layout-2col-unequal-with-3-elements` layout is a responsive grid layout
+// that is:
+// - 1 column at mobile sizes
+// - 2 columns at desktop sizes
+// It has 3 elements. The second element on mobile is the one that becomes the
+// narrow right column on desktop. The first and the third seem like one column
+// at desktop.
+//
+//
+// The `.layout-2col-unequal-with-3-elements` class is used on the container div
+// for the layout. A *grid item* in the container can be created using one the
+// following class:
+// - `.layout-2col-unequal-with-3-elements__col` : 1-column wide grid item
+// spanning column 1
+//
+// .layout-2col-unequal-with-3-elements--with-horizontal-gutters - Gutters on
+// both sides, needs wrapper with overflow hidden.
+// .layout-2col-unequal-with-3-elements--with-vertical-gutters - Gutters on
+// top and bottom.
+
+// The following two mixins add the layout logic to become 2 columns.
+// They are in mixins to be reused.
+@mixin two-columns-unequal-with-3-elements {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  width: 100%;
+}
+
+@mixin two-columns-unequal-with-3-elements-column {
+  &:nth-child(3n + 1) {
+    grid-column: 1 / span 2;
+  }
+
+  &:nth-child(3n + 2) {
+    clear: left;
+    grid-column: 3 / span 1;
+    grid-row-start: 1;
+    grid-row-end: last-line;
+  }
+
+  &:nth-child(3n) {
+    grid-column: 1 / span 2;
+  }
+}
+
+
+.layout-2col-unequal-with-3-elements,
+%layout-2col-unequal-with-3-elements {
+  min-width: 100%;
+
+  // Two columns, the first column is the narrow one.
+  @include breakpoint($desktop) {
+    @include two-columns-unequal-with-3-elements;
+
+    &__col {
+      @include two-columns-unequal-with-3-elements-column;
+    }
+  }
+
+  @include breakpoint($desktop ($desktop-large - 1px)) {
+    grid-gap: $gutters-tablet;
+  }
+
+  @include breakpoint($desktop-large) {
+    grid-gap: $gutters-desktop;
+  }
+
+  // Variant with horizontal gutters.
+  &--with-horizontal-gutters {
+    @include breakpoint($desktop ($desktop-large - 1px)) {
+      grid-row-gap: $gutters-tablet;
+    }
+
+    @include breakpoint($desktop-large) {
+      grid-row-gap: $gutters-desktop;
+    }
+  }
+
+  // Variant with top and bottom gutters.
+  &--with-vertical-gutters {
+    grid-column-gap: $gutters-mobile;
+
+    // Two columns.
+    @include breakpoint($tablet) {
+      grid-column-gap: $gutters-tablet;
+    }
+
+    @include breakpoint($desktop-large) {
+      grid-column-gap: $gutters-desktop;
+    }
+  }
+}
