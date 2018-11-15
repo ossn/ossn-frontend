@@ -3,7 +3,7 @@
 /*
   Adds basic style for a filter component.
 */
-
+// TODO : restructure, remove #cccccc, #ccc.
 .filter {
   background-color: color('white');
   display: inline-block;
@@ -92,9 +92,7 @@
   }
 
   &__wrapper-inner {
-
     min-width: unset;
-    width: 100%;
     width: 100%;
     background: color('white');
     display: flex;
@@ -106,6 +104,5 @@
       max-width: 540px;
       flex-wrap: nowrap;
     }
-
   }
 }
