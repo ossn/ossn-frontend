@@ -1,16 +1,16 @@
 // External modules.
-// import { graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
 import BasicLayout from '../components/layouts/layout-base/layout-base';
 import GatsbyConfig from './../../gatsby-config';
-// import { ClubTeaserList } from './../components/components/club-teaser-list/club-teaser-list';
+import { ClubTeaserList } from './../components/components/club-teaser-list/club-teaser-list';
 import {
   SearchFilter,
   ToggleFilter
 } from '../components/components/filter/filter';
-// import Map from './../components/components/map/map';
+import Map from './../components/components/map/map';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 import Layout2Col from './../components/layouts/layout-2col/layout-2col';
 import { Search } from 'react-feather';
@@ -45,30 +45,30 @@ class Clubs extends React.PureComponent {
   render() {
     const snapshot = { ...this.state };
 
-    // // Take a copy of the function.
-    // let clubs = this.props.data.ossnApi.clubs.slice();
-    //
-    // // Filter clubs by the search string.
-    // if (
-    //   snapshot.searchString !== '' ||
-    //   typeof snapshot.searchString !== 'undefined'
-    // ) {
-    //   clubs = clubs.filter((club, i) => {
-    //     return (
-    //       club.title
-    //         .toLowerCase()
-    //         .indexOf(snapshot.searchString.trim().toLowerCase()) >= 0
-    //     );
-    //   });
-    // }
+    // Take a copy of the function.
+    let clubs = this.props.data.ossnApi.clubs.clubs.slice();
+
+    // Filter clubs by the search string.
+    if (
+      snapshot.searchString !== '' ||
+      typeof snapshot.searchString !== 'undefined'
+    ) {
+      clubs = clubs.filter((club, i) => {
+        return (
+          club.title
+            .toLowerCase()
+            .indexOf(snapshot.searchString.trim().toLowerCase()) >= 0
+        );
+      });
+    }
 
     // Decide which view to show.
-    // const content =
-    //   snapshot.view === 'map' ? (
-    //     <Map clubs={clubs} />
-    //   ) : (
-    //     <ClubTeaserList clubs={clubs} />
-    //   );
+    const content =
+      snapshot.view === 'map' ? (
+        <Map clubs={clubs} />
+      ) : (
+        <ClubTeaserList clubs={clubs} />
+      );
 
     return (
       <BasicLayout>
@@ -100,8 +100,7 @@ class Clubs extends React.PureComponent {
               </ShadowBox>
             </div>
           </div>
-
-          {/*{content}*/}
+          {content}
         </LayoutContained>
       </BasicLayout>
     );
@@ -110,21 +109,24 @@ class Clubs extends React.PureComponent {
 
 export default Clubs;
 
-// export const query = graphql`
-//   {
-//     ossnApi {
-//       clubs {
-//         ids
-//         title: name
-//         subtitle: sortDescription
-//         imageUrl
-//         clubUrl
-//         location {
-//           id
-//           lat
-//           lng
-//         }
-//       }
-//     }
-//   }
-// `;
+export const query = graphql`
+  {
+    ossnApi {
+      clubs {
+        clubs {
+          id
+          title: name
+          subtitle: sortDescription
+          imageUrl
+          clubUrl
+          location {
+            address
+            id
+            lat
+            lng
+          }
+        }
+      }
+    }
+  }
+`;
