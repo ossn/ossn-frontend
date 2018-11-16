@@ -6,28 +6,57 @@ import React from 'react';
 // Local modules.
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import Layout2ColsUnequal from './../../layouts/layout-2col-unequal/layout-2col-unequal';
-import Layout2Col from './../../layouts/layout-2col/layout-2col';
+import MemberList from './../member-list/member-list';
+import ClubInfo from './../club-info/club-info';
+import { PlusCircle } from 'react-feather';
+
+import './club-full.scss';
 
 export default class Club extends React.Component {
-  render() {
-    const clubAction = <div className="button"> Become a member </div>;
+  constructor(props) {
+    super(props);
+  }
 
+  render() {
+    const club = { ...this.props.club };
+    const clubMembers = [...this.props.club.users];
     return (
-      <LayoutContained>
-        <div>
-          <div>
-            <img src="#" alt="this is a club cover" />
+      <LayoutContained className="club-full">
+        <div className="club-full__header">
+          <div className="club-full__cover-wrapper">
+            <img
+              src="#"
+              alt="this is a club cover"
+              className="club-full_wrapper"
+            />
           </div>
-          <div>
-            <img src="#" alt="Club profile" />
-            <div>
-              <h1> Club Title </h1>
-              <h2> Club sub title </h2>
+
+          <div className="club-full__profile-picture-section">
+            <div className="club-full__profile-picture-wrapper">
+              <img
+                src="https://d.ibtimes.co.uk/en/full/1477880/lemmy.jpg"
+                alt="Club profile"
+                className="club-full__profile-picture"
+              />
             </div>
+          </div>
+
+          <div className="club-full__title-wrapper">
+            <h1 className="club-full__title"> {club.title} </h1>
+            <h2 className="club-full__subtitle"> {club.subtitle} </h2>
           </div>
         </div>
 
-        <Layout2ColsUnequal secondNarrow>
+        <Layout2ColsUnequal inverse className="club-full__body">
+          <div className="club-full__info-container">
+            <div className="button club-full__cta">
+              <span className="club-full__cta-icon">
+                <PlusCircle />
+              </span>
+              Become a member
+            </div>
+            <ClubInfo club={club} />
+          </div>
           <div>
             <div>
               <h2> Description </h2>
@@ -76,33 +105,8 @@ export default class Club extends React.Component {
             </div>
             <div>
               <h2> Members </h2>
-              <Layout2Col>
-                <div> member 1 </div>
-                <div> member 2 </div>
-              </Layout2Col>
+              <MemberList members={clubMembers} />
             </div>
-          </div>
-          <div>
-            {clubAction}
-            <ul>
-              <li>
-                <a href="#passLinter"> Club location </a>
-              </li>
-              <li>
-                <a href="#passLinter">
-                  <span>github.com/</span>
-                </a>
-              </li>
-              <li>
-                <a href="#passLinter">
-                  <span>http://</span>
-                </a>
-              </li>
-              <li>
-                <a href="#passLinter"> email@email.com </a>
-              </li>
-              <li> Meeting dates </li>
-            </ul>
           </div>
         </Layout2ColsUnequal>
       </LayoutContained>

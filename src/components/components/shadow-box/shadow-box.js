@@ -1,10 +1,10 @@
 /*
   Wrapper it's children and adds a white background and shadow.
 */
-import React from 'react';
+import React, { memo } from 'react';
 import './shadow-box.scss';
 
-export default props => {
+const ShadowBox = props => {
   let classes = ['shadow-box'];
 
   // TODO  Check what and where we need.
@@ -17,3 +17,5 @@ export default props => {
 
   return <div className={classes.join(' ')}>{props.children}</div>;
 };
+
+export default memo(ShadowBox);

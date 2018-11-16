@@ -6,6 +6,7 @@ import Navigation from './../../navigation/main-navigation/main-navigation';
 // import UserMenu from './../user-menu/user-menu';
 import { Menu, X } from 'react-feather';
 import MediaQuery from 'react-responsive';
+import ShadowBox from './../shadow-box/shadow-box';
 
 // Header navigation content
 const HeaderNavigationInner = props => {
@@ -84,7 +85,7 @@ class HeaderNavigation extends React.Component {
     let classString = classes.join(' ');
 
     return (
-      <div className="header__inner" ref={this.expandable}>
+      <ShadowBox className="header__inner" ref={this.expandable}>
         <MediaQuery maxWidth={767}>
           <button
             onClick={this.handleOpen}
@@ -108,7 +109,7 @@ class HeaderNavigation extends React.Component {
             hiddenState={false}
           />
         </MediaQuery>
-      </div>
+      </ShadowBox>
     );
   }
 }
