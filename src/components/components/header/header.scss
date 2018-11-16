@@ -1,5 +1,4 @@
 @import './../../base-styles/init/init';
-@import './../shadow-box/shadow-box';
 
 // Header styling.
 // Adds header styles and layout.
@@ -45,7 +44,6 @@
   }
 
   &__inner {
-    @extend %shadow-box;
     padding-left: 0;
     padding-right: 0;
     border-radius: 0;

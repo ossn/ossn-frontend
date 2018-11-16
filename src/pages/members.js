@@ -10,7 +10,6 @@ import MediaQuery from 'react-responsive';
 import BasicLayout from '../components/layouts/layout-base/layout-base';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 import MemberTeaser from './../components/components/member-teaser/member-teaser';
-import Layout2Col from './../components/layouts/layout-2col/layout-2col';
 import Layout2ColUnequalWith3Elements from './../components/layouts/layout-2col-unequal-with-3-elements/layout-2col-unequal-with-3-elements';
 import ShadowBox from './../components/components/shadow-box/shadow-box';
 import Shape from './../components/components/shape/shape';
@@ -21,6 +20,7 @@ import {
   SelectFilter
 } from '../components/components/filter/filter';
 import JoinCta from './../components/components/join-cta/join-cta';
+import MemberList from './../components/components/member-list/member-list';
 
 // Import page title from gatsby config. TODO Remove and fid title another way.
 import GatsbyConfig from './../../gatsby-config';
@@ -129,9 +129,7 @@ class Members extends React.PureComponent {
                   </div>
                 </ShadowBox>
 
-                <Layout2Col horizontalGutters verticalGutters>
-                  {memberList}
-                </Layout2Col>
+                <MemberList members={members} />
               </div>
             </div>
           </Layout2ColUnequalWith3Elements>
