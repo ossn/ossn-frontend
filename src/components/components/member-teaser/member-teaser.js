@@ -23,9 +23,12 @@ const MemberTeaser = props => {
   const imageUrl =
     props.member.imageUrl ||
     'http://assets.nydailynews.com/polopoly_fs/1.2479149.1451350340!/img/httpImage/image.jpg_gen/derivatives/article_750/motorhead29n-2-web.jpg';
-  const clubString = 'RIT Linux Users Group';
+  let clubString = props.member.clubs[0].name;
+  if (props.member.clubs.length > 1) {
+    clubString += ' + ' + (props.member.clubs.length - 1) + ' more';
+  }
 
-  // Whean the popup is open, the preview is loaded.
+  // When the popup is open, the preview is loaded.
   let preview = <div />;
   if (props.open) {
     preview = <Member member={props.member} />;

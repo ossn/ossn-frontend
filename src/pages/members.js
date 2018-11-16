@@ -48,8 +48,8 @@ class Members extends React.PureComponent {
 
   render() {
     const snapshot = { ...this.state };
-    let members = this.props.data.ossnApi.users.slice();
-    let totalCount = this.props.data.ossnApi.users.length;
+    let members = this.props.data.ossnApi.users.users.slice();
+    let totalCount = this.props.data.ossnApi.users.users.length;
 
     const memberList = members.map((member, i) => {
       return (
@@ -147,15 +147,21 @@ export const query = graphql`
   {
     ossnApi {
       users {
-        userName
-        firstName
-        lastName
-        imageUrl
-        receiveNewsletter
-        description
-        githubUrl
-        personalUrl
-        email
+        users {
+          id
+          userName
+          firstName
+          lastName
+          imageUrl
+          receiveNewsletter
+          description
+          githubUrl
+          personalUrl
+          email
+          clubs {
+            name
+          }
+        }
       }
     }
 

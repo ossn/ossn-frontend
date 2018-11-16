@@ -32,11 +32,14 @@ export default props => {
 export const query = graphql`
   fragment announcements on OSSNAPI {
     announcements {
-      description: description
-      title: sortDescription
-      link: url
-      date: updatedAt
-      imageUrl
+      announcements {
+        id
+        description: description
+        title: sortDescription
+        link: url
+        date: updatedAt
+        imageUrl
+      }
     }
   }
 `;
