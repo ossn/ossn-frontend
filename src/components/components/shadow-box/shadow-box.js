@@ -14,7 +14,6 @@ export default props => {
   if (props.zeroRadius) classes.push(`shadow-box--zero-radius`);
   if (props.zeroPadding) classes.push(`shadow-box--zero-padding`);
   if (props.smallPaddings) classes.push('shadow-box--small-paddings');
-  if (props.className) classes.push(props.className);
 
   return <div className={classes.join(' ')}>{props.children}</div>;
 };
