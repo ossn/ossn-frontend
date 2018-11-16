@@ -319,7 +319,6 @@ class Member extends React.Component {
             <div className="member__card-inner">
               <div className="member__image-wrapper">
                 <div className="member__image-inner">
-                  .
                   <img
                     src={snapshot.imageUrl}
                     alt="profile"
