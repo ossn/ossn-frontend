@@ -19,6 +19,9 @@ import { Feather, Check, X, GitHub, Users, Link } from 'react-feather';
 // Local modules.
 import TextInput from './../../forms/text-input/text-input';
 import ShadowBox from './../shadow-box/shadow-box';
+import Shape from './../shape/shape';
+import LayoutContained from './../../layouts/layout-contained/layout-contained';
+import MediaQuery from 'react-responsive';
 
 // styles
 import './member.scss';
@@ -128,6 +131,56 @@ class Member extends React.Component {
 
   render() {
     const snapshot = { ...this.state };
+
+    // Shuffles shapes to print them randomly in different areas.
+    // Uses Fisher-Yates (aka Knuth) Shuffle algorithm.
+    // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+    function shuffle(array) {
+      let currentIndex = array.length,
+        temporaryValue,
+        randomIndex;
+
+      // While there remain elements to shuffle.
+      while (0 !== currentIndex) {
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+      }
+
+      return array;
+    }
+
+    const shapesUnordered = [
+      <Shape
+        seafoamBlue
+        square
+        className="member__shape member__shape--square"
+        key="square"
+      />,
+      <Shape
+        sunnyYellow
+        triangle
+        className="member__shape member__shape--triangle"
+        key="triangle"
+      />,
+      <Shape
+        darkSkyBlue
+        circle
+        className="member__shape member__shape--circle"
+        key="circle"
+      />
+    ];
+    const shapes = shuffle(shapesUnordered);
+
+    // Used like so
+    //   var arr = [2, 11, 37, 42];
+    //   arr = shuffle(arr);
+    //   console.log(arr);
 
     const name = snapshot.edit ? (
       <TextInput
@@ -255,35 +308,58 @@ class Member extends React.Component {
     }
 
     return (
-      <div className="member">
-        <ShadowBox>
-          <div className="member__image-wrapper">
-            <div className="member__image-inner">
-              <img
-                src={snapshot.imageUrl}
-                alt="profile"
-                className="member__image"
+      <LayoutContained className="member">
+        <div className="member__inner">
+          <MediaQuery minWidth={576}>
+            <div className="member__shape-wrapper-left">{shapes[1]}</div>
+            <div className="member__shape-wrapper-right">{shapes[2]}</div>
+          </MediaQuery>
+          <ShadowBox className="member__card" zeroPadding>
+            <div className="member__card-shape-wrapper">{shapes[0]}</div>
+            <div className="member__card-inner">
+              <div className="member__image-wrapper">
+                <div className="member__image-inner">
+                  .
+                  <img
+                    src={snapshot.imageUrl}
+                    alt="profile"
+                    className="member__image"
+                  />
+                </div>
+              </div>
+              <div className="title title--small member__name">{name}</div>
+
+              <div className="member__location">{location}</div>
+
+              <div className="member__description">{description}</div>
+
+              <Shape
+                seafoamBlue
+                waveLarge
+                divider
+                className="member__divider"
               />
+
+              <div className="member__club">{club}</div>
+
+              <Shape
+                seafoamBlue
+                waveLarge
+                divider
+                className="member__divider"
+              />
+
+              <div className="member__link member__link--github">{github}</div>
+
+              <div className="member__link member__link--personal-page">
+                {personal}
+              </div>
             </div>
-          </div>
+          </ShadowBox>
 
-          <div className="title title--small member__name">{name}</div>
-
-          <div className="member__location">{location}</div>
-
-          <div className="member__description">{description}</div>
-
-          <div className="member__club">{club}</div>
-
-          <div className="member__link member__link--github">{github}</div>
-
-          <div className="member__link member__link--personal-page">
-            {personal}
-          </div>
-        </ShadowBox>
-
-        <div className="member__button-list">{buttonList}</div>
-      </div>
+          <div className="member__button-list">{buttonList}</div>
+        </div>
+      </LayoutContained>
     );
   }
 }
