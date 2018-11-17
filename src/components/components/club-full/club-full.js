@@ -57,7 +57,7 @@ export default class Club extends React.Component {
             </div>
             <ClubInfo club={club} />
           </div>
-          <div>
+          <div className="club-full__description">
             <div>
               <h2> Description </h2>
               <p>

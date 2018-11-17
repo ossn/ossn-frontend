@@ -1,3 +1,7 @@
+/*
+  Contains the `ClubInfo`  and `ClubInfoItem` components.
+*/
+
 import React from 'react';
 
 import ShadowBox from './../shadow-box/shadow-box';
@@ -36,7 +40,6 @@ export class ClubInfoItem extends React.PureComponent {
 }
 
 /*
-
   Box containing information about a club.
 
   props:
