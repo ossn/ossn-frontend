@@ -12,6 +12,8 @@ import {
   Map,
   Email
 } from './../formated-text/formated-text';
+import Shape from './../shape/shape';
+
 import './club-info.scss';
 
 /*
@@ -86,6 +88,7 @@ export default class ClubInfo extends React.PureComponent {
             </ClubInfoItem>
           </li>
         </ul>
+        <Shape square seafoamBlue className="club-info__shape" />
       </ShadowBox>
     );
   }

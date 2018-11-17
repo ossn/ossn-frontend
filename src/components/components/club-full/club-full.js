@@ -8,7 +8,9 @@ import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import Layout2ColsUnequal from './../../layouts/layout-2col-unequal/layout-2col-unequal';
 import MemberList from './../member-list/member-list';
 import ClubInfo from './../club-info/club-info';
+import Shape from './../shape/shape';
 import { PlusCircle } from 'react-feather';
+import Banner from './../banner/banner';
 
 import './club-full.scss';
 
@@ -24,10 +26,9 @@ export default class Club extends React.Component {
       <LayoutContained className="club-full">
         <div className="club-full__header">
           <div className="club-full__cover-wrapper">
-            <img
-              src="#"
-              alt="this is a club cover"
-              className="club-full_wrapper"
+            <Banner
+              imageMobile={this.props.mobileImage.childImageSharp.resolutions}
+              image={this.props.image.childImageSharp.fluid}
             />
           </div>
 
@@ -43,7 +44,7 @@ export default class Club extends React.Component {
 
           <div className="club-full__title-wrapper">
             <h1 className="club-full__title"> {club.title} </h1>
-            <h2 className="club-full__subtitle"> {club.subtitle} </h2>
+            <span className="club-full__subtitle"> {club.subtitle} </span>
           </div>
         </div>
 
@@ -53,7 +54,7 @@ export default class Club extends React.Component {
               <span className="club-full__cta-icon">
                 <PlusCircle />
               </span>
-              Become a member
+              Become a member of this club
             </div>
             <ClubInfo club={club} />
           </div>
@@ -103,8 +104,18 @@ export default class Club extends React.Component {
                 dignissim.
               </p>
             </div>
-            <div>
+            <div className="club-full__members-section">
               <h2> Members </h2>
+              <Shape
+                circle
+                sunnyYellow
+                className="club-full__members-shape club-full__members-shape--circle"
+              />
+              <Shape
+                waves
+                darkSkyBlue
+                className="club-full__members-shape club-full__members-shape--waves"
+              />
               <MemberList members={clubMembers} />
             </div>
           </div>

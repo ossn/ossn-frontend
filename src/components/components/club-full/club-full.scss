@@ -2,36 +2,74 @@
 
 /*
   The full view of a club.
+  Themes the layout of the page, the header and some decorative shapes.
+
+  Alters the `banner__image-wrapper` selector.
 */
 
 .club-full {
+
   &__cover-wrapper {
-    background: red;
+    @include margin-top(-50px);
+    @include margin-bottom(50px);
     min-height: 200px;
     max-height: 200px;
+
+    @include breakpoint($mobile) {
+      @include margin-bottom(0);
+    }
   }
 
   &__title-wrapper {
-    @include padding-left(20px);
     display: inline-block;
+    text-align: center;
+    width: 100%;
+
+    @include breakpoint($mobile) {
+      @include padding-left(20px);
+      text-align: left;
+      width: auto;
+    }
+  }
+
+  &__title {
+    @include margin-top(11px);
+  }
+
+  &__subtitle {
+    @include font-size(20px);
+    color: color('grey-dark');
   }
 
   &__profile-picture-section {
     display: inline-block;
-    width: 265px;
+    width: 100%;
     position: relative;
+
+    @include breakpoint($mobile) {
+      width: 265px;
+    }
   }
 
   &__profile-picture-wrapper {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 0px;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
     width: 180px;
     height: 180px;
     border: 10px solid color('white');
     border-radius: 50px;
     overflow: hidden;
-    background: black;
+    display: flex;
+    background: color('red'); // FIXME: make image be the whole size.
+
+    @include breakpoint($mobile) {
+      right: 0;
+      left: auto;
+      transform: none;
+    }
   }
 
   &__profile-picture {
@@ -43,22 +81,36 @@
   }
 
   &__body {
-    @include margin-top(68px);
+    @include margin-top(61px);
   }
 
-  // FIXME: the class does not effect the element.
   &__description {
-    padidng-right: 20px;
+    // FIXME: the class does not effect the element.
+    @include padding-right(20px);
+
+    div h2 {
+      @include margin-top(2);
+    }
+
+    @include breakpoint($desktop) {
+      div:first-child {
+        h2 {
+          @include margin-top(0);
+        }
+      }
+    }
   }
 
+  // The become a member button.
   &__cta {
     @include padding-left(65px);
     @include margin-bottom(20px);
     @include padding-top(20px);
     @include padding-bottom(20px);
+    @include font-size(14px);
+    font-weight: 600;
     max-width: 350px;
     width: 100%;
-    background: red;
     border-radius: 0;
     background-color: color('brand');
     color: color('seafoam-blue');
@@ -77,15 +129,57 @@
     left: 30px;
   }
 
+  // The wrapper of the information box.
   &__info-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
-    align-content: flex-start;
+    align-items: center;
     flex-direction: column;
 
     @include breakpoint($desktop) {
+      align-content: flex-start;
       flex-direction: row;
     }
+  }
+
+  &__members-section {
+    position: relative;
+    @include margin-top(2);
+  }
+
+  &__members-shape {
+    position: absolute;
+    right: -100px;
+
+    &--circle {
+      height: 122px;
+      width: 122px;
+      opacity: .1;
+      top: -71px;
+      right: -40px;
+      transform: translateY(50%);
+
+      @include breakpoint($desktop) {
+        right: -222px - 70px;
+      }
+    }
+
+    &--waves {
+      height: 86px;
+      width: 138px;
+      transform: rotate(15deg);
+      opacity: .15;
+      bottom: -50px;
+      right: -40px;
+
+      @include breakpoint($desktop) {
+        right: -138px - 278px;
+      }
+    }
+  }
+
+  .banner__image-wrapper {
+    max-height: 200px;
   }
 }

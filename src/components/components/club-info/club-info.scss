@@ -10,7 +10,6 @@
 */
 
 .club-info {
-  background-color: color('white');
   padding: 0;
   margin: 0;
   list-style: none;
@@ -21,17 +20,22 @@
   }
 
   &__wrapper {
+    position: relative;
     border-radius: 2px;
-    overflow: hidden;
+    // overflow: hidden;
     max-width: 350px;
     width: 100%;
     display: block;
   }
 
   &__item-wrapper {
-    min-height: 60px;
+    @include padding-top(18px);
+    @include padding-bottom(20px);
     display: flex;
     position: relative;
+    z-index: 2;
+    background-color: color('white');
+
 
     &::after {
       content: '';
@@ -43,7 +47,8 @@
     }
 
     &--major {
-      min-height: 100px;
+      @include padding-top(38px);
+      @include padding-bottom(41px);
       background-repeat: no-repeat;
       background-size: auto 100%;
       background-position: right;
@@ -70,5 +75,17 @@
     min-height: 100%;
     display: flex;
     padding-left: 65px;
+
+  }
+
+  &__shape {
+    position: absolute;
+    right: 0;
+    bottom: -20px;
+    transform-origin: 50% 50%;
+    transform: rotate(10deg);
+    z-index: 0;
+    width: 195px;
+    height: 195px;
   }
 }
