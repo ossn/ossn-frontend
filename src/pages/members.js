@@ -42,7 +42,8 @@ class Members extends React.PureComponent {
     };
   }
 
-  changeSorting = selected => {
+  changeSorting = event => {
+    const selected = event.target.value;
     this.setState({ currentSortOption: selected });
   };
 
@@ -115,17 +116,21 @@ class Members extends React.PureComponent {
               />
 
               <div>
-                <ShadowBox zeroPadding>
+                <ShadowBox zeroPadding className="members__filters-section">
                   <h2 className="title title--x-small title--centered members__list-title">
                     Showing {memberList.length} out of {totalCount} members
                   </h2>
-                  <div className="members__list-filters">
-                    <SelectFilter
-                      options={snapshot.sortOptions}
-                      value={snapshot.currentSortOption}
-                      onChange={this.changeSorting}
-                    />
-                    <SearchFilter />
+                  <div className="members__filter-list">
+                    <div className="members__filter members__filter--search">
+                      <SearchFilter />
+                    </div>
+                    <div className="members__filter members__filter--select">
+                      <SelectFilter
+                        options={snapshot.sortOptions}
+                        value={snapshot.currentSortOption}
+                        onBlur={this.changeSorting}
+                      />
+                    </div>
                   </div>
                 </ShadowBox>
 

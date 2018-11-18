@@ -40,7 +40,57 @@
     padding-bottom: 10px;
   }
 
-  &__lits-filters {
-    background: red;
+  &__filters-section {
+    @include margin-bottom(1);
+  }
+
+  &__filter-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+
+    @include breakpoint($mobile) {
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__filter {
+    border-top: 1px solid color('grey-basic');
+
+    &--search {
+      width: 100%;
+
+      @include breakpoint($mobile) {
+        @include padding-left(25px);
+      }
+    }
+
+    &--select {
+      @include padding-right(15px);
+      position: relative;
+      width: 100%;
+
+      @include breakpoint($mobile) {
+        @include padding-right(25px);
+        max-width: 190px;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        display: inline-block;
+        height: 100%;
+        width: 1px;
+        top: 0;
+        left: 0;
+        background-color: color('grey-basic');
+        z-index: 1;
+      }
+
+      .filter {
+        width: 100%;
+      }
+    }
   }
 }
