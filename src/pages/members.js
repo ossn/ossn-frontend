@@ -17,7 +17,7 @@ import '../components/pages-styles/members.scss';
 
 import {
   SearchFilter,
-  SelectFilter
+  CustomSelectFilter
 } from '../components/components/filter/filter';
 import JoinCta from './../components/components/join-cta/join-cta';
 import MemberList from './../components/components/member-list/member-list';
@@ -120,7 +120,7 @@ class Members extends React.PureComponent {
                     Showing {memberList.length} out of {totalCount} members
                   </h2>
                   <div className="members__list-filters">
-                    <SelectFilter
+                    <CustomSelectFilter
                       options={snapshot.sortOptions}
                       value={snapshot.currentSortOption}
                       onChange={this.changeSorting}

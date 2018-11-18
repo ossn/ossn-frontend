@@ -2,107 +2,90 @@
 
 /*
   Adds basic style for a filter component.
+
+  .filter--search: the search filter.
+  .filter--toggle: the toggle filter.
+  .filter--select: the search filter.
 */
-// TODO : restructure, remove #cccccc, #ccc.
+
 .filter {
-  background-color: color('white');
   display: inline-block;
   padding: 15px;
 
-  &__wrapper {
-    @include margin-top(20px);
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
+  &--search {
+    label {
+      padding: 0;
+      color: color('blue-dark');
 
-    @include breakpoint($tablet) {
-      justify-content: flex-end;
-      margin-top: 0;
+      svg {
+        width: 15px;
+        height: 15px;
+        vertical-align: middle;
+      }
     }
 
-    .filter {
-      @include padding(10px);
-      @include padding-left(25px);
-      @include padding-right(32px);
-      position: relative;
-      width: 100%;
+    input {
+      padding: 0;
+      padding-top: 2px;
+      padding-bottom: 2px;
+      border: none;
+      margin-left: 10px;
 
-      @include breakpoint($tablet) {
-        width: 50%;
-        &::before {
-          content: '';
-          position: absolute;
-          height: 100%;
-          width: 1px;
-          display: inline-block;
-          background-color: #cccccc;
-          top: 0;
-          left: 0;
-        }
+      &::placeholder {
+        opacity: 1;
       }
 
-      &:first-child {
-        &::before {
-          content: none;
-        }
-      }
-
-      &--search {
-        border-top: 1px solid #ccc;
-        width:100%;
-
-        @include breakpoint($tablet) {
-          border: none;
-          width: auto;
-        }
-
-        label {
-          padding: 0;
-          color: color('blue-dark');
-
-          svg {
-            width: 15px;
-            height: 15px;
-            vertical-align: middle;
-          }
-        }
-
-        input {
-          padding: 0;
-          padding-top: 2px;
-          padding-bottom: 2px;
-          border: none;
-          margin-left: 10px;
-
-          &::placeholder {
-            opacity: 1;
-          }
-        }
-      }
-
-      &--toggle {
-        display: flex;
-        justify-content: flex-start;
-
-        @include breakpoint($tablet) {
-          justify-content: space-between;
-        }
+      &:hover,
+      &:focus {
+        border: none;
       }
     }
   }
 
-  &__wrapper-inner {
-    min-width: unset;
-    width: 100%;
-    background: color('white');
+  &--toggle {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 0;
+    justify-content: flex-start;
 
     @include breakpoint($tablet) {
-      max-width: 540px;
-      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+  }
+
+  &--select {
+    position: relative;
+    padding: 0;
+
+    &::before,
+    &::after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    &::before {
+      width: 20px;
+      height: 100%;
+      background-color: color('white');
+      top: 0;
+      right: 0;
+    }
+
+    &::after {
+      top: 50%;
+      right: 3px;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 10px solid color('blue-dark');
+    }
+
+    select {
+      border: none;
+      background-color: color('white');
+      cursor: pointer;
     }
   }
 }
