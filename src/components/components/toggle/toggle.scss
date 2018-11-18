@@ -17,7 +17,7 @@
 
   &__track {
     position: absolute;
-    background-color: #cccccc;
+    background-color: color('grey-basic');
     width: 30px;
     height: 8px;
     border-radius: 4px;
@@ -28,7 +28,7 @@
   &__bullet {
     height: 20px;
     width: 20px;
-    background-color: color('seafoam-blue');
+    background-color: color('blue-dark');
     border-radius: 100%;
     position: absolute;
     top: 50%;

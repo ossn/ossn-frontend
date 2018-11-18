@@ -82,8 +82,8 @@ class Clubs extends React.PureComponent {
         <LayoutContained>
           <div className="find-club__header">
             <h1> Clubs </h1>
-            <div className="filter__wrapper filter__wrapper--clubs">
-              <ShadowBox className="filter__wrapper-inner">
+            <div className="find-club__filters-wrapper">
+              <ShadowBox className="find-club__filters-wrapper-inner">
                 <Layout2Col>
                   <ToggleFilter
                     onClick={this.handleToggleMap}

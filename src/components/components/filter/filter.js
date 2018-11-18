@@ -80,10 +80,30 @@ export class SelectFilter extends React.Component {
 
     return (
       <Select
+        className="filter filter--select"
         options={options}
         onChange={this.props.onChange}
         value={this.props.value}
       />
+    );
+  }
+}
+
+export class CustomSelectFilter extends React.Component {
+  render() {
+    const options = [...this.props.options] || [];
+    const optionList = options.map((option, i) => {
+      return (
+        <option value={option.value} key={i}>
+          {option.label}
+        </option>
+      );
+    });
+
+    return (
+      <div className="filter filter--select">
+        <select>{optionList}</select>
+      </div>
     );
   }
 }

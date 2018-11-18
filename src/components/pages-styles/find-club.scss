@@ -1,5 +1,10 @@
 @import './../base-styles/init/init';
 
+/*
+  Style for the club listing page.
+  Alters the layout of filter components.
+*/
+
 .find-club {
   &__header {
     @include margin-bottom(50px);
@@ -12,6 +17,101 @@
       flex-wrap: nowrap;
       justify-content: space-between;
     }
+  }
 
+  &__filters-wrapper {
+    @include margin-top(20px);
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+
+    @include breakpoint($tablet) {
+      justify-content: flex-end;
+      margin-top: 0;
+    }
+  }
+
+  &__filters-wrapper-inner {
+    min-width: unset;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0;
+
+    @include breakpoint($tablet) {
+      max-width: 540px;
+      flex-wrap: nowrap;
+    }
+
+    .filter {
+      @include padding(10px);
+      @include padding-left(25px);
+      @include padding-right(32px);
+      position: relative;
+      width: 100%;
+
+      @include breakpoint($tablet) {
+        width: 50%;
+        &::before {
+          content: '';
+          position: absolute;
+          height: 100%;
+          width: 1px;
+          display: inline-block;
+          background-color: color('grey-basic');
+          top: 0;
+          left: 0;
+        }
+      }
+
+      &:first-child {
+        &::before {
+          content: none;
+        }
+      }
+
+      &--search {
+        border-top: 1px solid color('grey-basic');
+        width:100%;
+
+        @include breakpoint($tablet) {
+          border: none;
+          width: auto;
+        }
+
+        label {
+          padding: 0;
+          color: color('blue-dark');
+
+          svg {
+            width: 15px;
+            height: 15px;
+            vertical-align: middle;
+          }
+        }
+
+        input {
+          padding: 0;
+          padding-top: 2px;
+          padding-bottom: 2px;
+          border: none;
+          margin-left: 10px;
+
+          &::placeholder {
+            opacity: 1;
+          }
+        }
+      }
+
+      &--toggle {
+        display: flex;
+        justify-content: flex-start;
+
+        @include breakpoint($tablet) {
+          justify-content: space-between;
+        }
+      }
+    }
   }
 }
