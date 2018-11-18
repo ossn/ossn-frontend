@@ -1,5 +1,6 @@
 // external modules
 import React from 'react';
+import { Search } from 'react-feather';
 
 // local modules
 import Toggle from './../toggle/toggle';
@@ -43,23 +44,17 @@ export class SearchFilter extends React.Component {
   handleSearch = this.props.onChange;
 
   render() {
-    const icon = this.props.icon ? <this.props.icon /> : '';
     const inheritedClass = this.props.className ? this.props.className : '';
     const classes = [inheritedClass, 'filter', 'filter--search'];
-    const label = this.props.hideLabel
-      ? ''
-      : this.props.label
-        ? this.props.label
-        : 'Search';
+    const placeholder = this.props.placeholder || 'Search';
 
     return (
       <div className={classes.join(' ')}>
         <label htmlFor={`${this.props.id}`}>
-          {icon}
-          {label}
+          <Search />
           <input
             type="text"
-            placeholder={this.props.placeholder}
+            placeholder={placeholder}
             onChange={this.handleSearch}
             id={this.props.id}
           />
@@ -69,7 +64,12 @@ export class SearchFilter extends React.Component {
   }
 }
 
+/*
+  Uses a select element and adds the `filter` classes.
+*/
 export class SelectFilter extends React.Component {
+  onBlur = this.props.onBlur;
+
   render() {
     const options = [...this.props.options] || [];
     const optionList = options.map((option, i) => {
@@ -82,7 +82,7 @@ export class SelectFilter extends React.Component {
 
     return (
       <div className="filter filter--select">
-        <select>{optionList}</select>
+        <select onBlur={this.onBlur}>{optionList}</select>
       </div>
     );
   }
