@@ -17,9 +17,25 @@ export default class Club extends React.Component {
     super(props);
   }
 
+  shouldCTAAppear() {
+    return false;
+  }
+
   render() {
     const club = { ...this.props.club };
     const clubMembers = [...this.props.club.users];
+
+    const ctaPlaceholder = this.shouldCTAAppear() ? (
+      <div className="button club-full__cta">
+        <span className="club-full__cta-icon">
+          <PlusCircle />
+        </span>
+        Become a member
+      </div>
+    ) : (
+      ''
+    );
+
     return (
       <LayoutContained className="club-full">
         <div className="club-full__header">
@@ -49,12 +65,7 @@ export default class Club extends React.Component {
 
         <Layout2ColsUnequal inverse className="club-full__body">
           <div className="club-full__info-container">
-            <div className="button club-full__cta">
-              <span className="club-full__cta-icon">
-                <PlusCircle />
-              </span>
-              Become a member
-            </div>
+            {ctaPlaceholder}
             <ClubInfo club={club} />
           </div>
           <div>
