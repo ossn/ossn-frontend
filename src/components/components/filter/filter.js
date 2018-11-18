@@ -1,6 +1,5 @@
 // external modules
 import React from 'react';
-import Select from 'react-select';
 
 // local modules
 import Toggle from './../toggle/toggle';
@@ -70,26 +69,7 @@ export class SearchFilter extends React.Component {
   }
 }
 
-/*
-  Uses a select element and list the given options.
-  The implementation of the logic has to be at an higher level.
-*/
 export class SelectFilter extends React.Component {
-  render() {
-    const options = this.props.options || [];
-
-    return (
-      <Select
-        className="filter filter--select"
-        options={options}
-        onChange={this.props.onChange}
-        value={this.props.value}
-      />
-    );
-  }
-}
-
-export class CustomSelectFilter extends React.Component {
   render() {
     const options = [...this.props.options] || [];
     const optionList = options.map((option, i) => {
