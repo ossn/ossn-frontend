@@ -9,6 +9,7 @@ import Layout2ColsUnequal from './../../layouts/layout-2col-unequal/layout-2col-
 import MemberList from './../member-list/member-list';
 import ClubInfo from './../club-info/club-info';
 import { PlusCircle } from 'react-feather';
+import { graphql } from 'gatsby';
 
 import './club-full.scss';
 
@@ -18,6 +19,7 @@ export default class Club extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     const club = { ...this.props.club };
     const clubMembers = [...this.props.club.users];
     return (
@@ -42,8 +44,8 @@ export default class Club extends React.Component {
           </div>
 
           <div className="club-full__title-wrapper">
-            <h1 className="club-full__title"> {club.title} </h1>
-            <h2 className="club-full__subtitle"> {club.subtitle} </h2>
+            {/*<h1 className="club-full__title"> {club.title} {club.id} </h1>*/}
+            {/*<h2 className="club-full__subtitle"> {club.subtitle} </h2>*/}
           </div>
         </div>
 
@@ -55,7 +57,7 @@ export default class Club extends React.Component {
               </span>
               Become a member
             </div>
-            <ClubInfo club={club} />
+            {/*<ClubInfo club={club} />*/}
           </div>
           <div>
             <div>
@@ -113,3 +115,11 @@ export default class Club extends React.Component {
     );
   }
 }
+
+// export const query = graphql`
+//   fragment singleClub on OSSNAPI {
+//     club(id: $clubId) {
+//       id
+//     }
+//   }
+// `;

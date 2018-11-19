@@ -14,39 +14,49 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   }
 };
 
-// const path = require(`path`);
-// // Implement the Gatsby API “onCreatePage”. This is
-// // called after every page is created.
-// exports.onCreatePage = async ({ page, actions }) => {
-//   const { createPage } = actions;
+const path = require(`path`);
+const graphql = require('gatsby/graphql');
+
+// exports.onCreateNode = ({ node, getNode }) => {
+//     console.log(node, 'slug');
+//     if (node.parent === 'ossnApi') {
+//       console.log('hey');
+//
+//     }
+//
+//   // if (node.internalComponentName && node.internalComponentName === 'ComponentClub') {
+//   // //   const fileNode = getNode(node.parent)
+//   //   console.log(node.internalComponentName, 'slug')
+//   //   ComponentClub
+//   // }
 // }
 
-// exports.createPages = ({ graphql, actions }) => {
-//   return new Promise((resolve, reject) => {
-//     graphql(`
-//       {
-//         allMembersJson {
-//           edges {
-//             node {
-//               name
-//               isLeader
-//             }
-//           }
-//         }
-//       }
-//     `).then(result => {
-//
-//       result.data.allMembersJson.edges.forEach(({node}) => {
-//         createPage({
-//           path: '/members/' + node.username,
-//           component: path.resolve(`./src/components/components/member/member.js`),
-//           context: {
-//             slug: member
-//           },
-//         })
-//       })
-//       console.log(JSON.stringify(result, null, 4))
-//       resolve()
-//     })
-//   })
-// }
+exports.createPages = ({ graphql, actions }) => {
+  return new Promise((resolve, reject) => {
+    graphql(`
+      {
+        ossnApi {
+          clubs {
+            clubs {
+              id
+            }
+          }
+        }
+      }
+    `).then(result => {
+      for (let node of result.data.ossnApi.clubs.clubs) {
+        actions.createPage({
+          path: `clubs/${node.id}`,
+          component: path.resolve(`./src/pages/club.js`),
+          context: {
+            clubId: node.id
+          }
+        });
+      }
+      resolve();
+    });
+  }).catch(error => {
+    console.log(error);
+    reject();
+  });
+};

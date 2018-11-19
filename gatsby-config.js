@@ -17,7 +17,9 @@ module.exports = {
         // This is field under which it's accessible
         fieldName: 'ossnApi',
         // Url to query from
-        url: 'https://07rqzpwj55.lp.gql.zone/graphql'
+        url: 'https://07rqzpwj55.lp.gql.zone/graphql',
+        // refetch interval in seconds
+        refetchInterval: 60
       }
     },
     {

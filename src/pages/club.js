@@ -5,13 +5,13 @@ import { graphql } from 'gatsby';
 
 import BasicLayout from '../components/layouts/layout-base/layout-base';
 import GatsbyConfig from './../../gatsby-config';
-import Club from './../components/components/club-full/club-full';
+// import Club from './../components/components/club-full/club-full';
 
 // TODO: Remove and fid title another way.
 class Clubs extends React.PureComponent {
   render() {
     // TODO: remove the mock club after the connection with back end.
-    const mockClub = this.props.data.ossnApi.clubs.clubs[0];
+    console.log(this.props);
 
     return (
       <BasicLayout>
@@ -21,7 +21,7 @@ class Clubs extends React.PureComponent {
           </title>
         </Helmet>
 
-        <Club club={mockClub} />
+        {/*<Club id={this.props.data.ossnApi.clubs.clubs.id} />*/}
       </BasicLayout>
     );
   }
@@ -31,32 +31,10 @@ export default Clubs;
 
 // TODO that query should be removed.
 export const query = graphql`
-  {
+  query($clubId: ID!) {
     ossnApi {
-      clubs {
-        clubs {
-          id
-          title: name
-          subtitle: sortDescription
-          imageUrl
-          clubUrl
-          location {
-            id
-            lat
-            lng
-          }
-          users {
-            id
-            userName
-            firstName
-            lastName
-            imageUrl
-            description
-            githubUrl
-            personalUrl
-            email
-          }
-        }
+      club(id: $clubId) {
+        id
       }
     }
   }
