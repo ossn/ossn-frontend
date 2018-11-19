@@ -18,6 +18,11 @@
     left: -37px; // icon size + distance from text
     top: 50%;
     transform: translateY(-50%);
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
   }
 
   &__text {

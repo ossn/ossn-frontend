@@ -161,7 +161,7 @@
       transform: translateY(50%);
 
       @include breakpoint($desktop) {
-        right: -222px - 70px;
+        right: -130px;
       }
     }
 
