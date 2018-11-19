@@ -19,9 +19,9 @@ export default class Club extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.props.club);
     const club = { ...this.props.club };
-    const clubMembers = [...this.props.club.users];
+    // const clubMembers = [...this.props.users];
     return (
       <LayoutContained className="club-full">
         <div className="club-full__header">
@@ -44,7 +44,8 @@ export default class Club extends React.Component {
           </div>
 
           <div className="club-full__title-wrapper">
-            {/*<h1 className="club-full__title"> {club.title} {club.id} </h1>*/}
+            <h1 className="club-full__title"> {club.title}  </h1>
+            {club.id}
             {/*<h2 className="club-full__subtitle"> {club.subtitle} </h2>*/}
           </div>
         </div>
@@ -107,7 +108,7 @@ export default class Club extends React.Component {
             </div>
             <div>
               <h2> Members </h2>
-              <MemberList members={clubMembers} />
+              {/*<MemberList members={clubMembers} />*/}
             </div>
           </div>
         </Layout2ColsUnequal>

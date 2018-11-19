@@ -34,7 +34,7 @@ const graphql = require('gatsby/graphql');
 exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     graphql(`
-      {
+      query allClubs {
         ossnApi {
           clubs {
             clubs {
@@ -45,11 +45,14 @@ exports.createPages = ({ graphql, actions }) => {
       }
     `).then(result => {
       for (let node of result.data.ossnApi.clubs.clubs) {
+        console.log(node.id);
+
         actions.createPage({
           path: `clubs/${node.id}`,
-          component: path.resolve(`./src/pages/club.js`),
+          component: path.resolve(`./src/templates/club.js`),
           context: {
-            clubId: node.id
+            clubId: `${node.id}`,
+            help: node.id
           }
         });
       }
