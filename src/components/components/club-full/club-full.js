@@ -44,7 +44,7 @@ export default class Club extends React.Component {
           </div>
 
           <div className="club-full__title-wrapper">
-            <h1 className="club-full__title"> {club.title}  </h1>
+            <h1 className="club-full__title"> {club.title} </h1>
             {club.id}
             {/*<h2 className="club-full__subtitle"> {club.subtitle} </h2>*/}
           </div>
