@@ -15,6 +15,20 @@ import Shape from './../components/components/shape/shape';
 import Banner from './../components/components/banner/banner';
 
 const IndexPage = props => {
+  const isLoggedIn = () => {
+    return false;
+  };
+
+  const getCTASlice = () => {
+    return (
+      <div className="slice slice--always-dark">
+        <LayoutContained>
+          <BecomeMember />
+        </LayoutContained>
+      </div>
+    );
+  };
+
   return (
     <BasicLayout noDistanceTop>
       {/* New section */}
@@ -108,11 +122,7 @@ const IndexPage = props => {
       </LayoutContained>
 
       {/* why join the OSSN? */}
-      <div className="slice slice--always-dark">
-        <LayoutContained>
-          <BecomeMember />
-        </LayoutContained>
-      </div>
+      {isLoggedIn() ? '' : getCTASlice()}
 
       {/* Organizations */}
       <LayoutContained className="home-page__partners-section">
