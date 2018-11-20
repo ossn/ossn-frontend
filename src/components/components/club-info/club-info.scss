@@ -1,13 +1,12 @@
 @import './../../base-styles/init/init.scss';
-/*
-  Themes the information for a club.
-
-  variants
-
-  club-info__item-wrappe--major, the large list items.
-  club-info__item-wrappe--map, with the map background.
-  club-info__item-wrappe--graph, withe the graph background.
-*/
+//  Club info
+//
+//  Themes the information for a club.
+//
+//  club-info__item-wrapper--major, the large list items.
+//  club-info__item-wrapper--map, with the map background.
+//  club-info__item-wrapper--graph, withe the graph background.
+//
 
 .club-info {
   padding: 0;
@@ -22,20 +21,26 @@
   &__wrapper {
     position: relative;
     border-radius: 2px;
-    // overflow: hidden;
-    max-width: 350px;
     width: 100%;
     display: block;
+
+    @include breakpoint($desktop) {
+      max-width: 350px;
+    }
   }
 
   &__item-wrapper {
-    @include padding-top(18px);
-    @include padding-bottom(20px);
+    @include padding-top(9px);
+    @include padding-bottom(10px);
     display: flex;
     position: relative;
     z-index: 2;
     background-color: color('white');
 
+    @include breakpoint($desktop) {
+      @include padding-top(18px);
+      @include padding-bottom(20px);
+    }
 
     &::after {
       content: '';
@@ -47,11 +52,16 @@
     }
 
     &--major {
-      @include padding-top(38px);
-      @include padding-bottom(41px);
+      @include padding-top(19px);
+      @include padding-bottom(20px);
       background-repeat: no-repeat;
       background-size: auto 100%;
       background-position: right;
+
+      @include breakpoint($desktop) {
+        @include padding-top(38px);
+        @include padding-bottom(41px);
+      }
     }
 
     &--graph {
@@ -70,15 +80,17 @@
   }
 
   &__item {
-    display: inline-block;
     width: 100%;
     min-height: 100%;
     display: flex;
-    padding-left: 65px;
+    padding-left: 50px;
 
+    @include breakpoint($mobile) {
+      @include padding-left(65px);
+    }
   }
 
-  &__shape {
+  &__shape-square {
     position: absolute;
     right: 0;
     bottom: -20px;
@@ -87,5 +99,15 @@
     z-index: 0;
     width: 195px;
     height: 195px;
+  }
+
+  &__shape-circle {
+    position: absolute;
+    bottom: -121px;
+    transform: translateY(100%);
+    left: 40px;
+    height: 122px;
+    width: 122px;
+    opacity: .1;
   }
 }

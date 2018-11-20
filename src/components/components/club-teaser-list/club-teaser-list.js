@@ -28,11 +28,12 @@ export const ClubTeaser = props => {
         <div className="club-teaser__text">
           <span className="club-teaser__title">{title}</span>
           <span className="club-teaser__description"> {subtitle} </span>
-          <div className="button button--x-small club-teaser__button">
-            <Link to="/club" className="club-teaser__link">
-              Club page <ChevronRight size={16} className="icon" />
-            </Link>
-          </div>
+          <Link
+            to="/club"
+            className="button button--x-small club-teaser__button"
+          >
+            Club page <ChevronRight size={16} className="icon" />
+          </Link>
         </div>
       </ShadowBox>
     </div>

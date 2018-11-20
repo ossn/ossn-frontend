@@ -210,42 +210,6 @@
       }
     }
 
-    &.layout-2col-unequal--with-horizontal-gutters {
-      .layout-2col-unequal,
-      %layout-2col-unequal {
-        // Two columns
-        @include breakpoint($desktop ($desktop-large - 1px)) {
-          &--col,
-          &__col {
-            &:nth-child(2n + 1) {
-              margin-right: -$gutters-tablet / 2;
-              margin-left: 0;
-            }
-
-            &:nth-child(2n) {
-              margin-left: -$gutters-tablet / 2;
-              margin-right: 0;
-            }
-          }
-        }
-
-        @include breakpoint($desktop-large) {
-          &--col,
-          &__col {
-            &:nth-child(2n + 1) {
-              margin-right: -$gutters-desktop / 2;
-              margin-left: 0;
-            }
-
-            &:nth-child(2n) {
-              margin-left: -$gutters-desktop / 2;
-              margin-right: 0;
-            }
-          }
-        }
-      }
-    }
-
     &.layout-2col-unequal--two-columns-on-tablet {
       @include breakpoint($tablet ($desktop - 1px)) {
         .layout-2col-unequal,

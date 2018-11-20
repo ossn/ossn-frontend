@@ -49,17 +49,18 @@ export class SearchFilter extends React.Component {
     const placeholder = this.props.placeholder || 'Search';
 
     return (
-      <div className={classes.join(' ')}>
-        <label htmlFor={`${this.props.id}`}>
-          <Search />
+      <form className={classes.join(' ')}>
+        <Search size={18} className="filter__search-icon" />
+        <label htmlFor={this.props.id} className="visually-hidden">
           <input
             type="text"
             placeholder={placeholder}
             onChange={this.handleSearch}
             id={this.props.id}
           />
+          <span className="visually-hidden">{this.props.label}</span>
         </label>
-      </div>
+      </form>
     );
   }
 }

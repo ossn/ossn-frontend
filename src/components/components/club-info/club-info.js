@@ -3,6 +3,7 @@
 */
 
 import React from 'react';
+import MediaQuery from 'react-responsive';
 
 import ShadowBox from './../shadow-box/shadow-box';
 import {
@@ -88,7 +89,10 @@ export default class ClubInfo extends React.PureComponent {
             </ClubInfoItem>
           </li>
         </ul>
-        <Shape square seafoamBlue className="club-info__shape" />
+        <Shape square seafoamBlue className="club-info__shape-square" />
+        <MediaQuery minWidth={992}>
+          <Shape circle sunnyYellow className="club-info__shape-circle" />
+        </MediaQuery>
       </ShadowBox>
     );
   }

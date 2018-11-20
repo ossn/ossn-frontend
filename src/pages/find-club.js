@@ -12,7 +12,6 @@ import {
 } from '../components/components/filter/filter';
 import Map from './../components/components/map/map';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
-import Layout2Col from './../components/layouts/layout-2col/layout-2col';
 import { Search } from 'react-feather';
 import ShadowBox from './../components/components/shadow-box/shadow-box';
 
@@ -84,13 +83,15 @@ class Clubs extends React.PureComponent {
             <h1> Clubs </h1>
             <div className="find-club__filters-wrapper">
               <ShadowBox className="find-club__filters-wrapper-inner">
-                <Layout2Col>
+                <div className="find-club__filter-toggle">
                   <ToggleFilter
                     onClick={this.handleToggleMap}
                     active={snapshot.view === 'map'}
                     left="List view"
                     right="Map View"
                   />
+                </div>
+                <div className="find-club__filter-search">
                   <SearchFilter
                     placeholder="Filter"
                     onChange={this.handleSearch}
@@ -98,7 +99,7 @@ class Clubs extends React.PureComponent {
                     hideLabel
                     icon={Search}
                   />
-                </Layout2Col>
+                </div>
               </ShadowBox>
             </div>
           </div>

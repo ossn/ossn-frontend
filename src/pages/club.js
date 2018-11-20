@@ -59,6 +59,9 @@ export const query = graphql`
             githubUrl
             personalUrl
             email
+            clubs {
+              name
+            }
           }
         }
       }

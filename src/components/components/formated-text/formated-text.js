@@ -13,7 +13,7 @@ export default class FormatedText extends React.PureComponent {
   render() {
     const prefix = this.props.prefix || '';
     const value = this.props.value;
-    const icon = this.props.icon ? <this.props.icon /> : '';
+    const icon = this.props.icon ? <this.props.icon size={20} /> : '';
     const secondary = this.props.secondary || '';
 
     return (

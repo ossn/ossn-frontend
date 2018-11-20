@@ -8,7 +8,6 @@
 */
 
 .club-full {
-
   &__cover-wrapper {
     @include margin-top(-50px);
     @include margin-bottom(50px);
@@ -33,12 +32,25 @@
   }
 
   &__title {
-    @include margin-top(11px);
+
+    @include breakpoint($mobile) {
+
+      @include margin-top(11px);
+
+    }
   }
 
   &__subtitle {
     @include font-size(20px);
     color: color('grey-dark');
+  }
+
+  &__description {
+    @include margin-top(1);
+
+    @include breakpoint($desktop) {
+      @include margin-top(0);
+    }
   }
 
   &__profile-picture-section {
@@ -74,47 +86,37 @@
 
   &__profile-picture {
     margin: auto;
-    max-height: 100%;
-    max-width: 100%;
-    height: auto;
-    width: auto;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
   }
 
   &__body {
-    @include margin-top(61px);
-  }
-
-  &__description {
-    // FIXME: the class does not effect the element.
-    @include padding-right(20px);
-
-    div h2 {
-      @include margin-top(2);
-    }
+    @include margin-top(1);
 
     @include breakpoint($desktop) {
-      div:first-child {
-        h2 {
-          @include margin-top(0);
-        }
-      }
+      @include margin-top(1.1);
+    }
+
+    h2:not(:first-child)  {
+      @include margin-top(2);
     }
   }
 
   // The become a member button.
   &__cta {
-    @include padding-left(65px);
+    @include padding-left(50px);
     @include margin-bottom(20px);
     @include padding-top(20px);
     @include padding-bottom(20px);
     @include font-size(14px);
+    text-align: left;
     font-weight: 600;
-    max-width: 350px;
     width: 100%;
     border-radius: 0;
     background-color: color('brand');
     color: color('seafoam-blue');
-    box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.25);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.25);
     position: relative;
     display: block;
 
@@ -122,11 +124,21 @@
       background-color: color('seafoam-blue');
       color: color('brand');
     }
+
+    @include breakpoint($mobile) {
+      @include padding-left(65px);
+    }
   }
 
   &__cta-icon {
     position: absolute;
-    left: 30px;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @include breakpoint($mobile) {
+      left: 30px;
+    }
   }
 
   // The wrapper of the information box.
@@ -151,19 +163,6 @@
   &__members-shape {
     position: absolute;
     right: -100px;
-
-    &--circle {
-      height: 122px;
-      width: 122px;
-      opacity: .1;
-      top: -71px;
-      right: -40px;
-      transform: translateY(50%);
-
-      @include breakpoint($desktop) {
-        right: -130px;
-      }
-    }
 
     &--waves {
       height: 86px;

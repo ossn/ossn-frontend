@@ -1,35 +1,26 @@
 @import './../../base-styles/init/init';
 
-/*
-  Adds basic style for a filter component.
-
-  .filter--search: the search filter.
-  .filter--toggle: the toggle filter.
-  .filter--select: the search filter.
-*/
+//  Filter
+//
+//  Basic style for a filter component.
+//
+//  .filter--search: the search filter.
+//  .filter--toggle: the toggle filter.
+//  .filter--select: the search filter.
 
 .filter {
   display: inline-block;
-  padding: 15px;
 
   &--search {
+    position: relative;
+
     label {
       padding: 0;
-      color: color('blue-dark');
-
-      svg {
-        width: 15px;
-        height: 15px;
-        vertical-align: middle;
-      }
     }
 
     input {
-      padding: 0;
-      padding-top: 2px;
-      padding-bottom: 2px;
+      padding: 13px 15px 13px 35px;
       border: none;
-      margin-left: 10px;
 
       &::placeholder {
         opacity: 1;
@@ -40,11 +31,22 @@
         border: none;
       }
     }
+
+  }
+
+  &__search-icon {
+    color: color('topaz');
+    margin-bottom: 3px;
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   &--toggle {
     display: flex;
     justify-content: flex-start;
+    padding: 13px 15px;
 
     @include breakpoint($tablet) {
       justify-content: space-between;
@@ -73,7 +75,7 @@
 
     &::after {
       top: 50%;
-      right: 3px;
+      right: 8px;
       transform: translateY(-50%);
       width: 0;
       height: 0;
@@ -87,6 +89,7 @@
       background-color: color('white');
       width: 100%;
       cursor: pointer;
+      padding: 13px 30px 13px 15px;
     }
   }
 }
