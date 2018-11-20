@@ -20,7 +20,7 @@ export default class Club extends React.Component {
   }
 
   shouldCTAAppear() {
-    return false;
+    return true;
   }
 
   render() {
@@ -28,12 +28,12 @@ export default class Club extends React.Component {
     const clubMembers = [...this.props.club.users];
 
     const ctaPlaceholder = this.shouldCTAAppear() ? (
-      <div className="button club-full__cta">
+      <a href="/test" className="button club-full__cta">
         <span className="club-full__cta-icon">
           <PlusCircle />
         </span>
-        Become a member
-      </div>
+        Become a member of this club
+      </a>
     ) : (
       ''
     );
@@ -64,7 +64,12 @@ export default class Club extends React.Component {
           </div>
         </div>
 
-        <Layout2ColsUnequal inverse className="club-full__body">
+        <Layout2ColsUnequal
+          inverse
+          horizontalGutters
+          verticalGutters
+          className="club-full__body"
+        >
           <div className="club-full__info-container">
             {ctaPlaceholder}
             <ClubInfo club={club} />
@@ -89,8 +94,6 @@ export default class Club extends React.Component {
                 Just show up!
               </p>
               <p>Looking for more information? Email us!</p>
-            </div>
-            <div>
               <h2> Code of conduct </h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
@@ -117,11 +120,6 @@ export default class Club extends React.Component {
             </div>
             <div className="club-full__members-section">
               <h2> Members </h2>
-              <Shape
-                circle
-                sunnyYellow
-                className="club-full__members-shape club-full__members-shape--circle"
-              />
               <Shape
                 waves
                 darkSkyBlue

@@ -87,7 +87,7 @@ class Members extends React.PureComponent {
                 no nec. An fugit soluta per. Ad mei debitis electram, officiis
                 intellegat usu ei, ius eu zril intellegam consequuntur. Sumo
                 delectus te nam, eam placerat salutandi no, nibh aperiam no ius.
-                Id volumus sententiae interesset quo, natum scriptorem
+                Id volumus §sententiae interesset quo, natum scriptorem
                 accommodare nam id, semper blandit ius ea.
               </p>
             </div>
@@ -122,7 +122,10 @@ class Members extends React.PureComponent {
                   </h2>
                   <div className="members__filter-list">
                     <div className="members__filter members__filter--search">
-                      <SearchFilter />
+                      <SearchFilter
+                        id="members-search"
+                        label="Search members"
+                      />
                     </div>
                     <div className="members__filter members__filter--select">
                       <SelectFilter
