@@ -1,3 +1,7 @@
+/*
+  Contains the `ClubInfo`  and `ClubInfoItem` components.
+*/
+
 import React from 'react';
 
 import ShadowBox from './../shadow-box/shadow-box';
@@ -8,6 +12,8 @@ import {
   Map,
   Email
 } from './../formated-text/formated-text';
+import Shape from './../shape/shape';
+
 import './club-info.scss';
 
 /*
@@ -36,7 +42,6 @@ export class ClubInfoItem extends React.PureComponent {
 }
 
 /*
-
   Box containing information about a club.
 
   props:
@@ -83,6 +88,7 @@ export default class ClubInfo extends React.PureComponent {
             </ClubInfoItem>
           </li>
         </ul>
+        <Shape square seafoamBlue className="club-info__shape" />
       </ShadowBox>
     );
   }

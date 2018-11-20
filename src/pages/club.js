@@ -21,7 +21,11 @@ class Clubs extends React.PureComponent {
           </title>
         </Helmet>
 
-        <Club club={mockClub} />
+        <Club
+          club={mockClub}
+          image={this.props.data.clubCoverImage}
+          mobileImage={this.props.data.clubCoverImageMobile}
+        />
       </BasicLayout>
     );
   }
@@ -56,6 +60,34 @@ export const query = graphql`
             personalUrl
             email
           }
+        }
+      }
+    }
+
+    clubCoverImage: file(
+      relativePath: { eq: "club-full/Museum_of_Byzantine_Culture.jpg" }
+    ) {
+      childImageSharp {
+        fluid(maxWidth: 1100, maxHeight: 200) {
+          base64
+          aspectRatio
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+          sizes
+          originalImg
+          originalName
+        }
+      }
+    }
+
+    clubCoverImageMobile: file(
+      relativePath: { eq: "club-full/Museum_of_Byzantine_Culture.jpg" }
+    ) {
+      childImageSharp {
+        resolutions(height: 300, width: 728, cropFocus: CENTER) {
+          ...GatsbyImageSharpResolutions
         }
       }
     }

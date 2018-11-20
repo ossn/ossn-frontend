@@ -1,5 +1,9 @@
 @import './../../base-styles/init/init.scss';
 
+/*
+  Text with standard prefix. Highlights the variable value.
+*/
+
 .formated-text {
   display: inline-block;
   margin-top: auto;
@@ -11,9 +15,14 @@
     vertical-align: middle;
     color: color('brand');
     position: absolute;
-    left: -33px;
+    left: -37px; // icon size + distance from text
     top: 50%;
     transform: translateY(-50%);
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
   }
 
   &__text {
