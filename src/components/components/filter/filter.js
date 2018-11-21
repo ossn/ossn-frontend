@@ -51,7 +51,7 @@ export class SearchFilter extends React.Component {
     return (
       <form className={classes.join(' ')}>
         <Search size={18} className="filter__search-icon" />
-        <label htmlFor={this.props.id} className="visually-hidden">
+        <label htmlFor={this.props.id} className="">
           <input
             type="text"
             placeholder={placeholder}
