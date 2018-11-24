@@ -46,7 +46,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "./node_modules/.bin/eslint --fix --ignore-path .gitignore .",
+    "format": "eslint --fix ./src/**/**/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
