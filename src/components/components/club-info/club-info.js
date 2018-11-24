@@ -42,6 +42,47 @@ export class ClubInfoItem extends React.PureComponent {
   }
 }
 
+/* Wrappers for cleaner code */
+const LocationInfo = ({ location }) => (
+  <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--map">
+    <ClubInfoItem link="#" major>
+      <Map value={location} />
+    </ClubInfoItem>
+  </li>
+);
+
+const GithubInfo = ({ github }) => (
+  <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--graph">
+    <ClubInfoItem link="#" major>
+      <Github value={github} />
+    </ClubInfoItem>
+  </li>
+);
+
+const WebpageInfo = ({ webpage }) => (
+  <li className="club-info__item-wrapper">
+    <ClubInfoItem link="#">
+      <Link value={webpage} />
+    </ClubInfoItem>
+  </li>
+);
+
+const EmailInfo = ({ email }) => (
+  <li className="club-info__item-wrapper">
+    <ClubInfoItem link={`mailto:${email}`}>
+      <Email value={email} />
+    </ClubInfoItem>
+  </li>
+);
+
+const EventInfo = ({ event }) => (
+  <li className="club-info__item-wrapper">
+    <ClubInfoItem>
+      <Event value={event.title} secondary={event.subtitle} />
+    </ClubInfoItem>
+  </li>
+);
+
 /*
   Box containing information about a club.
 
@@ -51,6 +92,7 @@ export class ClubInfoItem extends React.PureComponent {
 */
 export default class ClubInfo extends React.PureComponent {
   render() {
+    // TODO: replace with real data.
     const location = 'club location';
     const github = 'clubProfile';
     const webpage = 'myclub.com';
@@ -63,31 +105,11 @@ export default class ClubInfo extends React.PureComponent {
     return (
       <ShadowBox zeroPadding className="club-info__wrapper">
         <ul className="club-info">
-          <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--map">
-            <ClubInfoItem link="#" major>
-              <Map value={location} />
-            </ClubInfoItem>
-          </li>
-          <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--graph">
-            <ClubInfoItem link="#" major>
-              <Github value={github} />
-            </ClubInfoItem>
-          </li>
-          <li className="club-info__item-wrapper">
-            <ClubInfoItem link="#">
-              <Link value={webpage} />
-            </ClubInfoItem>
-          </li>
-          <li className="club-info__item-wrapper">
-            <ClubInfoItem link={`mailto:${email}`}>
-              <Email value={email} />
-            </ClubInfoItem>
-          </li>
-          <li className="club-info__item-wrapper">
-            <ClubInfoItem>
-              <Event value={event.title} secondary={event.subtitle} />
-            </ClubInfoItem>
-          </li>
+          {location ? <LocationInfo location={location} /> : ''}
+          {github ? <GithubInfo github={github} /> : ''}
+          {webpage ? <WebpageInfo webpage={webpage} /> : ''}
+          {email ? <EmailInfo email={email} /> : ''}
+          {event ? <EventInfo event={event} /> : ''}
         </ul>
         <Shape square seafoamBlue className="club-info__shape-square" />
         <MediaQuery minWidth={992}>
