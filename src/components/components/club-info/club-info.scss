@@ -99,6 +99,7 @@
     z-index: 0;
     width: 195px;
     height: 195px;
+    z-index: -1; // to be hidden behind the become a member button.
   }
 
   &__shape-circle {
