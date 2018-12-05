@@ -20,8 +20,8 @@ import './../components/pages-styles/find-club.scss';
 // TODO: Remove and fid title another way.
 class Clubs extends React.PureComponent {
   /*
-    Handle the value of th search and the toggle button from state.
-  */
+   Handle the value of th search and the toggle button from state.
+   */
   constructor() {
     super();
     this.state = {
@@ -55,11 +55,15 @@ class Clubs extends React.PureComponent {
       typeof snapshot.searchString !== 'undefined'
     ) {
       clubs = clubs.filter((club, i) => {
-        return (
-          club.title
-            .toLowerCase()
-            .indexOf(snapshot.searchString.trim().toLowerCase()) >= 0
-        );
+        if (club.title) {
+          return (
+            club.title
+              .toLowerCase()
+              .indexOf(snapshot.searchString.trim().toLowerCase()) >= 0
+          );
+        } else {
+          club.title = 'Club name is missing';
+        }
       });
     }
 

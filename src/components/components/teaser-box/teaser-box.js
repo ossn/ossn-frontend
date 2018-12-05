@@ -16,9 +16,12 @@ import './teaser-box.scss';
 
 export const TeaserBox = props => {
   const resource = props.resource;
-  const title = resource.title;
-  const date = verboseDate(resource.date);
-  const target = resource.link;
+  let title = resource.title || 'Title is missing';
+  if (!resource.link) {
+    title += ' / Link is missing';
+  }
+  const date = verboseDate(Number(props.resource.date)) || 'Date is missing';
+  const target = resource.link || '#';
   const image = resource.imageUrl;
 
   const classes = [props.className, 'teaser-box'];
@@ -28,11 +31,7 @@ export const TeaserBox = props => {
         <ShadowBox smallPaddings className="teaser-box__link-inner">
           <div className="teaser-box__inner">
             <div className="teaser-box__image-wrapper">
-              <img
-                src={image}
-                alt="external resource"
-                className="teaser-box__image"
-              />
+              <img src={image} alt={title} className="teaser-box__image" />
             </div>
             <div className="teaser-box__text">
               <div className="teaser-box__title"> {title} </div>
