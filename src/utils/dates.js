@@ -8,7 +8,7 @@ export const getDayName = num => {
     case 1:
       return 'Tuesday';
     case 2:
-      return 'Wensday';
+      return 'Wednesday';
     case 3:
       return 'Thursday';
     case 4:
@@ -26,7 +26,7 @@ export const getDayName = num => {
 export const getMonthName = num => {
   switch (num) {
     case 0:
-      return 'Jenuary';
+      return 'January';
     case 1:
       return 'February';
     case 2:

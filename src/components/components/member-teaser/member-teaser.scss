@@ -2,9 +2,11 @@
 
 .member-teaser {
   position: relative;
+  min-height: 90px;
 
   &__inner {
     display: flex;
+    min-height: 70px;
   }
 
   &__image-wrapper {

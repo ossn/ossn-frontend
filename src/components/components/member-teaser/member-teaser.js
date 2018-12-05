@@ -20,12 +20,18 @@ const MemberTeaser = props => {
   };
 
   const name = `${props.member.firstName} ${props.member.lastName}`;
-  const imageUrl =
-    props.member.imageUrl ||
-    'http://assets.nydailynews.com/polopoly_fs/1.2479149.1451350340!/img/httpImage/image.jpg_gen/derivatives/article_750/motorhead29n-2-web.jpg';
+  const imageUrl = props.member.imageUrl || null;
+  const image = imageUrl ? (
+    <div className="member-teaser__image-wrapper">
+      <img src={imageUrl} className="member-teaser__image" alt={name} />
+    </div>
+  ) : (
+    ''
+  );
+
   let clubString = '';
-  if (props.member.clubs) {
-    clubString = props.member.clubs[0].name;
+  if (props.member.clubs && props.member.clubs.length > 0) {
+    clubString = props.member.clubs[0].name || 'Club name is missing.';
     if (props.member.clubs.length > 1) {
       clubString += ' + ' + (props.member.clubs.length - 1) + ' more';
     }
@@ -74,9 +80,7 @@ const MemberTeaser = props => {
         className="member-teaser__inner"
       >
         {leaderTag}
-        <div className="member-teaser__image-wrapper">
-          <img src={imageUrl} className="member-teaser__image" alt={name} />
-        </div>
+        {image}
         <div className="member-teaser__text">
           <div className="member-teaser__name"> {name} </div>
           <div className="member-teaser__clubs">
