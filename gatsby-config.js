@@ -18,6 +18,12 @@ module.exports = {
         fieldName: 'ossnApi',
         // Url to query from
         url: 'https://ossn-api.swaco.io/query'
+        // headers: {
+        //   'Access-Control-Allow-Origin' : '*',
+        //   'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+        // }
+        //
+        //
       }
     },
     {

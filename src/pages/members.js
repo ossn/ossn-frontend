@@ -2,6 +2,8 @@
   This page shows the list of the student members.
 */
 
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
@@ -50,7 +52,7 @@ class Members extends React.PureComponent {
   render() {
     const snapshot = { ...this.state };
     let members = this.props.data.ossnApi.users.users.slice();
-    let totalCount = this.props.data.ossnApi.users.users.length;
+    let totalCount = this.props.data.ossnApi.users.pageInfo.totalCount;
 
     const memberList = members.map((member, i) => {
       return (
@@ -60,8 +62,55 @@ class Members extends React.PureComponent {
       );
     });
 
+    // This query is executed at run time by Apollo.
+    const GET_MEMBERS = gql`
+      {
+        users(first: 2) {
+          users {
+            id
+            userName
+            firstName
+            lastName
+            imageUrl
+            receiveNewsletter
+            description
+            githubUrl
+            personalUrl
+            email
+            clubs {
+              name
+            }
+          }
+
+          pageInfo {
+            totalCount
+            endCursor
+            hasNextPage
+          }
+        }
+      }
+    `;
+
     return (
       <BasicLayout>
+        <Query query={GET_MEMBERS}>
+          {({ loading, error, data }) => {
+            if (loading) return 'Loading....';
+            if (error) return <div> `Error ${error.message}` </div>;
+            // data.user = {
+            //   ...data.user,
+            //   username: data.user.userName
+            // };
+            //
+            return (
+              <div>
+                {/*<MemberTeaser member={data.user} />*/}
+                DOne
+              </div>
+            );
+          }}
+        </Query>
+
         <Helmet>
           <title>
             {['Members', '|', GatsbyConfig.siteMetadata.title].join(' ')}
@@ -152,7 +201,7 @@ export default Members;
 export const query = graphql`
   {
     ossnApi {
-      users {
+      users(first: 1) {
         users {
           id
           userName
@@ -167,6 +216,12 @@ export const query = graphql`
           clubs {
             name
           }
+        }
+
+        pageInfo {
+          totalCount
+          endCursor
+          hasNextPage
         }
       }
     }

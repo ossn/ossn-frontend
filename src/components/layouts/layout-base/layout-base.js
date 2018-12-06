@@ -2,12 +2,12 @@ import './../../base-styles/base/normalize.scss';
 import './../../base-styles/fonts/fonts.scss';
 import './layout-base.scss';
 
-import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloClient } from 'apollo-client';
 import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloProvider } from 'react-apollo';
 import fetch from 'node-fetch';
 import React from 'react';
-import { ApolloProvider } from 'react-apollo';
 import { Helmet } from 'react-helmet';
 import { Provider } from 'react-redux';
 
@@ -25,10 +25,14 @@ import SkipLink from './../../components/skip-link/skip-link';
 const Basic = ({ children }) => {
   const client = new ApolloClient({
     link: new HttpLink({
-      uri: 'https://07rqzpwj55.lp.gql.zone/graphql',
+      uri: 'https://ossn-api.swaco.io/query',
       fetch: fetch
     }),
     cache: new InMemoryCache()
+    // headers: {
+    //   'Access-Control-Allow-Origin' : '*',
+    //   'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+    // }
   });
 
   return (
