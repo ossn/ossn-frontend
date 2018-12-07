@@ -54,18 +54,13 @@ class Members extends React.PureComponent {
     let members = this.props.data.ossnApi.users.users.slice();
     let totalCount = this.props.data.ossnApi.users.pageInfo.totalCount;
 
-    const memberList = members.map((member, i) => {
-      return (
-        <div key={i}>
-          <MemberTeaser member={member} id={i} />
-        </div>
-      );
-    });
-
     // This query is executed at run time by Apollo.
+    // query Members($after: String!){
+    //   users(first: 1 after: $after) {
+
     const GET_MEMBERS = gql`
       {
-        users(first: 2) {
+        users(first: 1, after: "Mg==") {
           users {
             id
             userName
@@ -86,6 +81,7 @@ class Members extends React.PureComponent {
             totalCount
             endCursor
             hasNextPage
+            startCursor
           }
         }
       }
@@ -93,21 +89,29 @@ class Members extends React.PureComponent {
 
     return (
       <BasicLayout>
-        <Query query={GET_MEMBERS}>
+        <Query query={GET_MEMBERS} variables={{ after: 'Mg==' }}>
           {({ loading, error, data }) => {
             if (loading) return 'Loading....';
-            if (error) return <div> `Error ${error.message}` </div>;
+            if (error) {
+              return <div> `Error ${error.message}` </div>;
+            } else {
+              // let pageInfo = data.users.pageInfo;
+              let addedMembers = data.users.users;
+              let addedMembersList = addedMembers.map((member, i) => {
+                return (
+                  <div key={i}>
+                    <MemberTeaser member={member} id={i} />
+                  </div>
+                );
+              });
+              return addedMembersList;
+            }
+
             // data.user = {
             //   ...data.user,
             //   username: data.user.userName
             // };
             //
-            return (
-              <div>
-                {/*<MemberTeaser member={data.user} />*/}
-                DOne
-              </div>
-            );
           }}
         </Query>
 
@@ -167,7 +171,7 @@ class Members extends React.PureComponent {
               <div>
                 <ShadowBox zeroPadding className="members__filters-section">
                   <h2 className="title title--x-small title--centered members__list-title">
-                    Showing {memberList.length} out of {totalCount} members
+                    Showing {members.length} out of {totalCount} members
                   </h2>
                   <div className="members__filter-list">
                     <div className="members__filter members__filter--search">
@@ -222,6 +226,7 @@ export const query = graphql`
           totalCount
           endCursor
           hasNextPage
+          startCursor
         }
       }
     }
