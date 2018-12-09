@@ -41,7 +41,12 @@ class Members extends React.PureComponent {
       searchString: '',
       sortOptions: options,
       currentSortOption: options[0],
-      cursor: 0
+
+      numberOfMembers: 1,
+      // lastId: -1, // REVIEW: an invalid id as first option
+
+      // reset for testing
+      lastId: 2
     };
   }
 
@@ -57,11 +62,11 @@ class Members extends React.PureComponent {
 
     // This query is executed at run time by Apollo.
     // query Members($after: String!){
-    //   users(first: 1, after: $after) {
+    //   users(first: 1 after: $after) {
 
     const GET_MEMBERS = gql`
-      query GetMembers($number: Int) {
-        users(first: $number) {
+      query GetMembers($number: Int!, $lastid: ID) {
+        users(first: $number, after: $lastid) {
           users {
             id
             userName
@@ -88,9 +93,21 @@ class Members extends React.PureComponent {
       }
     `;
 
+    // populate the graphQL variables object
+    let queryVariables = {
+      number: snapshot.numberOfMembers
+    };
+
+    if (snapshot.lastId > 0) {
+      // btoa transform
+      queryVariables.lastId = Buffer.from(snapshot.lastId.toString()).toString(
+        'base64'
+      );
+    }
+
     return (
       <BasicLayout>
-        <Query query={GET_MEMBERS} variables={{ number: 1 }}>
+        <Query query={GET_MEMBERS} variables={queryVariables}>
           {({ loading, error, data }) => {
             if (loading) return 'Loading....';
             if (error) {
@@ -105,6 +122,7 @@ class Members extends React.PureComponent {
                   </div>
                 );
               });
+
               return addedMembersList;
             }
 
