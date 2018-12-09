@@ -40,7 +40,8 @@ class Members extends React.PureComponent {
     this.state = {
       searchString: '',
       sortOptions: options,
-      currentSortOption: options[0]
+      currentSortOption: options[0],
+      cursor: 0
     };
   }
 
@@ -56,11 +57,11 @@ class Members extends React.PureComponent {
 
     // This query is executed at run time by Apollo.
     // query Members($after: String!){
-    //   users(first: 1 after: $after) {
+    //   users(first: 1, after: $after) {
 
     const GET_MEMBERS = gql`
-      {
-        users(first: 1, after: "Mg==") {
+      query GetMembers($number: Int) {
+        users(first: $number) {
           users {
             id
             userName
@@ -89,7 +90,7 @@ class Members extends React.PureComponent {
 
     return (
       <BasicLayout>
-        <Query query={GET_MEMBERS} variables={{ after: 'Mg==' }}>
+        <Query query={GET_MEMBERS} variables={{ number: 1 }}>
           {({ loading, error, data }) => {
             if (loading) return 'Loading....';
             if (error) {
