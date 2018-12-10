@@ -2,8 +2,6 @@
   This page shows the list of the student members.
 */
 
-import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
@@ -11,7 +9,6 @@ import Img from 'gatsby-image';
 import MediaQuery from 'react-responsive';
 import BasicLayout from '../components/layouts/layout-base/layout-base';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
-import MemberTeaser from './../components/components/member-teaser/member-teaser';
 import Layout2ColUnequalWith3Elements from './../components/layouts/layout-2col-unequal-with-3-elements/layout-2col-unequal-with-3-elements';
 import ShadowBox from './../components/components/shadow-box/shadow-box';
 import Shape from './../components/components/shape/shape';
@@ -41,12 +38,7 @@ class Members extends React.PureComponent {
       searchString: '',
       sortOptions: options,
       currentSortOption: options[0],
-
-      numberOfMembers: 1,
-      // lastId: -1, // REVIEW: an invalid id as first option
-
-      // reset for testing
-      lastId: 2
+      shownMembers: 0
     };
   }
 
@@ -55,85 +47,21 @@ class Members extends React.PureComponent {
     this.setState({ currentSortOption: selected });
   };
 
+  // function.
+  // Updates the number of members that are being shown.
+  // trigers re-render.
+  // params:
+  //  numberOfMembers (int): The number of members that are shown.
+  updateTheNumberOfMembers = numberOfMembers => {
+    this.setState({ shownMembers: numberOfMembers });
+  };
+
   render() {
     const snapshot = { ...this.state };
-    let members = this.props.data.ossnApi.users.users.slice();
     let totalCount = this.props.data.ossnApi.users.pageInfo.totalCount;
-
-    // This query is executed at run time by Apollo.
-    // query Members($after: String!){
-    //   users(first: 1 after: $after) {
-
-    const GET_MEMBERS = gql`
-      query GetMembers($number: Int!, $lastid: ID) {
-        users(first: $number, after: $lastid) {
-          users {
-            id
-            userName
-            firstName
-            lastName
-            imageUrl
-            receiveNewsletter
-            description
-            githubUrl
-            personalUrl
-            email
-            clubs {
-              name
-            }
-          }
-
-          pageInfo {
-            totalCount
-            endCursor
-            hasNextPage
-            startCursor
-          }
-        }
-      }
-    `;
-
-    // populate the graphQL variables object
-    let queryVariables = {
-      number: snapshot.numberOfMembers
-    };
-
-    if (snapshot.lastId > 0) {
-      // btoa transform
-      queryVariables.lastId = Buffer.from(snapshot.lastId.toString()).toString(
-        'base64'
-      );
-    }
 
     return (
       <BasicLayout>
-        <Query query={GET_MEMBERS} variables={queryVariables}>
-          {({ loading, error, data }) => {
-            if (loading) return 'Loading....';
-            if (error) {
-              return <div> `Error ${error.message}` </div>;
-            } else {
-              // let pageInfo = data.users.pageInfo;
-              let addedMembers = data.users.users;
-              let addedMembersList = addedMembers.map((member, i) => {
-                return (
-                  <div key={i}>
-                    <MemberTeaser member={member} id={i} />
-                  </div>
-                );
-              });
-
-              return addedMembersList;
-            }
-
-            // data.user = {
-            //   ...data.user,
-            //   username: data.user.userName
-            // };
-            //
-          }}
-        </Query>
-
         <Helmet>
           <title>
             {['Members', '|', GatsbyConfig.siteMetadata.title].join(' ')}
@@ -190,7 +118,7 @@ class Members extends React.PureComponent {
               <div>
                 <ShadowBox zeroPadding className="members__filters-section">
                   <h2 className="title title--x-small title--centered members__list-title">
-                    Showing {members.length} out of {totalCount} members
+                    Showing {snapshot.shownMembers} out of {totalCount} members
                   </h2>
                   <div className="members__filter-list">
                     <div className="members__filter members__filter--search">
@@ -209,7 +137,11 @@ class Members extends React.PureComponent {
                   </div>
                 </ShadowBox>
 
-                <MemberList members={members} />
+                <MemberList
+                  onMembersChange={number => {
+                    this.updateTheNumberOfMembers(number);
+                  }}
+                />
               </div>
             </div>
           </Layout2ColUnequalWith3Elements>
