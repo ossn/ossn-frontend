@@ -82,7 +82,10 @@ const MemberTeaser = props => {
         {leaderTag}
         {image}
         <div className="member-teaser__text">
-          <div className="member-teaser__name"> {name} </div>
+          <div className="member-teaser__name">
+            {' '}
+            {name} {props.member.userName}{' '}
+          </div>
           <div className="member-teaser__clubs">
             <Users />
             <span> {clubString} </span>
