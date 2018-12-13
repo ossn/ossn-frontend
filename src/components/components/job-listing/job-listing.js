@@ -5,7 +5,7 @@ Appears at /contribute and /leaders-corner
 
   props
     dummyData: If present, lines with grey background is shown.
-    jobs: A list of job and interships opportunities to be shown.
+    jobs: A list of job and internships opportunities to be shown.
 
   The fields of the jobs should be the same as the graphQL query below.
 */
@@ -19,7 +19,7 @@ export default props => {
 
   return (
     <div>
-      <h2 className="teaser-box__list-title"> Jobs & interships board </h2>
+      <h2 className="teaser-box__list-title"> Jobs & internships board </h2>
       <div>
         <TeaserBoxList items={items} dummyData={props.dummyData} />
       </div>

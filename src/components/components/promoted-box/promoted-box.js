@@ -12,7 +12,7 @@ export default props => {
           </li>
           <li className="promoted-box__item"> Reach out to us </li>
           <li className="promoted-box__item">
-            Explore available interships/jobs
+            Explore available internships/jobs
           </li>
           <li className="promoted-box__item">Check the latest announcements</li>
         </ol>
