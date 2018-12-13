@@ -1,6 +1,6 @@
 /*
-  This page shows the list of the student members.
-*/
+ This page shows the list of the student members.
+ */
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
@@ -12,6 +12,9 @@ import LayoutContained from './../components/layouts/layout-contained/layout-con
 import Layout2ColUnequalWith3Elements from './../components/layouts/layout-2col-unequal-with-3-elements/layout-2col-unequal-with-3-elements';
 import ShadowBox from './../components/components/shadow-box/shadow-box';
 import Shape from './../components/components/shape/shape';
+import { Query, ApolloConsumer } from 'react-apollo';
+import gql from 'graphql-tag';
+
 import '../components/pages-styles/members.scss';
 
 import {
@@ -38,7 +41,11 @@ class Members extends React.PureComponent {
       searchString: '',
       sortOptions: options,
       currentSortOption: options[0],
-      shownMembers: 0
+      shownMembersCount: 0,
+      shownMembers: [],
+      cursor: null,
+      firstLoad: true,
+      hasNextPage: true
     };
   }
 
@@ -47,18 +54,81 @@ class Members extends React.PureComponent {
     this.setState({ currentSortOption: selected });
   };
 
-  // function.
-  // Updates the number of members that are being shown.
-  // trigers re-render.
-  // params:
-  //  numberOfMembers (int): The number of members that are shown.
-  updateTheNumberOfMembers = numberOfMembers => {
-    this.setState({ shownMembers: numberOfMembers });
-  };
-
   render() {
     const snapshot = { ...this.state };
     let totalCount = this.props.data.ossnApi.users.pageInfo.totalCount;
+
+    const GET_MEMBERS = gql`
+      query GetMembers($number: Int!, $cursor: ID) {
+        users(first: $number, after: $cursor) {
+          users {
+            id
+            userName
+            firstName
+            lastName
+            imageUrl
+            receiveNewsletter
+            description
+            githubUrl
+            personalUrl
+            email
+            clubs {
+              name
+            }
+          }
+
+          pageInfo {
+            totalCount
+            endCursor
+            hasNextPage
+            startCursor
+          }
+        }
+      }
+    `;
+
+    // Updates the number of members that are being shown. Triggers re-render.
+    // params:
+    //  onMembersFetched (data): The data returned from the query.
+    const onMembersFetched = data => {
+      const shownMembers = snapshot.shownMembers.concat(data.users.users);
+      this.setState(() => ({
+        shownMembersCount: shownMembers.length,
+        shownMembers: shownMembers,
+        cursor: data.users.pageInfo.endCursor,
+        firstLoad: false,
+        hasNextPage: data.users.pageInfo.hasNextPage
+      }));
+    };
+
+    // Fetches default results on first load.
+    const onFirstLoad = () => {
+      let content;
+      if (snapshot.firstLoad) {
+        content = (
+          <Query
+            query={GET_MEMBERS}
+            variables={{ number: 1, cursor: snapshot.cursor }}
+            onCompleted={data => {
+              onMembersFetched(data);
+            }}
+          >
+            {({ loading, error }) => {
+              if (loading) return 'Loading....';
+              if (error) {
+                return <div> `Error ${error.message}` </div>;
+              } else {
+                // JSX elements
+                // create the DOM for the component.
+                return null;
+              }
+            }}
+          </Query>
+        );
+      }
+
+      return content;
+    };
 
     return (
       <BasicLayout>
@@ -118,7 +188,8 @@ class Members extends React.PureComponent {
               <div>
                 <ShadowBox zeroPadding className="members__filters-section">
                   <h2 className="title title--x-small title--centered members__list-title">
-                    Showing {snapshot.shownMembers} out of {totalCount} members
+                    Showing {snapshot.shownMembersCount} out of {totalCount}{' '}
+                    members
                   </h2>
                   <div className="members__filter-list">
                     <div className="members__filter members__filter--search">
@@ -136,12 +207,27 @@ class Members extends React.PureComponent {
                     </div>
                   </div>
                 </ShadowBox>
+                {onFirstLoad()}
+                <MemberList members={snapshot.shownMembers} />
 
-                <MemberList
-                  onMembersChange={number => {
-                    this.updateTheNumberOfMembers(number);
-                  }}
-                />
+                <ApolloConsumer>
+                  {client => (
+                    <div>
+                      <button
+                        onClick={async () => {
+                          const { data } = await client.query({
+                            query: GET_MEMBERS,
+                            variables: { number: 1, cursor: snapshot.cursor }
+                          });
+                          onMembersFetched(data);
+                        }}
+                        hidden={!snapshot.hasNextPage}
+                      >
+                        Load more
+                      </button>
+                    </div>
+                  )}
+                </ApolloConsumer>
               </div>
             </div>
           </Layout2ColUnequalWith3Elements>
@@ -215,26 +301,3 @@ export const query = graphql`
     }
   }
 `;
-
-// REVIEW:
-// code for graphQL query
-// import { Query } from 'react-apollo';
-//import gql from 'graphql-tag';
-/*
- <Query query={GET_MEMBERS}>
- {({ loading, error, data })=>{
- if (loading) return 'Loading....';
- if (error) return <div> `Error ${error.message}` </div> ;
- data.user = {
- ...data.user,
- username: data.user.userName
- };
-
- return (
- <div>
- <MemberTeaser member={data.user} />
- </div>
- );
- }}
- </Query>
- */
