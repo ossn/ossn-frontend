@@ -56,6 +56,9 @@ export class SearchFilter extends React.Component {
             type="text"
             placeholder={placeholder}
             onChange={this.handleSearch}
+            onKeyPress={e => {
+              e.preventDefault();
+            }}
             id={this.props.id}
           />
           <span className="visually-hidden">{this.props.label}</span>

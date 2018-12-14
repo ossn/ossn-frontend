@@ -14,13 +14,11 @@ import ShadowBox from './../components/components/shadow-box/shadow-box';
 import Shape from './../components/components/shape/shape';
 import { Query, ApolloConsumer } from 'react-apollo';
 import gql from 'graphql-tag';
+import { PlusSquare } from 'react-feather';
 
 import '../components/pages-styles/members.scss';
 
-import {
-  SearchFilter,
-  SelectFilter
-} from '../components/components/filter/filter';
+import { SearchFilter } from '../components/components/filter/filter';
 import JoinCta from './../components/components/join-cta/join-cta';
 import MemberList from './../components/components/member-list/member-list';
 
@@ -31,36 +29,23 @@ class Members extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    const options = [
-      { value: 'default', label: 'Sort by' },
-      { value: 'name', label: 'name' },
-      { value: 'club', label: 'club' }
-    ];
-
     this.state = {
-      searchString: '',
-      sortOptions: options,
-      currentSortOption: options[0],
+      search: 'user',
       shownMembersCount: 0,
       shownMembers: [],
       cursor: null,
       firstLoad: true,
-      hasNextPage: true
+      hasNextPage: false
     };
   }
-
-  changeSorting = event => {
-    const selected = event.target.value;
-    this.setState({ currentSortOption: selected });
-  };
 
   render() {
     const snapshot = { ...this.state };
     let totalCount = this.props.data.ossnApi.users.pageInfo.totalCount;
 
     const GET_MEMBERS = gql`
-      query GetMembers($number: Int!, $cursor: ID) {
-        users(first: $number, after: $cursor) {
+      query GetMembers($number: Int!, $cursor: ID, $search: String) {
+        users(first: $number, after: $cursor, search: $search) {
           users {
             id
             userName
@@ -108,13 +93,22 @@ class Members extends React.PureComponent {
         content = (
           <Query
             query={GET_MEMBERS}
-            variables={{ number: 1, cursor: snapshot.cursor }}
+            variables={{
+              number: 1,
+              cursor: snapshot.cursor,
+              search: snapshot.search
+            }}
             onCompleted={data => {
               onMembersFetched(data);
             }}
           >
             {({ loading, error }) => {
-              if (loading) return 'Loading....';
+              if (loading)
+                return (
+                  <div className="text text--large text--load-more">
+                    Loading....
+                  </div>
+                );
               if (error) {
                 return <div> `Error ${error.message}` </div>;
               } else {
@@ -125,9 +119,8 @@ class Members extends React.PureComponent {
             }}
           </Query>
         );
+        return content;
       }
-
-      return content;
     };
 
     return (
@@ -177,7 +170,7 @@ class Members extends React.PureComponent {
                 <JoinCta imageJoinCta={this.props.data.imageJoinCta} />
               </div>
             </div>
-            <div>
+            <div className="members__content">
               <Shape
                 seafoamBlue
                 waveLarge
@@ -196,13 +189,16 @@ class Members extends React.PureComponent {
                       <SearchFilter
                         id="members-search"
                         label="Search members"
-                      />
-                    </div>
-                    <div className="members__filter members__filter--select">
-                      <SelectFilter
-                        options={snapshot.sortOptions}
-                        value={snapshot.currentSortOption}
-                        onBlur={this.changeSorting}
+                        onChange={e => {
+                          this.setState({
+                            search: e.target.value,
+                            firstLoad: true,
+                            shownMembers: [],
+                            cursor: null,
+                            shownMembersCount: 0,
+                            hasNextPage: false
+                          });
+                        }}
                       />
                     </div>
                   </div>
@@ -212,17 +208,23 @@ class Members extends React.PureComponent {
 
                 <ApolloConsumer>
                   {client => (
-                    <div>
+                    <div className="members__button-wrapper">
                       <button
+                        className="button button--reset button--icon"
                         onClick={async () => {
                           const { data } = await client.query({
                             query: GET_MEMBERS,
-                            variables: { number: 1, cursor: snapshot.cursor }
+                            variables: {
+                              number: 1,
+                              cursor: snapshot.cursor,
+                              search: snapshot.search
+                            }
                           });
                           onMembersFetched(data);
                         }}
                         hidden={!snapshot.hasNextPage}
                       >
+                        <PlusSquare size={16} />
                         Load more
                       </button>
                     </div>
@@ -241,33 +243,6 @@ export default Members;
 
 export const query = graphql`
   {
-    ossnApi {
-      users(first: 1) {
-        users {
-          id
-          userName
-          firstName
-          lastName
-          imageUrl
-          receiveNewsletter
-          description
-          githubUrl
-          personalUrl
-          email
-          clubs {
-            name
-          }
-        }
-
-        pageInfo {
-          totalCount
-          endCursor
-          hasNextPage
-          startCursor
-        }
-      }
-    }
-
     imageMembersTop: file(relativePath: { eq: "members-top.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 728) {

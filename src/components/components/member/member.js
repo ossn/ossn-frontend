@@ -282,7 +282,7 @@ class Member extends React.Component {
           onKeyDown={e => {
             returnKeyCheck(e, this.handleSave);
           }}
-          className="member__button  button button--submit"
+          className="member__button button button--submit"
           key={1}
         >
           <Check size={20} />
@@ -298,7 +298,7 @@ class Member extends React.Component {
           onKeyDown={e => {
             returnKeyCheck(e, this.handleEdit);
           }}
-          className="member__button  button button--reset"
+          className="member__button button button--reset"
           key={2}
         >
           <Feather size={18} />
