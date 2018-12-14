@@ -1,6 +1,6 @@
 /*
   A single FAQ question and answer.
-  Appears at /faq-page
+  Appears at /faq-page.
 */
 import React from 'react';
 import { ChevronRight } from 'react-feather';
@@ -45,11 +45,11 @@ class FaqItem extends React.Component {
             aria-expanded={isExpanded}
           >
             <ChevronRight size={16} className="faq__icon icon" />
-            {this.props.item.header}
+            {this.props.header}
           </button>
         </h3>
         <div id={id} className="faq__item-content" hidden={isHidden}>
-          {this.props.item.body}
+          {this.props.children}
         </div>
       </li>
     );
