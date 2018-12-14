@@ -10,19 +10,11 @@ import GatsbyConfig from './../../gatsby-config';
 import FaqGroup from './../components/components/faq-group/faq-group';
 import Layout2Cols from './../components/layouts/layout-2col/layout-2col';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
-import Shape from './../components/components//shape/shape';
+import Shape from './../components/components/shape/shape';
+import FaqItem from './../components/components/faq-item/faq-item';
 
 // TODO: Remove and fid title another way.
 const Questions = props => {
-  // REVIEW:
-  const resultGroups = props.data.allDataJson.edges[0]
-    ? props.data.allDataJson.edges[0].node
-    : {};
-  const group0 = resultGroups.group0 ? resultGroups.group0 : [];
-  const group1 = resultGroups.group1 ? resultGroups.group1 : [];
-  const group2 = resultGroups.group2 ? resultGroups.group2 : [];
-  const group3 = resultGroups.group3 ? resultGroups.group3 : [];
-
   return (
     <BasicLayout>
       <Helmet>
@@ -48,12 +40,52 @@ const Questions = props => {
 
         <Layout2Cols horizontalGutters>
           <div>
-            <FaqGroup group={group0} id="faq-group-1" />
-            <FaqGroup group={group1} id="faq-group-2" />
+            <FaqGroup id="faq-group-1" header="Joining OSSN">
+              <FaqItem header="Title 1" id="faq-1-item-1">
+                If you don’t have an established club but would like to start an
+                open source club you are welcome to apply. Fill out the
+                registration form and indicate that you’re starting a new club.
+                We’ll send you materials and tips for launching a successful
+                club.
+              </FaqItem>
+            </FaqGroup>
+
+            <FaqGroup id="faq-group-2" header="Registering a club">
+              <FaqItem header="Title 2" id="faq-2-item-1">
+                If you don’t have an established club but would like to start an
+                open source club you are welcome to apply. Fill out the
+                registration form and indicate that you’re starting a new club.
+                We’ll send you materials and tips for launching a successful
+                club.
+              </FaqItem>
+              <FaqItem header="Title 3" id="faq-2-item-2">
+                If you don’t have an established club but would like to start an
+                open source club you are welcome to apply. Fill out the
+                registration form and indicate that you’re starting a new club.
+                We’ll send you materials and tips for launching a successful
+                club.
+              </FaqItem>
+            </FaqGroup>
           </div>
           <div>
-            <FaqGroup group={group2} id="faq-group-3" />
-            <FaqGroup group={group3} id="faq-group-4" />
+            <FaqGroup id="faq-group-3" header="Creating a club">
+              <FaqItem header="Title 4" id="faq-3-item-1">
+                If you don’t have an established club but would like to start an
+                open source club you are welcome to apply. Fill out the
+                registration form and indicate that you’re starting a new club.
+                We’ll send you materials and tips for launching a successful
+                club.
+              </FaqItem>
+            </FaqGroup>
+            <FaqGroup id="faq-group-4" header="Running a club">
+              <FaqItem header="Title 4" id="faq-3-item-1">
+                If you don’t have an established club but would like to start an
+                open source club you are welcome to apply. Fill out the
+                registration form and indicate that you’re starting a new club.
+                We’ll send you materials and tips for launching a successful
+                club.
+              </FaqItem>
+            </FaqGroup>
           </div>
         </Layout2Cols>
 
