@@ -1,7 +1,6 @@
 // styles
 import '../components/pages-styles/faq-page.scss';
 
-import { graphql } from 'gatsby';
 import React, { memo } from 'react';
 import { Helmet } from 'react-helmet';
 
@@ -105,31 +104,3 @@ const Questions = props => {
 };
 
 export default memo(Questions);
-
-export const query = graphql`
-  query {
-    allDataJson {
-      edges {
-        node {
-          id
-          group0 {
-            header
-            body
-          }
-          group1 {
-            header
-            body
-          }
-          group2 {
-            header
-            body
-          }
-          group3 {
-            header
-            body
-          }
-        }
-      }
-    }
-  }
-`;
