@@ -199,6 +199,20 @@ button,
       background-color: transparent;
     }
   }
+
+  &--icon {
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+
+    &[hidden] {
+      display: none;
+    }
+  }
 }
 
 // Extend button variants.

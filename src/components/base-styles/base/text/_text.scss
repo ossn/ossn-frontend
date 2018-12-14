@@ -268,4 +268,14 @@ u { // sass-lint:disable-line no-empty-rulesets
     @include font-size(36px);
     @include line-height(46px);
   }
+
+  &--load-more {
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    color: color('brand');
+    justify-content: center;
+  }
 }
+
