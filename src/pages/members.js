@@ -41,7 +41,7 @@ class Members extends React.PureComponent {
 
   render() {
     const snapshot = { ...this.state };
-    let totalCount = this.props.data.ossnApi.users.pageInfo.totalCount;
+    let totalCount = 'Todo'; //this.props.data.ossnApi.users.pageInfo.totalCount;
 
     const GET_MEMBERS = gql`
       query GetMembers($number: Int!, $cursor: ID, $search: String) {
