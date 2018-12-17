@@ -43,11 +43,17 @@ class Member extends React.Component {
       personal: 'duckduckgo.com',
       description: 'this is a line of text. And this continues'
     };
+
     const initData = {
-      name: this.props.member.name || 'Name missing',
+      name: `${this.props.member.firstName} ${this.props.member.lastName}`,
       imageUrl: this.props.member.imageUrl || 'Image missing',
       location: this.props.member.location || 'Location missing',
-      club: this.props.member.club || 'club missing',
+      club:
+        this.props.member.clubs
+          .map((club, i) => {
+            return club.name;
+          })
+          .join(', ') || 'club missing',
       github: this.props.member.githubUrl || 'github missing',
       personal: this.props.member.personal || 'webpage missing',
       description: this.props.member.description || 'description missing'
