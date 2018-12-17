@@ -21,6 +21,13 @@ const MemberTeaser = props => {
 
   const name = `${props.member.firstName} ${props.member.lastName}`;
   const imageUrl = props.member.imageUrl || null;
+  const isLeader =
+    props.member.clubs &&
+    props.member.clubs.length > 0 &&
+    props.member.clubs.some(club => {
+      return club.role === 'admin';
+    });
+
   const image = imageUrl ? (
     <div className="member-teaser__image-wrapper">
       <img src={imageUrl} className="member-teaser__image" alt={name} />
@@ -43,7 +50,7 @@ const MemberTeaser = props => {
   }
 
   // Show the leader tag for leaders.
-  const leaderTag = props.member.isLeader ? (
+  const leaderTag = isLeader ? (
     <span className="member-teaser__leader-tag">
       <span className="member-teaser__leader-tag-bg">
         <span className="member-teaser__leader-tag-top" />
@@ -53,19 +60,12 @@ const MemberTeaser = props => {
       Club Leader
     </span>
   ) : (
-    <span className="member-teaser__leader-tag">
-      <span className="member-teaser__leader-tag-bg">
-        <span className="member-teaser__leader-tag-top" />
-        <span className="member-teaser__leader-tag-bottom" />
-        <span className="member-teaser__leader-tag-bg-bottom" />
-      </span>
-      Club Leader
-    </span>
+    <></>
   );
 
   const inheritedClass = props.className ? props.className : '';
   const classes = [inheritedClass, 'member-teaser'];
-  if (props.member.isLeader) classes.push('member-teaser--leader');
+  if (isLeader) classes.push('member-teaser--leader');
 
   return (
     <ShadowBox smallPaddings className={classes.join(' ')}>
@@ -83,8 +83,7 @@ const MemberTeaser = props => {
         {image}
         <div className="member-teaser__text">
           <div className="member-teaser__name">
-            {' '}
-            {name} {props.member.userName}{' '}
+            {name} {props.member.userName}
           </div>
           <div className="member-teaser__clubs">
             <Users />

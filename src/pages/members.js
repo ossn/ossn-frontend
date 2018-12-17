@@ -70,6 +70,7 @@ class Members extends React.PureComponent {
             email
             clubs {
               name
+              role
             }
           }
 
