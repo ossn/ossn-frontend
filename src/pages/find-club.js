@@ -12,7 +12,7 @@ import {
 } from '../components/components/filter/filter';
 import Map from './../components/components/map/map';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
-import { Search } from 'react-feather';
+import { Search, PlusSquare } from 'react-feather';
 import ShadowBox from './../components/components/shadow-box/shadow-box';
 import { Query, ApolloConsumer } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -149,7 +149,11 @@ class Clubs extends React.PureComponent {
         >
           {({ loading, error }) => {
             if (loading) {
-              return 'Loading....';
+              return (
+                <div className="text text--large text--load-more">
+                  Loading....
+                </div>
+              );
             }
             if (error) {
               return <div> `Error ${error.message}` </div>;
@@ -201,6 +205,7 @@ class Clubs extends React.PureComponent {
                 <div className="find-club__filter-search">
                   <SearchFilter
                     placeholder="Filter"
+                    label="Filter clubs"
                     onChange={this.handleSearch}
                     id="find-club-search"
                     hideLabel
@@ -216,8 +221,9 @@ class Clubs extends React.PureComponent {
 
           <ApolloConsumer>
             {client => (
-              <div>
+              <div className="find-club__button-wrapper">
                 <button
+                  className="button button--reset button--icon"
                   onClick={async () => {
                     const { data } = await client.query({
                       query: this.GET_CLUBS,
@@ -234,6 +240,7 @@ class Clubs extends React.PureComponent {
                   }}
                   hidden={!snapshot.hasNextPage}
                 >
+                  <PlusSquare size={16} />
                   Load more
                 </button>
               </div>
