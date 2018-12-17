@@ -139,7 +139,7 @@ class Clubs extends React.PureComponent {
         <Query
           query={this.GET_CLUBS}
           variables={{
-            number: 1,
+            number: 5,
             cursor: snapshot.cursor,
             search: snapshot.searchString === '' ? null : snapshot.searchString
           }}

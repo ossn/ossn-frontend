@@ -30,7 +30,7 @@ class Members extends React.PureComponent {
     super(props);
 
     this.state = {
-      search: 'user',
+      search: null,
       shownMembersCount: 0,
       shownMembers: [],
       cursor: null,

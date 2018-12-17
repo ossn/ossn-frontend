@@ -2,6 +2,7 @@
 This is the template for a single club view.
 */
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 
 // Local modules.
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
@@ -37,6 +38,21 @@ export default class Club extends React.Component {
     ) : (
       ''
     );
+
+    let membersSection = '';
+
+    if (this.props.clubMembers && this.props.clubMembers.length > 0)
+      membersSection = (
+        <>
+          <h2> Members </h2>
+          <Shape
+            waves
+            darkSkyBlue
+            className="club-full__members-shape club-full__members-shape--waves"
+          />
+          <MemberList members={clubMembers} />
+        </>
+      );
 
     return (
       <LayoutContained className="club-full">
@@ -77,58 +93,12 @@ export default class Club extends React.Component {
           </div>
           <div className="club-full__description">
             <div>
-              <h2> Description </h2>
-              <p>
-                The RIT Linux Users Group (RITlug) is a community of students
-                and faculty at the Rochester Institute of Technology dedicated
-                to teaching and sharing the Linux operating system and open
-                source software with others. RITlug also works on various other
-                projects, such as a Linux distribution customized for students
-                and faculty at RIT.
-              </p>
-              <p>
-                Meetings are open to anyone interested, new members and old.
-                RITlug meets on every Friday, from 4:00PM until 6:00PM in
-                GOL/70-2650 (Large DB Lab). If you can’t make the whole time,
-                that’s fine! Meetings typically have a presentation first, then
-                we open the floor to discussion and technical help. Interested?
-                Just show up!
-              </p>
-              <p>Looking for more information? Email us!</p>
-              <h2> Code of conduct </h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-                vitae risus non orci feugiat vulputate quis non est. Mauris
-                posuere, nulla id congue bibendum, nibh risus accumsan metus, at
-                iaculis eros sem quis odio.
-              </p>
-              <p>
-                Pellentesque gravida rhoncus erat, eu porta arcu ultrices eu.
-                Vivamus quis fringilla ex. Pellentesque et mauris purus.
-                Vestibulum at turpis non est condimentum vehicula. Nulla non
-                vulputate sapien, aliquet commodo elit.
-              </p>
-              <p>
-                Curabitur tempus ligula id nulla facilisis, quis gravida ante
-                dictum. Ut tincidunt sed massa vel elementum. Donec commodo
-                tellus maximus viverra dignissim. Vestibulum sollicitudin a erat
-                vel imperdiet. Fusce at mi in nunc fermentum rutrum. Morbi
-                tempor aliquam posuere. Mauris in commodo lectus, eget mollis
-                neque. Maecenas sollicitudin nulla quis sapien ultricies, quis
-                sagittis ante mattis. In tincidunt metus et nunc sollicitudin
-                dignissim.
-              </p>
-            </div>
-            <div className="club-full__members-section">
-              <h2> Members </h2>
-              <Shape
-                waves
-                darkSkyBlue
-                className="club-full__members-shape club-full__members-shape--waves"
+              <ReactMarkdown
+                source={this.props.club.description || 'Description is missing'}
               />
-              <MemberList members={clubMembers} />
             </div>
           </div>
+          <div className="club-full__members-section">{membersSection}</div>
         </Layout2ColsUnequal>
       </LayoutContained>
     );
