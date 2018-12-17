@@ -39,6 +39,17 @@ class Members extends React.PureComponent {
     };
   }
 
+  handleSearch = event => {
+    this.setState({
+      search: event.target.value,
+      firstLoad: true,
+      shownMembers: [],
+      cursor: null,
+      shownMembersCount: 0,
+      hasNextPage: false
+    });
+  };
+
   render() {
     const snapshot = { ...this.state };
     let totalCount = 'Todo'; //this.props.data.ossnApi.users.pageInfo.totalCount;
@@ -189,16 +200,7 @@ class Members extends React.PureComponent {
                       <SearchFilter
                         id="members-search"
                         label="Search members"
-                        onChange={e => {
-                          this.setState({
-                            search: e.target.value,
-                            firstLoad: true,
-                            shownMembers: [],
-                            cursor: null,
-                            shownMembersCount: 0,
-                            hasNextPage: false
-                          });
-                        }}
+                        onChange={this.handleSearch}
                       />
                     </div>
                   </div>
