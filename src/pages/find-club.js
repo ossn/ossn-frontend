@@ -228,7 +228,7 @@ class Clubs extends React.PureComponent {
                     const { data } = await client.query({
                       query: this.GET_CLUBS,
                       variables: {
-                        number: 1,
+                        number: 5,
                         cursor: snapshot.cursor,
                         search:
                           snapshot.searchString === ''
@@ -260,8 +260,8 @@ export const query = graphql`
       clubs {
         clubs {
           id
-          title: name
-          subtitle: sortDescription
+          name
+          sortDescription
           imageUrl
           clubUrl
           location {
