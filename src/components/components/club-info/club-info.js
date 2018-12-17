@@ -93,13 +93,13 @@ const EventInfo = ({ event }) => (
 export default class ClubInfo extends React.PureComponent {
   render() {
     // TODO: replace with real data.
-    const location = 'club location';
-    const github = 'clubProfile';
-    const webpage = 'myclub.com';
-    const email = 'mail@mail.com';
+    const location = this.props.club.location; // || 'Address is missing'; //.address // TODO: add the addr
+    const github = this.props.club.githubUrl;
+    const webpage = null || 'missing webpage';
+    const email = this.props.club.email;
     const event = {
-      title: 'event title',
-      subtitle: 'subtitle'
+      title: 'missing title',
+      subtitle: 'missing subtitle'
     };
 
     return (
