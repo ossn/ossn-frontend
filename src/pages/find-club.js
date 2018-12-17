@@ -39,13 +39,12 @@ class Clubs extends React.PureComponent {
     super();
     this.state = {
       view: 'list',
-      searchString: '',
+      searchString: null,
       shownClubsCount: 0,
       shownClubs: [],
       cursor: null,
       firstLoad: true,
-      // REVIEW: why true ?
-      hasNextPage: true
+      hasNextPage: false
     };
     this.handleSearch = this.handleSearch.bind(this);
   }
@@ -57,13 +56,19 @@ class Clubs extends React.PureComponent {
   };
 
   handleSearch = event => {
-    this.setState({ searchString: event.target.value });
+    this.setState({
+      searchString: event.target.value,
+      firstLoad: true,
+      shownClubs: [],
+      cursor: null,
+      hasNextPage: false
+    });
   };
 
   // the definition of the query.
   GET_CLUBS = gql`
-    query GetMembers($number: Int!, $cursor: ID) {
-      clubs(first: $number, after: $cursor) {
+    query GetClubs($number: Int!, $cursor: ID, $search: String) {
+      clubs(first: $number, after: $cursor, search: $search) {
         clubs {
           id
           email
@@ -109,6 +114,8 @@ class Clubs extends React.PureComponent {
     }
   `;
 
+  // function
+  // Updates the state when new data  is fetched.
   onClubsFetched = data => {
     const snapshot = { ...this.state };
     const shownClubs = [...snapshot.shownClubs, ...data.clubs.clubs];
@@ -131,7 +138,11 @@ class Clubs extends React.PureComponent {
       content = (
         <Query
           query={this.GET_CLUBS}
-          variables={{ number: 1, cursor: snapshot.cursor }}
+          variables={{
+            number: 1,
+            cursor: snapshot.cursor,
+            search: snapshot.searchString === '' ? null : snapshot.searchString
+          }}
           onCompleted={data => {
             this.onClubsFetched(data);
           }}
@@ -210,7 +221,14 @@ class Clubs extends React.PureComponent {
                   onClick={async () => {
                     const { data } = await client.query({
                       query: this.GET_CLUBS,
-                      variables: { number: 1, cursor: snapshot.cursor }
+                      variables: {
+                        number: 1,
+                        cursor: snapshot.cursor,
+                        search:
+                          snapshot.searchString === ''
+                            ? null
+                            : snapshot.searchString
+                      }
                     });
                     this.onClubsFetched(data);
                   }}
