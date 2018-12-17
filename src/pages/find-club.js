@@ -207,7 +207,6 @@ class Clubs extends React.PureComponent {
                     placeholder="Filter"
                     label="Filter clubs"
                     onChange={this.handleSearch}
-                    value={snapshot.searchString}
                     id="find-club-search"
                     hideLabel
                     icon={Search}
