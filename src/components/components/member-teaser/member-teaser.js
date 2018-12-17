@@ -6,19 +6,14 @@
 */
 import React from 'react';
 import { Users } from 'react-feather';
+import { Link } from 'gatsby';
 
 import Member from './../member/member';
 import ShadowBox from './../shadow-box/shadow-box';
-// utils
-import { returnKeyCheck } from './../../../utils/accessibility';
 
 import './member-teaser.scss';
 
 const MemberTeaser = props => {
-  const handleClick = () => {
-    if (props.onClick) props.onClick(props.id);
-  };
-
   const name = `${props.member.firstName} ${props.member.lastName}`;
   const imageUrl = props.member.imageUrl || null;
   const isLeader =
@@ -70,15 +65,7 @@ const MemberTeaser = props => {
   return (
     <ShadowBox smallPaddings className={classes.join(' ')}>
       <div> {preview} </div>
-      <div
-        onClick={handleClick}
-        role="button"
-        tabIndex={0}
-        onKeyDown={event => {
-          returnKeyCheck(event, handleClick);
-        }}
-        className="member-teaser__inner"
-      >
+      <Link to={`/members/${props.member.id}`} className="member-teaser__inner">
         {leaderTag}
         {image}
         <div className="member-teaser__text">
@@ -90,7 +77,7 @@ const MemberTeaser = props => {
             <span> {clubString} </span>
           </div>
         </div>
-      </div>
+      </Link>
     </ShadowBox>
   );
 };
