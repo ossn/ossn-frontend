@@ -1,3 +1,5 @@
+const path = require(`path`);
+
 // Bypass leaflet npm module during the build time. To avoid `window` is not defined exception
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   if (stage === 'build-html') {
@@ -21,32 +23,57 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 //   const { createPage } = actions;
 // }
 
-// exports.createPages = ({ graphql, actions }) => {
-//   return new Promise((resolve, reject) => {
-//     graphql(`
-//       {
-//         allMembersJson {
-//           edges {
-//             node {
-//               name
-//               isLeader
-//             }
-//           }
-//         }
-//       }
-//     `).then(result => {
-//
-//       result.data.allMembersJson.edges.forEach(({node}) => {
-//         createPage({
-//           path: '/members/' + node.username,
-//           component: path.resolve(`./src/components/components/member/member.js`),
-//           context: {
-//             slug: member
-//           },
-//         })
-//       })
-//       console.log(JSON.stringify(result, null, 4))
-//       resolve()
-//     })
-//   })
-// }
+exports.createPages = ({ graphql, actions }) => {
+  return new Promise((resolve, reject) => {
+    graphql(`
+      {
+        ossnApi {
+          clubs {
+            clubs {
+              id
+              email
+              title: name
+              imageUrl
+              description
+              codeOfConduct
+              subtitle: sortDescription
+              githubUrl
+              clubUrl
+              location {
+                address
+                id
+                lat
+                lng
+              }
+              users {
+                id
+                userName
+                firstName
+                lastName
+                imageUrl
+                receiveNewsletter
+                description
+                githubUrl
+                personalUrl
+                email
+              }
+            }
+          }
+        }
+      }
+    `).then(result => {
+      for (let node of result.data.ossnApi.clubs.clubs) {
+        actions.createPage({
+          path: `clubs/${node.id}`,
+          component: path.resolve(`./src/templates/club-full.js`),
+          context: {
+            club: node
+          }
+        });
+      }
+      resolve();
+    });
+  }).catch(error => {
+    // reject(); // linter insisted...
+  });
+};
