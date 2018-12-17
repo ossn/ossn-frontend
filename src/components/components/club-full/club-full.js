@@ -10,7 +10,7 @@ import MemberList from './../member-list/member-list';
 import ClubInfo from './../club-info/club-info';
 import Shape from './../shape/shape';
 import { PlusCircle } from 'react-feather';
-import Banner from './../banner/banner';
+// import Banner from './../banner/banner';
 
 import './club-full.scss';
 
@@ -42,10 +42,11 @@ export default class Club extends React.Component {
       <LayoutContained className="club-full">
         <div className="club-full__header">
           <div className="club-full__cover-wrapper">
-            <Banner
+            {/* // TODO: Handle the banner image */}
+            {/*<Banner
               imageMobile={this.props.mobileImage.childImageSharp.resolutions}
               image={this.props.image.childImageSharp.fluid}
-            />
+            />*/}
           </div>
 
           <div className="club-full__profile-picture-section">
