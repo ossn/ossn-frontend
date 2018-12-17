@@ -156,9 +156,6 @@ class Clubs extends React.PureComponent {
   };
 
   render() {
-    {
-      this.onFirstLoad();
-    }
     const snapshot = { ...this.state };
     const clubs = snapshot.shownClubs;
 
@@ -203,6 +200,8 @@ class Clubs extends React.PureComponent {
             </div>
           </div>
           {content}
+
+          {this.onFirstLoad()}
 
           <ApolloConsumer>
             {client => (
