@@ -14,6 +14,8 @@ import Map from './../components/components/map/map';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 import { Search } from 'react-feather';
 import ShadowBox from './../components/components/shadow-box/shadow-box';
+import { Query, ApolloConsumer } from 'react-apollo';
+import gql from 'graphql-tag';
 
 import './../components/pages-styles/find-club.scss';
 
@@ -23,10 +25,27 @@ class Clubs extends React.PureComponent {
    Handle the value of th search and the toggle button from state.
    */
   constructor() {
+    /*
+    state fields:
+      // TODO: make it enum
+      view (string): how to show the list of clubs. values (list, map).
+      searchString (string): the string to filter the clubs.
+      shownClubsCount (int): The number of the clubs that is fetched and shown.
+      shownclubs (array): the list of the club objects.
+      cursor (string): The id of the last fetched club.
+      firstLoad (boolean): A flag to indicate the first render of the component.
+      hasNextPage (boolean): A flaf to store the apollo hasNextPage.
+    */
     super();
     this.state = {
       view: 'list',
-      searchString: ''
+      searchString: '',
+      shownClubsCount: 0,
+      shownClubs: [],
+      cursor: null,
+      firstLoad: true,
+      // REVIEW: why true ?
+      hasNextPage: true
     };
     this.handleSearch = this.handleSearch.bind(this);
   }
@@ -41,31 +60,107 @@ class Clubs extends React.PureComponent {
     this.setState({ searchString: event.target.value });
   };
 
-  render() {
-    // console.log(this.props.data);
-
-    const snapshot = { ...this.state };
-
-    // Keep the props object unmodified for later reference (sorting undo sorting etc)
-    let clubs = this.props.data.ossnApi.clubs.clubs.slice();
-
-    // Filter clubs by the search string.
-    if (
-      snapshot.searchString !== '' ||
-      typeof snapshot.searchString !== 'undefined'
-    ) {
-      clubs = clubs.filter((club, i) => {
-        if (club.title) {
-          return (
-            club.title
-              .toLowerCase()
-              .indexOf(snapshot.searchString.trim().toLowerCase()) >= 0
-          );
-        } else {
-          club.title = 'Club name is missing';
+  // the definition of the query.
+  GET_CLUBS = gql`
+    query GetMembers($number: Int!, $cursor: ID) {
+      clubs(first: $number, after: $cursor) {
+        clubs {
+          id
+          email
+          name
+          imageUrl
+          description
+          codeOfConduct
+          sortDescription
+          users {
+            id
+          }
+          events {
+            id
+            title
+            startDate
+            endDate
+            location {
+              id
+              address
+              lat
+              lng
+            }
+            imageUrl
+            description
+            sortDescription
+          }
+          githubUrl
+          clubUrl
+          location {
+            id
+            lat
+            lng
+          }
         }
-      });
+
+        pageInfo {
+          totalCount
+          endCursor
+          hasNextPage
+          startCursor
+        }
+      }
     }
+  `;
+
+  onClubsFetched = data => {
+    const snapshot = { ...this.state };
+    const shownClubs = [...snapshot.shownClubs, ...data.clubs.clubs];
+
+    this.setState(() => ({
+      shownClubs: shownClubs,
+      cursor: data.clubs.pageInfo.endCursor,
+      firstLoad: false,
+      hasNextPage: data.clubs.pageInfo.hasNextPage
+    }));
+  };
+
+  // function
+  // loads the first data.
+  onFirstLoad = () => {
+    const snapshot = { ...this.state };
+    let content;
+
+    if (snapshot.firstLoad) {
+      content = (
+        <Query
+          query={this.GET_CLUBS}
+          variables={{ number: 1, cursor: snapshot.cursor }}
+          onCompleted={data => {
+            this.onClubsFetched(data);
+          }}
+        >
+          {({ loading, error }) => {
+            if (loading) {
+              return 'Loading....';
+            }
+            if (error) {
+              return <div> `Error ${error.message}` </div>;
+            } else {
+              // JSX elements
+              // create the DOM for the component.
+              return null;
+            }
+          }}
+        </Query>
+      );
+    }
+
+    return content;
+  };
+
+  render() {
+    {
+      this.onFirstLoad();
+    }
+    const snapshot = { ...this.state };
+    const clubs = snapshot.shownClubs;
 
     // Decide which view to show.
     const content =
@@ -108,6 +203,25 @@ class Clubs extends React.PureComponent {
             </div>
           </div>
           {content}
+
+          <ApolloConsumer>
+            {client => (
+              <div>
+                <button
+                  onClick={async () => {
+                    const { data } = await client.query({
+                      query: this.GET_CLUBS,
+                      variables: { number: 1, cursor: snapshot.cursor }
+                    });
+                    this.onClubsFetched(data);
+                  }}
+                  hidden={!snapshot.hasNextPage}
+                >
+                  Load more
+                </button>
+              </div>
+            )}
+          </ApolloConsumer>
         </LayoutContained>
       </BasicLayout>
     );
