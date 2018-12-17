@@ -57,7 +57,8 @@ export class SearchFilter extends React.Component {
             placeholder={placeholder}
             onChange={this.handleSearch}
             onKeyPress={e => {
-              e.preventDefault();
+              // REVIEW: The way controll of the input and the submit prevent.
+              if (e.key === 'Enter') e.preventDefault();
             }}
             id={this.props.id}
           />
