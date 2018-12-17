@@ -29,7 +29,7 @@ export const ClubTeaser = props => {
           <span className="club-teaser__title">{title}</span>
           <span className="club-teaser__description"> {subtitle} </span>
           <Link
-            to="/club"
+            to={`/clubs/${props.club.id}`}
             className="button button--x-small club-teaser__button"
           >
             Club page <ChevronRight size={16} className="icon" />
