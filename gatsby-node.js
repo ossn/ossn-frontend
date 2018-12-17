@@ -59,6 +59,24 @@ exports.createPages = ({ graphql, actions }) => {
               }
             }
           }
+
+          users {
+            users {
+              id
+              userName
+              firstName
+              lastName
+              imageUrl
+              receiveNewsletter
+              description
+              githubUrl
+              personalUrl
+              email
+              clubs {
+                name
+              }
+            }
+          }
         }
       }
     `).then(result => {
@@ -71,6 +89,17 @@ exports.createPages = ({ graphql, actions }) => {
           }
         });
       }
+
+      for (let node of result.data.ossnApi.users.users) {
+        actions.createPage({
+          path: `members/${node.id}`,
+          component: path.resolve(`./src/templates/member.js`),
+          context: {
+            member: node
+          }
+        });
+      }
+
       resolve();
     });
   }).catch(error => {
