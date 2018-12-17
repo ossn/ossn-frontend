@@ -14,11 +14,11 @@ import ShadowBox from './../shadow-box/shadow-box';
 import './club-teaser.scss';
 
 export const ClubTeaser = props => {
-  const title = props.club.title;
-  const subtitle = props.club.subtitle;
+  const title = props.club.name || 'Club name is missing';
+  const subtitle =
+    props.club.sortDescription || 'Club sort description is missing';
   const image = props.club.imageUrl;
   const classes = props.className ? props.className : '';
-
   return (
     <div className={`${classes} club-teaser`}>
       <ShadowBox className="club-teaser__inner">
