@@ -13,14 +13,14 @@ export default props => {
   );
 
   const title = props.title ? (
-    <h1 className="title title--large">
+    <h2 className="title title--large">
       {props.title.map((titleElement, index) => (
         <span key={index} className="banner__title-element">
           {' '}
           {titleElement}{' '}
         </span>
       ))}
-    </h1>
+    </h2>
   ) : (
     ''
   );
