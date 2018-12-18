@@ -44,7 +44,8 @@ class Clubs extends React.PureComponent {
       shownClubs: [],
       cursor: null,
       firstLoad: true,
-      hasNextPage: false
+      hasNextPage: false,
+      number: 5
     };
     this.handleSearch = this.handleSearch.bind(this);
   }
@@ -52,7 +53,12 @@ class Clubs extends React.PureComponent {
   // State management functions. Used by children components.
   handleToggleMap = () => {
     const snapshot = { ...this.state };
-    this.setState({ view: snapshot.view === 'map' ? 'list' : 'map' });
+    this.setState({
+      view: snapshot.view === 'map' ? 'list' : 'map',
+      number: snapshot.view === 'map' ? 5 : 10,
+      firstLoad: true,
+      hasNextPage: false
+    });
   };
 
   handleSearch = event => {
@@ -139,7 +145,7 @@ class Clubs extends React.PureComponent {
         <Query
           query={this.GET_CLUBS}
           variables={{
-            number: 5,
+            number: snapshot.number,
             cursor: snapshot.cursor,
             search: snapshot.searchString === '' ? null : snapshot.searchString
           }}
@@ -228,7 +234,7 @@ class Clubs extends React.PureComponent {
                     const { data } = await client.query({
                       query: this.GET_CLUBS,
                       variables: {
-                        number: 5,
+                        number: snapshot.number,
                         cursor: snapshot.cursor,
                         search:
                           snapshot.searchString === ''

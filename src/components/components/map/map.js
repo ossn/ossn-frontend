@@ -17,8 +17,8 @@ class ClubMap extends React.Component {
       return (
         <Marker
           position={[
-            club.location || 38.0582213,
-            club.location || -115.6058512
+            club.location || 38.0582213 + i,
+            club.location || -115.6058512 - i
           ]}
           key={i}
         >
