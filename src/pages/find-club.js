@@ -55,9 +55,11 @@ class Clubs extends React.PureComponent {
     const snapshot = { ...this.state };
     this.setState({
       view: snapshot.view === 'map' ? 'list' : 'map',
-      number: snapshot.view === 'map' ? 5 : 10,
+      number: snapshot.view === 'map' ? 5 : 1000,
+      shownClubs: [],
       firstLoad: true,
-      hasNextPage: false
+      hasNextPage: false,
+      cursor: null
     });
   };
 
