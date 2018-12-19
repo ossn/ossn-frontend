@@ -28,7 +28,7 @@ exports.createPages = ({ graphql, actions }) => {
     graphql(`
       {
         ossnApi {
-          clubs(last: 100) {
+          clubs(first: 100) {
             clubs {
               id
               email
@@ -60,7 +60,7 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
 
-          users(last: 100) {
+          users(first: 100) {
             users {
               id
               userName
