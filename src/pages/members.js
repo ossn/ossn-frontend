@@ -35,7 +35,8 @@ class Members extends React.PureComponent {
       shownMembers: [],
       cursor: null,
       firstLoad: true,
-      hasNextPage: false
+      hasPreviousPage: false,
+      totalCount: 0
     };
   }
 
@@ -46,17 +47,17 @@ class Members extends React.PureComponent {
       shownMembers: [],
       cursor: null,
       shownMembersCount: 0,
-      hasNextPage: false
+      hasPreviousPage: false,
+      totalCount: 0
     });
   };
 
   render() {
     const snapshot = { ...this.state };
-    let totalCount = 'Todo'; //this.props.data.ossnApi.users.pageInfo.totalCount;
 
     const GET_MEMBERS = gql`
       query GetMembers($number: Int!, $cursor: ID, $search: String) {
-        users(first: $number, after: $cursor, search: $search) {
+        users(last: $number, after: $cursor, search: $search) {
           users {
             id
             userName
@@ -77,7 +78,7 @@ class Members extends React.PureComponent {
           pageInfo {
             totalCount
             endCursor
-            hasNextPage
+            hasPreviousPage
             startCursor
           }
         }
@@ -94,7 +95,8 @@ class Members extends React.PureComponent {
         shownMembers: shownMembers,
         cursor: data.users.pageInfo.endCursor,
         firstLoad: false,
-        hasNextPage: data.users.pageInfo.hasNextPage
+        hasPreviousPage: data.users.pageInfo.hasPreviousPage,
+        totalCount: data.users.pageInfo.totalCount
       }));
     };
 
@@ -106,7 +108,7 @@ class Members extends React.PureComponent {
           <Query
             query={GET_MEMBERS}
             variables={{
-              number: 1,
+              number: 3,
               cursor: snapshot.cursor,
               search: snapshot.search
             }}
@@ -193,8 +195,8 @@ class Members extends React.PureComponent {
               <div>
                 <ShadowBox zeroPadding className="members__filters-section">
                   <h2 className="title title--x-small title--centered members__list-title">
-                    Showing {snapshot.shownMembersCount} out of {totalCount}{' '}
-                    members
+                    Showing {snapshot.shownMembersCount} out of{' '}
+                    {snapshot.totalCount} members
                   </h2>
                   <div className="members__filter-list">
                     <div className="members__filter members__filter--search">
@@ -218,14 +220,14 @@ class Members extends React.PureComponent {
                           const { data } = await client.query({
                             query: GET_MEMBERS,
                             variables: {
-                              number: 1,
+                              number: 5,
                               cursor: snapshot.cursor,
                               search: snapshot.search
                             }
                           });
                           onMembersFetched(data);
                         }}
-                        hidden={!snapshot.hasNextPage}
+                        hidden={!snapshot.hasPreviousPage}
                       >
                         <PlusSquare size={16} />
                         Load more

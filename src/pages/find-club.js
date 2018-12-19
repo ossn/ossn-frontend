@@ -1,5 +1,4 @@
 // External modules.
-import { graphql } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
@@ -34,7 +33,7 @@ class Clubs extends React.PureComponent {
       shownclubs (array): the list of the club objects.
       cursor (string): The id of the last fetched club.
       firstLoad (boolean): A flag to indicate the first render of the component.
-      hasNextPage (boolean): A flaf to store the apollo hasNextPage.
+      hasPreviousPage (boolean): A flaf to store the apollo hasPreviousPage.
     */
     super();
     this.state = {
@@ -44,7 +43,7 @@ class Clubs extends React.PureComponent {
       shownClubs: [],
       cursor: null,
       firstLoad: true,
-      hasNextPage: false,
+      hasPreviousPage: false,
       number: 5
     };
     this.handleSearch = this.handleSearch.bind(this);
@@ -55,10 +54,10 @@ class Clubs extends React.PureComponent {
     const snapshot = { ...this.state };
     this.setState({
       view: snapshot.view === 'map' ? 'list' : 'map',
-      number: snapshot.view === 'map' ? 5 : 1000,
+      number: snapshot.view === 'map' ? 5 : 100,
       shownClubs: [],
       firstLoad: true,
-      hasNextPage: false,
+      hasPreviousPage: false,
       cursor: null
     });
   };
@@ -69,14 +68,14 @@ class Clubs extends React.PureComponent {
       firstLoad: true,
       shownClubs: [],
       cursor: null,
-      hasNextPage: false
+      hasPreviousPage: false
     });
   };
 
   // the definition of the query.
   GET_CLUBS = gql`
     query GetClubs($number: Int!, $cursor: ID, $search: String) {
-      clubs(first: $number, after: $cursor, search: $search) {
+      clubs(last: $number, after: $cursor, search: $search) {
         clubs {
           id
           email
@@ -115,7 +114,7 @@ class Clubs extends React.PureComponent {
         pageInfo {
           totalCount
           endCursor
-          hasNextPage
+          hasPreviousPage
           startCursor
         }
       }
@@ -132,7 +131,7 @@ class Clubs extends React.PureComponent {
       shownClubs: shownClubs,
       cursor: data.clubs.pageInfo.endCursor,
       firstLoad: false,
-      hasNextPage: data.clubs.pageInfo.hasNextPage
+      hasPreviousPage: data.clubs.pageInfo.hasPreviousPage
     }));
   };
 
@@ -246,7 +245,7 @@ class Clubs extends React.PureComponent {
                     });
                     this.onClubsFetched(data);
                   }}
-                  hidden={!snapshot.hasNextPage}
+                  hidden={!snapshot.hasPreviousPage}
                 >
                   <PlusSquare size={16} />
                   Load more
@@ -261,37 +260,3 @@ class Clubs extends React.PureComponent {
 }
 
 export default Clubs;
-
-export const query = graphql`
-  {
-    ossnApi {
-      clubs {
-        clubs {
-          id
-          name
-          sortDescription
-          imageUrl
-          clubUrl
-          location {
-            address
-            id
-            lat
-            lng
-          }
-          users {
-            id
-            userName
-            firstName
-            lastName
-            imageUrl
-            receiveNewsletter
-            description
-            githubUrl
-            personalUrl
-            email
-          }
-        }
-      }
-    }
-  }
-`;
