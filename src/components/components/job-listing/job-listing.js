@@ -29,7 +29,7 @@ export default props => {
 
 export const query = graphql`
   fragment JobBoardListing on OSSNAPI {
-    jobs(last: 3) {
+    jobs(first: 3) {
       jobs {
         id
         description: description

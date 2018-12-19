@@ -33,7 +33,7 @@ class Clubs extends React.PureComponent {
       shownclubs (array): the list of the club objects.
       cursor (string): The id of the last fetched club.
       firstLoad (boolean): A flag to indicate the first render of the component.
-      hasPreviousPage (boolean): A flaf to store the apollo hasPreviousPage.
+      hasNextPage (boolean): A flaf to store the apollo hasNextPage.
     */
     super();
     this.state = {
@@ -43,7 +43,7 @@ class Clubs extends React.PureComponent {
       shownClubs: [],
       cursor: null,
       firstLoad: true,
-      hasPreviousPage: false,
+      hasNextPage: false,
       number: 5
     };
     this.handleSearch = this.handleSearch.bind(this);
@@ -57,7 +57,7 @@ class Clubs extends React.PureComponent {
       number: snapshot.view === 'map' ? 5 : 100,
       shownClubs: [],
       firstLoad: true,
-      hasPreviousPage: false,
+      hasNextPage: false,
       cursor: null
     });
   };
@@ -68,14 +68,14 @@ class Clubs extends React.PureComponent {
       firstLoad: true,
       shownClubs: [],
       cursor: null,
-      hasPreviousPage: false
+      hasNextPage: false
     });
   };
 
   // the definition of the query.
   GET_CLUBS = gql`
     query GetClubs($number: Int!, $cursor: ID, $search: String) {
-      clubs(last: $number, after: $cursor, search: $search) {
+      clubs(first: $number, after: $cursor, search: $search) {
         clubs {
           id
           email
@@ -114,7 +114,7 @@ class Clubs extends React.PureComponent {
         pageInfo {
           totalCount
           endCursor
-          hasPreviousPage
+          hasNextPage
           startCursor
         }
       }
@@ -131,7 +131,7 @@ class Clubs extends React.PureComponent {
       shownClubs: shownClubs,
       cursor: data.clubs.pageInfo.endCursor,
       firstLoad: false,
-      hasPreviousPage: data.clubs.pageInfo.hasPreviousPage
+      hasNextPage: data.clubs.pageInfo.hasNextPage
     }));
   };
 
@@ -245,7 +245,7 @@ class Clubs extends React.PureComponent {
                     });
                     this.onClubsFetched(data);
                   }}
-                  hidden={!snapshot.hasPreviousPage}
+                  hidden={!snapshot.hasNextPage}
                 >
                   <PlusSquare size={16} />
                   Load more

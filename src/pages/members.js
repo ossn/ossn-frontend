@@ -35,7 +35,7 @@ class Members extends React.PureComponent {
       shownMembers: [],
       cursor: null,
       firstLoad: true,
-      hasPreviousPage: false,
+      hasNextPage: false,
       totalCount: 0
     };
   }
@@ -47,7 +47,7 @@ class Members extends React.PureComponent {
       shownMembers: [],
       cursor: null,
       shownMembersCount: 0,
-      hasPreviousPage: false,
+      hasNextPage: false,
       totalCount: 0
     });
   };
@@ -57,7 +57,7 @@ class Members extends React.PureComponent {
 
     const GET_MEMBERS = gql`
       query GetMembers($number: Int!, $cursor: ID, $search: String) {
-        users(last: $number, after: $cursor, search: $search) {
+        users(first: $number, after: $cursor, search: $search) {
           users {
             id
             userName
@@ -78,7 +78,7 @@ class Members extends React.PureComponent {
           pageInfo {
             totalCount
             endCursor
-            hasPreviousPage
+            hasNextPage
             startCursor
           }
         }
@@ -95,7 +95,7 @@ class Members extends React.PureComponent {
         shownMembers: shownMembers,
         cursor: data.users.pageInfo.endCursor,
         firstLoad: false,
-        hasPreviousPage: data.users.pageInfo.hasPreviousPage,
+        hasNextPage: data.users.pageInfo.hasNextPage,
         totalCount: data.users.pageInfo.totalCount
       }));
     };
@@ -108,7 +108,7 @@ class Members extends React.PureComponent {
           <Query
             query={GET_MEMBERS}
             variables={{
-              number: 3,
+              number: 5,
               cursor: snapshot.cursor,
               search: snapshot.search
             }}
@@ -227,7 +227,7 @@ class Members extends React.PureComponent {
                           });
                           onMembersFetched(data);
                         }}
-                        hidden={!snapshot.hasPreviousPage}
+                        hidden={!snapshot.hasNextPage}
                       >
                         <PlusSquare size={16} />
                         Load more
