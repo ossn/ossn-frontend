@@ -55,7 +55,7 @@ class Member extends React.Component {
           })
           .join(', ') || 'club missing',
       github: this.props.member.githubUrl || 'github missing',
-      personal: this.props.member.personal || 'webpage missing',
+      personal: this.props.member.personalUrl || 'webpage missing',
       description: this.props.member.description || 'description missing'
     };
 
@@ -265,7 +265,7 @@ class Member extends React.Component {
     ) : (
       <a href="#passLinter">
         <Link className="member__icon" />
-        <span className="member__link-prefix">http://</span>
+        {/*<span className="member__link-prefix">http://</span>*/}
         <span className="member__link-content">{snapshot.personal}</span>
       </a>
     );
