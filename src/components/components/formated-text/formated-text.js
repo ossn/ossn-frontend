@@ -8,7 +8,6 @@ import {
   AtSign
 } from 'react-feather';
 
-// TODO: find a way to pass the icon
 export default class FormatedText extends React.PureComponent {
   render() {
     const prefix = this.props.prefix || '';

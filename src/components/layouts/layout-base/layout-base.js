@@ -20,8 +20,6 @@ import SkipLink from './../../components/skip-link/skip-link';
 
 // import LayoutContained from "./../layout-contained/layout-contained";
 
-// TODO: Remove and fid title another way.
-
 const Basic = ({ children }) => {
   const client = new ApolloClient({
     link: new HttpLink({

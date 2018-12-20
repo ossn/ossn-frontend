@@ -1,3 +1,7 @@
+/*
+The container for the organizations page.
+*/
+
 // external modules
 import React, { memo } from 'react';
 import { Helmet } from 'react-helmet';
@@ -18,7 +22,6 @@ import Banner from './../components/components/banner/banner';
 import '../components/pages-styles/organizations.scss';
 
 // Import page title from gatsby config.
-//TODO: Remove and fid title another way.
 import GatsbyConfig from './../../gatsby-config';
 
 const Organizations = props => {

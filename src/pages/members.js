@@ -22,7 +22,7 @@ import { SearchFilter } from '../components/components/filter/filter';
 import JoinCta from './../components/components/join-cta/join-cta';
 import MemberList from './../components/components/member-list/member-list';
 
-// Import page title from gatsby config. TODO Remove and fid title another way.
+// Import page title from gatsby config.
 import GatsbyConfig from './../../gatsby-config';
 
 class Members extends React.PureComponent {

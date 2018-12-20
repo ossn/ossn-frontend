@@ -17,7 +17,6 @@ import BasicLayout from '../components/layouts/layout-base/layout-base';
 import GatsbyConfig from './../../gatsby-config';
 import Opportunities from './../components/components/opportunities/opportunities';
 
-// TODO: Remove and fid title another way.
 class Contribute extends React.PureComponent {
   render() {
     const jobs = this.props.data.ossnApi.jobs.jobs;

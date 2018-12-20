@@ -6,7 +6,6 @@ import { Helmet } from 'react-helmet';
 import BasicLayout from '../components/layouts/layout-base/layout-base';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 
-// Import page title from gatsby config. TODO Remove and fid title another way.
 import GatsbyConfig from './../../gatsby-config';
 
 const NotFoundPage = () => (

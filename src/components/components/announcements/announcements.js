@@ -28,7 +28,6 @@ export default props => {
   );
 };
 
-// TODO: request the shortDescription typo fix
 export const query = graphql`
   fragment announcements on OSSNAPI {
     announcements(first: 3) {

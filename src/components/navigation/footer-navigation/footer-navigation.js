@@ -116,9 +116,6 @@ export default class Navigation extends React.Component {
       <SimpleHeader title={this.props.title} />
     );
 
-    // TODO add conditionaly.
-    // const ref = snapshot.isMobile ?  { ...this.expandable } : false;
-
     return (
       <section className={classString} ref={this.expandable}>
         <h5 className="footer__heading">{header}</h5>
