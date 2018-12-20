@@ -178,6 +178,10 @@
     }
   }
 
+  .banner__image {
+    object-fit: cover;
+  }
+
   .banner__image-wrapper {
     max-height: 200px;
   }

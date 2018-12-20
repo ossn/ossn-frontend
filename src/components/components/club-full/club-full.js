@@ -11,7 +11,9 @@ import MemberList from './../member-list/member-list';
 import ClubInfo from './../club-info/club-info';
 import Shape from './../shape/shape';
 import { PlusCircle } from 'react-feather';
-// import Banner from './../banner/banner';
+import Banner from './../banner/banner';
+import groupSmallImage from './../../../images/group-small.png';
+import clubCover from './../../../images/ClubCover.png';
 
 import './club-full.scss';
 
@@ -59,16 +61,13 @@ export default class Club extends React.Component {
         <div className="club-full__header">
           <div className="club-full__cover-wrapper">
             {/* // TODO: Handle the banner image */}
-            {/*<Banner
-              imageMobile={this.props.mobileImage.childImageSharp.resolutions}
-              image={this.props.image.childImageSharp.fluid}
-            />*/}
+            <Banner image={this.props.club.bannerImageUrl || clubCover} />
           </div>
 
           <div className="club-full__profile-picture-section">
             <div className="club-full__profile-picture-wrapper">
               <img
-                src="https://d.ibtimes.co.uk/en/full/1477880/lemmy.jpg"
+                src={this.props.club.imageUrl || groupSmallImage}
                 alt="Club profile"
                 className="club-full__profile-picture"
               />

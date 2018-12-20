@@ -1,6 +1,4 @@
 import React from 'react';
-import Img from 'gatsby-image';
-import MediaQuery from 'react-responsive';
 import Shape from './../shape/shape';
 
 import './banner.scss';
@@ -47,12 +45,7 @@ export default props => {
   return (
     <article className={classes}>
       <div className="banner__image-wrapper">
-        <MediaQuery maxWidth={767}>
-          <Img resolutions={props.imageMobile} className="banner__image" />
-        </MediaQuery>
-        <MediaQuery minWidth={768}>
-          <Img fluid={props.image} className="banner__image" />
-        </MediaQuery>
+        <img src={props.image} className="banner__image" alt="" />
       </div>
       <div className="banner__content">
         <div className="banner__content-inner">
