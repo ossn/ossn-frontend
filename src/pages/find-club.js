@@ -115,7 +115,6 @@ class Clubs extends React.PureComponent {
           totalCount
           endCursor
           hasNextPage
-          startCursor
         }
       }
     }
