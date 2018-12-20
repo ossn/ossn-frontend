@@ -12,7 +12,7 @@ import ClubInfo from './../club-info/club-info';
 import Shape from './../shape/shape';
 import { PlusCircle } from 'react-feather';
 import Banner from './../banner/banner';
-import groupSmallImage from './../../../images/group-small.png';
+import groupSmallImage from './../../../images/group-small.jpg';
 import clubCover from './../../../images/ClubCover.png';
 
 import './club-full.scss';
@@ -22,6 +22,7 @@ export default class Club extends React.Component {
     super(props);
   }
 
+  // Infrastructure for logged in user handling.
   shouldCTAAppear() {
     return true;
   }
@@ -60,23 +61,27 @@ export default class Club extends React.Component {
       <LayoutContained className="club-full">
         <div className="club-full__header">
           <div className="club-full__cover-wrapper">
-            {/* // TODO: Handle the banner image */}
             <Banner image={this.props.club.bannerImageUrl || clubCover} />
           </div>
 
-          <div className="club-full__profile-picture-section">
-            <div className="club-full__profile-picture-wrapper">
-              <img
-                src={this.props.club.imageUrl || groupSmallImage}
-                alt="Club profile"
-                className="club-full__profile-picture"
-              />
+          <div className="club-full__header-bottom">
+            <div className="club-full__profile-picture-section">
+              <div className="club-full__profile-picture-wrapper">
+                <img
+                  src={this.props.club.imageUrl || groupSmallImage}
+                  alt="Club profile"
+                  className="club-full__profile-picture"
+                />
+              </div>
             </div>
-          </div>
 
-          <div className="club-full__title-wrapper">
-            <h1 className="club-full__title"> {club.title} </h1>
-            <span className="club-full__subtitle"> {club.subtitle} </span>
+            <div className="club-full__title-wrapper">
+              <h1 className="club-full__title"> {club.title} </h1>
+              <span className="club-full__subtitle">
+                {' '}
+                Rochester Institute of Technology {club.subtitle}{' '}
+              </span>
+            </div>
           </div>
         </div>
 
