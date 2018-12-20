@@ -10,12 +10,21 @@
 .club-full {
   &__cover-wrapper {
     @include margin-top(-50px);
-    @include margin-bottom(50px);
+    @include margin-bottom(90px);
     min-height: 200px;
     max-height: 200px;
 
-    @include breakpoint($mobile) {
+    @include breakpoint($tablet) {
       @include margin-bottom(0);
+    }
+  }
+
+  &__header-bottom {
+    margin-bottom: 20px;
+
+    @include breakpoint($tablet) {
+      display: flex;
+      margin-bottom: 60px;
     }
   }
 
@@ -24,7 +33,7 @@
     text-align: center;
     width: 100%;
 
-    @include breakpoint($mobile) {
+    @include breakpoint($tablet) {
       @include padding-left(20px);
       text-align: left;
       width: auto;
@@ -58,14 +67,15 @@
     width: 100%;
     position: relative;
 
-    @include breakpoint($mobile) {
+    @include breakpoint($tablet) {
       width: 265px;
+      flex-shrink: 0;
     }
   }
 
   &__profile-picture-wrapper {
     position: absolute;
-    bottom: 0px;
+    top: -200px;
     right: auto;
     left: 50%;
     transform: translateX(-50%);
@@ -75,12 +85,13 @@
     border-radius: 50px;
     overflow: hidden;
     display: flex;
-    background: color('red'); // FIXME: make image be the whole size.
 
-    @include breakpoint($mobile) {
+    @include breakpoint($tablet) {
       right: 0;
       left: auto;
       transform: none;
+      top: -90px;
+
     }
   }
 
