@@ -4,7 +4,7 @@ Welcome to Open Source Student Network page repository!
 
 
 #### Contents
-1. [Set up](#setup)
+1. [Setup](#setup)
 2. [Develop](#develop)
 3. [Build](#build)
 
@@ -13,18 +13,22 @@ Welcome to Open Source Student Network page repository!
 1. Install `nodeJS`.Use your OS package manager to install nodeJS or follow the instructions on [nodeJS page](https://nodejs.org/en/download/).
 2. install `gatsby-cli`. Run
  `npm install --global gatsby-cli`.
-2. Clone the repository. Run `git clone http://link.git`.
-3. Install node dependencies. On repo directory run `npm install`.
+3. Clone the repository. Run `git clone https://github.com/ossn/ossn-frontend.git`.
+4. Install nvm. Follow the instructions on [nvm repo](https://github.com/creationix/nvm#installation).
+5. Run `nvm use`.
+6. Install node dependencies. On repo directory run `npm install`.
 
 ### <a name="develop"></a> Develop
-1. Open development server.
-At the repository directory run `npm run develop`
+1. Run `nvm use`.
+2. Open development server.
+At the repository directory run `npm run develop`.
 - The page will be available at [localhost:8000](htpp://localhost:8000) by default
 
 ### <a name="build"></a> Build
 
-1. Building the page. At the repository directory run `gatsby build`
-2. Start the server. Run `gatsby build` to initialize a gatsby server at your machine.
+1. Run `nvm use`.
+2. Building the page. At the repository directory run `gatsby build`
+3. Start the server. Run `gatsby build` to initialize a gatsby server at your machine.
 - The page will be available  [localhost:9000](http://localhost:9000) by default.
 
 
