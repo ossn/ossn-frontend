@@ -13,7 +13,6 @@ import { AllLeaderTools } from './../components/components/leader-tools/leader-t
 import OpportunitiesMember from './../components/components/opportunities-member/opportunities-member';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 
-// TODO: Remove and fid title another way.
 class Contribute extends React.PureComponent {
   render() {
     const jobs = this.props.data.ossnApi.jobs.jobs;
@@ -22,7 +21,6 @@ class Contribute extends React.PureComponent {
     const tools = this.props.data.allToolsForContributingJson;
     const resources = this.props.data.allTrainingResourcesJson;
 
-    // HACK: : Data should be represented better
     const prManagement = this.props.data.leadersToolsJson
       .Project_Management_tools;
     const codeOfConduct = this.props.data.leadersToolsJson

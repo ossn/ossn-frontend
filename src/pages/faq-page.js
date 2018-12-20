@@ -12,7 +12,6 @@ import LayoutContained from './../components/layouts/layout-contained/layout-con
 import Shape from './../components/components/shape/shape';
 import FaqItem from './../components/components/faq-item/faq-item';
 
-// TODO: Remove and fid title another way.
 const Questions = props => {
   return (
     <BasicLayout>

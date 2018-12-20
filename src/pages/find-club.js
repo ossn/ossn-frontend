@@ -18,7 +18,6 @@ import gql from 'graphql-tag';
 
 import './../components/pages-styles/find-club.scss';
 
-// TODO: Remove and fid title another way.
 class Clubs extends React.PureComponent {
   /*
    Handle the value of th search and the toggle button from state.
@@ -26,7 +25,6 @@ class Clubs extends React.PureComponent {
   constructor() {
     /*
     state fields:
-      // TODO: make it enum
       view (string): how to show the list of clubs. values (list, map).
       searchString (string): the string to filter the clubs.
       shownClubsCount (int): The number of the clubs that is fetched and shown.

@@ -17,7 +17,6 @@ import Banner from './../components/components/banner/banner';
 
 import './../components/pages-styles/about-us.scss';
 
-// TODO: Remove and fid title another way.
 const About = props => {
   return (
     <BasicLayout>

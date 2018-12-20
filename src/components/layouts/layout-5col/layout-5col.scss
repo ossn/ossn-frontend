@@ -11,9 +11,6 @@
 // item* in the container can be created using the following class:
 // - `.layout-5col__col` : 1-column wide grid item spanning  1 åcolumn.
 //
-// REVIEW: the variants
-// .layout-5col--only-desktop-3 - 3 columns only on desktop. There is no intermediate 2 column step.
-// .layout-5col--no-tablet-break - 3 columns on tablet. There is no intermediate 2 column step.
 // .layout-5col--with-horizontal-gutters - Gutters on both sides, needs wrapper with overflow hidden (like layout-center).
 // .layout-5col--with-vertical-gutters - Gutters on top and bottom.
 
