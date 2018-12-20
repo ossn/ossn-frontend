@@ -19,15 +19,14 @@ Welcome to Open Source Student Network page repository!
 6. Install node dependencies. On repo directory run `npm install`.
 
 ### <a name="develop"></a> Develop
-1. Run `nvm use`.
-2. Open development server.
-At the repository directory run `npm run develop`.
+1. At the repository directory run `nvm use`.
+2. Open development server. Run `npm run develop`.
 - The page will be available at [localhost:8000](htpp://localhost:8000) by default
 
 ### <a name="build"></a> Build
 
-1. Run `nvm use`.
-2. Building the page. At the repository directory run `gatsby build`
+1. At the repository directory run `nvm use`.
+2. Building the page. Run `gatsby build`.
 3. Start the server. Run `gatsby build` to initialize a gatsby server at your machine.
 - The page will be available  [localhost:9000](http://localhost:9000) by default.
 
