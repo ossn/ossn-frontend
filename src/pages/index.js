@@ -150,7 +150,7 @@ export const query = graphql`
       relativePath: { eq: "banners/homepage-header_3x.jpg" }
     ) {
       childImageSharp {
-        fluid(maxWidth: 1110, srcSetBreakpoints: [768]) {
+        fluid(maxWidth: 1110, srcSetBreakpoints: [768], quality: 90) {
           base64
           aspectRatio
           src
@@ -168,7 +168,7 @@ export const query = graphql`
       relativePath: { eq: "banners/homepage-header_3x.jpg" }
     ) {
       childImageSharp {
-        resolutions(height: 300, width: 728, cropFocus: CENTER) {
+        resolutions(height: 300, width: 728, cropFocus: CENTER, quality: 90) {
           ...GatsbyImageSharpResolutions
         }
       }
@@ -186,7 +186,7 @@ export const query = graphql`
             image {
               src {
                 childImageSharp {
-                  fluid(maxWidth: 352) {
+                  fluid(maxWidth: 352, quality: 90) {
                     ...GatsbyImageSharpFluid
                   }
                 }
@@ -201,7 +201,7 @@ export const query = graphql`
             image {
               src {
                 childImageSharp {
-                  fluid(maxWidth: 352) {
+                  fluid(maxWidth: 352, quality: 90) {
                     ...GatsbyImageSharpFluid
                   }
                 }
@@ -217,7 +217,7 @@ export const query = graphql`
             image {
               src {
                 childImageSharp {
-                  fluid(maxWidth: 352) {
+                  fluid(maxWidth: 352, quality: 100) {
                     ...GatsbyImageSharpFluid
                   }
                 }
@@ -232,7 +232,7 @@ export const query = graphql`
             image {
               src {
                 childImageSharp {
-                  fluid(maxWidth: 352) {
+                  fluid(maxWidth: 352, quality: 90) {
                     ...GatsbyImageSharpFluid
                   }
                 }
@@ -247,7 +247,7 @@ export const query = graphql`
             image {
               src {
                 childImageSharp {
-                  fluid(maxWidth: 728) {
+                  fluid(maxWidth: 728, quality: 90) {
                     ...GatsbyImageSharpFluid
                   }
                 }
