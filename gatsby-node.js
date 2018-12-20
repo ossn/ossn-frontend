@@ -113,6 +113,7 @@ const clubQuery = `
           codeOfConduct
           subtitle: sortDescription
           githubUrl
+          bannerImageUrl
           clubUrl
           location {
             address
