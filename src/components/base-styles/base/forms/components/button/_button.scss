@@ -67,7 +67,7 @@ button,
 
   // Restore the focus styles unset by the previous rule.
   &:-moz-focusring { // sass-lint:disable-line no-vendor-prefixes
-    outline-color: transparent;
+    //outline-color: transparent;
   }
 
   &:hover,
@@ -76,7 +76,14 @@ button,
     text-decoration: none;
     color: color(button);
     background-color: mix(color('black'), color('button-bg'), 30%);
+  }
+
+  &:hover {
     outline-color: transparent;
+  }
+
+  &:focus {
+    outline: 1px solid mix(color('black'), color('button-bg'), 60%);
   }
 
   &:active {

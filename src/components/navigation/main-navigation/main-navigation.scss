@@ -38,6 +38,10 @@
 
     &__item {
       padding-right: 22px;
+
+      &:last-child {
+        padding-right: 0;
+      }
     }
 
     &__item-wrapper {
