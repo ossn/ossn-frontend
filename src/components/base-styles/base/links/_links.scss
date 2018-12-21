@@ -47,6 +47,11 @@ a:hover {
   outline-width: 0;
 }
 
+a:focus {
+  outline: 1px dotted mix(color('black'), color('link'), 30%);
+}
+
+
 @media print {
   // Underline all links.
   :link,
