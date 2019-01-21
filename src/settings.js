@@ -1,5 +1,6 @@
 // global settings
 // import androidChrome from './favicon/android-chrome-144x144.png';
+import GatsbyConfig from '../gatsby-config';
 import appleTouch from './favicon/apple-touch-icon.png';
 import favicon16x16 from './favicon/favicon-16x16.png';
 import favicon32x32 from './favicon/favicon-32x32.png';
@@ -54,3 +55,5 @@ function favicon(
   if (color) bundle.color = color;
   return bundle;
 }
+
+export const BACKEND_URL = GatsbyConfig.proxy.url;
