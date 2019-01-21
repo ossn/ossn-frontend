@@ -1,8 +1,7 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
+  "name": "ossn-frontend",
+  "description": "OSSN Website",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "acorn": "^6.0.2",
     "apollo-boost": "^0.1.19",
@@ -41,7 +40,8 @@
     "typey": "^1.1.2"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "ossn"
   ],
   "license": "MIT",
   "scripts": {
