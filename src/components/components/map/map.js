@@ -1,12 +1,12 @@
-import React from 'react';
-
-// local modules
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
-import { ClubTeaser } from './../club-teaser-list/club-teaser-list';
-
-// styles
 import './map.scss';
 
+import React from 'react';
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
+
+import { ClubTeaser } from './../club-teaser-list/club-teaser-list';
+
+// local modules
+// styles
 class ClubMap extends React.Component {
   render() {
     // center the map.
@@ -43,7 +43,7 @@ class ClubMap extends React.Component {
         <Map center={position} zoom={5.25} style={{ height: '400px' }}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           />
           {markers}
         </Map>

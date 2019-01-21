@@ -1,20 +1,19 @@
-/*
-  Is the the preview of a member profile.
+import './member-teaser.scss';
 
-  props:
-    member (object): the member to be shown.
-*/
+import { Link } from 'gatsby';
 import React from 'react';
 import { Users } from 'react-feather';
-import { Link } from 'gatsby';
 
 import Member from './../member/member';
 import ShadowBox from './../shadow-box/shadow-box';
 
-import './member-teaser.scss';
+/*
+ Is the the preview of a member profile.
 
+ props:
+   member (object): the member to be shown. */
 const MemberTeaser = props => {
-  const name = `${props.member.firstName} ${props.member.lastName}`;
+  const name = props.member.name;
   const imageUrl = props.member.imageUrl || null;
   const isLeader =
     props.member.clubs &&
@@ -86,8 +85,7 @@ export default MemberTeaser;
 // export const query = graphql`
 //   fragment User on OSSNAPI {
 //     userName
-//     firstName
-//     lastName
+//     name
 //     imageUrl
 //     receiveNewsletter
 //     description

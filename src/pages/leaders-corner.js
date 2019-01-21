@@ -6,13 +6,13 @@ import { graphql } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-// Local modules.
 import BasicLayout from '../components/layouts/layout-base/layout-base';
 import GatsbyConfig from './../../gatsby-config';
 import { AllLeaderTools } from './../components/components/leader-tools/leader-tools';
 import OpportunitiesMember from './../components/components/opportunities-member/opportunities-member';
 import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 
+// Local modules.
 class Contribute extends React.PureComponent {
   render() {
     const jobs = this.props.data.ossnApi.jobs.jobs;

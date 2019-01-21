@@ -61,8 +61,7 @@ class Members extends React.PureComponent {
           users {
             id
             userName
-            firstName
-            lastName
+            name
             imageUrl
             receiveNewsletter
             description

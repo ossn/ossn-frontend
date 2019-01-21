@@ -124,8 +124,7 @@ const clubQuery = `
           users {
             id
             userName
-            firstName
-            lastName
+            name
             imageUrl
             receiveNewsletter
             description
@@ -153,8 +152,7 @@ query GetClubs($cursor: ID) {
        users {
          id
          userName
-         firstName
-         lastName
+         name
          imageUrl
          receiveNewsletter
          description

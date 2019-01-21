@@ -1,3 +1,15 @@
+import './member.scss';
+
+import React from 'react';
+import { Check, Feather, GitHub, Link, Users, X } from 'react-feather';
+import MediaQuery from 'react-responsive';
+
+import { returnKeyCheck } from './../../../utils/accessibility';
+import TextInput from './../../forms/text-input/text-input';
+import LayoutContained from './../../layouts/layout-contained/layout-contained';
+import ShadowBox from './../shadow-box/shadow-box';
+import Shape from './../shape/shape';
+
 /*
   Profile page template.
   This component is used for showing and editing a memeber's profile.
@@ -13,23 +25,10 @@
   The state also stores the state of the compnent, so modifications on edit can
   be undone.
 */
-import React from 'react';
-import { Feather, Check, X, GitHub, Users, Link } from 'react-feather';
-
-// Local modules.
-import TextInput from './../../forms/text-input/text-input';
-import ShadowBox from './../shadow-box/shadow-box';
-import Shape from './../shape/shape';
-import LayoutContained from './../../layouts/layout-contained/layout-contained';
-import MediaQuery from 'react-responsive';
-
-// styles
-import './member.scss';
-
 // utils
-import { returnKeyCheck } from './../../../utils/accessibility';
-
-class Member extends React.Component {
+// Local modules.
+// styles
+class Member extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -45,7 +44,7 @@ class Member extends React.Component {
     };
 
     const initData = {
-      name: `${this.props.member.firstName} ${this.props.member.lastName}`,
+      name: this.props.member.name,
       imageUrl: this.props.member.imageUrl || 'Image missing',
       location: this.props.member.location || 'Location missing',
       club:

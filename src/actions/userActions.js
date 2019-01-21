@@ -10,8 +10,7 @@ export const login = (username, password) => {
     // make the actual call
     const user = {
       username: 'user01',
-      firstName: 'User',
-      lastName: '01',
+      name: 'User 01',
       location: 'Planet Earth',
       githubLink: 'https://github.com',
       personalPage: 'https://duckduckgo.com',
@@ -42,8 +41,7 @@ export const checkLogin = () => {
 export const register = user => {
   const newUser = {
     username: 'user01',
-    firstName: 'User',
-    lastName: '01',
+    name: 'User 01',
     location: 'Planet Earth',
     githubLink: 'https://github.com',
     personalPage: 'https://duckduckgo.com',

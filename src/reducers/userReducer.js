@@ -15,8 +15,7 @@ const userReducer = (state = initial, action) => {
         loggedIn: true,
         user: {
           username: action.payload.username,
-          firstName: action.payload.firstName,
-          lastName: action.payload.lastName,
+          name: action.payload.name,
           location: action.payload.location,
           github: action.payload.github,
           page: action.payload.page,
