@@ -1,14 +1,13 @@
+import './user-menu.scss';
+
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { mapUserToProps } from './../../../utils/redux-utils';
 import LoggedInMenu from './logged-in-user';
 import NotLoggedInMenu from './not-logged-in-user';
 
-import { mapUserToProps } from './../../../utils/redux-utils';
-
-import './user-menu.scss';
-
-class UserMenu extends React.Component {
+class UserMenu extends React.PureComponent {
   constructor(props) {
     super(props);
     this.popup = React.createRef();

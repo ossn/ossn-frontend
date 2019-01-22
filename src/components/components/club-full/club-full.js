@@ -1,27 +1,23 @@
+import './club-full.scss';
+
+import React from 'react';
+import { PlusCircle } from 'react-feather';
+import ReactMarkdown from 'react-markdown';
+
+import clubCover from './../../../images/ClubCover.png';
+import groupSmallImage from './../../../images/group-small.jpg';
+import Layout2ColsUnequal from './../../layouts/layout-2col-unequal/layout-2col-unequal';
+import LayoutContained from './../../layouts/layout-contained/layout-contained';
+import Banner from './../banner/banner';
+import ClubInfo from './../club-info/club-info';
+import MemberList from './../member-list/member-list';
+import Shape from './../shape/shape';
+
 /*
 This is the template for a single club view.
 */
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-
 // Local modules.
-import LayoutContained from './../../layouts/layout-contained/layout-contained';
-import Layout2ColsUnequal from './../../layouts/layout-2col-unequal/layout-2col-unequal';
-import MemberList from './../member-list/member-list';
-import ClubInfo from './../club-info/club-info';
-import Shape from './../shape/shape';
-import { PlusCircle } from 'react-feather';
-import Banner from './../banner/banner';
-import groupSmallImage from './../../../images/group-small.jpg';
-import clubCover from './../../../images/ClubCover.png';
-
-import './club-full.scss';
-
-export default class Club extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
+export default class Club extends React.PureComponent {
   // Infrastructure for logged in user handling.
   shouldCTAAppear() {
     return true;

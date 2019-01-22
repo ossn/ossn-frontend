@@ -1,26 +1,27 @@
+import './leader-tools-list.scss';
+import './leader-tools.scss';
+
+import React from 'react';
+import {
+  Archive,
+  Briefcase,
+  Clipboard,
+  ExternalLink,
+  FileText,
+  Minus,
+  Plus
+} from 'react-feather';
+import MediaQuery from 'react-responsive';
+
+import Layout2Col from './../../layouts/layout-2col/layout-2col';
+import ShadowBox from './../shadow-box/shadow-box';
+
 /*
   LeaderToolList, LeaderTool and AllLeaderTools components.
   Appears at /leaders-corner.
 */
-import React from 'react';
-import {
-  Briefcase,
-  FileText,
-  Archive,
-  Clipboard,
-  ExternalLink,
-  Plus,
-  Minus
-} from 'react-feather';
-import MediaQuery from 'react-responsive';
 
 // Local modules.
-import Layout2Col from './../../layouts/layout-2col/layout-2col';
-import ShadowBox from './../shadow-box/shadow-box';
-
-import './leader-tools-list.scss';
-import './leader-tools.scss';
-
 //  A single tool entry.
 const LeaderTool = props => {
   const title = props.tool.title;
@@ -41,7 +42,7 @@ const LeaderTool = props => {
 };
 
 // Wraps a list of tools with title.
-export class LeaderToolList extends React.Component {
+export class LeaderToolList extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {

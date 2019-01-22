@@ -1,13 +1,13 @@
 import React from 'react';
-
-import LayoutContained from './../../layouts/layout-contained/layout-contained';
-import PreNavigation from './../../navigation/secondary-navigation/secondary-navigation';
-import Navigation from './../../navigation/main-navigation/main-navigation';
-// import UserMenu from './../user-menu/user-menu';
 import { Menu, X } from 'react-feather';
 import MediaQuery from 'react-responsive';
+
+import LayoutContained from './../../layouts/layout-contained/layout-contained';
+import Navigation from './../../navigation/main-navigation/main-navigation';
+import PreNavigation from './../../navigation/secondary-navigation/secondary-navigation';
 import ShadowBox from './../shadow-box/shadow-box';
 
+// import UserMenu from './../user-menu/user-menu';
 // Header navigation content
 const HeaderNavigationInner = props => {
   return (
@@ -27,7 +27,7 @@ const HeaderNavigationInner = props => {
   );
 };
 
-class HeaderNavigation extends React.Component {
+class HeaderNavigation extends React.PureComponent {
   constructor(props) {
     super(props);
     this.expandable = React.createRef();

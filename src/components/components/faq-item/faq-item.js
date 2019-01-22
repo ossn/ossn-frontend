@@ -1,11 +1,12 @@
+import React from 'react';
+import { ChevronRight } from 'react-feather';
+
 /*
   A single FAQ question and answer.
   Appears at /faq-page.
 */
-import React from 'react';
-import { ChevronRight } from 'react-feather';
 
-class FaqItem extends React.Component {
+class FaqItem extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
