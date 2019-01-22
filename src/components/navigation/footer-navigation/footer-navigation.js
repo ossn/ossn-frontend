@@ -1,3 +1,7 @@
+import { Link } from 'gatsby';
+import React from 'react';
+import { Minus, Plus } from 'react-feather';
+
 /*
  Constructs a collapsible list of entries at the mobile.
 
@@ -13,10 +17,6 @@
  */
 
 // external modules
-import { Link } from 'gatsby';
-import React from 'react';
-import { Plus, Minus } from 'react-feather';
-
 // returns just the title
 const SimpleHeader = props => {
   return <div> {props.title} </div>;
@@ -55,7 +55,7 @@ const ExternalLink = props => {
   );
 };
 
-export default class Navigation extends React.Component {
+export default class Navigation extends React.PureComponent {
   constructor(props) {
     super(props);
     const isMobile = this.props.isMobile;
