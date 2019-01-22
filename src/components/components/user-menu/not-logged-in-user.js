@@ -3,9 +3,9 @@ import React from 'react';
 import Login from './../../forms/login/login';
 import Register from './../../forms/register/register';
 
-class NotLoggedInUserMenu extends React.Component {
-  constructor() {
-    super();
+class NotLoggedInUserMenu extends React.PureComponent {
+  constructor(props) {
+    super(props);
     this.state = {
       option: 'login'
     };

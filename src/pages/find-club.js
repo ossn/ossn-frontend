@@ -1,28 +1,28 @@
 // External modules.
+import './../components/pages-styles/find-club.scss';
+
+import gql from 'graphql-tag';
 import React from 'react';
+import { ApolloConsumer, Query } from 'react-apollo';
+import { PlusSquare, Search } from 'react-feather';
 import { Helmet } from 'react-helmet';
 
-import BasicLayout from '../components/layouts/layout-base/layout-base';
-import GatsbyConfig from './../../gatsby-config';
-import { ClubTeaserList } from './../components/components/club-teaser-list/club-teaser-list';
 import {
   SearchFilter,
   ToggleFilter
 } from '../components/components/filter/filter';
+import BasicLayout from '../components/layouts/layout-base/layout-base';
+import GatsbyConfig from './../../gatsby-config';
+import { ClubTeaserList } from './../components/components/club-teaser-list/club-teaser-list';
 import Map from './../components/components/map/map';
-import LayoutContained from './../components/layouts/layout-contained/layout-contained';
-import { Search, PlusSquare } from 'react-feather';
 import ShadowBox from './../components/components/shadow-box/shadow-box';
-import { Query, ApolloConsumer } from 'react-apollo';
-import gql from 'graphql-tag';
-
-import './../components/pages-styles/find-club.scss';
+import LayoutContained from './../components/layouts/layout-contained/layout-contained';
 
 class Clubs extends React.PureComponent {
   /*
    Handle the value of th search and the toggle button from state.
    */
-  constructor() {
+  constructor(props) {
     /*
     state fields:
       view (string): how to show the list of clubs. values (list, map).
@@ -33,7 +33,7 @@ class Clubs extends React.PureComponent {
       firstLoad (boolean): A flag to indicate the first render of the component.
       hasNextPage (boolean): A flaf to store the apollo hasNextPage.
     */
-    super();
+    super(props);
     this.state = {
       view: 'list',
       searchString: null,
