@@ -1,10 +1,11 @@
 import React from 'react';
+
 import { register } from './../../../actions/userActions';
 import store from './../../../store';
 
-class Register extends React.Component {
-  constructor() {
-    super();
+class Register extends React.PureComponent {
+  constructor(props) {
+    super(props);
     this.state = {
       username: '',
       password: '',
