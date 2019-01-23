@@ -1,8 +1,9 @@
 const path = require('path');
-const BACKEND_URL = 'https://ossn-api.swaco.io/api/v1.0/'; // 'http://localhost:8080/api/v1.0/';
+const BACKEND_URL = 'https://dev-api.ossn.club'; //'http://localhost:8080';
+
 module.exports = {
   proxy: {
-    prefix: '/api/v1.0/query',
+    prefix: '/api',
     url: BACKEND_URL
   },
   siteMetadata: {
@@ -21,7 +22,7 @@ module.exports = {
         // This is field under which it's accessible
         fieldName: 'ossnApi',
         // Url to query from
-        url: `${BACKEND_URL}query`
+        url: `${BACKEND_URL}/api/v1.0/query`
       }
     },
     {
