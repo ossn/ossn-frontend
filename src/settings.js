@@ -1,18 +1,15 @@
 // global settings
-// import androidChrome from './favicon/android-chrome-144x144.png';
-import GatsbyConfig from '../gatsby-config';
 import appleTouch from './favicon/apple-touch-icon.png';
 import favicon16x16 from './favicon/favicon-16x16.png';
 import favicon32x32 from './favicon/favicon-32x32.png';
 import safari from './favicon/safari-pinned-tab.svg';
 
+// import androidChrome from './favicon/android-chrome-144x144.png';
 // import msTile from './favicon/mstile-150x150.png';
 // import faviconIcon from './favicon/favicon.ico';
 // import siteWebmanifest from './favicon/site.webmanifest';
 export const activeEnv =
   process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development';
-
-export const api = 'https://07rqzpwj55.lp.gql.zone/graphql';
 
 export const metadata = [
   meta('msapplication-TileColor', '#000000'),
@@ -56,4 +53,4 @@ function favicon(
   return bundle;
 }
 
-export const BACKEND_URL = GatsbyConfig.proxy.url;
+export const BACKEND_URL = '/api/v1.0';
