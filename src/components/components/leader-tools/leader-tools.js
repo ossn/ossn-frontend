@@ -43,12 +43,9 @@ const LeaderTool = props => {
 
 // Wraps a list of tools with title.
 export class LeaderToolList extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false
-    };
-  }
+  state = {
+    isOpen: false
+  };
 
   getSimpleHeader() {
     return <span className="title title--x-small"> {this.props.title} </span>;
