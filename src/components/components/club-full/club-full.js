@@ -1,5 +1,3 @@
-import './club-full.scss';
-
 import React from 'react';
 import { PlusCircle } from 'react-feather';
 import ReactMarkdown from 'react-markdown';
@@ -12,6 +10,8 @@ import Banner from './../banner/banner';
 import ClubInfo from './../club-info/club-info';
 import MemberList from './../member-list/member-list';
 import Shape from './../shape/shape';
+
+import './club-full.scss';
 
 /*
 This is the template for a single club view.
