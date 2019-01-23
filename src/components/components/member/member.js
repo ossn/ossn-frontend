@@ -10,6 +10,17 @@ import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import ShadowBox from './../shadow-box/shadow-box';
 import Shape from './../shape/shape';
 
+const mockInit = {
+  name: 'Alice McKenzie',
+  imageUrl:
+    'https://images.pexels.com/photos/1545510/pexels-photo-1545510.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+  location: 'Planet earth',
+  club: 'RIT Linux Users Group',
+  github: 'dpliakos',
+  personal: 'duckduckgo.com',
+  description: 'this is a line of text. And this continues'
+};
+
 /*
   Profile page template.
   This component is used for showing and editing a memeber's profile.
@@ -32,27 +43,13 @@ class Member extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    const mockInit = {
-      name: 'Alice McKenzie',
-      imageUrl:
-        'https://images.pexels.com/photos/1545510/pexels-photo-1545510.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-      location: 'Planet earth',
-      club: 'RIT Linux Users Group',
-      github: 'dpliakos',
-      personal: 'duckduckgo.com',
-      description: 'this is a line of text. And this continues'
-    };
-
     const initData = {
       name: this.props.member.name,
       imageUrl: this.props.member.imageUrl || 'Image missing',
       location: this.props.member.location || 'Location missing',
       club:
-        this.props.member.clubs
-          .map((club, i) => {
-            return club.name;
-          })
-          .join(', ') || 'club missing',
+        this.props.member.clubs.map(club => club.name).join(', ') ||
+        'club missing',
       github: this.props.member.githubUrl || 'github missing',
       personal: this.props.member.personalUrl || 'webpage missing',
       description: this.props.member.description || 'description missing'

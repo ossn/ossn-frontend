@@ -26,19 +26,15 @@ import MemberList from './../components/components/member-list/member-list';
 import GatsbyConfig from './../../gatsby-config';
 
 class Members extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      search: null,
-      shownMembersCount: 0,
-      shownMembers: [],
-      cursor: null,
-      firstLoad: true,
-      hasNextPage: false,
-      totalCount: 0
-    };
-  }
+  state = {
+    search: null,
+    shownMembersCount: 0,
+    shownMembers: [],
+    cursor: null,
+    firstLoad: true,
+    hasNextPage: false,
+    totalCount: 0
+  };
 
   handleSearch = event => {
     this.setState({

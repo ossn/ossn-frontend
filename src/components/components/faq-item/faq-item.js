@@ -7,12 +7,9 @@ import { ChevronRight } from 'react-feather';
 */
 
 class FaqItem extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false
-    };
-  }
+  state = {
+    open: false
+  };
 
   // Handles the collapse actions.
   handleToggle = () => {
