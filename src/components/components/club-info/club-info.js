@@ -78,7 +78,7 @@ const EmailInfo = ({ email }) => (
 const EventInfo = ({ event }) => (
   <li className="club-info__item-wrapper">
     <ClubInfoItem>
-      <Event value={event.title} secondary={event.subtitle} />
+      <Event value={event.title} secondary={event.sortDescription} />
     </ClubInfoItem>
   </li>
 );
@@ -91,15 +91,24 @@ const EventInfo = ({ event }) => (
 
 */
 export default class ClubInfo extends React.PureComponent {
+  getEvents() {
+    const eventList =
+      this.props.club.events &&
+      this.props.club.events((event, i) => {
+        return (
+          <div key={i}>
+            <EventInfo event={event} id={i} />
+          </div>
+        );
+      });
+    return eventList;
+  }
+
   render() {
     const location = this.props.club.location; // || 'Address is missing'; //.address // TODO: add the addr
     const github = this.props.club.githubUrl;
-    const webpage = null || 'missing webpage';
+    const webpage = this.props.club.clubUrl;
     const email = this.props.club.email;
-    const event = {
-      title: 'missing title',
-      subtitle: 'missing subtitle'
-    };
 
     return (
       <ShadowBox zeroPadding className="club-info__wrapper">
@@ -108,7 +117,8 @@ export default class ClubInfo extends React.PureComponent {
           {github ? <GithubInfo github={github} /> : ''}
           {webpage ? <WebpageInfo webpage={webpage} /> : ''}
           {email ? <EmailInfo email={email} /> : ''}
-          {event ? <EventInfo event={event} /> : ''}
+
+          {this.getEvents()}
         </ul>
         <Shape square seafoamBlue className="club-info__shape-square" />
         <MediaQuery minWidth={992}>

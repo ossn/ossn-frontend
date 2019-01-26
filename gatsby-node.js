@@ -115,6 +115,10 @@ const clubQuery = `
           githubUrl
           bannerImageUrl
           clubUrl
+          events {
+            title
+            sortDescription	
+          }
           location {
             address
             id

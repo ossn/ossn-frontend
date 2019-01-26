@@ -39,6 +39,24 @@ export default class Club extends React.PureComponent {
 
     let membersSection = '';
 
+    const clubDescription = club.description ? (
+      <div>
+        <h2>Desctiption</h2>
+        <ReactMarkdown source={club.description} />
+      </div>
+    ) : (
+      ''
+    );
+
+    const codeOfConduct = club.codeOfConduct ? (
+      <div>
+        <h2>Code of Conduct</h2>
+        <ReactMarkdown source={club.codeOfConduct} />
+      </div>
+    ) : (
+      ''
+    );
+
     if (clubMembers && clubMembers.length > 0)
       membersSection = (
         <>
@@ -57,7 +75,7 @@ export default class Club extends React.PureComponent {
         <div className="club-full__header">
           <div className="club-full__cover-wrapper">
             <img
-              src={this.props.club.bannerImageUrl || clubCover}
+              src={club.bannerImageUrl || clubCover}
               className="club-full__cover-image"
               alt=""
             />
@@ -67,7 +85,7 @@ export default class Club extends React.PureComponent {
             <div className="club-full__profile-picture-section">
               <div className="club-full__profile-picture-wrapper">
                 <img
-                  src={this.props.club.imageUrl || groupSmallImage}
+                  src={club.imageUrl || groupSmallImage}
                   alt="Club profile"
                   className="club-full__profile-picture"
                 />
@@ -93,9 +111,8 @@ export default class Club extends React.PureComponent {
           </div>
           <div className="club-full__description">
             <div>
-              <ReactMarkdown
-                source={this.props.club.description || 'Description is missing'}
-              />
+              {clubDescription}
+              {codeOfConduct}
             </div>
             <div className="club-full__members-section">{membersSection}</div>
           </div>
