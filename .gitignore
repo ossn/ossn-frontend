@@ -2,7 +2,11 @@
 .cache
 node_modules
 yarn-error.log
+un~$
 
 # Build directory
 /public
 .DS_Store
+
+# vi undo file
+*\.un~
