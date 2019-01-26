@@ -6,7 +6,6 @@ import clubCover from './../../../images/ClubCover.png';
 import groupSmallImage from './../../../images/group-small.jpg';
 import Layout2ColsUnequal from './../../layouts/layout-2col-unequal/layout-2col-unequal';
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
-import Banner from './../banner/banner';
 import ClubInfo from './../club-info/club-info';
 import MemberList from './../member-list/member-list';
 import Shape from './../shape/shape';
@@ -40,7 +39,7 @@ export default class Club extends React.PureComponent {
 
     let membersSection = '';
 
-    if (this.props.clubMembers && this.props.clubMembers.length > 0)
+    if (clubMembers && clubMembers.length > 0)
       membersSection = (
         <>
           <h2> Members </h2>
@@ -57,7 +56,11 @@ export default class Club extends React.PureComponent {
       <LayoutContained className="club-full">
         <div className="club-full__header">
           <div className="club-full__cover-wrapper">
-            <Banner image={this.props.club.bannerImageUrl || clubCover} />
+            <img
+              src={this.props.club.bannerImageUrl || clubCover}
+              className="club-full__cover-image"
+              alt=""
+            />
           </div>
 
           <div className="club-full__header-bottom">
@@ -73,10 +76,7 @@ export default class Club extends React.PureComponent {
 
             <div className="club-full__title-wrapper">
               <h1 className="club-full__title"> {club.title} </h1>
-              <span className="club-full__subtitle">
-                {' '}
-                Rochester Institute of Technology {club.subtitle}{' '}
-              </span>
+              <span className="club-full__subtitle">{club.subtitle}</span>
             </div>
           </div>
         </div>

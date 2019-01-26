@@ -189,11 +189,16 @@
     }
   }
 
-  .banner__image {
+  &__cover-image {
     object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
   }
 
-  .banner__image-wrapper {
+  &__cover-wrapper {
     max-height: 200px;
+    position: relative;
+    z-index: -1;
   }
 }
