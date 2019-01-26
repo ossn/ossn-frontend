@@ -97,8 +97,8 @@ export default class Club extends React.PureComponent {
                 source={this.props.club.description || 'Description is missing'}
               />
             </div>
+            <div className="club-full__members-section">{membersSection}</div>
           </div>
-          <div className="club-full__members-section">{membersSection}</div>
         </Layout2ColsUnequal>
       </LayoutContained>
     );
