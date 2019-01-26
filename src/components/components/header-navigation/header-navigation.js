@@ -85,30 +85,32 @@ class HeaderNavigation extends React.PureComponent {
     let classString = classes.join(' ');
 
     return (
-      <ShadowBox className="header__inner" ref={this.expandable}>
-        <MediaQuery maxWidth={767}>
-          <button
-            onClick={this.handleOpen}
-            onKeyPress={this.handleKeyPress}
-            className="button button--header header__button"
-            aria-controls={'header-navigation-container'}
-            aria-expanded={isExpanded}
-          >
-            {menuToggle(isExpanded)}
-          </button>
-          <HeaderNavigationInner
-            className={classString}
-            id="header-navigation-container"
-            hiddenState={isHidden}
-          />
-        </MediaQuery>
-        <MediaQuery minWidth={768}>
-          <HeaderNavigationInner
-            className={classString}
-            id="header-navigation-container"
-            hiddenState={false}
-          />
-        </MediaQuery>
+      <ShadowBox className="header__inner">
+        <div ref={this.expandable}>
+          <MediaQuery maxWidth={767}>
+            <button
+              onClick={this.handleOpen}
+              onKeyPress={this.handleKeyPress}
+              className="button button--header header__button"
+              aria-controls={'header-navigation-container'}
+              aria-expanded={isExpanded}
+            >
+              {menuToggle(isExpanded)}
+            </button>
+            <HeaderNavigationInner
+              className={classString}
+              id="header-navigation-container"
+              hiddenState={isHidden}
+            />
+          </MediaQuery>
+          <MediaQuery minWidth={768}>
+            <HeaderNavigationInner
+              className={classString}
+              id="header-navigation-container"
+              hiddenState={false}
+            />
+          </MediaQuery>
+        </div>
       </ShadowBox>
     );
   }
