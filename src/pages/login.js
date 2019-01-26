@@ -10,6 +10,9 @@ import BasicLayout from '../components/layouts/layout-base/layout-base';
 import LayoutContained from '../components/layouts/layout-contained/layout-contained';
 import { BACKEND_URL } from '../settings';
 
+import { actionLogin, actionLogout } from './../actions/userActions';
+import store from './../store';
+
 export default class login extends React.PureComponent {
   state = {
     user: undefined
@@ -36,23 +39,31 @@ export default class login extends React.PureComponent {
           <Query query={query} fetchPolicy="network-only">
             {({ data, loading, client, error }) => {
               if (loading) {
-                return <p className="navbar-text navbar-right">Loading...</p>;
+                return (
+                  <span className="navbar-text navbar-right">Loading...</span>
+                );
               }
+
               if (!error && data.session.userName) {
+                store.dispatch(actionLogin(data.session.userName));
+
                 return (
                   <span>
                     <p className="navbar-text navbar-right">
-                      <p>Hello {data.session.userName}</p> &nbsp;
+                      <span>Hello {data.session.userName}</span> &nbsp;
                       <button
                         onClick={() => {
                           client
                             .mutate({ mutation: logout })
                             .then(({ data }) => {
-                              (data || {}).logout
-                                ? client.resetStore()
-                                : //TODO: Show error to user
-                                  // eslint-disable-next-line no-console
-                                  console.error('Failed to logout');
+                              if ((data || {}).logout) {
+                                client.resetStore();
+                                store.dispatch(actionLogout());
+                              } else {
+                                //TODO: Show error to user
+                                // eslint-disable-next-line no-console
+                                console.error('Failed to logout');
+                              }
                             });
                         }}
                       >

@@ -5,16 +5,11 @@
 */
 
 // handle the login request
-export const login = (username, password) => {
+export const actionLogin = username => {
   return dispatch => {
     // make the actual call
     const user = {
-      username: 'user01',
-      name: 'User 01',
-      location: 'Planet Earth',
-      githubLink: 'https://github.com',
-      personalPage: 'https://duckduckgo.com',
-      clubLeader: true
+      username: username
     };
 
     return confirmLogin(dispatch, user);
@@ -22,7 +17,7 @@ export const login = (username, password) => {
 };
 
 // handles the logout request
-export const logout = () => {
+export const actionLogout = () => {
   return dispatch => {
     // make the actual call
     return confirmLogout(dispatch);
