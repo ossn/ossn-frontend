@@ -12,14 +12,8 @@ const userReducer = (state = initial, action) => {
     case 'USER_LOGIN': {
       let loggeInState = {
         ...state,
-        loggedIn: true,
         user: {
-          username: action.payload.username,
-          name: action.payload.name,
-          location: action.payload.location,
-          github: action.payload.github,
-          page: action.payload.page,
-          clubLeader: action.payload.leader
+          username: action.payload.username
         }
       };
 
@@ -30,7 +24,6 @@ const userReducer = (state = initial, action) => {
     case 'USER_LOGOUT': {
       let loggedOutState = {
         ...state,
-        loggedIn: false,
         user: {}
       };
 
