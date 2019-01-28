@@ -211,4 +211,13 @@
     }
 
   }
+
+  &__checkbox {
+    display: flex;
+    align-items: flex-start;
+
+    input {
+      margin-top: 5px;
+    }
+  }
 }
