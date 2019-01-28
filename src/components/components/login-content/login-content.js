@@ -23,7 +23,7 @@ const NotAuthenticatedContent = props => {
 const AuthenticatedContent = props => {
   return (
     <div>
-      <p> Hello {props.username}! </p>
+      <p> Hello {props.userName}! </p>
       <LogoutLink />
     </div>
   );
@@ -35,7 +35,9 @@ class LoginContent extends React.Component {
     return (
       <div key={this.props.user.user ? 'withUser' : 'withoutUser'}>
         {this.props.user.user !== undefined ? (
-          <AuthenticatedContent username={this.props.user.user.username} />
+          <div>
+            <AuthenticatedContent userName={this.props.user.user.userName} />
+          </div>
         ) : (
           <NotAuthenticatedContent />
         )}
