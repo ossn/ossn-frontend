@@ -36,7 +36,7 @@
     @include breakpoint($tablet) {
       @include padding-left(20px);
       text-align: left;
-      width: auto;
+      width: 100%;
     }
   }
 
@@ -202,8 +202,20 @@
     z-index: -1;
   }
 
-  textarea {
+  .text-input {
+    padding: 5px 10px;
+    margin: 10px 0;
     width: 100%;
+    text-align: left;
+
+    &:focus,
+    &:hover {
+      padding: 5px 10px;
+    }
+
+  }
+
+  textarea {
     min-height: 200px;
   }
 }

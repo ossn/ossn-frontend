@@ -27,9 +27,9 @@ export default class Club extends React.PureComponent {
     const location = this.props.club.location
       ? this.props.club.location
       : {
-          address: 'Fake address',
-          lng: '-100',
-          lat: '500'
+          address: null,
+          lng: null,
+          lat: null
         };
 
     const initData = {
@@ -55,8 +55,7 @@ export default class Club extends React.PureComponent {
     this.state = {
       ...initData,
       edit: false,
-      editable: true,
-      // edit: true,
+      editable: false,
       history: {
         ...initData
       }
@@ -124,8 +123,28 @@ export default class Club extends React.PureComponent {
     this.setState({ history: newHistory, edit: true });
   }
 
+  handleTitle = event => {
+    this.setState({ title: event.target.value });
+  };
+
+  handleSubtitle = event => {
+    this.setState({ subtitle: event.target.value });
+  };
+
+  handleBannerImageUrl = event => {
+    this.setState({ bannerImageUrl: event.target.value });
+  };
+
+  handleImageUrl = event => {
+    this.setState({ imageUrl: event.target.value });
+  };
+
   handleDescription = event => {
     this.setState({ description: event.target.value });
+  };
+
+  handleCodeOfConduct = event => {
+    this.setState({ codeOfConduct: event.target.value });
   };
 
   handleEdit = () => {
@@ -134,7 +153,9 @@ export default class Club extends React.PureComponent {
   };
 
   handleSave = () => {
-    this.setState({ edit: false });
+    this.setState({
+      edit: false
+    });
   };
 
   handleCancel = () => {
@@ -161,11 +182,37 @@ export default class Club extends React.PureComponent {
       ''
     );
 
-    let membersSection = '';
+    const title = snapshot.edit ? (
+      <div>
+        <TextInput
+          label="Title"
+          onChange={this.handleTitle}
+          value={snapshot.title}
+        />
+      </div>
+    ) : snapshot.subtitle ? (
+      <h1 className="club-full__title"> {snapshot.title} </h1>
+    ) : (
+      ''
+    );
+
+    const subtitle = snapshot.edit ? (
+      <div>
+        <TextInput
+          label="Subtitle"
+          onChange={this.handleSubtitle}
+          value={snapshot.subtitle}
+        />
+      </div>
+    ) : snapshot.subtitle ? (
+      <span className="club-full__subtitle">{snapshot.subtitle}</span>
+    ) : (
+      ''
+    );
 
     const clubDescription = snapshot.edit ? (
       <div>
-        <h2>Descrtiption</h2>
+        <h2>Description</h2>
 
         <TextInput
           multiline
@@ -176,14 +223,25 @@ export default class Club extends React.PureComponent {
       </div>
     ) : snapshot.description ? (
       <div>
-        <h2>Descrtiption</h2>
+        <h2>Description</h2>
         <ReactMarkdown source={snapshot.description} />
       </div>
     ) : (
       ''
     );
 
-    const codeOfConduct = snapshot.codeOfConduct ? (
+    const codeOfConduct = snapshot.edit ? (
+      <div>
+        <h2>Code of Conduct</h2>
+
+        <TextInput
+          multiline
+          label="Code of Conduct"
+          onChange={this.handleCodeOfConduct}
+          value={snapshot.codeOfConduct}
+        />
+      </div>
+    ) : snapshot.codeOfConduct ? (
       <div>
         <h2>Code of Conduct</h2>
         <ReactMarkdown source={snapshot.codeOfConduct} />
@@ -191,6 +249,30 @@ export default class Club extends React.PureComponent {
     ) : (
       ''
     );
+
+    const bannerImageUrl = snapshot.edit && (
+      <div>
+        <h2>Banner Image Url</h2>
+        <TextInput
+          label="Banner Image Url"
+          onChange={this.handleBannerImageUrl}
+          value={snapshot.bannerImageUrl}
+        />
+      </div>
+    );
+
+    const imageUrl = snapshot.edit && (
+      <div>
+        <h2>Club Image Url</h2>
+        <TextInput
+          label="Club Image Url"
+          onChange={this.handleImageUrl}
+          value={snapshot.imageUrl}
+        />
+      </div>
+    );
+
+    let membersSection = '';
 
     if (snapshot.users && snapshot.users.length > 0)
       membersSection = (
@@ -241,8 +323,8 @@ export default class Club extends React.PureComponent {
                     description: snapshot.description,
                     codeOfConduct: snapshot.codeOfConduct,
                     email: snapshot.email,
-                    githubUrl: 'https://github.com/github', //snapshot.githubUrl,
-                    clubUrl: 'https://github.com/github', //snapshot.clubUrl,
+                    githubUrl: snapshot.githubUrl,
+                    clubUrl: snapshot.clubUrl,
                     address: snapshot.location.address,
                     lng: snapshot.location.lng,
                     lat: snapshot.location.lat
@@ -305,8 +387,8 @@ export default class Club extends React.PureComponent {
             </div>
 
             <div className="club-full__title-wrapper">
-              <h1 className="club-full__title"> {snapshot.title} </h1>
-              <span className="club-full__subtitle">{snapshot.subtitle}</span>
+              {title}
+              {subtitle}
             </div>
           </div>
         </div>
@@ -323,6 +405,9 @@ export default class Club extends React.PureComponent {
           </div>
           <div className="club-full__description">
             <div>
+              {bannerImageUrl}
+              {imageUrl}
+
               {clubDescription}
               {codeOfConduct}
               {buttonList}
