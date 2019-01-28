@@ -17,8 +17,8 @@ import Shape from './../shape/shape';
 import './club-full.scss';
 
 /*
-This is the template for a single club view.
-*/
+ This is the template for a single club view.
+ */
 // Local modules.
 export default class Club extends React.PureComponent {
   constructor(props) {
@@ -28,8 +28,8 @@ export default class Club extends React.PureComponent {
       ? this.props.club.location
       : {
           address: 'Fake address',
-          lng: -100,
-          lat: 500
+          lng: '-100',
+          lat: '500'
         };
 
     const initData = {
@@ -234,26 +234,23 @@ export default class Club extends React.PureComponent {
                 client.mutate({
                   variables: {
                     id: snapshot.id,
-                    club: {
-                      name: snapshot.title,
-                      sortDescription: snapshot.subtitle,
-                      imageUrl: snapshot.imageUrl,
-                      bannerImageUrl: snapshot.bannerImageUrl,
-                      description: snapshot.description,
-                      codeOfConduct: snapshot.codeOfConduct,
-                      email: snapshot.email,
-                      githubUrl: 'https://github.com/github', //snapshot.githubUrl,
-                      clubUrl: 'https://github.com/github', //snapshot.clubUrl,
-                      location: {
-                        address: snapshot.location.address,
-                        lng: snapshot.location.lng,
-                        lat: snapshot.location.lat
-                      }
-                    }
+                    name: snapshot.title,
+                    sortDescription: snapshot.subtitle,
+                    imageUrl: snapshot.imageUrl,
+                    bannerImageUrl: snapshot.bannerImageUrl,
+                    description: snapshot.description,
+                    codeOfConduct: snapshot.codeOfConduct,
+                    email: snapshot.email,
+                    githubUrl: 'https://github.com/github', //snapshot.githubUrl,
+                    clubUrl: 'https://github.com/github', //snapshot.clubUrl,
+                    address: snapshot.location.address,
+                    lng: snapshot.location.lng,
+                    lat: snapshot.location.lat
                   },
                   mutation: editClub,
                   fetchPolicy: 'no-cache'
                 });
+                this.handleSave();
               }}
               onKeyDown={e => {
                 returnKeyCheck(e, this.handleSave);
@@ -339,7 +336,21 @@ export default class Club extends React.PureComponent {
 }
 
 const editClub = gql`
-  mutation {
+  mutation editClub(
+    $id: ID!
+    $name: String!
+    $sortDescription: String
+    $bannerImageUrl: String
+    $imageUrl: String
+    $description: String!
+    $codeOfConduct: String
+    $email: String!
+    $githubUrl: String
+    $clubUrl: String
+    $address: String
+    $lng: String
+    $lat: String
+  ) {
     editClub(
       clubId: $id
       club: {
