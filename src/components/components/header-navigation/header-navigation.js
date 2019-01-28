@@ -7,7 +7,6 @@ import Navigation from './../../navigation/main-navigation/main-navigation';
 import PreNavigation from './../../navigation/secondary-navigation/secondary-navigation';
 import ShadowBox from './../shadow-box/shadow-box';
 
-// import UserMenu from './../user-menu/user-menu';
 // Header navigation content
 const HeaderNavigationInner = props => {
   return (
@@ -45,7 +44,11 @@ class HeaderNavigation extends React.PureComponent {
   };
 
   handleOutsideClick = event => {
-    if (this.state.open && !this.expandable.current.contains(event.target)) {
+    if (
+      this.state.open &&
+      this.expandable.current &&
+      !this.expandable.current.contains(event.target)
+    ) {
       this.setState({ open: false });
     }
   };
@@ -85,31 +88,33 @@ class HeaderNavigation extends React.PureComponent {
     let classString = classes.join(' ');
 
     return (
-      <ShadowBox className="header__inner" ref={this.expandable}>
-        <MediaQuery maxWidth={767}>
-          <button
-            onClick={this.handleOpen}
-            onKeyPress={this.handleKeyPress}
-            className="button button--header header__button"
-            aria-controls={'header-navigation-container'}
-            aria-expanded={isExpanded}
-          >
-            {menuToggle(isExpanded)}
-          </button>
-          <HeaderNavigationInner
-            className={classString}
-            id="header-navigation-container"
-            hiddenState={isHidden}
-          />
-        </MediaQuery>
-        <MediaQuery minWidth={768}>
-          <HeaderNavigationInner
-            className={classString}
-            id="header-navigation-container"
-            hiddenState={false}
-          />
-        </MediaQuery>
-      </ShadowBox>
+      <div ref={this.expandable}>
+        <ShadowBox className="header__inner">
+          <MediaQuery maxWidth={767}>
+            <button
+              onClick={this.handleOpen}
+              onKeyPress={this.handleKeyPress}
+              className="button button--header header__button"
+              aria-controls={'header-navigation-container'}
+              aria-expanded={isExpanded}
+            >
+              {menuToggle(isExpanded)}
+            </button>
+            <HeaderNavigationInner
+              className={classString}
+              id="header-navigation-container"
+              hiddenState={isHidden}
+            />
+          </MediaQuery>
+          <MediaQuery minWidth={768}>
+            <HeaderNavigationInner
+              className={classString}
+              id="header-navigation-container"
+              hiddenState={false}
+            />
+          </MediaQuery>
+        </ShadowBox>
+      </div>
     );
   }
 }
