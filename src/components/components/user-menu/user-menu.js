@@ -4,13 +4,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { mapUserToProps } from './../../../utils/redux-utils';
-import LoggedInMenu from './logged-in-user';
-import NotLoggedInMenu from './not-logged-in-user';
+import LoggedInMenu from './../user-popup/user-popup';
 
 class UserMenu extends React.PureComponent {
   constructor(props) {
     super(props);
     this.popup = React.createRef();
+    this.menuButton = React.createRef();
     this.hideMenu = this.handleOutsideClick.bind(this);
     this.state = {
       option: 'login',
@@ -39,13 +39,24 @@ class UserMenu extends React.PureComponent {
   };
 
   handleOutsideClick = event => {
-    if (this.state.open && !this.popup.current.contains(event.target)) {
+    if (
+      this.state.open &&
+      this.popup.current &&
+      this.menuButton.current &&
+      !this.popup.current.contains(event.target) &&
+      !this.menuButton.current.contains(event.target)
+    ) {
       this.setState({ open: false });
     }
   };
 
   handleKeyPress = e => {
     if (e.key === 'Enter') return this.handleOpen;
+  };
+
+  isUserLoggedIn = () => {
+    // TODO: add implementation.
+    return true;
   };
 
   render() {
@@ -59,35 +70,68 @@ class UserMenu extends React.PureComponent {
     if (stateClass) classes.push(stateClass);
     let classString = classes.join(' ');
 
-    // menu place holder
-    let content = <div> </div>;
+    // TODO: add data dynamically
+    // this.props.user.user...
+    const userImageUrl =
+      'http://loudwire.com/files/2015/04/Lemmy-Kilmister-630x420.jpg';
+    const userLabel = 'Lemmy';
+    const userAlt = userLabel;
+    const userId = 16;
 
-    // decide which menu to show
-    if (this.props.user.loggedIn) {
-      content = <LoggedInMenu />;
-    } else {
-      content = <NotLoggedInMenu />;
-    }
+    // TODO: replace it with the logout link from #162
+    // eslint-disable-next-line
+    // https://github.com/ossn/ossn-frontend/pull/163/files#diff-fe6e501a6227203cc0a76ff32e010400R22
+    const loginButton = (
+      <a className="button button--header" href="/login" target="_blank">
+        Log In/Sign Up
+      </a>
+    );
+
+    let userImage = (
+      <div
+        className="user-menu__user-image-wrapper"
+        onClick={this.handleOpen}
+        onKeyPress={this.handleKeyPress}
+        role="button"
+        tabIndex={0}
+        aria-controls={'user-menu-wrapper'}
+        aria-expanded={isExpanded}
+        ref={this.menuButton}
+      >
+        <img
+          src={userImageUrl}
+          alt={userAlt}
+          className="user-menu__user-image"
+        />
+      </div>
+    );
 
     return (
-      <div ref={this.popup} className={classString}>
-        <button
-          onClick={this.handleOpen}
-          onKeyPress={this.handleKeyPress}
-          className="button button--header"
-          aria-controls={'user-menu-wrapper'}
-          aria-expanded={isExpanded}
-        >
-          {this.props.user.loggedIn ? 'Logged In' : 'Log In/Sign Up'}
-        </button>
-        <div
-          id="user-menu-wrapper"
-          className="user-menu__popup"
-          hidden={isHidden}
-        >
-          {content}
-        </div>
-      </div>
+      <ul
+        className={`main-navigation__item-wrapper main-navigation__item-wrapper--user ${
+          this.isUserLoggedIn()
+            ? 'main-navigation__item-wrapper--logged-in'
+            : ''
+        }`}
+      >
+        <li className="main-navigation__item">
+          <span className="main-navigation__link">
+            {this.isUserLoggedIn() ? userLabel : ''}
+          </span>
+        </li>
+        <li className="main-navigation__item">
+          {this.isUserLoggedIn() ? userImage : loginButton}
+          <div ref={this.popup} className={classString}>
+            <div
+              id="user-menu-wrapper"
+              className="user-menu__popup"
+              hidden={isHidden}
+            >
+              {snapshot.open && <LoggedInMenu userId={userId} />}
+            </div>
+          </div>
+        </li>
+      </ul>
     );
   }
 }
