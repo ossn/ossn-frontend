@@ -51,7 +51,7 @@ class Member extends React.PureComponent {
     this.state = {
       ...initData,
       edit: false,
-      editable: true,
+      editable: false,
       history: {
         ...initData
       }
