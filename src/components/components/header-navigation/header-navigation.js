@@ -7,7 +7,6 @@ import Navigation from './../../navigation/main-navigation/main-navigation';
 import PreNavigation from './../../navigation/secondary-navigation/secondary-navigation';
 import ShadowBox from './../shadow-box/shadow-box';
 
-// import UserMenu from './../user-menu/user-menu';
 // Header navigation content
 const HeaderNavigationInner = props => {
   return (
@@ -45,7 +44,11 @@ class HeaderNavigation extends React.PureComponent {
   };
 
   handleOutsideClick = event => {
-    if (this.state.open && !this.expandable.current.contains(event.target)) {
+    if (
+      this.state.open &&
+      this.expandable.current &&
+      !this.expandable.current.contains(event.target)
+    ) {
       this.setState({ open: false });
     }
   };
