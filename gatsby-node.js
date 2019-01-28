@@ -156,11 +156,13 @@ query GetClubs($cursor: ID) {
          imageUrl
          receiveNewsletter
          description
+         sortDescription
          githubUrl
          personalUrl
          email
          clubs {
            name
+           id
          }
        }
 

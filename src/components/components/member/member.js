@@ -14,17 +14,6 @@ import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import ShadowBox from './../shadow-box/shadow-box';
 import Shape from './../shape/shape';
 
-const mockInit = {
-  name: 'Alice McKenzie',
-  imageUrl:
-    'https://images.pexels.com/photos/1545510/pexels-photo-1545510.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-  location: 'Planet earth',
-  club: 'RIT Linux Users Group',
-  github: 'dpliakos',
-  personal: 'duckduckgo.com',
-  description: 'this is a line of text. And this continues'
-};
-
 /*
  Profile page template.
  This component is used for showing and editing a member's profile.
@@ -49,11 +38,9 @@ class Member extends React.PureComponent {
 
     const initData = {
       name: this.props.member.name,
-      imageUrl: this.props.member.imageUrl || 'Image missing',
-      location: this.props.member.location,
-      club: this.props.member.clubs
-        .map(club => club.name || 'Club name missing')
-        .join(', '),
+      imageUrl: this.props.member.imageUrl,
+      location: this.props.member.sortDescription,
+      club: this.props.member.clubs,
       github: this.props.member.githubUrl,
       personal: this.props.member.personalUrl,
       description: this.props.member.description,
@@ -64,9 +51,9 @@ class Member extends React.PureComponent {
     this.state = {
       ...initData,
       edit: false,
-      // edit: true,
+      editable: false,
       history: {
-        ...mockInit
+        ...initData
       }
     };
   }
@@ -88,7 +75,7 @@ class Member extends React.PureComponent {
     this.setState(oldState);
   }
 
-  // saves the currect state as the state.history field.
+  // saves the current state as the state.history field.
   // The history is reversed if the user pushes cancel.
   saveToHistoryAndEdit({
     name,
@@ -130,6 +117,11 @@ class Member extends React.PureComponent {
 
   handleDescription = event => {
     this.setState({ description: event.target.value });
+  };
+
+  handleClubSubscription = event => {
+    // this.setState({ description: event.target.value });
+    // TODO handleClubSubscription
   };
 
   handleEdit = () => {
@@ -225,7 +217,7 @@ class Member extends React.PureComponent {
     const description = snapshot.edit ? (
       <TextInput
         multiline
-        label="description"
+        label="Description"
         onChange={this.handleDescription}
         value={snapshot.description}
       />
@@ -234,12 +226,36 @@ class Member extends React.PureComponent {
     );
 
     const club = snapshot.edit ? (
-      <div> Club handling </div>
+      <div>
+        {snapshot.club && <h2>Uncheck to unsubscribe from club</h2>}
+
+        {snapshot.club &&
+          snapshot.club.map((club, i) => {
+            // return <Organization organization={node.org} key={i} />
+            return (
+              <div className="member__checkbox" key={i}>
+                <label htmlFor={'club-' + club.id}>
+                  <input
+                    name={club.name}
+                    type="checkbox"
+                    defaultChecked
+                    id={'club-' + club.id}
+                    dataId={club.id}
+                    onChange={this.handleClubSubscription}
+                  />
+                  {club.name}
+                </label>
+              </div>
+            );
+          })}
+      </div>
     ) : (
       snapshot.club && (
         <div>
           <Users className="member__icon" />
-          {snapshot.club}
+          {snapshot.club
+            .map(club => club.name || 'Club name missing')
+            .join(', ')}
         </div>
       )
     );
@@ -247,7 +263,7 @@ class Member extends React.PureComponent {
     const github = snapshot.edit ? (
       <div>
         <TextInput
-          label="profile"
+          label="Github Url"
           onChange={this.handleGithub}
           value={snapshot.github}
         />
@@ -304,15 +320,14 @@ class Member extends React.PureComponent {
               onClick={() => {
                 client.mutate({
                   variables: {
-                    user: {
-                      id: 10,
-                      receiveNewsletter: false,
-                      sortDescription: 'A sort desc',
-                      clubs: ['1', '2']
-                    }
+                    receiveNewsletter: false,
+                    sortDescription: snapshot.location,
+                    clubs: ['1', '2']
                   },
                   mutation: editUser
                 });
+
+                this.handleSave();
               }}
               onKeyDown={e => {
                 returnKeyCheck(e, this.handleSave);
@@ -326,7 +341,7 @@ class Member extends React.PureComponent {
           )}
         </ApolloConsumer>
       );
-    } else if (this.props.editable) {
+    } else if (snapshot.editable) {
       // } else if (true) {
       buttonList.push(
         <div
@@ -416,22 +431,34 @@ class Member extends React.PureComponent {
 export default Member;
 
 const editUser = gql`
-  mutation {
+  mutation editUser(
+    $receiveNewsletter: Boolean!
+    $sortDescription: String
+    $description: String
+    $clubs: [ID!]
+    $githubUrl: String
+    $personalUrl: String
+  ) {
     editUser(
       user: {
-        id: $id
         receiveNewsletter: $receiveNewsletter
         sortDescription: $sortDescription
+        description: $description
         clubs: $clubs
+        githubUrl: $githubUrl
+        personalUrl: $personalUrl
       }
     ) {
       id
       email
       sortDescription
+      description
       receiveNewsletter
       clubs {
         id
       }
+      githubUrl
+      personalUrl
     }
   }
 `;
