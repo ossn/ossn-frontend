@@ -51,7 +51,7 @@ class Member extends React.PureComponent {
     this.state = {
       ...initData,
       edit: false,
-      editable: false,
+      editable: true,
       history: {
         ...initData
       }
@@ -122,6 +122,11 @@ class Member extends React.PureComponent {
   handleClubSubscription = event => {
     // this.setState({ description: event.target.value });
     // TODO handleClubSubscription
+  };
+
+  handleNewsletterSubscription = event => {
+    // this.setState({ description: event.target.value });
+    // TODO handleNewsletterSubscription
   };
 
   handleEdit = () => {
@@ -197,7 +202,7 @@ class Member extends React.PureComponent {
         label="Name"
         onChange={this.handleName}
         value={snapshot.name}
-        className="form-input--member form-input--member-name"
+        className="member__text-field form-input--member form-input--member-name"
         placeholder="name"
       />
     ) : (
@@ -209,6 +214,7 @@ class Member extends React.PureComponent {
         label="Location"
         onChange={this.handleLocation}
         value={snapshot.location}
+        className="member__text-field form-input--member form-input--member-name"
       />
     ) : (
       snapshot.location && <div> {snapshot.location} </div>
@@ -240,7 +246,7 @@ class Member extends React.PureComponent {
                     type="checkbox"
                     defaultChecked
                     id={'club-' + club.id}
-                    dataId={club.id}
+                    data-id={club.id}
                     onChange={this.handleClubSubscription}
                   />
                   {club.name}
@@ -260,14 +266,31 @@ class Member extends React.PureComponent {
       )
     );
 
-    const github = snapshot.edit ? (
-      <div>
-        <TextInput
-          label="Github Url"
-          onChange={this.handleGithub}
-          value={snapshot.github}
-        />
+    const newsletter = snapshot.edit && (
+      <div className="member__newsletter">
+        <Shape seafoamBlue waveLarge divider className="member__divider" />
+
+        <div className="member__checkbox">
+          <label htmlFor="newsletter">
+            <input
+              name="SNewsletter subscription"
+              type="checkbox"
+              id="newsletter"
+              onChange={this.handleNewsletterSubscription}
+            />
+            I want to receive newsletter
+          </label>
+        </div>
       </div>
+    );
+
+    const github = snapshot.edit ? (
+      <TextInput
+        label="Github Url"
+        onChange={this.handleGithub}
+        value={snapshot.github}
+        className="member__text-field form-input--member form-input--member-name"
+      />
     ) : (
       snapshot.github && (
         <a href={snapshot.github}>
@@ -282,6 +305,7 @@ class Member extends React.PureComponent {
         label="personal web page"
         onChange={this.handlePersonal}
         value={snapshot.personal}
+        className="member__text-field form-input--member form-input--member-name"
       />
     ) : (
       snapshot.personal && (
@@ -322,7 +346,10 @@ class Member extends React.PureComponent {
                   variables: {
                     receiveNewsletter: false,
                     sortDescription: snapshot.location,
-                    clubs: ['1', '2']
+                    clubs: ['1', '2'],
+                    description: snapshot.description,
+                    githubUrl: snapshot.github,
+                    personalUrl: snapshot.personal
                   },
                   mutation: editUser
                 });
@@ -418,6 +445,8 @@ class Member extends React.PureComponent {
               <div className="member__link member__link--personal-page">
                 {personal}
               </div>
+
+              {newsletter}
             </div>
           </ShadowBox>
 
