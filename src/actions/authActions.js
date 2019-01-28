@@ -13,11 +13,16 @@ export const requestLogin = () => {
 
 export const requestLogout = () => {
   return dispatch => {
-    // TODO: comment in if they should indeed be removed
-    // localStorage.removeItem('token');
-    // localStorage.removeItem('gotrue.user');
     return dispatch({
       type: 'AUTH_LOGOUT'
+    });
+  };
+};
+
+export const resetLogout = () => {
+  return dispatch => {
+    return dispatch({
+      type: 'AUTH_RESET_LOGOUT'
     });
   };
 };

@@ -3,9 +3,7 @@
 
 // initializes the user store
 const initial = {
-  login: false,
   logout: false,
-  requestLogin: false,
   requestLogout: false
 };
 
@@ -29,6 +27,15 @@ const authReducer = (state = initial, action) => {
         login: false
       };
       return logoutState;
+    }
+
+    case 'AUTH_RESET_LOGOUT': {
+      let resetLogoutState = {
+        ...state,
+        logout: false,
+        requestLogout: false
+      };
+      return resetLogoutState;
     }
 
     default: {

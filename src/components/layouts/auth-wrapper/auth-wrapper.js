@@ -11,7 +11,10 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 // import { parse } from 'query-string';
 import { actionLogin, actionLogout } from './../../../actions/userActions';
-import { requestLogout } from './../../../actions/authActions';
+import {
+  requestLogout,
+  resetActionLogout
+} from './../../../actions/authActions';
 
 import { connect } from 'react-redux';
 
@@ -102,6 +105,7 @@ class AuthWrapper extends React.PureComponent {
                   if ((data || {}).logout) {
                     client.resetStore();
                     store.dispatch(actionLogout());
+                    store.dispatch(resetActionLogout());
                   } else {
                     //TODO: Show error to user
                     // eslint-disable-next-line no-console
@@ -110,12 +114,14 @@ class AuthWrapper extends React.PureComponent {
                 });
               };
 
-              if (!this.props.user.user) {
-                <DoSomethingOnce
-                  action={() => {
-                    store.dispatch(actionLogin(data.session));
-                  }}
-                />;
+              if (!this.props.user.user && !this.props.auth.logout) {
+                return (
+                  <DoSomethingOnce
+                    action={() => {
+                      store.dispatch(actionLogin(data.session));
+                    }}
+                  />
+                );
               }
             }
             return <></>;
