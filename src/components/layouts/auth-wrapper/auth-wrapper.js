@@ -42,7 +42,6 @@ export const LogoutLink = props => {
   return (
     <button
       className={classes}
-      href={`${BACKEND_URL}/oidc/login`}
       onClick={() => {
         logout();
       }}
@@ -51,6 +50,19 @@ export const LogoutLink = props => {
     </button>
   );
 };
+
+// source
+// eslint-ignore-next
+// https://stackoverflow.com/questions/49750392/dispatch-redux-action-after-apollo-query-component-returns-result
+class DoSomethingOnce extends React.PureComponent {
+  componentDidMount() {
+    this.props.action();
+  }
+
+  render() {
+    return <>{this.props.children || null}</>;
+  }
+}
 
 class AuthWrapper extends React.PureComponent {
   state = {
@@ -99,7 +111,11 @@ class AuthWrapper extends React.PureComponent {
               };
 
               if (!this.props.user.user) {
-                store.dispatch(actionLogin(data.session));
+                <DoSomethingOnce
+                  action={() => {
+                    store.dispatch(actionLogin(data.session));
+                  }}
+                />;
               }
             }
             return <></>;
