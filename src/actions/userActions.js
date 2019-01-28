@@ -18,7 +18,11 @@ export const actionLogin = userInfo => {
 // handles the logout request
 export const actionLogout = () => {
   return dispatch => {
-    // make the actual call
+    // TODO: comment in if they should indeed be removed
+    // eslint-disable-next-line no-undef
+    localStorage.removeItem('token');
+    // eslint-disable-next-line no-undef
+    localStorage.removeItem('gotrue.user');
     return confirmLogout(dispatch);
   };
 };
