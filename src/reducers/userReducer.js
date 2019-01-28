@@ -1,10 +1,5 @@
 // initializes the user store
-const initial = {
-  requestSent: false,
-  requestSuccess: false,
-  requestError: false,
-  loggedIn: false
-};
+const initial = {};
 
 const userReducer = (state = initial, action) => {
   switch (action.type) {
@@ -13,7 +8,7 @@ const userReducer = (state = initial, action) => {
       let loggeInState = {
         ...state,
         user: {
-          username: action.payload.username
+          ...action.payload
         }
       };
 
@@ -24,7 +19,7 @@ const userReducer = (state = initial, action) => {
     case 'USER_LOGOUT': {
       let loggedOutState = {
         ...state,
-        user: {}
+        user: undefined
       };
 
       return loggedOutState;
