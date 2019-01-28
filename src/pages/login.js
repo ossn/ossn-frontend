@@ -1,24 +1,22 @@
 // External modules.
-import gql from 'graphql-tag';
 import { parse } from 'query-string';
 import React from 'react';
-import { Query } from 'react-apollo';
 import { Helmet } from 'react-helmet';
 
 import GatsbyConfig from '../../gatsby-config';
 import BasicLayout from '../components/layouts/layout-base/layout-base';
 import LayoutContained from '../components/layouts/layout-contained/layout-contained';
-import { BACKEND_URL } from '../settings';
+import LoginContent from './../components/components/login-content/login-content';
 
-import { actionLogin, actionLogout } from './../actions/userActions';
-import store from './../store';
-
-export default class login extends React.PureComponent {
+class Login extends React.PureComponent {
   state = {
     user: undefined
   };
 
   componentDidMount = () => {
+    // QUESTION: Can this be moved to auth-wrapper ?
+    //is being reset at /src/actions/authActions::requestLogout()
+    // localStorage item: gotrue.user.token.access_token is a copy of the token
     let { token } = parse(this.props.location.search);
     if (token) {
       // eslint-disable-next-line no-undef
@@ -36,66 +34,11 @@ export default class login extends React.PureComponent {
           </title>
         </Helmet>
         <LayoutContained>
-          <Query query={query} fetchPolicy="network-only">
-            {({ data, loading, client, error }) => {
-              if (loading) {
-                return (
-                  <span className="navbar-text navbar-right">Loading...</span>
-                );
-              }
-
-              if (!error && data.session.userName) {
-                store.dispatch(actionLogin(data.session.userName));
-
-                return (
-                  <span>
-                    <p className="navbar-text navbar-right">
-                      <span>Hello {data.session.userName}</span> &nbsp;
-                      <button
-                        onClick={() => {
-                          client
-                            .mutate({ mutation: logout })
-                            .then(({ data }) => {
-                              if ((data || {}).logout) {
-                                client.resetStore();
-                                store.dispatch(actionLogout());
-                              } else {
-                                //TODO: Show error to user
-                                // eslint-disable-next-line no-console
-                                console.error('Failed to logout');
-                              }
-                            });
-                        }}
-                      >
-                        Log out
-                      </button>
-                    </p>
-                  </span>
-                );
-              }
-              return (
-                <a className="button" href={`${BACKEND_URL}/oidc/login`}>
-                  Login
-                </a>
-              );
-            }}
-          </Query>
+          <LoginContent />
         </LayoutContained>
       </BasicLayout>
     );
   }
 }
 
-const query = gql`
-  query session {
-    session {
-      userName
-    }
-  }
-`;
-
-const logout = gql`
-  mutation logout {
-    logout
-  }
-`;
+export default Login;

@@ -5,11 +5,10 @@
 */
 
 // handle the login request
-export const actionLogin = username => {
+export const actionLogin = userInfo => {
   return dispatch => {
-    // make the actual call
     const user = {
-      username: username
+      ...userInfo
     };
 
     return confirmLogin(dispatch, user);

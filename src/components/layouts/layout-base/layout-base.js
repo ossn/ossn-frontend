@@ -18,6 +18,7 @@ import store from './../../../store';
 import Footer from './../../components/footer/footer';
 import Header from './../../components/header/header';
 import SkipLink from './../../components/skip-link/skip-link';
+import AuthWrapper from './..//auth-wrapper/auth-wrapper';
 
 // import LayoutContained from "./../layout-contained/layout-contained";
 const authLink = setContext((r, req) => {
@@ -51,22 +52,24 @@ const Basic = ({ children }) => {
     <React.StrictMode>
       <ApolloProvider client={client}>
         <Provider store={store}>
-          <div>
-            <Helmet meta={metadata} link={link}>
-              <title>{GatsbyConfig.siteMetadata.title}</title>
-              <html lang="en" />
-            </Helmet>
-            <SkipLink />
+          <AuthWrapper>
             <div>
-              <Header />
+              <Helmet meta={metadata} link={link}>
+                <title>{GatsbyConfig.siteMetadata.title}</title>
+                <html lang="en" />
+              </Helmet>
+              <SkipLink />
+              <div>
+                <Header />
+              </div>
+              <div id="content" className="layout-base">
+                {children}
+              </div>
+              <footer>
+                <Footer />
+              </footer>
             </div>
-            <div id="content" className="layout-base">
-              {children}
-            </div>
-            <footer>
-              <Footer />
-            </footer>
-          </div>
+          </AuthWrapper>
         </Provider>
       </ApolloProvider>
     </React.StrictMode>
