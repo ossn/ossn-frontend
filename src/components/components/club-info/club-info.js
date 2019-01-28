@@ -94,7 +94,7 @@ export default class ClubInfo extends React.PureComponent {
   getEvents() {
     const eventList =
       this.props.club.events &&
-      this.props.club.events((event, i) => {
+      this.props.club.events.map((event, i) => {
         return (
           <div key={i}>
             <EventInfo event={event} id={i} />
