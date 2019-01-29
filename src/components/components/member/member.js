@@ -395,7 +395,21 @@ class Member extends React.PureComponent {
                 this.handleSave();
               }}
               onKeyDown={e => {
-                returnKeyCheck(e, this.handleSave);
+                returnKeyCheck(e, () => {
+                  client.mutate({
+                    variables: {
+                      receiveNewsletter: snapshot.receiveNewsletter,
+                      sortDescription: snapshot.location,
+                      clubs: snapshot.clubsToPreserve,
+                      description: snapshot.description,
+                      githubUrl: snapshot.github,
+                      personalUrl: snapshot.personal
+                    },
+                    mutation: editUser
+                  });
+
+                  this.handleSave();
+                });
               }}
               className="member__button button button--submit"
               key={1}
