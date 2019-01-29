@@ -19,7 +19,7 @@ export const requestLogout = () => {
   };
 };
 
-export const resetLogout = () => {
+export const resetActionLogout = () => {
   return dispatch => {
     return dispatch({
       type: 'AUTH_RESET_LOGOUT'
