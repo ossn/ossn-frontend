@@ -51,6 +51,26 @@
       width: 100%;
       padding-top: 2px;
 
+      &--user {
+        line-height: 60px; //image height
+        vertical-align: middle;
+        position: relative;
+      }
+
+      &--logged-in {
+        padding-left: 100px;
+
+        &::before {
+          content: '';
+          width: 1px;
+          height: 100%;
+          // TODO: replace em with a propoer color
+          background-color: rgba(155, 155, 155, 0.3);
+          position: absolute;
+          left: 50px;
+        }
+      }
+
     }
 
     &__link {
@@ -58,5 +78,14 @@
       padding-top: 0;
       padding-bottom: 0;
     }
+  }
+}
+
+.user-popup {
+  .main-navigation__link {
+    @include font-size(14px);
+    @include line-height(16px);
+    display: inline-block;
+    width:100%;
   }
 }

@@ -1,0 +1,68 @@
+/*
+  The popup that a logged in user sees at the header when clicks at his/her
+  image.
+*/
+
+.user-popup {
+  margin: 0;
+  padding: 0;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  line-height: 16px;
+
+  &::before {
+    content: '';
+    width: 50px;
+    height: 25px;
+    position: absolute;
+    right: -1px;
+    top: 1px;
+    border-radius: 4px;
+    // TODO: replace with a variable color.
+    background-color: white;
+    transform: rotate(45deg);
+    z-index: -1;
+  }
+
+  &__item {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    &:hover {
+      // TODO: remove me
+      background-color: rgba(89, 225, 207, 0.15);
+      cursor: pointer;
+    }
+  }
+
+  &__logout-button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    // TODO: replace with a proper variable.
+    color: #d0021b;
+
+    &:focus,
+    &:active,
+    &:hover{
+      border: none;
+      background-color: transparent;
+    }
+
+  }
+
+  &__overlay {
+    position: absolute;
+    background-color: #f9f9fa;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    height: 100%;
+    top: 140px;
+    opacity: 0.7;
+  }
+}

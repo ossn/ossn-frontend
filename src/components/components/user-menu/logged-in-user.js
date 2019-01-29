@@ -10,14 +10,14 @@ class LoggedInUserMenu extends React.Component {
 
   render() {
     return (
-      <div>
-        <ul>
-          <li> Create club </li>
-          <li> My profile </li>
-          <li> Settings </li>
-          <li>
-            {' '}
-            <button onClick={this.logout}> LOGOUT </button>{' '}
+      <div className="user-popup__wrapper">
+        <ul className="user-popup">
+          <li className="user-popup__item"> My profile </li>
+          <li className="user-popup__item user-popup__item--logout">
+            <button className="user-popup__logout-button" onClick={this.logout}>
+              {' '}
+              LOGOUT{' '}
+            </button>
           </li>
         </ul>
       </div>

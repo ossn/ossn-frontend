@@ -3,6 +3,8 @@ import './main-navigation.scss';
 import { Link } from 'gatsby';
 import React from 'react';
 
+import UserMenu from './../../components/user-menu/user-menu';
+
 const Navigation = () => (
   <nav aria-labelledby="primary-navigation" className="main-navigation">
     <h2 className="visually-hidden" id="primary-navigation">
@@ -37,6 +39,7 @@ const Navigation = () => (
         </Link>
       </li>
     </ul>
+    <UserMenu />
   </nav>
 );
 
