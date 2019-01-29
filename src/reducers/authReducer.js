@@ -13,8 +13,8 @@ const authReducer = (state = initial, action) => {
     case 'AUTH_LOGIN': {
       let loginState = {
         ...state,
-        login: true,
-        logout: false
+        logout: false,
+        requestLogout: false
       };
 
       return loginState;
@@ -24,6 +24,7 @@ const authReducer = (state = initial, action) => {
       let logoutState = {
         ...state,
         logout: true,
+        requestLogout: true,
         login: false
       };
       return logoutState;
@@ -32,7 +33,7 @@ const authReducer = (state = initial, action) => {
     case 'AUTH_RESET_LOGOUT': {
       let resetLogoutState = {
         ...state,
-        logout: false,
+        logout: true,
         requestLogout: false
       };
       return resetLogoutState;
