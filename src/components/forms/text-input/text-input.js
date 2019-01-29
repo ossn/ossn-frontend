@@ -5,6 +5,7 @@ import './text-input.scss';
 export default props => {
   const type = props.password ? 'password' : 'text';
   const label = props.label ? props.label : '';
+  const id = props.id ? props.id : '';
   let classes = ['text-input'];
   if (props.multiline) classes.push('text-input--multiline');
   if (props.className) classes.push(props.className);
@@ -15,6 +16,7 @@ export default props => {
       onChange={props.onChange}
       value={props.value}
       className={classes.join(' ')}
+      id={id}
     />
   ) : (
     <input
@@ -23,6 +25,7 @@ export default props => {
       onChange={props.onChange}
       value={props.value}
       className={classes.join(' ')}
+      id={id}
     />
   );
 

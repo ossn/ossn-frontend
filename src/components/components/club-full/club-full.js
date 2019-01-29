@@ -147,6 +147,26 @@ export default class Club extends React.PureComponent {
     this.setState({ codeOfConduct: event.target.value });
   };
 
+  handleEditEmail = event => {
+    this.setState({ email: event.target.value });
+  };
+
+  handleEditGithub = event => {
+    this.setState({ github: event.target.value });
+  };
+
+  handleEditLocationAddress = event => {
+    this.setState({ location: { address: event.target.value } });
+  };
+
+  handleEditLocationLat = event => {
+    this.setState({ location: { lat: event.target.value } });
+  };
+
+  handleEditLocationLng = event => {
+    this.setState({ location: { lng: event.target.value } });
+  };
+
   handleEdit = () => {
     const snapshot = { ...this.state };
     this.saveToHistoryAndEdit(snapshot);
@@ -270,6 +290,57 @@ export default class Club extends React.PureComponent {
           value={snapshot.imageUrl}
         />
       </div>
+    );
+
+    const editEmail = snapshot.edit && (
+      <div>
+        <TextInput
+          label="Email"
+          onChange={this.handleEditEmail}
+          value={snapshot.email}
+        />
+      </div>
+    );
+
+    const editGithub = snapshot.edit && (
+      <div>
+        <TextInput
+          label="Github Url"
+          onChange={this.handleEditGithub}
+          value={snapshot.github}
+        />
+      </div>
+    );
+
+    const editLocation = snapshot.edit && (
+      <div>
+        <TextInput
+          label="Address"
+          onChange={this.handleEditLocationAddress}
+          value={snapshot.location.address}
+          multiline
+        />
+        <TextInput
+          label="Lat"
+          onChange={this.handleEditLocationLat}
+          value={snapshot.location.lat}
+        />
+        <TextInput
+          label="Lng"
+          onChange={this.handleEditLocationLng}
+          value={snapshot.location.lng}
+        />
+      </div>
+    );
+
+    const sidebarContent = snapshot.edit ? (
+      <div>
+        {editLocation}
+        {editEmail}
+        {editGithub}
+      </div>
+    ) : (
+      <ClubInfo club={snapshot} />
     );
 
     let membersSection = '';
@@ -401,7 +472,7 @@ export default class Club extends React.PureComponent {
         >
           <div className="club-full__info-container">
             {ctaPlaceholder}
-            <ClubInfo club={snapshot} />
+            {sidebarContent}
           </div>
           <div className="club-full__description">
             <div>
