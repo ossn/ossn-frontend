@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import { mapUserToProps } from './../../../utils/redux-utils';
 import LoggedInMenu from './../user-popup/user-popup';
+import { LoginLink } from './../../layouts/auth-wrapper/auth-wrapper';
 
 class UserMenu extends React.PureComponent {
   constructor(props) {
@@ -14,7 +15,8 @@ class UserMenu extends React.PureComponent {
     this.hideMenu = this.handleOutsideClick.bind(this);
     this.state = {
       option: 'login',
-      open: false
+      open: false,
+      user: this.props.user
     };
   }
 
@@ -55,8 +57,7 @@ class UserMenu extends React.PureComponent {
   };
 
   isUserLoggedIn = () => {
-    // TODO: add implementation.
-    return true;
+    return !!this.props.user.user;
   };
 
   render() {
@@ -65,31 +66,26 @@ class UserMenu extends React.PureComponent {
     const isExpanded = snapshot.open;
     const stateClass = snapshot.open ? 'is-expanded' : 'is-collapsed';
     const isHidden = !snapshot.open;
-
+    let userImageUrl =
+      this.props.user.user && this.props.user.user.imageUrl
+        ? this.props.user.user.imageUrl
+        : '';
+    let userLabel =
+      this.props.user.user && this.props.user.user.userName
+        ? this.props.user.user.userName
+        : '';
+    let userAlt = userLabel;
+    let userId =
+      this.props.user.user && this.props.user.user.id
+        ? this.props.user.user.id
+        : '';
     let classes = ['user-menu'];
     if (stateClass) classes.push(stateClass);
     let classString = classes.join(' ');
 
-    // TODO: add data dynamically
-    // this.props.user.user...
-    const userImageUrl =
-      'http://loudwire.com/files/2015/04/Lemmy-Kilmister-630x420.jpg';
-    const userLabel = 'Lemmy';
-    const userAlt = userLabel;
-    const userId = 16;
-
-    // TODO: replace it with the logout link from #162
-    // eslint-disable-next-line
-    // https://github.com/ossn/ossn-frontend/pull/163/files#diff-fe6e501a6227203cc0a76ff32e010400R22
-    const loginButton = (
-      <a className="button button--header" href="/login" target="_blank">
-        Log In/Sign Up
-      </a>
-    );
-
-    let userImage = (
+    let user = (
       <div
-        className="user-menu__user-image-wrapper"
+        className="main-navigation__user-wrapper"
         onClick={this.handleOpen}
         onKeyPress={this.handleKeyPress}
         role="button"
@@ -98,29 +94,23 @@ class UserMenu extends React.PureComponent {
         aria-expanded={isExpanded}
         ref={this.menuButton}
       >
-        <img
-          src={userImageUrl}
-          alt={userAlt}
-          className="user-menu__user-image"
-        />
+        <div className="main-navigation__user-image-wrapper">
+          <div className="user-menu__user-image-wrapper">
+            <img
+              src={userImageUrl}
+              alt={userAlt}
+              className="user-menu__user-image"
+            />
+          </div>
+        </div>
+        <div className="main-navigation__user-name-wrapper">{userLabel}</div>
       </div>
     );
 
-    return (
-      <ul
-        className={`main-navigation__item-wrapper main-navigation__item-wrapper--user ${
-          this.isUserLoggedIn()
-            ? 'main-navigation__item-wrapper--logged-in'
-            : ''
-        }`}
-      >
-        <li className="main-navigation__item">
-          <span className="main-navigation__link">
-            {this.isUserLoggedIn() ? userLabel : ''}
-          </span>
-        </li>
-        <li className="main-navigation__item">
-          {this.isUserLoggedIn() ? userImage : loginButton}
+    const loggedInHeaderItem = (
+      <ul className="main-navigation__item-wrapper main-navigation__item-wrapper--user main-navigation__item-wrapper--logged-in">
+        <li className="">
+          {user}
           <div ref={this.popup} className={classString}>
             <div
               id="user-menu-wrapper"
@@ -133,7 +123,14 @@ class UserMenu extends React.PureComponent {
         </li>
       </ul>
     );
+
+    const loginButton = (
+      <LoginLink label="Login/Signup" className="button button--header" />
+    );
+
+    return (
+      <div>{this.isUserLoggedIn() ? loggedInHeaderItem : loginButton}</div>
+    );
   }
 }
-
 export default connect(mapUserToProps)(UserMenu);

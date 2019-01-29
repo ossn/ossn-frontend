@@ -95,6 +95,41 @@
     background-color: transparent;
   }
 
+  @include breakpoint(0 $tablet - 1px) {
+    &__navigation-container {
+      display: flex;
+      flex-direction: column;
+
+      &.is-collapsed {
+        display: none;
+      }
+    }
+
+    &__bottom {
+      padding-top: 0;
+      padding-bottom: 30px;
+      order: 2;
+
+      &-inner {
+        padding-top: 0;
+
+        .main-navigation__item-wrapper {
+          padding-top: 0;
+        }
+      }
+    }
+
+    &__top {
+      padding-top: 80px;
+       order: 1;
+
+
+      .secondary-navigation__list {
+        padding-bottom: 0;
+      }
+    }
+  }
+
   @include breakpoint($tablet) {
     margin-top: 40px;
 

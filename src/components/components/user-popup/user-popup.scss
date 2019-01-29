@@ -1,3 +1,5 @@
+@import './../../base-styles/init/init';
+
 /*
   The popup that a logged in user sees at the header when clicks at his/her
   image.
@@ -18,7 +20,6 @@
     right: -1px;
     top: 1px;
     border-radius: 4px;
-    // TODO: replace with a variable color.
     background-color: white;
     transform: rotate(45deg);
     z-index: -1;
@@ -53,16 +54,19 @@
 
   }
 
-  &__overlay {
-    position: absolute;
-    background-color: #f9f9fa;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-    height: 100%;
-    top: 140px;
-    opacity: 0.7;
+  @include breakpoint($tablet) {
+    &__overlay {
+      position: absolute;
+      background-color: #f9f9fa;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      height: 100%;
+      top: 140px;
+      opacity: 0.7;
+    }
   }
+
 }

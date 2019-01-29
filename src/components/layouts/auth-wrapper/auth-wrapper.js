@@ -9,7 +9,6 @@ It is based the Provider pattern and uses redux for it's implementation.
 import React from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-// import { parse } from 'query-string';
 import { actionLogin, actionLogout } from './../../../actions/userActions';
 import {
   requestLogout,
@@ -163,6 +162,7 @@ const query = gql`
   query session {
     session {
       userName
+      id
       name
       imageUrl
       receiveNewsletter

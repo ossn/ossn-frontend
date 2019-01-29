@@ -5,6 +5,7 @@ The pop uo window at the user menu.
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'gatsby';
+import { LogoutLink } from './../../layouts/auth-wrapper/auth-wrapper';
 
 import './user-popup.scss';
 
@@ -35,10 +36,7 @@ class Overlay extends React.PureComponent {
 
 class LoggedInUserMenu extends React.Component {
   render() {
-    // TODO: replace with the logout link.
-    const logout = (
-      <button className="user-popup__logout-button">LOGOUT</button>
-    );
+    const logout = <LogoutLink className="user-popup__logout-button" />;
 
     return (
       <div className="user-popup__wrapper">
