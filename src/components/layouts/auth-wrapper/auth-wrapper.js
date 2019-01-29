@@ -98,7 +98,7 @@ class AuthWrapper extends React.PureComponent {
           if (loading) {
             return <></>;
           } else {
-            if (!error && data.session.userName) {
+            if (!error && this.props.user.user) {
               this.userlogout = () => {
                 client.mutate({ mutation: logout }).then(({ data }) => {
                   if ((data || {}).logout) {
