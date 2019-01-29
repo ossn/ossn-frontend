@@ -44,6 +44,8 @@ class Member extends React.PureComponent {
       github: this.props.member.githubUrl,
       personal: this.props.member.personalUrl,
       description: this.props.member.description,
+      receiveNewsletter: this.props.member.receiveNewsletter,
+      clubsToPreserve: this.props.member.clubs.map(club => club.id),
       shapes: [],
       firstLoad: true
     };
@@ -60,7 +62,17 @@ class Member extends React.PureComponent {
 
   // Replace the state with a the value of the `state.history`.
   // can be called from the `cancel` button.
-  reverse({ name, imageUrl, location, club, github, personal, description }) {
+  reverse({
+    name,
+    imageUrl,
+    location,
+    club,
+    github,
+    personal,
+    description,
+    receiveNewsletter,
+    clubsToPreserve
+  }) {
     const oldState = {
       name,
       imageUrl,
@@ -69,6 +81,8 @@ class Member extends React.PureComponent {
       github,
       personal,
       description,
+      receiveNewsletter,
+      clubsToPreserve,
       edit: false
     };
 
@@ -84,7 +98,9 @@ class Member extends React.PureComponent {
     club,
     github,
     personal,
-    description
+    description,
+    receiveNewsletter,
+    clubsToPreserve
   }) {
     const newHistory = {
       name,
@@ -93,7 +109,9 @@ class Member extends React.PureComponent {
       club,
       github,
       personal,
-      description
+      description,
+      receiveNewsletter,
+      clubsToPreserve
     };
 
     this.setState({ history: newHistory, edit: true });
@@ -119,14 +137,24 @@ class Member extends React.PureComponent {
     this.setState({ description: event.target.value });
   };
 
-  handleClubSubscription = event => {
-    // this.setState({ description: event.target.value });
-    // TODO handleClubSubscription
+  handleClubSubscription = (clubId, event) => {
+    if (event.target.checked) {
+      // Add club id to array.
+      this.setState({
+        clubsToPreserve: this.state.clubsToPreserve.concat([clubId])
+      });
+    } else {
+      // Remove club id to array.
+      this.setState({
+        clubsToPreserve: this.state.clubsToPreserve.filter(function(club) {
+          return club !== clubId;
+        })
+      });
+    }
   };
 
   handleNewsletterSubscription = event => {
-    // this.setState({ description: event.target.value });
-    // TODO handleNewsletterSubscription
+    this.setState({ receiveNewsletter: event.target.checked });
   };
 
   handleEdit = () => {
@@ -140,6 +168,14 @@ class Member extends React.PureComponent {
   };
 
   handleSave = () => {
+    // Remove clubs.
+    let preservedClubs = this.state.clubsToPreserve;
+
+    this.setState({
+      club: this.state.club.filter(function(club) {
+        return preservedClubs.indexOf(club.id) > -1;
+      })
+    });
     this.setState({ edit: false });
   };
 
@@ -246,8 +282,9 @@ class Member extends React.PureComponent {
                     type="checkbox"
                     defaultChecked
                     id={'club-' + club.id}
-                    data-id={club.id}
-                    onChange={this.handleClubSubscription}
+                    onChange={event =>
+                      this.handleClubSubscription(club.id, event)
+                    }
                   />
                   {club.name}
                 </label>
@@ -273,9 +310,10 @@ class Member extends React.PureComponent {
         <div className="member__checkbox">
           <label htmlFor="newsletter">
             <input
-              name="SNewsletter subscription"
+              name="newsletter_subscription"
               type="checkbox"
               id="newsletter"
+              defaultChecked={snapshot.receiveNewsletter}
               onChange={this.handleNewsletterSubscription}
             />
             I want to receive newsletter
@@ -344,9 +382,9 @@ class Member extends React.PureComponent {
               onClick={() => {
                 client.mutate({
                   variables: {
-                    receiveNewsletter: false,
+                    receiveNewsletter: snapshot.receiveNewsletter,
                     sortDescription: snapshot.location,
-                    clubs: ['1', '2'],
+                    clubs: snapshot.clubsToPreserve,
                     description: snapshot.description,
                     githubUrl: snapshot.github,
                     personalUrl: snapshot.personal
