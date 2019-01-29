@@ -269,9 +269,9 @@ class Member extends React.PureComponent {
 
     const club = snapshot.edit ? (
       <div>
-        {snapshot.club && <h2>Uncheck to unsubscribe from club</h2>}
+        {snapshot.club.length > 0 && <h2>Uncheck to unsubscribe from club</h2>}
 
-        {snapshot.club &&
+        {snapshot.club.length > 0 &&
           snapshot.club.map((club, i) => {
             // return <Organization organization={node.org} key={i} />
             return (
@@ -293,7 +293,7 @@ class Member extends React.PureComponent {
           })}
       </div>
     ) : (
-      snapshot.club && (
+      snapshot.club.length > 0 && (
         <div>
           <Users className="member__icon" />
           {snapshot.club
@@ -469,14 +469,18 @@ class Member extends React.PureComponent {
                 className="member__divider"
               />
 
-              <div className="member__club">{club}</div>
+              {snapshot.club.length > 0 && (
+                <div>
+                  <div className="member__club">{club}</div>
 
-              <Shape
-                seafoamBlue
-                waveLarge
-                divider
-                className="member__divider"
-              />
+                  <Shape
+                    seafoamBlue
+                    waveLarge
+                    divider
+                    className="member__divider"
+                  />
+                </div>
+              )}
 
               <div className="member__link member__link--github">{github}</div>
 
