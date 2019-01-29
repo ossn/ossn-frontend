@@ -46,7 +46,7 @@ export class ClubInfoItem extends React.PureComponent {
 const LocationInfo = ({ location }) => (
   <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--map">
     <ClubInfoItem link="#" major>
-      <Map value={location.address} />
+      <Map value={location} />
     </ClubInfoItem>
   </li>
 );
@@ -105,7 +105,7 @@ export default class ClubInfo extends React.PureComponent {
   }
 
   render() {
-    const location = this.props.club.location; // || 'Address is missing'; //.address // TODO: add the addr
+    const address = this.props.club.address; // || 'Address is missing'; //.address // TODO: add the addr
     const github = this.props.club.githubUrl;
     const webpage = this.props.club.clubUrl;
     const email = this.props.club.email;
@@ -113,7 +113,7 @@ export default class ClubInfo extends React.PureComponent {
     return (
       <ShadowBox zeroPadding className="club-info__wrapper">
         <ul className="club-info">
-          {location.address ? <LocationInfo location={location} /> : ''}
+          {address ? <LocationInfo location={address} /> : ''}
           {github ? <GithubInfo github={github} /> : ''}
           {webpage ? <WebpageInfo webpage={webpage} /> : ''}
           {email ? <EmailInfo email={email} /> : ''}

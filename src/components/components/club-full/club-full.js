@@ -44,11 +44,9 @@ export default class Club extends React.PureComponent {
       bannerImageUrl: this.props.club.bannerImageUrl,
       clubUrl: this.props.club.clubUrl,
       events: this.props.club.events,
-      location: {
-        address: location.address,
-        lng: location.lng,
-        lat: location.lat
-      },
+      address: location.address,
+      lng: location.lng,
+      lat: location.lat,
       users: this.props.club.users
     };
 
@@ -74,7 +72,9 @@ export default class Club extends React.PureComponent {
     github,
     bannerImageUrl,
     clubUrl,
-    location
+    address,
+    lng,
+    lat
   }) {
     const oldState = {
       email,
@@ -86,7 +86,9 @@ export default class Club extends React.PureComponent {
       github,
       bannerImageUrl,
       clubUrl,
-      location,
+      address,
+      lng,
+      lat,
       edit: false
     };
 
@@ -105,7 +107,9 @@ export default class Club extends React.PureComponent {
     github,
     bannerImageUrl,
     clubUrl,
-    location
+    address,
+    lng,
+    lat
   }) {
     const newHistory = {
       email,
@@ -117,7 +121,9 @@ export default class Club extends React.PureComponent {
       github,
       bannerImageUrl,
       clubUrl,
-      location
+      address,
+      lng,
+      lat
     };
 
     this.setState({ history: newHistory, edit: true });
@@ -156,15 +162,19 @@ export default class Club extends React.PureComponent {
   };
 
   handleEditLocationAddress = event => {
-    this.setState({ location: { address: event.target.value } });
+    this.setState({ address: event.target.value });
   };
 
   handleEditLocationLat = event => {
-    this.setState({ location: { lat: event.target.value } });
+    this.setState({ lat: event.target.value });
   };
 
   handleEditLocationLng = event => {
-    this.setState({ location: { lng: event.target.value } });
+    this.setState({ lng: event.target.value });
+  };
+
+  handleClubUrl = event => {
+    this.setState({ clubUrl: event.target.value });
   };
 
   handleEdit = () => {
@@ -312,23 +322,33 @@ export default class Club extends React.PureComponent {
       </div>
     );
 
+    const editClubUrl = snapshot.edit && (
+      <div>
+        <TextInput
+          label="Club Url"
+          onChange={this.handleClubUrl}
+          value={snapshot.clubUrl}
+        />
+      </div>
+    );
+
     const editLocation = snapshot.edit && (
       <div>
         <TextInput
           label="Address"
           onChange={this.handleEditLocationAddress}
-          value={snapshot.location.address}
+          value={snapshot.address}
           multiline
         />
         <TextInput
           label="Lat"
           onChange={this.handleEditLocationLat}
-          value={snapshot.location.lat}
+          value={snapshot.lat}
         />
         <TextInput
           label="Lng"
           onChange={this.handleEditLocationLng}
-          value={snapshot.location.lng}
+          value={snapshot.lng}
         />
       </div>
     );
@@ -338,6 +358,7 @@ export default class Club extends React.PureComponent {
         {editLocation}
         {editEmail}
         {editGithub}
+        {editClubUrl}
       </div>
     ) : (
       <ClubInfo club={snapshot} />
@@ -378,44 +399,45 @@ export default class Club extends React.PureComponent {
       );
 
       buttonList.push(
-        <ApolloConsumer>
-          {client => (
-            <div
-              tabIndex={0}
-              role="button"
-              onClick={() => {
-                client.mutate({
-                  variables: {
-                    id: snapshot.id,
-                    name: snapshot.title,
-                    sortDescription: snapshot.subtitle,
-                    imageUrl: snapshot.imageUrl,
-                    bannerImageUrl: snapshot.bannerImageUrl,
-                    description: snapshot.description,
-                    codeOfConduct: snapshot.codeOfConduct,
-                    email: snapshot.email,
-                    githubUrl: snapshot.githubUrl,
-                    clubUrl: snapshot.clubUrl,
-                    address: snapshot.location.address,
-                    lng: snapshot.location.lng,
-                    lat: snapshot.location.lat
-                  },
-                  mutation: editClub,
-                  fetchPolicy: 'no-cache'
-                });
-                this.handleSave();
-              }}
-              onKeyDown={e => {
-                returnKeyCheck(e, this.handleSave);
-              }}
-              className="member__button button button--submit"
-              key={1}
-            >
-              <Check size={20} />
-              <span> Save changes </span>
-            </div>
-          )}
-        </ApolloConsumer>
+        <div key={1}>
+          <ApolloConsumer>
+            {client => (
+              <div
+                tabIndex={0}
+                role="button"
+                onClick={() => {
+                  client.mutate({
+                    variables: {
+                      id: snapshot.id,
+                      name: snapshot.title,
+                      sortDescription: snapshot.subtitle,
+                      imageUrl: snapshot.imageUrl,
+                      bannerImageUrl: snapshot.bannerImageUrl,
+                      description: snapshot.description,
+                      codeOfConduct: snapshot.codeOfConduct,
+                      email: snapshot.email,
+                      githubUrl: snapshot.github,
+                      clubUrl: snapshot.clubUrl,
+                      address: snapshot.address,
+                      lng: snapshot.lng,
+                      lat: snapshot.lat
+                    },
+                    mutation: editClub,
+                    fetchPolicy: 'no-cache'
+                  });
+                  this.handleSave();
+                }}
+                onKeyDown={e => {
+                  returnKeyCheck(e, this.handleSave);
+                }}
+                className="member__button button button--submit"
+              >
+                <Check size={20} />
+                <span> Save changes </span>
+              </div>
+            )}
+          </ApolloConsumer>
+        </div>
       );
     } else if (snapshot.editable) {
       buttonList.push(
