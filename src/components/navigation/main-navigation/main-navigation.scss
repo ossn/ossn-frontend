@@ -12,6 +12,23 @@
   &__item-wrapper {
     margin: 0;
     padding: 20px 0 0 0;
+
+
+    &--user {
+      vertical-align: middle;
+      position: relative;
+    }
+  }
+
+  &__user-wrapper {
+    @include font-size(18px);
+    @include line-height(27px);
+    display: flex;
+    align-items: center;
+  }
+
+  &__user-name-wrapper {
+    margin-right: 20px;
   }
 
   &__link {
@@ -32,16 +49,38 @@
     }
   }
 
+  @include breakpoint(0 $tablet - 1px) {
+    &__user-name-wrapper {
+      margin-right: 0;
+      margin-left: 15px;
+    }
+
+    &__item:last-child {
+      margin-bottom: 10px;
+    }
+
+  }
+
+
   @include breakpoint($tablet) {
     display: flex;
     align-items: center;
 
     &__item {
       padding-right: 22px;
+    }
 
-      &:last-child {
-        padding-right: 0;
-      }
+    &__user-wrapper {
+      display: flex;
+
+    }
+
+    &__user-name-wrapper {
+      order: 1;
+    }
+
+    &__user-image-wrapper {
+      order: 2;
     }
 
     &__item-wrapper {
@@ -51,23 +90,16 @@
       width: 100%;
       padding-top: 2px;
 
-      &--user {
-        line-height: 60px; //image height
-        vertical-align: middle;
-        position: relative;
-      }
-
       &--logged-in {
-        padding-left: 100px;
+        padding-left: 23px;
 
         &::before {
           content: '';
           width: 1px;
           height: 100%;
-          // TODO: replace em with a propoer color
           background-color: rgba(155, 155, 155, 0.3);
           position: absolute;
-          left: 50px;
+          left: 0px;
         }
       }
 
