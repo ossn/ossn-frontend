@@ -15,17 +15,14 @@ class ClubMap extends React.Component {
 
     const markers = clubs.map((club, i) => {
       return (
-        <Marker
-          position={[
-            club.location || 38.0582213 + i,
-            club.location || -115.6058512 - i
-          ]}
-          key={i}
-        >
-          <Popup className="map__popup">
-            <ClubTeaser club={club} />
-          </Popup>
-        </Marker>
+        // Check that clug has a defined location.
+        club.location && club.location.lat && club.location.lng ? (
+          <Marker position={[club.location.lat, club.location.lng]} key={i}>
+            <Popup className="map__popup">
+              <ClubTeaser club={club} />
+            </Popup>
+          </Marker>
+        ) : null
       );
     });
 
