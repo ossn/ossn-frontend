@@ -15,12 +15,12 @@ import ShadowBox from './../shadow-box/shadow-box';
 const MemberTeaser = props => {
   const name = props.member.name;
   const imageUrl = props.member.imageUrl || null;
-  const isLeader =
-    props.member.clubs &&
-    props.member.clubs.length > 0 &&
-    props.member.clubs.some(club => {
-      return club.role === 'admin';
-    });
+  const isLeader = props.member.clubs
+    ? props.member.clubs.length > 0 &&
+      props.member.clubs.some(club => {
+        return club.role === 'admin';
+      })
+    : props.member.role && props.member.role === 'admin';
 
   const image = imageUrl ? (
     <div className="member-teaser__image-wrapper">
@@ -60,7 +60,6 @@ const MemberTeaser = props => {
   const inheritedClass = props.className ? props.className : '';
   const classes = [inheritedClass, 'member-teaser'];
   if (isLeader) classes.push('member-teaser--leader');
-
   return (
     <ShadowBox smallPaddings className={classes.join(' ')}>
       <div> {preview} </div>
@@ -69,10 +68,12 @@ const MemberTeaser = props => {
         {image}
         <div className="member-teaser__text">
           <div className="member-teaser__name">{name}</div>
-          <div className="member-teaser__clubs">
-            <Users />
-            <span> {clubString} </span>
-          </div>
+          {clubString && (
+            <div className="member-teaser__clubs">
+              <Users />
+              <span> {clubString} </span>
+            </div>
+          )}
         </div>
       </Link>
     </ShadowBox>
@@ -80,17 +81,3 @@ const MemberTeaser = props => {
 };
 
 export default MemberTeaser;
-
-//
-// export const query = graphql`
-//   fragment User on OSSNAPI {
-//     userName
-//     name
-//     imageUrl
-//     receiveNewsletter
-//     description
-//     githubUrl
-//     personalUrl
-//     email
-//   }
-// `;
