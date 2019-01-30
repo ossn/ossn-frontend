@@ -5,30 +5,14 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import GatsbyConfig from './../../gatsby-config';
 
 import BasicLayout from '../components/layouts/layout-base/layout-base';
-import GatsbyConfig from './../../gatsby-config';
-import { AllLeaderTools } from './../components/components/leader-tools/leader-tools';
-import OpportunitiesMember from './../components/components/opportunities-member/opportunities-member';
-import LayoutContained from './../components/layouts/layout-contained/layout-contained';
+import LeaderCorner from './../components/components/leaders-corner/leaders-corner';
 
 // Local modules.
 class Contribute extends React.PureComponent {
   render() {
-    const jobs = this.props.data.ossnApi.jobs.jobs;
-    const announcements = this.props.data.ossnApi.announcements.announcements;
-    const channels = this.props.data.allCommunicationChannelsJson;
-    const tools = this.props.data.allToolsForContributingJson;
-    const resources = this.props.data.allTrainingResourcesJson;
-
-    const prManagement = this.props.data.leadersToolsJson
-      .Project_Management_tools;
-    const codeOfConduct = this.props.data.leadersToolsJson
-      .Code_of_Conduct_examples;
-    const leadersTools = this.props.data.leadersToolsJson.Various_tools;
-    const leadersResources = this.props.data.leadersToolsJson
-      .Useful_resources_running_a_club;
-
     return (
       <BasicLayout>
         <Helmet>
@@ -38,26 +22,7 @@ class Contribute extends React.PureComponent {
             )}
           </title>
         </Helmet>
-
-        <LayoutContained>
-          <h1> Leader&apos;s Corner </h1>
-          <AllLeaderTools
-            prManagement={prManagement}
-            codeOfConduct={codeOfConduct}
-            variousTools={leadersTools}
-            usefulResources={leadersResources}
-          />
-        </LayoutContained>
-
-        {/* Call opportunities-member with the skipTitle flag */}
-        <OpportunitiesMember
-          skipTitle
-          jobs={jobs}
-          announcements={announcements}
-          channels={channels}
-          tools={tools}
-          resources={resources}
-        />
+        <LeaderCorner data={this.props.data} />
       </BasicLayout>
     );
   }
