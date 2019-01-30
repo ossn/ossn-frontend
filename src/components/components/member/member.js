@@ -2,9 +2,11 @@ import './member.scss';
 
 import gql from 'graphql-tag';
 import React from 'react';
+import { connect } from 'react-redux';
 import { ApolloConsumer } from 'react-apollo';
 import { Helmet } from 'react-helmet';
 
+import { mapUserToProps } from './../../../utils/redux-utils';
 import GatsbyConfig from './../../../../gatsby-config';
 import { returnKeyCheck } from './../../../utils/accessibility';
 import TextInput from './../../forms/text-input/text-input';
@@ -116,6 +118,28 @@ class Member extends React.PureComponent {
 
     this.setState({ history: newHistory, edit: true });
   }
+
+  componentDidMount() {
+    this.isCurrentUser() && this.setState({ editable: true });
+  }
+
+  componentDidUpdate() {
+    this.isCurrentUser()
+      ? this.setState({ editable: true })
+      : this.setState({ editable: false });
+  }
+
+  isUserLoggedIn = () => {
+    return !!this.props.user.user;
+  };
+
+  isCurrentUser = () => {
+    return !this.isUserLoggedIn()
+      ? false
+      : this.props.member.id === this.props.user.user.id
+      ? true
+      : false;
+  };
 
   handleName = event => {
     this.setState({ name: event.target.value });
@@ -513,7 +537,7 @@ class Member extends React.PureComponent {
   }
 }
 
-export default Member;
+export default connect(mapUserToProps)(Member);
 
 const editUser = gql`
   mutation editUser(
