@@ -53,7 +53,7 @@ class LeaderCorner extends React.PureComponent {
   render() {
     return (
       <>
-        {this.props.user.user == undefined ? (
+        {this.props.user.user !== undefined ? (
           <div>
             <AuthenticatedContent props={this.props.data} />
           </div>
