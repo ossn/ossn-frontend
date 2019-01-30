@@ -15,16 +15,10 @@ import { Helmet } from 'react-helmet';
 
 import BasicLayout from '../components/layouts/layout-base/layout-base';
 import GatsbyConfig from './../../gatsby-config';
-import Opportunities from './../components/components/opportunities/opportunities';
+import ContributeContent from './../components/components/contribute/contribute';
 
 class Contribute extends React.PureComponent {
   render() {
-    const jobs = this.props.data.ossnApi.jobs.jobs;
-    const announcements = this.props.data.ossnApi.announcements.announcements;
-    const channels = this.props.data.allCommunicationChannelsJson;
-    const tools = this.props.data.allToolsForContributingJson;
-    const resources = this.props.data.allTrainingResourcesJson;
-
     return (
       <BasicLayout>
         <Helmet>
@@ -33,13 +27,7 @@ class Contribute extends React.PureComponent {
           </title>
         </Helmet>
 
-        <Opportunities
-          jobs={jobs}
-          announcements={announcements}
-          channels={channels}
-          tools={tools}
-          resources={resources}
-        />
+        <ContributeContent data={this.props.data} />
       </BasicLayout>
     );
   }
