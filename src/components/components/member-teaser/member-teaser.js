@@ -14,7 +14,7 @@ import ShadowBox from './../shadow-box/shadow-box';
    member (object): the member to be shown. */
 const MemberTeaser = props => {
   const name = props.member.name;
-  const imageUrl = props.member.imageUrl || null;
+  const imageUrl = props.member.imageUrl;
   const isLeader = props.member.clubs
     ? props.member.clubs.length > 0 &&
       props.member.clubs.some(club => {
