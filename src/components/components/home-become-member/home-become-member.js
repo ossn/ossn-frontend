@@ -6,6 +6,7 @@
 // external modules
 import React from 'react';
 import { connect } from 'react-redux';
+import { LoginLink } from './../../layouts/auth-wrapper/auth-wrapper';
 
 // local  modules
 import { mapUserToProps } from './../../../utils/redux-utils';
@@ -14,7 +15,7 @@ import './home-become-member.scss';
 
 class BecomeMember extends React.Component {
   render() {
-    if (this.props.user.loggedIn) return <div />;
+    if (this.props.user.user !== undefined) return <div />;
     return (
       <div className="home-become-member__wrapper">
         <div className="home-become-member">
@@ -29,13 +30,10 @@ class BecomeMember extends React.Component {
             </p>
           </div>
           <div className="home-become-member__cta">
-            {/*TODO change the link target*/}
-            <a
-              href="https://www.mozilla.org"
+            <LoginLink
+              label="Become a member"
               className="button button--cta home-become-member__button"
-            >
-              Become a member
-            </a>
+            />
           </div>
         </div>
       </div>
