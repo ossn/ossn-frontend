@@ -5,6 +5,7 @@ import React from 'react';
 
 import MemberUpdates from './../member-updates/member-updates';
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
+import { LoginLink } from './../../layouts/auth-wrapper/auth-wrapper';
 
 // style
 import './opportunities-guest.scss';
@@ -26,14 +27,11 @@ export default props => {
         </div>
         <div className="opportunities-guest__announcements-section">
           <MemberUpdates dummyData />
-
           <div className="opportunities-guest__overlay">
-            <a
-              href="#passLinter"
+            <LoginLink
+              label="Become a member to get access!"
               className="button button--cta opportunities-guest__link"
-            >
-              Become a member to get access!
-            </a>
+            />
           </div>
         </div>
       </div>
