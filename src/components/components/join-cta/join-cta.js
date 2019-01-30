@@ -3,6 +3,7 @@ import './join-cta.scss';
 import React, { memo } from 'react';
 import Img from 'gatsby-image';
 
+import { BACKEND_URL } from './../../../settings';
 import Shape from './../shape/shape';
 
 const JoinCta = props => {
@@ -14,8 +15,7 @@ const JoinCta = props => {
 
   const classString = classes.join(' ');
   return (
-    // TODO Change link to read destination.
-    <a href="https://www.gatsbyjs.org" className={classString}>
+    <a href={`${BACKEND_URL}/oidc/login`} className={classString}>
       <Img
         fluid={props.imageJoinCta.childImageSharp.fluid}
         className="join-cta__image"

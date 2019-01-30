@@ -166,12 +166,16 @@
         top: -30px;
         right: 20px;
         transform: rotate(15deg);
+        width: 58px;
+        height: 20px;
       }
 
       &__wave {
         position: absolute;
         bottom: -50px;
         left: -10px;
+        width: 22px;
+        height: 22px;
 
         @include breakpoint($desktop) {
           bottom: -30px;
@@ -183,6 +187,9 @@
         position: absolute;
         bottom: -60px;
         right: -20px;
+        width: 63px;
+        height: 57px;
+
       }
 
       &__content {
