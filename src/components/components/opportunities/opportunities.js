@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 
 // local modules
 import OpportunitiesMemeber from './../opportunities-member/opportunities-member';
-// import OpportunitiesGuest  from './../opportunities-guest/opportunities-guest';
 
 // utils
 import { mapUserToProps } from './../../../utils/redux-utils';
