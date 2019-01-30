@@ -135,6 +135,7 @@ const clubQuery = `
             githubUrl
             personalUrl
             email
+            role
           }
         }
 

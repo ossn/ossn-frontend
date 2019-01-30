@@ -160,6 +160,15 @@ button,
     width: 100%;
   }
 
+  &--medium {
+    @include font-size(14px);
+    @include line-height(23px);
+    padding: 20px;
+    border-radius: 2px;
+    font-weight: 600;
+  }
+
+
   &--small {
     @include font-size(12px);
     @include line-height(21px);

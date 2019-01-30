@@ -35,9 +35,7 @@ export class Github extends React.PureComponent {
   render() {
     const value = this.props.value;
 
-    return (
-      <FormatedText prefix="github.com/" value={value} icon={GithubIcon} />
-    );
+    return <FormatedText value={value} icon={GithubIcon} />;
   }
 }
 
@@ -46,7 +44,7 @@ export class Link extends React.PureComponent {
   render() {
     const value = this.props.value;
 
-    return <FormatedText prefix="https://" value={value} icon={LinkIcon} />;
+    return <FormatedText value={value} icon={LinkIcon} />;
   }
 }
 

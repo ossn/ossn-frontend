@@ -1,5 +1,8 @@
 import gql from 'graphql-tag';
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { mapUserToProps } from './../../../utils/redux-utils';
 import { PlusCircle, X, Check, Feather } from 'react-feather';
 import ReactMarkdown from 'react-markdown';
 
@@ -13,6 +16,7 @@ import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import ClubInfo from './../club-info/club-info';
 import MemberList from './../member-list/member-list';
 import Shape from './../shape/shape';
+import { LoginLink } from './../../layouts/auth-wrapper/auth-wrapper';
 
 import './club-full.scss';
 
@@ -20,16 +24,16 @@ import './club-full.scss';
  This is the template for a single club view.
  */
 // Local modules.
-export default class Club extends React.PureComponent {
+class Club extends React.PureComponent {
   constructor(props) {
     super(props);
 
     const location = this.props.club.location
       ? this.props.club.location
       : {
-          address: null,
-          lng: null,
-          lat: null
+          address: '',
+          lng: '',
+          lat: ''
         };
 
     const initData = {
@@ -54,11 +58,46 @@ export default class Club extends React.PureComponent {
       ...initData,
       edit: false,
       editable: false,
+      isMember: false,
       history: {
         ...initData
       }
     };
   }
+
+  componentDidMount() {
+    this.isUserAdmin() && this.setState({ editable: true });
+    this.isUserMember() && this.setState({ isMember: true });
+  }
+
+  componentDidUpdate() {
+    this.isUserAdmin()
+      ? this.setState({ editable: true })
+      : this.setState({ editable: false });
+    this.isUserMember()
+      ? this.setState({ isMember: true })
+      : this.setState({ isMember: false });
+  }
+
+  isUserMember = () => {
+    return !this.isUserLoggedIn()
+      ? false
+      : this.state.isMember
+      ? true
+      : !!this.props.club.users.find(
+          user => user.id === this.props.user.user.id
+        );
+  };
+
+  isUserLoggedIn = () => {
+    return !!this.props.user.user;
+  };
+
+  isUserAdmin = () => {
+    return !this.isUserMember()
+      ? false
+      : !!this.props.club.users.find(user => user.role === 'admin');
+  };
 
   // Replace the state with a the value of the `state.history`.
   // can be called from the `cancel` button.
@@ -201,15 +240,50 @@ export default class Club extends React.PureComponent {
   render() {
     const snapshot = { ...this.state };
 
-    const ctaPlaceholder = this.shouldCTAAppear() ? (
-      <a href="/test" className="button club-full__cta">
-        <span className="club-full__cta-icon">
-          <PlusCircle />
-        </span>
-        Become a member of this club
-      </a>
-    ) : (
+    const ctaPlaceholder = this.isUserMember() ? (
       ''
+    ) : this.isUserLoggedIn() ? (
+      <ApolloConsumer>
+        {client => (
+          <div
+            tabIndex={0}
+            role="button"
+            onClick={() => {
+              client.mutate({
+                variables: {
+                  id: snapshot.id
+                },
+                mutation: joinClub,
+                fetchPolicy: 'no-cache'
+              });
+              this.setState({ isMember: true });
+            }}
+            onKeyDown={e => {
+              returnKeyCheck(e, () => {
+                client.mutate({
+                  variables: {
+                    id: snapshot.id
+                  },
+                  mutation: joinClub,
+                  fetchPolicy: 'no-cache'
+                });
+                this.handleSave();
+              });
+            }}
+            className="button club-full__cta"
+          >
+            <span className="club-full__cta-icon">
+              <PlusCircle />
+            </span>
+            Become a member of this club{' '}
+          </div>
+        )}
+      </ApolloConsumer>
+    ) : (
+      <LoginLink
+        label="Login/Signup to become a member"
+        className="button button--medium button--full club-full__login"
+      />
     );
 
     const title = snapshot.edit ? (
@@ -220,7 +294,7 @@ export default class Club extends React.PureComponent {
           value={snapshot.title}
         />
       </div>
-    ) : snapshot.subtitle ? (
+    ) : snapshot.title ? (
       <h1 className="club-full__title"> {snapshot.title} </h1>
     ) : (
       ''
@@ -354,7 +428,7 @@ export default class Club extends React.PureComponent {
     );
 
     const sidebarContent = snapshot.edit ? (
-      <div>
+      <div className="club-full__sidebar-content">
         {editLocation}
         {editEmail}
         {editGithub}
@@ -428,7 +502,28 @@ export default class Club extends React.PureComponent {
                   this.handleSave();
                 }}
                 onKeyDown={e => {
-                  returnKeyCheck(e, this.handleSave);
+                  returnKeyCheck(e, () => {
+                    client.mutate({
+                      variables: {
+                        id: snapshot.id,
+                        name: snapshot.title,
+                        sortDescription: snapshot.subtitle,
+                        imageUrl: snapshot.imageUrl,
+                        bannerImageUrl: snapshot.bannerImageUrl,
+                        description: snapshot.description,
+                        codeOfConduct: snapshot.codeOfConduct,
+                        email: snapshot.email,
+                        githubUrl: snapshot.github,
+                        clubUrl: snapshot.clubUrl,
+                        address: snapshot.address,
+                        lng: snapshot.lng,
+                        lat: snapshot.lat
+                      },
+                      mutation: editClub,
+                      fetchPolicy: 'no-cache'
+                    });
+                    this.handleSave();
+                  });
                 }}
                 className="member__button button button--submit"
               >
@@ -500,10 +595,9 @@ export default class Club extends React.PureComponent {
             <div>
               {bannerImageUrl}
               {imageUrl}
-
               {clubDescription}
               {codeOfConduct}
-              {buttonList}
+              <div className="club-full__button-list">{buttonList}</div>
             </div>
             <div className="club-full__members-section">{membersSection}</div>
           </div>
@@ -512,6 +606,8 @@ export default class Club extends React.PureComponent {
     );
   }
 }
+
+export default connect(mapUserToProps)(Club);
 
 const editClub = gql`
   mutation editClub(
@@ -560,5 +656,11 @@ const editClub = gql`
       githubUrl
       clubUrl
     }
+  }
+`;
+
+const joinClub = gql`
+  mutation joinClub($id: ID!) {
+    joinClub(clubId: $id)
   }
 `;
