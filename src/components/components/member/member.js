@@ -371,7 +371,7 @@ class Member extends React.PureComponent {
       />
     ) : (
       snapshot.personal && (
-        <a href="#passLinter">
+        <a href={snapshot.personal}>
           <Link className="member__icon" />
           <span className="member__link-content">{snapshot.personal}</span>
         </a>
