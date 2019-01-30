@@ -42,7 +42,7 @@ class Clubs extends React.PureComponent {
       cursor: null,
       firstLoad: true,
       hasNextPage: false,
-      number: 5
+      number: 12
     };
     this.handleSearch = this.handleSearch.bind(this);
   }
@@ -52,7 +52,7 @@ class Clubs extends React.PureComponent {
     const snapshot = { ...this.state };
     this.setState({
       view: snapshot.view === 'map' ? 'list' : 'map',
-      number: snapshot.view === 'map' ? 5 : 100,
+      number: snapshot.view === 'map' ? 12 : 100,
       shownClubs: [],
       firstLoad: true,
       hasNextPage: false,
