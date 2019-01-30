@@ -45,7 +45,7 @@ export class ClubInfoItem extends React.PureComponent {
 /* Wrappers for cleaner code */
 const LocationInfo = ({ location }) => (
   <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--map">
-    <ClubInfoItem link="#" major>
+    <ClubInfoItem major>
       <Map value={location} />
     </ClubInfoItem>
   </li>
@@ -53,7 +53,7 @@ const LocationInfo = ({ location }) => (
 
 const GithubInfo = ({ github }) => (
   <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--graph">
-    <ClubInfoItem link="#" major>
+    <ClubInfoItem link={github} major>
       <Github value={github} />
     </ClubInfoItem>
   </li>
@@ -61,7 +61,7 @@ const GithubInfo = ({ github }) => (
 
 const WebpageInfo = ({ webpage }) => (
   <li className="club-info__item-wrapper">
-    <ClubInfoItem link="#">
+    <ClubInfoItem link={webpage}>
       <Link value={webpage} />
     </ClubInfoItem>
   </li>
@@ -105,8 +105,8 @@ export default class ClubInfo extends React.PureComponent {
   }
 
   render() {
-    const address = this.props.club.address; // || 'Address is missing'; //.address // TODO: add the addr
-    const github = this.props.club.githubUrl;
+    const address = this.props.club.address;
+    const github = this.props.club.github;
     const webpage = this.props.club.clubUrl;
     const email = this.props.club.email;
 
