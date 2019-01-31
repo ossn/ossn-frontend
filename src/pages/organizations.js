@@ -30,7 +30,7 @@ const Organizations = props => {
   });
 
   return (
-    <BasicLayout>
+    <BasicLayout location={props.location}>
       <Helmet>
         <title>
           {['Organization', '|', GatsbyConfig.siteMetadata.title].join(' ')}

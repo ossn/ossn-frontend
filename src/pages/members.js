@@ -133,7 +133,7 @@ class Members extends React.PureComponent {
     };
 
     return (
-      <BasicLayout>
+      <BasicLayout location={this.props.location}>
         <Helmet>
           <title>
             {['Members', '|', GatsbyConfig.siteMetadata.title].join(' ')}

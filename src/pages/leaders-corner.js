@@ -14,7 +14,7 @@ import LeaderCorner from './../components/components/leaders-corner/leaders-corn
 class Contribute extends React.PureComponent {
   render() {
     return (
-      <BasicLayout>
+      <BasicLayout location={this.props.location}>
         <Helmet>
           <title>
             {["Leader's Corner", '|', GatsbyConfig.siteMetadata.title].join(

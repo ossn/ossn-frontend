@@ -19,7 +19,7 @@ import './../components/pages-styles/about-us.scss';
 
 const About = props => {
   return (
-    <BasicLayout>
+    <BasicLayout location={props.location}>
       <Helmet>
         <title>
           {['About', '|', GatsbyConfig.siteMetadata.title].join(' ')}

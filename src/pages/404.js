@@ -8,8 +8,8 @@ import LayoutContained from './../components/layouts/layout-contained/layout-con
 
 import GatsbyConfig from './../../gatsby-config';
 
-const NotFoundPage = () => (
-  <BasicLayout>
+const NotFoundPage = props => (
+  <BasicLayout location={props.location}>
     <Helmet>
       <title>
         {['NOT FOUND', '|', GatsbyConfig.siteMetadata.title].join(' ')}

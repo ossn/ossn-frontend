@@ -20,7 +20,7 @@ import ContributeContent from './../components/components/contribute/contribute'
 class Contribute extends React.PureComponent {
   render() {
     return (
-      <BasicLayout>
+      <BasicLayout location={this.props.location}>
         <Helmet>
           <title>
             {['Opportunities', '|', GatsbyConfig.siteMetadata.title].join(' ')}
