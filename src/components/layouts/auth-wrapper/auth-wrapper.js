@@ -8,6 +8,8 @@ It is based the Provider pattern and uses redux for it's implementation.
 
 import React from 'react';
 import { Query } from 'react-apollo';
+import { navigate } from 'gatsby';
+import { parse } from 'query-string';
 import gql from 'graphql-tag';
 import { actionLogin, actionLogout } from './../../../actions/userActions';
 import {
@@ -72,6 +74,15 @@ class AuthWrapper extends React.PureComponent {
     loadingState: false,
     shouldLogout: false
   };
+
+  componentDidMount() {
+    let { token } = parse(this.props.location.search);
+    if (token) {
+      // eslint-disable-next-line no-undef
+      localStorage.setItem('token', token);
+      navigate('/');
+    }
+  }
 
   componentDidUpdate(prevPros) {
     if (prevPros.auth.logout === false && this.props.auth.logout === true) {

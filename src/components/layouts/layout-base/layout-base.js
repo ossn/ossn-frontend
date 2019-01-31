@@ -65,7 +65,7 @@ const errorHandling = onError(({ networkError, operation, forward }) => {
   }
 });
 
-const Basic = ({ children }) => {
+const Basic = ({ location, children }) => {
   const client = new ApolloClient({
     link: from([authLink, errorHandling, httpLink]),
     cache: new InMemoryCache()
@@ -75,7 +75,7 @@ const Basic = ({ children }) => {
     <React.StrictMode>
       <ApolloProvider client={client}>
         <Provider store={store}>
-          <AuthWrapper>
+          <AuthWrapper location={location}>
             <div>
               <Helmet meta={metadata} link={link}>
                 <title>{GatsbyConfig.siteMetadata.title}</title>

@@ -149,7 +149,7 @@ class Members extends React.PureComponent {
     const snapshot = this.state;
 
     return (
-      <BasicLayout>
+      <BasicLayout location={this.props.location}>
         <Helmet>
           <title>
             {["Members", "|", GatsbyConfig.siteMetadata.title].join(" ")}
