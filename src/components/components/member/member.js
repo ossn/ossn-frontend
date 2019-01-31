@@ -2,19 +2,63 @@ import './member.scss';
 
 import gql from 'graphql-tag';
 import React from 'react';
-import { connect } from 'react-redux';
 import { ApolloConsumer } from 'react-apollo';
+import { Check, Feather, GitHub, Link, Users, X } from 'react-feather';
 import { Helmet } from 'react-helmet';
+import { connect } from 'react-redux';
+import MediaQuery from 'react-responsive';
 
-import { mapUserToProps } from './../../../utils/redux-utils';
 import GatsbyConfig from './../../../../gatsby-config';
 import { returnKeyCheck } from './../../../utils/accessibility';
+import { mapUserToProps } from './../../../utils/redux-utils';
 import TextInput from './../../forms/text-input/text-input';
-import { Check, Feather, GitHub, Link, Users, X } from 'react-feather';
-import MediaQuery from 'react-responsive';
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import ShadowBox from './../shadow-box/shadow-box';
 import Shape from './../shape/shape';
+
+const shapesUnordered = [
+  <Shape
+    seafoamBlue
+    square
+    className="member__shape member__shape--square"
+    key="square"
+  />,
+  <Shape
+    sunnyYellow
+    triangle
+    className="member__shape member__shape--triangle"
+    key="triangle"
+  />,
+  <Shape
+    darkSkyBlue
+    circle
+    className="member__shape member__shape--circle"
+    key="circle"
+  />
+];
+
+// Shuffles shapes to print them randomly in different areas.
+// Uses Fisher-Yates (aka Knuth) Shuffle algorithm.
+// https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+const shuffle = array => {
+  let currentIndex = array.length,
+    temporaryValue,
+    randomIndex;
+
+  // While there remain elements to shuffle.
+  while (0 !== currentIndex) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+};
 
 /*
  Profile page template.
@@ -48,85 +92,22 @@ class Member extends React.PureComponent {
       description: this.props.member.description,
       receiveNewsletter: this.props.member.receiveNewsletter,
       clubsToPreserve: this.props.member.clubs.map(club => club.id),
-      shapes: [],
+      shapes: shuffle(shapesUnordered),
       firstLoad: true
     };
 
     this.state = {
       ...initData,
       edit: false,
-      editable: false,
+      editable: !!this.isCurrentUser(),
       history: {
         ...initData
       }
     };
   }
 
-  // Replace the state with a the value of the `state.history`.
-  // can be called from the `cancel` button.
-  reverse({
-    name,
-    imageUrl,
-    location,
-    club,
-    github,
-    personal,
-    description,
-    receiveNewsletter,
-    clubsToPreserve
-  }) {
-    const oldState = {
-      name,
-      imageUrl,
-      location,
-      club,
-      github,
-      personal,
-      description,
-      receiveNewsletter,
-      clubsToPreserve,
-      edit: false
-    };
-
-    this.setState(oldState);
-  }
-
-  // saves the current state as the state.history field.
-  // The history is reversed if the user pushes cancel.
-  saveToHistoryAndEdit({
-    name,
-    imageUrl,
-    location,
-    club,
-    github,
-    personal,
-    description,
-    receiveNewsletter,
-    clubsToPreserve
-  }) {
-    const newHistory = {
-      name,
-      imageUrl,
-      location,
-      club,
-      github,
-      personal,
-      description,
-      receiveNewsletter,
-      clubsToPreserve
-    };
-
-    this.setState({ history: newHistory, edit: true });
-  }
-
-  componentDidMount() {
-    this.isCurrentUser() && this.setState({ editable: true });
-  }
-
   componentDidUpdate() {
-    this.isCurrentUser()
-      ? this.setState({ editable: true })
-      : this.setState({ editable: false });
+    this.setState({ editable: !!this.isCurrentUser() });
   }
 
   isUserLoggedIn = () => {
@@ -164,16 +145,14 @@ class Member extends React.PureComponent {
   handleClubSubscription = (clubId, event) => {
     if (event.target.checked) {
       // Add club id to array.
-      this.setState({
-        clubsToPreserve: this.state.clubsToPreserve.concat([clubId])
-      });
+      this.setState(state => ({
+        clubsToPreserve: state.clubsToPreserve.concat([clubId])
+      }));
     } else {
       // Remove club id to array.
-      this.setState({
-        clubsToPreserve: this.state.clubsToPreserve.filter(function(club) {
-          return club !== clubId;
-        })
-      });
+      this.setState(state => ({
+        clubsToPreserve: state.clubsToPreserve.filter(club => club !== clubId)
+      }));
     }
   };
 
@@ -182,80 +161,22 @@ class Member extends React.PureComponent {
   };
 
   handleEdit = () => {
-    const snapshot = { ...this.state };
-    this.saveToHistoryAndEdit(snapshot);
+    this.setState(state => ({ history: { ...state }, edit: true }));
   };
 
   handleCancel = () => {
-    const history = { ...this.state.history };
-    this.reverse(history);
+    this.setState(state => ({ ...state.history, edit: false }));
   };
 
   handleSave = () => {
-    // Remove clubs.
-    let preservedClubs = this.state.clubsToPreserve;
-
-    this.setState({
-      club: this.state.club.filter(function(club) {
-        return preservedClubs.indexOf(club.id) > -1;
-      })
-    });
-    this.setState({ edit: false });
+    this.setState(({ clubsToPreserve, club }) => ({
+      club: club.filter(club => clubsToPreserve.includes(club.id)),
+      edit: false
+    }));
   };
-
-  // Shuffles shapes to print them randomly in different areas.
-  // Uses Fisher-Yates (aka Knuth) Shuffle algorithm.
-  // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
-  shuffle = array => {
-    let currentIndex = array.length,
-      temporaryValue,
-      randomIndex;
-
-    // While there remain elements to shuffle.
-    while (0 !== currentIndex) {
-      // Pick a remaining element.
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-  };
-
-  orderShapes = () => {
-    const shapesUnordered = [
-      <Shape
-        seafoamBlue
-        square
-        className="member__shape member__shape--square"
-        key="square"
-      />,
-      <Shape
-        sunnyYellow
-        triangle
-        className="member__shape member__shape--triangle"
-        key="triangle"
-      />,
-      <Shape
-        darkSkyBlue
-        circle
-        className="member__shape member__shape--circle"
-        key="circle"
-      />
-    ];
-    this.setState({ shapes: this.shuffle(shapesUnordered) });
-  };
-
-  UNSAFE_componentWillMount() {
-    this.orderShapes();
-  }
 
   render() {
-    const snapshot = { ...this.state };
+    const snapshot = this.state;
 
     const name = snapshot.edit ? (
       <TextInput
