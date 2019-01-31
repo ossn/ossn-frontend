@@ -30,7 +30,7 @@ const IndexPage = props => {
   };
 
   return (
-    <BasicLayout noDistanceTop>
+    <BasicLayout location={props.location} noDistanceTop>
       {/* New section */}
       <LayoutContained>
         <Banner

@@ -14,7 +14,7 @@ import FaqItem from './../components/components/faq-item/faq-item';
 
 const Questions = props => {
   return (
-    <BasicLayout>
+    <BasicLayout location={props.location}>
       <Helmet>
         <title>{['FAQ', '|', GatsbyConfig.siteMetadata.title].join(' ')}</title>
       </Helmet>

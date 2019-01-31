@@ -1,5 +1,4 @@
 // External modules.
-import { parse } from 'query-string';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
@@ -13,21 +12,9 @@ class Login extends React.PureComponent {
     user: undefined
   };
 
-  componentDidMount = () => {
-    // QUESTION: Can this be moved to auth-wrapper ?
-    //is being reset at /src/actions/authActions::requestLogout()
-    // localStorage item: gotrue.user.token.access_token is a copy of the token
-    let { token } = parse(this.props.location.search);
-    if (token) {
-      // eslint-disable-next-line no-undef
-      localStorage.setItem('token', token);
-      this.props.navigate('/login');
-    }
-  };
-
   render() {
     return (
-      <BasicLayout>
+      <BasicLayout location={this.props.location}>
         <Helmet>
           <title>
             {['Login', '|', GatsbyConfig.siteMetadata.title].join(' ')}

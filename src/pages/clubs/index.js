@@ -185,7 +185,7 @@ class Clubs extends React.PureComponent {
       );
 
     return (
-      <BasicLayout>
+      <BasicLayout location={this.props.location}>
         <Helmet>
           <title>
             {['Clubs', '|', GatsbyConfig.siteMetadata.title].join(' ')}
