@@ -1,6 +1,6 @@
-import React from 'react';
-
 import './text-input.scss';
+
+import React from 'react';
 
 export default props => {
   const type = props.password ? 'password' : 'text';
@@ -17,6 +17,7 @@ export default props => {
       value={props.value}
       className={classes.join(' ')}
       id={id}
+      name={props.name}
     />
   ) : (
     <input
@@ -26,6 +27,7 @@ export default props => {
       value={props.value}
       className={classes.join(' ')}
       id={id}
+      name={props.name}
     />
   );
 

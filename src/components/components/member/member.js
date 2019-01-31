@@ -85,10 +85,10 @@ class Member extends React.PureComponent {
     const initData = {
       name: this.props.member.name,
       imageUrl: this.props.member.imageUrl,
-      location: this.props.member.sortDescription,
-      club: this.props.member.clubs,
-      github: this.props.member.githubUrl,
-      personal: this.props.member.personalUrl,
+      sortDescription: this.props.member.sortDescription,
+      clubs: this.props.member.clubs,
+      githubUrl: this.props.member.githubUrl,
+      personalUrl: this.props.member.personalUrl,
       description: this.props.member.description,
       receiveNewsletter: this.props.member.receiveNewsletter,
       clubsToPreserve: this.props.member.clubs.map(club => club.id),
@@ -114,7 +114,16 @@ class Member extends React.PureComponent {
       })
       .then(({ data }) => {
         if ((data || {}).user) {
-          this.setState({ ...data.user, club: data.user.clubs });
+          const grapgData = {
+            ...data.user,
+            clubsToPreserve: data.user.clubs.map(club => club.id)
+          };
+          this.setState({
+            ...grapgData,
+            history: {
+              ...grapgData
+            }
+          });
         }
       })
       .catch(e => {
@@ -122,7 +131,7 @@ class Member extends React.PureComponent {
       });
   };
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate() {
     this.setState({ editable: !!this.isCurrentUser() });
   }
 
@@ -138,27 +147,13 @@ class Member extends React.PureComponent {
       : false;
   };
 
-  handleName = event => {
-    this.setState({ name: event.target.value });
+  handleChange = ({ target }) => {
+    this.setState({
+      [target.name]: target.type === 'checkbox' ? target.checked : target.value
+    });
   };
 
-  handleLocation = event => {
-    this.setState({ location: event.target.value });
-  };
-
-  handleGithub = event => {
-    this.setState({ github: event.target.value });
-  };
-
-  handlePersonal = event => {
-    this.setState({ personal: event.target.value });
-  };
-
-  handleDescription = event => {
-    this.setState({ description: event.target.value });
-  };
-
-  handleClubSubscription = (clubId, event) => {
+  handleClubSubscription = clubId => event => {
     if (event.target.checked) {
       // Add club id to array.
       this.setState(state => ({
@@ -172,10 +167,6 @@ class Member extends React.PureComponent {
     }
   };
 
-  handleNewsletterSubscription = event => {
-    this.setState({ receiveNewsletter: event.target.checked });
-  };
-
   handleEdit = () => {
     this.setState(state => ({ history: { ...state }, edit: true }));
   };
@@ -185,8 +176,8 @@ class Member extends React.PureComponent {
   };
 
   handleSave = () => {
-    this.setState(({ clubsToPreserve, club }) => ({
-      club: club.filter(club => clubsToPreserve.includes(club.id)),
+    this.setState(({ clubsToPreserve, clubs }) => ({
+      clubs: clubs.filter(club => clubsToPreserve.includes(club.id)),
       edit: false
     }));
   };
@@ -197,7 +188,8 @@ class Member extends React.PureComponent {
     const name = snapshot.edit ? (
       <TextInput
         label="Name"
-        onChange={this.handleName}
+        name="name"
+        onChange={this.handleChange}
         value={snapshot.name}
         className="member__text-field form-input--member form-input--member-name"
         placeholder="name"
@@ -206,22 +198,24 @@ class Member extends React.PureComponent {
       <div> {snapshot.name} </div>
     );
 
-    const location = snapshot.edit ? (
+    const sortDescription = snapshot.edit ? (
       <TextInput
-        label="Location"
-        onChange={this.handleLocation}
-        value={snapshot.location}
+        label="Sort Description"
+        name="sortDescription"
+        onChange={this.handleChange}
+        value={snapshot.sortDescription}
         className="member__text-field form-input--member form-input--member-name"
       />
     ) : (
-      snapshot.location && <div> {snapshot.location} </div>
+      snapshot.sortDescription && <div> {snapshot.sortDescription} </div>
     );
 
     const description = snapshot.edit ? (
       <TextInput
         multiline
         label="Description"
-        onChange={this.handleDescription}
+        name="description"
+        onChange={this.handleChange}
         value={snapshot.description}
       />
     ) : (
@@ -230,10 +224,10 @@ class Member extends React.PureComponent {
 
     const club = snapshot.edit ? (
       <div>
-        {snapshot.club.length > 0 && <h2>Uncheck to unsubscribe from club</h2>}
+        {snapshot.clubs.length > 0 && <h2>Uncheck to unsubscribe from club</h2>}
 
-        {snapshot.club.length > 0 &&
-          snapshot.club.map((club, i) => {
+        {snapshot.clubs.length > 0 &&
+          snapshot.clubs.map((club, i) => {
             // return <Organization organization={node.org} key={i} />
             return (
               <div className="member__checkbox" key={i}>
@@ -243,9 +237,7 @@ class Member extends React.PureComponent {
                     type="checkbox"
                     defaultChecked
                     id={'club-' + club.id}
-                    onChange={event =>
-                      this.handleClubSubscription(club.id, event)
-                    }
+                    onChange={this.handleClubSubscription(club.id)}
                   />
                   {club.name}
                 </label>
@@ -254,10 +246,10 @@ class Member extends React.PureComponent {
           })}
       </div>
     ) : (
-      snapshot.club.length > 0 && (
+      snapshot.clubs.length > 0 && (
         <div>
           <Users className="member__icon" />
-          {snapshot.club
+          {snapshot.clubs
             .map(club => club.name || 'Club name missing')
             .join(', ')}
         </div>
@@ -271,11 +263,11 @@ class Member extends React.PureComponent {
         <div className="member__checkbox">
           <label htmlFor="newsletter">
             <input
-              name="newsletter_subscription"
+              name="receiveNewsletter"
               type="checkbox"
               id="newsletter"
               defaultChecked={snapshot.receiveNewsletter}
-              onChange={this.handleNewsletterSubscription}
+              onChange={this.handleChange}
             />
             I want to receive newsletter
           </label>
@@ -286,31 +278,33 @@ class Member extends React.PureComponent {
     const github = snapshot.edit ? (
       <TextInput
         label="Github Url"
-        onChange={this.handleGithub}
-        value={snapshot.github}
+        name="githubUrl"
+        onChange={this.handleChange}
+        value={snapshot.githubUrl}
         className="member__text-field form-input--member form-input--member-name"
       />
     ) : (
-      snapshot.github && (
-        <a href={snapshot.github}>
+      snapshot.githubUrl && (
+        <a href={snapshot.githubUrl}>
           <GitHub className="member__icon" />
-          <span className="member__link-content">{snapshot.github}</span>
+          <span className="member__link-content">{snapshot.githubUrl}</span>
         </a>
       )
     );
 
-    const personal = snapshot.edit ? (
+    const personalUrl = snapshot.edit ? (
       <TextInput
         label="personal web page"
-        onChange={this.handlePersonal}
-        value={snapshot.personal}
+        name="personalUrl"
+        onChange={this.handleChange}
+        value={snapshot.personalUrl}
         className="member__text-field form-input--member form-input--member-name"
       />
     ) : (
-      snapshot.personal && (
-        <a href={snapshot.personal}>
+      snapshot.personalUrl && (
+        <a href={snapshot.personalUrl}>
           <Link className="member__icon" />
-          <span className="member__link-content">{snapshot.personal}</span>
+          <span className="member__link-content">{snapshot.personalUrl}</span>
         </a>
       )
     );
@@ -335,7 +329,7 @@ class Member extends React.PureComponent {
       );
 
       buttonList.push(
-        <ApolloConsumer>
+        <ApolloConsumer key="appollo-consumer">
           {client => (
             <div
               tabIndex={0}
@@ -344,11 +338,11 @@ class Member extends React.PureComponent {
                 client.mutate({
                   variables: {
                     receiveNewsletter: snapshot.receiveNewsletter,
-                    sortDescription: snapshot.location,
+                    sortDescription: snapshot.sortDescription,
                     clubs: snapshot.clubsToPreserve,
                     description: snapshot.description,
-                    githubUrl: snapshot.github,
-                    personalUrl: snapshot.personal
+                    githubUrl: snapshot.githubUrl,
+                    personalUrl: snapshot.personalUrl
                   },
                   mutation: editUserMutation
                 });
@@ -360,11 +354,11 @@ class Member extends React.PureComponent {
                   client.mutate({
                     variables: {
                       receiveNewsletter: snapshot.receiveNewsletter,
-                      sortDescription: snapshot.location,
+                      sortDescription: snapshot.sortDescription,
                       clubs: snapshot.clubsToPreserve,
                       description: snapshot.description,
-                      githubUrl: snapshot.github,
-                      personalUrl: snapshot.personal
+                      githubUrl: snapshot.githubUrl,
+                      personalUrl: snapshot.personalUrl
                     },
                     mutation: editUserMutation
                   });
@@ -433,7 +427,7 @@ class Member extends React.PureComponent {
               </div>
               <div className="title title--small member__name">{name}</div>
 
-              <div className="member__location">{location}</div>
+              <div className="member__location">{sortDescription}</div>
 
               <div className="member__description">{description}</div>
 
@@ -444,7 +438,7 @@ class Member extends React.PureComponent {
                 className="member__divider"
               />
 
-              {snapshot.club.length > 0 && (
+              {snapshot.clubs.length > 0 && (
                 <div>
                   <div className="member__club">{club}</div>
 
@@ -460,7 +454,7 @@ class Member extends React.PureComponent {
               <div className="member__link member__link--github">{github}</div>
 
               <div className="member__link member__link--personal-page">
-                {personal}
+                {personalUrl}
               </div>
 
               {newsletter}
