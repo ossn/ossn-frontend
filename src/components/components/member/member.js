@@ -1,8 +1,7 @@
 import './member.scss';
 
-import gql from 'graphql-tag';
 import React from 'react';
-import { ApolloConsumer } from 'react-apollo';
+import { ApolloConsumer, withApollo } from 'react-apollo';
 import { Check, Feather, GitHub, Link, Users, X } from 'react-feather';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
@@ -15,6 +14,7 @@ import TextInput from './../../forms/text-input/text-input';
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import ShadowBox from './../shadow-box/shadow-box';
 import Shape from './../shape/shape';
+import { editUserMutation, getUserQuery } from './member-queries';
 
 const shapesUnordered = [
   <Shape
@@ -106,7 +106,23 @@ class Member extends React.PureComponent {
     };
   }
 
-  componentDidUpdate() {
+  componentDidMount = () => {
+    this.props.client
+      .query({
+        query: getUserQuery,
+        variables: { id: this.props.member.id }
+      })
+      .then(({ data }) => {
+        if ((data || {}).user) {
+          this.setState({ ...data.user, club: data.user.clubs });
+        }
+      })
+      .catch(e => {
+        //TODO: Handle error
+      });
+  };
+
+  componentDidUpdate(prevProps) {
     this.setState({ editable: !!this.isCurrentUser() });
   }
 
@@ -334,7 +350,7 @@ class Member extends React.PureComponent {
                     githubUrl: snapshot.github,
                     personalUrl: snapshot.personal
                   },
-                  mutation: editUser
+                  mutation: editUserMutation
                 });
 
                 this.handleSave();
@@ -350,7 +366,7 @@ class Member extends React.PureComponent {
                       githubUrl: snapshot.github,
                       personalUrl: snapshot.personal
                     },
-                    mutation: editUser
+                    mutation: editUserMutation
                   });
 
                   this.handleSave();
@@ -458,37 +474,4 @@ class Member extends React.PureComponent {
   }
 }
 
-export default connect(mapUserToProps)(Member);
-
-const editUser = gql`
-  mutation editUser(
-    $receiveNewsletter: Boolean!
-    $sortDescription: String
-    $description: String
-    $clubs: [ID!]
-    $githubUrl: String
-    $personalUrl: String
-  ) {
-    editUser(
-      user: {
-        receiveNewsletter: $receiveNewsletter
-        sortDescription: $sortDescription
-        description: $description
-        clubs: $clubs
-        githubUrl: $githubUrl
-        personalUrl: $personalUrl
-      }
-    ) {
-      id
-      email
-      sortDescription
-      description
-      receiveNewsletter
-      clubs {
-        id
-      }
-      githubUrl
-      personalUrl
-    }
-  }
-`;
+export default connect(mapUserToProps)(withApollo(Member));
