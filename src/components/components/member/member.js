@@ -337,6 +337,7 @@ class Member extends React.PureComponent {
               onClick={() => {
                 client.mutate({
                   variables: {
+                    name: snapshot.name,
                     receiveNewsletter: snapshot.receiveNewsletter,
                     sortDescription: snapshot.sortDescription,
                     clubs: snapshot.clubsToPreserve,

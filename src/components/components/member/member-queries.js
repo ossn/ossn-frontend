@@ -23,6 +23,7 @@ export const getUserQuery = gql`
 
 export const editUserMutation = gql`
   mutation editUser(
+    $name: String!
     $receiveNewsletter: Boolean!
     $sortDescription: String
     $description: String
@@ -32,6 +33,7 @@ export const editUserMutation = gql`
   ) {
     editUser(
       user: {
+        name: $name
         receiveNewsletter: $receiveNewsletter
         sortDescription: $sortDescription
         description: $description
@@ -41,6 +43,7 @@ export const editUserMutation = gql`
       }
     ) {
       id
+      name
       email
       sortDescription
       description
