@@ -131,21 +131,17 @@ class Member extends React.PureComponent {
       });
   };
 
-  componentDidUpdate() {
-    this.setState({ editable: !!this.isCurrentUser() });
+  componentDidUpdate(prevProps) {
+    if (
+      (prevProps.user || {}).user &&
+      prevProps.user.user.id != this.props.user.user.id
+    ) {
+      this.setState({ editable: !!this.isCurrentUser() });
+    }
   }
 
-  isUserLoggedIn = () => {
-    return !!this.props.user.user;
-  };
-
-  isCurrentUser = () => {
-    return !this.isUserLoggedIn()
-      ? false
-      : this.props.member.id === this.props.user.user.id
-      ? true
-      : false;
-  };
+  isCurrentUser = () =>
+    this.props.user.user && this.props.member.id === this.props.user.user.id;
 
   handleChange = ({ target }) => {
     this.setState({
@@ -153,18 +149,14 @@ class Member extends React.PureComponent {
     });
   };
 
-  handleClubSubscription = clubId => event => {
-    if (event.target.checked) {
-      // Add club id to array.
-      this.setState(state => ({
-        clubsToPreserve: state.clubsToPreserve.concat([clubId])
-      }));
-    } else {
-      // Remove club id to array.
-      this.setState(state => ({
-        clubsToPreserve: state.clubsToPreserve.filter(club => club !== clubId)
-      }));
-    }
+  handleClubSubscription = ({ target: { checked, name: clubId } }) => {
+    this.setState(({ clubsToPreserve }) => ({
+      clubsToPreserve: checked
+        ? // Add club id to array
+          clubsToPreserve.concat([clubId])
+        : // Remove club id from array
+          clubsToPreserve.filter(club => club !== clubId)
+    }));
   };
 
   handleEdit = () => {
@@ -230,14 +222,14 @@ class Member extends React.PureComponent {
           snapshot.clubs.map((club, i) => {
             // return <Organization organization={node.org} key={i} />
             return (
-              <div className="member__checkbox" key={i}>
+              <div className="member__checkbox" key={club.id}>
                 <label htmlFor={'club-' + club.id}>
                   <input
-                    name={club.name}
+                    name={club.id}
                     type="checkbox"
                     defaultChecked
                     id={'club-' + club.id}
-                    onChange={this.handleClubSubscription(club.id)}
+                    onChange={this.handleClubSubscription}
                   />
                   {club.name}
                 </label>
