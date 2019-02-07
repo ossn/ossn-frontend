@@ -43,11 +43,11 @@ function requestClubs(graphql, actions, cursor = null) {
             (cursor = result.pageInfo.endCursor)
           ).then(result.resolve);
         } else {
-          resolve();
+          return resolve();
         }
       })
-      .catch(() => {
-        reject();
+      .catch(e => {
+        reject(Error);
       });
   });
 }
@@ -73,17 +73,17 @@ function requestUsers(graphql, actions, cursor = null) {
       })
       .then(result => {
         if (result.pageInfo.hasNextPage) {
-          requestClubs(
+          return requestClubs(
             graphql,
             actions,
             (cursor = result.pageInfo.endCursor)
           ).then(result.resolve);
         } else {
-          resolve();
+          return resolve();
         }
       })
-      .catch(error => {
-        reject();
+      .catch(e => {
+        reject(e);
       });
   });
 }
@@ -97,6 +97,18 @@ exports.createPages = ({ graphql, actions }) => {
       });
     });
   });
+};
+
+// Implement the Gatsby API “onCreatePage”. This is
+// called after every page is created.
+exports.onCreatePage = async ({ page, actions: { createPage } }) => {
+  // page.matchPath is a special key that's used for matching pages
+  // only on the client.
+  if (page.path === '/members/dynamic/') {
+    page.matchPath = '/members/*';
+    page.component = path.resolve(`./src/templates/member-full.js`);
+    createPage(page);
+  }
 };
 
 // the graphql query for clubs.
@@ -117,7 +129,7 @@ const clubQuery = `
           clubUrl
           events {
             title
-            sortDescription	
+            sortDescription
           }
           location {
             address
