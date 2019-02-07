@@ -60,7 +60,7 @@ function requestUsers(graphql, actions, cursor = null) {
         for (let node of result.data.ossnApi.users.users) {
           actions.createPage({
             path: `members/${node.id}`,
-            component: path.resolve(`./src/templates/member-full.js`),
+            component: path.resolve(`./src/pages/members/dynamic.js`),
             context: {
               member: node
             }
@@ -106,7 +106,7 @@ exports.onCreatePage = async ({ page, actions: { createPage } }) => {
   // only on the client.
   if (page.path === '/members/dynamic/') {
     page.matchPath = '/members/*';
-    page.component = path.resolve(`./src/templates/member-full.js`);
+    page.component = path.resolve(`./src/pages/members/dynamic.js`);
     createPage(page);
   }
 };
