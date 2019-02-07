@@ -1,5 +1,6 @@
 import './member.scss';
 
+import { navigate } from 'gatsby';
 import React from 'react';
 import { ApolloConsumer, withApollo } from 'react-apollo';
 import { Check, Feather, GitHub, Link, Users, X } from 'react-feather';
@@ -7,13 +8,13 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import MediaQuery from 'react-responsive';
 
-import GatsbyConfig from './../../../../gatsby-config';
-import { returnKeyCheck } from './../../../utils/accessibility';
-import { mapUserToProps } from './../../../utils/redux-utils';
-import TextInput from './../../forms/text-input/text-input';
-import LayoutContained from './../../layouts/layout-contained/layout-contained';
-import ShadowBox from './../shadow-box/shadow-box';
-import Shape from './../shape/shape';
+import GatsbyConfig from '../../../../gatsby-config';
+import { returnKeyCheck } from '../../../utils/accessibility';
+import { mapUserToProps } from '../../../utils/redux-utils';
+import TextInput from '../../forms/text-input/text-input';
+import LayoutContained from '../../layouts/layout-contained/layout-contained';
+import ShadowBox from '../shadow-box/shadow-box';
+import Shape from '../shape/shape';
 import { editUserMutation, getUserQuery } from './member-queries';
 
 const shapesUnordered = [
@@ -107,18 +108,23 @@ class Member extends React.PureComponent {
   }
 
   componentDidMount = () => {
+    let { id } = this.props.member;
+    if (!id) {
+      let path = this.props.location.pathname.split('/');
+      id = path[path.indexOf('members') + 1].split('?')[0];
+    }
     this.props.client
       .query({
         query: getUserQuery,
-        variables: { id: this.props.member.id }
+        variables: { id }
       })
-      .then(({ data }) => {
-        if ((data || {}).user) {
+      .then(({ data = {} }) => {
+        if (data.user) {
           const grapgData = {
             ...data.user,
             clubsToPreserve: data.user.clubs.map(club => club.id)
           };
-          this.setState({
+          return this.setState({
             ...grapgData,
             history: {
               ...grapgData
@@ -128,6 +134,9 @@ class Member extends React.PureComponent {
       })
       .catch(e => {
         //TODO: Handle error
+        if (e.toString() == 'Error: GraphQL error: record not found') {
+          navigate('/404');
+        }
       });
   };
 
