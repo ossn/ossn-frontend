@@ -7,24 +7,58 @@ import { Helmet } from 'react-helmet';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import MediaQuery from 'react-responsive';
-import BasicLayout from '../components/layouts/layout-base/layout-base';
-import LayoutContained from './../components/layouts/layout-contained/layout-contained';
-import Layout2ColUnequalWith3Elements from './../components/layouts/layout-2col-unequal-with-3-elements/layout-2col-unequal-with-3-elements';
-import ShadowBox from './../components/components/shadow-box/shadow-box';
-import Shape from './../components/components/shape/shape';
+import BasicLayout from '../../components/layouts/layout-base/layout-base';
+import LayoutContained from '../../components/layouts/layout-contained/layout-contained';
+import Layout2ColUnequalWith3Elements from '../../components/layouts/layout-2col-unequal-with-3-elements/layout-2col-unequal-with-3-elements';
+import ShadowBox from '../../components/components/shadow-box/shadow-box';
+import Shape from '../../components/components/shape/shape';
 import { Query, ApolloConsumer } from 'react-apollo';
 import gql from 'graphql-tag';
 import { PlusSquare } from 'react-feather';
 
-import '../components/pages-styles/members.scss';
+import '../../components/pages-styles/members.scss';
 
-import { SearchFilter } from '../components/components/filter/filter';
-import JoinCta from './../components/components/join-cta/join-cta';
-import MemberList from './../components/components/member-list/member-list';
+import { SearchFilter } from '../../components/components/filter/filter';
+import JoinCta from '../../components/components/join-cta/join-cta';
+import MemberList from '../../components/components/member-list/member-list';
 
 // Import page title from gatsby config.
-import GatsbyConfig from './../../gatsby-config';
+import GatsbyConfig from '../../../gatsby-config';
 
+const NUMBER_OF_USERS_TO_FETCH = 5;
+const GET_MEMBERS = gql`
+  query GetMembers($number: Int!, $cursor: ID, $search: String) {
+    users(first: $number, after: $cursor, search: $search) {
+      users {
+        id
+        userName
+        name
+        imageUrl
+        receiveNewsletter
+        description
+        githubUrl
+        personalUrl
+        email
+        clubs {
+          name
+          role
+        }
+      }
+
+      pageInfo {
+        totalCount
+        endCursor
+        hasNextPage
+        startCursor
+      }
+    }
+  }
+`;
+
+// TODO: Refactor this component to leverage only the <Query> component
+// from the apollo library (along with the refetch and fetchMore
+// properties of the Query component in order to cover load more and search
+// functionality)
 class Members extends React.PureComponent {
   state = {
     search: null,
@@ -48,89 +82,62 @@ class Members extends React.PureComponent {
     });
   };
 
-  render() {
-    const snapshot = { ...this.state };
-
-    const GET_MEMBERS = gql`
-      query GetMembers($number: Int!, $cursor: ID, $search: String) {
-        users(first: $number, after: $cursor, search: $search) {
-          users {
-            id
-            userName
-            name
-            imageUrl
-            receiveNewsletter
-            description
-            githubUrl
-            personalUrl
-            email
-            clubs {
-              name
-              role
-            }
-          }
-
-          pageInfo {
-            totalCount
-            endCursor
-            hasNextPage
-            startCursor
-          }
-        }
-      }
-    `;
-
-    // Updates the number of members that are being shown. Triggers re-render.
-    // params:
-    //  onMembersFetched (data): The data returned from the query.
-    const onMembersFetched = data => {
-      const shownMembers = snapshot.shownMembers.concat(data.users.users);
-      this.setState(() => ({
+  // Updates the number of members that are being shown. Triggers re-render.
+  // params:
+  //  onMembersFetched (data): The data returned from the query.
+  onMembersFetched = data => {
+    this.setState(state => {
+      const shownMembers = state.shownMembers.concat(data.users.users);
+      return {
         shownMembersCount: shownMembers.length,
         shownMembers: shownMembers,
         cursor: data.users.pageInfo.endCursor,
         firstLoad: false,
         hasNextPage: data.users.pageInfo.hasNextPage,
         totalCount: data.users.pageInfo.totalCount
-      }));
-    };
+      };
+    });
+  };
 
-    // Fetches default results on first load.
-    const onFirstLoad = () => {
-      let content;
-      if (snapshot.firstLoad) {
-        content = (
-          <Query
-            query={GET_MEMBERS}
-            variables={{
-              number: 5,
-              cursor: snapshot.cursor,
-              search: snapshot.search
-            }}
-            onCompleted={data => {
-              onMembersFetched(data);
-            }}
-          >
-            {({ loading, error }) => {
-              if (loading)
-                return (
-                  <div className="text text--large text--load-more">
-                    Loading....
-                  </div>
-                );
-              if (error) {
-                return <div> `Error ${error.message}` </div>;
-              } else {
-                // JSX elements
-                // create the DOM for the component.
-                return null;
-              }
-            }}
-          </Query>
-        );
-        return content;
-      }
-    };
+  // Fetches default results on first load.
+  onFirstLoad = () => {
+    let content;
+    if (this.state.firstLoad) {
+      content = (
+        <Query
+          query={GET_MEMBERS}
+          variables={{
+            number: NUMBER_OF_USERS_TO_FETCH,
+            cursor: this.state.cursor,
+            search: this.state.search
+          }}
+          onCompleted={data => {
+            this.onMembersFetched(data);
+          }}
+        >
+          {({ loading, error }) => {
+            if (loading)
+              return (
+                <div className="text text--large text--load-more">
+                  Loading....
+                </div>
+              );
+            if (error) {
+              return <div> `Error ${error.message}` </div>;
+            } else {
+              // JSX elements
+              // create the DOM for the component.
+              return null;
+            }
+          }}
+        </Query>
+      );
+      return content;
+    }
+  };
+
+  render() {
+    const snapshot = this.state;
 
     return (
       <BasicLayout>
@@ -203,7 +210,7 @@ class Members extends React.PureComponent {
                     </div>
                   </div>
                 </ShadowBox>
-                {onFirstLoad()}
+                {this.onFirstLoad()}
                 <MemberList members={snapshot.shownMembers} />
 
                 <ApolloConsumer>
@@ -215,12 +222,12 @@ class Members extends React.PureComponent {
                           const { data } = await client.query({
                             query: GET_MEMBERS,
                             variables: {
-                              number: 5,
+                              number: NUMBER_OF_USERS_TO_FETCH,
                               cursor: snapshot.cursor,
                               search: snapshot.search
                             }
                           });
-                          onMembersFetched(data);
+                          this.onMembersFetched(data);
                         }}
                         hidden={!snapshot.hasNextPage}
                       >
