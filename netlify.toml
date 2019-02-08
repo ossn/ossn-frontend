@@ -10,5 +10,5 @@
     X-Content-Type-Options = "nosniff"
 [[redirects]]
   from = "/api/*"
-  to = "https://dev-api.ossn.club/api/:splat"
+  to = "https://backend.ossn.club/api/:splat"
   status = 200
