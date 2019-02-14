@@ -152,22 +152,10 @@ class Members extends React.PureComponent {
           <Layout2ColUnequalWith3Elements horizontalGutters verticalGutters>
             <div className="members__intro">
               <p>
-                Lorem ipsum dolor sit amet, nonumy lucilius et pro. Mel ut diam
-                choro, propriae lucilius efficiendi an nam, suas facer qualisque
-                no nec. An fugit soluta per. Ad mei debitis electram, officiis
-                intellegat usu ei, ius eu zril intellegam consequuntur. Sumo
-                delectus te nam, eam placerat salutandi no, nibh aperiam no ius.
-                Id volumus sententiae interesset quo, natum scriptorem
-                accommodare nam id, semper blandit ius ea.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, nonumy lucilius et pro. Mel ut diam
-                choro, propriae lucilius efficiendi an nam, suas facer qualisque
-                no nec. An fugit soluta per. Ad mei debitis electram, officiis
-                intellegat usu ei, ius eu zril intellegam consequuntur. Sumo
-                delectus te nam, eam placerat salutandi no, nibh aperiam no ius.
-                Id volumus §sententiae interesset quo, natum scriptorem
-                accommodare nam id, semper blandit ius ea.
+                Connect with the amazing students of our network. Explore their
+                clubs, their interests and their creations. If you want to
+                connect with any of the club or individuals, reach out through
+                out our communication channels at our opportunities page.
               </p>
             </div>
             <div>
