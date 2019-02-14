@@ -1,8 +1,8 @@
 {
   "box0": [
     {
-      "titleLargeTop": "Read",
-      "titleSmall": "our updated",
+      "titleLargeTop": "March 1st",
+      "titleSmall": "launching our",
       "titleLargeBottom": "blog!",
       "link": "#",
       "internalLink": false,
@@ -24,9 +24,9 @@
   ],
   "box2": [
     {
-      "titleLargeTop": "Listen",
-      "titleSmall": "to our",
-      "titleLargeBottom": "podcast!",
+      "titleLargeTop": "Our podcast is",
+      "titleSmall": "comming soon",
+      "titleLargeBottom": "",
       "link": "#",
       "internalLink": false,
       "image": {
