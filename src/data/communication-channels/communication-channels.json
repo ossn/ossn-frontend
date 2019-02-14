@@ -1,15 +1,15 @@
 [
   {
     "title": "Slack",
-    "link": "#",
+    "link": "https://mossn.slack.com",
     "attachment": "./icon-slack.svg"
   },{
     "title": "Email",
-    "link": "#",
+    "link": "ossn@mozilla.com",
     "attachment": "./icon-email.svg"
   },{
     "title": "Twitter",
-    "link": "#",
+    "link": "https://twitter.com/ossn",
     "attachment": "./icon-twitter.svg"
   }
 ]
