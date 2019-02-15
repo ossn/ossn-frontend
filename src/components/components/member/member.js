@@ -286,7 +286,7 @@ class Member extends React.PureComponent {
       />
     ) : (
       snapshot.githubUrl && (
-        <a href={snapshot.githubUrl}>
+        <a href={snapshot.githubUrl} target="_blank" rel="noopener noreferrer">
           <GitHub className="member__icon" />
           <span className="member__link-content">{snapshot.githubUrl}</span>
         </a>
@@ -303,7 +303,11 @@ class Member extends React.PureComponent {
       />
     ) : (
       snapshot.personalUrl && (
-        <a href={snapshot.personalUrl}>
+        <a
+          href={snapshot.personalUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <Link className="member__icon" />
           <span className="member__link-content">{snapshot.personalUrl}</span>
         </a>
