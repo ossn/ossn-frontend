@@ -59,15 +59,15 @@ const Basic = ({ children }) => {
                 <html lang="en" />
               </Helmet>
               <SkipLink />
-              <div>
-                <Header />
+              <Header />
+              <div className="layout-base__wrapper">
+                <div id="content" className="layout-base">
+                  {children}
+                </div>
+                <footer className="layout-base__bottom">
+                  <Footer />
+                </footer>
               </div>
-              <div id="content" className="layout-base">
-                {children}
-              </div>
-              <footer>
-                <Footer />
-              </footer>
             </div>
           </AuthWrapper>
         </Provider>
