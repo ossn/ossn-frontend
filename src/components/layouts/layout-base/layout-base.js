@@ -59,7 +59,9 @@ const Basic = ({ children }) => {
                 <html lang="en" />
               </Helmet>
               <SkipLink />
-              <Header />
+              <div>
+                <Header />
+              </div>
               <div className="layout-base__wrapper">
                 <div id="content" className="layout-base">
                   {children}
