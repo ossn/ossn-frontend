@@ -1,5 +1,12 @@
 const path = require('path');
-const BACKEND_URL = 'https://dev-api.ossn.club'; //'http://localhost:8080';
+
+const isProd = ['prod', 'production'].includes(
+  (process.env.ENV || '').toLowerCase()
+);
+
+const BACKEND_URL = isProd
+  ? 'https://backend.ossn.club'
+  : 'https://dev-api.ossn.club'; // 'http://localhost:8080';
 
 module.exports = {
   proxy: {
