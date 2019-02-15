@@ -1,7 +1,7 @@
 const path = require('path');
 
 const isProd = ['prod', 'production'].includes(
-  (process.env.ENV || '').toLowerCase()
+  (process.env.ENV || process.env.env || '').toLowerCase()
 );
 
 const BACKEND_URL = isProd
