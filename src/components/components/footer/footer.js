@@ -132,7 +132,7 @@ const footerNavigationList1 = [
   },
   {
     title: 'Affiliations',
-    target: '/affiliations'
+    target: '/organizations'
   },
   {
     title: 'About Us',

@@ -33,7 +33,7 @@ const Navigation = () => (
           className="secondary-navigation__link"
           activeClassName="is-active"
         >
-          Organizations
+          Affiliations
         </Link>
       </li>
       <li className="secondary-navigation__item">
