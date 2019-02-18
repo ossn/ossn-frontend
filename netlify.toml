@@ -9,6 +9,10 @@
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     X-Content-Type-Options = "nosniff"
 [[redirects]]
+  from = "https://dev.ossn.club/api/*"
+  to = "https://dev-api.ossn.club/api/:splat"
+  status = 200
+[[redirects]]
   from = "/api/*"
   to = "https://backend.ossn.club/api/:splat"
   status = 200

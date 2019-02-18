@@ -62,12 +62,14 @@ const Basic = ({ children }) => {
               <div>
                 <Header />
               </div>
-              <div id="content" className="layout-base">
-                {children}
+              <div className="layout-base__wrapper">
+                <div id="content" className="layout-base">
+                  {children}
+                </div>
+                <footer className="layout-base__bottom">
+                  <Footer />
+                </footer>
               </div>
-              <footer>
-                <Footer />
-              </footer>
             </div>
           </AuthWrapper>
         </Provider>
