@@ -26,6 +26,7 @@ export class ClubInfoItem extends React.PureComponent {
   render() {
     let classes = ['club-info__item'];
     if (this.props.major) classes.push('club-info__item--major');
+    if (this.props.map) classes.push('club-info__item--map');
 
     let content;
     if (this.props.link) {
@@ -45,7 +46,7 @@ export class ClubInfoItem extends React.PureComponent {
 /* Wrappers for cleaner code */
 const LocationInfo = ({ location }) => (
   <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--map">
-    <ClubInfoItem major>
+    <ClubInfoItem major map>
       <Map value={location} />
     </ClubInfoItem>
   </li>

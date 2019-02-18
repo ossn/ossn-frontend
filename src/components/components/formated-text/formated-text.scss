@@ -9,7 +9,6 @@
   margin-top: auto;
   margin-bottom: auto;
   position: relative;
-  word-break: break-all;
 
   &__icon {
     display: inline-block;
@@ -34,5 +33,9 @@
   &__secondary {
     display: block;
     font-weight: 300;
+  }
+
+  &--word-break {
+    word-break: break-all;
   }
 }

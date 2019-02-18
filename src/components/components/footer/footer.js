@@ -2,14 +2,12 @@
  Contains the footer section.
  */
 
-// External modules.
 import React from 'react';
 import { Link } from 'gatsby';
 import MediaQuery from 'react-responsive';
-
-// Local modules.
 import LayoutContained from './../../layouts/layout-contained/layout-contained';
 import Navigation from './../../navigation/footer-navigation/footer-navigation';
+import { BACKEND_URL } from './../../../settings';
 
 // Styles.
 import './footer.scss';
@@ -116,7 +114,7 @@ export default Footer;
 const footerNavigationList1 = [
   {
     title: 'Clubs',
-    target: '/find-club'
+    target: '/clubs'
   },
   {
     title: 'Members',
@@ -128,7 +126,8 @@ const footerNavigationList1 = [
   },
   {
     title: 'Log In/SignUp',
-    target: '/'
+    target: `${BACKEND_URL}/oidc/login`,
+    external: true
   },
   {
     title: 'Affiliations',

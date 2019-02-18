@@ -1,5 +1,5 @@
 // External modules.
-import './../components/pages-styles/find-club.scss';
+import './../../components/pages-styles/find-club.scss';
 
 import gql from 'graphql-tag';
 import React from 'react';
@@ -10,13 +10,13 @@ import { Helmet } from 'react-helmet';
 import {
   SearchFilter,
   ToggleFilter
-} from '../components/components/filter/filter';
-import BasicLayout from '../components/layouts/layout-base/layout-base';
-import GatsbyConfig from './../../gatsby-config';
-import { ClubTeaserList } from './../components/components/club-teaser-list/club-teaser-list';
-import Map from './../components/components/map/map';
-import ShadowBox from './../components/components/shadow-box/shadow-box';
-import LayoutContained from './../components/layouts/layout-contained/layout-contained';
+} from './../../components/components/filter/filter';
+import BasicLayout from './../../components/layouts/layout-base/layout-base';
+import GatsbyConfig from './../../../gatsby-config';
+import { ClubTeaserList } from './../../components/components/club-teaser-list/club-teaser-list';
+import Map from './../../components/components/map/map';
+import ShadowBox from './../../components/components/shadow-box/shadow-box';
+import LayoutContained from './../../components/layouts/layout-contained/layout-contained';
 
 class Clubs extends React.PureComponent {
   /*
@@ -24,15 +24,15 @@ class Clubs extends React.PureComponent {
    */
   constructor(props) {
     /*
-    state fields:
-      view (string): how to show the list of clubs. values (list, map).
-      searchString (string): the string to filter the clubs.
-      shownClubsCount (int): The number of the clubs that is fetched and shown.
-      shownclubs (array): the list of the club objects.
-      cursor (string): The id of the last fetched club.
-      firstLoad (boolean): A flag to indicate the first render of the component.
-      hasNextPage (boolean): A flaf to store the apollo hasNextPage.
-    */
+     state fields:
+     view (string): how to show the list of clubs. values (list, map).
+     searchString (string): the string to filter the clubs.
+     shownClubsCount (int): The number of the clubs that is fetched and shown.
+     shownclubs (array): the list of the club objects.
+     cursor (string): The id of the last fetched club.
+     firstLoad (boolean): A flag to indicate the first render of the component.
+     hasNextPage (boolean): A flaf to store the apollo hasNextPage.
+     */
     super(props);
     this.state = {
       view: 'list',
