@@ -59,42 +59,61 @@ const Organizations = props => {
             <div>
               <h1> Affiliations </h1>
               <p>
-                Lorem ipsum dolor sit amet, nonumy lucilius et pro. Mel ut diam
-                choro, propriae lucilius efficiendi an nam, suas facer qualisque
-                no nec. An fugit soluta per. Ad mei debitis electram, officiis
-                intellegat usu ei, ius eu zril intellegam consequuntur. Sumo
-                delectus te nam, eam placerat salutandi no, nibh aperiam no ius.
-                Id volumus sententiae interesset quo, natum scriptorem
-                accommodare nam id, semper blandit ius ea.
+                Open Source is all about community, so we work closely with
+                major groups and organizations already in this space like POSSE,
+                GitHub, The GNOME Project and Red Hat. Below, you can discover
+                who is sharing our mission and to find out how other
+                contributors can get involved. We’re always looking for new
+                organizations and individuals to drive our Network forward.
               </p>
             </div>
 
             <div>
               <Layout2Col verticalGutters horizontalGutters>
                 <div>
-                  <h2>Who helps us?</h2>
+                  <h2>Why to affiliate with us</h2>
                   <p>
-                    Lorem ipsum dolor sit amet, nonumy lucilius et pro. Mel ut
-                    diam choro, propriae lucilius efficiendi an nam, suas facer
-                    qualisque no nec. An fugit soluta per. Ad mei debitis
-                    electram, officiis intellegat usu ei, ius eu zril intellegam
-                    consequuntur. Sumo delectus te nam, eam placerat salutandi
-                    no, nibh aperiam no ius. Id volumus sententiae interesset
-                    quo, natum scriptorem accommodare nam id, semper blandit ius
-                    ea.
+                    <ul>
+                      <li>
+                        Work with skilled, diverse University Students from
+                        around the U.S. and Canada
+                      </li>
+                      <li>
+                        <b>Create together:</b> with students your Open Source
+                        Project
+                      </li>
+                      <li>
+                        <b>Learn through use:</b> have students provide early
+                        feedback and identify bugs
+                      </li>
+                      <li>
+                        <b>Network common interests:</b> students who are
+                        interested about your Open Source Project can use and
+                        advocate about it
+                      </li>
+                    </ul>
                   </p>
                 </div>
                 <div>
-                  <h2>Opportunities</h2>
+                  <h2> Investement</h2>
                   <p>
-                    Lorem ipsum dolor sit amet, nonumy lucilius et pro. Mel ut
-                    diam choro, propriae lucilius efficiendi an nam, suas facer
-                    qualisque no nec. An fugit soluta per. Ad mei debitis
-                    electram, officiis intellegat usu ei, ius eu zril intellegam
-                    consequuntur. Sumo delectus te nam, eam placerat salutandi
-                    no, nibh aperiam no ius. Id volumus sententiae interesset
-                    quo, natum scriptorem accommodare nam id, semper blandit ius
-                    ea.
+                    Our role is to act as the layer between your projects and
+                    our students through our Network.
+                  </p>
+                  <p>
+                    We want to ensure that our students will be exposed to
+                    meaningful contribution opportunities through a healthy and
+                    pleasant experience while contributing to your project.
+                  </p>
+                  <p>
+                    At the same time, we do not want to put additional overhead
+                    or have your team allocate resources for specifically
+                    supporting the students.
+                  </p>
+                  <p>
+                    If you are interested having the amazing students of the
+                    Open Source Student Network work with you, please reach out
+                    to us at: ossn AT mozilla DOT com.
                   </p>
                 </div>
               </Layout2Col>

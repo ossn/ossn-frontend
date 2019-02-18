@@ -10,7 +10,7 @@ export default props => {
           <li className="promoted-box__item">
             Explore contribution opportunities
           </li>
-          <li className="promoted-box__item"> Reach out to us </li>
+          <li className="promoted-box__item"> Join our Slack instance </li>
           <li className="promoted-box__item">
             Explore available internships/jobs
           </li>

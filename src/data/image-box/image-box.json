@@ -1,8 +1,8 @@
 {
   "box0": [
     {
-      "titleLargeTop": "Read",
-      "titleSmall": "our updated",
+      "titleLargeTop": "March 1st",
+      "titleSmall": "launching our",
       "titleLargeBottom": "blog!",
       "link": "#",
       "internalLink": false,
@@ -15,7 +15,7 @@
     {
       "titleSmall": "See the all-new",
       "titleLargeBottom": "Opportunities!",
-      "link": "#",
+      "link": "/contribute",
       "internalLink": true,
       "image": {
         "src": "../../images/image-box/box-1.jpg"
@@ -24,9 +24,9 @@
   ],
   "box2": [
     {
-      "titleLargeTop": "Listen",
-      "titleSmall": "to our",
-      "titleLargeBottom": "podcast!",
+      "titleLargeTop": "Our podcast is",
+      "titleSmall": "comming soon",
+      "titleLargeBottom": "",
       "link": "#",
       "internalLink": false,
       "image": {
@@ -38,7 +38,7 @@
     {
       "titleLargeTop": "Fixme",
       "titleSmall": "New kid on the block!",
-      "link": "#",
+      "link": "https://fixme.ossn.club/",
       "internalLink": false,
       "image": {
         "src": "../../images/image-box/box-3.jpg"
@@ -49,7 +49,7 @@
     {
       "titleLargeTop": "MozFest is over :-(",
       "titleSmall": "But you can re-live it with our photos",
-      "link": "https://www.mozilla.org",
+      "link": "https://mozillafestival.org/",
       "internalLink": false,
       "image": {
         "src": "../../images/image-box/box-4.jpg"
