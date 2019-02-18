@@ -13,7 +13,7 @@ const Navigation = () => (
     <ul className="main-navigation__item-wrapper">
       <li className="main-navigation__item">
         <Link
-          to="/find-club"
+          to="/clubs"
           className="main-navigation__link"
           activeClassName="is-active"
         >

@@ -14,9 +14,12 @@ export default class FormatedText extends React.PureComponent {
     const value = this.props.value;
     const icon = this.props.icon ? <this.props.icon size={20} /> : '';
     const secondary = this.props.secondary || '';
+    const breakAll = this.props.breakAll;
+    let classes = ['formated-text'];
+    if (breakAll) classes.push('formated-text--word-break');
 
     return (
-      <div className="formated-text">
+      <div className={classes.join(' ')}>
         <div className="formated-text__icon">{icon}</div>
         <div className="formated-text__text">
           <div className="formated-text__main">
@@ -35,7 +38,7 @@ export class Github extends React.PureComponent {
   render() {
     const value = this.props.value;
 
-    return <FormatedText value={value} icon={GithubIcon} />;
+    return <FormatedText value={value} icon={GithubIcon} breakAll />;
   }
 }
 
@@ -44,7 +47,7 @@ export class Link extends React.PureComponent {
   render() {
     const value = this.props.value;
 
-    return <FormatedText value={value} icon={LinkIcon} />;
+    return <FormatedText value={value} icon={LinkIcon} breakAll />;
   }
 }
 
@@ -80,6 +83,6 @@ export class Map extends React.PureComponent {
 export class Email extends React.PureComponent {
   render() {
     const value = this.props.value;
-    return <FormatedText prefix="" value={value} icon={AtSign} />;
+    return <FormatedText prefix="" value={value} icon={AtSign} breakAll />;
   }
 }

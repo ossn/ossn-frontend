@@ -89,6 +89,10 @@
     @include breakpoint($mobile) {
       @include padding-left(65px);
     }
+
+    &--map {
+      padding-right: 100px;
+    }
   }
 
   &__shape-square {
@@ -97,7 +101,6 @@
     bottom: -20px;
     transform-origin: 50% 50%;
     transform: rotate(10deg);
-    z-index: 0;
     width: 195px;
     height: 195px;
     z-index: -1; // to be hidden behind the become a member button.

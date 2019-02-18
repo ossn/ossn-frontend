@@ -24,7 +24,7 @@ function requestClubs(graphql, actions, cursor = null) {
         for (let node of result.data.ossnApi.clubs.clubs) {
           actions.createPage({
             path: `clubs/${node.id}`,
-            component: path.resolve(`./src/templates/club-full.js`),
+            component: path.resolve(`./src/pages/clubs/dynamic.js`),
             context: {
               club: node
             }
@@ -73,7 +73,7 @@ function requestUsers(graphql, actions, cursor = null) {
       })
       .then(result => {
         if (result.pageInfo.hasNextPage) {
-          return requestClubs(
+          return requestUsers(
             graphql,
             actions,
             (cursor = result.pageInfo.endCursor)
@@ -107,6 +107,12 @@ exports.onCreatePage = async ({ page, actions: { createPage } }) => {
   if (page.path === '/members/dynamic/') {
     page.matchPath = '/members/*';
     page.component = path.resolve(`./src/pages/members/dynamic.js`);
+    createPage(page);
+  }
+
+  if (page.path === '/clubs/dynamic/') {
+    page.matchPath = '/clubs/*';
+    page.component = path.resolve(`./src/pages/clubs/dynamic.js`);
     createPage(page);
   }
 };
@@ -163,7 +169,7 @@ const clubQuery = `
 
 // the graphql query for users.
 const userQuery = `
-query GetClubs($cursor: ID) {
+query GetUsers($cursor: ID) {
   ossnApi {
     users(first: 100, after: $cursor)  {
        users {

@@ -115,7 +115,7 @@
   }
 
   // The become a member button.
-  &__cta {
+  &__cta.button {
     @include padding-left(50px);
     @include margin-bottom(20px);
     @include padding-top(20px);
