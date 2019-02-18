@@ -5,7 +5,7 @@
     "attachment": "./icon-slack.svg"
   },{
     "title": "Email",
-    "link": "ossn@mozilla.com",
+    "link": "mailto:ossn@mozilla.com",
     "attachment": "./icon-email.svg"
   },{
     "title": "Twitter",
