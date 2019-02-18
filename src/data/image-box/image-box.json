@@ -4,7 +4,7 @@
       "titleLargeTop": "March 1st",
       "titleSmall": "launching our",
       "titleLargeBottom": "blog!",
-      "link": "#",
+      "link": "/contribute",
       "internalLink": false,
       "image": {
         "src": "../../images/image-box/box-0.jpg"
@@ -27,7 +27,7 @@
       "titleLargeTop": "Our podcast is",
       "titleSmall": "comming soon",
       "titleLargeBottom": "",
-      "link": "#",
+      "link": "/contribute",
       "internalLink": false,
       "image": {
         "src": "../../images/image-box/box-2.jpg"
