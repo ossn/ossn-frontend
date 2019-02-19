@@ -192,18 +192,7 @@ class Member extends React.PureComponent {
   render() {
     const snapshot = this.state;
 
-    const name = snapshot.edit ? (
-      <TextInput
-        label="Name"
-        name="name"
-        onChange={this.handleChange}
-        value={snapshot.name}
-        className="member__text-field form-input--member form-input--member-name"
-        placeholder="name"
-      />
-    ) : (
-      <div> {snapshot.name} </div>
-    );
+    const name = <div> {snapshot.name} </div>;
 
     const sortDescription = snapshot.edit ? (
       <TextInput
