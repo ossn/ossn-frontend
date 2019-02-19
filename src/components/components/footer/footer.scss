@@ -12,6 +12,7 @@
     &:hover,
     &:focus {
       color: color('white');
+      cursor: pointer;
     }
   }
 
@@ -191,6 +192,21 @@
   &__link {
     @include font-size(16px);
     @include line-height(24px);
+
+    &.footer__link--button {
+      // Specificity war.
+      @include font-size(16px);
+      @include line-height(24px);
+      letter-spacing: 0;
+      padding: 0;
+      background-color: transparent;
+      color: color('white');
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
   }
 
   &__primary-logo {
