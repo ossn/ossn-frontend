@@ -54,24 +54,6 @@ class Footer extends React.PureComponent {
       }
     ];
 
-    const footerNavigationList2 = [
-      {
-        title: 'Our blog',
-        target: 'https://opensource.mozilla.community',
-        external: true
-      },
-      {
-        title: 'Facebook page',
-        target: 'https://opensource.mozilla.community',
-        external: true
-      },
-      {
-        title: 'Twitter page',
-        target: 'https://opensource.mozilla.community',
-        external: true
-      }
-    ];
-
     return (
       <div className="footer">
         <LayoutContained className="footer__inner">
@@ -125,8 +107,9 @@ class Footer extends React.PureComponent {
                 Portions of this content are ©1998–2018 by individual
                 mozilla.org contributors. Content available under a{' '}
                 <a
-                  rel="license"
+                  rel="license noopener noreferrer"
                   href="https://www.mozilla.org/foundation/licensing/website-content/"
+                  target="_blank"
                 >
                   Creative Commons license
                 </a>
@@ -135,27 +118,37 @@ class Footer extends React.PureComponent {
               <ul className="footer__terms">
                 <li>
                   <a
-                    rel="nofollow"
+                    rel="nofollow noopener noreferrer"
                     href="https://www.mozilla.org/privacy/websites/"
+                    target="_blank"
                   >
                     Website Privacy Notice
                   </a>
                 </li>
                 <li>
                   <a
-                    rel="nofollow"
+                    rel="nofollow noopener noreferrer"
                     href="https://www.mozilla.org/privacy/websites/#cookies"
+                    target="_blank"
                   >
                     Cookies
                   </a>
                 </li>
                 <li>
-                  <a rel="nofollow" href="https://www.mozilla.org/about/legal/">
+                  <a
+                    rel="nofollow noopener noreferrer"
+                    href="https://www.mozilla.org/about/legal/"
+                    target="_blank"
+                  >
                     Legal
                   </a>
                 </li>
                 <li>
-                  <a rel="nofollow" href="https://github.com/mozilla/coss">
+                  <a
+                    rel="nofollow noopener noreferrer"
+                    href="https://github.com/mozilla/coss"
+                    target="_blank"
+                  >
                     Community Participation Guidelines
                   </a>
                 </li>
@@ -168,4 +161,22 @@ class Footer extends React.PureComponent {
   }
 }
 
-export default connect(mapUserToProps)(Footer);
+const footerNavigationList2 = [
+  {
+    title: 'Our blog',
+    target: 'https://opensource.mozilla.community',
+    external: true
+  },
+  {
+    title: 'Facebook page',
+    target: 'https://opensource.mozilla.community',
+    external: true
+  },
+  {
+    title: 'Twitter page',
+    target: 'https://opensource.mozilla.community',
+    external: true
+  }
+];
+
+export default connect(mapUserToProps)(React.memo(Footer));

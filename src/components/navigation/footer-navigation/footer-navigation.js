@@ -97,7 +97,12 @@ export default class Navigation extends React.PureComponent {
           />
         </span>
       ) : link.external ? (
-        <ExternalLink link={link} key={i} />
+        <ExternalLink
+          link={link}
+          key={i}
+          target="_blank"
+          rel="noopener noreferrer"
+        />
       ) : (
         <InternalLink link={link} key={i} />
       );
