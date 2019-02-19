@@ -16,3 +16,9 @@
   from = "/api/*"
   to = "https://backend.ossn.club/api/:splat"
   status = 200
+[context.production]
+  environment = { ENV = "PRODUCTION", NODE_ENV = "PRODUCTION"}
+[context.deploy-preview]
+  environment = { ENV = "PREVIEW", NODE_ENV = "PRODUCTION"}
+[context.branch-deploy]
+  environment = { ENV = "DEVELOP", NODE_ENV = "PRODUCTION"}
