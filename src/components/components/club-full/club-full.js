@@ -203,52 +203,10 @@ class Club extends React.PureComponent {
     this.setState({ history: newHistory, edit: true });
   }
 
-  handleTitle = event => {
-    this.setState({ title: event.target.value });
-  };
-
-  handleSubtitle = event => {
-    this.setState({ subtitle: event.target.value });
-  };
-
-  handleBannerImageUrl = event => {
-    this.setState({ bannerImageUrl: event.target.value });
-  };
-
-  handleImageUrl = event => {
-    this.setState({ imageUrl: event.target.value });
-  };
-
-  handleDescription = event => {
-    this.setState({ description: event.target.value });
-  };
-
-  handleCodeOfConduct = event => {
-    this.setState({ codeOfConduct: event.target.value });
-  };
-
-  handleEditEmail = event => {
-    this.setState({ email: event.target.value });
-  };
-
-  handleEditGithub = event => {
-    this.setState({ github: event.target.value });
-  };
-
-  handleEditLocationAddress = event => {
-    this.setState({ address: event.target.value });
-  };
-
-  handleEditLocationLat = event => {
-    this.setState({ lat: event.target.value });
-  };
-
-  handleEditLocationLng = event => {
-    this.setState({ lng: event.target.value });
-  };
-
-  handleClubUrl = event => {
-    this.setState({ clubUrl: event.target.value });
+  handleChange = ({ target }) => {
+    this.setState({
+      [target.name]: target.value
+    });
   };
 
   handleEdit = () => {
@@ -340,7 +298,8 @@ class Club extends React.PureComponent {
       <div>
         <TextInput
           label="Title"
-          onChange={this.handleTitle}
+          name="title"
+          onChange={this.handleChange}
           value={snapshot.title}
         />
       </div>
@@ -354,7 +313,8 @@ class Club extends React.PureComponent {
       <div>
         <TextInput
           label="Subtitle"
-          onChange={this.handleSubtitle}
+          name="subtitle"
+          onChange={this.handleChange}
           value={snapshot.subtitle}
         />
       </div>
@@ -370,8 +330,9 @@ class Club extends React.PureComponent {
 
         <TextInput
           multiline
-          label="description"
-          onChange={this.handleDescription}
+          label="Description"
+          name="description"
+          onChange={this.handleChange}
           value={snapshot.description}
         />
       </div>
@@ -391,7 +352,8 @@ class Club extends React.PureComponent {
         <TextInput
           multiline
           label="Code of Conduct"
-          onChange={this.handleCodeOfConduct}
+          name="codeOfConduct"
+          onChange={this.handleChange}
           value={snapshot.codeOfConduct}
         />
       </div>
@@ -409,7 +371,8 @@ class Club extends React.PureComponent {
         <h2>Banner Image Url</h2>
         <TextInput
           label="Banner Image Url"
-          onChange={this.handleBannerImageUrl}
+          name="bannerImageUrl"
+          onChange={this.handleChange}
           value={snapshot.bannerImageUrl}
         />
       </div>
@@ -420,7 +383,8 @@ class Club extends React.PureComponent {
         <h2>Club Image Url</h2>
         <TextInput
           label="Club Image Url"
-          onChange={this.handleImageUrl}
+          name="imageUrl"
+          onChange={this.handleChange}
           value={snapshot.imageUrl}
         />
       </div>
@@ -430,7 +394,8 @@ class Club extends React.PureComponent {
       <div>
         <TextInput
           label="Email"
-          onChange={this.handleEditEmail}
+          name="email"
+          onChange={this.handleChange}
           value={snapshot.email}
         />
       </div>
@@ -440,7 +405,8 @@ class Club extends React.PureComponent {
       <div>
         <TextInput
           label="Github Url"
-          onChange={this.handleEditGithub}
+          name="github"
+          onChange={this.handleChange}
           value={snapshot.github}
         />
       </div>
@@ -450,7 +416,8 @@ class Club extends React.PureComponent {
       <div>
         <TextInput
           label="Club Url"
-          onChange={this.handleClubUrl}
+          name="clubUrl"
+          onChange={this.handleChange}
           value={snapshot.clubUrl}
         />
       </div>
@@ -460,18 +427,21 @@ class Club extends React.PureComponent {
       <div>
         <TextInput
           label="Address"
-          onChange={this.handleEditLocationAddress}
+          name="address"
+          onChange={this.handleChange}
           value={snapshot.address}
           multiline
         />
         <TextInput
           label="Lat"
-          onChange={this.handleEditLocationLat}
+          name="lat"
+          onChange={this.handleChange}
           value={snapshot.lat}
         />
         <TextInput
           label="Lng"
-          onChange={this.handleEditLocationLng}
+          name="lng"
+          onChange={this.handleChange}
           value={snapshot.lng}
         />
       </div>
