@@ -143,7 +143,13 @@ class Member extends React.PureComponent {
   componentDidUpdate(prevProps) {
     if (
       (prevProps.user || {}).user &&
-      prevProps.user.user.id != this.props.user.user.id
+      prevProps.user.user.id !== this.props.user.user.id
+    ) {
+      this.setState({ editable: !!this.isCurrentUser() });
+    } else if (
+      !(prevProps.user || {}).user &&
+      this.props.user.user &&
+      this.state.editable === false
     ) {
       this.setState({ editable: !!this.isCurrentUser() });
     }
