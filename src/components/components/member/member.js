@@ -110,8 +110,7 @@ class Member extends React.PureComponent {
   componentDidMount = () => {
     let { id } = this.props.member;
     if (!id) {
-      let path = this.props.location.pathname.split('/');
-      id = path[path.indexOf('members') + 1].split('?')[0];
+      id = this.getIdFromPath();
     }
     this.props.client
       .query({
@@ -143,20 +142,30 @@ class Member extends React.PureComponent {
   componentDidUpdate(prevProps) {
     if (
       (prevProps.user || {}).user &&
+      this.props.user.user &&
       prevProps.user.user.id !== this.props.user.user.id
     ) {
       this.setState({ editable: !!this.isCurrentUser() });
-    } else if (
-      !(prevProps.user || {}).user &&
-      this.props.user.user &&
-      this.state.editable === false
-    ) {
+    } else if (!(prevProps.user || {}).user && this.state.editable === false) {
+      this.setState({ editable: !!this.isCurrentUser() });
+    } else if (!this.props.user.user) {
       this.setState({ editable: !!this.isCurrentUser() });
     }
   }
 
-  isCurrentUser = () =>
-    this.props.user.user && this.props.member.id === this.props.user.user.id;
+  getIdFromPath = () => {
+    let path = this.props.location.pathname.split('/');
+    return path[path.indexOf('members') + 1].split('?')[0];
+  };
+
+  isCurrentUser = () => {
+    let { id } = this.props.member;
+    if (!id) {
+      id = this.getIdFromPath();
+    }
+
+    return this.props.user.user && id === this.props.user.user.id;
+  };
 
   handleChange = ({ target }) => {
     this.setState({
