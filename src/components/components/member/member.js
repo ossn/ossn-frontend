@@ -94,13 +94,12 @@ class Member extends React.PureComponent {
       receiveNewsletter: this.props.member.receiveNewsletter,
       clubsToPreserve: this.props.member.clubs.map(club => club.id),
       shapes: shuffle(shapesUnordered),
-      firstLoad: true
+      editable: !!this.isCurrentUser(),
+      edit: false
     };
 
     this.state = {
       ...initData,
-      edit: false,
-      editable: !!this.isCurrentUser(),
       history: {
         ...initData
       }
@@ -121,14 +120,20 @@ class Member extends React.PureComponent {
         if (data.user) {
           const grapgData = {
             ...data.user,
-            clubsToPreserve: data.user.clubs.map(club => club.id)
+            clubsToPreserve: data.user.clubs.map(club => club.id),
+            editable: !!this.isCurrentUser()
           };
-          return this.setState({
+
+          return this.setState(({ shapes, edit }) => ({
             ...grapgData,
+            edit,
+            shapes,
             history: {
-              ...grapgData
+              ...grapgData,
+              edit,
+              shapes
             }
-          });
+          }));
         }
       })
       .catch(e => {
@@ -140,15 +145,7 @@ class Member extends React.PureComponent {
   };
 
   componentDidUpdate(prevProps) {
-    if (
-      (prevProps.user || {}).user &&
-      this.props.user.user &&
-      prevProps.user.user.id !== this.props.user.user.id
-    ) {
-      this.setState({ editable: !!this.isCurrentUser() });
-    } else if (!(prevProps.user || {}).user && this.state.editable === false) {
-      this.setState({ editable: !!this.isCurrentUser() });
-    } else if (!this.props.user.user) {
+    if ((prevProps.user.user || {}).id !== (this.props.user.user || {}).id) {
       this.setState({ editable: !!this.isCurrentUser() });
     }
   }
