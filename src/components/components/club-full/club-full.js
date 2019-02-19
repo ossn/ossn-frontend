@@ -73,18 +73,6 @@ class Club extends React.PureComponent {
     this.updateClub();
   }
 
-  componentDidUpdate() {
-    this.isUserAdmin()
-      ? this.setState({ editable: true })
-      : this.setState({ editable: false });
-
-    // let users = this.state.users;
-    // users = typeof users === 'object' ? Object.keys(users).map(i => users[i]) : users;
-    // this.isUserMember(users)
-    //   ? this.setState({ isMember: true })
-    //   : this.setState({ isMember: false });
-  }
-
   updateClub = () => {
     let { id } = this.props.club;
 
@@ -95,7 +83,8 @@ class Club extends React.PureComponent {
     this.props.client
       .query({
         query: getClubQuery,
-        variables: { id }
+        variables: { id },
+        fetchPolicy: 'network-only'
       })
       .then(({ data = {} }) => {
         if (data.club) {
@@ -309,8 +298,7 @@ class Club extends React.PureComponent {
                   variables: {
                     id: snapshot.id
                   },
-                  mutation: joinClubMutation,
-                  fetchPolicy: 'no-cache'
+                  mutation: joinClubMutation
                 })
                 .then(({ data }) => {
                   if ((data || {}).joinClub) {
@@ -324,14 +312,22 @@ class Club extends React.PureComponent {
             }}
             onKeyDown={e => {
               returnKeyCheck(e, () => {
-                client.mutate({
-                  variables: {
-                    id: snapshot.id
-                  },
-                  mutation: joinClubMutation,
-                  fetchPolicy: 'no-cache'
-                });
-                this.setState({ isMember: true });
+                client
+                  .mutate({
+                    variables: {
+                      id: snapshot.id
+                    },
+                    mutation: joinClubMutation
+                  })
+                  .then(({ data }) => {
+                    if ((data || {}).joinClub) {
+                      this.updateClub();
+                    } else {
+                      //TODO: Show error to user
+                      // eslint-disable-next-line no-console
+                      console.error('Failed to become a member');
+                    }
+                  });
               });
             }}
             className="button club-full__cta"

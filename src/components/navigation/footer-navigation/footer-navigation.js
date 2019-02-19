@@ -1,6 +1,10 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import { Minus, Plus } from 'react-feather';
+import {
+  LoginLink,
+  LogoutLink
+} from './../../layouts/auth-wrapper/auth-wrapper';
 
 /*
  Constructs a collapsible list of entries at the mobile.
@@ -81,7 +85,18 @@ export default class Navigation extends React.PureComponent {
   parseLinks = linkList => {
     if (!linkList) return [];
     const list = linkList.map((link, i) => {
-      const cmp = link.external ? (
+      const cmp = link.login ? (
+        <span key={i}>
+          <LoginLink className="footer__link" label={link.title} key={i} />
+        </span>
+      ) : link.logout ? (
+        <span key={i}>
+          <LogoutLink
+            className="footer__link footer__link--button"
+            label={link.title}
+          />
+        </span>
+      ) : link.external ? (
         <ExternalLink link={link} key={i} />
       ) : (
         <InternalLink link={link} key={i} />
