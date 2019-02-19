@@ -36,22 +36,16 @@ class Club extends React.PureComponent {
 
     const initData = {
       id: this.props.club.id,
-      email: this.props.club.email ? this.props.club.email : '',
-      title: this.props.club.title ? this.props.club.title : '',
-      imageUrl: this.props.club.imageUrl ? this.props.club.imageUrl : '',
-      description: this.props.club.description
-        ? this.props.club.description
-        : '',
-      codeOfConduct: this.props.club.codeOfConduct
-        ? this.props.club.codeOfConduct
-        : '',
-      subtitle: this.props.club.subtitle ? this.props.club.subtitle : '',
-      github: this.props.club.githubUrl ? this.props.club.githubUrl : '',
-      bannerImageUrl: this.props.club.bannerImageUrl
-        ? this.props.club.bannerImageUrl
-        : '',
-      clubUrl: this.props.club.clubUrl ? this.props.club.clubUrl : '',
-      events: this.props.club.events ? this.props.club.events : '',
+      email: this.props.club.email || '',
+      title: this.props.club.title || '',
+      imageUrl: this.props.club.imageUrl || '',
+      description: this.props.club.description || '',
+      codeOfConduct: this.props.club.codeOfConduct || '',
+      subtitle: this.props.club.subtitle || '',
+      github: this.props.club.githubUrl || '',
+      bannerImageUrl: this.props.club.bannerImageUrl || '',
+      clubUrl: this.props.club.clubUrl || '',
+      events: this.props.club.events || '',
       address: this.props.club.location ? this.props.club.location.address : '',
       lng: this.props.club.location ? this.props.club.location.lng : '',
       lat: this.props.club.location ? this.props.club.location.lat : '',
@@ -90,20 +84,16 @@ class Club extends React.PureComponent {
         if (data.club) {
           const grapgData = {
             id: data.club.id,
-            email: data.club.email ? data.club.email : '',
-            title: data.club.title ? data.club.title : '',
-            imageUrl: data.club.imageUrl ? data.club.imageUrl : '',
-            description: data.club.description ? data.club.description : '',
-            codeOfConduct: data.club.codeOfConduct
-              ? data.club.codeOfConduct
-              : '',
-            subtitle: data.club.subtitle ? data.club.subtitle : '',
-            github: data.club.githubUrl ? data.club.githubUrl : '',
-            bannerImageUrl: data.club.bannerImageUrl
-              ? data.club.bannerImageUrl
-              : '',
-            clubUrl: data.club.clubUrl ? data.club.clubUrl : '',
-            events: data.club.events ? data.club.events : '',
+            email: data.club.email || '',
+            title: data.club.title || '',
+            imageUrl: data.club.imageUrl || '',
+            description: data.club.description || '',
+            codeOfConduct: data.club.codeOfConduct || '',
+            subtitle: data.club.subtitle || '',
+            github: data.club.githubUrl || '',
+            bannerImageUrl: data.club.bannerImageUrl || '',
+            clubUrl: data.club.clubUrl || '',
+            events: data.club.events || '',
             address: data.club.location ? data.club.location.address : '',
             lng: data.club.location ? data.club.location.lng : '',
             lat: data.club.location ? data.club.location.lat : '',
