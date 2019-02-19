@@ -118,18 +118,18 @@ class Member extends React.PureComponent {
       })
       .then(({ data = {} }) => {
         if (data.user) {
-          const grapgData = {
+          const graphData = {
             ...data.user,
             clubsToPreserve: data.user.clubs.map(club => club.id),
             editable: !!this.isCurrentUser()
           };
 
           return this.setState(({ shapes, edit }) => ({
-            ...grapgData,
+            ...graphData,
             edit,
             shapes,
             history: {
-              ...grapgData,
+              ...graphData,
               edit,
               shapes
             }
