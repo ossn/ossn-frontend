@@ -20,7 +20,12 @@ export const ExternalLinkBox = props => {
   const classes = [props.className, 'external-link-box'];
   return (
     <div className={classes.join(' ')}>
-      <a href={target} className="external-link-box__wrapper-link">
+      <a
+        href={target}
+        className="external-link-box__wrapper-link"
+        target="_blank"
+        rel="nofollow noopener noreferrer"
+      >
         <ShadowBox zeroPadding className="external-link-box__link-inner">
           <div className="external-link-box__image-wrapper">
             <img src={image} alt={title} className="external-link-box__image" />

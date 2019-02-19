@@ -53,7 +53,12 @@ const InternalLink = props => {
 // A link that points outside the site. Users the `a` component.
 const ExternalLink = props => {
   return (
-    <a className="footer__link" href={props.link.target}>
+    <a
+      className="footer__link"
+      href={props.link.target}
+      target="_blank"
+      rel="nofollow noopener noreferrer"
+    >
       {props.link.title}
     </a>
   );
@@ -97,12 +102,7 @@ export default class Navigation extends React.PureComponent {
           />
         </span>
       ) : link.external ? (
-        <ExternalLink
-          link={link}
-          key={i}
-          target="_blank"
-          rel="noopener noreferrer"
-        />
+        <ExternalLink link={link} key={i} />
       ) : (
         <InternalLink link={link} key={i} />
       );
