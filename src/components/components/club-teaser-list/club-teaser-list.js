@@ -26,7 +26,9 @@ export const ClubTeaser = props => {
           <img src={image} alt={title} className="club-teaser__image" />
         </div>
         <div className="club-teaser__text">
-          <span className="club-teaser__title">{title}</span>
+          <Link to={`/clubs/${props.club.id}`} className="club-teaser__title">
+            {title}
+          </Link>
           <span className="club-teaser__description"> {subtitle} </span>
           <Link
             to={`/clubs/${props.club.id}`}
