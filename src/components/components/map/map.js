@@ -27,11 +27,13 @@ class ClubMap extends React.Component {
   updateClubs = clubs => {
     let boundsArray = [];
     this.props.clubs.map((club, i) => {
-      club.location &&
-        club.location.lat &&
-        club.location.lng &&
-        boundsArray.push([club.location.lat, club.location.lng]);
+      club.location && club.location.lat && club.location.lng
+        ? boundsArray.push([club.location.lat, club.location.lng])
+        : null;
     });
+
+    // Ensure valid bounds with no or one result.
+    boundsArray.length < 2 && boundsArray.push(this.state.bounds);
     this.setState({ clubs: this.props.clubs, bounds: boundsArray });
   };
 

@@ -28,7 +28,7 @@ class Clubs extends React.PureComponent {
      view (string): how to show the list of clubs. values (list, map).
      searchString (string): the string to filter the clubs.
      shownClubsCount (int): The number of the clubs that is fetched and shown.
-     shownclubs (array): the list of the club objects.
+     shownClubs (array): the list of the club objects.
      cursor (string): The id of the last fetched club.
      firstLoad (boolean): A flag to indicate the first render of the component.
      hasNextPage (boolean): A flaf to store the apollo hasNextPage.
@@ -118,18 +118,54 @@ class Clubs extends React.PureComponent {
     }
   `;
 
-  // function
-  // Updates the state when new data  is fetched.
+  // Updates the state when new data is fetched.
   onClubsFetched = data => {
     const snapshot = { ...this.state };
     const shownClubs = [...snapshot.shownClubs, ...data.clubs.clubs];
-
     this.setState(() => ({
       shownClubs: shownClubs,
       cursor: data.clubs.pageInfo.endCursor,
-      firstLoad: false,
+      firstLoad: snapshot.view === 'map' && data.clubs.pageInfo.hasNextPage,
       hasNextPage: data.clubs.pageInfo.hasNextPage
     }));
+  };
+
+  // loads the first data.
+  clubQuery = snapshot => {
+    let content;
+
+    content = (
+      <Query
+        query={this.GET_CLUBS}
+        variables={{
+          number: snapshot.number,
+          cursor: snapshot.cursor,
+          search: snapshot.searchString === '' ? null : snapshot.searchString
+        }}
+        onCompleted={data => {
+          this.onClubsFetched(data);
+        }}
+      >
+        {({ loading, error }) => {
+          if (loading) {
+            return (
+              <div className="text text--large text--load-more">
+                Loading....
+              </div>
+            );
+          }
+          if (error) {
+            return <div> `Error ${error.message}` </div>;
+          } else {
+            // JSX elements
+            // create the DOM for the component.
+            return null;
+          }
+        }}
+      </Query>
+    );
+
+    return content;
   };
 
   // function
@@ -139,36 +175,7 @@ class Clubs extends React.PureComponent {
     let content;
 
     if (snapshot.firstLoad) {
-      content = (
-        <Query
-          query={this.GET_CLUBS}
-          variables={{
-            number: snapshot.number,
-            cursor: snapshot.cursor,
-            search: snapshot.searchString === '' ? null : snapshot.searchString
-          }}
-          onCompleted={data => {
-            this.onClubsFetched(data);
-          }}
-        >
-          {({ loading, error }) => {
-            if (loading) {
-              return (
-                <div className="text text--large text--load-more">
-                  Loading....
-                </div>
-              );
-            }
-            if (error) {
-              return <div> `Error ${error.message}` </div>;
-            } else {
-              // JSX elements
-              // create the DOM for the component.
-              return null;
-            }
-          }}
-        </Query>
-      );
+      content = this.clubQuery(snapshot);
     }
 
     return content;
