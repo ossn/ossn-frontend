@@ -10,7 +10,7 @@ import { ChevronRight } from 'react-feather';
 // Local modules.
 import Layout3Col from './../../layouts/layout-3col/layout-3col';
 import ShadowBox from './../shadow-box/shadow-box';
-
+import groupSmallImage from '../../../images/group-xsmall.jpg';
 import './club-teaser.scss';
 
 export const ClubTeaser = props => {
@@ -23,7 +23,11 @@ export const ClubTeaser = props => {
     <div className={`${classes} club-teaser`}>
       <ShadowBox className="club-teaser__inner">
         <div className="club-teaser__image-wrapper">
-          <img src={image} alt={title} className="club-teaser__image" />
+          <img
+            src={image || groupSmallImage}
+            alt={title}
+            className="club-teaser__image"
+          />
         </div>
         <div className="club-teaser__text">
           <Link to={`/clubs/${props.club.id}`} className="club-teaser__title">
