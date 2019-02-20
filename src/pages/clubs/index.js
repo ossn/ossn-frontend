@@ -49,10 +49,9 @@ class Clubs extends React.PureComponent {
 
   // State management functions. Used by children components.
   handleToggleMap = () => {
-    const snapshot = { ...this.state };
     this.setState({
-      view: snapshot.view === 'map' ? 'list' : 'map',
-      number: snapshot.view === 'map' ? 12 : 100,
+      view: this.state.view === 'map' ? 'list' : 'map',
+      number: this.state.view === 'map' ? 12 : 100,
       shownClubs: [],
       firstLoad: true,
       hasNextPage: false,
@@ -131,16 +130,15 @@ class Clubs extends React.PureComponent {
   };
 
   // loads the first data.
-  clubQuery = snapshot => {
-    let content;
-
-    content = (
+  clubQuery = () => {
+    return this.state.firstLoad ? (
       <Query
         query={this.GET_CLUBS}
         variables={{
-          number: snapshot.number,
-          cursor: snapshot.cursor,
-          search: snapshot.searchString === '' ? null : snapshot.searchString
+          number: this.state.number,
+          cursor: this.state.cursor,
+          search:
+            this.state.searchString === '' ? null : this.state.searchString
         }}
         onCompleted={data => {
           this.onClubsFetched(data);
@@ -163,34 +161,27 @@ class Clubs extends React.PureComponent {
           }
         }}
       </Query>
+    ) : (
+      ''
     );
-
-    return content;
-  };
-
-  // function
-  // loads the first data.
-  onFirstLoad = () => {
-    const snapshot = { ...this.state };
-    let content;
-
-    if (snapshot.firstLoad) {
-      content = this.clubQuery(snapshot);
-    }
-
-    return content;
   };
 
   render() {
-    const snapshot = { ...this.state };
-    const clubs = snapshot.shownClubs;
+    const {
+      shownClubs,
+      view,
+      number,
+      cursor,
+      searchString,
+      hasNextPage
+    } = this.state;
 
     // Decide which view to show.
     const content =
-      snapshot.view === 'map' ? (
-        <Map clubs={clubs} />
+      view === 'map' ? (
+        <Map clubs={shownClubs} />
       ) : (
-        <ClubTeaserList clubs={clubs} />
+        <ClubTeaserList clubs={shownClubs} />
       );
 
     return (
@@ -208,7 +199,7 @@ class Clubs extends React.PureComponent {
                 <div className="find-club__filter-toggle">
                   <ToggleFilter
                     onClick={this.handleToggleMap}
-                    active={snapshot.view === 'map'}
+                    active={view === 'map'}
                     left="List view"
                     right="Map View"
                   />
@@ -228,7 +219,7 @@ class Clubs extends React.PureComponent {
           </div>
           {content}
 
-          {this.onFirstLoad()}
+          {this.clubQuery()}
 
           <ApolloConsumer>
             {client => (
@@ -239,17 +230,14 @@ class Clubs extends React.PureComponent {
                     const { data } = await client.query({
                       query: this.GET_CLUBS,
                       variables: {
-                        number: snapshot.number,
-                        cursor: snapshot.cursor,
-                        search:
-                          snapshot.searchString === ''
-                            ? null
-                            : snapshot.searchString
+                        number: number,
+                        cursor: cursor,
+                        search: searchString === '' ? null : searchString
                       }
                     });
                     this.onClubsFetched(data);
                   }}
-                  hidden={!snapshot.hasNextPage}
+                  hidden={!hasNextPage}
                 >
                   <PlusSquare size={16} />
                   Load more

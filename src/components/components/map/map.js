@@ -12,7 +12,7 @@ class ClubMap extends React.Component {
 
     this.state = {
       clubs: this.props.clubs || [],
-      bounds: [[25.3345123, -99.5218668], [38.3345123, -80.5218668]]
+      bounds: [['25.3345123', '-99.5218668'], ['38.3345123', '-80.5218668']]
     };
   }
 
@@ -25,28 +25,46 @@ class ClubMap extends React.Component {
   }
 
   updateClubs = clubs => {
-    let boundsArray = [];
-    this.props.clubs.map((club, i) => {
-      club.location && club.location.lat && club.location.lng
-        ? boundsArray.push([club.location.lat, club.location.lng])
-        : null;
-    });
-
+    let boundsArray = clubs.reduce((accumulator, currentValue) => {
+      if (
+        currentValue.location &&
+        currentValue.location.lat &&
+        currentValue.location.lng
+      ) {
+        accumulator.push([
+          currentValue.location.lat,
+          currentValue.location.lng
+        ]);
+      }
+      return accumulator;
+    }, []);
     // Ensure valid bounds with no or one result.
-    boundsArray.length < 2 && boundsArray.push(this.state.bounds);
+    boundsArray.length < 1
+      ? (boundsArray = [
+          ['25.3345123', '-99.5218668'],
+          ['38.3345123', '-80.5218668']
+        ])
+      : boundsArray.length < 2 &&
+        boundsArray.push(
+          [boundsArray[0][0] * 0.9, boundsArray[0][1] * 0.9],
+          [boundsArray[0][0] / 0.9, boundsArray[0][1] / 0.9]
+        );
+
     this.setState({ clubs: this.props.clubs, bounds: boundsArray });
   };
 
   render() {
-    const snapshot = this.state;
+    const { bounds, clubs } = this.state;
 
     // center the map.
-    let bounds = snapshot.bounds;
-    const markers = snapshot.clubs.map((club, i) => {
+    const markers = clubs.map(club => {
       return (
         // Check that club has a defined location.
         club.location && club.location.lat && club.location.lng ? (
-          <Marker position={[club.location.lat, club.location.lng]} key={i}>
+          <Marker
+            position={[club.location.lat, club.location.lng]}
+            key={club.id}
+          >
             <Popup className="map__popup">
               <ClubTeaser club={club} />
             </Popup>
