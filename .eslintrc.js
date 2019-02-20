@@ -13,12 +13,8 @@ module.exports = {
   rules: {
     "react/prop-types": 0,
     "react/display-name": 0,
-    "prettier/prettier": [
-      "error",
-      {
-        singleQuote: true
-      }
-    ],
+    "no-unused-vars": "error",
+    "prettier/prettier": "error",
     "no-var": "error" // optional, recommended when using es6+
   },
   parser: "babel-eslint",
