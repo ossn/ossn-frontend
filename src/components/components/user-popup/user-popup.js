@@ -2,25 +2,25 @@
 The pop uo window at the user menu.
 */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Link } from 'gatsby';
-import { LogoutLink } from './../../layouts/auth-wrapper/auth-wrapper';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Link } from "gatsby";
+import { LogoutLink } from "./../../layouts/auth-wrapper/auth-wrapper";
 
-import './user-popup.scss';
+import "./user-popup.scss";
 
 class Overlay extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.container = document.querySelector('#content');
-    this.el = document.createElement('div');
-    this.el.className = 'user-popup__overlay';
+    this.container = document.querySelector("#content");
+    this.el = document.createElement("div");
+    this.el.className = "user-popup__overlay";
   }
 
   componentDidMount() {
     // Append the element into the DOM on mount. We'll render
     // into the modal container element (see the HTML tab).
-    this.container = document.querySelector('#content');
+    this.container = document.querySelector("#content");
     this.container && this.container.appendChild(this.el);
   }
 
@@ -36,7 +36,9 @@ class Overlay extends React.PureComponent {
 
 class LoggedInUserMenu extends React.Component {
   render() {
-    const logout = <LogoutLink className="user-popup__logout-button" />;
+    const logout = (
+      <LogoutLink className="user-popup__link user-popup__link--logout" />
+    );
 
     return (
       <div className="user-popup__wrapper">
@@ -45,7 +47,7 @@ class LoggedInUserMenu extends React.Component {
           <li className="user-popup__item">
             <Link
               to={`/members/${this.props.userId}`}
-              className="main-navigation__link"
+              className="user-popup__link"
               activeClassName="is-active"
             >
               My profile
