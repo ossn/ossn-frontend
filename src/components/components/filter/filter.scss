@@ -53,6 +53,22 @@
     }
   }
 
+  &__toggle-text {
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    background-color: transparent;
+    display: inline;
+    padding: 0;
+    letter-spacing: 0;
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      color: color('brand');
+    }
+
+  }
+
   &--select {
     position: relative;
     padding: 0;
