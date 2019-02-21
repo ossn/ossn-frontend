@@ -1,6 +1,6 @@
 import compose from 'immer';
 import { setWith } from 'lodash';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withApollo } from 'react-apollo';
 import { Check, Feather, PlusCircle, X } from 'react-feather';
 import ReactMarkdown from 'react-markdown';
@@ -16,24 +16,47 @@ import ClubInfo from '../club-info/club-info';
 import MemberList from '../member-list/member-list';
 import Shape from '../shape/shape';
 import './club-full.scss';
-import { useDerivedClubState } from './hooks';
 import * as queries from './queries';
 
+/**
+ * Detailed view of a club including related events and members
+ *
+ * @param props
+ */
 function ClubFull(props) {
-  const [club, setClub] = useDerivedClubState(props);
+  const { title, ...rest } = props.club;
+  const [club, setClub] = useState({ name: title, ...rest });
   const [editing, setEditing] = useState(false);
   const [isMember, setIsMember] = useState(false);
   const [isOwner, setIsOwner] = useState(false);
 
+  /**
+   * Fetches the club resource and updates the state
+   */
+  useEffect(() => {
+    const [id] = window.location.pathname.split('/').slice(-1);
+
+    /**
+     * Only workaround for async use in useEffect is an async IIFE
+     */
+    (async () => {
+      setClub(await fetchClub(id));
+    })();
+  }, []);
+
+  /**
+   * Updates the document title when the state's club name changes
+   */
   useEffect(() => {
     document.title = `${club.name} | ${GatsbyConfig.siteMetadata.title}`;
   }, [club.name]);
 
+  /**
+   * Updates the currentUser's role variables that are being used for UX purposes.
+   */
   useEffect(() => {
     if (props.currentUser) {
-      const user = (club.users || []).find(
-        user => user.id === props.currentUser.id
-      );
+      const user = club.users.find(user => user.id === props.currentUser.id);
 
       if (user) {
         setIsMember(true);
@@ -43,14 +66,24 @@ function ClubFull(props) {
         }
       }
     }
-  }, [props.currentUser]);
+  }, [club.users, props.currentUser]);
 
+  /**
+   * Updates the editing variable that is being used for UX purposes.
+   *
+   * @param {boolean} editing
+   */
   function handleClick(editing) {
     return function() {
       setEditing(editing);
     };
   }
 
+  /**
+   * Updates the state's club object
+   *
+   * @param {React.ChangeEvent<HTMLInputElement>} event
+   */
   function handleChange(event) {
     setClub(
       compose(
@@ -62,41 +95,9 @@ function ClubFull(props) {
     );
   }
 
-  const join = useCallback(
-    async function() {
-      try {
-        const { data } = await props.client.mutate({
-          fetchPolicy: 'no-cache',
-          mutation: queries.JOIN_CLUB,
-          variables: { id: club.id }
-        });
-
-        if (data.joinClub) {
-          const nextClub = await refetch();
-          setClub({ ...club, nextClub });
-        }
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error(error);
-      }
-    },
-    [club.id]
-  );
-
-  async function refetch() {
-    try {
-      const { data } = await props.client.query({
-        query: queries.GET_CLUB,
-        variables: { id: club.id }
-      });
-
-      return data.club;
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error);
-    }
-  }
-
+  /**
+   *
+   */
   async function handleSubmit() {
     const { events, location, users, ...rest } = club;
 
@@ -109,6 +110,46 @@ function ClubFull(props) {
     if (data.editClub) {
       setClub({ ...club, ...data.editClub });
       setEditing(false);
+    }
+  }
+
+  /**
+   *
+   * @param {string} id
+   */
+  async function join(id) {
+    try {
+      const { data } = await props.client.mutate({
+        fetchPolicy: 'no-cache',
+        mutation: queries.JOIN_CLUB,
+        variables: { id }
+      });
+
+      if (data.joinClub) {
+        setClub({ ...club, users: (await fetchClub(id)).users });
+      }
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error);
+    }
+  }
+
+  /**
+   * Fetches a club resource by id and returns it
+   *
+   * @param {string} id
+   */
+  async function fetchClub(id) {
+    try {
+      const { data } = await props.client.query({
+        query: queries.GET_CLUB,
+        variables: { id }
+      });
+
+      return data.club;
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error(error);
     }
   }
 
@@ -172,7 +213,7 @@ function ClubFull(props) {
         <div className="club-full__info-container">
           {props.currentUser ? (
             !isMember && (
-              <button className="button club-full__cta" onClick={join}>
+              <button className="button club-full__cta" onClick={join(club.id)}>
                 <PlusCircle /> Become a member of this club
               </button>
             )
