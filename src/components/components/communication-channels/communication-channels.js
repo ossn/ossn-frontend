@@ -4,12 +4,12 @@
  Appears at /contribute and /leaders-corner
  */
 
-import React from 'react';
-import { graphql } from 'gatsby';
+import React from "react";
+import { graphql } from "gatsby";
 
 // styles
-import './communication-channels.scss';
-import './communication-channel-list.scss';
+import "./communication-channels.scss";
+import "./communication-channel-list.scss";
 
 export const Channel = props => {
   const title = props.channel.title;

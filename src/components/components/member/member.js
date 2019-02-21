@@ -1,21 +1,21 @@
-import './member.scss';
+import "./member.scss";
 
-import { navigate } from 'gatsby';
-import React from 'react';
-import { ApolloConsumer, withApollo } from 'react-apollo';
-import { Check, Feather, GitHub, Link, Users, X } from 'react-feather';
-import { Helmet } from 'react-helmet';
-import { connect } from 'react-redux';
-import MediaQuery from 'react-responsive';
+import { navigate } from "gatsby";
+import React from "react";
+import { ApolloConsumer, withApollo } from "react-apollo";
+import { Check, Feather, GitHub, Link, Users, X } from "react-feather";
+import { Helmet } from "react-helmet";
+import { connect } from "react-redux";
+import MediaQuery from "react-responsive";
 
-import GatsbyConfig from '../../../../gatsby-config';
-import { returnKeyCheck } from '../../../utils/accessibility';
-import { mapUserToProps } from '../../../utils/redux-utils';
-import TextInput from '../../forms/text-input/text-input';
-import LayoutContained from '../../layouts/layout-contained/layout-contained';
-import ShadowBox from '../shadow-box/shadow-box';
-import Shape from '../shape/shape';
-import { editUserMutation, getUserQuery } from './member-queries';
+import GatsbyConfig from "../../../../gatsby-config";
+import { returnKeyCheck } from "../../../utils/accessibility";
+import { mapUserToProps } from "../../../utils/redux-utils";
+import TextInput from "../../forms/text-input/text-input";
+import LayoutContained from "../../layouts/layout-contained/layout-contained";
+import ShadowBox from "../shadow-box/shadow-box";
+import Shape from "../shape/shape";
+import { editUserMutation, getUserQuery } from "./member-queries";
 
 const shapesUnordered = [
   <Shape
@@ -138,8 +138,8 @@ class Member extends React.PureComponent {
       })
       .catch(e => {
         //TODO: Handle error
-        if (e.toString() == 'Error: GraphQL error: record not found') {
-          navigate('/404');
+        if (e.toString() == "Error: GraphQL error: record not found") {
+          navigate("/404");
         }
       });
   };
@@ -151,8 +151,8 @@ class Member extends React.PureComponent {
   }
 
   getIdFromPath = () => {
-    let path = this.props.location.pathname.split('/');
-    return path[path.indexOf('members') + 1].split('?')[0];
+    let path = this.props.location.pathname.split("/");
+    return path[path.indexOf("members") + 1].split("?")[0];
   };
 
   isCurrentUser = () => {
@@ -166,7 +166,7 @@ class Member extends React.PureComponent {
 
   handleChange = ({ target }) => {
     this.setState({
-      [target.name]: target.type === 'checkbox' ? target.checked : target.value
+      [target.name]: target.type === "checkbox" ? target.checked : target.value
     });
   };
 
@@ -233,12 +233,12 @@ class Member extends React.PureComponent {
             // return <Organization organization={node.org} key={i} />
             return (
               <div className="member__checkbox" key={club.id}>
-                <label htmlFor={'club-' + club.id}>
+                <label htmlFor={"club-" + club.id}>
                   <input
                     name={club.id}
                     type="checkbox"
                     defaultChecked
-                    id={'club-' + club.id}
+                    id={"club-" + club.id}
                     onChange={this.handleClubSubscription}
                   />
                   {club.name}
@@ -252,8 +252,8 @@ class Member extends React.PureComponent {
         <div>
           <Users className="member__icon" />
           {snapshot.clubs
-            .map(club => club.name || 'Club name missing')
-            .join(', ')}
+            .map(club => club.name || "Club name missing")
+            .join(", ")}
         </div>
       )
     );
@@ -404,7 +404,7 @@ class Member extends React.PureComponent {
       <LayoutContained className="member">
         <Helmet>
           <title>
-            {[snapshot.name, '|', GatsbyConfig.siteMetadata.title].join(' ')}
+            {[snapshot.name, "|", GatsbyConfig.siteMetadata.title].join(" ")}
           </title>
         </Helmet>
 

@@ -2,28 +2,28 @@
  This page shows the list of the student members.
  */
 
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
-import MediaQuery from 'react-responsive';
-import BasicLayout from '../../components/layouts/layout-base/layout-base';
-import LayoutContained from '../../components/layouts/layout-contained/layout-contained';
-import Layout2ColUnequalWith3Elements from '../../components/layouts/layout-2col-unequal-with-3-elements/layout-2col-unequal-with-3-elements';
-import ShadowBox from '../../components/components/shadow-box/shadow-box';
-import Shape from '../../components/components/shape/shape';
-import { Query, ApolloConsumer } from 'react-apollo';
-import gql from 'graphql-tag';
-import { PlusSquare } from 'react-feather';
+import React from "react";
+import { Helmet } from "react-helmet";
+import { graphql } from "gatsby";
+import Img from "gatsby-image";
+import MediaQuery from "react-responsive";
+import BasicLayout from "../../components/layouts/layout-base/layout-base";
+import LayoutContained from "../../components/layouts/layout-contained/layout-contained";
+import Layout2ColUnequalWith3Elements from "../../components/layouts/layout-2col-unequal-with-3-elements/layout-2col-unequal-with-3-elements";
+import ShadowBox from "../../components/components/shadow-box/shadow-box";
+import Shape from "../../components/components/shape/shape";
+import { Query, ApolloConsumer } from "react-apollo";
+import gql from "graphql-tag";
+import { PlusSquare } from "react-feather";
 
-import '../../components/pages-styles/members.scss';
+import "../../components/pages-styles/members.scss";
 
-import { SearchFilter } from '../../components/components/filter/filter';
-import JoinCta from '../../components/components/join-cta/join-cta';
-import MemberList from '../../components/components/member-list/member-list';
+import { SearchFilter } from "../../components/components/filter/filter";
+import JoinCta from "../../components/components/join-cta/join-cta";
+import MemberList from "../../components/components/member-list/member-list";
 
 // Import page title from gatsby config.
-import GatsbyConfig from '../../../gatsby-config';
+import GatsbyConfig from "../../../gatsby-config";
 
 const NUMBER_OF_USERS_TO_FETCH = 5;
 const GET_MEMBERS = gql`
@@ -143,7 +143,7 @@ class Members extends React.PureComponent {
       <BasicLayout>
         <Helmet>
           <title>
-            {['Members', '|', GatsbyConfig.siteMetadata.title].join(' ')}
+            {["Members", "|", GatsbyConfig.siteMetadata.title].join(" ")}
           </title>
         </Helmet>
 
@@ -185,7 +185,7 @@ class Members extends React.PureComponent {
               <div>
                 <ShadowBox zeroPadding className="members__filters-section">
                   <h2 className="title title--x-small title--centered members__list-title">
-                    Showing {snapshot.shownMembersCount} out of{' '}
+                    Showing {snapshot.shownMembersCount} out of{" "}
                     {snapshot.totalCount} members
                   </h2>
                   <div className="members__filter-list">

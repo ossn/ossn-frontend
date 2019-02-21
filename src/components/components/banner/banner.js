@@ -1,36 +1,36 @@
-import React from 'react';
-import Shape from './../shape/shape';
-import Img from 'gatsby-image';
-import MediaQuery from 'react-responsive';
-import './banner.scss';
+import React from "react";
+import Shape from "./../shape/shape";
+import Img from "gatsby-image";
+import MediaQuery from "react-responsive";
+import "./banner.scss";
 
 export default props => {
   const text = props.text ? (
     <div className="banner__text"> {props.text} </div>
   ) : (
-    ''
+    ""
   );
 
   const title = props.title ? (
     <h2 className="title title--large">
       {props.title.map((titleElement, index) => (
         <span key={index} className="banner__title-element">
-          {' '}
-          {titleElement}{' '}
+          {" "}
+          {titleElement}{" "}
         </span>
       ))}
     </h2>
   ) : (
-    ''
+    ""
   );
 
-  const targetClass = props.forPage ? `banner--${props.forPage}` : '';
+  const targetClass = props.forPage ? `banner--${props.forPage}` : "";
   const classes = `banner ${targetClass}`;
 
   let hasShapes = false;
   if (
     props.forPage &&
-    (props.forPage === 'about' || props.forPage === 'organizations')
+    (props.forPage === "about" || props.forPage === "organizations")
   ) {
     hasShapes = true;
   }
@@ -41,7 +41,7 @@ export default props => {
         <Shape key="2" cube className="banner__cube" />,
         <Shape key="3" waveLarge className="banner__wave-large" />
       ]
-    : '';
+    : "";
 
   return (
     <article className={classes}>

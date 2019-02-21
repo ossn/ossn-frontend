@@ -1,5 +1,5 @@
-import React from 'react';
-import { ChevronRight } from 'react-feather';
+import React from "react";
+import { ChevronRight } from "react-feather";
 
 /*
   A single FAQ question and answer.
@@ -18,19 +18,19 @@ class FaqItem extends React.PureComponent {
   };
 
   handleKeyPress = e => {
-    if (e.key === 'Enter') return this.handleToggle;
+    if (e.key === "Enter") return this.handleToggle;
   };
 
   render() {
     const snapshot = { ...this.state };
     const isExpanded = snapshot.open;
-    const stateClass = snapshot.open ? 'is-expanded' : 'is-collapsed';
+    const stateClass = snapshot.open ? "is-expanded" : "is-collapsed";
     const isHidden = !snapshot.open;
     const id = this.props.id;
 
-    let classes = ['faq__item'];
+    let classes = ["faq__item"];
     if (stateClass) classes.push(stateClass);
-    let classString = classes.join(' ');
+    let classString = classes.join(" ");
 
     return (
       <li className={classString}>

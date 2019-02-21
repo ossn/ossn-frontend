@@ -6,24 +6,24 @@ It is based the Provider pattern and uses redux for it's implementation.
 - listens the `authReducer` for the logout event.
 */
 
-import React from 'react';
-import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
-import { actionLogin, actionLogout } from './../../../actions/userActions';
+import React from "react";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+import { actionLogin, actionLogout } from "./../../../actions/userActions";
 import {
   requestLogout,
   resetActionLogout
-} from './../../../actions/authActions';
+} from "./../../../actions/authActions";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import store from './../../../store';
-import { BACKEND_URL } from './../../../settings';
+import store from "./../../../store";
+import { BACKEND_URL } from "./../../../settings";
 
 // a login button component.
 export const LoginLink = props => {
-  const classes = props.className || '';
-  const label = props.label ? props.label : 'Login';
+  const classes = props.className || "";
+  const label = props.label ? props.label : "Login";
 
   return (
     <a className={classes} href={`${BACKEND_URL}/oidc/login`}>
@@ -34,8 +34,8 @@ export const LoginLink = props => {
 
 // a logout button component.
 export const LogoutLink = props => {
-  const classes = props.className || '';
-  const label = props.label ? props.label : 'Logout';
+  const classes = props.className || "";
+  const label = props.label ? props.label : "Logout";
 
   const logout = () => {
     store.dispatch(requestLogout());
@@ -108,7 +108,7 @@ class AuthWrapper extends React.PureComponent {
                   } else {
                     //TODO: Show error to user
                     // eslint-disable-next-line no-console
-                    console.error('Failed to logout');
+                    console.error("Failed to logout");
                   }
                 });
               };

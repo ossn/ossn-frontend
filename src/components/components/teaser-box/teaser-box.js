@@ -2,31 +2,31 @@
  The template for announcements and job listing components.
  */
 
-import React from 'react';
+import React from "react";
 
 // local modules
-import ShadowBox from './../shadow-box/shadow-box';
-import LayoutScroll from './../../layouts/layout-scroll/layout-scroll';
+import ShadowBox from "./../shadow-box/shadow-box";
+import LayoutScroll from "./../../layouts/layout-scroll/layout-scroll";
 
 // utils
-import { verboseDate } from './../../../utils/dates';
+import { verboseDate } from "./../../../utils/dates";
 
 // styles
-import './teaser-box.scss';
+import "./teaser-box.scss";
 
 export const TeaserBox = props => {
   const resource = props.resource;
-  let title = resource.title || 'Title is missing';
+  let title = resource.title || "Title is missing";
   if (!resource.link) {
-    title += ' / Link is missing';
+    title += " / Link is missing";
   }
-  const date = verboseDate(Number(props.resource.date)) || 'Date is missing';
-  const target = resource.link || '#';
+  const date = verboseDate(Number(props.resource.date)) || "Date is missing";
+  const target = resource.link || "#";
   const image = resource.imageUrl;
 
-  const classes = [props.className, 'teaser-box'];
+  const classes = [props.className, "teaser-box"];
   return (
-    <div className={classes.join(' ')}>
+    <div className={classes.join(" ")}>
       <a href={target} className="teaser-box__wrapper-link">
         <ShadowBox smallPaddings className="teaser-box__link-inner">
           <div className="teaser-box__inner">
@@ -71,12 +71,12 @@ export const TeaserBoxList = props => {
     });
   }
 
-  const classes = ['teaser-box__list-wrapper'];
-  if (props.dummyData) classes.push('teaser-box__list-wrapper--dummy');
-  classes.push(props.className || '');
+  const classes = ["teaser-box__list-wrapper"];
+  if (props.dummyData) classes.push("teaser-box__list-wrapper--dummy");
+  classes.push(props.className || "");
 
   return (
-    <LayoutScroll className={classes.join(' ')} stretchItems>
+    <LayoutScroll className={classes.join(" ")} stretchItems>
       {resources}
     </LayoutScroll>
   );

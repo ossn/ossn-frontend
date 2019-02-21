@@ -1,22 +1,22 @@
 // External modules.
-import './../../components/pages-styles/find-club.scss';
+import "./../../components/pages-styles/find-club.scss";
 
-import gql from 'graphql-tag';
-import React from 'react';
-import { ApolloConsumer, Query } from 'react-apollo';
-import { PlusSquare, Search } from 'react-feather';
-import { Helmet } from 'react-helmet';
+import gql from "graphql-tag";
+import React from "react";
+import { ApolloConsumer, Query } from "react-apollo";
+import { PlusSquare, Search } from "react-feather";
+import { Helmet } from "react-helmet";
 
 import {
   SearchFilter,
   ToggleFilter
-} from './../../components/components/filter/filter';
-import BasicLayout from './../../components/layouts/layout-base/layout-base';
-import GatsbyConfig from './../../../gatsby-config';
-import { ClubTeaserList } from './../../components/components/club-teaser-list/club-teaser-list';
-import Map from './../../components/components/map/map';
-import ShadowBox from './../../components/components/shadow-box/shadow-box';
-import LayoutContained from './../../components/layouts/layout-contained/layout-contained';
+} from "./../../components/components/filter/filter";
+import BasicLayout from "./../../components/layouts/layout-base/layout-base";
+import GatsbyConfig from "./../../../gatsby-config";
+import { ClubTeaserList } from "./../../components/components/club-teaser-list/club-teaser-list";
+import Map from "./../../components/components/map/map";
+import ShadowBox from "./../../components/components/shadow-box/shadow-box";
+import LayoutContained from "./../../components/layouts/layout-contained/layout-contained";
 
 class Clubs extends React.PureComponent {
   /*
@@ -35,7 +35,7 @@ class Clubs extends React.PureComponent {
      */
     super(props);
     this.state = {
-      view: 'list',
+      view: "list",
       searchString: null,
       shownClubsCount: 0,
       shownClubs: [],
@@ -50,8 +50,8 @@ class Clubs extends React.PureComponent {
   // State management functions. Used by children components.
   handleToggleMap = () => {
     this.setState({
-      view: this.state.view === 'map' ? 'list' : 'map',
-      number: this.state.view === 'map' ? 12 : 100,
+      view: this.state.view === "map" ? "list" : "map",
+      number: this.state.view === "map" ? 12 : 100,
       shownClubs: [],
       firstLoad: true,
       hasNextPage: false,
@@ -124,7 +124,7 @@ class Clubs extends React.PureComponent {
     this.setState(() => ({
       shownClubs: shownClubs,
       cursor: data.clubs.pageInfo.endCursor,
-      firstLoad: snapshot.view === 'map' && data.clubs.pageInfo.hasNextPage,
+      firstLoad: snapshot.view === "map" && data.clubs.pageInfo.hasNextPage,
       hasNextPage: data.clubs.pageInfo.hasNextPage
     }));
   };
@@ -138,7 +138,7 @@ class Clubs extends React.PureComponent {
           number: this.state.number,
           cursor: this.state.cursor,
           search:
-            this.state.searchString === '' ? null : this.state.searchString
+            this.state.searchString === "" ? null : this.state.searchString
         }}
         onCompleted={data => {
           this.onClubsFetched(data);
@@ -162,7 +162,7 @@ class Clubs extends React.PureComponent {
         }}
       </Query>
     ) : (
-      ''
+      ""
     );
   };
 
@@ -178,7 +178,7 @@ class Clubs extends React.PureComponent {
 
     // Decide which view to show.
     const content =
-      view === 'map' ? (
+      view === "map" ? (
         <Map clubs={shownClubs} />
       ) : (
         <ClubTeaserList clubs={shownClubs} />
@@ -188,7 +188,7 @@ class Clubs extends React.PureComponent {
       <BasicLayout>
         <Helmet>
           <title>
-            {['Clubs', '|', GatsbyConfig.siteMetadata.title].join(' ')}
+            {["Clubs", "|", GatsbyConfig.siteMetadata.title].join(" ")}
           </title>
         </Helmet>
         <LayoutContained>
@@ -199,7 +199,7 @@ class Clubs extends React.PureComponent {
                 <div className="find-club__filter-toggle">
                   <ToggleFilter
                     onClick={this.handleToggleMap}
-                    active={view === 'map'}
+                    active={view === "map"}
                     left="List view"
                     right="Map View"
                   />
@@ -232,7 +232,7 @@ class Clubs extends React.PureComponent {
                       variables: {
                         number: number,
                         cursor: cursor,
-                        search: searchString === '' ? null : searchString
+                        search: searchString === "" ? null : searchString
                       }
                     });
                     this.onClubsFetched(data);

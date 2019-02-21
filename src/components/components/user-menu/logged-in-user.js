@@ -1,6 +1,6 @@
-import React from 'react';
-import { logout } from './../../../actions/userActions';
-import store from './../../../store';
+import React from "react";
+import { logout } from "./../../../actions/userActions";
+import store from "./../../../store";
 
 class LoggedInUserMenu extends React.Component {
   // publish a logout event
@@ -15,8 +15,8 @@ class LoggedInUserMenu extends React.Component {
           <li className="user-popup__item"> My profile </li>
           <li className="user-popup__item user-popup__item--logout">
             <button className="user-popup__logout-button" onClick={this.logout}>
-              {' '}
-              LOGOUT{' '}
+              {" "}
+              LOGOUT{" "}
             </button>
           </li>
         </ul>

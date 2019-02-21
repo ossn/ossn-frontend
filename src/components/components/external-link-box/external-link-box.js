@@ -1,14 +1,14 @@
 /*
   
 */
-import React from 'react';
-import { Link } from 'react-feather';
+import React from "react";
+import { Link } from "react-feather";
 
 // local modules
-import ShadowBox from './../shadow-box/shadow-box';
+import ShadowBox from "./../shadow-box/shadow-box";
 
 // styles
-import './external-link-box.scss';
+import "./external-link-box.scss";
 
 export const ExternalLinkBox = props => {
   const resource = props.resource;
@@ -17,9 +17,9 @@ export const ExternalLinkBox = props => {
   const description = resource.description;
   const image = resource.attachment.publicURL;
 
-  const classes = [props.className, 'external-link-box'];
+  const classes = [props.className, "external-link-box"];
   return (
-    <div className={classes.join(' ')}>
+    <div className={classes.join(" ")}>
       <a
         href={target}
         className="external-link-box__wrapper-link"

@@ -1,5 +1,5 @@
-import React from 'react';
-import Shape from './../shape/shape';
+import React from "react";
+import Shape from "./../shape/shape";
 
 export default props => {
   return (

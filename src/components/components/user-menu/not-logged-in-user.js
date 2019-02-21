@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import Login from './../../forms/login/login';
-import Register from './../../forms/register/register';
+import Login from "./../../forms/login/login";
+import Register from "./../../forms/register/register";
 
 class NotLoggedInUserMenu extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      option: 'login'
+      option: "login"
     };
   }
 
@@ -20,7 +20,7 @@ class NotLoggedInUserMenu extends React.PureComponent {
 
     // decide which form to show
     const content =
-      snapshot.option === 'login' ? (
+      snapshot.option === "login" ? (
         <Login
           changeOption={option => {
             this.handleOption(option);

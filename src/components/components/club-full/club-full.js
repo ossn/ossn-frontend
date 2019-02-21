@@ -1,30 +1,30 @@
-import './club-full.scss';
+import "./club-full.scss";
 
-import { navigate } from 'gatsby';
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { connect } from 'react-redux';
-import { PlusCircle, X, Check, Feather } from 'react-feather';
-import ReactMarkdown from 'react-markdown';
+import { navigate } from "gatsby";
+import React from "react";
+import { Helmet } from "react-helmet";
+import { connect } from "react-redux";
+import { PlusCircle, X, Check, Feather } from "react-feather";
+import ReactMarkdown from "react-markdown";
 
-import GatsbyConfig from '../../../../gatsby-config';
-import { ApolloConsumer, withApollo } from 'react-apollo';
-import TextInput from '../../forms/text-input/text-input';
-import { returnKeyCheck } from '../../../utils/accessibility';
-import { mapUserToProps } from '../../../utils/redux-utils';
-import clubCover from '../../../images/ClubCover.png';
-import groupSmallImage from '../../../images/group-small.jpg';
-import Layout2ColsUnequal from '../../layouts/layout-2col-unequal/layout-2col-unequal';
-import LayoutContained from '../../layouts/layout-contained/layout-contained';
-import ClubInfo from '../club-info/club-info';
-import MemberList from '../member-list/member-list';
-import Shape from '../shape/shape';
-import { LoginLink } from '../../layouts/auth-wrapper/auth-wrapper';
+import GatsbyConfig from "../../../../gatsby-config";
+import { ApolloConsumer, withApollo } from "react-apollo";
+import TextInput from "../../forms/text-input/text-input";
+import { returnKeyCheck } from "../../../utils/accessibility";
+import { mapUserToProps } from "../../../utils/redux-utils";
+import clubCover from "../../../images/ClubCover.png";
+import groupSmallImage from "../../../images/group-small.jpg";
+import Layout2ColsUnequal from "../../layouts/layout-2col-unequal/layout-2col-unequal";
+import LayoutContained from "../../layouts/layout-contained/layout-contained";
+import ClubInfo from "../club-info/club-info";
+import MemberList from "../member-list/member-list";
+import Shape from "../shape/shape";
+import { LoginLink } from "../../layouts/auth-wrapper/auth-wrapper";
 import {
   getClubQuery,
   editClubMutation,
   joinClubMutation
-} from './club-full-queries';
+} from "./club-full-queries";
 
 /*
  This is the template for a single club view.
@@ -36,19 +36,19 @@ class Club extends React.PureComponent {
 
     const initData = {
       id: this.props.club.id,
-      email: this.props.club.email || '',
-      title: this.props.club.title || '',
-      imageUrl: this.props.club.imageUrl || '',
-      description: this.props.club.description || '',
-      codeOfConduct: this.props.club.codeOfConduct || '',
-      subtitle: this.props.club.subtitle || '',
-      github: this.props.club.githubUrl || '',
-      bannerImageUrl: this.props.club.bannerImageUrl || '',
-      clubUrl: this.props.club.clubUrl || '',
-      events: this.props.club.events || '',
-      address: this.props.club.location ? this.props.club.location.address : '',
-      lng: this.props.club.location ? this.props.club.location.lng : '',
-      lat: this.props.club.location ? this.props.club.location.lat : '',
+      email: this.props.club.email || "",
+      title: this.props.club.title || "",
+      imageUrl: this.props.club.imageUrl || "",
+      description: this.props.club.description || "",
+      codeOfConduct: this.props.club.codeOfConduct || "",
+      subtitle: this.props.club.subtitle || "",
+      github: this.props.club.githubUrl || "",
+      bannerImageUrl: this.props.club.bannerImageUrl || "",
+      clubUrl: this.props.club.clubUrl || "",
+      events: this.props.club.events || "",
+      address: this.props.club.location ? this.props.club.location.address : "",
+      lng: this.props.club.location ? this.props.club.location.lng : "",
+      lat: this.props.club.location ? this.props.club.location.lat : "",
       users: this.props.club.users
     };
 
@@ -71,32 +71,32 @@ class Club extends React.PureComponent {
     let { id } = this.props.club;
 
     if (!id) {
-      let path = this.props.location.pathname.split('/');
-      id = path[path.indexOf('clubs') + 1].split('?')[0];
+      let path = this.props.location.pathname.split("/");
+      id = path[path.indexOf("clubs") + 1].split("?")[0];
     }
     this.props.client
       .query({
         query: getClubQuery,
         variables: { id },
-        fetchPolicy: 'network-only'
+        fetchPolicy: "network-only"
       })
       .then(({ data = {} }) => {
         if (data.club) {
           const grapgData = {
             id: data.club.id,
-            email: data.club.email || '',
-            title: data.club.title || '',
-            imageUrl: data.club.imageUrl || '',
-            description: data.club.description || '',
-            codeOfConduct: data.club.codeOfConduct || '',
-            subtitle: data.club.subtitle || '',
-            github: data.club.githubUrl || '',
-            bannerImageUrl: data.club.bannerImageUrl || '',
-            clubUrl: data.club.clubUrl || '',
-            events: data.club.events || '',
-            address: data.club.location ? data.club.location.address : '',
-            lng: data.club.location ? data.club.location.lng : '',
-            lat: data.club.location ? data.club.location.lat : '',
+            email: data.club.email || "",
+            title: data.club.title || "",
+            imageUrl: data.club.imageUrl || "",
+            description: data.club.description || "",
+            codeOfConduct: data.club.codeOfConduct || "",
+            subtitle: data.club.subtitle || "",
+            github: data.club.githubUrl || "",
+            bannerImageUrl: data.club.bannerImageUrl || "",
+            clubUrl: data.club.clubUrl || "",
+            events: data.club.events || "",
+            address: data.club.location ? data.club.location.address : "",
+            lng: data.club.location ? data.club.location.lng : "",
+            lat: data.club.location ? data.club.location.lat : "",
             users: data.club.users
           };
 
@@ -112,8 +112,8 @@ class Club extends React.PureComponent {
       })
       .catch(e => {
         //TODO: Handle error
-        if (e.toString() == 'Error: GraphQL error: record not found') {
-          navigate('/404');
+        if (e.toString() == "Error: GraphQL error: record not found") {
+          navigate("/404");
         }
       });
   };
@@ -131,7 +131,7 @@ class Club extends React.PureComponent {
   isUserAdmin = () => {
     return !this.isUserMember(this.props.club.users)
       ? false
-      : !!this.props.club.users.find(user => user.role === 'admin');
+      : !!this.props.club.users.find(user => user.role === "admin");
   };
 
   // Replace the state with a the value of the `state.history`.
@@ -233,7 +233,7 @@ class Club extends React.PureComponent {
   render() {
     const snapshot = { ...this.state };
     const ctaPlaceholder = this.isUserMember(snapshot.users) ? (
-      ''
+      ""
     ) : this.isUserLoggedIn() ? (
       <ApolloConsumer>
         {client => (
@@ -254,7 +254,7 @@ class Club extends React.PureComponent {
                   } else {
                     //TODO: Show error to user
                     // eslint-disable-next-line no-console
-                    console.error('Failed to become a member');
+                    console.error("Failed to become a member");
                   }
                 });
             }}
@@ -273,7 +273,7 @@ class Club extends React.PureComponent {
                     } else {
                       //TODO: Show error to user
                       // eslint-disable-next-line no-console
-                      console.error('Failed to become a member');
+                      console.error("Failed to become a member");
                     }
                   });
               });
@@ -306,7 +306,7 @@ class Club extends React.PureComponent {
     ) : snapshot.title ? (
       <h1 className="club-full__title"> {snapshot.title} </h1>
     ) : (
-      ''
+      ""
     );
 
     const subtitle = snapshot.edit ? (
@@ -321,7 +321,7 @@ class Club extends React.PureComponent {
     ) : snapshot.subtitle ? (
       <span className="club-full__subtitle">{snapshot.subtitle}</span>
     ) : (
-      ''
+      ""
     );
 
     const clubDescription = snapshot.edit ? (
@@ -342,7 +342,7 @@ class Club extends React.PureComponent {
         <ReactMarkdown source={snapshot.description} />
       </div>
     ) : (
-      ''
+      ""
     );
 
     const codeOfConduct = snapshot.edit ? (
@@ -363,7 +363,7 @@ class Club extends React.PureComponent {
         <ReactMarkdown source={snapshot.codeOfConduct} />
       </div>
     ) : (
-      ''
+      ""
     );
 
     const bannerImageUrl = snapshot.edit && (
@@ -458,7 +458,7 @@ class Club extends React.PureComponent {
       <ClubInfo club={snapshot} />
     );
 
-    let membersSection = '';
+    let membersSection = "";
 
     if (snapshot.users && snapshot.users.length > 0)
       membersSection = (
@@ -517,7 +517,7 @@ class Club extends React.PureComponent {
                       lat: snapshot.lat
                     },
                     mutation: editClubMutation,
-                    fetchPolicy: 'no-cache'
+                    fetchPolicy: "no-cache"
                   });
                   this.handleSave();
                 }}
@@ -540,7 +540,7 @@ class Club extends React.PureComponent {
                         lat: snapshot.lat
                       },
                       mutation: editClubMutation,
-                      fetchPolicy: 'no-cache'
+                      fetchPolicy: "no-cache"
                     });
                     this.handleSave();
                   });
@@ -576,7 +576,7 @@ class Club extends React.PureComponent {
       <LayoutContained className="club-full">
         <Helmet>
           <title>
-            {[snapshot.title, '|', GatsbyConfig.siteMetadata.title].join(' ')}
+            {[snapshot.title, "|", GatsbyConfig.siteMetadata.title].join(" ")}
           </title>
         </Helmet>
 

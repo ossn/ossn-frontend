@@ -3,22 +3,22 @@
  Appears at /find-clubs
  */
 
-import React from 'react';
-import { Link } from 'gatsby';
-import { ChevronRight } from 'react-feather';
+import React from "react";
+import { Link } from "gatsby";
+import { ChevronRight } from "react-feather";
 
 // Local modules.
-import Layout3Col from './../../layouts/layout-3col/layout-3col';
-import ShadowBox from './../shadow-box/shadow-box';
-import groupSmallImage from '../../../images/group-xsmall.jpg';
-import './club-teaser.scss';
+import Layout3Col from "./../../layouts/layout-3col/layout-3col";
+import ShadowBox from "./../shadow-box/shadow-box";
+import groupSmallImage from "../../../images/group-xsmall.jpg";
+import "./club-teaser.scss";
 
 export const ClubTeaser = props => {
-  const title = props.club.name || 'Club name is missing';
+  const title = props.club.name || "Club name is missing";
   const subtitle =
-    props.club.sortDescription || 'Club sort description is missing';
+    props.club.sortDescription || "Club sort description is missing";
   const image = props.club.imageUrl;
-  const classes = props.className ? props.className : '';
+  const classes = props.className ? props.className : "";
   return (
     <div className={`${classes} club-teaser`}>
       <ShadowBox className="club-teaser__inner">

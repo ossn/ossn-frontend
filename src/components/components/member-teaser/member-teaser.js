@@ -1,11 +1,11 @@
-import './member-teaser.scss';
+import "./member-teaser.scss";
 
-import { Link } from 'gatsby';
-import React from 'react';
-import { Users } from 'react-feather';
+import { Link } from "gatsby";
+import React from "react";
+import { Users } from "react-feather";
 
-import Member from './../member/member';
-import ShadowBox from './../shadow-box/shadow-box';
+import Member from "./../member/member";
+import ShadowBox from "./../shadow-box/shadow-box";
 
 /*
  Is the the preview of a member profile.
@@ -18,23 +18,23 @@ const MemberTeaser = props => {
   const isLeader = props.member.clubs
     ? props.member.clubs.length > 0 &&
       props.member.clubs.some(club => {
-        return club.role === 'admin';
+        return club.role === "admin";
       })
-    : props.member.role && props.member.role === 'admin';
+    : props.member.role && props.member.role === "admin";
 
   const image = imageUrl ? (
     <div className="member-teaser__image-wrapper">
       <img src={imageUrl} className="member-teaser__image" alt={name} />
     </div>
   ) : (
-    ''
+    ""
   );
 
-  let clubString = '';
+  let clubString = "";
   if (props.member.clubs && props.member.clubs.length > 0) {
-    clubString = props.member.clubs[0].name || 'Club name is missing.';
+    clubString = props.member.clubs[0].name || "Club name is missing.";
     if (props.member.clubs.length > 1) {
-      clubString += ' + ' + (props.member.clubs.length - 1) + ' more';
+      clubString += " + " + (props.member.clubs.length - 1) + " more";
     }
   }
   // When the popup is open, the preview is loaded.
@@ -57,11 +57,11 @@ const MemberTeaser = props => {
     <></>
   );
 
-  const inheritedClass = props.className ? props.className : '';
-  const classes = [inheritedClass, 'member-teaser'];
-  if (isLeader) classes.push('member-teaser--leader');
+  const inheritedClass = props.className ? props.className : "";
+  const classes = [inheritedClass, "member-teaser"];
+  if (isLeader) classes.push("member-teaser--leader");
   return (
-    <ShadowBox smallPaddings className={classes.join(' ')}>
+    <ShadowBox smallPaddings className={classes.join(" ")}>
       <div> {preview} </div>
       <Link to={`/members/${props.member.id}`} className="member-teaser__inner">
         {leaderTag}

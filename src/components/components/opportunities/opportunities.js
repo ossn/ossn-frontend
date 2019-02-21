@@ -5,14 +5,14 @@
   Subscribed to User redux reducer.
 */
 // external modules
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
 // local modules
-import OpportunitiesMemeber from './../opportunities-member/opportunities-member';
+import OpportunitiesMemeber from "./../opportunities-member/opportunities-member";
 
 // utils
-import { mapUserToProps } from './../../../utils/redux-utils';
+import { mapUserToProps } from "./../../../utils/redux-utils";
 
 class Opportunities extends React.Component {
   render() {

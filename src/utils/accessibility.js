@@ -12,8 +12,8 @@
 */
 export const returnKeyCheck = (event, callback, acceptSpace = false) => {
   if (!event || !event.keyCode) return;
-  if (typeof callback !== 'function')
-    throw new TypeError('callback is not a function', 'accessibility.js', 13);
+  if (typeof callback !== "function")
+    throw new TypeError("callback is not a function", "accessibility.js", 13);
   if (event.keyCode === 13) callback();
   if (acceptSpace && event.keyCode === 32) callback();
 };

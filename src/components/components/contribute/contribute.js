@@ -1,9 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import Opportunities from './../opportunities/opportunities';
-import OpportunitiesGuest from './../opportunities-guest/opportunities-guest';
+import React from "react";
+import { connect } from "react-redux";
+import Opportunities from "./../opportunities/opportunities";
+import OpportunitiesGuest from "./../opportunities-guest/opportunities-guest";
 
-import { mapUserToProps } from './../../../utils/redux-utils';
+import { mapUserToProps } from "./../../../utils/redux-utils";
 
 // The contentn for authenticated users.
 const AuthenticatedContent = data => {

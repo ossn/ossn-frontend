@@ -20,9 +20,9 @@ export const actionLogout = () => {
   return dispatch => {
     // TODO: comment in if they should indeed be removed
     // eslint-disable-next-line no-undef
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     // eslint-disable-next-line no-undef
-    localStorage.removeItem('gotrue.user');
+    localStorage.removeItem("gotrue.user");
     return confirmLogout(dispatch);
   };
 };
@@ -38,11 +38,11 @@ export const checkLogin = () => {
 // handles a register request
 export const register = user => {
   const newUser = {
-    username: 'user01',
-    name: 'User 01',
-    location: 'Planet Earth',
-    githubLink: 'https://github.com',
-    personalPage: 'https://duckduckgo.com',
+    username: "user01",
+    name: "User 01",
+    location: "Planet Earth",
+    githubLink: "https://github.com",
+    personalPage: "https://duckduckgo.com",
     clubLeader: true
   };
 
@@ -55,7 +55,7 @@ export const register = user => {
 // dispatches the login data
 const confirmLogin = (dispatch, user) => {
   return dispatch({
-    type: 'USER_LOGIN',
+    type: "USER_LOGIN",
     payload: {
       ...user
     }
@@ -65,7 +65,7 @@ const confirmLogin = (dispatch, user) => {
 // dispatches the logout event
 const confirmLogout = dispatch => {
   return dispatch({
-    type: 'USER_LOGOUT',
+    type: "USER_LOGOUT",
     payload: {}
   });
 };

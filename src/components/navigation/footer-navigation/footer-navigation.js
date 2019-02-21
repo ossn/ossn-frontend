@@ -1,10 +1,10 @@
-import { Link } from 'gatsby';
-import React from 'react';
-import { Minus, Plus } from 'react-feather';
+import { Link } from "gatsby";
+import React from "react";
+import { Minus, Plus } from "react-feather";
 import {
   LoginLink,
   LogoutLink
-} from './../../layouts/auth-wrapper/auth-wrapper';
+} from "./../../layouts/auth-wrapper/auth-wrapper";
 
 /*
  Constructs a collapsible list of entries at the mobile.
@@ -84,7 +84,7 @@ export default class Navigation extends React.PureComponent {
   };
 
   handleKeyPress = e => {
-    if (e.key === 'Enter') return this.handleClick;
+    if (e.key === "Enter") return this.handleClick;
   };
 
   parseLinks = linkList => {
@@ -117,9 +117,9 @@ export default class Navigation extends React.PureComponent {
     const snapshot = { ...this.state };
     const links = this.parseLinks(this.props.links);
     const isExpanded = snapshot.isOpen && snapshot.isMobile;
-    let classes = ['footer__section footer__section--mobile'];
+    let classes = ["footer__section footer__section--mobile"];
     if (this.props.className) classes.push(this.props.className);
-    let classString = classes.join(' ');
+    let classString = classes.join(" ");
     const id = this.props.id;
     const header = snapshot.isMobile ? (
       <ResponsiveHeader

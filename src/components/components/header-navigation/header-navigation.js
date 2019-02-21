@@ -1,11 +1,11 @@
-import React from 'react';
-import { Menu, X } from 'react-feather';
-import MediaQuery from 'react-responsive';
+import React from "react";
+import { Menu, X } from "react-feather";
+import MediaQuery from "react-responsive";
 
-import LayoutContained from './../../layouts/layout-contained/layout-contained';
-import Navigation from './../../navigation/main-navigation/main-navigation';
-import PreNavigation from './../../navigation/secondary-navigation/secondary-navigation';
-import ShadowBox from './../shadow-box/shadow-box';
+import LayoutContained from "./../../layouts/layout-contained/layout-contained";
+import Navigation from "./../../navigation/main-navigation/main-navigation";
+import PreNavigation from "./../../navigation/secondary-navigation/secondary-navigation";
+import ShadowBox from "./../shadow-box/shadow-box";
 
 // Header navigation content
 const HeaderNavigationInner = props => {
@@ -55,24 +55,24 @@ class HeaderNavigation extends React.PureComponent {
 
   // puts an event listener for the UI handling (not that unsafe)
   componentDidMount() {
-    if (typeof document !== 'undefined')
-      document.addEventListener('mousedown', this.handleOutsideClick, false);
+    if (typeof document !== "undefined")
+      document.addEventListener("mousedown", this.handleOutsideClick, false);
   }
 
   // remove the listener in absence of the component
   ComponentWillUnmount() {
-    if (typeof document !== 'undefined')
-      document.removeEventListener('mousedown', this.handleOutsideClick, false);
+    if (typeof document !== "undefined")
+      document.removeEventListener("mousedown", this.handleOutsideClick, false);
   }
 
   handleKeyPress = e => {
-    if (e.key === 'Enter') return this.handleOpen;
+    if (e.key === "Enter") return this.handleOpen;
   };
 
   render() {
     const snapshot = { ...this.state };
     const isExpanded = snapshot.open;
-    const stateClass = snapshot.open ? 'is-expanded' : 'is-collapsed';
+    const stateClass = snapshot.open ? "is-expanded" : "is-collapsed";
     const isHidden = !snapshot.open;
 
     const menuToggle = expandedState => {
@@ -83,9 +83,9 @@ class HeaderNavigation extends React.PureComponent {
       }
     };
 
-    let classes = ['header__navigation-container'];
+    let classes = ["header__navigation-container"];
     if (stateClass) classes.push(stateClass);
-    let classString = classes.join(' ');
+    let classString = classes.join(" ");
 
     return (
       <ShadowBox className="header__inner">
@@ -95,7 +95,7 @@ class HeaderNavigation extends React.PureComponent {
               onClick={this.handleOpen}
               onKeyPress={this.handleKeyPress}
               className="button button--header header__button"
-              aria-controls={'header-navigation-container'}
+              aria-controls={"header-navigation-container"}
               aria-expanded={isExpanded}
             >
               {menuToggle(isExpanded)}

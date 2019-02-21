@@ -2,13 +2,13 @@
  * Leader's corner is the opportunities page, plus the leaders tools.
  **/
 // external modules
-import { graphql } from 'gatsby';
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import GatsbyConfig from './../../gatsby-config';
+import { graphql } from "gatsby";
+import React from "react";
+import { Helmet } from "react-helmet";
+import GatsbyConfig from "./../../gatsby-config";
 
-import BasicLayout from '../components/layouts/layout-base/layout-base';
-import LeaderCorner from './../components/components/leaders-corner/leaders-corner';
+import BasicLayout from "../components/layouts/layout-base/layout-base";
+import LeaderCorner from "./../components/components/leaders-corner/leaders-corner";
 
 // Local modules.
 class Contribute extends React.PureComponent {
@@ -17,8 +17,8 @@ class Contribute extends React.PureComponent {
       <BasicLayout>
         <Helmet>
           <title>
-            {["Leader's Corner", '|', GatsbyConfig.siteMetadata.title].join(
-              ' '
+            {["Leader's Corner", "|", GatsbyConfig.siteMetadata.title].join(
+              " "
             )}
           </title>
         </Helmet>

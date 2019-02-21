@@ -1,14 +1,14 @@
 /*
   Shows the become a member CTA.
 */
-import React from 'react';
+import React from "react";
 
-import MemberUpdates from './../member-updates/member-updates';
-import LayoutContained from './../../layouts/layout-contained/layout-contained';
-import { LoginLink } from './../../layouts/auth-wrapper/auth-wrapper';
+import MemberUpdates from "./../member-updates/member-updates";
+import LayoutContained from "./../../layouts/layout-contained/layout-contained";
+import { LoginLink } from "./../../layouts/auth-wrapper/auth-wrapper";
 
 // style
-import './opportunities-guest.scss';
+import "./opportunities-guest.scss";
 
 export default props => {
   return (

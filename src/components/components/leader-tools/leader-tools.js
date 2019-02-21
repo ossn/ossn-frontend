@@ -1,7 +1,7 @@
-import './leader-tools-list.scss';
-import './leader-tools.scss';
+import "./leader-tools-list.scss";
+import "./leader-tools.scss";
 
-import React from 'react';
+import React from "react";
 import {
   Archive,
   Briefcase,
@@ -10,11 +10,11 @@ import {
   FileText,
   Minus,
   Plus
-} from 'react-feather';
-import MediaQuery from 'react-responsive';
+} from "react-feather";
+import MediaQuery from "react-responsive";
 
-import Layout2Col from './../../layouts/layout-2col/layout-2col';
-import ShadowBox from './../shadow-box/shadow-box';
+import Layout2Col from "./../../layouts/layout-2col/layout-2col";
+import ShadowBox from "./../shadow-box/shadow-box";
 
 /*
   LeaderToolList, LeaderTool and AllLeaderTools components.
@@ -79,12 +79,12 @@ export class LeaderToolList extends React.PureComponent {
       return <LeaderTool tool={tool} key={i} />;
     });
 
-    const listClasses = ['leader-tools-list__wrapper'];
-    if (snapshot.isOpen) listClasses.push('leader-tools-list__wrapper--open');
+    const listClasses = ["leader-tools-list__wrapper"];
+    if (snapshot.isOpen) listClasses.push("leader-tools-list__wrapper--open");
 
     const hideDetails = !snapshot.isOpen && this.props.isMobile;
     return (
-      <div className={listClasses.join(' ')}>
+      <div className={listClasses.join(" ")}>
         <h2
           className="leader-tools-list__title"
           aria-controls={this.props.detailsId}
@@ -93,7 +93,7 @@ export class LeaderToolList extends React.PureComponent {
           {this.props.icon ? (
             <this.props.icon className="leader-tools-list__title-icon" />
           ) : (
-            ''
+            ""
           )}
           {this.props.isMobile
             ? this.getResponsiveHeader()
