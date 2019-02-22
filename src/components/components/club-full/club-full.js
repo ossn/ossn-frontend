@@ -117,10 +117,6 @@ function ClubFull(props) {
     }
   }
 
-  /**
-   *
-   * @param {string} id
-   */
   async function joinClub() {
     try {
       const { data } = await props.client.mutate({
