@@ -36,12 +36,7 @@ function ClubFull(props) {
    * Fetches the club resource and updates the state
    */
   useEffect(() => {
-    let { id } = props.club;
-
-    if (!id) {
-      let path = window.location.pathname.split('/');
-      id = path[path.indexOf('clubs') + 1].split('?')[0];
-    }
+    const [id] = window.location.pathname.split('/').slice(-1);
 
     /**
      * Only workaround for async use in useEffect is an async IIFE
