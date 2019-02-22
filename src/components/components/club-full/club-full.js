@@ -38,12 +38,7 @@ function ClubFull(props) {
   useEffect(() => {
     const [id] = window.location.pathname.split('/').slice(-1);
 
-    /**
-     * Only workaround for async use in useEffect is an async IIFE
-     */
-    (async () => {
-      setClub(await getClub(id));
-    })();
+    getClub(id).then(club => club && setClub(club));
   }, []);
 
   /**
