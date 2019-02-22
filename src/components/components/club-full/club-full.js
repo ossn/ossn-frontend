@@ -1,3 +1,4 @@
+import { navigate } from 'gatsby';
 import compose from 'immer';
 import { setWith } from 'lodash';
 import React, { useEffect, useState } from 'react';
@@ -151,8 +152,9 @@ function ClubFull(props) {
 
       return data.club;
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error);
+      if (error.toString() == 'Error: GraphQL error: record not found') {
+        navigate('/404');
+      }
     }
   }
 
