@@ -365,21 +365,21 @@ function ClubFull(props) {
               </button>
             )}
           </div>
-        </div>
 
-        <div className="club-full__members-section">
-          {club.users && club.users.length > 0 && (
-            <>
-              <h2>Members</h2>
-              <MemberList members={club.users} />
+          <div className="club-full__members-section">
+            {club.users && club.users.length > 0 && (
+              <>
+                <h2>Members</h2>
+                <MemberList members={club.users} />
 
-              <Shape
-                className="club-full__members-shape club-full__members-shape--waves"
-                darkSkyBlue
-                waves
-              />
-            </>
-          )}
+                <Shape
+                  className="club-full__members-shape club-full__members-shape--waves"
+                  darkSkyBlue
+                  waves
+                />
+              </>
+            )}
+          </div>
         </div>
       </Layout2ColsUnequal>
     </LayoutContained>
