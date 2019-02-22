@@ -57,7 +57,9 @@ function ClubFull(props) {
    */
   useEffect(() => {
     if (props.currentUser) {
-      const user = club.users.find(user => user.id === props.currentUser.id);
+      const user = (club.users || []).find(
+        user => user.id === props.currentUser.id
+      );
 
       if (user) {
         setIsMember(true);
@@ -67,7 +69,7 @@ function ClubFull(props) {
         }
       }
     }
-  }, [club.users, props.currentUser]);
+  }, [props.currentUser]);
 
   /**
    * Updates the editing variable that is being used for UX purposes.
