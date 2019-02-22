@@ -55,6 +55,7 @@
   &__subtitle {
     @include font-size(20px);
     color: color('grey-dark');
+    line-height: 1.15;
     margin: 0;
   }
 
