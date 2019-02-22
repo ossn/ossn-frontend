@@ -70,7 +70,7 @@ function ClubFull(props) {
         }
       }
     }
-  }, [props.currentUser]);
+  }, [club.users, props.currentUser]);
 
   /**
    * Updates the editing variable that is being used for UX purposes.
