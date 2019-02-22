@@ -41,7 +41,7 @@ function ClubFull(props) {
      * Only workaround for async use in useEffect is an async IIFE
      */
     (async () => {
-      setClub(await fetchClub(id));
+      setClub(await getClub(id));
     })();
   }, []);
 
@@ -120,16 +120,15 @@ function ClubFull(props) {
    *
    * @param {string} id
    */
-  async function join() {
+  async function joinClub() {
     try {
       const { data } = await props.client.mutate({
-        fetchPolicy: 'no-cache',
         mutation: queries.JOIN_CLUB,
         variables: { id: club.id }
       });
 
       if (data.joinClub) {
-        setClub({ ...club, users: (await fetchClub(club.id)).users });
+        setClub({ ...club, users: (await getClub(club.id)).users });
       }
     } catch (error) {
       // eslint-disable-next-line no-console
@@ -142,7 +141,7 @@ function ClubFull(props) {
    *
    * @param {string} id
    */
-  async function fetchClub(id) {
+  async function getClub(id) {
     try {
       const { data } = await props.client.query({
         fetchPolicy: 'no-cache',
@@ -217,7 +216,7 @@ function ClubFull(props) {
         <div className="club-full__info-container">
           {props.currentUser ? (
             !isMember && (
-              <button className="button club-full__cta" onClick={join}>
+              <button className="button club-full__cta" onClick={joinClub}>
                 <PlusCircle /> Become a member of this club
               </button>
             )
@@ -281,105 +280,103 @@ function ClubFull(props) {
         </div>
 
         <div className="club-full__description">
-          <div>
-            {editing && (
-              <>
-                <h2>Banner image URL</h2>
-                <TextInput
-                  label="Banner image URL"
-                  name="bannerImageUrl"
-                  onChange={handleChange}
-                  value={club.bannerImageUrl || ''}
-                />
-                <h2>Club image URL</h2>
-                <TextInput
-                  label="Club image URL"
-                  name="imageUrl"
-                  onChange={handleChange}
-                  value={club.imageUrl || ''}
-                />
-              </>
-            )}
+          {editing && (
+            <>
+              <h2>Banner image URL</h2>
+              <TextInput
+                label="Banner image URL"
+                name="bannerImageUrl"
+                onChange={handleChange}
+                value={club.bannerImageUrl || ''}
+              />
+              <h2>Club image URL</h2>
+              <TextInput
+                label="Club image URL"
+                name="imageUrl"
+                onChange={handleChange}
+                value={club.imageUrl || ''}
+              />
+            </>
+          )}
 
-            {editing ? (
-              <>
-                <h2>Description</h2>
-                <TextInput
-                  label="Description"
-                  multiline
-                  name="description"
-                  onChange={handleChange}
-                  value={club.description || ''}
-                />
-                <h2>Code of conduct</h2>
-                <TextInput
-                  label="Code of Conduct"
-                  multiline
-                  name="codeOfConduct"
-                  onChange={handleChange}
-                  value={club.codeOfConduct || ''}
-                />
-              </>
-            ) : (
-              <>
-                {club.description && (
-                  <>
-                    <h2>Description</h2>
-                    <ReactMarkdown source={club.description || ''} />
-                  </>
-                )}
-                {club.codeOfConduct && (
-                  <>
-                    <h2>Code of conduct</h2>
-                    <ReactMarkdown source={club.codeOfConduct || ''} />
-                  </>
-                )}
-              </>
-            )}
-
-            <div className="club-full__button-list">
-              {editing && (
+          {editing ? (
+            <>
+              <h2>Description</h2>
+              <TextInput
+                label="Description"
+                multiline
+                name="description"
+                onChange={handleChange}
+                value={club.description || ''}
+              />
+              <h2>Code of conduct</h2>
+              <TextInput
+                label="Code of Conduct"
+                multiline
+                name="codeOfConduct"
+                onChange={handleChange}
+                value={club.codeOfConduct || ''}
+              />
+            </>
+          ) : (
+            <>
+              {club.description && (
                 <>
-                  <button
-                    className="member__button button button--reset"
-                    onClick={handleClick(false)}
-                  >
-                    <X size={16} /> Cancel
-                  </button>
-
-                  <button
-                    className="member__button button button--submit"
-                    onClick={handleSubmit}
-                  >
-                    <Check size={16} /> Save changes
-                  </button>
+                  <h2>Description</h2>
+                  <ReactMarkdown source={club.description || ''} />
                 </>
               )}
+              {club.codeOfConduct && (
+                <>
+                  <h2>Code of conduct</h2>
+                  <ReactMarkdown source={club.codeOfConduct || ''} />
+                </>
+              )}
+            </>
+          )}
 
-              {!editing && isOwner && (
+          <div className="club-full__button-list">
+            {editing && (
+              <>
                 <button
                   className="member__button button button--reset"
-                  onClick={handleClick(true)}
+                  onClick={handleClick(false)}
                 >
-                  <Feather size={16} /> Edit club
+                  <X size={16} /> Cancel
                 </button>
-              )}
-            </div>
+
+                <button
+                  className="member__button button button--submit"
+                  onClick={handleSubmit}
+                >
+                  <Check size={16} /> Save changes
+                </button>
+              </>
+            )}
+
+            {!editing && isOwner && (
+              <button
+                className="member__button button button--reset"
+                onClick={handleClick(true)}
+              >
+                <Feather size={16} /> Edit club
+              </button>
+            )}
           </div>
-
-          {club.users && club.users.length > 0 && (
-            <div className="club-full__members-section">
-              <h2>Members</h2>
-              <MemberList members={club.users} />
-
-              <Shape
-                className="club-full__members-shape club-full__members-shape--waves"
-                darkSkyBlue
-                waves
-              />
-            </div>
-          )}
         </div>
+
+        {club.users && club.users.length > 0 && (
+          <div className="club-full__members-section">
+            <h2>Members</h2>
+            <MemberList members={club.users} />
+
+            <Shape
+              className="club-full__members-shape club-full__members-shape--waves"
+              darkSkyBlue
+              waves
+            />
+          </div>
+        )}
       </Layout2ColsUnequal>
     </LayoutContained>
   );
