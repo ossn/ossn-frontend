@@ -5,6 +5,7 @@ import { withApollo } from 'react-apollo';
 import { Check, Feather, PlusCircle, X } from 'react-feather';
 import ReactMarkdown from 'react-markdown';
 import { connect } from 'react-redux';
+
 import GatsbyConfig from '../../../../gatsby-config';
 import clubCover from '../../../images/ClubCover.png';
 import groupSmallImage from '../../../images/group-small.jpg';
@@ -117,16 +118,16 @@ function ClubFull(props) {
    *
    * @param {string} id
    */
-  async function join(id) {
+  async function join() {
     try {
       const { data } = await props.client.mutate({
         fetchPolicy: 'no-cache',
         mutation: queries.JOIN_CLUB,
-        variables: { id }
+        variables: { id: club.id }
       });
 
       if (data.joinClub) {
-        setClub({ ...club, users: (await fetchClub(id)).users });
+        setClub({ ...club, users: (await fetchClub(club.id)).users });
       }
     } catch (error) {
       // eslint-disable-next-line no-console
@@ -142,6 +143,7 @@ function ClubFull(props) {
   async function fetchClub(id) {
     try {
       const { data } = await props.client.query({
+        fetchPolicy: 'no-cache',
         query: queries.GET_CLUB,
         variables: { id }
       });
@@ -213,7 +215,7 @@ function ClubFull(props) {
         <div className="club-full__info-container">
           {props.currentUser ? (
             !isMember && (
-              <button className="button club-full__cta" onClick={join(club.id)}>
+              <button className="button club-full__cta" onClick={join}>
                 <PlusCircle /> Become a member of this club
               </button>
             )
