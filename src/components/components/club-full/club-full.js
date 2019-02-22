@@ -38,7 +38,7 @@ function ClubFull(props) {
   useEffect(() => {
     const [id] = window.location.pathname.split('/').slice(-1);
 
-    getClub(id).then(club => club && setClub(club));
+    getClub(id).then(updateClub);
   }, []);
 
   /**
@@ -147,6 +147,14 @@ function ClubFull(props) {
         navigate('/404');
       }
     }
+  }
+
+  function updateClub(club) {
+    if (!club) {
+      return;
+    }
+
+    setClub(club);
   }
 
   return (
