@@ -282,105 +282,105 @@ function ClubFull(props) {
         </div>
 
         <div className="club-full__description">
-          <div>
-            {editing && (
-              <>
-                <h2>Banner image URL</h2>
-                <TextInput
-                  label="Banner image URL"
-                  name="bannerImageUrl"
-                  onChange={handleChange}
-                  value={club.bannerImageUrl || ''}
-                />
-                <h2>Club image URL</h2>
-                <TextInput
-                  label="Club image URL"
-                  name="imageUrl"
-                  onChange={handleChange}
-                  value={club.imageUrl || ''}
-                />
-              </>
-            )}
+          {editing && (
+            <>
+              <h2>Banner image URL</h2>
+              <TextInput
+                label="Banner image URL"
+                name="bannerImageUrl"
+                onChange={handleChange}
+                value={club.bannerImageUrl || ''}
+              />
+              <h2>Club image URL</h2>
+              <TextInput
+                label="Club image URL"
+                name="imageUrl"
+                onChange={handleChange}
+                value={club.imageUrl || ''}
+              />
+            </>
+          )}
 
-            {editing ? (
-              <>
-                <h2>Description</h2>
-                <TextInput
-                  label="Description"
-                  multiline
-                  name="description"
-                  onChange={handleChange}
-                  value={club.description || ''}
-                />
-                <h2>Code of conduct</h2>
-                <TextInput
-                  label="Code of Conduct"
-                  multiline
-                  name="codeOfConduct"
-                  onChange={handleChange}
-                  value={club.codeOfConduct || ''}
-                />
-              </>
-            ) : (
-              <>
-                {club.description && (
-                  <>
-                    <h2>Description</h2>
-                    <ReactMarkdown source={club.description || ''} />
-                  </>
-                )}
-                {club.codeOfConduct && (
-                  <>
-                    <h2>Code of conduct</h2>
-                    <ReactMarkdown source={club.codeOfConduct || ''} />
-                  </>
-                )}
-              </>
-            )}
-
-            <div className="club-full__button-list">
-              {editing && (
+          {editing ? (
+            <>
+              <h2>Description</h2>
+              <TextInput
+                label="Description"
+                multiline
+                name="description"
+                onChange={handleChange}
+                value={club.description || ''}
+              />
+              <h2>Code of conduct</h2>
+              <TextInput
+                label="Code of Conduct"
+                multiline
+                name="codeOfConduct"
+                onChange={handleChange}
+                value={club.codeOfConduct || ''}
+              />
+            </>
+          ) : (
+            <>
+              {club.description && (
                 <>
-                  <button
-                    className="member__button button button--reset"
-                    onClick={handleClick(false)}
-                  >
-                    <X size={16} /> Cancel
-                  </button>
-
-                  <button
-                    className="member__button button button--submit"
-                    onClick={handleSubmit}
-                  >
-                    <Check size={16} /> Save changes
-                  </button>
+                  <h2>Description</h2>
+                  <ReactMarkdown source={club.description || ''} />
                 </>
               )}
+              {club.codeOfConduct && (
+                <>
+                  <h2>Code of conduct</h2>
+                  <ReactMarkdown source={club.codeOfConduct || ''} />
+                </>
+              )}
+            </>
+          )}
 
-              {!editing && isOwner && (
+          <div className="club-full__button-list">
+            {editing && (
+              <>
                 <button
                   className="member__button button button--reset"
-                  onClick={handleClick(true)}
+                  onClick={handleClick(false)}
                 >
-                  <Feather size={16} /> Edit club
+                  <X size={16} /> Cancel
                 </button>
-              )}
-            </div>
+
+                <button
+                  className="member__button button button--submit"
+                  onClick={handleSubmit}
+                >
+                  <Check size={16} /> Save changes
+                </button>
+              </>
+            )}
+
+            {!editing && isOwner && (
+              <button
+                className="member__button button button--reset"
+                onClick={handleClick(true)}
+              >
+                <Feather size={16} /> Edit club
+              </button>
+            )}
           </div>
         </div>
 
-        {club.users && club.users.length > 0 && (
-          <div className="club-full__members-section">
-            <h2>Members</h2>
-            <MemberList members={club.users} />
+        <div className="club-full__members-section">
+          {club.users && club.users.length > 0 && (
+            <>
+              <h2>Members</h2>
+              <MemberList members={club.users} />
 
-            <Shape
-              className="club-full__members-shape club-full__members-shape--waves"
-              darkSkyBlue
-              waves
-            />
-          </div>
-        )}
+              <Shape
+                className="club-full__members-shape club-full__members-shape--waves"
+                darkSkyBlue
+                waves
+              />
+            </>
+          )}
+        </div>
       </Layout2ColsUnequal>
     </LayoutContained>
   );
