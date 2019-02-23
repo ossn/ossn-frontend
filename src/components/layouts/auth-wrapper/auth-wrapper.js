@@ -28,7 +28,19 @@ export const LoginLink = props => {
   const label = props.label ? props.label : 'Login';
 
   return (
-    <a className={classes} href={`${BACKEND_URL}/oidc/login`}>
+    <a
+      className={classes}
+      href={`${BACKEND_URL}/oidc/login`}
+      onClick={() => {
+        if (window) {
+          const url = window.location;
+          let curentUrl = `${url.pathname}/${url.search}`.replace('//', '/');
+
+          // eslint-disable-next-line no-undef
+          localStorage.setItem('last-visited', curentUrl);
+        }
+      }}
+    >
       {label}
     </a>
   );
@@ -85,7 +97,16 @@ class AuthWrapper extends React.PureComponent {
     if (token) {
       // eslint-disable-next-line no-undef
       localStorage.setItem('token', token);
-      navigate('/');
+
+      // eslint-disable-next-line no-undef
+      const lastUrlBeforeLogin = window.localStorage.getItem('last-visited');
+      if (lastUrlBeforeLogin) {
+        navigate(`/${lastUrlBeforeLogin}`);
+      } else {
+        // eslint-disable-next-line no-undef
+        localStorage.removeItem('last-visited');
+        navigate('/');
+      }
     }
   }
 
