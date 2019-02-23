@@ -76,7 +76,12 @@ class AuthWrapper extends React.PureComponent {
   };
 
   componentDidMount() {
-    let { token } = parse(this.props.location.search);
+    let token =
+      parse(this.props.location.search) &&
+      parse(this.props.location.search).token
+        ? parse(this.props.location.search).token
+        : undefined;
+
     if (token) {
       // eslint-disable-next-line no-undef
       localStorage.setItem('token', token);
