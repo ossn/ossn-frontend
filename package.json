@@ -55,7 +55,8 @@
     "local": "sudo gatsby develop -p 80",
     "format": "eslint --fix ./src/**/**/*.js",
     "serve": "gatsby serve",
-    "test": "npm run build && bundlesize"
+    "test": "npm run build && bundlesize",
+    "lh": "lighthousebot"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
@@ -72,6 +73,7 @@
     "eslint-plugin-standard": "^4.0.0",
     "gatsby-plugin-eslint": "^2.0.4",
     "husky": "^1.3.1",
+    "lighthousebot": "git+https://github.com/GoogleChromeLabs/lighthousebot.git",
     "lint-staged": "^8.1.4",
     "prettier": "^1.16.4"
   },
