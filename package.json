@@ -55,10 +55,11 @@
     "local": "sudo gatsby develop -p 80",
     "format": "eslint --fix ./src/**/**/*.js",
     "serve": "gatsby serve",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "bundlesize"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
+    "bundlesize": "^0.17.1",
     "eslint": "^5.14.1",
     "eslint-config-prettier": "^4.0.0",
     "eslint-config-standard": "^12.0.0",
@@ -76,8 +77,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/ossn/ossn-frontend"
   },
+  "bundlesize": [
+    {
+      "path": "./public/**/*.js"
+    }
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
