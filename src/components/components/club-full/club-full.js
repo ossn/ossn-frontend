@@ -141,7 +141,7 @@ function ClubFull(props) {
       const { data } = await props.client.query({
         fetchPolicy: "no-cache",
         query: queries.GET_CLUB,
-        variables: { id }
+        variables: { id: id.toString() }
       });
 
       return data.club;
