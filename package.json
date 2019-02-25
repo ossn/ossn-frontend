@@ -52,7 +52,6 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "local": "sudo gatsby develop -p 80",
     "format": "eslint --fix ./src/**/**/*.js",
     "serve": "gatsby serve",
     "test": "npm run build && bundlesize",
