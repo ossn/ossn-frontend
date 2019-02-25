@@ -1,5 +1,7 @@
 # OSSN
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f7dbf76a-4d86-45cd-b150-2ab3adb90f2a/deploy-status)](https://app.netlify.com/sites/zen-euclid-6d318e/deploys)
+
 Welcome to Open Source Student Network page repository!
 
 
