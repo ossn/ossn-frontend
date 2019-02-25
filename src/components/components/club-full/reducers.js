@@ -5,7 +5,7 @@ export function reducer(state, action) {
     case "valueChange":
       return set(state, action.payload.name, action.payload.value);
     case "stateUpdate":
-      return merge(state, action.payload);
+      return action.payload ? merge(state, action.payload) : state;
     default:
       return state;
   }

@@ -1,12 +1,10 @@
-import { navigate } from "gatsby";
 import { produce } from "immer";
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useCallback, useEffect, useReducer, useState } from "react";
 import { withApollo } from "react-apollo";
 import { Check, Feather, PlusCircle, X } from "react-feather";
 import ReactMarkdown from "react-markdown";
 import { connect } from "react-redux";
 
-import GatsbyConfig from "../../../../gatsby-config";
 import clubCover from "../../../images/ClubCover.png";
 import groupSmallImage from "../../../images/group-small.jpg";
 import TextInput from "../../forms/text-input/text-input";
@@ -17,14 +15,14 @@ import ClubInfo from "../club-info/club-info";
 import MemberList from "../member-list/member-list";
 import Shape from "../shape/shape";
 import "./club-full.scss";
-import { findOne, isAdmin, mapStateToProps } from "./helpers";
-import * as queries from "./queries";
+import * as helpers from "./helpers";
 import { reducer } from "./reducers";
+import * as requests from "./requests";
 
 /**
- * Detailed view of a club including related events and members
+ * Displays a club's details including related events and members
  *
- * @param props
+ * @param {object} props
  */
 function ClubFull(props) {
   const [state, dispatch] = useReducer(produce(reducer), props.club);
@@ -34,35 +32,57 @@ function ClubFull(props) {
   const [id] = window.location.pathname.split("/").slice(-1);
 
   /**
-   * Fetches the club resource and updates the state
+   * Fetches a club resource and updates the state
    */
   useEffect(() => {
-    getClub(id).then(updateClub);
+    requests
+      .fetchClub(id)
+      .then(updateState)
+      .catch(helpers.handleError);
   }, [id]);
 
   /**
-   * Updates the document title when the state's club name changes
+   * Updates document's title when state's name changes
    */
   useEffect(() => {
-    document.title = `${state.name} | ${GatsbyConfig.siteMetadata.title}`;
-  }, [GatsbyConfig.siteMetadata.title, state.name]);
+    helpers.updateDocumentTitle(state.name);
+  }, [state.name]);
 
   /**
    * Updates the currentUser's role variables that are being used for UX purposes.
    */
   useEffect(() => {
     if (props.currentUser) {
-      const user = findOne.call(state.users, { id: props.currentUser.id });
+      const { id } = props.currentUser;
+
+      const user = helpers.findOne.call(state.users, { id });
 
       if (user) {
         setIsMember(true);
 
-        if (isAdmin(user)) {
+        if (helpers.isAdmin(user)) {
           setCanEdit(true);
         }
       }
     }
-  }, [state.users, props.currentUser]);
+  }, [props.currentUser, state.users]);
+
+  /**
+   *
+   * @param {string} name
+   * @param {string} value
+   */
+  function changeValue(name, value) {
+    dispatch({ payload: { name, value }, type: "valueChange" });
+  }
+
+  /**
+   *
+   * @param {React.ChangeEvent<HTMLInputElement>} event
+   */
+  function handleChange(event) {
+    changeValue(event.target.name, event.target.value);
+  }
 
   /**
    * Updates the editing variable that is being used for UX purposes.
@@ -77,79 +97,31 @@ function ClubFull(props) {
 
   /**
    *
-   * @param {React.ChangeEvent<HTMLInputElement>} event
    */
-  function handleChange(event) {
-    dispatch({
-      payload: {
-        name: event.target.name,
-        value: event.target.value
-      },
-      type: "valueChange"
-    });
-  }
-
-  /**
-   *
-   */
-  async function handleSubmit() {
-    const { events, location, users, ...rest } = state;
-
-    const { data } = await props.client.mutate({
-      fetchPolicy: "no-cache",
-      mutation: queries.EDIT_CLUB,
-      variables: { ...location, ...rest }
-    });
-
-    if (data.editClub) {
-      dispatch({ payload: data.editClub, type: "stateUpdate" });
-      setEditing(false);
-    }
-  }
-
-  async function joinClub() {
+  const handleJoin = useCallback(async () => {
     try {
-      const { data } = await props.client.mutate({
-        mutation: queries.JOIN_CLUB,
-        variables: { id }
-      });
-
-      if (data.joinClub) {
-        getClub(id).then(updateClub);
-      }
+      await requests.joinClub(id);
     } catch (error) {
-      // eslint-disable-next-line no-console
+      // eslint-disable-next-line
       console.error(error);
     }
-  }
+  }, [id]);
 
   /**
-   * Fetches a club resource by id and returns it
    *
-   * @param {string} id
    */
-  async function getClub(id) {
+  const handleUpdate = useCallback(async () => {
     try {
-      const { data } = await props.client.query({
-        fetchPolicy: "no-cache",
-        query: queries.GET_CLUB,
-        variables: { id }
-      });
-
-      return data.club;
+      updateState(await requests.updateClub(state));
+      setEditing(false);
     } catch (error) {
-      if (error.toString() == "Error: GraphQL error: record not found") {
-        navigate("/404");
-      }
+      // eslint-disable-next-line
+      console.error(error);
     }
-  }
+  }, [state]);
 
-  function updateClub(club) {
-    if (!club) {
-      return;
-    }
-
-    dispatch({ payload: club, type: "stateUpdate" });
+  function updateState(nextState) {
+    dispatch({ payload: nextState, type: "stateUpdate" });
   }
 
   return (
@@ -216,7 +188,7 @@ function ClubFull(props) {
         <div className="club-full__info-container">
           {props.currentUser ? (
             !isMember && (
-              <button className="button club-full__cta" onClick={joinClub}>
+              <button className="button club-full__cta" onClick={handleJoin}>
                 <PlusCircle /> Become a member of this club
               </button>
             )
@@ -343,7 +315,7 @@ function ClubFull(props) {
 
                   <button
                     className="member__button button button--submit"
-                    onClick={handleSubmit}
+                    onClick={handleUpdate}
                   >
                     <Check size={16} /> Save changes
                   </button>
@@ -377,4 +349,4 @@ function ClubFull(props) {
   );
 }
 
-export default connect(mapStateToProps)(withApollo(ClubFull));
+export default connect(helpers.mapStateToProps)(withApollo(ClubFull));
