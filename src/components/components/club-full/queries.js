@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const GET_CLUB = gql`
   query getClub($id: ID!) {
@@ -9,7 +9,7 @@ export const GET_CLUB = gql`
       description
       email
       events {
-        sortDescription
+        shortDescription: sortDescription
         title
       }
       githubUrl
@@ -22,7 +22,7 @@ export const GET_CLUB = gql`
         lng
       }
       name
-      sortDescription
+      shortDescription: sortDescription
       users {
         description
         email
@@ -59,7 +59,7 @@ export const EDIT_CLUB = gql`
     $lat: String
     $lng: String
     $name: String!
-    $sortDescription: String
+    $shortDescription: String
   ) {
     editClub(
       club: {
@@ -72,7 +72,7 @@ export const EDIT_CLUB = gql`
         imageUrl: $imageUrl
         location: { address: $address, lng: $lng, lat: $lat }
         name: $name
-        sortDescription: $sortDescription
+        sortDescription: $shortDescription
       }
       clubId: $id
     ) {
@@ -80,7 +80,7 @@ export const EDIT_CLUB = gql`
       clubUrl
       codeOfConduct
       description
-      email
+      emai
       githubUrl
       imageUrl
       id
@@ -90,7 +90,7 @@ export const EDIT_CLUB = gql`
         lng
       }
       name
-      sortDescription
+      shortDescription: sortDescription
     }
   }
 `;

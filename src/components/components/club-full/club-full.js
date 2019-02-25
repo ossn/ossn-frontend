@@ -1,7 +1,6 @@
 import { navigate } from "gatsby";
 import { produce } from "immer";
-import { set } from "lodash";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import { withApollo } from "react-apollo";
 import { Check, Feather, PlusCircle, X } from "react-feather";
 import ReactMarkdown from "react-markdown";
@@ -18,7 +17,9 @@ import ClubInfo from "../club-info/club-info";
 import MemberList from "../member-list/member-list";
 import Shape from "../shape/shape";
 import "./club-full.scss";
+import { mapStateToProps } from "./helpers";
 import * as queries from "./queries";
+import { reducer } from "./reducers";
 
 /**
  * Detailed view of a club including related events and members
@@ -26,18 +27,16 @@ import * as queries from "./queries";
  * @param props
  */
 function ClubFull(props) {
-  const { title, ...rest } = props.club;
-  const [club, setClub] = useState({ name: title, ...rest });
+  const [state, dispatch] = useReducer(produce(reducer), props.club);
   const [editing, setEditing] = useState(false);
   const [isMember, setIsMember] = useState(false);
   const [isOwner, setIsOwner] = useState(false);
+  const [id] = window.location.pathname.split("/").slice(-1);
 
   /**
    * Fetches the club resource and updates the state
    */
   useEffect(() => {
-    const [id] = window.location.pathname.split("/").slice(-1);
-
     getClub(id).then(updateClub);
   }, []);
 
@@ -45,15 +44,15 @@ function ClubFull(props) {
    * Updates the document title when the state's club name changes
    */
   useEffect(() => {
-    document.title = `${club.name} | ${GatsbyConfig.siteMetadata.title}`;
-  }, [club.name]);
+    document.title = `${state.name} | ${GatsbyConfig.siteMetadata.title}`;
+  }, [state.name]);
 
   /**
    * Updates the currentUser's role variables that are being used for UX purposes.
    */
   useEffect(() => {
     if (props.currentUser) {
-      const user = (club.users || []).find(
+      const user = (state.users || []).find(
         user => user.id === props.currentUser.id
       );
 
@@ -65,7 +64,7 @@ function ClubFull(props) {
         }
       }
     }
-  }, [club.users, props.currentUser]);
+  }, [state.users, props.currentUser]);
 
   /**
    * Updates the editing variable that is being used for UX purposes.
@@ -79,23 +78,24 @@ function ClubFull(props) {
   }
 
   /**
-   * Updates the state's club object
    *
    * @param {React.ChangeEvent<HTMLInputElement>} event
    */
   function handleChange(event) {
-    setClub(
-      produce(club, function(draftClub) {
-        set(draftClub, event.target.name, event.target.value);
-      })
-    );
+    dispatch({
+      payload: {
+        name: event.target.name,
+        value: event.target.value
+      },
+      type: "valueChange"
+    });
   }
 
   /**
    *
    */
   async function handleSubmit() {
-    const { events, location, users, ...rest } = club;
+    const { events, location, users, ...rest } = state;
 
     const { data } = await props.client.mutate({
       fetchPolicy: "no-cache",
@@ -104,7 +104,11 @@ function ClubFull(props) {
     });
 
     if (data.editClub) {
-      setClub({ ...club, ...data.editClub });
+      dispatch({
+        payload: data.editClub,
+        type: "stateUpdate"
+      });
+
       setEditing(false);
     }
   }
@@ -113,11 +117,11 @@ function ClubFull(props) {
     try {
       const { data } = await props.client.mutate({
         mutation: queries.JOIN_CLUB,
-        variables: { id: club.id }
+        variables: { id }
       });
 
       if (data.joinClub) {
-        setClub({ ...club, users: (await getClub(club.id)).users });
+        getClub(id).then(updateClub);
       }
     } catch (error) {
       // eslint-disable-next-line no-console
@@ -151,7 +155,10 @@ function ClubFull(props) {
       return;
     }
 
-    setClub(club);
+    dispatch({
+      payload: club,
+      type: "stateUpdate"
+    });
   }
 
   return (
@@ -161,7 +168,7 @@ function ClubFull(props) {
           <img
             alt=""
             className="club-full__cover-image"
-            src={club.bannerImageUrl || clubCover}
+            src={state.bannerImageUrl || clubCover}
           />
         </div>
 
@@ -171,7 +178,7 @@ function ClubFull(props) {
               <img
                 alt="Club profile"
                 className="club-full__profile-picture"
-                src={club.imageUrl || groupSmallImage}
+                src={state.imageUrl || groupSmallImage}
               />
             </div>
           </div>
@@ -183,21 +190,25 @@ function ClubFull(props) {
                   label="Title"
                   name="name"
                   onChange={handleChange}
-                  value={club.name || ""}
+                  value={state.name || ""}
                 />
 
                 <TextInput
                   label="Subtitle"
-                  name="sortDescription"
+                  name="shortDescription"
                   onChange={handleChange}
-                  value={club.sortDescription || ""}
+                  value={state.shortDescription || ""}
                 />
               </>
             ) : (
               <>
-                {club.name && <h1 className="club-full__title">{club.name}</h1>}
-                {club.sortDescription && (
-                  <p className="club-full__subtitle">{club.sortDescription}</p>
+                {state.name && (
+                  <h1 className="club-full__title">{state.name}</h1>
+                )}
+                {state.shortDescription && (
+                  <p className="club-full__subtitle">
+                    {state.shortDescription}
+                  </p>
                 )}
               </>
             )}
@@ -231,47 +242,47 @@ function ClubFull(props) {
                 label="Address"
                 name="location[address]"
                 onChange={handleChange}
-                value={(club.location || {}).address || ""}
+                value={(state.location || {}).address || ""}
                 multiline
               />
               <TextInput
                 label="Latitude"
                 name="location[lat]"
                 onChange={handleChange}
-                value={(club.location || {}).lat || ""}
+                value={(state.location || {}).lat || ""}
               />
               <TextInput
                 label="Longitude"
                 name="location[lng]"
                 onChange={handleChange}
-                value={(club.location || {}).lng || ""}
+                value={(state.location || {}).lng || ""}
               />
               <TextInput
                 label="Email"
                 name="email"
                 onChange={handleChange}
-                value={club.email || ""}
+                value={state.email || ""}
               />
               <TextInput
                 label="Github URL"
                 name="github"
                 onChange={handleChange}
-                value={club.github || ""}
+                value={state.github || ""}
               />
               <TextInput
                 label="Club URL"
                 name="clubUrl"
                 onChange={handleChange}
-                value={club.clubUrl || ""}
+                value={state.clubUrl || ""}
               />
             </div>
           ) : (
             <ClubInfo
               club={{
-                address: (club.location || {}).address,
-                clubUrl: club.clubUrl || "",
-                email: club.email || "",
-                github: club.githubUrl || ""
+                address: (state.location || {}).address,
+                clubUrl: state.clubUrl || "",
+                email: state.email || "",
+                github: state.githubUrl || ""
               }}
             />
           )}
@@ -285,14 +296,14 @@ function ClubFull(props) {
                 label="Banner image URL"
                 name="bannerImageUrl"
                 onChange={handleChange}
-                value={club.bannerImageUrl || ""}
+                value={state.bannerImageUrl || ""}
               />
               <h2>Club image URL</h2>
               <TextInput
                 label="Club image URL"
                 name="imageUrl"
                 onChange={handleChange}
-                value={club.imageUrl || ""}
+                value={state.imageUrl || ""}
               />
             </>
           )}
@@ -305,7 +316,7 @@ function ClubFull(props) {
                 multiline
                 name="description"
                 onChange={handleChange}
-                value={club.description || ""}
+                value={state.description || ""}
               />
               <h2>Code of conduct</h2>
               <TextInput
@@ -313,21 +324,21 @@ function ClubFull(props) {
                 multiline
                 name="codeOfConduct"
                 onChange={handleChange}
-                value={club.codeOfConduct || ""}
+                value={state.codeOfConduct || ""}
               />
             </>
           ) : (
             <>
-              {club.description && (
+              {state.description && (
                 <>
                   <h2>Description</h2>
-                  <ReactMarkdown source={club.description || ""} />
+                  <ReactMarkdown source={state.description || ""} />
                 </>
               )}
-              {club.codeOfConduct && (
+              {state.codeOfConduct && (
                 <>
                   <h2>Code of conduct</h2>
-                  <ReactMarkdown source={club.codeOfConduct || ""} />
+                  <ReactMarkdown source={state.codeOfConduct || ""} />
                 </>
               )}
             </>
@@ -363,10 +374,10 @@ function ClubFull(props) {
           </div>
 
           <div className="club-full__members-section">
-            {club.users && club.users.length > 0 && (
+            {state.users && state.users.length > 0 && (
               <>
                 <h2>Members</h2>
-                <MemberList members={club.users} />
+                <MemberList members={state.users} />
 
                 <Shape
                   className="club-full__members-shape club-full__members-shape--waves"
@@ -380,12 +391,6 @@ function ClubFull(props) {
       </Layout2ColsUnequal>
     </LayoutContained>
   );
-}
-
-function mapStateToProps(state) {
-  return {
-    currentUser: state.user.user
-  };
 }
 
 export default connect(mapStateToProps)(withApollo(ClubFull));
