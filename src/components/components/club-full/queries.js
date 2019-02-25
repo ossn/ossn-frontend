@@ -80,7 +80,7 @@ export const EDIT_CLUB = gql`
       clubUrl
       codeOfConduct
       description
-      emai
+      email
       githubUrl
       imageUrl
       id

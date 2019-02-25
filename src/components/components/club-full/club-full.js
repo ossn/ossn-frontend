@@ -1,6 +1,6 @@
 import { navigate } from "gatsby";
 import { produce } from "immer";
-import React, { useEffect, useState, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { withApollo } from "react-apollo";
 import { Check, Feather, PlusCircle, X } from "react-feather";
 import ReactMarkdown from "react-markdown";
@@ -17,7 +17,7 @@ import ClubInfo from "../club-info/club-info";
 import MemberList from "../member-list/member-list";
 import Shape from "../shape/shape";
 import "./club-full.scss";
-import { mapStateToProps } from "./helpers";
+import { findOne, isAdmin, mapStateToProps } from "./helpers";
 import * as queries from "./queries";
 import { reducer } from "./reducers";
 
@@ -28,9 +28,9 @@ import { reducer } from "./reducers";
  */
 function ClubFull(props) {
   const [state, dispatch] = useReducer(produce(reducer), props.club);
+  const [canEdit, setCanEdit] = useState(false);
   const [editing, setEditing] = useState(false);
   const [isMember, setIsMember] = useState(false);
-  const [isOwner, setIsOwner] = useState(false);
   const [id] = window.location.pathname.split("/").slice(-1);
 
   /**
@@ -38,29 +38,27 @@ function ClubFull(props) {
    */
   useEffect(() => {
     getClub(id).then(updateClub);
-  }, []);
+  }, [id]);
 
   /**
    * Updates the document title when the state's club name changes
    */
   useEffect(() => {
     document.title = `${state.name} | ${GatsbyConfig.siteMetadata.title}`;
-  }, [state.name]);
+  }, [GatsbyConfig.siteMetadata.title, state.name]);
 
   /**
    * Updates the currentUser's role variables that are being used for UX purposes.
    */
   useEffect(() => {
     if (props.currentUser) {
-      const user = (state.users || []).find(
-        user => user.id === props.currentUser.id
-      );
+      const user = findOne.call(state.users, { id: props.currentUser.id });
 
       if (user) {
         setIsMember(true);
 
-        if (["admin", "club_owner"].includes(user.role)) {
-          setIsOwner(true);
+        if (isAdmin(user)) {
+          setCanEdit(true);
         }
       }
     }
@@ -72,7 +70,7 @@ function ClubFull(props) {
    * @param {boolean} editing
    */
   function handleClick(editing) {
-    return function() {
+    return () => {
       setEditing(editing);
     };
   }
@@ -104,11 +102,7 @@ function ClubFull(props) {
     });
 
     if (data.editClub) {
-      dispatch({
-        payload: data.editClub,
-        type: "stateUpdate"
-      });
-
+      dispatch({ payload: data.editClub, type: "stateUpdate" });
       setEditing(false);
     }
   }
@@ -155,10 +149,7 @@ function ClubFull(props) {
       return;
     }
 
-    dispatch({
-      payload: club,
-      type: "stateUpdate"
-    });
+    dispatch({ payload: club, type: "stateUpdate" });
   }
 
   return (
@@ -265,9 +256,9 @@ function ClubFull(props) {
               />
               <TextInput
                 label="Github URL"
-                name="github"
+                name="githubUrl"
                 onChange={handleChange}
-                value={state.github || ""}
+                value={state.githubUrl || ""}
               />
               <TextInput
                 label="Club URL"
@@ -289,7 +280,7 @@ function ClubFull(props) {
         </div>
 
         <div className="club-full__description">
-          {editing && (
+          {editing ? (
             <>
               <h2>Banner image URL</h2>
               <TextInput
@@ -305,11 +296,6 @@ function ClubFull(props) {
                 onChange={handleChange}
                 value={state.imageUrl || ""}
               />
-            </>
-          )}
-
-          {editing ? (
-            <>
               <h2>Description</h2>
               <TextInput
                 label="Description"
@@ -344,49 +330,47 @@ function ClubFull(props) {
             </>
           )}
 
-          <div className="club-full__button-list">
-            {editing && (
-              <>
+          {canEdit && (
+            <div className="club-full__button-list">
+              {editing ? (
+                <>
+                  <button
+                    className="member__button button button--reset"
+                    onClick={handleClick(false)}
+                  >
+                    <X size={16} /> Cancel
+                  </button>
+
+                  <button
+                    className="member__button button button--submit"
+                    onClick={handleSubmit}
+                  >
+                    <Check size={16} /> Save changes
+                  </button>
+                </>
+              ) : (
                 <button
                   className="member__button button button--reset"
-                  onClick={handleClick(false)}
+                  onClick={handleClick(true)}
                 >
-                  <X size={16} /> Cancel
+                  <Feather size={16} /> Edit club
                 </button>
+              )}
+            </div>
+          )}
 
-                <button
-                  className="member__button button button--submit"
-                  onClick={handleSubmit}
-                >
-                  <Check size={16} /> Save changes
-                </button>
-              </>
-            )}
+          {state.users && state.users.length > 0 && (
+            <div className="club-full__members-section">
+              <h2>Members</h2>
+              <MemberList members={state.users} />
 
-            {!editing && isOwner && (
-              <button
-                className="member__button button button--reset"
-                onClick={handleClick(true)}
-              >
-                <Feather size={16} /> Edit club
-              </button>
-            )}
-          </div>
-
-          <div className="club-full__members-section">
-            {state.users && state.users.length > 0 && (
-              <>
-                <h2>Members</h2>
-                <MemberList members={state.users} />
-
-                <Shape
-                  className="club-full__members-shape club-full__members-shape--waves"
-                  darkSkyBlue
-                  waves
-                />
-              </>
-            )}
-          </div>
+              <Shape
+                className="club-full__members-shape club-full__members-shape--waves"
+                darkSkyBlue
+                waves
+              />
+            </div>
+          )}
         </div>
       </Layout2ColsUnequal>
     </LayoutContained>
