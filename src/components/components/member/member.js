@@ -359,7 +359,8 @@ class Member extends React.PureComponent {
                     clubs: snapshot.clubsToPreserve,
                     description: snapshot.description,
                     githubUrl: snapshot.githubUrl,
-                    personalUrl: snapshot.personalUrl
+                    personalUrl: snapshot.personalUrl,
+                    name: snapshot.name
                   },
                   mutation: editUserMutation
                 });
@@ -375,7 +376,8 @@ class Member extends React.PureComponent {
                       clubs: snapshot.clubsToPreserve,
                       description: snapshot.description,
                       githubUrl: snapshot.githubUrl,
-                      personalUrl: snapshot.personalUrl
+                      personalUrl: snapshot.personalUrl,
+                      name: snapshot.name
                     },
                     mutation: editUserMutation
                   });

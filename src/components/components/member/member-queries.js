@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 export const getUserQuery = gql`
   query getUser($id: ID!) {
@@ -29,6 +29,7 @@ export const editUserMutation = gql`
     $clubs: [ID!]
     $githubUrl: String
     $personalUrl: String
+    $name: String!
   ) {
     editUser(
       user: {
@@ -38,10 +39,12 @@ export const editUserMutation = gql`
         clubs: $clubs
         githubUrl: $githubUrl
         personalUrl: $personalUrl
+        name: $name
       }
     ) {
       id
       email
+      name
       sortDescription
       description
       receiveNewsletter
