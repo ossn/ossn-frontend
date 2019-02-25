@@ -10,9 +10,9 @@ Appears at /contribute and /leaders-corner
   The fields of the jobs should be the same as the graphQL query below.
 */
 
-import React from 'react';
-import { graphql } from 'gatsby';
-import { TeaserBoxList } from './../teaser-box/teaser-box';
+import React from "react";
+import { graphql } from "gatsby";
+import { TeaserBoxList } from "./../teaser-box/teaser-box";
 
 export default props => {
   const items = props.jobs;
@@ -35,7 +35,7 @@ export const query = graphql`
         description: description
         title: sortDescription
         link: url
-        date: updatedAt
+        date: publishedAt
         imageUrl
       }
     }

@@ -5,14 +5,14 @@
   Subscribed to User redux reducer.
 */
 // external modules
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
 // local modules
-import OpportunitiesMemeber from './../opportunities-member/opportunities-member';
+import OpportunitiesMember from "./../opportunities-member/opportunities-member";
 
 // utils
-import { mapUserToProps } from './../../../utils/redux-utils';
+import { mapUserToProps } from "./../../../utils/redux-utils";
 
 class Opportunities extends React.Component {
   render() {
@@ -26,16 +26,8 @@ class Opportunities extends React.Component {
     // the redux store holds the information for a logged in user.
     // The value of the view variabe is loaded acording to that information.
     // const loggedIn = this.props.user.loggedIn;// || true;
-
-    // TODO commend out to implement logged in check.
-
-    // const view = loggedIn
-    //   ? <OpportunitiesMemeber jobs={jobs} announcements={announcements}
-    //                 channels={channels} tools={tools} resources={resources}  />
-    //   : <OpportunitiesGuest />;
-
     const view = (
-      <OpportunitiesMemeber
+      <OpportunitiesMember
         jobs={jobs}
         announcements={announcements}
         channels={channels}

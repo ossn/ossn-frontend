@@ -1,13 +1,13 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { AllLeaderTools } from './../leader-tools/leader-tools';
-import OpportunitiesMember from './../opportunities-member/opportunities-member';
-import OpportunitiesGuest from './../opportunities-guest/opportunities-guest';
-import LayoutContained from './../../layouts/layout-contained/layout-contained';
+import React from "react";
+import { connect } from "react-redux";
+import { AllLeaderTools } from "./../leader-tools/leader-tools";
+import OpportunitiesMember from "./../opportunities-member/opportunities-member";
+import OpportunitiesGuest from "./../opportunities-guest/opportunities-guest";
+import LayoutContained from "./../../layouts/layout-contained/layout-contained";
 
-import { mapUserToProps } from './../../../utils/redux-utils';
+import { mapUserToProps } from "./../../../utils/redux-utils";
 
-// The contentn for authenticated users.
+// The content for authenticated users.
 const AuthenticatedContent = data => {
   const jobs = data.props.ossnApi.jobs.jobs;
   const announcements = data.props.ossnApi.announcements.announcements;

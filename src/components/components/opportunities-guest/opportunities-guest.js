@@ -1,19 +1,19 @@
 /*
-  Shows the become a member CTA.
-*/
-import React from 'react';
+ Shows the become a member CTA.
+ */
+import React from "react";
 
-import MemberUpdates from './../member-updates/member-updates';
-import LayoutContained from './../../layouts/layout-contained/layout-contained';
-import { LoginLink } from './../../layouts/auth-wrapper/auth-wrapper';
+import MemberUpdates from "./../member-updates/member-updates";
+import LayoutContained from "./../../layouts/layout-contained/layout-contained";
+import { LoginLink } from "./../../layouts/auth-wrapper/auth-wrapper";
 
 // style
-import './opportunities-guest.scss';
+import "./opportunities-guest.scss";
 
 export default props => {
   return (
-    <LayoutContained>
-      <div className="opportunities-guest">
+    <div className="opportunities-guest">
+      <LayoutContained>
         <div className="opportunities-guest__header-section">
           <h1 className="title title--x-large opportunities-guest__title">
             Why join the Open Source Student Network?
@@ -25,16 +25,19 @@ export default props => {
             regularly get our latest opportunities in your mailbox.
           </p>
         </div>
-        <div className="opportunities-guest__announcements-section">
-          <MemberUpdates dummyData />
-          <div className="opportunities-guest__overlay">
+      </LayoutContained>
+
+      <div className="opportunities-guest__announcements-section">
+        <MemberUpdates dummyData />
+        <div className="opportunities-guest__overlay">
+          <LayoutContained>
             <LoginLink
               label="Become a member to get access!"
               className="button button--cta opportunities-guest__link"
             />
-          </div>
+          </LayoutContained>
         </div>
       </div>
-    </LayoutContained>
+    </div>
   );
 };

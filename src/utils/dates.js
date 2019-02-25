@@ -1,24 +1,24 @@
-import { numberWithSuffix } from './numbers';
+import { numberWithSuffix } from "./numbers";
 
 // convert the `new Date().getDay()` number to it's verbose representation.
 export const getDayName = num => {
   switch (num) {
     case 0:
-      return 'Monday';
+      return "Monday";
     case 1:
-      return 'Tuesday';
+      return "Tuesday";
     case 2:
-      return 'Wednesday';
+      return "Wednesday";
     case 3:
-      return 'Thursday';
+      return "Thursday";
     case 4:
-      return 'Friday';
+      return "Friday";
     case 5:
-      return 'Saturday';
+      return "Saturday";
     case 6:
-      return 'Sunday';
+      return "Sunday";
     default:
-      return 'ERROR parsing day';
+      return "ERROR parsing day";
   }
 };
 
@@ -26,43 +26,40 @@ export const getDayName = num => {
 export const getMonthName = num => {
   switch (num) {
     case 0:
-      return 'January';
+      return "January";
     case 1:
-      return 'February';
+      return "February";
     case 2:
-      return 'March';
+      return "March";
     case 3:
-      return 'April';
+      return "April";
     case 4:
-      return 'May';
+      return "May";
     case 5:
-      return 'June';
+      return "June";
     case 6:
-      return 'July';
+      return "July";
     case 7:
-      return 'August';
+      return "August";
     case 8:
-      return 'September';
+      return "September";
     case 9:
-      return 'October';
+      return "October";
     case 10:
-      return 'November';
+      return "November";
     case 11:
-      return 'December';
+      return "December";
     default:
-      return 'ERROR parsing month ';
+      return "ERROR parsing month ";
   }
 };
 
 // project specific.
 // get the date string from the announcements and job listing
 export const verboseDate = timestamp => {
-  const date = new Date(timestamp);
+  const date = new Date(timestamp * 1000);
   const verboseDayName = getDayName(date.getDay());
   const verboseMonthName = getMonthName(date.getMonth());
   const suffixedDate = numberWithSuffix(date.getDate());
-
-  const dateString = `${verboseDayName}, ${verboseMonthName} ${suffixedDate} ${date.getFullYear()}`;
-
-  return dateString;
+  return `${verboseDayName}, ${verboseMonthName} ${suffixedDate} ${date.getFullYear()}`;
 };
