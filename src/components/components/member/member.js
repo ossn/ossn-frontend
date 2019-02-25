@@ -195,6 +195,16 @@ class Member extends React.PureComponent {
     }));
   };
 
+  handleSubmit = () =>
+    this.props.client
+      .mutate({
+        variables: {
+          ...this.state
+        },
+        mutation: editUserMutation
+      })
+      .then(this.handleSave);
+
   render() {
     const snapshot = this.state;
 
@@ -347,43 +357,13 @@ class Member extends React.PureComponent {
 
       buttonList.push(
         <ApolloConsumer key="appollo-consumer">
-          {client => (
+          {() => (
             <div
               tabIndex={0}
               role="button"
-              onClick={() => {
-                client.mutate({
-                  variables: {
-                    receiveNewsletter: snapshot.receiveNewsletter,
-                    sortDescription: snapshot.sortDescription,
-                    clubs: snapshot.clubsToPreserve,
-                    description: snapshot.description,
-                    githubUrl: snapshot.githubUrl,
-                    personalUrl: snapshot.personalUrl,
-                    name: snapshot.name
-                  },
-                  mutation: editUserMutation
-                });
-
-                this.handleSave();
-              }}
+              onClick={this.handleSubmit}
               onKeyDown={e => {
-                returnKeyCheck(e, () => {
-                  client.mutate({
-                    variables: {
-                      receiveNewsletter: snapshot.receiveNewsletter,
-                      sortDescription: snapshot.sortDescription,
-                      clubs: snapshot.clubsToPreserve,
-                      description: snapshot.description,
-                      githubUrl: snapshot.githubUrl,
-                      personalUrl: snapshot.personalUrl,
-                      name: snapshot.name
-                    },
-                    mutation: editUserMutation
-                  });
-
-                  this.handleSave();
-                });
+                returnKeyCheck(e, this.handleSubmit);
               }}
               className="member__button button button--submit"
               key={1}
