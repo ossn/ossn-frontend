@@ -55,7 +55,7 @@
     "local": "sudo gatsby develop -p 80",
     "format": "eslint --fix ./src/**/**/*.js",
     "serve": "gatsby serve",
-    "test": "bundlesize"
+    "test": "npm run build && bundlesize"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
