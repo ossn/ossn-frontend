@@ -7,10 +7,9 @@
 
 .user-popup {
   margin: 0;
-  padding: 0;
-  padding-top: 7px;
-  padding-bottom: 7px;
+  padding: 7px 0;
   line-height: 16px;
+  background-color: white;
 
   &::before {
     content: '';
@@ -23,42 +22,40 @@
     background-color: white;
     transform: rotate(45deg);
     z-index: -1;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
   }
 
   &__item {
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding: 0;
 
     &:hover {
-      // TODO: remove me
       background-color: rgba(89, 225, 207, 0.15);
       cursor: pointer;
     }
   }
 
-  &__logout-button {
-    border: none;
-    background-color: transparent;
-    padding: 0;
-    // TODO: replace with a proper variable.
-    color: #d0021b;
+  &__link {
+    padding: 8px 16px;
+    display: block;
 
-    &:focus,
-    &:active,
-    &:hover{
+    &--logout {
       border: none;
       background-color: transparent;
-    }
+      color: color('red');
 
+      &:focus,
+      &:active,
+      &:hover{
+        border: none;
+        background-color: transparent;
+      }
+    }
   }
 
   @include breakpoint($tablet) {
     &__overlay {
       position: absolute;
-      background-color: #f9f9fa;
-      top: 0;
+      background-color: color('pale-grey');
       left: 0;
       right: 0;
       bottom: 0;
@@ -68,5 +65,4 @@
       opacity: 0.7;
     }
   }
-
 }

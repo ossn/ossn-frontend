@@ -1,22 +1,22 @@
 // External modules.
-import './../../components/pages-styles/find-club.scss';
+import "./../../components/pages-styles/find-club.scss";
 
-import gql from 'graphql-tag';
-import React from 'react';
-import { ApolloConsumer, Query } from 'react-apollo';
-import { PlusSquare, Search } from 'react-feather';
-import { Helmet } from 'react-helmet';
+import gql from "graphql-tag";
+import React from "react";
+import { ApolloConsumer, Query } from "react-apollo";
+import { PlusSquare, Search } from "react-feather";
+import { Helmet } from "react-helmet";
 
 import {
   SearchFilter,
   ToggleFilter
-} from './../../components/components/filter/filter';
-import BasicLayout from './../../components/layouts/layout-base/layout-base';
-import GatsbyConfig from './../../../gatsby-config';
-import { ClubTeaserList } from './../../components/components/club-teaser-list/club-teaser-list';
-import Map from './../../components/components/map/map';
-import ShadowBox from './../../components/components/shadow-box/shadow-box';
-import LayoutContained from './../../components/layouts/layout-contained/layout-contained';
+} from "./../../components/components/filter/filter";
+import BasicLayout from "./../../components/layouts/layout-base/layout-base";
+import GatsbyConfig from "./../../../gatsby-config";
+import { ClubTeaserList } from "./../../components/components/club-teaser-list/club-teaser-list";
+import Map from "./../../components/components/map/map";
+import ShadowBox from "./../../components/components/shadow-box/shadow-box";
+import LayoutContained from "./../../components/layouts/layout-contained/layout-contained";
 
 class Clubs extends React.PureComponent {
   /*
@@ -28,14 +28,14 @@ class Clubs extends React.PureComponent {
      view (string): how to show the list of clubs. values (list, map).
      searchString (string): the string to filter the clubs.
      shownClubsCount (int): The number of the clubs that is fetched and shown.
-     shownclubs (array): the list of the club objects.
+     shownClubs (array): the list of the club objects.
      cursor (string): The id of the last fetched club.
      firstLoad (boolean): A flag to indicate the first render of the component.
      hasNextPage (boolean): A flaf to store the apollo hasNextPage.
      */
     super(props);
     this.state = {
-      view: 'list',
+      view: "list",
       searchString: null,
       shownClubsCount: 0,
       shownClubs: [],
@@ -49,10 +49,9 @@ class Clubs extends React.PureComponent {
 
   // State management functions. Used by children components.
   handleToggleMap = () => {
-    const snapshot = { ...this.state };
     this.setState({
-      view: snapshot.view === 'map' ? 'list' : 'map',
-      number: snapshot.view === 'map' ? 12 : 100,
+      view: this.state.view === "map" ? "list" : "map",
+      number: this.state.view === "map" ? 12 : 100,
       shownClubs: [],
       firstLoad: true,
       hasNextPage: false,
@@ -118,79 +117,78 @@ class Clubs extends React.PureComponent {
     }
   `;
 
-  // function
-  // Updates the state when new data  is fetched.
+  // Updates the state when new data is fetched.
   onClubsFetched = data => {
     const snapshot = { ...this.state };
     const shownClubs = [...snapshot.shownClubs, ...data.clubs.clubs];
-
     this.setState(() => ({
       shownClubs: shownClubs,
       cursor: data.clubs.pageInfo.endCursor,
-      firstLoad: false,
+      firstLoad: snapshot.view === "map" && data.clubs.pageInfo.hasNextPage,
       hasNextPage: data.clubs.pageInfo.hasNextPage
     }));
   };
 
-  // function
   // loads the first data.
-  onFirstLoad = () => {
-    const snapshot = { ...this.state };
-    let content;
-
-    if (snapshot.firstLoad) {
-      content = (
-        <Query
-          query={this.GET_CLUBS}
-          variables={{
-            number: snapshot.number,
-            cursor: snapshot.cursor,
-            search: snapshot.searchString === '' ? null : snapshot.searchString
-          }}
-          onCompleted={data => {
-            this.onClubsFetched(data);
-          }}
-        >
-          {({ loading, error }) => {
-            if (loading) {
-              return (
-                <div className="text text--large text--load-more">
-                  Loading....
-                </div>
-              );
-            }
-            if (error) {
-              return <div> `Error ${error.message}` </div>;
-            } else {
-              // JSX elements
-              // create the DOM for the component.
-              return null;
-            }
-          }}
-        </Query>
-      );
-    }
-
-    return content;
+  clubQuery = () => {
+    return this.state.firstLoad ? (
+      <Query
+        query={this.GET_CLUBS}
+        variables={{
+          number: this.state.number,
+          cursor: this.state.cursor,
+          search:
+            this.state.searchString === "" ? null : this.state.searchString
+        }}
+        onCompleted={data => {
+          this.onClubsFetched(data);
+        }}
+      >
+        {({ loading, error }) => {
+          if (loading) {
+            return (
+              <div className="text text--large text--load-more">
+                Loading....
+              </div>
+            );
+          }
+          if (error) {
+            return <div> `Error ${error.message}` </div>;
+          } else {
+            // JSX elements
+            // create the DOM for the component.
+            return null;
+          }
+        }}
+      </Query>
+    ) : (
+      ""
+    );
   };
 
   render() {
-    const snapshot = { ...this.state };
-    const clubs = snapshot.shownClubs;
+    const {
+      shownClubs,
+      view,
+      number,
+      cursor,
+      searchString,
+      hasNextPage
+    } = this.state;
 
     // Decide which view to show.
     const content =
-      snapshot.view === 'map' ? (
-        <Map clubs={clubs} />
+      view === "map" ? (
+        <Map clubs={shownClubs} />
       ) : (
-        <ClubTeaserList clubs={clubs} />
+        <ClubTeaserList clubs={shownClubs} />
       );
 
     return (
       <BasicLayout>
         <Helmet>
           <title>
-            {['Clubs', '|', GatsbyConfig.siteMetadata.title].join(' ')}
+            {["Clubs", "|", GatsbyConfig.siteMetadata.title].join(" ")}
           </title>
         </Helmet>
         <LayoutContained>
@@ -201,7 +199,7 @@ class Clubs extends React.PureComponent {
                 <div className="find-club__filter-toggle">
                   <ToggleFilter
                     onClick={this.handleToggleMap}
-                    active={snapshot.view === 'map'}
+                    active={view === "map"}
                     left="List view"
                     right="Map View"
                   />
@@ -221,7 +219,7 @@ class Clubs extends React.PureComponent {
           </div>
           {content}
 
-          {this.onFirstLoad()}
+          {this.clubQuery()}
 
           <ApolloConsumer>
             {client => (
@@ -232,17 +230,14 @@ class Clubs extends React.PureComponent {
                     const { data } = await client.query({
                       query: this.GET_CLUBS,
                       variables: {
-                        number: snapshot.number,
-                        cursor: snapshot.cursor,
-                        search:
-                          snapshot.searchString === ''
-                            ? null
-                            : snapshot.searchString
+                        number: number,
+                        cursor: cursor,
+                        search: searchString === "" ? null : searchString
                       }
                     });
                     this.onClubsFetched(data);
                   }}
-                  hidden={!snapshot.hasNextPage}
+                  hidden={!hasNextPage}
                 >
                   <PlusSquare size={16} />
                   Load more

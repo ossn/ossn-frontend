@@ -1,21 +1,21 @@
-import './member.scss';
+import "./member.scss";
 
-import { navigate } from 'gatsby';
-import React from 'react';
-import { ApolloConsumer, withApollo } from 'react-apollo';
-import { Check, Feather, GitHub, Link, Users, X } from 'react-feather';
-import { Helmet } from 'react-helmet';
-import { connect } from 'react-redux';
-import MediaQuery from 'react-responsive';
+import { navigate } from "gatsby";
+import React from "react";
+import { ApolloConsumer, withApollo } from "react-apollo";
+import { Check, Feather, GitHub, Link, Users, X } from "react-feather";
+import { Helmet } from "react-helmet";
+import { connect } from "react-redux";
+import MediaQuery from "react-responsive";
 
-import GatsbyConfig from '../../../../gatsby-config';
-import { returnKeyCheck } from '../../../utils/accessibility';
-import { mapUserToProps } from '../../../utils/redux-utils';
-import TextInput from '../../forms/text-input/text-input';
-import LayoutContained from '../../layouts/layout-contained/layout-contained';
-import ShadowBox from '../shadow-box/shadow-box';
-import Shape from '../shape/shape';
-import { editUserMutation, getUserQuery } from './member-queries';
+import GatsbyConfig from "../../../../gatsby-config";
+import { returnKeyCheck } from "../../../utils/accessibility";
+import { mapUserToProps } from "../../../utils/redux-utils";
+import TextInput from "../../forms/text-input/text-input";
+import LayoutContained from "../../layouts/layout-contained/layout-contained";
+import ShadowBox from "../shadow-box/shadow-box";
+import Shape from "../shape/shape";
+import { editUserMutation, getUserQuery } from "./member-queries";
 
 const shapesUnordered = [
   <Shape
@@ -94,13 +94,12 @@ class Member extends React.PureComponent {
       receiveNewsletter: this.props.member.receiveNewsletter,
       clubsToPreserve: this.props.member.clubs.map(club => club.id),
       shapes: shuffle(shapesUnordered),
-      firstLoad: true
+      editable: !!this.isCurrentUser(),
+      edit: false
     };
 
     this.state = {
       ...initData,
-      edit: false,
-      editable: !!this.isCurrentUser(),
       history: {
         ...initData
       }
@@ -110,8 +109,7 @@ class Member extends React.PureComponent {
   componentDidMount = () => {
     let { id } = this.props.member;
     if (!id) {
-      let path = this.props.location.pathname.split('/');
-      id = path[path.indexOf('members') + 1].split('?')[0];
+      id = this.getIdFromPath();
     }
     this.props.client
       .query({
@@ -120,47 +118,55 @@ class Member extends React.PureComponent {
       })
       .then(({ data = {} }) => {
         if (data.user) {
-          const grapgData = {
+          const graphData = {
             ...data.user,
-            clubsToPreserve: data.user.clubs.map(club => club.id)
+            clubsToPreserve: data.user.clubs.map(club => club.id),
+            editable: !!this.isCurrentUser()
           };
-          return this.setState({
-            ...grapgData,
+
+          return this.setState(({ shapes, edit }) => ({
+            ...graphData,
+            edit,
+            shapes,
             history: {
-              ...grapgData
+              ...graphData,
+              edit,
+              shapes
             }
-          });
+          }));
         }
       })
       .catch(e => {
         //TODO: Handle error
-        if (e.toString() == 'Error: GraphQL error: record not found') {
-          navigate('/404');
+        if (e.toString() == "Error: GraphQL error: record not found") {
+          navigate("/404");
         }
       });
   };
 
   componentDidUpdate(prevProps) {
-    if (
-      (prevProps.user || {}).user &&
-      prevProps.user.user.id !== this.props.user.user.id
-    ) {
-      this.setState({ editable: !!this.isCurrentUser() });
-    } else if (
-      !(prevProps.user || {}).user &&
-      this.props.user.user &&
-      this.state.editable === false
-    ) {
+    if ((prevProps.user.user || {}).id !== (this.props.user.user || {}).id) {
       this.setState({ editable: !!this.isCurrentUser() });
     }
   }
 
-  isCurrentUser = () =>
-    this.props.user.user && this.props.member.id === this.props.user.user.id;
+  getIdFromPath = () => {
+    let path = this.props.location.pathname.split("/");
+    return path[path.indexOf("members") + 1].split("?")[0];
+  };
+
+  isCurrentUser = () => {
+    let { id } = this.props.member;
+    if (!id) {
+      id = this.getIdFromPath();
+    }
+
+    return this.props.user.user && id === this.props.user.user.id;
+  };
 
   handleChange = ({ target }) => {
     this.setState({
-      [target.name]: target.type === 'checkbox' ? target.checked : target.value
+      [target.name]: target.type === "checkbox" ? target.checked : target.value
     });
   };
 
@@ -227,12 +233,12 @@ class Member extends React.PureComponent {
             // return <Organization organization={node.org} key={i} />
             return (
               <div className="member__checkbox" key={club.id}>
-                <label htmlFor={'club-' + club.id}>
+                <label htmlFor={"club-" + club.id}>
                   <input
                     name={club.id}
                     type="checkbox"
                     defaultChecked
-                    id={'club-' + club.id}
+                    id={"club-" + club.id}
                     onChange={this.handleClubSubscription}
                   />
                   {club.name}
@@ -246,8 +252,8 @@ class Member extends React.PureComponent {
         <div>
           <Users className="member__icon" />
           {snapshot.clubs
-            .map(club => club.name || 'Club name missing')
-            .join(', ')}
+            .map(club => club.name || "Club name missing")
+            .join(", ")}
         </div>
       )
     );
@@ -398,7 +404,7 @@ class Member extends React.PureComponent {
       <LayoutContained className="member">
         <Helmet>
           <title>
-            {[snapshot.name, '|', GatsbyConfig.siteMetadata.title].join(' ')}
+            {[snapshot.name, "|", GatsbyConfig.siteMetadata.title].join(" ")}
           </title>
         </Helmet>
 
