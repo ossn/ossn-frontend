@@ -2,20 +2,20 @@
   Contains the `ClubInfo`  and `ClubInfoItem` components.
 */
 
-import React from 'react';
-import MediaQuery from 'react-responsive';
+import React from "react";
+import MediaQuery from "react-responsive";
 
-import ShadowBox from './../shadow-box/shadow-box';
+import ShadowBox from "./../shadow-box/shadow-box";
 import {
   Github,
   Link,
   Event,
   Map,
   Email
-} from './../formated-text/formated-text';
-import Shape from './../shape/shape';
+} from "./../formated-text/formated-text";
+import Shape from "./../shape/shape";
 
-import './club-info.scss';
+import "./club-info.scss";
 
 /*
   An Item of the list
@@ -24,19 +24,30 @@ import './club-info.scss';
 */
 export class ClubInfoItem extends React.PureComponent {
   render() {
-    let classes = ['club-info__item'];
-    if (this.props.major) classes.push('club-info__item--major');
-    if (this.props.map) classes.push('club-info__item--map');
+    let classes = ["club-info__item"];
+    if (this.props.major) classes.push("club-info__item--major");
+    if (this.props.map) classes.push("club-info__item--map");
 
     let content;
     if (this.props.link) {
       content = (
-        <a href={this.props.link} className={classes.join(' ')}>
+        <a
+          href={this.props.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={classes.join(" ")}
+        >
+          {this.props.children}
+        </a>
+      );
+    } else if (this.props.email) {
+      content = (
+        <a href={this.props.email} className={classes.join(" ")}>
           {this.props.children}
         </a>
       );
     } else {
-      content = <div className={classes.join(' ')}>{this.props.children}</div>;
+      content = <div className={classes.join(" ")}>{this.props.children}</div>;
     }
 
     return <>{content}</>;
@@ -70,7 +81,7 @@ const WebpageInfo = ({ webpage }) => (
 
 const EmailInfo = ({ email }) => (
   <li className="club-info__item-wrapper">
-    <ClubInfoItem link={`mailto:${email}`}>
+    <ClubInfoItem email={`mailto:${email}`}>
       <Email value={email} />
     </ClubInfoItem>
   </li>
@@ -114,10 +125,10 @@ export default class ClubInfo extends React.PureComponent {
     return (
       <ShadowBox zeroPadding className="club-info__wrapper">
         <ul className="club-info">
-          {address ? <LocationInfo location={address} /> : ''}
-          {github ? <GithubInfo github={github} /> : ''}
-          {webpage ? <WebpageInfo webpage={webpage} /> : ''}
-          {email ? <EmailInfo email={email} /> : ''}
+          {address ? <LocationInfo location={address} /> : ""}
+          {github ? <GithubInfo github={github} /> : ""}
+          {webpage ? <WebpageInfo webpage={webpage} /> : ""}
+          {email ? <EmailInfo email={email} /> : ""}
 
           {this.getEvents()}
         </ul>
