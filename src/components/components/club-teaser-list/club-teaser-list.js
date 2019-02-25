@@ -15,12 +15,11 @@ import "./club-teaser.scss";
 
 export const ClubTeaser = props => {
   const title = props.club.name || "Club name is missing";
-  const subtitle =
-    props.club.sortDescription || "Club sort description is missing";
+  const subtitle = props.club.sortDescription;
   const image = props.club.imageUrl;
   const classes = props.className ? props.className : "";
   return (
-    <div className={`${classes} club-teaser`}>
+    <Link to={`/clubs/${props.club.id}`} className={`${classes} club-teaser`}>
       <ShadowBox className="club-teaser__inner">
         <div className="club-teaser__image-wrapper">
           <img
@@ -30,19 +29,19 @@ export const ClubTeaser = props => {
           />
         </div>
         <div className="club-teaser__text">
-          <Link to={`/clubs/${props.club.id}`} className="club-teaser__title">
+          <h2 to={`/clubs/${props.club.id}`} className="club-teaser__title">
             {title}
-          </Link>
+          </h2>
           <span className="club-teaser__description"> {subtitle} </span>
-          <Link
+          <div
             to={`/clubs/${props.club.id}`}
             className="button button--x-small club-teaser__button"
           >
             Club page <ChevronRight size={16} className="icon" />
-          </Link>
+          </div>
         </div>
       </ShadowBox>
-    </div>
+    </Link>
   );
 };
 

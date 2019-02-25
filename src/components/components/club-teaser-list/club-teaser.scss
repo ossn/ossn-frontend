@@ -1,6 +1,8 @@
 @import './../../base-styles/init/init';
 
 .club-teaser {
+  color: color('text');
+  display: flex;
 
   &__inner {
     @include padding-top(20px);
@@ -47,6 +49,7 @@
   &__text {
     @include padding-top(8px);
     @include padding-left(17px);
+    width: 100%;
   }
 
   &__title {
@@ -78,6 +81,13 @@
     .icon {
       margin-left: 4px;
       margin-right: -4px;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    .club-teaser__button {
+      background-color: mix(color('black'), color('button-bg'), 30%);
     }
   }
 }
