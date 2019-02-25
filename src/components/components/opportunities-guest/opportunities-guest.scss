@@ -31,9 +31,13 @@
   &__overlay {
     position: absolute;
     top: 0;
-    bottom: 0;
+    bottom: -60px;
     width: 100%;
     background-image: linear-gradient(to bottom, rgba(245, 247, 240, 0), color('off-white'));
     text-align: center;
+
+    @include breakpoint($tablet) {
+      bottom: -100px;
+    }
   }
 }

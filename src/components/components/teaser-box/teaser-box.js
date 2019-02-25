@@ -2,37 +2,38 @@
  The template for announcements and job listing components.
  */
 
-import React from 'react';
+import React from "react";
 
 // local modules
-import ShadowBox from './../shadow-box/shadow-box';
-import LayoutScroll from './../../layouts/layout-scroll/layout-scroll';
+import ShadowBox from "./../shadow-box/shadow-box";
+import LayoutScroll from "./../../layouts/layout-scroll/layout-scroll";
 
 // utils
-import { verboseDate } from './../../../utils/dates';
+import { verboseDate } from "./../../../utils/dates";
 
 // styles
-import './teaser-box.scss';
+import "./teaser-box.scss";
 
 export const TeaserBox = props => {
   const resource = props.resource;
-  let title = resource.title || 'Title is missing';
-  if (!resource.link) {
-    title += ' / Link is missing';
-  }
-  const date = verboseDate(Number(props.resource.date)) || 'Date is missing';
-  const target = resource.link || '#';
+  let title = resource.title;
+  const date = verboseDate(Number(props.resource.date)) || "";
+  const target = resource.link || "#";
   const image = resource.imageUrl;
 
-  const classes = [props.className, 'teaser-box'];
+  const classes = [props.className, "teaser-box"];
+  const imageContent = image && (
+    <div className="teaser-box__image-wrapper">
+      <img src={image} alt={title} className="teaser-box__image" />
+    </div>
+  );
+
   return (
-    <div className={classes.join(' ')}>
+    <div className={classes.join(" ")}>
       <a href={target} className="teaser-box__wrapper-link">
         <ShadowBox smallPaddings className="teaser-box__link-inner">
           <div className="teaser-box__inner">
-            <div className="teaser-box__image-wrapper">
-              <img src={image} alt={title} className="teaser-box__image" />
-            </div>
+            {imageContent}
             <div className="teaser-box__text">
               <div className="teaser-box__title"> {title} </div>
               <span className="teaser-box__date"> {date} </span>
@@ -45,8 +46,10 @@ export const TeaserBox = props => {
 };
 
 export const DummyTeaserBox = props => {
+  const classes = [props.className, "teaser-box teaser-box--dummy"];
+
   return (
-    <div className="teaser-box teaser-box--dummy">
+    <div className={classes.join(" ")}>
       <div className="teaser-box__wrapper-link">
         <ShadowBox smallPaddings className="teaser-box__link-inner">
           <div className="teaser-box__inner">
@@ -71,12 +74,12 @@ export const TeaserBoxList = props => {
     });
   }
 
-  const classes = ['teaser-box__list-wrapper'];
-  if (props.dummyData) classes.push('teaser-box__list-wrapper--dummy');
-  classes.push(props.className || '');
+  const classes = ["teaser-box__list-wrapper"];
+  if (props.dummyData) classes.push("teaser-box__list-wrapper--dummy");
+  classes.push(props.className || "");
 
   return (
-    <LayoutScroll className={classes.join(' ')} stretchItems>
+    <LayoutScroll className={classes.join(" ")} stretchItems>
       {resources}
     </LayoutScroll>
   );
