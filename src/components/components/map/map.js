@@ -1,8 +1,8 @@
-import './map.scss';
+import "./map.scss";
 
-import React from 'react';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
-import { ClubTeaser } from './../club-teaser-list/club-teaser-list';
+import React from "react";
+import { Map, Marker, Popup, TileLayer } from "react-leaflet";
+import { ClubTeaser } from "./../club-teaser-list/club-teaser-list";
 
 // local modules
 // styles
@@ -12,7 +12,7 @@ class ClubMap extends React.Component {
 
     this.state = {
       clubs: this.props.clubs || [],
-      bounds: [['25.3345123', '-99.5218668'], ['38.3345123', '-80.5218668']]
+      bounds: [["25.3345123", "-99.5218668"], ["38.3345123", "-80.5218668"]]
     };
   }
 
@@ -41,8 +41,8 @@ class ClubMap extends React.Component {
     // Ensure valid bounds with no or one result.
     boundsArray.length < 1
       ? (boundsArray = [
-          ['25.3345123', '-99.5218668'],
-          ['38.3345123', '-80.5218668']
+          ["25.3345123", "-99.5218668"],
+          ["38.3345123", "-80.5218668"]
         ])
       : boundsArray.length < 2 &&
         boundsArray.push(
@@ -76,15 +76,15 @@ class ClubMap extends React.Component {
     return (
       <div
         style={{
-          height: '400px',
-          overflow: 'hidden',
-          minWidth: '200px',
-          display: 'inline-block',
-          width: '100%'
+          height: "400px",
+          overflow: "hidden",
+          minWidth: "200px",
+          display: "inline-block",
+          width: "100%"
         }}
         className="map"
       >
-        <Map bounds={bounds} style={{ height: '400px' }}>
+        <Map bounds={bounds} style={{ height: "400px" }}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

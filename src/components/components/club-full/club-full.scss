@@ -8,6 +8,12 @@
 */
 
 .club-full {
+  .button {
+    svg {
+      margin-right: 4px;
+    }
+  }
+
   &__cover-wrapper {
     @include margin-top(-50px);
     @include margin-bottom(90px);
@@ -41,17 +47,16 @@
   }
 
   &__title {
-
     @include breakpoint($mobile) {
-
       @include margin-top(11px);
-
     }
   }
 
   &__subtitle {
     @include font-size(20px);
     color: color('grey-dark');
+    line-height: 1.15;
+    margin: 0;
   }
 
   &__description {
@@ -91,7 +96,6 @@
       left: auto;
       transform: none;
       top: -90px;
-
     }
   }
 
@@ -108,15 +112,10 @@
     @include breakpoint($desktop) {
       @include margin-top(1.1);
     }
-
-    h2:not(:first-child)  {
-      @include margin-top(2);
-    }
   }
 
   // The become a member button.
   &__cta.button {
-    @include padding-left(50px);
     @include margin-bottom(20px);
     @include padding-top(20px);
     @include padding-bottom(20px);
@@ -127,28 +126,14 @@
     border-radius: 0;
     background-color: color('brand');
     color: color('seafoam-blue');
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.25);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.25);
     position: relative;
     display: block;
+    text-align: center;
 
     &:hover {
       background-color: color('seafoam-blue');
       color: color('brand');
-    }
-
-    @include breakpoint($mobile) {
-      @include padding-left(65px);
-    }
-  }
-
-  &__cta-icon {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-
-    @include breakpoint($mobile) {
-      left: 30px;
     }
   }
 
@@ -179,7 +164,7 @@
       height: 86px;
       width: 138px;
       transform: rotate(15deg);
-      opacity: .15;
+      opacity: 0.15;
       bottom: -50px;
       right: -40px;
 
@@ -212,7 +197,6 @@
     &:hover {
       padding: 5px 10px;
     }
-
   }
 
   &__login {
@@ -227,8 +211,8 @@
     width: 100%;
 
     input {
-     width: 100%;
-   }
+      width: 100%;
+    }
   }
 
   &__button-list {
