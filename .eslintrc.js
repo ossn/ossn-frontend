@@ -9,12 +9,13 @@ module.exports = {
     "prettier/standard",
     "plugin:prettier/recommended"
   ],
-  plugins: ["standard", "react", "jsx-a11y", "prettier"],
+  plugins: ["standard", "react", "jsx-a11y", "prettier", "react-hooks"],
   rules: {
     "react/prop-types": 0,
     "react/display-name": 0,
     "no-unused-vars": "error",
     "prettier/prettier": "error",
+    "react-hooks/rules-of-hooks": "error",
     "no-var": "error" // optional, recommended when using es6+
   },
   parser: "babel-eslint",
