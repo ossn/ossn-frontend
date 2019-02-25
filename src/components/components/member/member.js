@@ -199,7 +199,8 @@ class Member extends React.PureComponent {
     this.props.client
       .mutate({
         variables: {
-          ...this.state
+          ...this.state,
+          clubs: this.state.clubs.map(club => club.id)
         },
         mutation: editUserMutation
       })
