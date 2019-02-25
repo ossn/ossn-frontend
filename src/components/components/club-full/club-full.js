@@ -1,24 +1,24 @@
-import { navigate } from 'gatsby';
-import compose from 'immer';
-import { setWith } from 'lodash';
-import React, { useEffect, useState } from 'react';
-import { withApollo } from 'react-apollo';
-import { Check, Feather, PlusCircle, X } from 'react-feather';
-import ReactMarkdown from 'react-markdown';
-import { connect } from 'react-redux';
+import { navigate } from "gatsby";
+import { produce } from "immer";
+import { set } from "lodash";
+import React, { useEffect, useState } from "react";
+import { withApollo } from "react-apollo";
+import { Check, Feather, PlusCircle, X } from "react-feather";
+import ReactMarkdown from "react-markdown";
+import { connect } from "react-redux";
 
-import GatsbyConfig from '../../../../gatsby-config';
-import clubCover from '../../../images/ClubCover.png';
-import groupSmallImage from '../../../images/group-small.jpg';
-import TextInput from '../../forms/text-input/text-input';
-import { LoginLink } from '../../layouts/auth-wrapper/auth-wrapper';
-import Layout2ColsUnequal from '../../layouts/layout-2col-unequal/layout-2col-unequal';
-import LayoutContained from '../../layouts/layout-contained/layout-contained';
-import ClubInfo from '../club-info/club-info';
-import MemberList from '../member-list/member-list';
-import Shape from '../shape/shape';
-import './club-full.scss';
-import * as queries from './queries';
+import GatsbyConfig from "../../../../gatsby-config";
+import clubCover from "../../../images/ClubCover.png";
+import groupSmallImage from "../../../images/group-small.jpg";
+import TextInput from "../../forms/text-input/text-input";
+import { LoginLink } from "../../layouts/auth-wrapper/auth-wrapper";
+import Layout2ColsUnequal from "../../layouts/layout-2col-unequal/layout-2col-unequal";
+import LayoutContained from "../../layouts/layout-contained/layout-contained";
+import ClubInfo from "../club-info/club-info";
+import MemberList from "../member-list/member-list";
+import Shape from "../shape/shape";
+import "./club-full.scss";
+import * as queries from "./queries";
 
 /**
  * Detailed view of a club including related events and members
@@ -36,7 +36,7 @@ function ClubFull(props) {
    * Fetches the club resource and updates the state
    */
   useEffect(() => {
-    const [id] = window.location.pathname.split('/').slice(-1);
+    const [id] = window.location.pathname.split("/").slice(-1);
 
     getClub(id).then(updateClub);
   }, []);
@@ -60,7 +60,7 @@ function ClubFull(props) {
       if (user) {
         setIsMember(true);
 
-        if (['admin', 'club_owner'].includes(user.role)) {
+        if (["admin", "club_owner"].includes(user.role)) {
           setIsOwner(true);
         }
       }
@@ -85,12 +85,9 @@ function ClubFull(props) {
    */
   function handleChange(event) {
     setClub(
-      compose(
-        club,
-        function(draftClub) {
-          setWith(draftClub, event.target.name, event.target.value);
-        }
-      )
+      produce(club, function(draftClub) {
+        set(draftClub, event.target.name, event.target.value);
+      })
     );
   }
 
@@ -101,7 +98,7 @@ function ClubFull(props) {
     const { events, location, users, ...rest } = club;
 
     const { data } = await props.client.mutate({
-      fetchPolicy: 'no-cache',
+      fetchPolicy: "no-cache",
       mutation: queries.EDIT_CLUB,
       variables: { ...location, ...rest }
     });
@@ -136,15 +133,15 @@ function ClubFull(props) {
   async function getClub(id) {
     try {
       const { data } = await props.client.query({
-        fetchPolicy: 'no-cache',
+        fetchPolicy: "no-cache",
         query: queries.GET_CLUB,
         variables: { id }
       });
 
       return data.club;
     } catch (error) {
-      if (error.toString() == 'Error: GraphQL error: record not found') {
-        navigate('/404');
+      if (error.toString() == "Error: GraphQL error: record not found") {
+        navigate("/404");
       }
     }
   }
@@ -186,14 +183,14 @@ function ClubFull(props) {
                   label="Title"
                   name="name"
                   onChange={handleChange}
-                  value={club.name || ''}
+                  value={club.name || ""}
                 />
 
                 <TextInput
                   label="Subtitle"
                   name="sortDescription"
                   onChange={handleChange}
-                  value={club.sortDescription || ''}
+                  value={club.sortDescription || ""}
                 />
               </>
             ) : (
@@ -234,47 +231,47 @@ function ClubFull(props) {
                 label="Address"
                 name="location[address]"
                 onChange={handleChange}
-                value={(club.location || {}).address || ''}
+                value={(club.location || {}).address || ""}
                 multiline
               />
               <TextInput
                 label="Latitude"
                 name="location[lat]"
                 onChange={handleChange}
-                value={(club.location || {}).lat || ''}
+                value={(club.location || {}).lat || ""}
               />
               <TextInput
                 label="Longitude"
                 name="location[lng]"
                 onChange={handleChange}
-                value={(club.location || {}).lng || ''}
+                value={(club.location || {}).lng || ""}
               />
               <TextInput
                 label="Email"
                 name="email"
                 onChange={handleChange}
-                value={club.email || ''}
+                value={club.email || ""}
               />
               <TextInput
                 label="Github URL"
                 name="github"
                 onChange={handleChange}
-                value={club.github || ''}
+                value={club.github || ""}
               />
               <TextInput
                 label="Club URL"
                 name="clubUrl"
                 onChange={handleChange}
-                value={club.clubUrl || ''}
+                value={club.clubUrl || ""}
               />
             </div>
           ) : (
             <ClubInfo
               club={{
                 address: (club.location || {}).address,
-                clubUrl: club.clubUrl || '',
-                email: club.email || '',
-                github: club.githubUrl || ''
+                clubUrl: club.clubUrl || "",
+                email: club.email || "",
+                github: club.githubUrl || ""
               }}
             />
           )}
@@ -288,14 +285,14 @@ function ClubFull(props) {
                 label="Banner image URL"
                 name="bannerImageUrl"
                 onChange={handleChange}
-                value={club.bannerImageUrl || ''}
+                value={club.bannerImageUrl || ""}
               />
               <h2>Club image URL</h2>
               <TextInput
                 label="Club image URL"
                 name="imageUrl"
                 onChange={handleChange}
-                value={club.imageUrl || ''}
+                value={club.imageUrl || ""}
               />
             </>
           )}
@@ -308,7 +305,7 @@ function ClubFull(props) {
                 multiline
                 name="description"
                 onChange={handleChange}
-                value={club.description || ''}
+                value={club.description || ""}
               />
               <h2>Code of conduct</h2>
               <TextInput
@@ -316,7 +313,7 @@ function ClubFull(props) {
                 multiline
                 name="codeOfConduct"
                 onChange={handleChange}
-                value={club.codeOfConduct || ''}
+                value={club.codeOfConduct || ""}
               />
             </>
           ) : (
@@ -324,13 +321,13 @@ function ClubFull(props) {
               {club.description && (
                 <>
                   <h2>Description</h2>
-                  <ReactMarkdown source={club.description || ''} />
+                  <ReactMarkdown source={club.description || ""} />
                 </>
               )}
               {club.codeOfConduct && (
                 <>
                   <h2>Code of conduct</h2>
-                  <ReactMarkdown source={club.codeOfConduct || ''} />
+                  <ReactMarkdown source={club.codeOfConduct || ""} />
                 </>
               )}
             </>
