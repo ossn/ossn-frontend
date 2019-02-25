@@ -200,7 +200,7 @@ class Member extends React.PureComponent {
       .mutate({
         variables: {
           ...this.state,
-          clubs: this.state.clubs.map(club => club.id)
+          clubs: this.state.clubsToPreserve
         },
         mutation: editUserMutation
       })
