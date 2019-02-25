@@ -25,25 +25,14 @@ import "./club-info.scss";
 export class ClubInfoItem extends React.PureComponent {
   render() {
     let classes = ["club-info__item"];
-    let link = this.props.link;
     if (this.props.major) classes.push("club-info__item--major");
-    if (this.props.map) {
-      classes.push("club-info__item--map");
-      if (this.props.lng && this.props.lat) {
-        link =
-          "https://www.openstreetmap.org/directions?from=&to=" +
-          this.props.lat +
-          "%2C" +
-          this.props.lng +
-          "&zoom=8";
-      }
-    }
+    if (this.props.map) classes.push("club-info__item--map");
 
     let content;
-    if (link) {
+    if (this.props.link) {
       content = (
         <a
-          href={link}
+          href={this.props.link}
           target="_blank"
           rel="noopener noreferrer"
           className={classes.join(" ")}
@@ -66,13 +55,31 @@ export class ClubInfoItem extends React.PureComponent {
 }
 
 /* Wrappers for cleaner code */
-const LocationInfo = ({ location, lng, lat }) => (
-  <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--map">
-    <ClubInfoItem major map lng={lng} lat={lat}>
-      <Map value={location} />
-    </ClubInfoItem>
-  </li>
-);
+const LocationInfo = ({ location, lng, lat }) => {
+  if (lng && lat) {
+    const link =
+      "https://www.openstreetmap.org/directions?from=&to=" +
+      lat +
+      "%2C" +
+      lng +
+      "&zoom=8";
+
+    return (
+      <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--map">
+        <ClubInfoItem major map link={link}>
+          <Map value={location} />
+        </ClubInfoItem>
+      </li>
+    );
+  }
+  return (
+    <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--map">
+      <ClubInfoItem major map>
+        <Map value={location} />
+      </ClubInfoItem>
+    </li>
+  );
+};
 
 const GithubInfo = ({ github }) => (
   <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--graph">
@@ -128,24 +135,14 @@ export default class ClubInfo extends React.PureComponent {
   }
 
   render() {
-    const address = this.props.club.address;
-    const lng = this.props.club.lng;
-    const lat = this.props.club.lat;
-    const github = this.props.club.github;
-    const webpage = this.props.club.clubUrl;
-    const email = this.props.club.email;
-
+    const { lng, lat, github, webpage, email, address } = this.props.club;
     return (
       <ShadowBox zeroPadding className="club-info__wrapper">
         <ul className="club-info">
-          {address ? (
-            <LocationInfo location={address} lng={lng} lat={lat} />
-          ) : (
-            ""
-          )}
-          {github ? <GithubInfo github={github} /> : ""}
-          {webpage ? <WebpageInfo webpage={webpage} /> : ""}
-          {email ? <EmailInfo email={email} /> : ""}
+          {address && <LocationInfo location={address} lng={lng} lat={lat} />}
+          {github && <GithubInfo github={github} />}
+          {webpage && <WebpageInfo webpage={webpage} />}
+          {email && <EmailInfo email={email} />}
 
           {this.getEvents()}
         </ul>
