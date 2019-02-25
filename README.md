@@ -19,7 +19,10 @@ Welcome to Open Source Student Network page repository!
 ### <a name="develop"></a> Develop
 1. At the repository directory run `nvm use`.
 2. Open development server. Run `npm run develop`.
-- The page will be available at [localhost:8000](htpp://localhost:8000) by default
+   - The page will be available at [localhost:8000](htpp://localhost:8000) by default.
+3. Login to the development page is available through the url: https://dev.ossn.club/api/v1.0/oidc/login. 
+After login you will be redirected to [localhost:8000](htpp://localhost:8000).
+  
 
 ### <a name="build"></a> Build
 
