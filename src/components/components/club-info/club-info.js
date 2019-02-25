@@ -25,14 +25,25 @@ import "./club-info.scss";
 export class ClubInfoItem extends React.PureComponent {
   render() {
     let classes = ["club-info__item"];
+    let link = this.props.link;
     if (this.props.major) classes.push("club-info__item--major");
-    if (this.props.map) classes.push("club-info__item--map");
+    if (this.props.map) {
+      classes.push("club-info__item--map");
+      if (this.props.lng && this.props.lat) {
+        link =
+          "https://www.openstreetmap.org/directions?from=&to=" +
+          this.props.lat +
+          "%2C" +
+          this.props.lng +
+          "&zoom=8";
+      }
+    }
 
     let content;
-    if (this.props.link) {
+    if (link) {
       content = (
         <a
-          href={this.props.link}
+          href={link}
           target="_blank"
           rel="noopener noreferrer"
           className={classes.join(" ")}
@@ -55,9 +66,9 @@ export class ClubInfoItem extends React.PureComponent {
 }
 
 /* Wrappers for cleaner code */
-const LocationInfo = ({ location }) => (
+const LocationInfo = ({ location, lng, lat }) => (
   <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--map">
-    <ClubInfoItem major map>
+    <ClubInfoItem major map lng={lng} lat={lat}>
       <Map value={location} />
     </ClubInfoItem>
   </li>
@@ -118,6 +129,8 @@ export default class ClubInfo extends React.PureComponent {
 
   render() {
     const address = this.props.club.address;
+    const lng = this.props.club.lng;
+    const lat = this.props.club.lat;
     const github = this.props.club.github;
     const webpage = this.props.club.clubUrl;
     const email = this.props.club.email;
@@ -125,7 +138,11 @@ export default class ClubInfo extends React.PureComponent {
     return (
       <ShadowBox zeroPadding className="club-info__wrapper">
         <ul className="club-info">
-          {address ? <LocationInfo location={address} /> : ""}
+          {address ? (
+            <LocationInfo location={address} lng={lng} lat={lat} />
+          ) : (
+            ""
+          )}
           {github ? <GithubInfo github={github} /> : ""}
           {webpage ? <WebpageInfo webpage={webpage} /> : ""}
           {email ? <EmailInfo email={email} /> : ""}
