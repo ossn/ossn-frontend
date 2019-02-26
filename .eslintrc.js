@@ -21,5 +21,8 @@ module.exports = {
   parser: "babel-eslint",
   parserOptions: {
     ecmaVersion: 8 // optional, recommended 6+
+  },
+  globals: {
+    localStorage: true
   }
 };
