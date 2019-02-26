@@ -54,13 +54,31 @@ export class ClubInfoItem extends React.PureComponent {
 }
 
 /* Wrappers for cleaner code */
-const LocationInfo = ({ location }) => (
-  <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--map">
-    <ClubInfoItem major map>
-      <Map value={location} />
-    </ClubInfoItem>
-  </li>
-);
+const LocationInfo = ({ location, lng, lat }) => {
+  if (lng && lat) {
+    const link =
+      "https://www.openstreetmap.org/directions?from=&to=" +
+      lat +
+      "%2C" +
+      lng +
+      "&zoom=8";
+
+    return (
+      <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--map">
+        <ClubInfoItem major map link={link}>
+          <Map value={location} />
+        </ClubInfoItem>
+      </li>
+    );
+  }
+  return (
+    <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--map">
+      <ClubInfoItem major map>
+        <Map value={location} />
+      </ClubInfoItem>
+    </li>
+  );
+};
 
 const GithubInfo = ({ github }) => (
   <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--graph">
@@ -116,16 +134,14 @@ export default class ClubInfo extends React.PureComponent {
   }
 
   render() {
-    const { address, webpage, email, githubUrl } = this.props.club;
-
+    const { lng, lat, githubUrl, webpage, email, address } = this.props.club;
     return (
       <ShadowBox zeroPadding className="club-info__wrapper">
         <ul className="club-info">
-          {address ? <LocationInfo location={address} /> : ""}
-          {githubUrl ? <GithubInfo github={githubUrl} /> : ""}
-          {webpage ? <WebpageInfo webpage={webpage} /> : ""}
-          {email ? <EmailInfo email={email} /> : ""}
-
+          {address && <LocationInfo location={address} lng={lng} lat={lat} />}
+          {githubUrl && <GithubInfo github={githubUrl} />}
+          {webpage && <WebpageInfo webpage={webpage} />}
+          {email && <EmailInfo email={email} />}
           {this.getEvents()}
         </ul>
         <Shape square seafoamBlue className="club-info__shape-square" />

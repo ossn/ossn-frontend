@@ -276,6 +276,8 @@ function ClubFull(props) {
             <ClubInfo
               club={{
                 address: (club.location || {}).address,
+                lng: (club.location || {}).lng,
+                lat: (club.location || {}).lat,
                 clubUrl: club.clubUrl || "",
                 email: club.email || "",
                 githubUrl: club.githubUrl || ""

@@ -16,6 +16,11 @@
 
   a {
     color: color('black');
+
+    &:hover,
+    &:focus {
+      color: color(brand);
+    }
   }
 
   &__wrapper {
@@ -30,17 +35,10 @@
   }
 
   &__item-wrapper {
-    @include padding-top(9px);
-    @include padding-bottom(10px);
     display: flex;
     position: relative;
     z-index: 2;
     background-color: color('white');
-
-    @include breakpoint($desktop) {
-      @include padding-top(18px);
-      @include padding-bottom(20px);
-    }
 
     &::after {
       content: '';
@@ -52,15 +50,18 @@
     }
 
     &--major {
-      @include padding-top(19px);
-      @include padding-bottom(20px);
       background-repeat: no-repeat;
       background-size: auto 100%;
       background-position: right;
 
-      @include breakpoint($desktop) {
-        @include padding-top(38px);
-        @include padding-bottom(41px);
+      .club-info__item {
+        @include padding-top(19px);
+        @include padding-bottom(20px);
+
+        @include breakpoint($desktop) {
+          @include padding-top(38px);
+          @include padding-bottom(41px);
+        }
       }
     }
 
@@ -80,6 +81,8 @@
   }
 
   &__item {
+    @include padding-top(9px);
+    @include padding-bottom(10px);
     width: 100%;
     min-height: 100%;
     display: flex;
@@ -88,6 +91,11 @@
 
     @include breakpoint($mobile) {
       @include padding-left(65px);
+    }
+
+    @include breakpoint($desktop) {
+      @include padding-top(18px);
+      @include padding-bottom(20px);
     }
 
     &--map {
