@@ -4,8 +4,8 @@ const isProd = ["prod", "production"].includes(
   (process.env.ENV || process.env.env || "").toLowerCase()
 );
 
-console.log(process.env.ENV, process.env.ACTIVE_ENV, 'gatsby-config');
-
+console.log(process.env.ENV, process.env.ACTIVE_ENV, "gatsby-config");
+console.log(isProd, "gatsby-config2");
 const BACKEND_URL = isProd
   ? "https://backend.ossn.club"
   : "https://dev-api.ossn.club"; // 'http://localhost:8080';
