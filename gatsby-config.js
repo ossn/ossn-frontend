@@ -1,11 +1,18 @@
 const path = require("path");
 
+// Returns true only in production enviroment.
 const isProd = ["prod", "production"].includes(
   (process.env.ENV || process.env.env || "").toLowerCase()
 );
 
+// Returns true in production build.
+const isProdBuild = ["prod", "production"].includes(
+  (process.env.NODE_ENV || process.env.env || "").toLowerCase()
+);
+
 console.log(process.env.ENV, process.env.ACTIVE_ENV, process.env.NODE_ENV, "gatsby-config");
-console.log(isProd, "gatsby-config2");
+console.log(isProd, "gatsby-config2 isProd");
+console.log(isProdBuild, "gatsby-config2 isProdBuild");
 const BACKEND_URL = isProd
   ? "https://backend.ossn.club"
   : "https://dev-api.ossn.club"; // 'http://localhost:8080';
