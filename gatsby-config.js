@@ -5,17 +5,17 @@ const isProd = ["prod", "production"].includes(
   (process.env.ENV || process.env.env || "").toLowerCase()
 );
 
-// Returns true in production build.
+// Returns true in production build, we use it in preview as well to fetch the
+// right backend content.
 const isProdBuild = ["prod", "production"].includes(
   (process.env.NODE_ENV || process.env.env || "").toLowerCase()
 );
 
-console.log(process.env.ENV, process.env.ACTIVE_ENV, process.env.NODE_ENV, "gatsby-config");
-console.log(isProd, "gatsby-config2 isProd");
-console.log(isProdBuild, "gatsby-config2 isProdBuild");
-const BACKEND_URL = isProd
+const BACKEND_URL = isProdBuild
   ? "https://backend.ossn.club"
-  : "https://dev-api.ossn.club"; // 'http://localhost:8080';
+  : "https://dev-api.ossn.club";
+
+const GA_TRACKING_ID = isProd ? "UA-84301250-21" : "";
 
 module.exports = {
   proxy: {
@@ -91,6 +91,19 @@ module.exports = {
           emitWarning: true,
           failOnError: false
         }
+      }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: GA_TRACKING_ID,
+        // Puts tracking script in the head instead of the body
+        head: true,
+        // Setting this parameter is optional
+        anonymize: true,
+        // Google Analytics will not be loaded at all for visitors that have
+        // “Do Not Track” enabled.
+        respectDNT: true
       }
     }
   ]

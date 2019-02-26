@@ -11,9 +11,6 @@ import safari from "./favicon/safari-pinned-tab.svg";
 export const activeEnv =
   process.env.ACTIVE_ENV || process.env.NODE_ENV || "development";
 
-console.log(process.env.ENV, process.env.ACTIVE_ENV, "settings");
-console.log(activeEnv, "settings2");
-
 export const metadata = [
   meta("msapplication-TileColor", "#000000"),
   meta("theme-color", "#ffffff")
