@@ -88,10 +88,10 @@ const GithubInfo = ({ github }) => (
   </li>
 );
 
-const WebpageInfo = ({ webpage }) => (
+const WebpageInfo = ({ clubUrl }) => (
   <li className="club-info__item-wrapper">
-    <ClubInfoItem link={webpage}>
-      <Link value={webpage} />
+    <ClubInfoItem link={clubUrl}>
+      <Link value={clubUrl} />
     </ClubInfoItem>
   </li>
 );
@@ -134,13 +134,13 @@ export default class ClubInfo extends React.PureComponent {
   }
 
   render() {
-    const { lng, lat, githubUrl, webpage, email, address } = this.props.club;
+    const { lng, lat, githubUrl, clubUrl, email, address } = this.props.club;
     return (
       <ShadowBox zeroPadding className="club-info__wrapper">
         <ul className="club-info">
           {address && <LocationInfo location={address} lng={lng} lat={lat} />}
           {githubUrl && <GithubInfo github={githubUrl} />}
-          {webpage && <WebpageInfo webpage={webpage} />}
+          {clubUrl && <WebpageInfo clubUrl={clubUrl} />}
           {email && <EmailInfo email={email} />}
           {this.getEvents()}
         </ul>
