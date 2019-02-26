@@ -1,22 +1,21 @@
-/*
-  Contains the `ClubInfo`  and `ClubInfoItem` components.
-*/
+import "./club-info.scss";
 
 import React from "react";
 import MediaQuery from "react-responsive";
 
-import ShadowBox from "./../shadow-box/shadow-box";
 import {
+  Email,
+  Event,
   Github,
   Link,
-  Event,
-  Map,
-  Email
+  Map
 } from "./../formated-text/formated-text";
+import ShadowBox from "./../shadow-box/shadow-box";
 import Shape from "./../shape/shape";
 
-import "./club-info.scss";
-
+/*
+  Contains the `ClubInfo`  and `ClubInfoItem` components.
+*/
 /*
   An Item of the list
   props:
@@ -117,16 +116,13 @@ export default class ClubInfo extends React.PureComponent {
   }
 
   render() {
-    const address = this.props.club.address;
-    const github = this.props.club.github;
-    const webpage = this.props.club.clubUrl;
-    const email = this.props.club.email;
+    const { address, webpage, email, githubUrl } = this.props.club;
 
     return (
       <ShadowBox zeroPadding className="club-info__wrapper">
         <ul className="club-info">
           {address ? <LocationInfo location={address} /> : ""}
-          {github ? <GithubInfo github={github} /> : ""}
+          {githubUrl ? <GithubInfo github={githubUrl} /> : ""}
           {webpage ? <WebpageInfo webpage={webpage} /> : ""}
           {email ? <EmailInfo email={email} /> : ""}
 
