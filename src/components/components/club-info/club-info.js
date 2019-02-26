@@ -139,7 +139,7 @@ export default class ClubInfo extends React.PureComponent {
       <ShadowBox zeroPadding className="club-info__wrapper">
         <ul className="club-info">
           {address && <LocationInfo location={address} lng={lng} lat={lat} />}
-          {github && <GithubInfo github={githubUrl} />}
+          {githubUrl && <GithubInfo github={githubUrl} />}
           {webpage && <WebpageInfo webpage={webpage} />}
           {email && <EmailInfo email={email} />}
           {this.getEvents()}
