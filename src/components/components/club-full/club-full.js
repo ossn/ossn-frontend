@@ -1,3 +1,5 @@
+import "./club-full.scss";
+
 import { navigate } from "gatsby";
 import compose from "immer";
 import { setWith } from "lodash";
@@ -17,7 +19,6 @@ import LayoutContained from "../../layouts/layout-contained/layout-contained";
 import ClubInfo from "../club-info/club-info";
 import MemberList from "../member-list/member-list";
 import Shape from "../shape/shape";
-import "./club-full.scss";
 import * as queries from "./queries";
 
 /**
@@ -31,13 +32,15 @@ function ClubFull(props) {
   const [editing, setEditing] = useState(false);
   const [isMember, setIsMember] = useState(false);
   const [isOwner, setIsOwner] = useState(false);
+  const [history, setHistory] = useState(props.club);
 
   /**
    * Fetches the club resource and updates the state
    */
-  useEffect(() => {
-    const [id] = window.location.pathname.split("/").slice(-1);
 
+  useEffect(() => {
+    const path = window.location.pathname.split("/");
+    const id = (props.club || {}).id || path[path.indexOf("clubs") + 1];
     getClub(id).then(updateClub);
   }, []);
 
@@ -74,6 +77,7 @@ function ClubFull(props) {
    */
   function handleClick(editing) {
     return function() {
+      editing ? setHistory(club) : setClub(history);
       setEditing(editing);
     };
   }
@@ -138,7 +142,7 @@ function ClubFull(props) {
       const { data } = await props.client.query({
         fetchPolicy: "no-cache",
         query: queries.GET_CLUB,
-        variables: { id }
+        variables: { id: id.toString() }
       });
 
       return data.club;
@@ -276,7 +280,7 @@ function ClubFull(props) {
                 lat: (club.location || {}).lat,
                 clubUrl: club.clubUrl || "",
                 email: club.email || "",
-                github: club.githubUrl || ""
+                githubUrl: club.githubUrl || ""
               }}
             />
           )}
