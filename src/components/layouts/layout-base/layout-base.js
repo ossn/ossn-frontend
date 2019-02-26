@@ -4,7 +4,9 @@ import "./layout-base.scss";
 
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { ApolloClient } from "apollo-client";
+import { from } from "apollo-link";
 import { setContext } from "apollo-link-context";
+import { onError } from "apollo-link-error";
 import { HttpLink } from "apollo-link-http";
 import fetch from "node-fetch";
 import React from "react";
@@ -12,7 +14,7 @@ import { ApolloProvider } from "react-apollo";
 import { Helmet } from "react-helmet";
 import { Provider } from "react-redux";
 
-import { SESSION_ITEM } from "../../../shared/enums";
+import { AUTH_HEADER, SESSION_ITEM } from "../../../shared/enums";
 import GatsbyConfig from "./../../../../gatsby-config";
 import { BACKEND_URL, link, metadata } from "./../../../settings";
 import store from "./../../../store";
@@ -30,7 +32,7 @@ const authLink = setContext((_, req) => {
   if (token) {
     req.headers = {
       ...(req.headers || {}),
-      "X-Access-Token": token
+      [AUTH_HEADER]: token
       // Credentials: 'same-origin'
     };
   }
@@ -39,13 +41,33 @@ const authLink = setContext((_, req) => {
 
 const httpLink = new HttpLink({
   uri: `${BACKEND_URL}/query`,
-  fetch: fetch
-  // credentials: 'same-origin'
+  fetch
+});
+
+// Handle graphql errors
+const errorHandling = onError(({ networkError, operation, forward }) => {
+  if (networkError && networkError.message.includes("403")) {
+    // remove token from local storage
+    localStorage.removeItem(SESSION_ITEM);
+
+    // Get current headers
+    const headers = {
+      ...operation.getContext().headers
+    };
+    // Delete previous auth header
+    delete headers[AUTH_HEADER];
+
+    // Set headers to the new opertion
+    operation.setContext({ headers });
+
+    // retry the request, returning the new observable
+    return forward(operation);
+  }
 });
 
 const Basic = ({ children }) => {
   const client = new ApolloClient({
-    link: authLink.concat(httpLink),
+    link: from([authLink, errorHandling, httpLink]),
     cache: new InMemoryCache()
   });
 
