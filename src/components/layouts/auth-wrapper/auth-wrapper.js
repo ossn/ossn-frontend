@@ -32,13 +32,7 @@ export const LoginLink = props => {
       className={classes}
       href={`${BACKEND_URL}/oidc/login`}
       onClick={() => {
-        if (window) {
-          const url = window.location;
-          let curentUrl = `${url.pathname}/${url.search}`.replace("//", "/");
-
-          // eslint-disable-next-line no-undef
-          localStorage.setItem("last-visited", curentUrl);
-        }
+        saveCurrentLocation();
       }}
     >
       {label}
@@ -65,6 +59,17 @@ export const LogoutLink = props => {
       {label}
     </button>
   );
+};
+
+// stores the current url to the localStorage under the "last-visited" key
+const saveCurrentLocation = () => {
+  if (window) {
+    const url = window.location;
+    let curentUrl = `${url.pathname}/${url.search}`.replace("//", "/");
+
+    // eslint-disable-next-line no-undef
+    localStorage.setItem("last-visited", curentUrl);
+  }
 };
 
 // source
