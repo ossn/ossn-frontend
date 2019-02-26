@@ -37,9 +37,10 @@ function ClubFull(props) {
   /**
    * Fetches the club resource and updates the state
    */
-  useEffect(() => {
-    const [id] = window.location.pathname.split("/").slice(-1);
 
+  useEffect(() => {
+    const path = window.location.pathname.split("/");
+    const id = (props.club || {}).id || path[path.indexOf("clubs") + 1];
     getClub(id).then(updateClub);
   }, []);
 
