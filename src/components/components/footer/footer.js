@@ -1,30 +1,30 @@
 /*
  Contains the footer section.
  */
-import './footer.scss';
+import "./footer.scss";
 
-import React, { memo } from 'react';
-import { connect } from 'react-redux';
-import { mapUserToProps } from './../../../utils/redux-utils';
-import { Link } from 'gatsby';
-import MediaQuery from 'react-responsive';
-import LayoutContained from '../../layouts/layout-contained/layout-contained';
-import Navigation from '../../navigation/footer-navigation/footer-navigation';
+import React, { memo } from "react";
+import { connect } from "react-redux";
+import { mapUserToProps } from "./../../../utils/redux-utils";
+import { Link } from "gatsby";
+import MediaQuery from "react-responsive";
+import LayoutContained from "../../layouts/layout-contained/layout-contained";
+import Navigation from "../../navigation/footer-navigation/footer-navigation";
 
 const footerNavigationList2 = [
   {
-    title: 'Our blog',
-    target: 'https://opensource.mozilla.community',
+    title: "Our blog",
+    target: "https://opensource.mozilla.community",
     external: true
   },
   {
-    title: 'Facebook page',
-    target: 'https://opensource.mozilla.community',
+    title: "Facebook page",
+    target: "https://opensource.mozilla.community",
     external: true
   },
   {
-    title: 'Twitter page',
-    target: 'https://opensource.mozilla.community',
+    title: "Twitter page",
+    target: "https://opensource.mozilla.community",
     external: true
   }
 ];
@@ -32,33 +32,33 @@ const footerNavigationList2 = [
 const Footer = ({ user }) => {
   const footerNavigationList1 = [
     {
-      title: 'Clubs',
-      target: '/clubs'
+      title: "Clubs",
+      target: "/clubs"
     },
     {
-      title: 'Members',
-      target: '/members'
+      title: "Members",
+      target: "/members"
     },
     {
-      title: 'Opportunities',
-      target: '/contribute'
+      title: "Opportunities",
+      target: "/contribute"
     },
     user.user
       ? {
-          title: 'Logout',
+          title: "Logout",
           logout: true
         }
       : {
-          title: 'Log In/SignUp',
+          title: "Log In/SignUp",
           login: true
         },
     {
-      title: 'Affiliations',
-      target: '/organizations'
+      title: "Affiliations",
+      target: "/organizations"
     },
     {
-      title: 'About Us',
-      target: '/about'
+      title: "About Us",
+      target: "/about-us"
     }
   ];
 
@@ -113,7 +113,7 @@ const Footer = ({ user }) => {
           <div className="footer__legal">
             <p className="footer__licence">
               Portions of this content are ©1998–2018 by individual mozilla.org
-              contributors. Content available under a{' '}
+              contributors. Content available under a{" "}
               <a
                 rel="license noopener noreferrer"
                 href="https://www.mozilla.org/foundation/licensing/website-content/"

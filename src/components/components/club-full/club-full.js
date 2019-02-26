@@ -88,7 +88,7 @@ function ClubFull(props) {
       compose(
         club,
         function(draftClub) {
-          setWith(draftClub, event.target.name, event.target.value);
+          setWith(draftClub, event.target.name, event.target.value || "");
         }
       )
     );
@@ -257,9 +257,9 @@ function ClubFull(props) {
               />
               <TextInput
                 label="Github URL"
-                name="github"
+                name="githubUrl"
                 onChange={handleChange}
-                value={club.github || ""}
+                value={club.githubUrl || ""}
               />
               <TextInput
                 label="Club URL"

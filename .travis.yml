@@ -1,7 +1,10 @@
 language: node_js
 node_js:
   - "stable"
-cache:
-  directories:
-    - node_modules
+addons:
+  chrome: stable
 sudo: false
+
+after_script:
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then npm run lh -- https://deploy-preview-"$TRAVIS_PULL_REQUEST"--zen-euclid-6d318e.netlify.com; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then npm run lh -- https://ossn.club; fi'
