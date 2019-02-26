@@ -277,7 +277,7 @@ function ClubFull(props) {
                 address: (club.location || {}).address,
                 clubUrl: club.clubUrl || "",
                 email: club.email || "",
-                github: club.githubUrl || ""
+                githubUrl: club.githubUrl || ""
               }}
             />
           )}
