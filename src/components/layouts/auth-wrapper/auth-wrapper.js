@@ -93,7 +93,7 @@ class AuthWrapper extends React.PureComponent {
   };
 
   componentDidMount() {
-    let token =
+    const { token } = (parse(this.props.location.search) || {})
       parse(this.props.location.search) &&
       parse(this.props.location.search).token
         ? parse(this.props.location.search).token
