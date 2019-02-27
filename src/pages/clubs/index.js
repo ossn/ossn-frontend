@@ -75,7 +75,7 @@ class Clubs extends React.PureComponent {
 
     this.timer = setTimeout(() => {
       this.setState({
-        searchString: event.target.value,
+        searchString: value,
         firstLoad: true,
         shownClubs: [],
         cursor: null,
