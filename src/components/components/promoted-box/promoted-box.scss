@@ -30,9 +30,9 @@
     @include line-height(27px);
     font-family: $open-sans;
     font-weight: 600;
-    text-align: left;
     padding-bottom: 5px;
     letter-spacing: 0;
+    text-align: center;
   }
 
   &__content {
@@ -45,6 +45,7 @@
     counter-increment: step-counter;
     list-style: none;
     position: relative;
+    padding-left: 25px;
 
     &::before {
       content: counter(step-counter);
@@ -58,6 +59,8 @@
       display: inline-block;
       text-align: center;
       vertical-align: middle;
+      position: absolute;
+      left: 0;
     }
 
     @include breakpoint($mobile) {
