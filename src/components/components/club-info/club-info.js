@@ -116,15 +116,36 @@ const EventInfo = ({ event }) => (
 */
 export default class ClubInfo extends React.PureComponent {
   getEvents() {
+    const now = Math.round(new Date().getTime() / 1000);
+
     const eventList =
       this.props.club.events &&
-      this.props.club.events.map((event, i) => {
-        return (
-          <div key={i}>
-            <EventInfo event={event} id={i} />
-          </div>
-        );
-      });
+      this.props.club.events
+        .sort((a, b) => {
+          // a.startDate && b.startDate ? (a.startDate > b.a.startDate ? return -1 : return 1):
+          if (a.startDate && b.startDate) {
+            const aClosingDate = Math.max(a.startDate, a.endDate);
+            const bClosingDate = Math.max(b.startDate, b.endDate);
+            if (aClosingDate > now && bClosingDate < now) {
+              return -1;
+            } else if (aClosingDate < now && bClosingDate > now) {
+              return 1;
+            }
+
+            if (a.startDate > b.startDate) {
+              return -1;
+            } else {
+              return 1;
+            }
+          } else if (a.startDate) {
+            return -1;
+          } else {
+            return 1;
+          }
+        })
+        .map((event, i) => {
+          return <EventInfo event={event} key={event.id} />;
+        });
     return eventList;
   }
 

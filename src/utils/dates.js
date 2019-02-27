@@ -54,6 +54,38 @@ export const getMonthName = num => {
   }
 };
 
+// conver the `new Date().getMonth()` number to it's verbose representation.
+export const getMonthShortName = num => {
+  switch (num) {
+    case 0:
+      return "Jan";
+    case 1:
+      return "Feb";
+    case 2:
+      return "Mar";
+    case 3:
+      return "Apr";
+    case 4:
+      return "May";
+    case 5:
+      return "Jun";
+    case 6:
+      return "Jul";
+    case 7:
+      return "Aug";
+    case 8:
+      return "Sept";
+    case 9:
+      return "Oct";
+    case 10:
+      return "Nov";
+    case 11:
+      return "Dec";
+    default:
+      return "ERROR parsing month ";
+  }
+};
+
 // project specific.
 // get the date string from the announcements and job listing
 export const verboseDate = timestamp => {
@@ -66,7 +98,7 @@ export const verboseDate = timestamp => {
 
 export const shortDate = timestamp => {
   const date = new Date(timestamp * 1000);
-  const shortDayName = getDayName(date.getDay());
-  const shortMonthName = date.getMonth() + 1;
-  return `${shortDayName}, ${shortMonthName} ${date.getFullYear()}`;
+  const shortDayName = date.getDate();
+  const shortMonthName = getMonthShortName(date.getMonth());
+  return `${shortDayName} ${shortMonthName} ${date.getFullYear()}`;
 };
