@@ -34,6 +34,7 @@ class Clubs extends React.PureComponent {
      hasNextPage (boolean): A flaf to store the apollo hasNextPage.
      */
     super(props);
+
     this.state = {
       view: "list",
       searchString: null,
@@ -45,7 +46,8 @@ class Clubs extends React.PureComponent {
       number: 12,
       listClubNumber: 12
     };
-    this.handleSearch = this.handleSearch.bind(this);
+
+    this.timer = 0;
   }
 
   // State management functions. Used by children components.
@@ -66,14 +68,21 @@ class Clubs extends React.PureComponent {
   };
 
   handleSearch = event => {
-    this.setState({
-      searchString: event.target.value,
-      firstLoad: true,
-      shownClubs: [],
-      cursor: null,
-      hasNextPage: false,
-      number: this.state.view === "map" ? 100 : 12
-    });
+    const target = event.target;
+    const value = target.value;
+
+    clearInterval(this.timer);
+
+    this.timer = setTimeout(() => {
+      this.setState({
+        searchString: value,
+        firstLoad: true,
+        shownClubs: [],
+        cursor: null,
+        hasNextPage: false,
+        number: this.state.view === "map" ? 100 : 12
+      });
+    }, 300);
   };
 
   // the definition of the query.
