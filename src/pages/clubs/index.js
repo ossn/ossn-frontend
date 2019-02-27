@@ -51,11 +51,11 @@ class Clubs extends React.PureComponent {
   // State management functions. Used by children components.
   handleToggleMap = () => {
     this.setState(state => ({
-      view: this.state.view === "map" ? "list" : "map",
+      view: state.view === "map" ? "list" : "map",
       number:
-        this.state.view === "map"
-          ? this.state.listClubNumber <= 100
-            ? this.state.listClubNumber
+        state.view === "map"
+          ? state.listClubNumber <= 100
+            ? state.listClubNumber
             : 100
           : 100,
       shownClubs: [],
