@@ -63,3 +63,10 @@ export const verboseDate = timestamp => {
   const suffixedDate = numberWithSuffix(date.getDate());
   return `${verboseDayName}, ${verboseMonthName} ${suffixedDate} ${date.getFullYear()}`;
 };
+
+export const shortDate = timestamp => {
+  const date = new Date(timestamp * 1000);
+  const shortDayName = getDayName(date.getDay());
+  const shortMonthName = date.getMonth() + 1;
+  return `${shortDayName}, ${shortMonthName} ${date.getFullYear()}`;
+};

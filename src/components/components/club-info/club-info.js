@@ -5,13 +5,13 @@ import MediaQuery from "react-responsive";
 
 import {
   Email,
-  Event,
   Github,
   Link,
   Map
 } from "./../formated-text/formated-text";
 import ShadowBox from "./../shadow-box/shadow-box";
 import Shape from "./../shape/shape";
+import Event from "../event/event";
 
 /*
   Contains the `ClubInfo`  and `ClubInfoItem` components.
@@ -107,7 +107,7 @@ const EmailInfo = ({ email }) => (
 const EventInfo = ({ event }) => (
   <li className="club-info__item-wrapper">
     <ClubInfoItem>
-      <Event value={event.title} secondary={event.sortDescription} />
+      <Event event={event}/>
     </ClubInfoItem>
   </li>
 );

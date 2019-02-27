@@ -1,8 +1,8 @@
-import React from 'react';
 import './formated-text.scss';
+
+import React from 'react';
 import {
   GitHub as GithubIcon,
-  Calendar as CalendarIcon,
   Link as LinkIcon,
   Map as MapIcon,
   AtSign
@@ -56,18 +56,6 @@ export class Text extends React.PureComponent {
   render() {
     const value = this.props.value;
     return <FormatedText prefix="" value={value} />;
-  }
-}
-
-// shortcut wrapper for events.
-export class Event extends React.PureComponent {
-  render() {
-    const value = this.props.value;
-    const secondary = this.props.secondary;
-
-    return (
-      <FormatedText value={value} secondary={secondary} icon={CalendarIcon} />
-    );
   }
 }
 
