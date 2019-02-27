@@ -82,7 +82,7 @@ class Clubs extends React.PureComponent {
         hasNextPage: false,
         number: this.state.view === "map" ? 100 : 12
       });
-    }, 500);
+    }, 300);
   };
 
   // the definition of the query.

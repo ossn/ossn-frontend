@@ -88,7 +88,7 @@ class Members extends React.PureComponent {
         hasNextPage: false,
         totalCount: 0
       });
-    }, 500);
+    }, 300);
   };
 
   // Updates the number of members that are being shown. Triggers re-render.
