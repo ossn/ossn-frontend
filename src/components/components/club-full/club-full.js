@@ -280,7 +280,8 @@ function ClubFull(props) {
                 lat: (club.location || {}).lat,
                 clubUrl: club.clubUrl || "",
                 email: club.email || "",
-                githubUrl: club.githubUrl || ""
+                githubUrl: club.githubUrl || "",
+                events: club.events || ""
               }}
             />
           )}

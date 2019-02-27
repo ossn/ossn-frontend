@@ -1,0 +1,48 @@
+@import './../../base-styles/init/init.scss';
+
+/*
+  Text with standard prefix. Highlights the variable value.
+*/
+
+.event {
+  display: inline-block;
+  margin-top: auto;
+  margin-bottom: auto;
+  position: relative;
+
+  &__icon {
+    display: inline-block;
+    color: color('brand');
+    position: absolute;
+    left: -33px; // icon size + distance from text
+    top: 2px;
+  }
+
+  &__text {
+    display: inline-block;
+  }
+
+  &__date {
+    font-weight: 300;
+    display: block;
+
+    &-start + .event__date-end {
+      &:before {
+        content: " - ";
+      }
+    }
+  }
+
+  &__value {
+    font-weight: 600;
+  }
+
+  &__secondary {
+    display: block;
+    font-weight: 300;
+  }
+
+  &.is-past-event {
+    opacity: .6;
+  }
+}

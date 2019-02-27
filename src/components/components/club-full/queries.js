@@ -9,8 +9,18 @@ export const GET_CLUB = gql`
       description
       email
       events {
-        sortDescription
+        id
         title
+        startDate
+        endDate
+        description
+        sortDescription
+        publishedAt
+        location {
+          address
+          lat
+          lng
+        }
       }
       githubUrl
       id
