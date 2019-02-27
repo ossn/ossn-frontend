@@ -42,7 +42,8 @@ class Clubs extends React.PureComponent {
       cursor: null,
       firstLoad: true,
       hasNextPage: false,
-      number: 12
+      number: 12,
+      listClubNumber: 12
     };
     this.handleSearch = this.handleSearch.bind(this);
   }
@@ -51,7 +52,7 @@ class Clubs extends React.PureComponent {
   handleToggleMap = () => {
     this.setState({
       view: this.state.view === "map" ? "list" : "map",
-      number: this.state.view === "map" ? 12 : 100,
+      number: this.state.view === "map" ? this.state.listClubNumber : 100,
       shownClubs: [],
       firstLoad: true,
       hasNextPage: false,
@@ -65,7 +66,8 @@ class Clubs extends React.PureComponent {
       firstLoad: true,
       shownClubs: [],
       cursor: null,
-      hasNextPage: false
+      hasNextPage: false,
+      number: this.state.view === "map" ? 100 : 12
     });
   };
 
@@ -125,7 +127,9 @@ class Clubs extends React.PureComponent {
       shownClubs: shownClubs,
       cursor: data.clubs.pageInfo.endCursor,
       firstLoad: snapshot.view === "map" && data.clubs.pageInfo.hasNextPage,
-      hasNextPage: data.clubs.pageInfo.hasNextPage
+      hasNextPage: data.clubs.pageInfo.hasNextPage,
+      listClubNumber:
+        snapshot.view === "list" ? shownClubs.length : snapshot.listClubNumber
     }));
   };
 
