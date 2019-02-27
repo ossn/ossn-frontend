@@ -1,25 +1,25 @@
-import './formated-text.scss';
+import "./formated-text.scss";
 
-import React from 'react';
+import React from "react";
 import {
   GitHub as GithubIcon,
   Link as LinkIcon,
   Map as MapIcon,
   AtSign
-} from 'react-feather';
+} from "react-feather";
 
 export default class FormatedText extends React.PureComponent {
   render() {
-    const prefix = this.props.prefix || '';
+    const prefix = this.props.prefix || "";
     const value = this.props.value;
-    const icon = this.props.icon ? <this.props.icon size={20} /> : '';
-    const secondary = this.props.secondary || '';
+    const icon = this.props.icon ? <this.props.icon size={20} /> : "";
+    const secondary = this.props.secondary || "";
     const breakAll = this.props.breakAll;
-    let classes = ['formated-text'];
-    if (breakAll) classes.push('formated-text--word-break');
+    let classes = ["formated-text"];
+    if (breakAll) classes.push("formated-text--word-break");
 
     return (
-      <div className={classes.join(' ')}>
+      <div className={classes.join(" ")}>
         <div className="formated-text__icon">{icon}</div>
         <div className="formated-text__text">
           <div className="formated-text__main">

@@ -3,12 +3,7 @@ import "./club-info.scss";
 import React from "react";
 import MediaQuery from "react-responsive";
 
-import {
-  Email,
-  Github,
-  Link,
-  Map
-} from "./../formated-text/formated-text";
+import { Email, Github, Link, Map } from "./../formated-text/formated-text";
 import ShadowBox from "./../shadow-box/shadow-box";
 import Shape from "./../shape/shape";
 import Event from "../event/event";
@@ -107,7 +102,7 @@ const EmailInfo = ({ email }) => (
 const EventInfo = ({ event }) => (
   <li className="club-info__item-wrapper">
     <ClubInfoItem>
-      <Event event={event}/>
+      <Event event={event} />
     </ClubInfoItem>
   </li>
 );
