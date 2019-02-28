@@ -1,7 +1,5 @@
-// External modules.
 import "./../../components/pages-styles/find-club.scss";
 
-import gql from "graphql-tag";
 import React from "react";
 import { ApolloConsumer, Query } from "react-apollo";
 import { PlusSquare, Search } from "react-feather";
@@ -17,22 +15,10 @@ import { ClubTeaserList } from "./../../components/components/club-teaser-list/c
 import Map from "./../../components/components/map/map";
 import ShadowBox from "./../../components/components/shadow-box/shadow-box";
 import LayoutContained from "./../../components/layouts/layout-contained/layout-contained";
+import { GET_CLUBS } from "./queries";
 
 class Clubs extends React.PureComponent {
-  /*
-   Handle the value of th search and the toggle button from state.
-   */
   constructor(props) {
-    /*
-     state fields:
-     view (string): how to show the list of clubs. values (list, map).
-     searchString (string): the string to filter the clubs.
-     shownClubsCount (int): The number of the clubs that is fetched and shown.
-     shownClubs (array): the list of the club objects.
-     cursor (string): The id of the last fetched club.
-     firstLoad (boolean): A flag to indicate the first render of the component.
-     hasNextPage (boolean): A flaf to store the apollo hasNextPage.
-     */
     super(props);
 
     this.state = {
@@ -43,14 +29,13 @@ class Clubs extends React.PureComponent {
       cursor: null,
       firstLoad: true,
       hasNextPage: false,
-      number: 12,
-      listClubNumber: 12
+      number: 6,
+      listClubNumber: 6
     };
 
     this.timer = 0;
   }
 
-  // State management functions. Used by children components.
   handleToggleMap = () => {
     this.setState(state => ({
       view: state.view === "map" ? "list" : "map",
@@ -85,54 +70,6 @@ class Clubs extends React.PureComponent {
     }, 300);
   };
 
-  // the definition of the query.
-  GET_CLUBS = gql`
-    query GetClubs($number: Int!, $cursor: ID, $search: String) {
-      clubs(first: $number, after: $cursor, search: $search) {
-        clubs {
-          id
-          email
-          name
-          imageUrl
-          description
-          codeOfConduct
-          sortDescription
-          users {
-            id
-          }
-          events {
-            id
-            title
-            startDate
-            endDate
-            location {
-              id
-              address
-              lat
-              lng
-            }
-            imageUrl
-            description
-            sortDescription
-          }
-          githubUrl
-          clubUrl
-          location {
-            id
-            lat
-            lng
-          }
-        }
-
-        pageInfo {
-          totalCount
-          endCursor
-          hasNextPage
-        }
-      }
-    }
-  `;
-
   // Updates the state when new data is fetched.
   onClubsFetched = data => {
     const snapshot = { ...this.state };
@@ -147,11 +84,10 @@ class Clubs extends React.PureComponent {
     }));
   };
 
-  // loads the first data.
   clubQuery = () => {
     return this.state.firstLoad ? (
       <Query
-        query={this.GET_CLUBS}
+        query={GET_CLUBS}
         variables={{
           number: this.state.number,
           cursor: this.state.cursor,
@@ -173,8 +109,6 @@ class Clubs extends React.PureComponent {
           if (error) {
             return <div> `Error ${error.message}` </div>;
           } else {
-            // JSX elements
-            // create the DOM for the component.
             return null;
           }
         }}
@@ -194,7 +128,6 @@ class Clubs extends React.PureComponent {
       hasNextPage
     } = this.state;
 
-    // Decide which view to show.
     const content =
       view === "map" ? (
         <Map clubs={shownClubs} />
@@ -246,7 +179,7 @@ class Clubs extends React.PureComponent {
                   className="button button--reset button--icon"
                   onClick={async () => {
                     const { data } = await client.query({
-                      query: this.GET_CLUBS,
+                      query: GET_CLUBS,
                       variables: {
                         number: number,
                         cursor: cursor,
