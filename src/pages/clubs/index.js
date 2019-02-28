@@ -18,23 +18,19 @@ import LayoutContained from "./../../components/layouts/layout-contained/layout-
 import { GET_CLUBS } from "./queries";
 
 class Clubs extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  state = {
+    view: "list",
+    searchString: null,
+    shownClubsCount: 0,
+    shownClubs: [],
+    cursor: null,
+    firstLoad: true,
+    hasNextPage: false,
+    number: 6,
+    listClubNumber: 6
+  };
 
-    this.state = {
-      view: "list",
-      searchString: null,
-      shownClubsCount: 0,
-      shownClubs: [],
-      cursor: null,
-      firstLoad: true,
-      hasNextPage: false,
-      number: 6,
-      listClubNumber: 6
-    };
-
-    this.timer = 0;
-  }
+  timer = 0;
 
   handleToggleMap = () => {
     this.setState(state => ({
@@ -70,10 +66,10 @@ class Clubs extends React.PureComponent {
     }, 300);
   };
 
-  // Updates the state when new data is fetched.
   onClubsFetched = data => {
     const snapshot = { ...this.state };
     const shownClubs = [...snapshot.shownClubs, ...data.clubs.clubs];
+
     this.setState(() => ({
       shownClubs: shownClubs,
       cursor: data.clubs.pageInfo.endCursor,
@@ -168,6 +164,7 @@ class Clubs extends React.PureComponent {
               </ShadowBox>
             </div>
           </div>
+
           {content}
 
           {this.clubQuery()}
