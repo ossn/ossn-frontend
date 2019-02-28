@@ -1,40 +1,40 @@
-import "./../../components/pages-styles/find-club.scss";
-
 import React from "react";
 import { ApolloConsumer, Query } from "react-apollo";
 import { PlusSquare, Search } from "react-feather";
 import { Helmet } from "react-helmet";
-
+import GatsbyConfig from "../../../gatsby-config";
+import { ClubTeaserList } from "../../components/components/club-teaser-list/club-teaser-list";
 import {
   SearchFilter,
   ToggleFilter
-} from "./../../components/components/filter/filter";
-import BasicLayout from "./../../components/layouts/layout-base/layout-base";
-import GatsbyConfig from "./../../../gatsby-config";
-import { ClubTeaserList } from "./../../components/components/club-teaser-list/club-teaser-list";
-import Map from "./../../components/components/map/map";
-import ShadowBox from "./../../components/components/shadow-box/shadow-box";
-import LayoutContained from "./../../components/layouts/layout-contained/layout-contained";
+} from "../../components/components/filter/filter";
+import Map from "../../components/components/map/map";
+import ShadowBox from "../../components/components/shadow-box/shadow-box";
+import BasicLayout from "../../components/layouts/layout-base/layout-base";
+import LayoutContained from "../../components/layouts/layout-contained/layout-contained";
+import "../../components/pages-styles/find-club.scss";
 import { GET_CLUBS } from "./queries";
 
 class Clubs extends React.PureComponent {
   state = {
-    view: "list",
-    searchString: null,
-    shownClubsCount: 0,
-    shownClubs: [],
     cursor: null,
     firstLoad: true,
     hasNextPage: false,
+    listClubNumber: 6,
     number: 6,
-    listClubNumber: 6
+    searchString: null,
+    shownClubs: [],
+    shownClubsCount: 0,
+    view: "list"
   };
 
   timer = 0;
 
   handleToggleMap = () => {
     this.setState(state => ({
-      view: state.view === "map" ? "list" : "map",
+      cursor: null,
+      firstLoad: true,
+      hasNextPage: false,
       number:
         state.view === "map"
           ? state.listClubNumber <= 100
@@ -42,9 +42,7 @@ class Clubs extends React.PureComponent {
             : 100
           : 100,
       shownClubs: [],
-      firstLoad: true,
-      hasNextPage: false,
-      cursor: null
+      view: state.view === "map" ? "list" : "map"
     }));
   };
 
@@ -56,12 +54,12 @@ class Clubs extends React.PureComponent {
 
     this.timer = setTimeout(() => {
       this.setState({
-        searchString: value,
-        firstLoad: true,
-        shownClubs: [],
         cursor: null,
+        firstLoad: true,
         hasNextPage: false,
-        number: this.state.view === "map" ? 100 : 12
+        number: this.state.view === "map" ? 100 : 12,
+        searchString: value,
+        shownClubs: []
       });
     }, 300);
   };
@@ -71,12 +69,12 @@ class Clubs extends React.PureComponent {
     const shownClubs = [...snapshot.shownClubs, ...data.clubs.clubs];
 
     this.setState(() => ({
-      shownClubs: shownClubs,
       cursor: data.clubs.pageInfo.endCursor,
       firstLoad: snapshot.view === "map" && data.clubs.pageInfo.hasNextPage,
       hasNextPage: data.clubs.pageInfo.hasNextPage,
       listClubNumber:
-        snapshot.view === "list" ? shownClubs.length : snapshot.listClubNumber
+        snapshot.view === "list" ? shownClubs.length : snapshot.listClubNumber,
+      shownClubs: shownClubs
     }));
   };
 
@@ -85,8 +83,8 @@ class Clubs extends React.PureComponent {
       <Query
         query={GET_CLUBS}
         variables={{
-          number: this.state.number,
           cursor: this.state.cursor,
+          number: this.state.number,
           search:
             this.state.searchString === "" ? null : this.state.searchString
         }}
@@ -116,12 +114,12 @@ class Clubs extends React.PureComponent {
 
   render() {
     const {
-      shownClubs,
-      view,
-      number,
       cursor,
+      hasNextPage,
+      number,
       searchString,
-      hasNextPage
+      shownClubs,
+      view
     } = this.state;
 
     const content =
@@ -178,8 +176,8 @@ class Clubs extends React.PureComponent {
                     const { data } = await client.query({
                       query: GET_CLUBS,
                       variables: {
-                        number: number,
                         cursor: cursor,
+                        number: number,
                         search: searchString === "" ? null : searchString
                       }
                     });
