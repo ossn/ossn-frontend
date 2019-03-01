@@ -87,7 +87,7 @@ class Member extends React.PureComponent {
       name: this.props.member.name,
       imageUrl: this.props.member.imageUrl,
       sortDescription: this.props.member.sortDescription,
-      clubs: this.props.member.clubs,
+      clubs: this.props.member.clubs || [],
       githubUrl: this.props.member.githubUrl,
       personalUrl: this.props.member.personalUrl,
       description: this.props.member.description,
