@@ -16,6 +16,7 @@ module.exports = {
     "no-unused-vars": "error",
     "prettier/prettier": "error",
     "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "no-var": "error" // optional, recommended when using es6+
   },
   parser: "babel-eslint",
