@@ -14,16 +14,20 @@ import { actionLogin, actionLogout } from "./../../../actions/userActions";
 import { BACKEND_URL } from "./../../../settings";
 import store from "./../../../store";
 
-/*
+/**
+ * Wrapper component for the Apollo client and handles the authentication logic.
+ * It is based the Provider pattern and uses redux for it's implementation.
+ *
+ * Checks automatically for logged in users.
+ * Listens the `authReducer` for the logout event.
+ */
 
-A wrapper component for the Apollo client and handles the authentication logic.
-It is based the Provider pattern and uses redux for it's implementation.
-
-- Checks automatically for logged in users
-- listens the `authReducer` for the logout event.
-*/
-
-// a login button component.
+/**
+ * Login button.
+ *
+ * @param {string} label
+ * @param {string} className
+ */
 export const LoginLink = ({ label = "Login", className = "" }) => (
   <a
     className={className}
@@ -38,7 +42,12 @@ const logout = () => {
   store.dispatch(requestLogout());
 };
 
-// a logout button component.
+/**
+ * Logout link.
+ *
+ * @param {string} label
+ * @param {string} className
+ */
 export const LogoutLink = ({ label = "Logout", className = "" }) => {
   return (
     <button className={className} onClick={logout}>
@@ -47,7 +56,9 @@ export const LogoutLink = ({ label = "Logout", className = "" }) => {
   );
 };
 
-// stores the current url to the localStorage under the "last-visited" key
+/**
+ * Stores the current url to the localStorage under the "last-visited" key.
+ */
 const saveCurrentLocation = () => {
   localStorage.setItem(
     LAST_VISITED_URL,
@@ -55,7 +66,9 @@ const saveCurrentLocation = () => {
   );
 };
 
-// source: https://stackoverflow.com/questions/49750392/dispatch-redux-action-after-apollo-query-component-returns-result
+/**
+ * Source: https://stackoverflow.com/questions/49750392/dispatch-redux-action-after-apollo-query-component-returns-result.
+ */
 class DoSomethingOnce extends React.PureComponent {
   componentDidMount() {
     this.props.action();
@@ -67,6 +80,9 @@ class DoSomethingOnce extends React.PureComponent {
 }
 
 //TODO: Turn this into a functional component with hooks
+/**
+ * Authentication wrapper.
+ */
 class AuthWrapper extends React.PureComponent {
   componentDidMount() {
     const { token, ...rest } = parse(window.location.search) || {};

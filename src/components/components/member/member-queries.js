@@ -4,7 +4,7 @@ export const getUserQuery = gql`
   query getUser($id: ID!) {
     user(id: $id) {
       id
-      userName
+      email
       name
       imageUrl
       receiveNewsletter
@@ -13,6 +13,7 @@ export const getUserQuery = gql`
       githubUrl
       personalUrl
       email
+      isOverTheLegalLimit
       clubs {
         name
         id
@@ -30,6 +31,7 @@ export const editUserMutation = gql`
     $githubUrl: String
     $personalUrl: String
     $name: String!
+    $isOverTheLegalLimit: Boolean!
   ) {
     editUser(
       user: {
@@ -40,14 +42,15 @@ export const editUserMutation = gql`
         githubUrl: $githubUrl
         personalUrl: $personalUrl
         name: $name
+        isOverTheLegalLimit: $isOverTheLegalLimit
       }
     ) {
       id
-      email
       name
       sortDescription
       description
       receiveNewsletter
+      isOverTheLegalLimit
       clubs {
         id
       }
