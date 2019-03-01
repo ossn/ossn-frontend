@@ -25,4 +25,14 @@
   &--member-name {
 
   }
+
+  &:invalid {
+    border-color: color('red');
+
+    &:active,
+    &:focus,
+    &:hover {
+      border-color: color('red');
+    }
+  }
 }
