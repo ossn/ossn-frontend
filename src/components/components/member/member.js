@@ -92,7 +92,7 @@ class Member extends React.PureComponent {
       personalUrl: this.props.member.personalUrl,
       description: this.props.member.description,
       receiveNewsletter: this.props.member.receiveNewsletter,
-      clubsToPreserve: this.props.member.clubs.map(club => club.id),
+      clubsToPreserve: (this.props.member.clubs || []).map(club => club.id),
       shapes: shuffle(shapesUnordered),
       editable: !!this.isCurrentUser(),
       edit: false
