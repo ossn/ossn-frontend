@@ -4,7 +4,6 @@ export const getUserQuery = gql`
   query getUser($id: ID!) {
     user(id: $id) {
       id
-      email
       name
       imageUrl
       receiveNewsletter
