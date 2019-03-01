@@ -346,7 +346,7 @@ class Member extends React.PureComponent {
               id="isOverTheLegalLimit"
               defaultChecked={snapshot.isOverTheLegalLimit}
               onChange={this.handleChange}
-              required
+              // required
             />
             I am older than 18 years old
           </label>
