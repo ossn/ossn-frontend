@@ -2,7 +2,7 @@ import "./member.scss";
 
 import { navigate } from "gatsby";
 import React from "react";
-import { ApolloConsumer, withApollo } from "react-apollo";
+import { withApollo } from "react-apollo";
 import { Check, Feather, GitHub, Link, Users, X } from "react-feather";
 import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
@@ -16,6 +16,22 @@ import LayoutContained from "../../layouts/layout-contained/layout-contained";
 import ShadowBox from "../shadow-box/shadow-box";
 import Shape from "../shape/shape";
 import { editUserMutation, getUserQuery } from "./member-queries";
+
+/**
+ * Profile page template.
+ * This component is used for showing and editing a member's profile.
+ *
+ * handling props:
+ * editable: if true, shows the 'edit' button. This button can trigger the edit
+ * state of the component.
+ *
+ * The state has the profile information and the edit flag.
+ * If the edit flag is true, every field is an input element. Else is a label.
+ * The state also stores the state of the component,
+ * so modifications on edit can be undone.
+ *
+ * @param props
+ */
 
 const shapesUnordered = [
   <Shape
@@ -38,21 +54,19 @@ const shapesUnordered = [
   />
 ];
 
-// Shuffles shapes to print them randomly in different areas.
-// Uses Fisher-Yates (aka Knuth) Shuffle algorithm.
-// https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+/**
+ * Shuffles shapes to print them randomly in different areas.
+ * Uses Fisher-Yates (aka Knuth) Shuffle algorithm.
+ * https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+ */
 const shuffle = array => {
   let currentIndex = array.length,
     temporaryValue,
     randomIndex;
 
-  // While there remain elements to shuffle.
   while (0 !== currentIndex) {
-    // Pick a remaining element.
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex -= 1;
-
-    // And swap it with the current element.
     temporaryValue = array[currentIndex];
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
@@ -61,30 +75,13 @@ const shuffle = array => {
   return array;
 };
 
-/*
- Profile page template.
- This component is used for showing and editing a member's profile.
-
- handling props:
- editable: if true, shows the 'edit' button. This button can trigger the edit
- state of the component.
-
- The state has the profile information and the edit flag.
- If the edit flag is true, every field is an input element.
- else is a label.
-
- The state also stores the state of the component, so modifications on edit can
- be undone.
- */
-// utils
-// Local modules.
-// styles
 class Member extends React.PureComponent {
   constructor(props) {
     super(props);
 
     const initData = {
       name: this.props.member.name,
+      isOverTheLegalLimit: this.props.member.isOverTheLegalLimit,
       imageUrl: this.props.member.imageUrl,
       sortDescription: this.props.member.sortDescription,
       clubs: this.props.member.clubs || [],
@@ -106,11 +103,15 @@ class Member extends React.PureComponent {
     };
   }
 
+  /**
+   * Fetches the user resource and updates the state
+   */
   componentDidMount = () => {
     let { id } = this.props.member;
     if (!id) {
       id = this.getIdFromPath();
     }
+
     this.props.client
       .query({
         query: getUserQuery,
@@ -144,17 +145,29 @@ class Member extends React.PureComponent {
       });
   };
 
+  /**
+   * Updates editable state according to the current user.
+   *
+   * @param prevProps
+   */
   componentDidUpdate(prevProps) {
     if ((prevProps.user.user || {}).id !== (this.props.user.user || {}).id) {
       this.setState({ editable: !!this.isCurrentUser() });
     }
   }
 
+  /**
+   * Returns viewed user id from path.
+   */
   getIdFromPath = () => {
     let path = this.props.location.pathname.split("/");
     return path[path.indexOf("members") + 1].split("?")[0];
   };
 
+  /**
+   * Returns boolean value.
+   * Checks if the logged in user is the same as the viewed user.
+   */
   isCurrentUser = () => {
     let { id } = this.props.member;
     if (!id) {
@@ -164,12 +177,24 @@ class Member extends React.PureComponent {
     return this.props.user.user && id === this.props.user.user.id;
   };
 
+  /**
+   * Updates the state's user object
+   *
+   * @param {React.ChangeEvent<HTMLInputElement>} event
+   */
   handleChange = ({ target }) => {
     this.setState({
       [target.name]: target.type === "checkbox" ? target.checked : target.value
     });
   };
 
+  /**
+   * Updates the state's user object club subscriptions.
+   *
+   * @param {React.ChangeEvent<HTMLInputElement>} event
+   * @param {boolean} checked
+   * @param {string} clubId
+   */
   handleClubSubscription = ({ target: { checked, name: clubId } }) => {
     this.setState(({ clubsToPreserve }) => ({
       clubsToPreserve: checked
@@ -180,14 +205,23 @@ class Member extends React.PureComponent {
     }));
   };
 
+  /**
+   * Updates the state's user edit state
+   */
   handleEdit = () => {
     this.setState(state => ({ history: { ...state }, edit: true }));
   };
 
+  /**
+   * Updates the state's user edit state to false and reverts changes.
+   */
   handleCancel = () => {
     this.setState(state => ({ ...state.history, edit: false }));
   };
 
+  /**
+   * Updates state's user object and edit state.
+   */
   handleSave = () => {
     this.setState(({ clubsToPreserve, clubs }) => ({
       clubs: clubs.filter(club => clubsToPreserve.includes(club.id)),
@@ -195,7 +229,10 @@ class Member extends React.PureComponent {
     }));
   };
 
-  handleSubmit = () =>
+  /**
+   * Submits changes to user.
+   */
+  handleSubmit = e =>
     this.props.client
       .mutate({
         variables: {
@@ -217,6 +254,7 @@ class Member extends React.PureComponent {
         value={snapshot.name}
         className="member__text-field form-input--member form-input--member-name"
         placeholder="name"
+        required
       />
     ) : (
       <div> {snapshot.name} </div>
@@ -224,7 +262,7 @@ class Member extends React.PureComponent {
 
     const sortDescription = snapshot.edit ? (
       <TextInput
-        label="Sort Description"
+        label="Short Description"
         name="sortDescription"
         onChange={this.handleChange}
         value={snapshot.sortDescription}
@@ -248,7 +286,7 @@ class Member extends React.PureComponent {
 
     const club = snapshot.edit ? (
       <div>
-        {snapshot.clubs.length > 0 && <h2>Uncheck to unsubscribe from club</h2>}
+        {snapshot.clubs.length > 0 && <h2>Unsubscribe from club</h2>}
 
         {snapshot.clubs.length > 0 &&
           snapshot.clubs.map((club, i) => {
@@ -281,8 +319,6 @@ class Member extends React.PureComponent {
 
     const newsletter = snapshot.edit && (
       <div className="member__newsletter">
-        <Shape seafoamBlue waveLarge divider className="member__divider" />
-
         <div className="member__checkbox">
           <label htmlFor="newsletter">
             <input
@@ -293,6 +329,26 @@ class Member extends React.PureComponent {
               onChange={this.handleChange}
             />
             I want to receive newsletter
+          </label>
+        </div>
+      </div>
+    );
+
+    const isOverTheLegalLimit = snapshot.edit && (
+      <div className="member__legal">
+        <Shape seafoamBlue waveLarge divider className="member__divider" />
+
+        <div className="member__checkbox">
+          <label htmlFor="isOverTheLegalLimit">
+            <input
+              name="isOverTheLegalLimit"
+              type="checkbox"
+              id="isOverTheLegalLimit"
+              defaultChecked={snapshot.isOverTheLegalLimit}
+              onChange={this.handleChange}
+              required
+            />
+            I am older than 18 years old
           </label>
         </div>
       </div>
@@ -356,26 +412,28 @@ class Member extends React.PureComponent {
       );
 
       buttonList.push(
-        <ApolloConsumer key="appollo-consumer">
-          {() => (
-            <div
-              tabIndex={0}
-              role="button"
-              onClick={this.handleSubmit}
-              onKeyDown={e => {
-                returnKeyCheck(e, this.handleSubmit);
-              }}
-              className="member__button button button--submit"
-              key={1}
-            >
-              <Check size={20} />
-              <span> Save changes </span>
-            </div>
-          )}
-        </ApolloConsumer>
+        <button className="member__button button button--submit" type="submit">
+          {/*<ApolloConsumer key="appollo-consumer">*/}
+          {/*{() => (*/}
+          {/*<div*/}
+          {/*tabIndex={0}*/}
+          {/*role="button"*/}
+          {/*onClick={this.handleSubmit}*/}
+          {/*onKeyDown={e => {*/}
+          {/*returnKeyCheck(e, this.handleSubmit);*/}
+          {/*}}*/}
+          {/*className="member__button button button--submit"*/}
+          {/*key={1}*/}
+          {/*>*/}
+          {/*<Check size={20} />*/}
+          {/*<span> Save changes </span>*/}
+          {/*</div>*/}
+          {/*)}*/}
+          {/*</ApolloConsumer>*/}
+          <Check size={16} /> Save changes
+        </button>
       );
     } else if (snapshot.editable) {
-      // } else if (true) {
       buttonList.push(
         <div
           tabIndex={0}
@@ -393,6 +451,62 @@ class Member extends React.PureComponent {
       );
     }
 
+    const memberInner = (
+      <div className="member__inner">
+        <MediaQuery minWidth={576}>
+          <div className="member__shape-wrapper-left">{snapshot.shapes[1]}</div>
+          <div className="member__shape-wrapper-right">
+            {snapshot.shapes[2]}
+          </div>
+        </MediaQuery>
+        <ShadowBox className="member__card" zeroPadding>
+          <div className="member__card-shape-wrapper">{snapshot.shapes[0]}</div>
+          <div className="member__card-inner">
+            <div className="member__image-wrapper">
+              <div className="member__image-inner">
+                <img
+                  src={snapshot.imageUrl}
+                  alt="profile"
+                  className="member__image"
+                />
+              </div>
+            </div>
+            <div className="title title--small member__name">{name}</div>
+
+            <div className="member__location">{sortDescription}</div>
+
+            <div className="member__description">{description}</div>
+
+            <Shape seafoamBlue waveLarge divider className="member__divider" />
+
+            {snapshot.clubs.length > 0 && (
+              <div>
+                <div className="member__club">{club}</div>
+
+                <Shape
+                  seafoamBlue
+                  waveLarge
+                  divider
+                  className="member__divider"
+                />
+              </div>
+            )}
+
+            <div className="member__link member__link--github">{github}</div>
+
+            <div className="member__link member__link--personal-page">
+              {personalUrl}
+            </div>
+
+            {isOverTheLegalLimit}
+            {newsletter}
+          </div>
+        </ShadowBox>
+
+        <div className="member__button-list">{buttonList}</div>
+      </div>
+    );
+
     return (
       <LayoutContained className="member">
         <Helmet>
@@ -400,68 +514,14 @@ class Member extends React.PureComponent {
             {[snapshot.name, "|", GatsbyConfig.siteMetadata.title].join(" ")}
           </title>
         </Helmet>
-
-        <div className="member__inner">
-          <MediaQuery minWidth={576}>
-            <div className="member__shape-wrapper-left">
-              {snapshot.shapes[1]}
-            </div>
-            <div className="member__shape-wrapper-right">
-              {snapshot.shapes[2]}
-            </div>
-          </MediaQuery>
-          <ShadowBox className="member__card" zeroPadding>
-            <div className="member__card-shape-wrapper">
-              {snapshot.shapes[0]}
-            </div>
-            <div className="member__card-inner">
-              <div className="member__image-wrapper">
-                <div className="member__image-inner">
-                  <img
-                    src={snapshot.imageUrl}
-                    alt="profile"
-                    className="member__image"
-                  />
-                </div>
-              </div>
-              <div className="title title--small member__name">{name}</div>
-
-              <div className="member__location">{sortDescription}</div>
-
-              <div className="member__description">{description}</div>
-
-              <Shape
-                seafoamBlue
-                waveLarge
-                divider
-                className="member__divider"
-              />
-
-              {snapshot.clubs.length > 0 && (
-                <div>
-                  <div className="member__club">{club}</div>
-
-                  <Shape
-                    seafoamBlue
-                    waveLarge
-                    divider
-                    className="member__divider"
-                  />
-                </div>
-              )}
-
-              <div className="member__link member__link--github">{github}</div>
-
-              <div className="member__link member__link--personal-page">
-                {personalUrl}
-              </div>
-
-              {newsletter}
-            </div>
-          </ShadowBox>
-
-          <div className="member__button-list">{buttonList}</div>
-        </div>
+        {snapshot.edit ? (
+          <form onSubmit={e => e.preventDefault() || this.handleSubmit(e)}>
+            {" "}
+            {memberInner}{" "}
+          </form>
+        ) : (
+          memberInner
+        )}
       </LayoutContained>
     );
   }

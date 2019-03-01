@@ -21,19 +21,24 @@ import store from "./../../../store";
 import Footer from "./../../components/footer/footer";
 import Header from "./../../components/header/header";
 import SkipLink from "./../../components/skip-link/skip-link";
-import AuthWrapper from "./..//auth-wrapper/auth-wrapper";
+import AuthWrapper from "./../auth-wrapper/auth-wrapper";
 
-// import LayoutContained from "./../layout-contained/layout-contained";
+/**
+ * Includes the base page wrapper and user authentication.
+ */
 const authLink = setContext((_, req) => {
-  // get the authentication token from local storage if it exists
+  /**
+   * Gets the authentication token from local storage if it exists
+   */
   // eslint-disable-next-line no-undef
   const token = localStorage.getItem(SESSION_ITEM);
-  // return the headers to the context so httpLink can read them
+  /**
+   * Returns the headers to the context so httpLink can read them.
+   */
   if (token) {
     req.headers = {
       ...(req.headers || {}),
       [AUTH_HEADER]: token
-      // Credentials: 'same-origin'
     };
   }
   return req;
@@ -44,23 +49,25 @@ const httpLink = new HttpLink({
   fetch
 });
 
-// Handle graphql errors
+/**
+ *  Handles graphql errors.
+ */
 const errorHandling = onError(({ networkError, operation, forward }) => {
   if (networkError && networkError.message.includes("403")) {
-    // remove token from local storage
+    // Remove token from local storage.
     localStorage.removeItem(SESSION_ITEM);
 
-    // Get current headers
+    // Gets current headers.
     const headers = {
       ...operation.getContext().headers
     };
-    // Delete previous auth header
+    // Deletes previous auth header.
     delete headers[AUTH_HEADER];
 
-    // Set headers to the new opertion
+    // Sets headers to the new operation.
     operation.setContext({ headers });
 
-    // retry the request, returning the new observable
+    // Retry the request, returning the new observable.
     return forward(operation);
   }
 });

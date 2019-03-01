@@ -2,7 +2,7 @@ const path = require(`path`);
 
 // Bypass leaflet npm module during the build time. To avoid `window` is not defined exception
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  if (stage === 'build-html') {
+  if (stage === "build-html") {
     actions.setWebpackConfig({
       module: {
         rules: [
@@ -104,14 +104,14 @@ exports.createPages = ({ graphql, actions }) => {
 exports.onCreatePage = async ({ page, actions: { createPage } }) => {
   // page.matchPath is a special key that's used for matching pages
   // only on the client.
-  if (page.path === '/members/dynamic/') {
-    page.matchPath = '/members/*';
+  if (page.path === "/members/dynamic/") {
+    page.matchPath = "/members/*";
     page.component = path.resolve(`./src/pages/members/dynamic.js`);
     createPage(page);
   }
 
-  if (page.path === '/clubs/dynamic/') {
-    page.matchPath = '/clubs/*';
+  if (page.path === "/clubs/dynamic/") {
+    page.matchPath = "/clubs/*";
     page.component = path.resolve(`./src/pages/clubs/dynamic.js`);
     createPage(page);
   }
@@ -178,6 +178,7 @@ query GetUsers($cursor: ID) {
          name
          imageUrl
          receiveNewsletter
+         isOverTheLegalLimit
          description
          sortDescription
          githubUrl
