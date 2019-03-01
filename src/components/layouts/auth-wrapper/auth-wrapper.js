@@ -1,4 +1,21 @@
+import { navigate } from "gatsby";
+import gql from "graphql-tag";
+import { parse } from "query-string";
+import React from "react";
+import { Query, withApollo } from "react-apollo";
+import { connect } from "react-redux";
+
+import { LAST_VISITED_URL, SESSION_ITEM } from "../../../shared/enums";
+import {
+  requestLogout,
+  resetActionLogout
+} from "./../../../actions/authActions";
+import { actionLogin, actionLogout } from "./../../../actions/userActions";
+import { BACKEND_URL } from "./../../../settings";
+import store from "./../../../store";
+
 /*
+
 A wrapper component for the Apollo client and handles the authentication logic.
 It is based the Provider pattern and uses redux for it's implementation.
 
@@ -6,56 +23,25 @@ It is based the Provider pattern and uses redux for it's implementation.
 - listens the `authReducer` for the logout event.
 */
 
-import React from "react";
-import { Query } from "react-apollo";
-import { navigate } from "gatsby";
-import { parse } from "query-string";
-import gql from "graphql-tag";
-import { actionLogin, actionLogout } from "./../../../actions/userActions";
-import {
-  requestLogout,
-  resetActionLogout
-} from "./../../../actions/authActions";
-
-import { connect } from "react-redux";
-
-import store from "./../../../store";
-import { BACKEND_URL } from "./../../../settings";
-
 // a login button component.
-export const LoginLink = props => {
-  const classes = props.className || "";
-  const label = props.label ? props.label : "Login";
+export const LoginLink = ({ label = "Login", className = "" }) => (
+  <a
+    className={className}
+    href={`${BACKEND_URL}/oidc/login`}
+    onClick={saveCurrentLocation}
+  >
+    {label}
+  </a>
+);
 
-  return (
-    <a
-      className={classes}
-      href={`${BACKEND_URL}/oidc/login`}
-      onClick={() => {
-        saveCurrentLocation();
-      }}
-    >
-      {label}
-    </a>
-  );
+const logout = () => {
+  store.dispatch(requestLogout());
 };
 
 // a logout button component.
-export const LogoutLink = props => {
-  const classes = props.className || "";
-  const label = props.label ? props.label : "Logout";
-
-  const logout = () => {
-    store.dispatch(requestLogout());
-  };
-
+export const LogoutLink = ({ label = "Logout", className = "" }) => {
   return (
-    <button
-      className={classes}
-      onClick={() => {
-        logout();
-      }}
-    >
+    <button className={className} onClick={logout}>
       {label}
     </button>
   );
@@ -63,18 +49,13 @@ export const LogoutLink = props => {
 
 // stores the current url to the localStorage under the "last-visited" key
 const saveCurrentLocation = () => {
-  if (window) {
-    const url = window.location;
-    let curentUrl = `${url.pathname}/${url.search}`.replace("//", "/");
-
-    // eslint-disable-next-line no-undef
-    localStorage.setItem("last-visited", curentUrl);
-  }
+  localStorage.setItem(
+    LAST_VISITED_URL,
+    window.location.pathname + window.location.search
+  );
 };
 
-// source
-// eslint-ignore-next
-// https://stackoverflow.com/questions/49750392/dispatch-redux-action-after-apollo-query-component-returns-result
+// source: https://stackoverflow.com/questions/49750392/dispatch-redux-action-after-apollo-query-component-returns-result
 class DoSomethingOnce extends React.PureComponent {
   componentDidMount() {
     this.props.action();
@@ -85,32 +66,23 @@ class DoSomethingOnce extends React.PureComponent {
   }
 }
 
+//TODO: Turn this into a functional component with hooks
 class AuthWrapper extends React.PureComponent {
-  state = {
-    user: undefined,
-    loadingState: false,
-    shouldLogout: false
-  };
-
   componentDidMount() {
-    const { token } = (parse(this.props.location.search) || {})
-      parse(this.props.location.search) &&
-      parse(this.props.location.search).token
-        ? parse(this.props.location.search).token
-        : undefined;
+    const { token, ...rest } = parse(window.location.search) || {};
 
     if (token) {
-      // eslint-disable-next-line no-undef
-      localStorage.setItem("token", token);
-
-      // eslint-disable-next-line no-undef
-      const lastUrlBeforeLogin = window.localStorage.getItem("last-visited");
-      if (lastUrlBeforeLogin) {
-        // eslint-disable-next-line no-undef
-        localStorage.removeItem("last-visited");
+      localStorage.setItem(SESSION_ITEM, token);
+      const lastUrlBeforeLogin = window.localStorage.getItem(LAST_VISITED_URL);
+      if (!rest.initial && lastUrlBeforeLogin) {
+        localStorage.removeItem(LAST_VISITED_URL);
         navigate(`/${lastUrlBeforeLogin}`);
       } else {
-        navigate("/");
+        let param = "?";
+        for (const [key, value] of Object.entries(rest)) {
+          param += `${key}=${value}&`;
+        }
+        navigate(`${window.location.pathname}${param.slice(0, -1)}`);
       }
     }
   }
@@ -121,40 +93,28 @@ class AuthWrapper extends React.PureComponent {
     }
   }
 
-  // abstraction over the logic for the user logged in test.
-  userIsLoggedIn = () => {
-    // TODO: update me after connecting to store.
-    return this.state.user !== undefined;
+  userlogout = () => {
+    this.props.client.mutate({ mutation: USER_LOGOUT }).then(({ data }) => {
+      if ((data || {}).logout) {
+        this.props.client.resetStore();
+        store.dispatch(actionLogout());
+        store.dispatch(resetActionLogout());
+      } else {
+        //TODO: Show error to user
+        // eslint-disable-next-line no-console
+        console.error("Failed to logout");
+      }
+    });
   };
 
-  // placeholder.
-  // That function will be updated by the graphQL query.
-  // reason:
-  // The logout has to have the `client` object in it's scope.
-  userlogout = () => {};
-
-  userQuery = () => {
+  render() {
     return (
-      <Query query={query} fetchPolicy="network-only">
-        {({ data, loading, client, error }) => {
+      <Query query={GET_SESSION} fetchPolicy="network-only">
+        {({ data, loading, error }) => {
           if (loading) {
-            return <></>;
+            return "";
           } else {
             if (!error && data.session && data.session.id) {
-              this.userlogout = () => {
-                client.mutate({ mutation: logout }).then(({ data }) => {
-                  if ((data || {}).logout) {
-                    client.resetStore();
-                    store.dispatch(actionLogout());
-                    store.dispatch(resetActionLogout());
-                  } else {
-                    //TODO: Show error to user
-                    // eslint-disable-next-line no-console
-                    console.error("Failed to logout");
-                  }
-                });
-              };
-
               if (!this.props.user.user && !this.props.auth.logout) {
                 return (
                   <DoSomethingOnce
@@ -165,42 +125,21 @@ class AuthWrapper extends React.PureComponent {
                 );
               }
             }
-            return <></>;
+            return "";
           }
         }}
       </Query>
     );
-  };
-
-  prepare = () => {
-    this.userQuery();
-  };
-
-  // makes the login for the user.
-  userlogin = () => {
-    this.userQuery();
-    // this.setState({ user: 'dpliakos', shouldLogout: false });
-  };
-
-  render() {
-    return (
-      <>
-        {this.userQuery()}
-        {this.props.children}
-      </>
-    );
   }
 }
 
-const mapAuthToProps = store => {
-  return {
-    auth: store.auth,
-    user: store.user
-  };
-};
-export default connect(mapAuthToProps)(AuthWrapper);
+const mapAuthToProps = ({ auth, user }) => ({
+  auth,
+  user
+});
+export default connect(mapAuthToProps)(withApollo(AuthWrapper));
 
-const query = gql`
+const GET_SESSION = gql`
   query session {
     session {
       userName
@@ -220,7 +159,7 @@ const query = gql`
   }
 `;
 
-const logout = gql`
+const USER_LOGOUT = gql`
   mutation logout {
     logout
   }
