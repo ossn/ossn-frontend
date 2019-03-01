@@ -33,7 +33,7 @@ function ClubFull(props) {
   const [isMember, setIsMember] = useState(false);
   const [isOwner, setIsOwner] = useState(false);
   const [history, setHistory] = useState(props.club);
-  handleSubmit = handleSubmit.bind(this);
+
   /**
    * Fetches the club resource and updates the state
    */
@@ -41,8 +41,8 @@ function ClubFull(props) {
   useEffect(() => {
     const path = window.location.pathname.split("/");
     const id = (props.club || {}).id || path[path.indexOf("clubs") + 1];
-    getClub(id).then(updateClub);
-  }, [getClub, props.club, updateClub]);
+    !editing && getClub(id).then(updateClub);
+  }, [editing, getClub, props.club, updateClub]);
 
   /**
    * Updates the document title when the state's club name changes
@@ -101,9 +101,8 @@ function ClubFull(props) {
   /**
    *
    */
-  async function handleSubmit() {
+  async function handleSubmit(event) {
     const { events, location, users, ...rest } = club;
-    console.log("handleSubmit");
     const { data } = await props.client.mutate({
       fetchPolicy: "no-cache",
       mutation: queries.EDIT_CLUB,
@@ -164,7 +163,7 @@ function ClubFull(props) {
   return (
     <LayoutContained className="club-full">
       {editing ? (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={e => e.preventDefault() || handleSubmit(e)}>
           <header className="club-full__header">
             <div className="club-full__cover-wrapper">
               <img
@@ -190,14 +189,15 @@ function ClubFull(props) {
                   label="Title"
                   name="name"
                   onChange={handleChange}
-                  value={club.name || ""}
+                  value={club.name}
+                  required
                 />
 
                 <TextInput
                   label="Subtitle"
                   name="sortDescription"
                   onChange={handleChange}
-                  value={club.sortDescription || ""}
+                  value={club.sortDescription}
                 />
               </div>
             </div>
@@ -234,7 +234,8 @@ function ClubFull(props) {
                   label="Email"
                   name="email"
                   onChange={handleChange}
-                  value={club.email || ""}
+                  value={club.email}
+                  required
                 />
                 <TextInput
                   label="Github URL"
@@ -246,8 +247,7 @@ function ClubFull(props) {
                   label="Club URL"
                   name="clubUrl"
                   onChange={handleChange}
-                  value={club.clubUrl}
-                  required
+                  value={club.clubUrl || ""}
                 />
               </div>
             </div>
@@ -273,7 +273,8 @@ function ClubFull(props) {
                 multiline
                 name="description"
                 onChange={handleChange}
-                value={club.description || ""}
+                value={club.description}
+                required
               />
               <h2>Code of conduct</h2>
               <TextInput
@@ -295,7 +296,7 @@ function ClubFull(props) {
 
                   <button
                     className="member__button button button--submit"
-                    // onClick={handleSubmit}
+                    type="submit"
                   >
                     <Check size={16} /> Save changes
                   </button>
