@@ -252,7 +252,6 @@ class Member extends React.PureComponent {
 
         {snapshot.clubs.length > 0 &&
           snapshot.clubs.map((club, i) => {
-            // return <Organization organization={node.org} key={i} />
             return (
               <div className="member__checkbox" key={club.id}>
                 <label htmlFor={"club-" + club.id}>
