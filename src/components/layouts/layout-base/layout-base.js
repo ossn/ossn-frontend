@@ -75,26 +75,25 @@ const Basic = ({ location, children }) => {
     <React.StrictMode>
       <ApolloProvider client={client}>
         <Provider store={store}>
-          <AuthWrapper location={location}>
+          <AuthWrapper location={location} />
+          <div>
+            <Helmet meta={metadata} link={link}>
+              <title>{GatsbyConfig.siteMetadata.title}</title>
+              <html lang="en" />
+            </Helmet>
+            <SkipLink />
             <div>
-              <Helmet meta={metadata} link={link}>
-                <title>{GatsbyConfig.siteMetadata.title}</title>
-                <html lang="en" />
-              </Helmet>
-              <SkipLink />
-              <div>
-                <Header />
-              </div>
-              <div className="layout-base__wrapper">
-                <div id="content" className="layout-base">
-                  {children}
-                </div>
-                <footer className="layout-base__bottom">
-                  <Footer />
-                </footer>
-              </div>
+              <Header />
             </div>
-          </AuthWrapper>
+            <div className="layout-base__wrapper">
+              <div id="content" className="layout-base">
+                {children}
+              </div>
+              <footer className="layout-base__bottom">
+                <Footer />
+              </footer>
+            </div>
+          </div>
         </Provider>
       </ApolloProvider>
     </React.StrictMode>
