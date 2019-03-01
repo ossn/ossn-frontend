@@ -33,7 +33,7 @@ function ClubFull(props) {
   const [isMember, setIsMember] = useState(false);
   const [isOwner, setIsOwner] = useState(false);
   const [history, setHistory] = useState(props.club);
-
+  handleSubmit = handleSubmit.bind(this);
   /**
    * Fetches the club resource and updates the state
    */
@@ -42,7 +42,7 @@ function ClubFull(props) {
     const path = window.location.pathname.split("/");
     const id = (props.club || {}).id || path[path.indexOf("clubs") + 1];
     getClub(id).then(updateClub);
-  }, []);
+  }, [getClub, props.club, updateClub]);
 
   /**
    * Updates the document title when the state's club name changes
@@ -103,7 +103,7 @@ function ClubFull(props) {
    */
   async function handleSubmit() {
     const { events, location, users, ...rest } = club;
-
+    console.log("handleSubmit");
     const { data } = await props.client.mutate({
       fetchPolicy: "no-cache",
       mutation: queries.EDIT_CLUB,
@@ -163,29 +163,29 @@ function ClubFull(props) {
 
   return (
     <LayoutContained className="club-full">
-      <header className="club-full__header">
-        <div className="club-full__cover-wrapper">
-          <img
-            alt=""
-            className="club-full__cover-image"
-            src={club.bannerImageUrl || clubCover}
-          />
-        </div>
-
-        <div className="club-full__header-bottom">
-          <div className="club-full__profile-picture-section">
-            <div className="club-full__profile-picture-wrapper">
+      {editing ? (
+        <form onSubmit={handleSubmit}>
+          <header className="club-full__header">
+            <div className="club-full__cover-wrapper">
               <img
-                alt="Club profile"
-                className="club-full__profile-picture"
-                src={club.imageUrl || groupSmallImage}
+                alt=""
+                className="club-full__cover-image"
+                src={club.bannerImageUrl || clubCover}
               />
             </div>
-          </div>
 
-          <div className="club-full__title-wrapper">
-            {editing ? (
-              <>
+            <div className="club-full__header-bottom">
+              <div className="club-full__profile-picture-section">
+                <div className="club-full__profile-picture-wrapper">
+                  <img
+                    alt="Club profile"
+                    className="club-full__profile-picture"
+                    src={club.imageUrl || groupSmallImage}
+                  />
+                </div>
+              </div>
+
+              <div className="club-full__title-wrapper">
                 <TextInput
                   label="Title"
                   name="name"
@@ -199,97 +199,60 @@ function ClubFull(props) {
                   onChange={handleChange}
                   value={club.sortDescription || ""}
                 />
-              </>
-            ) : (
-              <>
-                {club.name && <h1 className="club-full__title">{club.name}</h1>}
-                {club.sortDescription && (
-                  <p className="club-full__subtitle">{club.sortDescription}</p>
-                )}
-              </>
-            )}
-          </div>
-        </div>
-      </header>
-
-      <Layout2ColsUnequal
-        className="club-full__body"
-        horizontalGutters
-        inverse
-        verticalGutters
-      >
-        <div className="club-full__info-container">
-          {props.currentUser ? (
-            !isMember && (
-              <button className="button club-full__cta" onClick={joinClub}>
-                <PlusCircle /> Become a member of this club
-              </button>
-            )
-          ) : (
-            <LoginLink
-              className="button button--medium button--full club-full__login"
-              label="Login/Signup to become a member"
-            />
-          )}
-
-          {editing ? (
-            <div className="club-full__sidebar-content">
-              <TextInput
-                label="Address"
-                name="location[address]"
-                onChange={handleChange}
-                value={(club.location || {}).address || ""}
-                multiline
-              />
-              <TextInput
-                label="Latitude"
-                name="location[lat]"
-                onChange={handleChange}
-                value={(club.location || {}).lat || ""}
-              />
-              <TextInput
-                label="Longitude"
-                name="location[lng]"
-                onChange={handleChange}
-                value={(club.location || {}).lng || ""}
-              />
-              <TextInput
-                label="Email"
-                name="email"
-                onChange={handleChange}
-                value={club.email || ""}
-              />
-              <TextInput
-                label="Github URL"
-                name="githubUrl"
-                onChange={handleChange}
-                value={club.githubUrl || ""}
-              />
-              <TextInput
-                label="Club URL"
-                name="clubUrl"
-                onChange={handleChange}
-                value={club.clubUrl || ""}
-              />
+              </div>
             </div>
-          ) : (
-            <ClubInfo
-              club={{
-                address: (club.location || {}).address,
-                lng: (club.location || {}).lng,
-                lat: (club.location || {}).lat,
-                clubUrl: club.clubUrl || "",
-                email: club.email || "",
-                githubUrl: club.githubUrl || "",
-                events: club.events || ""
-              }}
-            />
-          )}
-        </div>
+          </header>
 
-        <div className="club-full__description">
-          {editing && (
-            <>
+          <Layout2ColsUnequal
+            className="club-full__body"
+            horizontalGutters
+            inverse
+            verticalGutters
+          >
+            <div className="club-full__info-container">
+              <div className="club-full__sidebar-content">
+                <TextInput
+                  label="Address"
+                  name="location[address]"
+                  onChange={handleChange}
+                  value={(club.location || {}).address || ""}
+                  multiline
+                />
+                <TextInput
+                  label="Latitude"
+                  name="location[lat]"
+                  onChange={handleChange}
+                  value={(club.location || {}).lat || ""}
+                />
+                <TextInput
+                  label="Longitude"
+                  name="location[lng]"
+                  onChange={handleChange}
+                  value={(club.location || {}).lng || ""}
+                />
+                <TextInput
+                  label="Email"
+                  name="email"
+                  onChange={handleChange}
+                  value={club.email || ""}
+                />
+                <TextInput
+                  label="Github URL"
+                  name="githubUrl"
+                  onChange={handleChange}
+                  value={club.githubUrl || ""}
+                />
+                <TextInput
+                  label="Club URL"
+                  name="clubUrl"
+                  onChange={handleChange}
+                  value={club.clubUrl}
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="club-full__description">
               <h2>Banner image URL</h2>
               <TextInput
                 label="Banner image URL"
@@ -304,11 +267,6 @@ function ClubFull(props) {
                 onChange={handleChange}
                 value={club.imageUrl || ""}
               />
-            </>
-          )}
-
-          {editing ? (
-            <>
               <h2>Description</h2>
               <TextInput
                 label="Description"
@@ -325,69 +283,151 @@ function ClubFull(props) {
                 onChange={handleChange}
                 value={club.codeOfConduct || ""}
               />
-            </>
-          ) : (
-            <>
-              {club.description && (
-                <>
-                  <h2>Description</h2>
-                  <ReactMarkdown source={club.description || ""} />
-                </>
-              )}
-              {club.codeOfConduct && (
-                <>
-                  <h2>Code of conduct</h2>
-                  <ReactMarkdown source={club.codeOfConduct || ""} />
-                </>
-              )}
-            </>
-          )}
 
-          <div className="club-full__button-list">
-            {editing && (
-              <>
-                <button
-                  className="member__button button button--reset"
-                  onClick={handleClick(false)}
-                >
-                  <X size={16} /> Cancel
-                </button>
+              <div className="club-full__button-list">
+                <div>
+                  <button
+                    className="member__button button button--reset"
+                    onClick={handleClick(false)}
+                  >
+                    <X size={16} /> Cancel
+                  </button>
 
-                <button
-                  className="member__button button button--submit"
-                  onClick={handleSubmit}
-                >
-                  <Check size={16} /> Save changes
-                </button>
-              </>
-            )}
+                  <button
+                    className="member__button button button--submit"
+                    // onClick={handleSubmit}
+                  >
+                    <Check size={16} /> Save changes
+                  </button>
+                </div>
+              </div>
 
-            {!editing && isOwner && (
-              <button
-                className="member__button button button--reset"
-                onClick={handleClick(true)}
-              >
-                <Feather size={16} /> Edit club
-              </button>
-            )}
-          </div>
+              <div className="club-full__members-section">
+                {club.users && club.users.length > 0 && (
+                  <>
+                    <h2>Members</h2>
+                    <MemberList members={club.users} />
 
-          <div className="club-full__members-section">
-            {club.users && club.users.length > 0 && (
-              <>
-                <h2>Members</h2>
-                <MemberList members={club.users} />
+                    <Shape
+                      className="club-full__members-shape club-full__members-shape--waves"
+                      darkSkyBlue
+                      waves
+                    />
+                  </>
+                )}
+              </div>
+            </div>
+          </Layout2ColsUnequal>
+        </form>
+      ) : (
+        <>
+          <header className="club-full__header">
+            <div className="club-full__cover-wrapper">
+              <img
+                alt=""
+                className="club-full__cover-image"
+                src={club.bannerImageUrl || clubCover}
+              />
+            </div>
 
-                <Shape
-                  className="club-full__members-shape club-full__members-shape--waves"
-                  darkSkyBlue
-                  waves
+            <div className="club-full__header-bottom">
+              <div className="club-full__profile-picture-section">
+                <div className="club-full__profile-picture-wrapper">
+                  <img
+                    alt="Club profile"
+                    className="club-full__profile-picture"
+                    src={club.imageUrl || groupSmallImage}
+                  />
+                </div>
+              </div>
+
+              <div className="club-full__title-wrapper">
+                {club.name && <h1 className="club-full__title">{club.name}</h1>}
+                {club.sortDescription && (
+                  <p className="club-full__subtitle">{club.sortDescription}</p>
+                )}
+              </div>
+            </div>
+          </header>
+
+          <Layout2ColsUnequal
+            className="club-full__body"
+            horizontalGutters
+            inverse
+            verticalGutters
+          >
+            <div className="club-full__info-container">
+              {props.currentUser ? (
+                !isMember && (
+                  <button className="button club-full__cta" onClick={joinClub}>
+                    <PlusCircle /> Become a member of this club
+                  </button>
+                )
+              ) : (
+                <LoginLink
+                  className="button button--medium button--full club-full__login"
+                  label="Login/Signup to become a member"
                 />
-              </>
-            )}
-          </div>
-        </div>
-      </Layout2ColsUnequal>
+              )}
+
+              <ClubInfo
+                club={{
+                  address: (club.location || {}).address,
+                  lng: (club.location || {}).lng,
+                  lat: (club.location || {}).lat,
+                  clubUrl: club.clubUrl || "",
+                  email: club.email || "",
+                  githubUrl: club.githubUrl || "",
+                  events: club.events || ""
+                }}
+              />
+            </div>
+
+            <div className="club-full__description">
+              <div>
+                {club.description && (
+                  <>
+                    <h2>Description</h2>
+                    <ReactMarkdown source={club.description || ""} />
+                  </>
+                )}
+                {club.codeOfConduct && (
+                  <>
+                    <h2>Code of conduct</h2>
+                    <ReactMarkdown source={club.codeOfConduct || ""} />
+                  </>
+                )}
+              </div>
+
+              <div className="club-full__button-list">
+                {!editing && isOwner && (
+                  <button
+                    className="member__button button button--reset"
+                    onClick={handleClick(true)}
+                  >
+                    <Feather size={16} /> Edit club
+                  </button>
+                )}
+              </div>
+
+              <div className="club-full__members-section">
+                {club.users && club.users.length > 0 && (
+                  <>
+                    <h2>Members</h2>
+                    <MemberList members={club.users} />
+
+                    <Shape
+                      className="club-full__members-shape club-full__members-shape--waves"
+                      darkSkyBlue
+                      waves
+                    />
+                  </>
+                )}
+              </div>
+            </div>
+          </Layout2ColsUnequal>
+        </>
+      )}
     </LayoutContained>
   );
 }
