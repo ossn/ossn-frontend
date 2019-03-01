@@ -101,18 +101,18 @@ function ClubFull(props) {
   /**
    *
    */
-  async function handleSubmit(event) {
+  function handleSubmit() {
     const { events, location, users, ...rest } = club;
-    const { data } = await props.client.mutate({
-      fetchPolicy: "no-cache",
-      mutation: queries.EDIT_CLUB,
-      variables: { ...location, ...rest }
-    });
-
-    if (data.editClub) {
-      setClub({ ...club, ...data.editClub });
-      setEditing(false);
-    }
+       props.client
+      .mutate({
+        fetchPolicy: "no-cache",
+        mutation: queries.EDIT_CLUB,
+        variables: { ...location, ...rest }
+      })
+      .then(({ data: { editClub } }) => {
+        updateClub(editClub);
+        setEditing(!editClub);
+      });
   }
 
   async function joinClub() {
