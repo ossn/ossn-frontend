@@ -10,7 +10,7 @@ const initial = {
 const authReducer = (state = initial, action) => {
   switch (action.type) {
     // modifies the user store for a confirmed login
-    case 'AUTH_LOGIN': {
+    case "AUTH_LOGIN": {
       let loginState = {
         ...state,
         logout: false,
@@ -20,7 +20,7 @@ const authReducer = (state = initial, action) => {
       return loginState;
     }
 
-    case 'AUTH_LOGOUT': {
+    case "AUTH_LOGOUT": {
       let logoutState = {
         ...state,
         logout: true,
@@ -30,7 +30,7 @@ const authReducer = (state = initial, action) => {
       return logoutState;
     }
 
-    case 'AUTH_RESET_LOGOUT': {
+    case "AUTH_RESET_LOGOUT": {
       let resetLogoutState = {
         ...state,
         logout: true,

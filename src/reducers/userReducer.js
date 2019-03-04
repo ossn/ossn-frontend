@@ -4,7 +4,7 @@ const initial = {};
 const userReducer = (state = initial, action) => {
   switch (action.type) {
     // modifies the user store for a confirmed login
-    case 'USER_LOGIN': {
+    case "USER_LOGIN": {
       let loggeInState = {
         ...state,
         user: {
@@ -16,7 +16,7 @@ const userReducer = (state = initial, action) => {
     }
 
     // modifies the user store for a confirmed logout
-    case 'USER_LOGOUT': {
+    case "USER_LOGOUT": {
       let loggedOutState = {
         ...state,
         user: undefined

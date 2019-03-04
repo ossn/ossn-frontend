@@ -4,19 +4,19 @@ export const numberWithSuffix = num => {
   const asStr = num.toString();
   const lastDigit = asStr[asStr.length - 1];
 
-  let suffix = '';
+  let suffix = "";
   switch (lastDigit) {
-    case '1':
-      suffix = 'st';
+    case "1":
+      suffix = "st";
       break;
-    case '2':
-      suffix = 'nd';
+    case "2":
+      suffix = "nd";
       break;
-    case '3':
-      suffix = 'rd';
+    case "3":
+      suffix = "rd";
       break;
     default:
-      suffix = 'th';
+      suffix = "th";
   }
 
   return `${num}${suffix}`;

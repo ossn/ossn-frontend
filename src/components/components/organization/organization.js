@@ -2,13 +2,13 @@
  A single organization.
  */
 
-import React from 'react';
-import { Link } from 'react-feather';
+import React from "react";
+import { Link } from "react-feather";
 
-import ShadowBox from './../shadow-box/shadow-box';
+import ShadowBox from "./../shadow-box/shadow-box";
 
 // Style.
-import './organization.scss';
+import "./organization.scss";
 
 const Organization = props => {
   if (!props.organization) {
@@ -20,9 +20,9 @@ const Organization = props => {
   const icon = props.organization.attachment.publicURL;
   const description = props.organization.description;
 
-  let classes = ['organization'];
+  let classes = ["organization"];
   if (props.className) classes.push(props.className);
-  let classString = classes.join(' ');
+  let classString = classes.join(" ");
 
   return (
     <div className={classString}>

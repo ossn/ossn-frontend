@@ -4,25 +4,25 @@
   Appears at /contribute and /leaders-corber.
 */
 
-import React from 'react';
-import { graphql } from 'gatsby';
-import MediaQuery from 'react-responsive';
+import React from "react";
+import { graphql } from "gatsby";
+import MediaQuery from "react-responsive";
 
 // Local modules.
-import LayoutContained from './../../layouts/layout-contained/layout-contained';
-import Layout2Col from './../../layouts/layout-2col/layout-2col';
-import ShadowBox from './../shadow-box/shadow-box';
-import LayoutScroll from './../../layouts/layout-scroll/layout-scroll';
+import LayoutContained from "./../../layouts/layout-contained/layout-contained";
+import Layout2Col from "./../../layouts/layout-2col/layout-2col";
+import ShadowBox from "./../shadow-box/shadow-box";
+import LayoutScroll from "./../../layouts/layout-scroll/layout-scroll";
 
 // styles
-import './member-training-resources.scss';
+import "./member-training-resources.scss";
 
 // A single training resource.
 const TrainingResource = props => {
   const title = props.resource.title;
   const url = props.resource.link;
   const icon = props.resource.attachment.publicURL;
-  const classes = `${props.className || ''} member-training-resources`;
+  const classes = `${props.className || ""} member-training-resources`;
   const description = props.resource.description;
 
   return (

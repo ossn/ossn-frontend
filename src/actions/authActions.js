@@ -6,7 +6,7 @@
 export const requestLogin = () => {
   return dispatch => {
     return dispatch({
-      type: 'AUTH_LOGIN'
+      type: "AUTH_LOGIN"
     });
   };
 };
@@ -14,7 +14,7 @@ export const requestLogin = () => {
 export const requestLogout = () => {
   return dispatch => {
     return dispatch({
-      type: 'AUTH_LOGOUT'
+      type: "AUTH_LOGOUT"
     });
   };
 };
@@ -22,7 +22,7 @@ export const requestLogout = () => {
 export const resetActionLogout = () => {
   return dispatch => {
     return dispatch({
-      type: 'AUTH_RESET_LOGOUT'
+      type: "AUTH_RESET_LOGOUT"
     });
   };
 };

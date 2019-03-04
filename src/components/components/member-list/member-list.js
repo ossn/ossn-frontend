@@ -4,10 +4,10 @@
  props: members (array of MemberTeaser), the members to be shown
  */
 
-import React from 'react';
+import React from "react";
 
-import Layout2Col from './../../layouts/layout-2col/layout-2col';
-import MemberTeaser from './../member-teaser/member-teaser';
+import Layout2Col from "./../../layouts/layout-2col/layout-2col";
+import MemberTeaser from "./../member-teaser/member-teaser";
 
 export default class MemberList extends React.Component {
   getMembers() {

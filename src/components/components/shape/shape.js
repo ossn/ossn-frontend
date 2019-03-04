@@ -1,15 +1,15 @@
 /*
  Shape.
  */
-import React, { memo } from 'react';
+import React, { memo } from "react";
 
 // styles
-import './shape.scss';
+import "./shape.scss";
 
 const Shape = props => {
-  let baseClass = ['shape'];
+  let baseClass = ["shape"];
 
-  let shapeSvg = '';
+  let shapeSvg = "";
   let classes = [baseClass];
   // Css shapes.
   if (props.triangle) classes.push(`${baseClass}--triangle`);
@@ -117,7 +117,7 @@ const Shape = props => {
   if (props.divider) classes.push(`${baseClass}--divider`);
 
   if (props.className) classes.push(props.className);
-  const classString = classes.join(' ');
+  const classString = classes.join(" ");
 
   return <span className={classString}>{shapeSvg}</span>;
 };

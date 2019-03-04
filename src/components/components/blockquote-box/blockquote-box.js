@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import Shape from './../shape/shape';
-import './blockquote-box.scss';
+import Shape from "./../shape/shape";
+import "./blockquote-box.scss";
 
 export default props => {
   const blockquote = props.blockquote;

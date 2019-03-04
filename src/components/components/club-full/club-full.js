@@ -42,7 +42,7 @@ function ClubFull(props) {
     const path = window.location.pathname.split("/");
     const id = (props.club || {}).id || path[path.indexOf("clubs") + 1];
     getClub(id).then(updateClub);
-  }, []);
+  }, [getClub, props.club, updateClub]);
 
   /**
    * Updates the document title when the state's club name changes
@@ -103,7 +103,7 @@ function ClubFull(props) {
    */
   function handleSubmit() {
     const { events, location, users, ...rest } = club;
-       props.client
+    props.client
       .mutate({
         fetchPolicy: "no-cache",
         mutation: queries.EDIT_CLUB,
