@@ -165,8 +165,8 @@ class Member extends React.PureComponent {
   };
 
   /**
-   * Returns boolean value.
    * Checks if the logged in user is the same as the viewed user.
+   * @returns {boolean}
    */
   isCurrentUser = () => {
     let { id } = this.props.member;
@@ -413,23 +413,6 @@ class Member extends React.PureComponent {
 
       buttonList.push(
         <button className="member__button button button--submit" type="submit">
-          {/*<ApolloConsumer key="appollo-consumer">*/}
-          {/*{() => (*/}
-          {/*<div*/}
-          {/*tabIndex={0}*/}
-          {/*role="button"*/}
-          {/*onClick={this.handleSubmit}*/}
-          {/*onKeyDown={e => {*/}
-          {/*returnKeyCheck(e, this.handleSubmit);*/}
-          {/*}}*/}
-          {/*className="member__button button button--submit"*/}
-          {/*key={1}*/}
-          {/*>*/}
-          {/*<Check size={20} />*/}
-          {/*<span> Save changes </span>*/}
-          {/*</div>*/}
-          {/*)}*/}
-          {/*</ApolloConsumer>*/}
           <Check size={16} /> Save changes
         </button>
       );
@@ -511,13 +494,12 @@ class Member extends React.PureComponent {
       <LayoutContained className="member">
         <Helmet>
           <title>
-            {[snapshot.name, "|", GatsbyConfig.siteMetadata.title].join(" ")}
+            {`${snapshot.name} | ${GatsbyConfig.siteMetadata.title}`}
           </title>
         </Helmet>
         {snapshot.edit ? (
           <form onSubmit={e => e.preventDefault() || this.handleSubmit(e)}>
-            {" "}
-            {memberInner}{" "}
+            {memberInner}
           </form>
         ) : (
           memberInner
