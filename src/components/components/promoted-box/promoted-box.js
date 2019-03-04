@@ -4,10 +4,8 @@ import Shape from "./../shape/shape";
 /**
  * Promoted box.
  * Appears opportunities page for logged in users.
- *
- * @param props
  */
-export default props => {
+export default () => {
   return (
     <div className="promoted-box">
       <div className="promoted-box__inner">

@@ -46,8 +46,6 @@ const LeaderTool = props => {
 
 /**
  * Wraps a list of tools with title.
- *
- * @param props
  */
 export class LeaderToolList extends React.PureComponent {
   state = {

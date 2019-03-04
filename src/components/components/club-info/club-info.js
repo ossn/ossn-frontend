@@ -27,37 +27,35 @@ import Event from "../event/event";
  * @param props
  *
  */
-export class ClubInfoItem extends React.PureComponent {
-  render() {
-    let classes = ["club-info__item"];
-    if (this.props.major) classes.push("club-info__item--major");
-    if (this.props.map) classes.push("club-info__item--map");
+export const ClubInfoItem = props => {
+  let classes = ["club-info__item"];
+  if (props.major) classes.push("club-info__item--major");
+  if (props.map) classes.push("club-info__item--map");
 
-    let content;
-    if (this.props.link) {
-      content = (
-        <a
-          href={this.props.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={classes.join(" ")}
-        >
-          {this.props.children}
-        </a>
-      );
-    } else if (this.props.email) {
-      content = (
-        <a href={this.props.email} className={classes.join(" ")}>
-          {this.props.children}
-        </a>
-      );
-    } else {
-      content = <div className={classes.join(" ")}>{this.props.children}</div>;
-    }
-
-    return <>{content}</>;
+  let content;
+  if (props.link) {
+    content = (
+      <a
+        href={props.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={classes.join(" ")}
+      >
+        {props.children}
+      </a>
+    );
+  } else if (props.email) {
+    content = (
+      <a href={props.email} className={classes.join(" ")}>
+        {props.children}
+      </a>
+    );
+  } else {
+    content = <div className={classes.join(" ")}>{props.children}</div>;
   }
-}
+
+  return <>{content}</>;
+};
 
 /**
  * LocationInfo wrapper.
@@ -153,16 +151,6 @@ const EventInfo = ({ event }) => (
 /**
  * Box containing information about a club..
  * Wraps event component.
- *
- * Possible props:
- *  {String} address
- *  {String} lng
- *  {String} clubUrl
- *  {String} email
- *  {String} githubUrl
- *  {Array} events
- *
- * @param {String} props
  */
 export default class ClubInfo extends React.PureComponent {
   getEvents() {
@@ -171,7 +159,7 @@ export default class ClubInfo extends React.PureComponent {
     /**
      * Orders Event list.
      */
-    const eventList =
+    return (
       this.props.club.events &&
       this.props.club.events
         .sort((a, b) => {
@@ -197,8 +185,8 @@ export default class ClubInfo extends React.PureComponent {
         })
         .map((event, i) => {
           return <EventInfo event={event} key={event.id} />;
-        });
-    return eventList;
+        })
+    );
   }
 
   render() {

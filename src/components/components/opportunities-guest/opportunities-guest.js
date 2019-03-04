@@ -8,10 +8,8 @@ import { LoginLink } from "./../../layouts/auth-wrapper/auth-wrapper";
 /**
  * Shows the become a member CTA.
  * Appears at /contribute and /leaders-corner for logged out users.
- *
- * @param props
  */
-export default props => {
+export default () => {
   return (
     <div className="opportunities-guest">
       <LayoutContained>

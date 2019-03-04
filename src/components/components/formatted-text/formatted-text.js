@@ -14,88 +14,70 @@ import {
  *
  * @param props
  */
-export default class FormattedText extends React.PureComponent {
-  render() {
-    const prefix = this.props.prefix || "";
-    const value = this.props.value;
-    const icon = this.props.icon ? <this.props.icon size={20} /> : "";
-    const secondary = this.props.secondary || "";
-    const breakAll = this.props.breakAll;
-    let classes = ["formatted-text"];
-    if (breakAll) classes.push("formatted-text--word-break");
+export const FormattedText = props => {
+  const prefix = props.prefix || "";
+  const value = props.value;
+  const icon = props.icon ? <this.props.icon size={20} /> : "";
+  const secondary = props.secondary || "";
+  const breakAll = props.breakAll;
+  let classes = ["formatted-text"];
+  if (breakAll) classes.push("formatted-text--word-break");
 
-    return (
-      <div className={classes.join(" ")}>
-        <div className="formatted-text__icon">{icon}</div>
-        <div className="formatted-text__text">
-          <div className="formatted-text__main">
-            <span className="formatted-text__prefix">{prefix}</span>
-            <span className="formatted-text__value">{value}</span>
-          </div>
-          <span className="formatted-text__secondary"> {secondary}</span>
+  return (
+    <div className={classes.join(" ")}>
+      <div className="formatted-text__icon">{icon}</div>
+      <div className="formatted-text__text">
+        <div className="formatted-text__main">
+          <span className="formatted-text__prefix">{prefix}</span>
+          <span className="formatted-text__value">{value}</span>
         </div>
+        <span className="formatted-text__secondary"> {secondary}</span>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 /**
  * Shortcut wrapper for github links.
  *
  * @param props
  */
-export class Github extends React.PureComponent {
-  render() {
-    const value = this.props.value;
-    return <FormattedText value={value} icon={GithubIcon} breakAll />;
-  }
-}
+export const Github = props => {
+  return <FormattedText value={props.value} icon={GithubIcon} breakAll />;
+};
 
 /**
  * Shortcut wrapper for links.
  *
  * @param props
  */
-export class Link extends React.PureComponent {
-  render() {
-    const value = this.props.value;
-
-    return <FormattedText value={value} icon={LinkIcon} breakAll />;
-  }
-}
+export const Link = props => {
+  return <FormattedText value={props.value} icon={LinkIcon} breakAll />;
+};
 
 /**
  * Shortcut wrapper for plain text.
  *
  * @param props
  */
-export class Text extends React.PureComponent {
-  render() {
-    const value = this.props.value;
-    return <FormattedText prefix="" value={value} />;
-  }
-}
+export const Text = props => {
+  return <FormattedText prefix="" value={props.value} />;
+};
 
 /**
  * Shortcut wrapper for Map.
  *
  * @param props
  */
-export class Map extends React.PureComponent {
-  render() {
-    const value = this.props.value;
-    return <FormattedText prefix="" value={value} icon={MapIcon} />;
-  }
-}
+export const Map = props => {
+  return <FormattedText value={props.value} icon={MapIcon} />;
+};
 
 /**
  * Shortcut wrapper for email.
  *
  * @param props
  */
-export class Email extends React.PureComponent {
-  render() {
-    const value = this.props.value;
-    return <FormattedText prefix="" value={value} icon={AtSign} breakAll />;
-  }
-}
+export const Email = props => {
+  return <FormattedText prefix="" value={props.value} icon={AtSign} breakAll />;
+};

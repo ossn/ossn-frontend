@@ -4,8 +4,6 @@ import { ChevronRight } from "react-feather";
 /**
  * A single FAQ question and answer.
  * Appears at /faq-page.
- *
- * @param props
  */
 class FaqItem extends React.PureComponent {
   state = {

@@ -29,8 +29,6 @@ import { editUserMutation, getUserQuery } from "./member-queries";
  * If the edit flag is true, every field is an input element. Else is a label.
  * The state also stores the state of the component,
  * so modifications on edit can be undone.
- *
- * @param props
  */
 
 const shapesUnordered = [

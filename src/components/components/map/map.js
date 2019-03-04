@@ -6,8 +6,6 @@ import { ClubTeaser } from "./../club-teaser-list/club-teaser-list";
 
 /**
  * The content for the clubs list map view.
- *
- * @param props
  */
 class ClubMap extends React.Component {
   constructor(props) {
