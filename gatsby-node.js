@@ -1,6 +1,9 @@
 const path = require(`path`);
 
-// Bypass leaflet npm module during the build time. To avoid `window` is not defined exception
+/**
+ * Bypass leaflet npm module during the build time. To avoid `window` is not
+ * defined exception.
+ */
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   if (stage === "build-html") {
     actions.setWebpackConfig({
@@ -16,7 +19,9 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   }
 };
 
-// handles the club fetching.
+/**
+ * Handles the club fetching.
+ */
 function requestClubs(graphql, actions, cursor = null) {
   return new Promise((resolve, reject) => {
     graphql(clubQuery, { cursor: cursor })
@@ -52,7 +57,9 @@ function requestClubs(graphql, actions, cursor = null) {
   });
 }
 
-// handles the user fetching.
+/**
+ * Handles the user fetching.
+ **/
 function requestUsers(graphql, actions, cursor = null) {
   return new Promise((resolve, reject) => {
     graphql(userQuery, { cursor: cursor })
@@ -88,7 +95,9 @@ function requestUsers(graphql, actions, cursor = null) {
   });
 }
 
-// create pages for clubs and users.
+/**
+ * Create pages for clubs and users.
+ */
 exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     requestClubs(graphql, actions).then(() => {
@@ -99,11 +108,15 @@ exports.createPages = ({ graphql, actions }) => {
   });
 };
 
-// Implement the Gatsby API “onCreatePage”. This is
-// called after every page is created.
+/**
+ * Implement the Gatsby API “onCreatePage”. This is called after every page is
+ * created.
+ */
 exports.onCreatePage = async ({ page, actions: { createPage } }) => {
-  // page.matchPath is a special key that's used for matching pages
-  // only on the client.
+  /**
+   * page.matchPath is a special key that's used for matching pages only on the
+   * client.
+   */
   if (page.path === "/members/dynamic/") {
     page.matchPath = "/members/*";
     page.component = path.resolve(`./src/pages/members/dynamic.js`);
@@ -117,7 +130,9 @@ exports.onCreatePage = async ({ page, actions: { createPage } }) => {
   }
 };
 
-// the graphql query for clubs.
+/**
+ * The graphql query for clubs.
+ */
 const clubQuery = `
   query GetClubs($cursor: ID) {
     ossnApi {
@@ -177,7 +192,9 @@ const clubQuery = `
   }
 `;
 
-// the graphql query for users.
+/**
+ * The graphql query for users.
+ */
 const userQuery = `
 query GetUsers($cursor: ID) {
   ossnApi {

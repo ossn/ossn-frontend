@@ -1,7 +1,11 @@
-// used by the auth provider to determine if the user request a logout
-// and potentially a login.
+/**
+ * Used by the auth provider to determine if the user request a logout and
+ * potentially a login.
+ **/
 
-// initializes the user store
+/**
+ * Initializes the user store.
+ **/
 const initial = {
   logout: false,
   requestLogout: false
@@ -9,7 +13,9 @@ const initial = {
 
 const authReducer = (state = initial, action) => {
   switch (action.type) {
-    // modifies the user store for a confirmed login
+    /**
+     * Modifies the user store for a confirmed login.
+     **/
     case "AUTH_LOGIN": {
       let loginState = {
         ...state,
@@ -20,6 +26,9 @@ const authReducer = (state = initial, action) => {
       return loginState;
     }
 
+    /**
+     * Modifies the user store for a confirmed logout.
+     **/
     case "AUTH_LOGOUT": {
       let logoutState = {
         ...state,
@@ -30,6 +39,9 @@ const authReducer = (state = initial, action) => {
       return logoutState;
     }
 
+    /**
+     * Modifies the user store for a reset logout.
+     **/
     case "AUTH_RESET_LOGOUT": {
       let resetLogoutState = {
         ...state,

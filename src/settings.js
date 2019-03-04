@@ -1,13 +1,11 @@
-// global settings
+/**
+ * Global settings.
+ **/
 import appleTouch from "./favicon/apple-touch-icon.png";
 import favicon16x16 from "./favicon/favicon-16x16.png";
 import favicon32x32 from "./favicon/favicon-32x32.png";
 import safari from "./favicon/safari-pinned-tab.svg";
 
-// import androidChrome from './favicon/android-chrome-144x144.png';
-// import msTile from './favicon/mstile-150x150.png';
-// import faviconIcon from './favicon/favicon.ico';
-// import siteWebmanifest from './favicon/site.webmanifest';
 export const activeEnv =
   process.env.ACTIVE_ENV || process.env.NODE_ENV || "development";
 

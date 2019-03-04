@@ -1,6 +1,10 @@
 import { numberWithSuffix } from "./numbers";
 
-// convert the `new Date().getDay()` number to it's verbose representation.
+/**
+ * Converts the `new Date().getDay()` number to it's verbose representation.
+ *
+ * @params num
+ **/
 export const getDayName = num => {
   switch (num) {
     case 0:
@@ -22,7 +26,11 @@ export const getDayName = num => {
   }
 };
 
-// conver the `new Date().getMonth()` number to it's verbose representation.
+/**
+ * Converts the `new Date().getMonth()` number to it's verbose representation.
+ *
+ * @params num
+ **/
 export const getMonthName = num => {
   switch (num) {
     case 0:
@@ -54,7 +62,11 @@ export const getMonthName = num => {
   }
 };
 
-// conver the `new Date().getMonth()` number to it's verbose representation.
+/**
+ * Converts the `new Date().getMonth()` number to it's short representation.
+ *
+ * @params num
+ **/
 export const getMonthShortName = num => {
   switch (num) {
     case 0:
@@ -86,8 +98,14 @@ export const getMonthShortName = num => {
   }
 };
 
-// project specific.
-// get the date string from the announcements and job listing
+/**
+ * Converts timestamp into verbose date string.
+ * Used for the date string from the announcements and job listing.
+ *
+ * @params {int} timestamp
+ * @return {String}
+ **/
+
 export const verboseDate = timestamp => {
   const date = new Date(timestamp * 1000);
   const verboseDayName = getDayName(date.getDay());
@@ -96,6 +114,13 @@ export const verboseDate = timestamp => {
   return `${verboseDayName}, ${verboseMonthName} ${suffixedDate} ${date.getFullYear()}`;
 };
 
+/**
+ * Converts timestamp into short date string.
+ * Used for the date string from events.
+ *
+ * @params {int} timestamp
+ * @return {String}
+ **/
 export const shortDate = timestamp => {
   const date = new Date(timestamp * 1000);
   const shortDayName = date.getDate();

@@ -1,12 +1,20 @@
 const path = require("path");
 
-// Returns true only in production enviroment.
+/**
+ * Returns true only in production enviroment.
+ *
+ * @returns {boolean}
+ */
 const isProd = ["prod", "production"].includes(
   (process.env.ENV || process.env.env || "").toLowerCase()
 );
 
-// Returns true in production build, we use it in preview as well to fetch the
-// right backend content.
+/**
+ * Returns true in production build, we use it in preview as well to fetch the
+ * correct backend content.
+ *
+ * @returns {boolean}
+ */
 const isProdBuild = ["prod", "production"].includes(
   (process.env.NODE_ENV || process.env.env || "").toLowerCase()
 );
@@ -72,12 +80,9 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: "gatsby-starter-default",
-        // short_name: 'starter',
         start_url: "/",
-        // background_color: '#663399',
         theme_color: "#f9f9fa",
         display: "minimal-ui"
-        // icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
       }
     },
     "gatsby-plugin-extract-schema",

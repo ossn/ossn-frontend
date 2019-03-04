@@ -17,7 +17,7 @@ import {
 export const FormattedText = props => {
   const prefix = props.prefix || "";
   const value = props.value;
-  const icon = props.icon ? <this.props.icon size={20} /> : "";
+  const icon = props.icon ? <props.icon size={20} /> : "";
   const secondary = props.secondary || "";
   const breakAll = props.breakAll;
   let classes = ["formatted-text"];
