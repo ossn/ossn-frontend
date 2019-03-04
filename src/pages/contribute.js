@@ -1,12 +1,3 @@
-/**
- *  Page for member opportunities under '/contribute' url.
- *  gets the opportunities component and fetches the data for
- *  job listing
- *  announcements
- *  tools for contributing
- *  communication channels
- **/
-// import style
 import "./../components/components/promoted-box/promoted-box.scss";
 
 import { graphql } from "gatsby";
@@ -17,14 +8,20 @@ import BasicLayout from "../components/layouts/layout-base/layout-base";
 import GatsbyConfig from "./../../gatsby-config";
 import ContributeContent from "./../components/components/contribute/contribute";
 
+/**
+ *  Page for member opportunities under '/contribute' url.
+ *  Gets the opportunities component and fetches the data for
+ *  - job listing
+ *  - announcements
+ *  - tools for contributing
+ *  - communication channels.
+ **/
 class Contribute extends React.PureComponent {
   render() {
     return (
       <BasicLayout location={this.props.location}>
         <Helmet>
-          <title>
-            {["Opportunities", "|", GatsbyConfig.siteMetadata.title].join(" ")}
-          </title>
+          <title>{`Opportunities | ${GatsbyConfig.siteMetadata.title}`}</title>
         </Helmet>
 
         <ContributeContent data={this.props.data} />

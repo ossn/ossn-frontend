@@ -1,4 +1,3 @@
-// styles
 import "../components/pages-styles/faq-page.scss";
 
 import React, { memo } from "react";
@@ -12,11 +11,14 @@ import LayoutContained from "./../components/layouts/layout-contained/layout-con
 import Shape from "./../components/components/shape/shape";
 import FaqItem from "./../components/components/faq-item/faq-item";
 
+/**
+ * Faq page.
+ */
 const Questions = props => {
   return (
     <BasicLayout location={props.location}>
       <Helmet>
-        <title>{["FAQ", "|", GatsbyConfig.siteMetadata.title].join(" ")}</title>
+        <title>{`FAQ | ${GatsbyConfig.siteMetadata.title}`}</title>
       </Helmet>
 
       <LayoutContained>
@@ -37,6 +39,7 @@ const Questions = props => {
         </div>
 
         <Layout2Cols horizontalGutters>
+          {/*First column*/}
           <div>
             <FaqGroup id="faq-group-1" header="Joining OSSN">
               <FaqItem
@@ -94,7 +97,9 @@ const Questions = props => {
                 to remain in good standing.
               </FaqItem>
             </FaqGroup>
-
+          </div>
+          {/*Second column*/}
+          <div>
             <FaqGroup id="faq-group-2" header="Registering a club">
               <FaqItem
                 header="When is my club officially recognized as a part of the Open Source Student Network?  "
@@ -186,18 +191,6 @@ const Questions = props => {
                 </a>
                 . To learn about the global campus program visit -
                 campus.mozilla.community.
-              </FaqItem>
-            </FaqGroup>
-          </div>
-          <div>
-            <FaqGroup id="faq-group-3" header="Creating a club">
-              <FaqItem header="Example Faq item" id="faq-3-item-1">
-                Example Faq item
-              </FaqItem>
-            </FaqGroup>
-            <FaqGroup id="faq-group-4" header="Running a club">
-              <FaqItem header="Example Faq item" id="faq-4-item-1">
-                Example Faq item
               </FaqItem>
             </FaqGroup>
           </div>

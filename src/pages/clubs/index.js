@@ -1,4 +1,3 @@
-// External modules.
 import "./../../components/pages-styles/find-club.scss";
 
 import gql from "graphql-tag";
@@ -18,20 +17,26 @@ import Map from "./../../components/components/map/map";
 import ShadowBox from "./../../components/components/shadow-box/shadow-box";
 import LayoutContained from "./../../components/layouts/layout-contained/layout-contained";
 
+/**
+ * Club listing page.
+ * Has two views, one list and one map.
+ * Has search and load more functionality.
+ */
+
 class Clubs extends React.PureComponent {
-  /*
-   Handle the value of th search and the toggle button from state.
+  /**
+   * Handle the value of th search and the toggle button from state.
    */
   constructor(props) {
-    /*
-     state fields:
-     view (string): how to show the list of clubs. values (list, map).
-     searchString (string): the string to filter the clubs.
-     shownClubsCount (int): The number of the clubs that is fetched and shown.
-     shownClubs (array): the list of the club objects.
-     cursor (string): The id of the last fetched club.
-     firstLoad (boolean): A flag to indicate the first render of the component.
-     hasNextPage (boolean): A flaf to store the apollo hasNextPage.
+    /**
+     * state fields:
+     * {String} view: how to show the list of clubs. values (list, map).
+     * {String} searchString: the string to filter the clubs.
+     * {Int} shownClubsCount: The number of the clubs that is fetched and shown.
+     * {Array} shownClubs: the list of the club objects.
+     * {String} cursor: The id of the last fetched club.
+     * {boolean} firstLoad: A flag to indicate the first render of the component.
+     * {boolean} hasNextPage: A flaf to store the apollo hasNextPage.
      */
     super(props);
 
@@ -50,7 +55,12 @@ class Clubs extends React.PureComponent {
     this.timer = 0;
   }
 
-  // State management functions. Used by children components.
+  /**
+   * State management functions. Used by children components.
+   */
+  /**
+   * Toggles page view and updates club state.
+   */
   handleToggleMap = () => {
     this.setState(state => ({
       view: state.view === "map" ? "list" : "map",
@@ -67,6 +77,9 @@ class Clubs extends React.PureComponent {
     }));
   };
 
+  /**
+   * Handles search and updates club state.
+   */
   handleSearch = event => {
     const target = event.target;
     const value = target.value;
@@ -85,7 +98,9 @@ class Clubs extends React.PureComponent {
     }, 300);
   };
 
-  // the definition of the query.
+  /**
+   * The definition of the club query.
+   */
   GET_CLUBS = gql`
     query GetClubs($number: Int!, $cursor: ID, $search: String) {
       clubs(first: $number, after: $cursor, search: $search) {
@@ -133,7 +148,9 @@ class Clubs extends React.PureComponent {
     }
   `;
 
-  // Updates the state when new data is fetched.
+  /**
+   * Updates the state when new data is fetched.
+   */
   onClubsFetched = data => {
     const snapshot = { ...this.state };
     const shownClubs = [...snapshot.shownClubs, ...data.clubs.clubs];
@@ -147,7 +164,9 @@ class Clubs extends React.PureComponent {
     }));
   };
 
-  // loads the first data.
+  /**
+   * Loads data after first load.
+   */
   clubQuery = () => {
     return this.state.firstLoad ? (
       <Query
@@ -173,8 +192,6 @@ class Clubs extends React.PureComponent {
           if (error) {
             return <div> `Error ${error.message}` </div>;
           } else {
-            // JSX elements
-            // create the DOM for the component.
             return null;
           }
         }}
@@ -194,7 +211,9 @@ class Clubs extends React.PureComponent {
       hasNextPage
     } = this.state;
 
-    // Decide which view to show.
+    /**
+     * Decide which view to show.
+     */
     const content =
       view === "map" ? (
         <Map clubs={shownClubs} />
@@ -205,9 +224,7 @@ class Clubs extends React.PureComponent {
     return (
       <BasicLayout location={this.props.location}>
         <Helmet>
-          <title>
-            {["Clubs", "|", GatsbyConfig.siteMetadata.title].join(" ")}
-          </title>
+          <title>{`Clubs | ${GatsbyConfig.siteMetadata.title}`}</title>
         </Helmet>
         <LayoutContained>
           <div className="find-club__header">

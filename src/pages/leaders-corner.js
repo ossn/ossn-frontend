@@ -1,7 +1,3 @@
-/**
- * Leader's corner is the opportunities page, plus the leaders tools.
- **/
-// external modules
 import { graphql } from "gatsby";
 import React from "react";
 import { Helmet } from "react-helmet";
@@ -10,16 +6,16 @@ import GatsbyConfig from "./../../gatsby-config";
 import BasicLayout from "../components/layouts/layout-base/layout-base";
 import LeaderCorner from "./../components/components/leaders-corner/leaders-corner";
 
-// Local modules.
+/**
+ * Leader's corner is the opportunities page, plus the leaders tools.
+ **/
 class Contribute extends React.PureComponent {
   render() {
     return (
       <BasicLayout location={this.props.location}>
         <Helmet>
           <title>
-            {["Leader's Corner", "|", GatsbyConfig.siteMetadata.title].join(
-              " "
-            )}
+            {`Leader's Corner | ${GatsbyConfig.siteMetadata.title}`}
           </title>
         </Helmet>
         <LeaderCorner data={this.props.data} />

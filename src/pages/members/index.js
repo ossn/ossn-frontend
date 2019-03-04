@@ -1,6 +1,4 @@
-/*
- This page shows the list of the student members.
- */
+import "../../components/pages-styles/members.scss";
 
 import React from "react";
 import { Helmet } from "react-helmet";
@@ -16,15 +14,18 @@ import { Query, ApolloConsumer } from "react-apollo";
 import gql from "graphql-tag";
 import { PlusSquare } from "react-feather";
 
-import "../../components/pages-styles/members.scss";
-
 import { SearchFilter } from "../../components/components/filter/filter";
 import JoinCta from "../../components/components/join-cta/join-cta";
 import MemberList from "../../components/components/member-list/member-list";
-
-// Import page title from gatsby config.
 import GatsbyConfig from "../../../gatsby-config";
 
+/**
+ * This page shows the list of the student members.
+ */
+
+/**
+ * The member query.
+ */
 const NUMBER_OF_USERS_TO_FETCH = 5;
 const GET_MEMBERS = gql`
   query GetMembers($number: Int!, $cursor: ID, $search: String) {
@@ -72,6 +73,9 @@ class Members extends React.PureComponent {
 
   timer = 0;
 
+  /**
+   * Handles search and updates member state.
+   */
   handleSearch = event => {
     const target = event.target;
     const value = target.value;
@@ -91,9 +95,11 @@ class Members extends React.PureComponent {
     }, 300);
   };
 
-  // Updates the number of members that are being shown. Triggers re-render.
-  // params:
-  //  onMembersFetched (data): The data returned from the query.
+  /**
+   * Updates the number of members that are being shown. Triggers re-render.
+   *
+   * @params {Object} data
+   */
   onMembersFetched = data => {
     this.setState(state => {
       const shownMembers = state.shownMembers.concat(data.users.users);
@@ -108,7 +114,9 @@ class Members extends React.PureComponent {
     });
   };
 
-  // Fetches default results on first load.
+  /**
+   * Fetches default results on first load.
+   */
   onFirstLoad = () => {
     let content;
     if (this.state.firstLoad) {
@@ -151,9 +159,7 @@ class Members extends React.PureComponent {
     return (
       <BasicLayout location={this.props.location}>
         <Helmet>
-          <title>
-            {["Members", "|", GatsbyConfig.siteMetadata.title].join(" ")}
-          </title>
+          <title>{`Members | ${GatsbyConfig.siteMetadata.title}`}</title>
         </Helmet>
 
         <LayoutContained>
