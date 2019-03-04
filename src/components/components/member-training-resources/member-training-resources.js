@@ -1,23 +1,25 @@
-/*
-  Contains graphQL query for training resources.
-  Contains TrainingResource and TrainingResourceList components.
-  Appears at /contribute and /leaders-corber.
-*/
+import "./member-training-resources.scss";
 
 import React from "react";
 import { graphql } from "gatsby";
 import MediaQuery from "react-responsive";
-
-// Local modules.
 import LayoutContained from "./../../layouts/layout-contained/layout-contained";
 import Layout2Col from "./../../layouts/layout-2col/layout-2col";
 import ShadowBox from "./../shadow-box/shadow-box";
 import LayoutScroll from "./../../layouts/layout-scroll/layout-scroll";
 
-// styles
-import "./member-training-resources.scss";
+/**
+ * Contains TrainingResource and TrainingResourceList components.
+ * Contains graphQL query for training resources.
+ * Appears at /contribute and /leaders-corner.
+ */
 
-// A single training resource.
+/**
+ * A single training resource.
+ * Props contain the resource object.
+ *
+ * @param props
+ */
 const TrainingResource = props => {
   const title = props.resource.title;
   const url = props.resource.link;
@@ -48,7 +50,12 @@ const TrainingResource = props => {
   );
 };
 
-// A wrapper for all training resources.
+/**
+ * A wrapper for all training resources.
+ * Props contain the resource array.
+ *
+ * @param props
+ */
 export default props => {
   const resources = props.resources.edges.map((resourceNode, i) => {
     const resource = resourceNode.node;
