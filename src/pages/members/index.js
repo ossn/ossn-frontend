@@ -26,7 +26,7 @@ import GatsbyConfig from "../../../gatsby-config";
 /**
  * The member query.
  */
-const NUMBER_OF_USERS_TO_FETCH = 5;
+const NUMBER_OF_USERS_TO_FETCH = 10;
 const GET_MEMBERS = gql`
   query GetMembers($number: Int!, $cursor: ID, $search: String) {
     users(first: $number, after: $cursor, search: $search) {
