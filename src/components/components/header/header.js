@@ -1,17 +1,15 @@
-/*
- Contains the header section.
- */
-// External modules.
+import "./header.scss";
+
 import React from "react";
 import { Link } from "gatsby";
-
-// Local modules.
 import LayoutContained from "./../../layouts/layout-contained/layout-contained";
 import HeaderNavigation from "./../header-navigation/header-navigation";
 
-// Styles.
-import "./header.scss";
-
+/**
+ * Contains the header section.
+ *
+ * @param props
+ */
 const Header = props => {
   return (
     <header className="header">

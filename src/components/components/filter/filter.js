@@ -1,18 +1,17 @@
-// external modules
-import React from "react";
-import { Search } from "react-feather";
-
-// local modules
-import Toggle from "./../toggle/toggle";
-
-// styles
 import "./filter.scss";
 
-/*
-  Uses a horizontal toggle item and puts their labels.
-  The implementation of the logic has to be at an higher level.
-  Active element is considered to be the one on the right.
-*/
+import React from "react";
+import { Search } from "react-feather";
+import Toggle from "./../toggle/toggle";
+
+/**
+ * Creates a horizontal toggle item and puts its labels.
+ * The implementation of the handleToggle logic has to be at an higher level
+ * and passed as prop.
+ * Active element is considered to be the one on the right.
+ *
+ * @param props
+ */
 export class ToggleFilter extends React.Component {
   handleToggle = this.props.onClick;
 
@@ -47,10 +46,13 @@ export class ToggleFilter extends React.Component {
   }
 }
 
-/*
-  Uses an input element.
-  The implementation of the logic has to be at an higher level.
-*/
+/**
+ * Creates a search input element.
+ * The implementation of the onChange logic has to be at an higher level and
+ * passed as prop.
+ *
+ * @param props
+ */
 export class SearchFilter extends React.Component {
   handleSearch = this.props.onChange;
 
@@ -75,30 +77,6 @@ export class SearchFilter extends React.Component {
           <span className="visually-hidden">{this.props.label}</span>
         </label>
       </form>
-    );
-  }
-}
-
-/*
-  Uses a select element and adds the `filter` classes.
-*/
-export class SelectFilter extends React.Component {
-  onBlur = this.props.onBlur;
-
-  render() {
-    const options = [...this.props.options] || [];
-    const optionList = options.map((option, i) => {
-      return (
-        <option value={option.value} key={i}>
-          {option.label}
-        </option>
-      );
-    });
-
-    return (
-      <div className="filter filter--select">
-        <select onBlur={this.onBlur}>{optionList}</select>
-      </div>
     );
   }
 }

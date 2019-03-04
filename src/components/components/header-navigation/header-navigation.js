@@ -7,14 +7,21 @@ import Navigation from "./../../navigation/main-navigation/main-navigation";
 import PreNavigation from "./../../navigation/secondary-navigation/secondary-navigation";
 import ShadowBox from "./../shadow-box/shadow-box";
 
-// Header navigation content
+/**
+ * Header navigation both for desktop and mobile.
+ */
+
+/**
+ * Header navigation inner.
+ *
+ * @param props
+ */
 const HeaderNavigationInner = props => {
   return (
     <div className={props.className} id={props.id} hidden={props.hiddenState}>
       <div className="header__bottom">
         <LayoutContained className="header__bottom-inner">
           <Navigation />
-          {/*<UserMenu />*/}
         </LayoutContained>
       </div>
       <div className="header__top">
@@ -26,6 +33,11 @@ const HeaderNavigationInner = props => {
   );
 };
 
+/**
+ * Header navigation.
+ *
+ * @param props
+ */
 class HeaderNavigation extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -35,14 +47,19 @@ class HeaderNavigation extends React.PureComponent {
     };
   }
 
+  /**
+   * Updates the open /close state on the header navigation object.
+   */
   handleOpen = () => {
     this.setState({ open: !this.state.open });
   };
 
-  handleOption = newOption => {
-    this.setState({ option: newOption });
-  };
-
+  /**
+   * Updates the open  /close state on the header navigation object.
+   * Closes the menu if it is expanded on outside click.
+   *
+   * @param event
+   */
   handleOutsideClick = event => {
     if (
       this.state.open &&
@@ -53,20 +70,29 @@ class HeaderNavigation extends React.PureComponent {
     }
   };
 
-  // puts an event listener for the UI handling (not that unsafe)
+  /**
+   * Adds an event listener for the UI handling.
+   */
   componentDidMount() {
     if (typeof document !== "undefined")
       document.addEventListener("mousedown", this.handleOutsideClick, false);
   }
 
-  // remove the listener in absence of the component
+  /**
+   * Removes the listener in absence of the component.
+   */
   ComponentWillUnmount() {
     if (typeof document !== "undefined")
       document.removeEventListener("mousedown", this.handleOutsideClick, false);
   }
 
-  handleKeyPress = e => {
-    if (e.key === "Enter") return this.handleOpen;
+  /**
+   * Maps the enter key press event to handleOpen.
+   *
+   * @param event
+   */
+  handleKeyPress = event => {
+    if (event.key === "Enter") return this.handleOpen;
   };
 
   render() {
@@ -75,6 +101,11 @@ class HeaderNavigation extends React.PureComponent {
     const stateClass = snapshot.open ? "is-expanded" : "is-collapsed";
     const isHidden = !snapshot.open;
 
+    /**
+     * Handles the menu toggle appearence according to open / closed menu state.
+     *
+     * @param expandedState
+     */
     const menuToggle = expandedState => {
       if (expandedState) {
         return <X className="header__menu-icon" size={20} />;

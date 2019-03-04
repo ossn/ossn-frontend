@@ -8,7 +8,7 @@
   width: 100%;
   z-index: 5;
 
-  // leaves only capital letters visible on mobile.
+  // Leaves only capital letters visible on mobile.
   &__ossn-logo-letters {
     @include visually-hidden;
   }
@@ -122,7 +122,6 @@
     &__top {
       padding-top: 80px;
        order: 1;
-
 
       .secondary-navigation__list {
         padding-bottom: 0;
