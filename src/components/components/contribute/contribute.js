@@ -5,7 +5,16 @@ import OpportunitiesGuest from "./../opportunities-guest/opportunities-guest";
 
 import { mapUserToProps } from "./../../../utils/redux-utils";
 
-// The contentn for authenticated users.
+/**
+ * Constructs the content that is shared for /contribute and /leaders-corner.
+ * Differentiates the content between logged in and logged out users.
+ */
+
+/**
+ * The content for authenticated users.
+ *
+ * @param data
+ */
 const AuthenticatedContent = data => {
   const jobs = data.props.ossnApi.jobs.jobs;
   const announcements = data.props.ossnApi.announcements.announcements;
@@ -26,6 +35,11 @@ const AuthenticatedContent = data => {
   );
 };
 
+/**
+ * Differentiates the content between logged in and logged out users.
+ *
+ * @param props
+ */
 class ContributeContent extends React.PureComponent {
   constructor(props) {
     super(props);
