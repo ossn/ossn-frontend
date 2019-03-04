@@ -11,10 +11,6 @@
 // item* in the container can be created using the following class:
 // - `.layout-3col__col` : 1-column wide grid item spanning  1 column.
 //
-// .layout-3col--only-desktop-3 - 3 columns only on desktop. There is no
-// intermediate 2 column step.
-// .layout-3col--no-tablet-break - 3 columns on tablet. There is no intermediate
-// 2 column step.
 // .layout-3col--with-horizontal-gutters - Gutters on both sides, needs wrapper
 // with overflow hidden (like layout-center).
 // .layout-3col--with-vertical-gutters - Gutters on top and bottom.
@@ -33,36 +29,9 @@
     &__col {
       width: (100 / 2) * 1%;
       float: left;
-      //flex-grow: 2; // If a column is missing it will grow to cover it.
     }
   }
 
-  // --no-tablet-break variant. It makes the 3 columns appear on tablet.
-  // There is no intermediate 2 column step.
-  &--no-tablet-break {
-    %layout-3col__col,
-    .layout-3col__col {
-      @include breakpoint($tablet) {
-        width: (100 / 3) * 1%;
-
-        &:nth-child(3n + 1) {
-          clear: left;
-        }
-      }
-    }
-  }
-
-  // --only-desktop-3 variant. It makes the 3 columns appear on desktop.
-  // There is no intermediate 2 column step.
-  &--only-desktop-3 {
-    %layout-3col__col,
-    .layout-3col__col {
-      @include breakpoint($tablet ($desktop - 1px)) {
-        width: 100%;
-        float: none;
-      }
-    }
-  }
 
   @include breakpoint($tablet ($desktop - 1px)) {
     &--col,

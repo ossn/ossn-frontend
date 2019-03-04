@@ -2,6 +2,22 @@ import "./text-input.scss";
 
 import React from "react";
 
+/**
+ * Creates form text input.
+ * According to the props the generated input might be textarea or textfield.
+ * The implementation of the onChange logic has to be at an higher level and
+ * passed as prop.
+ *
+ * Props might contain:
+ *  {String} password: it sets the type of the input
+ *  {String} label: the input label
+ *  {String} id: the input id
+ *  {boolean} required
+ *  {boolean} multiline: defines textarea or input tag
+ *  {String} className: classes added to the component
+ *
+ * @param props
+ */
 export default props => {
   const type = props.password ? "password" : "text";
   const label = props.label ? props.label : "";

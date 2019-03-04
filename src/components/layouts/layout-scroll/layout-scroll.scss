@@ -2,7 +2,8 @@
 
 // Layout scroll component.
 // Scroll horizontally on mobile, then become one column layout.
-
+//
+// .layout-scroll--stretch-items - Stretch items to 80% with constrains.
 .layout-scroll,
 %layout-scroll {
   @include breakpoint(0 $tablet - 1px) {

@@ -1,27 +1,43 @@
-/**
- * In order a LayoutXcol to take effect, the chilren have to accept `className` prop
- * as their own. e.g. <Component className=`${props.className} newClass />`
- **/
-// Styles
 import "./../../base-styles/base/normalize.scss";
 import "./layout-2col.scss";
 
 import React, { memo } from "react";
 
+/**
+ * Layout 2 column.
+ * In order to take effect, the children have to accept `className`
+ * prop as their own. e.g. <Component className=`${props.className} newClass />`
+ *
+ * Props might contain:
+ *  {boolean} horizontalGutters: adds variant class that adds horizontal gutters
+ *  {boolean} verticalGutters: adds variant class that adds vertical gutters
+ *  {boolean} smallVerticalGutters: adds variant class that adds half gutters on
+ *  top and bottom
+ *  {boolean} groups: adds variant class since when the layout is used for
+ *  groups of content and not only a single teaser per column, the vertical
+ *  gutters need to be removed on mobile.
+ *  {String} className: classes added to the element
+ *
+ * @param props
+ **/
 const Layout2Col = props => {
   const baseClass = "layout-2col";
 
-  // add the `Layout-2col__col` class to every child.
+  /**
+   * Add the `layout-2col__col` class to every child. Required for the layout to
+   * apply correctly.
+   **/
   const children = React.Children.map(props.children, child => {
     const className = `${
       child.props.className || "" ? child.props.className : ""
     } ${baseClass}__col`;
     const childProps = { ...child.props, className: className };
-    const newChild = React.cloneElement(child, childProps);
-    return newChild;
+    return React.cloneElement(child, childProps);
   });
 
-  // handle component classes. Add the variations found in props.
+  /**
+   * Handle component classes. Add the variations found in props.
+   **/
   let classes = [baseClass];
   if (props.horizontalGutters)
     classes.push(`${baseClass}--with-horizontal-gutters`);
