@@ -1,22 +1,22 @@
 // styles
-import '../components/pages-styles/faq-page.scss';
+import "../components/pages-styles/faq-page.scss";
 
-import React, { memo } from 'react';
-import { Helmet } from 'react-helmet';
+import React, { memo } from "react";
+import { Helmet } from "react-helmet";
 
-import BasicLayout from '../components/layouts/layout-base/layout-base';
-import GatsbyConfig from './../../gatsby-config';
-import FaqGroup from './../components/components/faq-group/faq-group';
-import Layout2Cols from './../components/layouts/layout-2col/layout-2col';
-import LayoutContained from './../components/layouts/layout-contained/layout-contained';
-import Shape from './../components/components/shape/shape';
-import FaqItem from './../components/components/faq-item/faq-item';
+import BasicLayout from "../components/layouts/layout-base/layout-base";
+import GatsbyConfig from "./../../gatsby-config";
+import FaqGroup from "./../components/components/faq-group/faq-group";
+import Layout2Cols from "./../components/layouts/layout-2col/layout-2col";
+import LayoutContained from "./../components/layouts/layout-contained/layout-contained";
+import Shape from "./../components/components/shape/shape";
+import FaqItem from "./../components/components/faq-item/faq-item";
 
 const Questions = props => {
   return (
     <BasicLayout location={props.location}>
       <Helmet>
-        <title>{['FAQ', '|', GatsbyConfig.siteMetadata.title].join(' ')}</title>
+        <title>{["FAQ", "|", GatsbyConfig.siteMetadata.title].join(" ")}</title>
       </Helmet>
 
       <LayoutContained>
@@ -59,9 +59,9 @@ const Questions = props => {
                 information about the process here:
                 <ul>
                   <li>
-                    Step 1: Fill out the form to{' '}
+                    Step 1: Fill out the form to{" "}
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSfYQEKz8gMnxWrIxJZer6lJG1p08LtPboV3Aupfj2PtWmKD1A/viewform?usp=sf_link">
-                      {' '}
+                      {" "}
                       register your club.
                     </a>
                   </li>
@@ -76,17 +76,17 @@ const Questions = props => {
                   <li> Step 4: Create your club profile. </li>
                   <li> Step 5: Your club is officially registered! </li>
                   <li>
-                    Step 6: Find great open source{' '}
+                    Step 6: Find great open source{" "}
                     <a href="https://opensource.mozilla.community/find-activity/">
                       projects/activities
                     </a>
                     .
                   </li>
                   <li>
-                    Step 7: Join our regular{' '}
+                    Step 7: Join our regular{" "}
                     <a href="https://discourse.mozilla.org/t/demos-calls-for-registered-club-leaders/19343">
                       demos calls
-                    </a>{' '}
+                    </a>{" "}
                     to meet other club leaders.
                   </li>
                 </ul>
@@ -111,13 +111,13 @@ const Questions = props => {
                 id="faq-2-item-2"
               >
                 The goal of the program is to support your club to learn about
-                and contribute to open source projects. You can run any of the{' '}
+                and contribute to open source projects. You can run any of the{" "}
                 <a href="https://opensource.mozilla.community/find-activity/">
-                  activities listed in the relevant page on the website{' '}
+                  activities listed in the relevant page on the website{" "}
                 </a>
                 or other activities related to open source. If you have an idea
                 for an activity which will advance the mission you can propose
-                it{' '}
+                it{" "}
                 <a href="https://github.com/mozilla/Campus-Activities/issues/new">
                   here
                 </a>
@@ -180,7 +180,7 @@ const Questions = props => {
                 a more focused regional approach to empowering and connecting
                 clubs with a discrete focus on making technical contributions to
                 open source projects. In the meantime we’re continuing to
-                support the work of our non-US student clubs through the{' '}
+                support the work of our non-US student clubs through the{" "}
                 <a href="https://campus.mozilla.community/">
                   Campus Clubs program
                 </a>
@@ -206,8 +206,8 @@ const Questions = props => {
         <div className="faq__footer">
           <h2 className="faq__footer-title"> Have more questions? </h2>
           <p className="faq__footer-text title title--x-small">
-            Cool! Reach out to us to{' '}
-            <a href="https://www.facebook.com/">Facebook</a> or{' '}
+            Cool! Reach out to us to{" "}
+            <a href="https://www.facebook.com/">Facebook</a> or{" "}
             <a href="https://twitter.com/">Twitter</a>
             <Shape waveLarge sunnyYellow className="faq__footer-shape" />
           </p>

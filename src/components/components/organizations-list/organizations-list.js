@@ -2,14 +2,14 @@
   Contains the graphQL query for the organizations.
   A wrapper for organizations
 */
-import React from 'react';
-import { graphql } from 'gatsby';
+import React from "react";
+import { graphql } from "gatsby";
 
-import OrganizationTeaser from './../organization-teaser/organization-teaser';
-import Layout5Col from './../../layouts/layout-5col/layout-5col';
-import Shape from './../../components/shape/shape';
+import OrganizationTeaser from "./../organization-teaser/organization-teaser";
+import Layout5Col from "./../../layouts/layout-5col/layout-5col";
+import Shape from "./../../components/shape/shape";
 
-import './organizations-list.scss';
+import "./organizations-list.scss";
 
 export default props => {
   const organizations = props.organizations.map((node, i) => {

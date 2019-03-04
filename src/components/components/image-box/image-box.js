@@ -4,16 +4,16 @@
  */
 
 // External modules.
-import { Link } from 'gatsby';
-import React from 'react';
-import Img from 'gatsby-image';
+import { Link } from "gatsby";
+import React from "react";
+import Img from "gatsby-image";
 
 // Local modules.
-import './image-box.scss';
+import "./image-box.scss";
 // import Image from './images/panel-typewriter.jpg'
 
 export default props => {
-  const baseClass = 'image-box';
+  const baseClass = "image-box";
 
   const resource = props.resource[0];
   const titleLargeTop = resource.titleLargeTop ? (
@@ -21,21 +21,21 @@ export default props => {
       {resource.titleLargeTop}
     </span>
   ) : (
-    ''
+    ""
   );
   const titleSmall = resource.titleSmall ? (
     <span className="image-box__title-small">{resource.titleSmall}</span>
   ) : (
-    ''
+    ""
   );
   const titleLargeBottom = resource.titleLargeBottom ? (
     <span className="image-box__title-large image-box__title-large--top">
       {resource.titleLargeBottom}
     </span>
   ) : (
-    ''
+    ""
   );
-  const image = resource.image ? resource.image : '';
+  const image = resource.image ? resource.image : "";
   // Handle component classes. Add the variations found in props.
   let classes = [baseClass];
   if (props.large) classes.push(`${baseClass}--large`);
@@ -45,7 +45,7 @@ export default props => {
   if (props.orange) classes.push(`${baseClass}--orange`);
   if (props.light) classes.push(`${baseClass}--light`);
   if (props.className) classes.push(props.className);
-  const classString = classes.join(' ');
+  const classString = classes.join(" ");
 
   const content = (
     <div className={classString}>

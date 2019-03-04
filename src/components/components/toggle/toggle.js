@@ -1,14 +1,14 @@
-import React from 'react';
-import './toggle.scss';
+import React from "react";
+import "./toggle.scss";
 
 //utils
-import { returnKeyCheck } from './../../../utils/accessibility';
+import { returnKeyCheck } from "./../../../utils/accessibility";
 
 export default props => {
   const onClick = props.onClick;
-  const classes = [props.className, 'toggle'];
-  if (props.active) classes.push('toggle--active');
-  const classString = classes.join(' ');
+  const classes = [props.className, "toggle"];
+  if (props.active) classes.push("toggle--active");
+  const classString = classes.join(" ");
   const ariaPressed = props.active;
 
   return (

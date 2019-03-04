@@ -2,10 +2,10 @@
   Contains organization teaser.
 */
 
-import React from 'react';
+import React from "react";
 
 // Style.
-import './organization-teaser.scss';
+import "./organization-teaser.scss";
 
 const OrganizationTeaser = props => {
   if (!props.organization) {
@@ -16,9 +16,9 @@ const OrganizationTeaser = props => {
   const url = props.organization.link;
   const icon = props.organization.attachment.publicURL;
 
-  let classes = ['organization-teaser'];
+  let classes = ["organization-teaser"];
   if (props.className) classes.push(props.className);
-  let classString = classes.join(' ');
+  let classString = classes.join(" ");
 
   return (
     <a

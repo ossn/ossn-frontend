@@ -3,18 +3,18 @@
  * as their own. e.g. <Component className=`${props.className} newClass />`
  **/
 // Styles
-import './../../base-styles/base/normalize.scss';
-import './layout-3col.scss';
+import "./../../base-styles/base/normalize.scss";
+import "./layout-3col.scss";
 
-import React, { memo } from 'react';
+import React, { memo } from "react";
 
 const Layout2ColsUnequal = props => {
-  const baseClass = 'layout-3col';
+  const baseClass = "layout-3col";
 
   // add the `Layout-2col-unequal__col` class to every child.
   const children = React.Children.map(props.children, child => {
     const className = `${
-      child.props.className || '' ? child.props.className : ''
+      child.props.className || "" ? child.props.className : ""
     } ${baseClass}__col`;
     const props = { ...child.props, className: className };
     const newChild = React.cloneElement(child, props);
@@ -30,7 +30,7 @@ const Layout2ColsUnequal = props => {
   if (props.early) classes.push(`${baseClass}--early`);
   if (props.className) classes.push(props.className);
 
-  const classString = classes.join(' ');
+  const classString = classes.join(" ");
   return <div className={classString}>{children}</div>;
 };
 

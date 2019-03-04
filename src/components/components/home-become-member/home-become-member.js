@@ -4,14 +4,14 @@
 */
 
 // external modules
-import React from 'react';
-import { connect } from 'react-redux';
-import { LoginLink } from './../../layouts/auth-wrapper/auth-wrapper';
+import React from "react";
+import { connect } from "react-redux";
+import { LoginLink } from "./../../layouts/auth-wrapper/auth-wrapper";
 
 // local  modules
-import { mapUserToProps } from './../../../utils/redux-utils';
+import { mapUserToProps } from "./../../../utils/redux-utils";
 
-import './home-become-member.scss';
+import "./home-become-member.scss";
 
 class BecomeMember extends React.Component {
   render() {

@@ -1,7 +1,7 @@
-import React, { memo } from 'react';
+import React, { memo } from "react";
 
-import Member from '../../components/components/member/member';
-import BasicLayout from '../../components/layouts/layout-base/layout-base';
+import Member from "../../components/components/member/member";
+import BasicLayout from "../../components/layouts/layout-base/layout-base";
 
 /*
 A wrapper component for the members full page.

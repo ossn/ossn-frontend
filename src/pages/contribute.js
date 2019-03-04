@@ -7,15 +7,15 @@
  *  communication channels
  **/
 // import style
-import './../components/components/promoted-box/promoted-box.scss';
+import "./../components/components/promoted-box/promoted-box.scss";
 
-import { graphql } from 'gatsby';
-import React from 'react';
-import { Helmet } from 'react-helmet';
+import { graphql } from "gatsby";
+import React from "react";
+import { Helmet } from "react-helmet";
 
-import BasicLayout from '../components/layouts/layout-base/layout-base';
-import GatsbyConfig from './../../gatsby-config';
-import ContributeContent from './../components/components/contribute/contribute';
+import BasicLayout from "../components/layouts/layout-base/layout-base";
+import GatsbyConfig from "./../../gatsby-config";
+import ContributeContent from "./../components/components/contribute/contribute";
 
 class Contribute extends React.PureComponent {
   render() {
@@ -23,7 +23,7 @@ class Contribute extends React.PureComponent {
       <BasicLayout location={this.props.location}>
         <Helmet>
           <title>
-            {['Opportunities', '|', GatsbyConfig.siteMetadata.title].join(' ')}
+            {["Opportunities", "|", GatsbyConfig.siteMetadata.title].join(" ")}
           </title>
         </Helmet>
 

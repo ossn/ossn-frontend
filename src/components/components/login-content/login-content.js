@@ -4,15 +4,15 @@ Moved here form the login page so it can be connected to store.
 */
 
 // External modules.
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
 import {
   LoginLink,
   LogoutLink
-} from './../../layouts/auth-wrapper/auth-wrapper';
+} from "./../../layouts/auth-wrapper/auth-wrapper";
 
-import { mapUserToProps } from './../../../utils/redux-utils';
+import { mapUserToProps } from "./../../../utils/redux-utils";
 
 // The contentn for not authenticated users.
 const NotAuthenticatedContent = props => {
@@ -33,7 +33,7 @@ const AuthenticatedContent = props => {
 class LoginContent extends React.Component {
   render() {
     return (
-      <div key={this.props.user.user ? 'withUser' : 'withoutUser'}>
+      <div key={this.props.user.user ? "withUser" : "withoutUser"}>
         {this.props.user.user !== undefined ? (
           <div>
             <AuthenticatedContent userName={this.props.user.user.userName} />

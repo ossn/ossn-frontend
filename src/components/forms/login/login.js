@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import { login } from './../../../actions/userActions';
-import store from './../../../store';
+import { login } from "./../../../actions/userActions";
+import store from "./../../../store";
 
 class Login extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: '',
+      username: "",
+      password: "",
       keepLoggedIn: false
     };
   }
@@ -26,7 +26,7 @@ class Login extends React.PureComponent {
   };
 
   handleToRegister = () => {
-    if (this.props.changeOption) this.props.changeOption('register');
+    if (this.props.changeOption) this.props.changeOption("register");
   };
 
   // publishes a login event

@@ -2,15 +2,15 @@
  Contains the header section.
  */
 // External modules.
-import React from 'react';
-import { Link } from 'gatsby';
+import React from "react";
+import { Link } from "gatsby";
 
 // Local modules.
-import LayoutContained from './../../layouts/layout-contained/layout-contained';
-import HeaderNavigation from './../header-navigation/header-navigation';
+import LayoutContained from "./../../layouts/layout-contained/layout-contained";
+import HeaderNavigation from "./../header-navigation/header-navigation";
 
 // Styles.
-import './header.scss';
+import "./header.scss";
 
 const Header = props => {
   return (

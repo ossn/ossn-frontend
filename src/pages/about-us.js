@@ -1,28 +1,28 @@
 // External modules.
-import { graphql } from 'gatsby';
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import Img from 'gatsby-image';
-import { Clipboard, MessageSquare, GitPullRequest } from 'react-feather';
+import { graphql } from "gatsby";
+import React from "react";
+import { Helmet } from "react-helmet";
+import Img from "gatsby-image";
+import { Clipboard, MessageSquare, GitPullRequest } from "react-feather";
 
 // Local modules.
-import BasicLayout from '../components/layouts/layout-base/layout-base';
-import GatsbyConfig from './../../gatsby-config';
-import Layout2ColsUnequal from './../components/layouts/layout-2col-unequal/layout-2col-unequal';
-import Layout3Col from './../components/layouts/layout-3col/layout-3col';
-import LayoutContained from './../components/layouts/layout-contained/layout-contained';
-import JoinCta from './../components/components/join-cta/join-cta';
-import Shape from './../components/components/shape/shape';
-import Banner from './../components/components/banner/banner';
+import BasicLayout from "../components/layouts/layout-base/layout-base";
+import GatsbyConfig from "./../../gatsby-config";
+import Layout2ColsUnequal from "./../components/layouts/layout-2col-unequal/layout-2col-unequal";
+import Layout3Col from "./../components/layouts/layout-3col/layout-3col";
+import LayoutContained from "./../components/layouts/layout-contained/layout-contained";
+import JoinCta from "./../components/components/join-cta/join-cta";
+import Shape from "./../components/components/shape/shape";
+import Banner from "./../components/components/banner/banner";
 
-import './../components/pages-styles/about-us.scss';
+import "./../components/pages-styles/about-us.scss";
 
 const About = props => {
   return (
     <BasicLayout location={props.location}>
       <Helmet>
         <title>
-          {['About', '|', GatsbyConfig.siteMetadata.title].join(' ')}
+          {["About", "|", GatsbyConfig.siteMetadata.title].join(" ")}
         </title>
       </Helmet>
       <LayoutContained className="about-us">
@@ -31,7 +31,7 @@ const About = props => {
             props.data.aboutBannerImageMobile.childImageSharp.resolutions
           }
           image={props.data.aboutBannerImageDesktop.childImageSharp.fluid}
-          title={['student', 'network', 'open source', 'ossn']}
+          title={["student", "network", "open source", "ossn"]}
           forPage="about"
         />
         <Layout2ColsUnequal
@@ -50,7 +50,7 @@ const About = props => {
             <p className="highlighted-text highlighted-text--small about-us__highlighted-small">
               Focused on campuses in the US and Canada, our program brings
               students together with mentors, organizations and professionals
-              who are actively engaged in advancing Open Source. -{' '}
+              who are actively engaged in advancing Open Source. -{" "}
               <h2 className="title title--x-small about-us__break">
                 What do we want to achieve?
               </h2>

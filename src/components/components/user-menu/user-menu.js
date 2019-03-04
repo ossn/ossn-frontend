@@ -1,11 +1,11 @@
-import './user-menu.scss';
+import "./user-menu.scss";
 
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-import { mapUserToProps } from './../../../utils/redux-utils';
-import LoggedInMenu from './../user-popup/user-popup';
-import { LoginLink } from './../../layouts/auth-wrapper/auth-wrapper';
+import { mapUserToProps } from "./../../../utils/redux-utils";
+import LoggedInMenu from "./../user-popup/user-popup";
+import { LoginLink } from "./../../layouts/auth-wrapper/auth-wrapper";
 
 class UserMenu extends React.PureComponent {
   constructor(props) {
@@ -14,7 +14,7 @@ class UserMenu extends React.PureComponent {
     this.menuButton = React.createRef();
     this.hideMenu = this.handleOutsideClick.bind(this);
     this.state = {
-      option: 'login',
+      option: "login",
       open: false,
       user: this.props.user
     };
@@ -22,14 +22,14 @@ class UserMenu extends React.PureComponent {
 
   // puts an event listener for the UI handling (not that unsafe)
   componentDidMount() {
-    if (typeof document !== 'undefined')
-      document.addEventListener('mousedown', this.handleOutsideClick, false);
+    if (typeof document !== "undefined")
+      document.addEventListener("mousedown", this.handleOutsideClick, false);
   }
 
   // remove the listener in absence of the component
   ComponentWillUnmount() {
-    if (typeof document !== 'undefined')
-      document.removeEventListener('mousedown', this.handleOutsideClick, false);
+    if (typeof document !== "undefined")
+      document.removeEventListener("mousedown", this.handleOutsideClick, false);
   }
 
   handleOpen = () => {
@@ -53,7 +53,7 @@ class UserMenu extends React.PureComponent {
   };
 
   handleKeyPress = e => {
-    if (e.key === 'Enter') return this.handleOpen;
+    if (e.key === "Enter") return this.handleOpen;
   };
 
   isUserLoggedIn = () => {
@@ -64,24 +64,24 @@ class UserMenu extends React.PureComponent {
     // copy of the state
     const snapshot = { ...this.state };
     const isExpanded = snapshot.open;
-    const stateClass = snapshot.open ? 'is-expanded' : 'is-collapsed';
+    const stateClass = snapshot.open ? "is-expanded" : "is-collapsed";
     const isHidden = !snapshot.open;
     let userImageUrl =
       this.props.user.user && this.props.user.user.imageUrl
         ? this.props.user.user.imageUrl
-        : '';
+        : "";
     let userLabel =
       this.props.user.user && this.props.user.user.userName
         ? this.props.user.user.userName
-        : '';
+        : "";
     let userAlt = userLabel;
     let userId =
       this.props.user.user && this.props.user.user.id
         ? this.props.user.user.id
-        : '';
-    let classes = ['user-menu'];
+        : "";
+    let classes = ["user-menu"];
     if (stateClass) classes.push(stateClass);
-    let classString = classes.join(' ');
+    let classString = classes.join(" ");
 
     let user = (
       <div
@@ -90,7 +90,7 @@ class UserMenu extends React.PureComponent {
         onKeyPress={this.handleKeyPress}
         role="button"
         tabIndex={0}
-        aria-controls={'user-menu-wrapper'}
+        aria-controls={"user-menu-wrapper"}
         aria-expanded={isExpanded}
         ref={this.menuButton}
       >

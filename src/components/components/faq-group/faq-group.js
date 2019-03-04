@@ -4,13 +4,13 @@
 */
 
 // external modules
-import React from 'react';
+import React from "react";
 
 // local modules
-import ShadowBox from './../shadow-box/shadow-box';
+import ShadowBox from "./../shadow-box/shadow-box";
 
 export default props => {
-  const classes = `${props.className || ''} faq__group`;
+  const classes = `${props.className || ""} faq__group`;
   return (
     <div className={classes}>
       <ShadowBox>

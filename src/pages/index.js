@@ -1,18 +1,18 @@
 // styles
-import '../components/layouts/layout-custom-grid/layout-custom-grid.scss';
-import '../components/pages-styles/home-page.scss';
+import "../components/layouts/layout-custom-grid/layout-custom-grid.scss";
+import "../components/pages-styles/home-page.scss";
 
-import { graphql } from 'gatsby';
-import React, { memo } from 'react';
+import { graphql } from "gatsby";
+import React, { memo } from "react";
 
-import BasicLayout from '../components/layouts/layout-base/layout-base';
-import BlockquoteBox from './../components/components/blockquote-box/blockquote-box';
-import BecomeMember from './../components/components/home-become-member/home-become-member';
-import ImageBox from './../components/components/image-box/image-box';
-import OrganizationList from './../components/components/organizations-list/organizations-list';
-import LayoutContained from './../components/layouts/layout-contained/layout-contained';
-import Shape from './../components/components/shape/shape';
-import Banner from './../components/components/banner/banner';
+import BasicLayout from "../components/layouts/layout-base/layout-base";
+import BlockquoteBox from "./../components/components/blockquote-box/blockquote-box";
+import BecomeMember from "./../components/components/home-become-member/home-become-member";
+import ImageBox from "./../components/components/image-box/image-box";
+import OrganizationList from "./../components/components/organizations-list/organizations-list";
+import LayoutContained from "./../components/layouts/layout-contained/layout-contained";
+import Shape from "./../components/components/shape/shape";
+import Banner from "./../components/components/banner/banner";
 
 const IndexPage = props => {
   const isLoggedIn = () => {
@@ -38,7 +38,7 @@ const IndexPage = props => {
           image={props.data.bannerImageDesktop.childImageSharp.fluid}
           text="A network of university students and clubs who share the belief that
         open source software is the engine that powers innovation."
-          title={['Open source clubs']}
+          title={["Open source clubs"]}
           forPage="home"
         />
         <div className="home-page__page-title-wrapper">
@@ -122,7 +122,7 @@ const IndexPage = props => {
       </LayoutContained>
 
       {/* why join the OSSN? */}
-      {isLoggedIn() ? '' : getCTASlice()}
+      {isLoggedIn() ? "" : getCTASlice()}
 
       {/* Organizations */}
       <LayoutContained className="home-page__partners-section">
