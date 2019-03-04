@@ -99,7 +99,7 @@ function ClubFull(props) {
   }
 
   /**
-   *
+   * Submits changes to club and updates state's club object and edit state.
    */
   function handleSubmit() {
     const { events, location, users, ...rest } = club;
@@ -115,6 +115,9 @@ function ClubFull(props) {
       });
   }
 
+  /**
+   * Subscribes user to club and updates state's club users.
+   */
   async function joinClub() {
     try {
       const { data } = await props.client.mutate({
@@ -152,6 +155,11 @@ function ClubFull(props) {
     }
   }
 
+  /**
+   * Updates state's club.
+   *
+   * @param {Object} club
+   */
   function updateClub(club) {
     if (!club) {
       return;

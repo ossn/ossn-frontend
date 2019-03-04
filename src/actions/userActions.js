@@ -1,12 +1,14 @@
 import { SESSION_ITEM } from "../shared/enums";
 
-/*
-  Supported user actions.
-  a user can login, logout, register, and check for an existing sesison.
-  all actions decide if they will use the login or the logout reducer action.
-*/
+/**
+ * Supported user actions.
+ * A user can login, logout, register, and check for an existing session.
+ * All actions decide if they will use the login or the logout reducer action.
+ */
 
-// handle the login request
+/**
+ * Handles the login request.
+ */
 export const actionLogin = userInfo => {
   return dispatch => {
     const user = {
@@ -17,10 +19,11 @@ export const actionLogin = userInfo => {
   };
 };
 
-// handles the logout request
+/**
+ * Handles the logout request
+ */
 export const actionLogout = () => {
   return dispatch => {
-    // TODO: comment in if they should indeed be removed
     // eslint-disable-next-line no-undef
     localStorage.removeItem(SESSION_ITEM);
     // eslint-disable-next-line no-undef
@@ -29,7 +32,9 @@ export const actionLogout = () => {
   };
 };
 
-// checks if there is an active user session
+/**
+ * Checks if there is an active user session.
+ */
 export const checkLogin = () => {
   return dispatch => {
     // make the actual call
@@ -37,7 +42,9 @@ export const checkLogin = () => {
   };
 };
 
-// handles a register request
+/**
+ * Handles a register request.
+ */
 export const register = user => {
   const newUser = {
     username: "user01",
@@ -54,7 +61,9 @@ export const register = user => {
   };
 };
 
-// dispatches the login data
+/**
+ * Dispatches the login data.
+ */
 const confirmLogin = (dispatch, user) => {
   return dispatch({
     type: "USER_LOGIN",
@@ -64,7 +73,9 @@ const confirmLogin = (dispatch, user) => {
   });
 };
 
-// dispatches the logout event
+/**
+ * Dispatches the logout event.
+ */
 const confirmLogout = dispatch => {
   return dispatch({
     type: "USER_LOGOUT",

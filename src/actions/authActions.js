@@ -1,16 +1,11 @@
-/*
-  auth actions
-  used to request login/logout from the auth-wrapper component.
-*/
+/**
+ * Auth actions.
+ * Used to request logout or reset logout from the auth-wrapper component
+ */
 
-export const requestLogin = () => {
-  return dispatch => {
-    return dispatch({
-      type: "AUTH_LOGIN"
-    });
-  };
-};
-
+/**
+ * Request logout.
+ */
 export const requestLogout = () => {
   return dispatch => {
     return dispatch({
@@ -19,6 +14,9 @@ export const requestLogout = () => {
   };
 };
 
+/**
+ * Resets logout.
+ */
 export const resetActionLogout = () => {
   return dispatch => {
     return dispatch({
