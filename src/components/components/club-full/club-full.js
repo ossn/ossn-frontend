@@ -41,8 +41,8 @@ function ClubFull(props) {
   useEffect(() => {
     const path = window.location.pathname.split("/");
     const id = (props.club || {}).id || path[path.indexOf("clubs") + 1];
-    getClub(id).then(updateClub);
-  }, [getClub, props.club, updateClub]);
+    !editing && getClub(id).then(updateClub);
+  }, [editing, getClub, props.club, updateClub]);
 
   /**
    * Updates the document title when the state's club name changes
