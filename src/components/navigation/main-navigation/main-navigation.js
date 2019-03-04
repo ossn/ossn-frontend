@@ -5,6 +5,9 @@ import React from "react";
 
 import UserMenu from "./../../components/user-menu/user-menu";
 
+/**
+ * Constructs main navigation menu.
+ **/
 const Navigation = () => (
   <nav aria-labelledby="primary-navigation" className="main-navigation">
     <h2 className="visually-hidden" id="primary-navigation">

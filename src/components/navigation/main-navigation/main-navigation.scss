@@ -3,7 +3,6 @@
 // Main header navigation
 //
 // These are the default styles applied to tha main mage navigation.
-
 .main-navigation {
   ul {
     list-style: none;
@@ -12,7 +11,6 @@
   &__item-wrapper {
     margin: 0;
     padding: 20px 0 0 0;
-
 
     &--user {
       vertical-align: middle;
@@ -58,9 +56,7 @@
     &__item:last-child {
       margin-bottom: 10px;
     }
-
   }
-
 
   @include breakpoint($tablet) {
     display: flex;
@@ -102,7 +98,6 @@
           left: 0px;
         }
       }
-
     }
 
     &__link {
@@ -110,14 +105,5 @@
       padding-top: 0;
       padding-bottom: 0;
     }
-  }
-}
-
-.user-popup {
-  .main-navigation__link {
-    @include font-size(14px);
-    @include line-height(16px);
-    display: inline-block;
-    width:100%;
   }
 }

@@ -3,6 +3,9 @@ import "./secondary-navigation.scss";
 import { Link } from "gatsby";
 import React from "react";
 
+/**
+ * Constructs secondary navigation menu.
+ **/
 const Navigation = () => (
   <nav aria-labelledby="secondary-navigation" className="secondary-navigation">
     <h2 className="visually-hidden" id="secondary-navigation">
