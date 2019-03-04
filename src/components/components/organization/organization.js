@@ -1,15 +1,15 @@
-/*
- A single organization.
- */
+import "./organization.scss";
 
 import React from "react";
 import { Link } from "react-feather";
-
 import ShadowBox from "./../shadow-box/shadow-box";
 
-// Style.
-import "./organization.scss";
-
+/**
+ * A single organization.
+ * Appears at organizations page.
+ *
+ * @param props
+ */
 const Organization = props => {
   if (!props.organization) {
     return <div> organization not found error </div>;
@@ -25,24 +25,27 @@ const Organization = props => {
   let classString = classes.join(" ");
 
   return (
-    <div className={classString}>
+    <a
+      href={url}
+      className={classString}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <ShadowBox>
         <div className="organization__inner">
           <div className="organization__image-wrapper">
             <img src={icon} className="organization__image" alt={title} />
           </div>
-          <a
-            href={url}
-            className="title title--x-small organization__title"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Link size={18} className="icon organization__icon" /> {title}
-          </a>
+
+          <Link size={18} className="icon organization__icon" />
+          <span className="title title--x-small organization__title">
+            {" "}
+            {title}
+          </span>
           <p className="organization__description">{description}</p>
         </div>
       </ShadowBox>
-    </div>
+    </a>
   );
 };
 

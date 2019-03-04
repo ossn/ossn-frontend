@@ -1,7 +1,12 @@
 @import './../../base-styles/init/init';
 
 // Shadow box component.
+//
 // Adds styling to elements with shadow and white background.
+//
+// .shadow-box--zero-radius, removes the border radius
+// .shadow-box--zero-padding, removes the paddings
+// .shadow-box--small-paddings, small paddings
 .shadow-box,
 %shadow-box {
   background: color('white');

@@ -1,11 +1,13 @@
-/*
-  Contains organization teaser.
-*/
+import "./organization-teaser.scss";
 
 import React from "react";
 
-// Style.
-import "./organization-teaser.scss";
+/**
+ * A single organization teaser.
+ * Appears at front page.
+ *
+ * @param props
+ */
 
 const OrganizationTeaser = props => {
   if (!props.organization) {

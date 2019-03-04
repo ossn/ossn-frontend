@@ -1,6 +1,12 @@
 import React from "react";
 import Shape from "./../shape/shape";
 
+/**
+ * Promoted box.
+ * Appears opportunities page for logged in users.
+ *
+ * @param props
+ */
 export default props => {
   return (
     <div className="promoted-box">
