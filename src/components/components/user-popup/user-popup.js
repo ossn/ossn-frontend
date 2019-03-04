@@ -1,14 +1,13 @@
-/*
-The pop uo window at the user menu.
-*/
+import "./user-popup.scss";
 
 import React from "react";
 import ReactDOM from "react-dom";
 import { Link } from "gatsby";
 import { LogoutLink } from "./../../layouts/auth-wrapper/auth-wrapper";
 
-import "./user-popup.scss";
-
+/**
+ * The pop up window at the user menu.
+ */
 class Overlay extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -17,15 +16,18 @@ class Overlay extends React.PureComponent {
     this.el.className = "user-popup__overlay";
   }
 
+  /**
+   * Appends the element into the DOM on mount.
+   */
   componentDidMount() {
-    // Append the element into the DOM on mount. We'll render
-    // into the modal container element (see the HTML tab).
-    this.container = document.querySelector("#content");
+    this.container = document.querySelector("js-content");
     this.container && this.container.appendChild(this.el);
   }
 
+  /**
+   * Remove the element from the DOM when when the component unmount.
+   */
   componentWillUnmount() {
-    // Remove the element from the DOM when we unmount
     this.container && this.container.removeChild(this.el);
   }
 
@@ -34,6 +36,9 @@ class Overlay extends React.PureComponent {
   }
 }
 
+/**
+ * The logged in user menu.
+ */
 class LoggedInUserMenu extends React.Component {
   render() {
     const logout = (

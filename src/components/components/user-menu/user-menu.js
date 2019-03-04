@@ -7,6 +7,9 @@ import { mapUserToProps } from "./../../../utils/redux-utils";
 import LoggedInMenu from "./../user-popup/user-popup";
 import { LoginLink } from "./../../layouts/auth-wrapper/auth-wrapper";
 
+/**
+ * Creates the user menu depending on the user logged in state.
+ */
 class UserMenu extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -20,26 +23,35 @@ class UserMenu extends React.PureComponent {
     };
   }
 
-  // puts an event listener for the UI handling (not that unsafe)
+  /**
+   * Adds event listener for the UI handling.
+   */
   componentDidMount() {
     if (typeof document !== "undefined")
       document.addEventListener("mousedown", this.handleOutsideClick, false);
   }
 
-  // remove the listener in absence of the component
+  /**
+   * Removes the listener in absence of the component.
+   */
   ComponentWillUnmount() {
     if (typeof document !== "undefined")
       document.removeEventListener("mousedown", this.handleOutsideClick, false);
   }
 
+  /**
+   * Updates the open / close state on the header navigation object.
+   */
   handleOpen = () => {
     this.setState({ open: !this.state.open });
   };
 
-  handleOption = newOption => {
-    this.setState({ option: newOption });
-  };
-
+  /**
+   * Updates the open  / close state on the header navigation object.
+   * Closes the menu if it is expanded on outside click.
+   *
+   * @param event
+   */
   handleOutsideClick = event => {
     if (
       this.state.open &&
@@ -52,16 +64,24 @@ class UserMenu extends React.PureComponent {
     }
   };
 
-  handleKeyPress = e => {
-    if (e.key === "Enter") return this.handleOpen;
+  /**
+   * Maps the enter key press event to handleOpen.
+   *
+   * @param event
+   */
+  handleKeyPress = event => {
+    if (event.key === "Enter") return this.handleOpen;
   };
 
+  /**
+   * Checks if the user is logged in.
+   * @returns {boolean}
+   */
   isUserLoggedIn = () => {
     return !!this.props.user.user;
   };
 
   render() {
-    // copy of the state
     const snapshot = { ...this.state };
     const isExpanded = snapshot.open;
     const stateClass = snapshot.open ? "is-expanded" : "is-collapsed";

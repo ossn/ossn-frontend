@@ -48,14 +48,14 @@ class HeaderNavigation extends React.PureComponent {
   }
 
   /**
-   * Updates the open /close state on the header navigation object.
+   * Updates the open / close state on the header navigation object.
    */
   handleOpen = () => {
     this.setState({ open: !this.state.open });
   };
 
   /**
-   * Updates the open  /close state on the header navigation object.
+   * Updates the open  / close state on the header navigation object.
    * Closes the menu if it is expanded on outside click.
    *
    * @param event
