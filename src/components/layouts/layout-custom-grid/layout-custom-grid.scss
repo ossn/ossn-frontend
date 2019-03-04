@@ -1,5 +1,9 @@
 @import "../../base-styles/init/init";
 
+// Layout made specifically for the front page boxes grid.
+// Works with six items that are juggled at every break point to fit in the
+// grid because their content has different sizes and might take up from one to
+// two columns and from one to two rows.
 .layout-custom-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

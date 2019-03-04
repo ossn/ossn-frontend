@@ -1,17 +1,29 @@
-/**
- * In order a LayoutXcol to take effect, the chilren have to accept `className` prop
- * as their own. e.g. <Component className=`${props.className} newClass />`
- **/
-// Styles
 import "./../../base-styles/base/normalize.scss";
 import "./layout-5col.scss";
 
 import React, { memo } from "react";
 
+/**
+ * Responsive 5-column grid.
+ * In order a Layout5col to take effect, the children have to accept `className`
+ * prop as their own. e.g. <Component className=`${props.className} newClass />`
+ *
+ * Props might contain:
+ *  {boolean} horizontalGutters: adds variant class that adds horizontal gutters
+ *  {boolean} verticalGutters: adds variant class that adds vertical gutters
+ *  columns at mobile screen width.
+ *  {String} className: classes added to the element
+ *
+ * @param props
+ **/
+
 const Layout5Col = props => {
   const baseClass = "layout-5col";
 
-  // add the `Layout-2col-unequal__col` class to every child.
+  /**
+   * Add the `layout-5col__col` class to every child.
+   * Required for the layout to apply correctly.
+   **/
   const children = React.Children.map(props.children, child => {
     const className = `${
       child.props.className ? child.props.className : ""
@@ -21,14 +33,14 @@ const Layout5Col = props => {
     return newChild;
   });
 
-  // handle component classes. Add the variations found in props.
+  /**
+   * Handle component classes. Add the variations found in props.
+   **/
   let classes = [baseClass];
   if (props.horizontalGutters)
     classes.push(`${baseClass}--with-horizontal-gutters`);
   if (props.verticalGutters)
     classes.push(`${baseClass}--with-vertical-gutters`);
-  if (props.noTabletBreak) classes.push(`${baseClass}--no-tablet-break`);
-  if (props.onlyDesktop3) classes.push(`${baseClass}--only-desktop-3`);
   if (props.className) classes.push(props.className);
 
   const classString = classes.join(" ");

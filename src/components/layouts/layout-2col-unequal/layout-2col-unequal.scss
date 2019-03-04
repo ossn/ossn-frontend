@@ -5,12 +5,13 @@
 // - 1 column at mobile sizes
 // - 2 columns at desktop sizes
 //
-// The `.layout-2col-unequal` class is used on the container div for the layout. A *grid
-// item* in the container can be created using one the following class:
+// The `.layout-2col-unequal` class is used on the container div for the layout.
+// A *grid item* in the container can be created using one the following class:
 // - `.layout-2col-unequal__col` : 1-column wide grid item spanning column 1
 //
 // .layout-2col-unequal--second-is-narrow - The second column is the narrow one.
 // .layout-2col-unequal--two-columns-on-tablet - Become 2 cols at tablet size.
+// .layout-2col-unequal--two-columns-on-tablet - The layout becomes two columns on tablet.
 // .layout-2col-unequal--always-2col - The layout is always two columns.
 // .layout-2col-unequal--inverse - Inverse display with same dom structure.
 // .layout-2col-unequal--with-horizontal-gutters - Gutters on both sides, needs wrapper with overflow hidden.

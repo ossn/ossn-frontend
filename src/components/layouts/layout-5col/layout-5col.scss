@@ -3,8 +3,9 @@
 // Responsive 5-column grid
 //
 // The `.layout-5col` layout is a responsive grid layout that is:
-// - 1 column at mobile sizes.
-// - 2 columns at tablet sizes.
+// - 2 column at small mobile sizes.
+// - 3 columns at mobile sizes.
+// - 4 columns at tablet sizes.
 // - 5 columns at desktop sizes.
 //
 // The `.layout-5col` class is used on the container div for the layout. A *grid
@@ -14,12 +15,9 @@
 // .layout-5col--with-horizontal-gutters - Gutters on both sides, needs wrapper with overflow hidden (like layout-center).
 // .layout-5col--with-vertical-gutters - Gutters on top and bottom.
 
-
 .layout-5col,
 %layout-5col {
   min-width: 100%;
-
-  // Two columns
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -28,7 +26,6 @@
   &__col {
     width: (100 / 2) * 1%;
     float: left;
-    //flex-grow: 2; // If a column is missing it will grow to cover it.
   }
 
   @include breakpoint($mobile) {
@@ -36,10 +33,8 @@
     &__col {
       width: (100 / 3) * 1%;
       float: left;
-      //flex-grow: 2; // If a column is missing it will grow to cover it.
     }
   }
-
 
   @include breakpoint($tablet) {
     display: flex;
@@ -49,20 +44,6 @@
     &__col {
       width: (100 / 4) * 1%;
       float: left;
-      //flex-grow: 2; // If a column is missing it will grow to cover it.
-    }
-  }
-
-  // --only-desktop-3 variant. It makes the 3 columns appear on desktop.
-  // There is no intermediate 2 column step.
-  &--only-desktop-5 {
-    %layout-5col__col,
-    .layout-5col--col,
-    .layout-5col__col {
-      @include breakpoint($tablet ($desktop - 1px)) {
-        width: 100%;
-        float: none;
-      }
     }
   }
 
@@ -75,7 +56,6 @@
     }
   }
 
-  // Three columns.
   @include breakpoint($desktop) {
     &--col,
     &__col {
@@ -101,7 +81,6 @@
       }
     }
 
-
     @include breakpoint($tablet ($desktop-large - 1px)) {
       margin-left: -$gutters-tablet / 2;
       margin-right: -$gutters-tablet / 2;
@@ -116,7 +95,6 @@
       }
     }
 
-    // Three columns.
     @include breakpoint($desktop-large) {
       margin-left: -$gutters-desktop / 2;
       margin-right: -$gutters-desktop / 2;
@@ -146,7 +124,6 @@
       }
     }
 
-    // Two columns.
     @include breakpoint($tablet) {
       padding-top: $gutters-tablet / 2;
       padding-bottom: $gutters-tablet / 2;
