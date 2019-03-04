@@ -1,8 +1,17 @@
-import React from "react";
 import "./toggle.scss";
 
-//utils
+import React from "react";
 import { returnKeyCheck } from "./../../../utils/accessibility";
+
+/**
+ * Horizontal toggle
+ *
+ * As the user clicks on it the bullet moves from left to right or right to
+ * left.
+ * Creates toggle element used in filter component.
+ *
+ * @param props
+ */
 
 export default props => {
   const onClick = props.onClick;

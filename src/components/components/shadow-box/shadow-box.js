@@ -1,7 +1,5 @@
-/*
-  Wrapper it's children and adds a white background and shadow.
-*/
 import "./shadow-box.scss";
+
 import React, { memo } from "react";
 
 /**

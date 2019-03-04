@@ -1,22 +1,50 @@
-/*
- Shape.
- */
-import React, { memo } from "react";
-
-// styles
 import "./shape.scss";
 
+import React, { memo } from "react";
+
+/**
+ * Decorative component that constructs shapes.
+ * Their size and transformation should be applied by the components that use
+ * them.
+ *
+ * Possible props:
+ *  {boolean} triangle: if it exists shape--triangle variant class is added
+ *  and corresponding svg is used.
+ *  {boolean} triangle2: if it exists shape--triangle-2 variant class is added
+ *  and corresponding svg is used.
+ *  {boolean} circle: if it exists shape--circle variant class is added and
+ *  corresponding svg is used.
+ *  {boolean} square: if it exists shape--square variant class is added and
+ *  corresponding svg is used.
+ *  {boolean} seafoamBlue: if it exists shape--seafoam-blue variant class is
+ *  added.
+ *  {boolean} sunnyYellow: if it exists shape--sunny-yellow variant class is
+ *  added.
+ *  {boolean} darkSkyBlue: if it exists shape--dark-sky-blue variant class is
+ *  added.
+ *  {boolean} lightNavy: if it exists shape--light-navy variant class is added.
+ *  {boolean} divider: if it exists shape--divider role variant class is added.
+ *  {String} className: classes added to the component.
+ *
+ * @param props
+ */
 const Shape = props => {
   let baseClass = ["shape"];
 
   let shapeSvg = "";
   let classes = [baseClass];
-  // Css shapes.
+
+  /**
+   * Shape variant classes.
+   */
   if (props.triangle) classes.push(`${baseClass}--triangle`);
   if (props.triangle2) classes.push(`${baseClass}--triangle-2`);
   if (props.circle) classes.push(`${baseClass}--circle`);
   if (props.square) classes.push(`${baseClass}--square`);
-  // Svg shapes.
+
+  /**
+   * Shape variant svgs.
+   */
   if (props.waveLarge) {
     classes.push(`${baseClass}--wave-large`);
     shapeSvg = (
@@ -108,12 +136,17 @@ const Shape = props => {
       </svg>
     );
   }
-  // Color variants.
+
+  /**
+   * Color variants.
+   */
   if (props.seafoamBlue) classes.push(`${baseClass}--seafoam-blue`);
   if (props.sunnyYellow) classes.push(`${baseClass}--sunny-yellow`);
   if (props.darkSkyBlue) classes.push(`${baseClass}--dark-sky-blue`);
   if (props.lightNavy) classes.push(`${baseClass}--light-navy`);
-  // Role variants.
+  /**
+   * Role variants.
+   */
   if (props.divider) classes.push(`${baseClass}--divider`);
 
   if (props.className) classes.push(props.className);
