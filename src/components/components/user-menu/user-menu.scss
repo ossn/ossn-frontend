@@ -1,5 +1,8 @@
 @import './../../base-styles/init/init';
 
+// User menu
+//
+// Themes user menu.
 .user-menu {
   &__popup {
     background-color: white;
@@ -25,7 +28,6 @@
   }
 
   @include breakpoint($tablet) {
-    // position: relative;
     bottom: auto;
 
     &__popup {

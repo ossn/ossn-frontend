@@ -93,7 +93,7 @@ const Basic = ({ location, children }) => {
               <Header />
             </div>
             <div className="layout-base__wrapper">
-              <div id="content" className="layout-base">
+              <div id="content" className="layout-base js-content">
                 {children}
               </div>
               <footer className="layout-base__bottom">
