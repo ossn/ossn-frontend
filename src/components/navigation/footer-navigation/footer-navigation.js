@@ -6,28 +6,41 @@ import {
   LogoutLink
 } from "./../../layouts/auth-wrapper/auth-wrapper";
 
-/*
- Constructs a collapsible list of entries at the mobile.
+/**
+ * Constructs a collapsible list of entries at the mobile.
+ * Scroll horizontally on mobile, then become one column layout.
+ * In order to take effect, the children have to accept `className`
+ * prop as their own. e.g. <Component className=`${props.className} newClass />`
+ *
+ * Props might contain:
+ *  {String} title: the title of the list.
+ *  {Array} links: the list of the links to be displayed.
+ *  {String} id: the id of the expanding element
+ *
+ *  links contain:
+ *   {String} title: the text to be displayed
+ *  a link attribute
+ *   {String} target (str): the `to` or `href` attribute of the `Link` or `a` element.
+ *   {boolean} external:  if true, the component will be `<a>` else `<Link>`.
+ *
+ * @param props
+ **/
 
- props:
- title: the title of the list.
- links: the list of the links to be displayed.
- id: the id of the expanding element
- a link attribute = {
- title (str): the text to be displayed
- target (str): the `to` or `href` attribute of the `Link` or `a` element.
- external (boolean):  if true, the component will be `<a>` else `<Link>`.
- }
- */
-
-// external modules
-// returns just the title
+/**
+ * Returns the title.
+ *
+ * @param props
+ **/
 const SimpleHeader = props => {
   return <div> {props.title} </div>;
 };
 
-// if the screen is mobile, wraps the SimpleHeader with a button to handle the
-// click action
+/**
+ * Wraps the SimpleHeader with a button to handle the click action.
+ * This is invoked only if the screen is mobile.
+ *
+ * @param props
+ **/
 const ResponsiveHeader = props => {
   const icon = props.isOpen ? <Minus /> : <Plus />;
   return (
@@ -41,7 +54,11 @@ const ResponsiveHeader = props => {
   );
 };
 
-// A link that points inside the site. Uses the `Link`  component.
+/**
+ * A link that points inside the site. Uses the `Link`  component.
+ *
+ * @param props
+ **/
 const InternalLink = props => {
   return (
     <Link className="footer__link" to={props.link.target}>
@@ -50,7 +67,11 @@ const InternalLink = props => {
   );
 };
 
-// A link that points outside the site. Users the `a` component.
+/**
+ * A link that points outside the site. Users the `a` component.
+ *
+ * @param props
+ **/
 const ExternalLink = props => {
   return (
     <a
@@ -75,7 +96,10 @@ export default class Navigation extends React.PureComponent {
     };
   }
 
-  handleClick = event => {
+  /**
+   * Toggles open / close and updates navigation state.
+   */
+  handleClick = () => {
     const snapshot = { ...this.state };
     if (!snapshot.isMobile) return;
     this.setState({
@@ -83,10 +107,20 @@ export default class Navigation extends React.PureComponent {
     });
   };
 
-  handleKeyPress = e => {
-    if (e.key === "Enter") return this.handleClick;
+  /**
+   * Executes handleClick on enter key event.
+   *
+   * @param event
+   */
+  handleKeyPress = event => {
+    if (event.key === "Enter") return this.handleClick;
   };
 
+  /**
+   * Executes handleClick on enter key event.
+   *
+   * @param {Array} linkList
+   */
   parseLinks = linkList => {
     if (!linkList) return [];
     const list = linkList.map((link, i) => {
