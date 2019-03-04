@@ -5,7 +5,12 @@ import { shortDate } from "./../../../utils/dates";
 
 import { Calendar as CalendarIcon } from "react-feather";
 
-// Wrapper for events.
+/**
+ * Handles club event component.
+ * Differentiates between active and past event.
+ *
+ * @param props
+ */
 const Event = props => {
   const now = Math.round(new Date().getTime() / 1000);
   const { startDate, endDate } = props.event;

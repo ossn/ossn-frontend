@@ -1,14 +1,12 @@
-/*
-  A wrapper for a list of FAQ entries.
-  Appears at /faq-page
-*/
-
-// external modules
+import ShadowBox from "./../shadow-box/shadow-box";
 import React from "react";
 
-// local modules
-import ShadowBox from "./../shadow-box/shadow-box";
-
+/**
+ * A wrapper for a list of FAQ entries.
+ * Appears at /faq-page.
+ *
+ * @param props
+ */
 export default props => {
   const classes = `${props.className || ""} faq__group`;
   return (

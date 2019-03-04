@@ -1,15 +1,15 @@
-/*
-  
-*/
-import React from "react";
-import { Link } from "react-feather";
-
-// local modules
-import ShadowBox from "./../shadow-box/shadow-box";
-
-// styles
 import "./external-link-box.scss";
 
+import React from "react";
+import { Link } from "react-feather";
+import ShadowBox from "./../shadow-box/shadow-box";
+
+/**
+ * General wrapper for external link in shadow box.
+ * Used for the contributing tools.
+ *
+ * @param props
+ */
 export const ExternalLinkBox = props => {
   const resource = props.resource;
   const title = resource.title;

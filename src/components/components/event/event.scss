@@ -1,9 +1,8 @@
 @import './../../base-styles/init/init.scss';
 
-/*
-  Text with standard prefix. Highlights the variable value.
-*/
-
+//  Event
+//
+//  Appears at club sidebar.
 .event {
   display: inline-block;
   margin-top: auto;
@@ -14,7 +13,7 @@
     display: inline-block;
     color: color('brand');
     position: absolute;
-    left: -33px; // icon size + distance from text
+    left: -33px;
     top: 2px;
   }
 

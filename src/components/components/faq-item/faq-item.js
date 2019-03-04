@@ -1,22 +1,28 @@
 import React from "react";
 import { ChevronRight } from "react-feather";
 
-/*
-  A single FAQ question and answer.
-  Appears at /faq-page.
-*/
-
+/**
+ * A single FAQ question and answer.
+ * Appears at /faq-page.
+ *
+ * @param props
+ */
 class FaqItem extends React.PureComponent {
   state = {
     open: false
   };
 
-  // Handles the collapse actions.
+  /**
+   * Handles the collapse/expand actions.
+   */
   handleToggle = () => {
     const snapshot = { ...this.state };
     this.setState({ open: !snapshot.open });
   };
 
+  /**
+   * Handles keys.
+   */
   handleKeyPress = e => {
     if (e.key === "Enter") return this.handleToggle;
   };
