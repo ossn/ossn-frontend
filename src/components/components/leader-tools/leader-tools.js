@@ -16,13 +16,16 @@ import MediaQuery from "react-responsive";
 import Layout2Col from "./../../layouts/layout-2col/layout-2col";
 import ShadowBox from "./../shadow-box/shadow-box";
 
-/*
-  LeaderToolList, LeaderTool and AllLeaderTools components.
-  Appears at /leaders-corner.
-*/
+/**
+ * LeaderToolList, LeaderTool and AllLeaderTools components.
+ * Appear at /leaders-corner.
+ */
 
-// Local modules.
-//  A single tool entry.
+/**
+ * A single LeaderTool.
+ *
+ * @param props
+ */
 const LeaderTool = props => {
   const title = props.tool.title;
   const icon = props.tool.attachment.publicURL;
@@ -41,16 +44,27 @@ const LeaderTool = props => {
   );
 };
 
-// Wraps a list of tools with title.
+/**
+ * Wraps a list of tools with title.
+ *
+ * @param props
+ */
 export class LeaderToolList extends React.PureComponent {
   state = {
     isOpen: false
   };
 
+  /**
+   * Creates the tool header.
+   */
   getSimpleHeader() {
     return <span className="title title--x-small"> {this.props.title} </span>;
   }
 
+  /**
+   * Creates the expandable tool header.
+   * Is used in mobile screen widths.
+   */
   getResponsiveHeader() {
     const button = (
       <button
@@ -67,6 +81,9 @@ export class LeaderToolList extends React.PureComponent {
     return button;
   }
 
+  /**
+   * Updates the object open/closed state.
+   */
   handleOpen() {
     const snapshot = { ...this.state };
     this.setState({ isOpen: !snapshot.isOpen });
@@ -117,7 +134,11 @@ export class LeaderToolList extends React.PureComponent {
   }
 }
 
-// Wraps all the tool lists.
+/**
+ * Wraps all the tools and adds layout.
+ *
+ * @param props
+ */
 export const AllLeaderTools = props => {
   const variousTools = props.variousTools;
   const prManagement = props.prManagement;

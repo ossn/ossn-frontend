@@ -104,7 +104,7 @@ class Member extends React.PureComponent {
   }
 
   /**
-   * Fetches the user resource and updates the state
+   * Fetches the user resource and updates the state.
    */
   componentDidMount = () => {
     let { id } = this.props.member;

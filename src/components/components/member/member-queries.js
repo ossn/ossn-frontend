@@ -1,5 +1,12 @@
 import gql from "graphql-tag";
 
+/**
+ * Contains queries related to the club page.
+ */
+
+/**
+ * Fetches user and clubs the user is member of.
+ */
 export const getUserQuery = gql`
   query getUser($id: ID!) {
     user(id: $id) {
@@ -21,6 +28,9 @@ export const getUserQuery = gql`
   }
 `;
 
+/**
+ * Mutates user and user club membership.
+ */
 export const editUserMutation = gql`
   mutation editUser(
     $receiveNewsletter: Boolean!

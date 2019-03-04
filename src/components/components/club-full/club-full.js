@@ -45,14 +45,15 @@ function ClubFull(props) {
   }, [editing, getClub, props.club, updateClub]);
 
   /**
-   * Updates the document title when the state's club name changes
+   * Updates the document title when the state's club name changes.
    */
   useEffect(() => {
     document.title = `${club.name} | ${GatsbyConfig.siteMetadata.title}`;
   }, [club.name]);
 
   /**
-   * Updates the currentUser's role variables that are being used for UX purposes.
+   * Updates the currentUser's role variables that are being used for UX
+   * purposes.
    */
   useEffect(() => {
     if (props.currentUser) {
