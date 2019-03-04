@@ -1,8 +1,14 @@
-import React from "react";
-
-import Shape from "./../shape/shape";
 import "./blockquote-box.scss";
 
+import React from "react";
+import Shape from "./../shape/shape";
+
+/**
+ * Blockquote box used at front page boxes.
+ * Displays text and author.
+ *
+ * @param props
+ */
 export default props => {
   const blockquote = props.blockquote;
   const author = props.author;

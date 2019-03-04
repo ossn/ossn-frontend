@@ -1,5 +1,7 @@
 @import "../../base-styles/init/init";
-
+// Blockquote box
+//
+// Blockquote box is used on front page.
 .blockquote-box {
   background-color: color('blue-medium');
   color: color('white');
@@ -118,9 +120,5 @@
       @include line-height(26px);
       @include font-size(19px);
     }
-  }
-
-  &__wave {
-
   }
 }

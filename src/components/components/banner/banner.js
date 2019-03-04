@@ -1,9 +1,18 @@
+import "./banner.scss";
+
 import React from "react";
 import Shape from "./../shape/shape";
 import Img from "gatsby-image";
 import MediaQuery from "react-responsive";
-import "./banner.scss";
 
+/**
+ * Banner component.
+ * Is used at front, about us and organizations pages.
+ * Front page uses the default component and the rest variants.
+ * All variants have image, title and shapes, only the default has text.
+ *
+ * @param props
+ */
 export default props => {
   const text = props.text ? (
     <div className="banner__text"> {props.text} </div>
@@ -15,8 +24,7 @@ export default props => {
     <h2 className="title title--large">
       {props.title.map((titleElement, index) => (
         <span key={index} className="banner__title-element">
-          {" "}
-          {titleElement}{" "}
+          {titleElement}
         </span>
       ))}
     </h2>

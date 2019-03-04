@@ -1,5 +1,12 @@
 import gql from "graphql-tag";
 
+/**
+ * Contains queries related to the club page.
+ */
+
+/**
+ * Fetches club, club location, club events and club members.
+ */
 export const GET_CLUB = gql`
   query getClub($id: ID!) {
     club(id: $id) {
@@ -49,12 +56,18 @@ export const GET_CLUB = gql`
   }
 `;
 
+/**
+ * Subscribes member to club.
+ */
 export const JOIN_CLUB = gql`
   mutation joinClub($id: ID!) {
     joinClub(clubId: $id)
   }
 `;
 
+/**
+ * Mutates club and club location.
+ */
 export const EDIT_CLUB = gql`
   mutation editClub(
     $address: String
