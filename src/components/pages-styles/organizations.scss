@@ -1,5 +1,11 @@
 @import './../base-styles/init/init';
 
+//  organizations
+//
+//  Themes the organizations page.
+//
+//  is-expanded: expanded state, rotates the icon near faq question.
+
 .organizations {
   &__content {
     @include padding-top(1.5);

@@ -1,10 +1,8 @@
 @import './../base-styles/init/init';
 
-/*
-  Styles for the about page.
-  Distances and basic layout.
-*/
-
+//  About us
+//
+//  Themes the  about us page.
 .about-us {
   &__break {
     @include margin-top(30px);
@@ -25,16 +23,6 @@
 
   &__list-title {
     margin-bottom: 0;
-  }
-
-  &__divider {
-    &--first {
-    }
-
-    &--second {
-      //@include margin-top(37.6px);
-      //@include margin-bottom(59.4px);
-    }
   }
 
   &__highlighted {
