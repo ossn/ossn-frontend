@@ -1,16 +1,13 @@
-/*
-Contains the announcements graphQL query fragment.
-Returns the list of the announcements with their title.
-Appears at /contribute and /leaders-corner
-
-  props
-    dummyData: If present, lines with grey background is shown.
-    announcements: A list of announcements to be shown.
-
-  The fields of the announcements should be the same as the graphQL query below.
-
-*/
-
+/**
+ * Contains the announcements component and graphQL query fragment.
+ * Returns the list of the announcements with their title.
+ * Appears at /contribute and /leaders-corner.
+ * Props contain the announcements to be shown. If dummyData is contained in
+ * props the logged out pages are generated which do not allow access to the
+ * announcements.
+ *
+ * @param props
+ */
 import React from "react";
 import { graphql } from "gatsby";
 import { TeaserBoxList } from "./../teaser-box/teaser-box";
