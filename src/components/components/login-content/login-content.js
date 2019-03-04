@@ -10,10 +10,8 @@ import { mapUserToProps } from "./../../../utils/redux-utils";
 
 /**
  * The content for not authenticated users.
- *
- * @param props
  */
-const NotAuthenticatedContent = props => {
+const NotAuthenticatedContent = () => {
   return <LoginLink />;
 };
 
@@ -34,8 +32,6 @@ const AuthenticatedContent = props => {
 /**
  * The content of the login page.
  * Moved here form the login page so it can be connected to store.
- *
- * @param props
  */
 // TODO: find why it is not being updated after the userReducer is being changed
 class LoginContent extends React.Component {

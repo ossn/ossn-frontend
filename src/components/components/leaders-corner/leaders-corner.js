@@ -15,7 +15,7 @@ import { mapUserToProps } from "./../../../utils/redux-utils";
 /**
  * Leaders corner authenticated content.
  *
- * @param props
+ * @param data
  */
 const AuthenticatedContent = data => {
   const jobs = data.props.ossnApi.jobs.jobs;
@@ -56,8 +56,6 @@ const AuthenticatedContent = data => {
 
 /**
  * Differentiates the content between logged in and logged out users.
- *
- * @param props
  */
 class LeaderCorner extends React.PureComponent {
   constructor(props) {

@@ -8,8 +8,6 @@ import MemberTeaser from "./../member-teaser/member-teaser";
  * This component is used for showing a list of members.
  *
  * Props contain an the array of members to be shown.
- *
- * @param props
  */
 export default class MemberList extends React.Component {
   getMembers() {

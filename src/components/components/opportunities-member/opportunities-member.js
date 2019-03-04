@@ -1,14 +1,3 @@
-/*
- Wraps the contribute page as shown to a user with the member role and add
- some content at the upper section.
-
- props:
- skipTitle, if present, the component does not add extra data.
- announcements, the list of the announcements objects.
- jobs, the list of the job objects.
- resources, the list of the resources objects.
-
- */
 import "./opportunities-member.scss";
 
 import React from "react";
@@ -22,10 +11,8 @@ import Layout2ColUnequal from "./../../layouts/layout-2col-unequal/layout-2col-u
 /**
  * A simple wrapper for the upper section i.e. the title, description and promoted box.
  * Appears at /contribute and for logged in users.
- *
- * @param props
  */
-const UpperSection = props => {
+const UpperSection = () => {
   return (
     <LayoutContained>
       <h1 className="title title--m-small opportunities-member__title">

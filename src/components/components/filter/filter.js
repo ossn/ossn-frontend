@@ -9,8 +9,6 @@ import Toggle from "./../toggle/toggle";
  * The implementation of the handleToggle logic has to be at an higher level
  * and passed as prop.
  * Active element is considered to be the one on the right.
- *
- * @param props
  */
 export class ToggleFilter extends React.Component {
   handleToggle = this.props.onClick;
@@ -50,8 +48,6 @@ export class ToggleFilter extends React.Component {
  * Creates a search input element.
  * The implementation of the onChange logic has to be at an higher level and
  * passed as prop.
- *
- * @param props
  */
 export class SearchFilter extends React.Component {
   handleSearch = this.props.onChange;

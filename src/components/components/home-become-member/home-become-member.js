@@ -8,8 +8,6 @@ import { mapUserToProps } from "./../../../utils/redux-utils";
 /**
  * Contains a become a member CTA.
  * Appears at home page only for logged out users.
- *
- * @param props
  */
 class BecomeMember extends React.Component {
   render() {
