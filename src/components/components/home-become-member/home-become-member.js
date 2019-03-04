@@ -1,18 +1,16 @@
-/*
-  Contains a become a member CTA.
-  Appears at /  (home page)
-*/
+import "./home-become-member.scss";
 
-// external modules
 import React from "react";
 import { connect } from "react-redux";
 import { LoginLink } from "./../../layouts/auth-wrapper/auth-wrapper";
-
-// local  modules
 import { mapUserToProps } from "./../../../utils/redux-utils";
 
-import "./home-become-member.scss";
-
+/**
+ * Contains a become a member CTA.
+ * Appears at home page only for logged out users.
+ *
+ * @param props
+ */
 class BecomeMember extends React.Component {
   render() {
     if (this.props.user.user !== undefined) return <div />;
