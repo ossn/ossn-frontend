@@ -8,14 +8,25 @@ import ShadowBox from "./../shadow-box/shadow-box";
 import Shape from "./../shape/shape";
 import Event from "../event/event";
 
-/*
-  Contains the `ClubInfo`  and `ClubInfoItem` components.
-*/
-/*
-  An Item of the list
-  props:
-    link (String): the link that it points to.
-*/
+/**
+ * Contains the `ClubInfo`  and `ClubInfoItem` components.
+ */
+
+/**
+ * ClubInfoItem component.
+ * Wraps all the elements that appear on the right sidebar on club default
+ * display.
+ *
+ * Possible props:
+ *  {boolean} major: if it exists variant class is added creating a large item.
+ *  {boolean} map: if it exists variant class is added creating a map item.
+ *  {String} link: it indicates we are dealing with an external link and
+ *  contains the url that it points to.
+ *  {String} email: it indicated we deal with an email and contains the email.
+ *
+ * @param props
+ *
+ */
 export class ClubInfoItem extends React.PureComponent {
   render() {
     let classes = ["club-info__item"];
@@ -48,7 +59,15 @@ export class ClubInfoItem extends React.PureComponent {
   }
 }
 
-/* Wrappers for cleaner code */
+/**
+ * LocationInfo wrapper.
+ * Constructs the address element. If all props are provided it creates a link
+ * to openstreetmaps with the directions box open.
+ *
+ * @param {String} location
+ * @param {String} lng
+ * @param {String} lat
+ */
 const LocationInfo = ({ location, lng, lat }) => {
   if (lng && lat) {
     const link =
@@ -75,6 +94,12 @@ const LocationInfo = ({ location, lng, lat }) => {
   );
 };
 
+/**
+ * GithubInfo wrapper.
+ * Constructs github url element.
+ *
+ * @param {String} github The github account url
+ */
 const GithubInfo = ({ github }) => (
   <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--graph">
     <ClubInfoItem link={github} major>
@@ -83,6 +108,12 @@ const GithubInfo = ({ github }) => (
   </li>
 );
 
+/**
+ * WebpageInfo wrapper.
+ * Constructs club url element.
+ *
+ * @param {String} clubUrl The club website url
+ */
 const WebpageInfo = ({ clubUrl }) => (
   <li className="club-info__item-wrapper">
     <ClubInfoItem link={clubUrl}>
@@ -91,6 +122,12 @@ const WebpageInfo = ({ clubUrl }) => (
   </li>
 );
 
+/**
+ * EmailInfo wrapper.
+ * Constructs email element.
+ *
+ * @param {String} email The club email
+ */
 const EmailInfo = ({ email }) => (
   <li className="club-info__item-wrapper">
     <ClubInfoItem email={`mailto:${email}`}>
@@ -99,6 +136,12 @@ const EmailInfo = ({ email }) => (
   </li>
 );
 
+/**
+ * EventInfo wrapper.
+ * Wraps event component.
+ *
+ * @param {String} event A club event
+ */
 const EventInfo = ({ event }) => (
   <li className="club-info__item-wrapper">
     <ClubInfoItem>
@@ -107,22 +150,31 @@ const EventInfo = ({ event }) => (
   </li>
 );
 
-/*
-  Box containing information about a club.
-
-  props:
-    Club (object): Club object to show information.
-
-*/
+/**
+ * Box containing information about a club..
+ * Wraps event component.
+ *
+ * Possible props:
+ *  {String} address
+ *  {String} lng
+ *  {String} clubUrl
+ *  {String} email
+ *  {String} githubUrl
+ *  {Array} events
+ *
+ * @param {String} props
+ */
 export default class ClubInfo extends React.PureComponent {
   getEvents() {
     const now = Math.round(new Date().getTime() / 1000);
 
+    /**
+     * Orders Event list.
+     */
     const eventList =
       this.props.club.events &&
       this.props.club.events
         .sort((a, b) => {
-          // a.startDate && b.startDate ? (a.startDate > b.a.startDate ? return -1 : return 1):
           if (a.startDate && b.startDate) {
             const aClosingDate = Math.max(a.startDate, a.endDate);
             const bClosingDate = Math.max(b.startDate, b.endDate);
