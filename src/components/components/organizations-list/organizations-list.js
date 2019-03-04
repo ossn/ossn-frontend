@@ -1,7 +1,5 @@
-/*
-  Contains the graphQL query for the organizations.
-  A wrapper for organizations
-*/
+import "./organizations-list.scss";
+
 import React from "react";
 import { graphql } from "gatsby";
 
@@ -9,8 +7,12 @@ import OrganizationTeaser from "./../organization-teaser/organization-teaser";
 import Layout5Col from "./../../layouts/layout-5col/layout-5col";
 import Shape from "./../../components/shape/shape";
 
-import "./organizations-list.scss";
-
+/**
+ * A wrapper for front page organizations.
+ * Contains the graphQL query for the organizations.
+ *
+ * @param props
+ */
 export default props => {
   const organizations = props.organizations.map((node, i) => {
     return (

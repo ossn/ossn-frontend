@@ -1,9 +1,21 @@
 /*
   Wrapper it's children and adds a white background and shadow.
 */
-import React, { memo } from "react";
 import "./shadow-box.scss";
+import React, { memo } from "react";
 
+/**
+ * Wrapper component that adds a white background and shadow around its
+ * children.
+ *
+ * Possible props:
+ *  {boolean} zeroRadius: if it exists zeroRadius variant class is added.
+ *  {boolean} zeroPadding: if it exists zeroPadding variant class is added.
+ *  {boolean} smallPaddings: if it exists smallPaddings variant class is added.
+ *  {String} className: Custom classes added to the component.
+ *
+ * @param props
+ */
 const ShadowBox = props => {
   let classes = ["shadow-box"];
 

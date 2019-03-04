@@ -1,4 +1,5 @@
 @import './../../base-styles/init/init';
+
 // Organization
 //
 // Used for organization page listing.
@@ -34,6 +35,7 @@
   &__description {
     margin-top: 10px;
     margin-bottom: 0;
+    color: color('text');
   }
 
   &__icon {
