@@ -1,10 +1,10 @@
 @import './../../base-styles/init/init.scss';
 
-/*
-  Channel logo with it's title underneath.
-*/
-
-.communication-channel {
+// Communication channel
+//
+// Themes communication channels that appear at leader-corner and contribute
+// pages.
+.communication-channels {
   text-align: center;
   margin-bottom: 5px;
 
@@ -34,8 +34,18 @@
 
   &:hover,
   &:focus {
-    .communication-channel__title {
+    .communication-channels__title {
       color: color('brand')
+    }
+  }
+
+  &__list{
+    width: 100%;
+
+    &-wrapper {
+      margin-top: 32px;
+      display: flex;
+      justify-content: space-around;
     }
   }
 }

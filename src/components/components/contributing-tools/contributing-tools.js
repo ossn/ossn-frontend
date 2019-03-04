@@ -1,16 +1,17 @@
-/*
-  Contains the fragment for the contributing tools.
-  Returns a list of contributing tools.
-  Appears at /contribute and /leaders-corner.
-*/
 import React from "react";
 import { graphql } from "gatsby";
 import MediaQuery from "react-responsive";
-
-// Local modules.
 import ExternalLinkBox from "./../external-link-box/external-link-box";
 import Layout3Col from "./../../layouts/layout-3col/layout-3col";
 import LayoutScroll from "./../../layouts/layout-scroll/layout-scroll";
+
+/**
+ * List of contributing tools.
+ * Contains the fragment for the contributing tools.
+ * Appears at /contribute and /leaders-corner.
+ *
+ * @param props
+ */
 
 export const ContributingToolSet = props => {
   const tools = props.tools.edges.map((toolNode, i) => {

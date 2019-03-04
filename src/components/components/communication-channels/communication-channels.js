@@ -1,31 +1,40 @@
-/*
- Lists the communication channels.
- Is responsible to handle transformation from the gatsby-json to usable data
- Appears at /contribute and /leaders-corner
- */
+import "./communication-channels.scss";
 
 import React from "react";
 import { graphql } from "gatsby";
 
-// styles
-import "./communication-channels.scss";
-import "./communication-channel-list.scss";
+/**
+ * Lists of the communication channels.
+ * Is responsible to handle transformation from the gatsby-json to usable data.
+ * Appears at /contribute and /leaders-corner.
+ * Contains the graphql query.
+ */
 
+/**
+ * Single communication channel.
+ *
+ * @param props
+ */
 export const Channel = props => {
   const title = props.channel.title;
   const url = props.channel.link;
   const icon = props.channel.attachment.publicURL;
 
   return (
-    <a href={url} className="communication-channel">
-      <span className="communication-channel__image-wrapper">
-        <img src={icon} alt={title} className="communication-channel__image" />
+    <a href={url} className="communication-channels">
+      <span className="communication-channels__image-wrapper">
+        <img src={icon} alt={title} className="communication-channels__image" />
       </span>
-      <span className="communication-channel__title">{title}</span>
+      <span className="communication-channels__title">{title}</span>
     </a>
   );
 };
 
+/**
+ * Communication chanel list.
+ *
+ * @param props
+ */
 export const ChannelList = props => {
   const channels = props.channels.edges.map((channelNode, i) => {
     const channel = channelNode.node;
@@ -33,11 +42,11 @@ export const ChannelList = props => {
   });
 
   return (
-    <div className="communication-channel-list">
-      <h2 className="communication-channel-list__title title title--x-small">
+    <div className="communication-channels__list">
+      <h2 className="communication-channels__list-title title title--x-small">
         Communication channels
       </h2>
-      <div className="communication-channel-list__list-wrapper">{channels}</div>
+      <div className="communication-channels__list-wrapper">{channels}</div>
     </div>
   );
 };

@@ -1,5 +1,8 @@
 @import './../../base-styles/init/init';
 
+//  Club teaser
+//
+//  Themes the club teaser.
 .club-teaser {
   color: color('text');
   display: flex;
@@ -71,7 +74,6 @@
   &__button {
     @include margin-top(4.5px);
     font-weight: 600;
-
 
     // Overwrite plugin css.
     &.button {
