@@ -80,11 +80,6 @@ $chroma: add-colors('functional', (
         border-focus:           'brand', // Applies at form items.
         border-disabled:        'grey-extra-light', // Applies at form items.
 
-        autocomplete:           'text',
-        autocomplete-bg:        'text-bg',
-        autocomplete-select:    'white',
-        autocomplete-select-bg: 'light-navy',
-
         body-bg:                'text-bg',
 
         button:                 'brand',
@@ -112,10 +107,6 @@ $chroma: add-colors('functional', (
         menu-active:            'text',
 
         preview-bg:             lighten(color('sunny-yellow'), 47%),
-
-        progress-bar:           'light-navy',
-        progress-bar-bg:        'grey-light',
-        progress-bar-border:    'grey-dark',
 
         resizable-grippie:      'grey-extra-light',
 
