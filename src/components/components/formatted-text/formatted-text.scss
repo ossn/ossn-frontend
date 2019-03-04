@@ -1,10 +1,9 @@
 @import './../../base-styles/init/init.scss';
 
-/*
-  Text with standard prefix. Highlights the variable value.
-*/
-
-.formated-text {
+//  Formatted text
+//
+//  Text with standard prefix. Highlights the variable value.
+.formatted-text {
   display: inline-block;
   margin-top: auto;
   margin-bottom: auto;

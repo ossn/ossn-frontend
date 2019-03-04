@@ -3,7 +3,7 @@ import "./club-info.scss";
 import React from "react";
 import MediaQuery from "react-responsive";
 
-import { Email, Github, Link, Map } from "./../formated-text/formated-text";
+import { Email, Github, Link, Map } from "./../formatted-text/formatted-text";
 import ShadowBox from "./../shadow-box/shadow-box";
 import Shape from "./../shape/shape";
 import Event from "../event/event";

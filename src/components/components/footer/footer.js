@@ -1,6 +1,3 @@
-/*
- Contains the footer section.
- */
 import "./footer.scss";
 
 import React, { memo } from "react";
@@ -11,6 +8,9 @@ import MediaQuery from "react-responsive";
 import LayoutContained from "../../layouts/layout-contained/layout-contained";
 import Navigation from "../../navigation/footer-navigation/footer-navigation";
 
+/**
+ * Contains the footer section.
+ */
 const footerNavigationList2 = [
   {
     title: "Our blog",
@@ -29,6 +29,12 @@ const footerNavigationList2 = [
   }
 ];
 
+/**
+ * Constructs the footer links.
+ * Differentiates login/logout links according to the user status.
+ *
+ * @param {Object} user
+ */
 const Footer = ({ user }) => {
   const footerNavigationList1 = [
     {

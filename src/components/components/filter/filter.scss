@@ -2,12 +2,10 @@
 
 //  Filter
 //
-//  Basic style for a filter component.
+//  Styles filter component.
 //
 //  .filter--search: the search filter.
 //  .filter--toggle: the toggle filter.
-//  .filter--select: the search filter.
-
 .filter {
   display: inline-block;
 
@@ -65,47 +63,6 @@
     &:focus {
       background-color: transparent;
       color: color('brand');
-    }
-
-  }
-
-  &--select {
-    position: relative;
-    padding: 0;
-
-    &::before,
-    &::after {
-      content: '';
-      display: inline-block;
-      position: absolute;
-      pointer-events: none;
-    }
-
-    &::before {
-      width: 20px;
-      height: 100%;
-      background-color: color('white');
-      top: 0;
-      right: 0;
-    }
-
-    &::after {
-      top: 50%;
-      right: 8px;
-      transform: translateY(-50%);
-      width: 0;
-      height: 0;
-      border-left: 8px solid transparent;
-      border-right: 8px solid transparent;
-      border-top: 10px solid color('blue-dark');
-    }
-
-    select {
-      border: none;
-      background-color: color('white');
-      width: 100%;
-      cursor: pointer;
-      padding: 13px 30px 13px 15px;
     }
   }
 }
