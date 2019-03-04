@@ -190,9 +190,11 @@ u { // sass-lint:disable-line no-empty-rulesets
 //
 // .text--xsmall - Xsmall text.
 // .text--small - Small text.
+// .text--medium - Medium text.
 // .text--large - Large text.
 // .text--xlarge - XLarge text.
 // .text--xxlarge - XXLarge text.
+// .text--load-more - Load more text.
 //
 .text,
 %text {
@@ -278,4 +280,3 @@ u { // sass-lint:disable-line no-empty-rulesets
     justify-content: center;
   }
 }
-

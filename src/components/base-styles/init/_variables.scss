@@ -2,7 +2,6 @@
 //
 // Set variables for this site before a library sets its !default value.
 //
-// Style guide: sass.variables
 
 
 // Browser support
@@ -11,8 +10,6 @@
 // control whether extra CSS is needed to be output. The `support-for()`
 // function and the `$support-for` variable are documented on the [support-for
 // homepage](https://github.com/JohnAlbin/support-for).
-//
-// Style guide: sass.variables.support-for
 
 // Support the same browsers as normalize.css v3.
 // Possible keys: chrome, edge, firefox, ie, opera, safari, '*'
@@ -30,25 +27,12 @@ $support-for: (
 // used by mixins like `type-layout()`, `margin-top()`, and `margin-bottom()`.
 // These variable and mixins are documented on the [Typey
 // homepage](https://github.com/jptaranto/typey).
-//
-// Style guide: sass.variables.typey
 
 // The font size set on the root html element.
 $base-font-size:    14px;
 
 // The base line height determines the basic unit of vertical rhythm.
 $base-line-height:  21px;
-
-//// Deprecated in this theme.
-//// The font sizes in our type hierarchy as tee shirt sizes.
-//$font-size: (
-//  xxl:              36px,
-//  xl:               26px,
-//  l:                21px,
-//  m:                $base-font-size,
-//  s:                15px,
-//  xs:               13px
-//);
 
 // Typey allows you to alter font weights site-wide with this map.
 $font-weight: (
@@ -151,28 +135,6 @@ $padding-mobile: 20px;
 $padding-tablet: 30px;
 $padding-desktop: 40px;
 
-// Breakpoints
-//
-// Use the `respond-to()` mixin to use named breakpoints. Documentation is
-// available in the [Breakpoint wiki
-// pages](https://github.com/at-import/breakpoint/wiki/Respond-To).
-//
-// Style guide: sass.variables.breakpoints
-
-//@include add-breakpoint(xxxs, (333px, 'no-query' true));
-//@include add-breakpoint(xxs, (444px, 'no-query' true));
-//@include add-breakpoint(xs, (555px, 'no-query' true));
-//@include add-breakpoint(s, (666px, 'no-query' true));
-//@include add-breakpoint(m, (777px, 'no-query' true));
-//@include add-breakpoint(l, (888px, 'no-query' true));
-//@include add-breakpoint(xl, (999px, 'no-query' true));
-//@include add-breakpoint(xxl, (1111px));
-//@include add-breakpoint(xxxl, (1222px));
-
-// Output media queries where the above px are converted to ems.
-// @include breakpoint-set('to ems', true);
-
-
 // Miscellaneous variables
 //
 // `$indent-amount` controls the amount lists, blockquotes and comments are indented.
@@ -180,8 +142,6 @@ $padding-desktop: 40px;
 // `$include-rtl` controls whether RTL styles are output. Rather than include a separate `*-rtl.css` file, Zen 6 uses Drupal 8's standard `[dir="rtl"]` selector for RTL language support.
 //
 // weight: 10
-//
-// Style guide: sass.variables.misc
 
 $indent-amount: 2 * $base-font-size;
 

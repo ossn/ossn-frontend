@@ -21,7 +21,6 @@
 @import 'variables';
 
 
-
 // 3rd party libraries
 //
 // The following sass modules are shared with all .scsss files:
@@ -29,11 +28,8 @@
 // - [Chroma](https://github.com/JohnAlbin/chroma)
 // - [Support-for](https://github.com/JohnAlbin/support-for)
 // - [Typey](https://github.com/jptaranto/typey)
-// - [Zen Grids](http://next.zengrids.com/help/)
 //
 // Additional pre-built libraries can be found on the [Sache website](http://www.sache.in/).
-//
-// Style guide: sass.modules
 
 // Add Chroma to manage colors.
 @import 'chroma';

@@ -1,9 +1,17 @@
+// Slice
+//
+// The reusable slice styles across the page.
+//
+// .slice--slice - Slice with dark background on screen widths tablet and up.
+// .slice--always-dark - Slice with dark background on all screen widths.
+// .slice--last - Adjusts distances for last slice on page content.
+
 @import './../../init/init';
 
 .slice {
   width: 100%;
 
-  &--dark {
+  &--slice {
     @include breakpoint($tablet) {
       background-color: color('slice-bg');
     }
