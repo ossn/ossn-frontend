@@ -1,15 +1,16 @@
-/*
- Shows the become a member CTA.
- */
+import "./opportunities-guest.scss";
 import React from "react";
 
 import MemberUpdates from "./../member-updates/member-updates";
 import LayoutContained from "./../../layouts/layout-contained/layout-contained";
 import { LoginLink } from "./../../layouts/auth-wrapper/auth-wrapper";
 
-// style
-import "./opportunities-guest.scss";
-
+/**
+ * Shows the become a member CTA.
+ * Appears at /contribute and /leaders-corner for logged out users.
+ *
+ * @param props
+ */
 export default props => {
   return (
     <div className="opportunities-guest">

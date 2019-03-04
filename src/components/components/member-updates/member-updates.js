@@ -1,16 +1,16 @@
-/*
- A wrapper for announcements and job listing section.
- Appears at /contribute and /leaders-corner.
- */
 import React from "react";
 import MediaQuery from "react-responsive";
-
-// Local modules.
 import LayoutContained from "./../../layouts/layout-contained/layout-contained";
 import Layout2Col from "./../../layouts/layout-2col/layout-2col";
 import Announcements from "./../announcements/announcements";
 import JobListing from "./../job-listing/job-listing";
 
+/**
+ * A wrapper for announcements and job listing section.
+ * Appears at /contribute and /leaders-corner.
+ *
+ * @param props
+ */
 export default props => {
   return (
     <LayoutContained>

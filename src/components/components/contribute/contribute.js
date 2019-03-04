@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import Opportunities from "./../opportunities/opportunities";
+import OpportunitiesMember from "./../opportunities-member/opportunities-member";
 import OpportunitiesGuest from "./../opportunities-guest/opportunities-guest";
 
 import { mapUserToProps } from "./../../../utils/redux-utils";
@@ -24,7 +24,7 @@ const AuthenticatedContent = data => {
 
   return (
     <>
-      <Opportunities
+      <OpportunitiesMember
         jobs={jobs}
         announcements={announcements}
         channels={channels}

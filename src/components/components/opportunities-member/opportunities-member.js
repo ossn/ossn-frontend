@@ -9,9 +9,9 @@
  resources, the list of the resources objects.
 
  */
-import React from "react";
+import "./opportunities-member.scss";
 
-// Local modules.
+import React from "react";
 import MemberUpdates from "./../member-updates/member-updates";
 import MemberTools from "./../member-tools/member-tools";
 import MemberTrainingResources from "./../member-training-resources/member-training-resources";
@@ -19,11 +19,12 @@ import PromotedBox from "./../promoted-box/promoted-box";
 import LayoutContained from "./../../layouts/layout-contained/layout-contained";
 import Layout2ColUnequal from "./../../layouts/layout-2col-unequal/layout-2col-unequal";
 
-// styles
-import "./opportunities-member.scss";
-
-// A simple wrapper for the upper section i.e. the title, description and propmoted box.
-// UpperSection is the place holder for
+/**
+ * A simple wrapper for the upper section i.e. the title, description and promoted box.
+ * Appears at /contribute and for logged in users.
+ *
+ * @param props
+ */
 const UpperSection = props => {
   return (
     <LayoutContained>
@@ -50,8 +51,20 @@ const UpperSection = props => {
   );
 };
 
+/**
+ * Wraps the contribute page as shown to a user with the member role and add
+ * some content at the upper section.
+ * Appears at /contribute and /leaders-corner.
+ *
+ * Props contain:
+ * skipTitle, if present, the component does not add extra data.
+ * announcements, the list of the announcements objects.
+ * jobs, the list of the job objects.
+ * resources, the list of the resources objects.
+ *
+ * @param props
+ */
 export default props => {
-  // placeholder for the UpperSection component.
   const upperSection = props.skipTitle ? "" : <UpperSection />;
 
   return (
