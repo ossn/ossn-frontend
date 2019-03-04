@@ -4,8 +4,11 @@ import React from "react";
 import { Map, Marker, Popup, TileLayer } from "react-leaflet";
 import { ClubTeaser } from "./../club-teaser-list/club-teaser-list";
 
-// local modules
-// styles
+/**
+ * The content for the clubs list map view.
+ *
+ * @param props
+ */
 class ClubMap extends React.Component {
   constructor(props) {
     super(props);
@@ -16,14 +19,25 @@ class ClubMap extends React.Component {
     };
   }
 
+  /**
+   * Updates the state when clubs results change.
+   */
   componentDidMount = () => {
     this.props.clubs !== this.state.clubs && this.updateClubs(this.props.clubs);
   };
 
+  /**
+   * Updates the state when clubs results change.
+   */
   componentDidUpdate() {
     this.props.clubs !== this.state.clubs && this.updateClubs(this.props.clubs);
   }
 
+  /**
+   * Updates clubs and map bounds according to club locations.
+   *
+   * @param {Array} clubs
+   */
   updateClubs = clubs => {
     let boundsArray = clubs.reduce((accumulator, currentValue) => {
       if (
@@ -38,7 +52,10 @@ class ClubMap extends React.Component {
       }
       return accumulator;
     }, []);
-    // Ensure valid bounds with no or one result.
+
+    /**
+     * Ensures valid bounds with no or one result.
+     */
     boundsArray.length < 1
       ? (boundsArray = [
           ["25.3345123", "-99.5218668"],
@@ -56,7 +73,11 @@ class ClubMap extends React.Component {
   render() {
     const { bounds, clubs } = this.state;
 
-    // center the map.
+    /**
+     * Adds the club markers.
+     *
+     * @param {Array} clubs
+     */
     const markers = clubs.map(club => {
       return (
         // Check that club has a defined location.

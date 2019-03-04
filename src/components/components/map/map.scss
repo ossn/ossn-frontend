@@ -1,12 +1,14 @@
+// Map
+//
+// Styles map and overwrites leaflet css.
 .map {
   &__popup  {
     min-width: 360px;
 
-    // overide map popup inline CSS
+    // Overwrite map popup inline CSS.
     bottom: 0 !important;
     left: 0 !important;
     margin: 0 !important;
-    // overide stop.
 
     .club-teaser {
       min-width: 360px;

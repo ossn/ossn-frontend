@@ -7,7 +7,16 @@ import LayoutContained from "./../../layouts/layout-contained/layout-contained";
 
 import { mapUserToProps } from "./../../../utils/redux-utils";
 
-// The content for authenticated users.
+/**
+ * Constructs the content φορ /leaders-corner.
+ * Differentiates the content between logged in and logged out users.
+ */
+
+/**
+ * Leaders corner authenticated content.
+ *
+ * @param props
+ */
 const AuthenticatedContent = data => {
   const jobs = data.props.ossnApi.jobs.jobs;
   const announcements = data.props.ossnApi.announcements.announcements;
@@ -45,6 +54,11 @@ const AuthenticatedContent = data => {
   );
 };
 
+/**
+ * Differentiates the content between logged in and logged out users.
+ *
+ * @param props
+ */
 class LeaderCorner extends React.PureComponent {
   constructor(props) {
     super(props);
