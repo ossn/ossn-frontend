@@ -6,12 +6,19 @@ import Img from "gatsby-image";
 import { BACKEND_URL } from "./../../../settings";
 import Shape from "./../shape/shape";
 
+/**
+ * Join the network CTA.
+ * Appears at /about-us and /members.
+ * Props contain image and variant classes.
+ *
+ * @param props
+ */
 const JoinCta = props => {
   const baseClass = "join-cta";
   // handle component classes. Add the variations found in props.
   let classes = [baseClass];
   if (props.tall) classes.push(`${baseClass}--tall`);
-  if (props.verticalGutters) if (props.className) classes.push(props.className);
+  if (props.className) classes.push(props.className);
 
   const classString = classes.join(" ");
   return (

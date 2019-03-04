@@ -1,17 +1,27 @@
-/*
- The news tiles.
- Appears at / (home page)
- */
+import "./image-box.scss";
 
-// External modules.
 import { Link } from "gatsby";
 import React from "react";
 import Img from "gatsby-image";
 
-// Local modules.
-import "./image-box.scss";
-// import Image from './images/panel-typewriter.jpg'
-
+/**
+ * The news tiles.
+ * Appears at home page.
+ *
+ * Possible props:
+ *  {Array} resource: Contains the resource titleLargeTop, titleSmall,
+ *  titleLargeBottom, link, image.
+ *  {boolean} large: if it exists large variant class is added.
+ *  {boolean} centered: if it exists centered variant class is added.
+ *  {boolean} offset: if it exists offset variant class is added.
+ *  {boolean} end: if it exists end variant class is added.
+ *  {boolean} orange: if it exists orange variant class is added.
+ *  {boolean} light: if it exists light variant class is added.
+ *  {boolean} isInternalLink: if it exists internal link is created, else
+ *  external.
+ *
+ * @param props
+ */
 export default props => {
   const baseClass = "image-box";
 
@@ -36,7 +46,10 @@ export default props => {
     ""
   );
   const image = resource.image ? resource.image : "";
-  // Handle component classes. Add the variations found in props.
+
+  /**
+   * Handle component classes. Add the variations found in props.
+   */
   let classes = [baseClass];
   if (props.large) classes.push(`${baseClass}--large`);
   if (props.centered) classes.push(`${baseClass}--centered`);
@@ -63,7 +76,9 @@ export default props => {
     </div>
   );
 
-  // Use flag for the link generation.
+  /**
+   * Uses flag for the link generation.
+   */
   const url = resource.link;
   const isInternalLink = resource.internalLink;
   if (isInternalLink) {
