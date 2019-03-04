@@ -1,11 +1,8 @@
-// External modules.
 import { graphql } from "gatsby";
 import React from "react";
 import { Helmet } from "react-helmet";
 import Img from "gatsby-image";
 import { Clipboard, MessageSquare, GitPullRequest } from "react-feather";
-
-// Local modules.
 import BasicLayout from "../components/layouts/layout-base/layout-base";
 import GatsbyConfig from "./../../gatsby-config";
 import Layout2ColsUnequal from "./../components/layouts/layout-2col-unequal/layout-2col-unequal";
@@ -17,13 +14,17 @@ import Banner from "./../components/components/banner/banner";
 
 import "./../components/pages-styles/about-us.scss";
 
+/**
+ * About us page.
+ * Fetches data for:
+ *  - Banner.
+ *  - Join the network
+ */
 const About = props => {
   return (
     <BasicLayout location={props.location}>
       <Helmet>
-        <title>
-          {["About", "|", GatsbyConfig.siteMetadata.title].join(" ")}
-        </title>
+        <title>{`About | ${GatsbyConfig.siteMetadata.title}`}</title>
       </Helmet>
       <LayoutContained className="about-us">
         <Banner

@@ -1,14 +1,7 @@
-/*
-The container for the organizations page.
-*/
-
-// external modules
 import React, { memo } from "react";
 import { Helmet } from "react-helmet";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
-
-// Local modules.
 import BasicLayout from "../components/layouts/layout-base/layout-base";
 import LayoutContained from "./../components/layouts/layout-contained/layout-contained";
 import Organization from "./../components/components/organization/organization";
@@ -20,10 +13,11 @@ import Shape from "./../components/components/shape/shape";
 import Banner from "./../components/components/banner/banner";
 
 import "../components/pages-styles/organizations.scss";
-
-// Import page title from gatsby config.
 import GatsbyConfig from "./../../gatsby-config";
 
+/**
+ * Organizations page
+ **/
 const Organizations = props => {
   const content = props.data.allOrganizationsJson.edges.map((node, i) => {
     return <Organization organization={node.org} key={i} />;
@@ -32,9 +26,7 @@ const Organizations = props => {
   return (
     <BasicLayout location={props.location}>
       <Helmet>
-        <title>
-          {["Organization", "|", GatsbyConfig.siteMetadata.title].join(" ")}
-        </title>
+        <title>{`Organizations | ${GatsbyConfig.siteMetadata.title}`}</title>
       </Helmet>
       <LayoutContained className="organizations">
         <Banner

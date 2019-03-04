@@ -1,4 +1,3 @@
-// styles
 import "../components/layouts/layout-custom-grid/layout-custom-grid.scss";
 import "../components/pages-styles/home-page.scss";
 
@@ -14,21 +13,10 @@ import LayoutContained from "./../components/layouts/layout-contained/layout-con
 import Shape from "./../components/components/shape/shape";
 import Banner from "./../components/components/banner/banner";
 
+/**
+ * Home page.
+ */
 const IndexPage = props => {
-  const isLoggedIn = () => {
-    return false;
-  };
-
-  const getCTASlice = () => {
-    return (
-      <div className="slice slice--always-dark">
-        <LayoutContained>
-          <BecomeMember />
-        </LayoutContained>
-      </div>
-    );
-  };
-
   return (
     <BasicLayout location={props.location} noDistanceTop>
       {/* New section */}
@@ -122,7 +110,11 @@ const IndexPage = props => {
       </LayoutContained>
 
       {/* why join the OSSN? */}
-      {isLoggedIn() ? "" : getCTASlice()}
+      <div className="slice slice--always-dark">
+        <LayoutContained>
+          <BecomeMember />
+        </LayoutContained>
+      </div>
 
       {/* Organizations */}
       <LayoutContained className="home-page__partners-section">
