@@ -4,14 +4,16 @@ import { Link } from "gatsby";
 import React from "react";
 import { Users } from "react-feather";
 
-import Member from "./../member/member";
 import ShadowBox from "./../shadow-box/shadow-box";
 
-/*
- Is the the preview of a member profile.
-
- props:
-   member (object): the member to be shown. */
+/**
+ * Member teaser.
+ * This component is used for showing a single member teaser linked to profile.
+ *
+ * Props contain an the member object.
+ *
+ * @param props
+ */
 const MemberTeaser = props => {
   const name = props.member.name;
   const imageUrl = props.member.imageUrl;
@@ -38,13 +40,10 @@ const MemberTeaser = props => {
       clubString += " + " + (props.member.clubs.length - 1) + " more";
     }
   }
-  // When the popup is open, the preview is loaded.
-  let preview = <div />;
-  if (props.open) {
-    preview = <Member member={props.member} />;
-  }
 
-  // Show the leader tag for leaders.
+  /**
+   * Show the leader tag for leaders.
+   */
   const leaderTag = isLeader ? (
     <span className="member-teaser__leader-tag">
       <span className="member-teaser__leader-tag-bg">
@@ -62,9 +61,8 @@ const MemberTeaser = props => {
   const classes = [inheritedClass, "member-teaser"];
   if (isLeader) classes.push("member-teaser--leader");
   return (
-    <ShadowBox smallPaddings className={classes.join(" ")}>
-      <div> {preview} </div>
-      <Link to={`/members/${props.member.id}`} className="member-teaser__inner">
+    <Link to={`/members/${props.member.id}`} className={classes.join(" ")}>
+      <ShadowBox smallPaddings className="member-teaser__inner">
         {leaderTag}
         {image}
         <div className="member-teaser__text">
@@ -76,8 +74,8 @@ const MemberTeaser = props => {
             </div>
           )}
         </div>
-      </Link>
-    </ShadowBox>
+      </ShadowBox>
+    </Link>
   );
 };
 
