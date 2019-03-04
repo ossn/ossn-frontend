@@ -134,8 +134,18 @@ const clubQuery = `
           bannerImageUrl
           clubUrl
           events {
+            id
             title
+            startDate
+            endDate
+            description
             sortDescription
+            publishedAt
+            location {
+              address
+              lat
+              lng
+            }
           }
           location {
             address
