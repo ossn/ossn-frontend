@@ -8,5 +8,8 @@ un~$
 /public
 .DS_Store
 
+# Generated files
+schema.json
+
 # vi undo file
 *\.un~
