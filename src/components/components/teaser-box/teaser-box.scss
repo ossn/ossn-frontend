@@ -1,9 +1,11 @@
 @import './../../base-styles/init/init.scss';
 
+// Teaser box
+//
 // A white box with image on the left and text on the right.
 //
-// .teaser-box--dummy: Do not display data, but a grey horizontal placeholder line.
-
+// .teaser-box--dummy: Do not display data, but a grey horizontal placeholder
+// line.
 .teaser-box {
   margin-bottom: 15px;
   min-width: 265px;
@@ -13,7 +15,7 @@
   @include breakpoint($tablet) {
     @include margin-left(0);
     min-height: 100px;
-    min-width: none;
+    min-width: 0;
     width: 100%;
   }
 

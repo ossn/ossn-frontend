@@ -1,19 +1,19 @@
 /*
  The template for announcements and job listing components.
  */
-
-import React from "react";
-
-// local modules
-import ShadowBox from "./../shadow-box/shadow-box";
-import LayoutScroll from "./../../layouts/layout-scroll/layout-scroll";
-
-// utils
-import { verboseDate } from "./../../../utils/dates";
-
-// styles
 import "./teaser-box.scss";
 
+import React from "react";
+import ShadowBox from "./../shadow-box/shadow-box";
+import LayoutScroll from "./../../layouts/layout-scroll/layout-scroll";
+import { verboseDate } from "./../../../utils/dates";
+
+/**
+ * The template for announcements and job listing components for logged in
+ * users.
+ *
+ * @param props
+ */
 export const TeaserBox = props => {
   const resource = props.resource;
   let title = resource.title;
@@ -45,6 +45,11 @@ export const TeaserBox = props => {
   );
 };
 
+/**
+ * The template teaser box used for logged out users.
+ *
+ * @param props
+ */
 export const DummyTeaserBox = props => {
   const classes = [props.className, "teaser-box teaser-box--dummy"];
 
@@ -62,6 +67,11 @@ export const DummyTeaserBox = props => {
   );
 };
 
+/**
+ * The wrapper for teaser box elements.
+ *
+ * @param props
+ */
 export const TeaserBoxList = props => {
   let resources;
   if (props.dummyData) {
