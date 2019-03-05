@@ -108,11 +108,11 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: GA_TRACKING_ID,
-        // Puts tracking script in the head instead of the body
+        // Puts tracking script in the head instead of the body.
         head: true,
-        // Setting this parameter is optional
+        // Setting this parameter is optional.
         anonymize: true,
-        // Google Analytics will not be loaded at all for visitors that have
+        // Google Analytics will not be loaded at all for visitors that have.
         // “Do Not Track” enabled.
         respectDNT: true
       }
