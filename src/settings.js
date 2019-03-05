@@ -1,24 +1,12 @@
 /**
  * Global settings.
  **/
-import appleTouch from "./favicon/apple-touch-icon.png";
-import favicon16x16 from "./favicon/favicon-16x16.png";
-import favicon32x32 from "./favicon/favicon-32x32.png";
-import safari from "./favicon/safari-pinned-tab.svg";
-
 export const activeEnv =
   process.env.ACTIVE_ENV || process.env.NODE_ENV || "development";
 
-export const metadata = [
-  meta("msapplication-TileColor", "#000000"),
-  meta("theme-color", "#ffffff")
-];
+export const metadata = [meta("msapplication-TileColor", "#000000")];
 
 export const link = [
-  favicon("apple-touch-icon", `${appleTouch}`, "180x180"),
-  favicon("icon", `${favicon32x32}`, "32x32", "image/png"),
-  favicon("icon", `${favicon16x16}`, "16x16", "image/png"),
-  favicon("mask-icon", `${safari}`, null, null, "#5bbad5"),
   {
     rel: "stylesheet",
     href: "https://unpkg.com/leaflet@1.3.3/dist/leaflet.css",
@@ -34,21 +22,4 @@ function meta(name, content) {
     content: content
   };
 }
-
-function favicon(
-  rel = null,
-  href = null,
-  sizes = null,
-  type = null,
-  color = null
-) {
-  let bundle = {};
-  if (rel) bundle.rel = rel;
-  if (href) bundle.href = href;
-  if (sizes) bundle.sizes = sizes;
-  if (type) bundle.type = type;
-  if (color) bundle.color = color;
-  return bundle;
-}
-
 export const BACKEND_URL = "/api/v1.0";

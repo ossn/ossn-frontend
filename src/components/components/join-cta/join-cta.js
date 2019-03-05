@@ -16,11 +16,9 @@ import Shape from "./../shape/shape";
 const JoinCta = props => {
   const baseClass = "join-cta";
   // handle component classes. Add the variations found in props.
-  let classes = [baseClass];
-  if (props.tall) classes.push(`${baseClass}--tall`);
-  if (props.className) classes.push(props.className);
-
-  const classString = classes.join(" ");
+  const classString = `${baseClass} ${props.tall ? baseClass + "--tall" : ""} ${
+    props.className
+  }`;
   return (
     <a href={`${BACKEND_URL}/oidc/login`} className={classString}>
       <Img

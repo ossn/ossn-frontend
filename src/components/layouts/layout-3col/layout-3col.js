@@ -25,9 +25,7 @@ const Layout2ColsUnequal = props => {
    * Required for the layout to apply correctly.
    **/
   const children = React.Children.map(props.children, child => {
-    const className = `${
-      child.props.className || "" ? child.props.className : ""
-    } ${baseClass}__col`;
+    const className = `${child.props.className || ""} ${baseClass}__col`;
     const props = { ...child.props, className: className };
     return React.cloneElement(child, props);
   });

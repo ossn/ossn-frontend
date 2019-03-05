@@ -94,12 +94,13 @@ export class LeaderToolList extends React.PureComponent {
       return <LeaderTool tool={tool} key={i} />;
     });
 
-    const listClasses = ["leader-tools-list__wrapper"];
-    if (snapshot.isOpen) listClasses.push("leader-tools-list__wrapper--open");
-
     const hideDetails = !snapshot.isOpen && this.props.isMobile;
     return (
-      <div className={listClasses.join(" ")}>
+      <div
+        className={`leader-tools-list__wrapper ${
+          snapshot.isOpen ? "leader-tools-list__wrapper--open" : ""
+        }`}
+      >
         <h2
           className="leader-tools-list__title"
           aria-controls={this.props.detailsId}

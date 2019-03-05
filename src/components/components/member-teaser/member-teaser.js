@@ -57,11 +57,13 @@ const MemberTeaser = props => {
     <></>
   );
 
-  const inheritedClass = props.className ? props.className : "";
-  const classes = [inheritedClass, "member-teaser"];
-  if (isLeader) classes.push("member-teaser--leader");
+  const baseClass = "member-teaser";
+  const classString = `${baseClass} ${isLeader ? baseClass + "--leader" : ""} ${
+    props.className
+  }`;
+
   return (
-    <Link to={`/members/${props.member.id}`} className={classes.join(" ")}>
+    <Link to={`/members/${props.member.id}`} className={classString}>
       <ShadowBox smallPaddings className="member-teaser__inner">
         {leaderTag}
         {image}

@@ -16,6 +16,7 @@ import LayoutContained from "../../layouts/layout-contained/layout-contained";
 import ShadowBox from "../shadow-box/shadow-box";
 import Shape from "../shape/shape";
 import { editUserMutation, getUserQuery } from "./member-queries";
+import memberImage from "../../../images/member-136x136.png";
 
 /**
  * Profile page template.
@@ -446,7 +447,7 @@ class Member extends React.PureComponent {
             <div className="member__image-wrapper">
               <div className="member__image-inner">
                 <img
-                  src={snapshot.imageUrl}
+                  src={snapshot.imageUrl || memberImage}
                   alt="profile"
                   className="member__image"
                 />
