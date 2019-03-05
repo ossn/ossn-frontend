@@ -96,10 +96,12 @@ class HeaderNavigation extends React.PureComponent {
   };
 
   render() {
-    const snapshot = { ...this.state };
+    const snapshot = this.state;
     const isExpanded = snapshot.open;
-    const stateClass = snapshot.open ? "is-expanded" : "is-collapsed";
     const isHidden = !snapshot.open;
+    const classString = `header__navigation-container ${
+      isExpanded ? "is-expanded" : "is-collapsed"
+    }`;
 
     /**
      * Handles the menu toggle appearence according to open / closed menu state.
@@ -113,11 +115,6 @@ class HeaderNavigation extends React.PureComponent {
         return <Menu className="header__menu-icon" size={20} />;
       }
     };
-
-    let classes = ["header__navigation-container"];
-    if (stateClass) classes.push(stateClass);
-    let classString = classes.join(" ");
-
     return (
       <ShadowBox className="header__inner">
         <div ref={this.expandable}>
