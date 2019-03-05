@@ -32,6 +32,7 @@ export default props => {
       aria-pressed={ariaPressed}
       className={classString}
       tabIndex={0}
+      aria-label="Toggle menu"
     >
       <div className="toggle__track" />
       <div className="toggle__bullet" />
