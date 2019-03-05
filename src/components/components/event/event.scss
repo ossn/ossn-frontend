@@ -44,4 +44,15 @@
   &.is-past-event {
     opacity: .6;
   }
+
+  &__location {
+    margin-top: 5px;
+    display: block;
+  }
+
+  &__location-text {
+    margin: 0;
+    display: block;
+
+  }
 }
