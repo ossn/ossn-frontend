@@ -43,6 +43,20 @@ const Questions = props => {
           <div>
             <FaqGroup id="faq-group-1" header="Joining OSSN">
               <FaqItem
+                header="When is my club officially recognized as a part of the Open Source Student Network?  "
+                id="faq-2-item-1"
+              >
+                In order to have your club be formally recognized at least one
+                club leader must fill the Club&#39;s registration form{" "}
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfYQEKz8gMnxWrIxJZer6lJG1p08LtPboV3Aupfj2PtWmKD1A/viewform">
+                  here.
+                </a>{" "}
+                Then, in the next 24 hours, you will receive a confirmation that
+                your club is registered and a Club profile will automatically be
+                created on the website. It&#39;s time to invite your Club&#39;s
+                members to join the network and the Club!
+              </FaqItem>
+              <FaqItem
                 header="What if I don’t have an existing club, and want to start a new Open Source Student Club?"
                 id="faq-1-item-1"
               >
@@ -52,81 +66,23 @@ const Questions = props => {
                 We’ll send you materials and tips for launching a successful
                 club.
               </FaqItem>
-              <FaqItem
-                header="I filled out the registration form, what's next? "
-                id="faq-1-item-2"
-              >
-                Thank you for applying! We have received your application and we
-                invite you to go through the onboarding process in order to get
-                your Club active and officially recognized. You can find more
-                information about the process here:
-                <ul>
-                  <li>
-                    Step 1: Fill out the form to{" "}
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfYQEKz8gMnxWrIxJZer6lJG1p08LtPboV3Aupfj2PtWmKD1A/viewform?usp=sf_link">
-                      {" "}
-                      register your club.
-                    </a>
-                  </li>
-                  <li>
-                    Step 2: Your application is reviewed & you receive a notice
-                    of welcome.
-                  </li>
-                  <li>
-                    Step 3: Complete the “Introduction to the network” (coming
-                    soon).
-                  </li>
-                  <li> Step 4: Create your club profile. </li>
-                  <li> Step 5: Your club is officially registered! </li>
-                  <li>
-                    Step 6: Find great open source{" "}
-                    <a href="https://opensource.mozilla.community/find-activity/">
-                      projects/activities
-                    </a>
-                    .
-                  </li>
-                  <li>
-                    Step 7: Join our regular{" "}
-                    <a href="https://discourse.mozilla.org/t/demos-calls-for-registered-club-leaders/19343">
-                      demos calls
-                    </a>{" "}
-                    to meet other club leaders.
-                  </li>
-                </ul>
-                Remember your club will need to show regular activity in order
-                to remain in good standing.
-              </FaqItem>
             </FaqGroup>
           </div>
           {/*Second column*/}
           <div>
-            <FaqGroup id="faq-group-2" header="Registering a club">
-              <FaqItem
-                header="When is my club officially recognized as a part of the Open Source Student Network?  "
-                id="faq-2-item-1"
-              >
-                In order to have your club be formally recognized at least one
-                club leader must go through the “introduction to the network”
-                course. In order for a Club to be recognized as a part of the a
-                Club must demonstrate three months of regular activity - by
-                running activities, and attending meetings.
-              </FaqItem>
+            <FaqGroup id="faq-group-2" header="Your Club and OSSN">
               <FaqItem
                 header="What type of activities should my club do? "
                 id="faq-2-item-2"
               >
                 The goal of the program is to support your club to learn about
                 and contribute to open source projects. You can run any of the{" "}
-                <a href="https://opensource.mozilla.community/find-activity/">
+                <a href="/contribute">
                   activities listed in the relevant page on the website{" "}
                 </a>
                 or other activities related to open source. If you have an idea
                 for an activity which will advance the mission you can propose
-                it{" "}
-                <a href="https://github.com/mozilla/Campus-Activities/issues/new">
-                  here
-                </a>
-                .
+                it on our Slack instance.
               </FaqItem>
               <FaqItem
                 header="Where can I request swag or budget for my club? "
@@ -199,9 +155,9 @@ const Questions = props => {
         <div className="faq__footer">
           <h2 className="faq__footer-title"> Have more questions? </h2>
           <p className="faq__footer-text title title--x-small">
-            Cool! Reach out to us to{" "}
-            <a href="https://www.facebook.com/">Facebook</a> or{" "}
-            <a href="https://twitter.com/">Twitter</a>
+            Cool! Reach out to us on{" "}
+            <a href="https://mossn.slack.com/">Slack</a> or{" "}
+            <a href="https://twitter.com/ossn_club">Twitter</a>
             <Shape waveLarge sunnyYellow className="faq__footer-shape" />
           </p>
         </div>
