@@ -33,8 +33,7 @@ const Event = props => {
               props.event.location.lat
             } %2C ${props.event.location.lng} &zoom=12`}
           >
-            {" "}
-            {props.event.location.address}{" "}
+            {props.event.location.address}
           </a>
         </span>
       ) : (
