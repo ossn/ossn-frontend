@@ -42,7 +42,8 @@ function ClubFull(props) {
     const path = window.location.pathname.split("/");
     const id = (props.club || {}).id || path[path.indexOf("clubs") + 1];
     getClub(id).then(updateClub);
-  }, [getClub, props.club, updateClub]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /**
    * Updates the document title when the state's club name changes.
