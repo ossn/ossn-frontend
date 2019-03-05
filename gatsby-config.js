@@ -31,7 +31,9 @@ module.exports = {
     url: BACKEND_URL
   },
   siteMetadata: {
-    title: "Open Source Student Network"
+    title: "Open Source Student Network",
+    description:
+      "A network of university students and clubs who share the belief that open source software is the engine that powers innovation."
   },
   plugins: [
     `gatsby-transformer-sharp`,

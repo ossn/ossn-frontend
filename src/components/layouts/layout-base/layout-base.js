@@ -86,6 +86,10 @@ const Basic = ({ location, children }) => {
           <div>
             <Helmet meta={metadata} link={link}>
               <title>{GatsbyConfig.siteMetadata.title}</title>
+              <meta
+                name="description"
+                content={GatsbyConfig.siteMetadata.description}
+              />
               <html lang="en" />
             </Helmet>
             <SkipLink />

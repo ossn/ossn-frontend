@@ -128,6 +128,7 @@ class HeaderNavigation extends React.PureComponent {
               className="button button--header header__button"
               aria-controls={"header-navigation-container"}
               aria-expanded={isExpanded}
+              aria-label="Toggle menu visibility"
             >
               {menuToggle(isExpanded)}
             </button>
