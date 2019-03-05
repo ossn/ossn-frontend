@@ -148,12 +148,11 @@ export default class Navigation extends React.PureComponent {
   };
 
   render() {
-    const snapshot = { ...this.state };
+    const snapshot = this.state;
     const links = this.parseLinks(this.props.links);
     const isExpanded = snapshot.isOpen && snapshot.isMobile;
-    let classes = ["footer__section footer__section--mobile"];
-    if (this.props.className) classes.push(this.props.className);
-    let classString = classes.join(" ");
+    let classString = `footer__section footer__section--mobile ${this.props
+      .className || ""}`;
     const id = this.props.id;
     const header = snapshot.isMobile ? (
       <ResponsiveHeader
