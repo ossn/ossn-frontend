@@ -4,15 +4,17 @@
     "link": "https://fixme.ossn.club/",
     "description": "fixme.ossn.club",
     "attachment": "./logo-fixme.svg"
-  },{
+  },
+  {
     "title": "Excercism",
     "link": "https://exercism.io/",
     "description": "exercism.io",
     "attachment": "./exercism.png"
-  },{
-    "title": "Tools Dashboard",
-    "link": "https://tools-dashboard.io/",
-    "description": "tools-dashboard.io",
-    "attachment": "./tools-dashboard.svg"
+  },
+  {
+    "title": "Projects at OSSN",
+    "link": "https://projects.ossn.club/",
+    "description": "Identify a project to contribute to",
+    "attachment": "./projects-ossn.svg"
   }
 ]
