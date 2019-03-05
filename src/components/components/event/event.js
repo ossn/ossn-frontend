@@ -28,10 +28,14 @@ const Event = props => {
         <span className="event__location">
           <h4>Event Location</h4>
           <a
+            target="_blank"
+            rel="noopener noreferrer"
             className="event__location-text text text--xsmall"
-            href={`https://www.openstreetmap.org/directions?from=&to= ${
+            href={`https://www.openstreetmap.org/directions?from=&to=${
               props.event.location.lat
-            } %2C ${props.event.location.lng} &zoom=12`}
+            }%2C${props.event.location.lng}#map=16/${
+              props.event.location.lat
+            }/${props.event.location.lng}`}
           >
             {props.event.location.address}
           </a>

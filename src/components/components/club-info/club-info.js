@@ -68,16 +68,13 @@ export const ClubInfoItem = props => {
  */
 const LocationInfo = ({ location, lng, lat }) => {
   if (lng && lat) {
-    const link =
-      "https://www.openstreetmap.org/directions?from=&to=" +
-      lat +
-      "%2C" +
-      lng +
-      "&zoom=8";
-
     return (
       <li className="club-info__item-wrapper club-info__item-wrapper--major club-info__item-wrapper--map">
-        <ClubInfoItem major map link={link}>
+        <ClubInfoItem
+          major
+          map
+          link={`https://www.openstreetmap.org/directions?from=&to=${lat}%2C${lng}#map=16/${lat}/${lng}`}
+        >
           <Map value={location} />
         </ClubInfoItem>
       </li>
