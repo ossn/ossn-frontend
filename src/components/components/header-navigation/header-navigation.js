@@ -123,7 +123,7 @@ class HeaderNavigation extends React.PureComponent {
               onClick={this.handleOpen}
               onKeyPress={this.handleKeyPress}
               className="button button--header header__button"
-              aria-controls={"header-navigation-container"}
+              aria-controls="header-navigation-container"
               aria-expanded={isExpanded}
               aria-label="Toggle menu visibility"
             >
