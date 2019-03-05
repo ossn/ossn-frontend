@@ -20,11 +20,13 @@ export const FormattedText = props => {
   const icon = props.icon ? <props.icon size={20} /> : "";
   const secondary = props.secondary || "";
   const breakAll = props.breakAll;
-  let classes = ["formatted-text"];
-  if (breakAll) classes.push("formatted-text--word-break");
 
   return (
-    <div className={classes.join(" ")}>
+    <div
+      className={`formatted-text ${
+        breakAll ? "formatted-text--word-break" : ""
+      }`}
+    >
       <div className="formatted-text__icon">{icon}</div>
       <div className="formatted-text__text">
         <div className="formatted-text__main">

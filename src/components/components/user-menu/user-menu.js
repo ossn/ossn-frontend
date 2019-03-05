@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { mapUserToProps } from "./../../../utils/redux-utils";
 import LoggedInMenu from "./../user-popup/user-popup";
 import { LoginLink } from "./../../layouts/auth-wrapper/auth-wrapper";
+import memberImage from "../../../images/member-60x60.png";
 
 /**
  * Creates the user menu depending on the user logged in state.
@@ -84,12 +85,11 @@ class UserMenu extends React.PureComponent {
   render() {
     const snapshot = { ...this.state };
     const isExpanded = snapshot.open;
-    const stateClass = snapshot.open ? "is-expanded" : "is-collapsed";
     const isHidden = !snapshot.open;
     let userImageUrl =
       this.props.user.user && this.props.user.user.imageUrl
         ? this.props.user.user.imageUrl
-        : "";
+        : memberImage;
     let userLabel =
       this.props.user.user && this.props.user.user.userName
         ? this.props.user.user.userName
@@ -99,9 +99,6 @@ class UserMenu extends React.PureComponent {
       this.props.user.user && this.props.user.user.id
         ? this.props.user.user.id
         : "";
-    let classes = ["user-menu"];
-    if (stateClass) classes.push(stateClass);
-    let classString = classes.join(" ");
 
     let user = (
       <div
@@ -110,7 +107,7 @@ class UserMenu extends React.PureComponent {
         onKeyPress={this.handleKeyPress}
         role="button"
         tabIndex={0}
-        aria-controls={"user-menu-wrapper"}
+        aria-controls="user-menu-wrapper"
         aria-expanded={isExpanded}
         ref={this.menuButton}
       >
@@ -131,7 +128,12 @@ class UserMenu extends React.PureComponent {
       <ul className="main-navigation__item-wrapper main-navigation__item-wrapper--user main-navigation__item-wrapper--logged-in">
         <li className="">
           {user}
-          <div ref={this.popup} className={classString}>
+          <div
+            ref={this.popup}
+            className={`user-menu ${
+              snapshot.open ? "is-expanded" : "is-collapsed"
+            }`}
+          >
             <div
               id="user-menu-wrapper"
               className="user-menu__popup"

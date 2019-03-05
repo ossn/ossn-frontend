@@ -25,12 +25,9 @@ const Layout5Col = props => {
    * Required for the layout to apply correctly.
    **/
   const children = React.Children.map(props.children, child => {
-    const className = `${
-      child.props.className ? child.props.className : ""
-    } ${baseClass}__col`;
+    const className = `${child.props.className || ""} ${baseClass}__col`;
     const props = { ...child.props, className: className };
-    const newChild = React.cloneElement(child, props);
-    return newChild;
+    return React.cloneElement(child, props);
   });
 
   /**

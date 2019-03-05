@@ -20,14 +20,10 @@ const Organization = props => {
   const icon = props.organization.attachment.publicURL;
   const description = props.organization.description;
 
-  let classes = ["organization"];
-  if (props.className) classes.push(props.className);
-  let classString = classes.join(" ");
-
   return (
     <a
       href={url}
-      className={classString}
+      className={`organization ${props.className}`}
       target="_blank"
       rel="noopener noreferrer"
     >

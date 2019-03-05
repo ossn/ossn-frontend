@@ -15,9 +15,11 @@ import { returnKeyCheck } from "./../../../utils/accessibility";
 
 export default props => {
   const onClick = props.onClick;
-  const classes = [props.className, "toggle"];
-  if (props.active) classes.push("toggle--active");
-  const classString = classes.join(" ");
+  const baseClass = "toggle";
+  const classString = `${baseClass} ${
+    props.active ? baseClass + "--active" : ""
+  } ${props.className}`;
+
   const ariaPressed = props.active;
 
   return (

@@ -81,8 +81,12 @@ module.exports = {
       options: {
         name: "gatsby-starter-default",
         start_url: "/",
-        theme_color: "#f9f9fa",
-        display: "minimal-ui"
+        theme_color: "#262626",
+        display: "minimal-ui",
+        short_name: "ossn",
+        background_color: "#f9f9fa",
+        icon: "src/images/icon.png",
+        include_favicon: true // Include favicon
       }
     },
     "gatsby-plugin-extract-schema",
