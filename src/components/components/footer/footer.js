@@ -133,7 +133,7 @@ const Footer = ({ user }) => {
               <li>
                 <a
                   rel="nofollow noopener noreferrer"
-                  href="https://www.mozilla.org/privacy/websites/"
+                  href="/privacy-policy"
                   target="_blank"
                 >
                   Website Privacy Notice
