@@ -100,11 +100,8 @@ export default class Navigation extends React.PureComponent {
    * Toggles open / close and updates navigation state.
    */
   handleClick = () => {
-    const snapshot = { ...this.state };
-    if (!snapshot.isMobile) return;
-    this.setState({
-      isOpen: !snapshot.isOpen
-    });
+    if (!this.state.isMobile) return;
+    this.setState(({ isOpen }) => ({ isOpen: !isOpen }));
   };
 
   /**

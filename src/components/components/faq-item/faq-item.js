@@ -14,8 +14,7 @@ class FaqItem extends React.PureComponent {
    * Handles the collapse/expand actions.
    */
   handleToggle = () => {
-    const snapshot = { ...this.state };
-    this.setState({ open: !snapshot.open });
+    this.setState(state => ({ open: !state.open }));
   };
 
   /**
@@ -26,16 +25,14 @@ class FaqItem extends React.PureComponent {
   };
 
   render() {
-    const snapshot = { ...this.state };
+    const snapshot = this.state;
     const isExpanded = snapshot.open;
-    const stateClass = snapshot.open ? "is-expanded" : "is-collapsed";
     const isHidden = !snapshot.open;
     const id = this.props.id;
 
-    let classes = ["faq__item"];
-    if (stateClass) classes.push(stateClass);
-    let classString = classes.join(" ");
-
+    const classString = `faq__item ${
+      isExpanded ? "is-expanded" : "is-collapsed"
+    }`;
     return (
       <li className={classString}>
         <h3>

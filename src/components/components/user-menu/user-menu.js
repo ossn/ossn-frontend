@@ -83,7 +83,7 @@ class UserMenu extends React.PureComponent {
   };
 
   render() {
-    const snapshot = { ...this.state };
+    const snapshot = this.state;
     const isExpanded = snapshot.open;
     const isHidden = !snapshot.open;
     let userImageUrl =

@@ -83,12 +83,11 @@ export class LeaderToolList extends React.PureComponent {
    * Updates the object open/closed state.
    */
   handleOpen() {
-    const snapshot = { ...this.state };
-    this.setState({ isOpen: !snapshot.isOpen });
+    this.setState(state => ({ open: !state.open }));
   }
 
   render() {
-    const snapshot = { ...this.state };
+    const snapshot = this.state;
 
     const tools = this.props.tools.map((tool, i) => {
       return <LeaderTool tool={tool} key={i} />;
