@@ -8,6 +8,7 @@
     X-XSS-Protection = "1; mode=block"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     X-Content-Type-Options = "nosniff"
+    Content-Security-Policy = "default-src https:"
 [[redirects]]
   from = "https://dev.ossn.club/api/*"
   to = "https://dev-api.ossn.club/api/:splat"
