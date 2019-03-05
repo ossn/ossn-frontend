@@ -13,18 +13,18 @@ import Navigation from "../../navigation/footer-navigation/footer-navigation";
  */
 const footerNavigationList2 = [
   {
-    title: "Our blog",
-    target: "https://opensource.mozilla.community",
+    title: "Slack",
+    target: "https://mossn.slack.com/",
     external: true
   },
   {
-    title: "Facebook page",
-    target: "https://opensource.mozilla.community",
+    title: "Email",
+    target: "mailto:ossn@mozilla.com",
     external: true
   },
   {
     title: "Twitter page",
-    target: "https://opensource.mozilla.community",
+    target: "https://twitter.com/ossn_club",
     external: true
   }
 ];
@@ -160,7 +160,7 @@ const Footer = ({ user }) => {
               <li>
                 <a
                   rel="nofollow noopener noreferrer"
-                  href="https://github.com/mozilla/coss"
+                  href="https://www.mozilla.org/en-US/about/governance/policies/participation/"
                   target="_blank"
                 >
                   Community Participation Guidelines
