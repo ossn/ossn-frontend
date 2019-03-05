@@ -18,12 +18,15 @@
     flex-direction: column;
   }
 
-  &__card {
+  // Increase specificity to avoid regressions.
+  .member__card {
     max-width: 330px;
     width: 100%;
     position: relative;
     display: flex;
+  }
 
+  &__card {
     &-inner {
       position: relative;
       z-index: 1;
