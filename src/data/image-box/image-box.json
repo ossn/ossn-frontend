@@ -1,7 +1,7 @@
 {
   "box0": [
     {
-      "titleLargeTop": "March 1st",
+      "titleLargeTop": "April 1st",
       "titleSmall": "launching our",
       "titleLargeBottom": "blog!",
       "link": "/contribute",
@@ -25,7 +25,7 @@
   "box2": [
     {
       "titleLargeTop": "Our podcast is",
-      "titleSmall": "comming soon",
+      "titleSmall": "coming soon",
       "titleLargeBottom": "",
       "link": "/contribute",
       "internalLink": false,
@@ -47,8 +47,8 @@
   ],
   "box4": [
     {
-      "titleLargeTop": "MozFest is over :-(",
-      "titleSmall": "But you can re-live it with our photos",
+      "titleLargeTop": "Join our network",
+      "titleSmall": "HELLO WORLD! Welcome to our new website!",
       "link": "https://mozillafestival.org/",
       "internalLink": false,
       "image": {
