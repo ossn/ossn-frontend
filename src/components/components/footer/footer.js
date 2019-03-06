@@ -131,7 +131,7 @@ const Footer = ({ user }) => {
             </p>
             <ul className="footer__terms">
               <li>
-                <Link to={`/privacy-policy`}>Website Privacy Notice</Link>
+                <Link to="/privacy-policy">Website Privacy Notice</Link>
               </li>
               <li>
                 <a
