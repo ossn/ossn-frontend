@@ -1,6 +1,3 @@
-// styles
-import "../components/pages-styles/faq-page.scss";
-
 import React, { memo } from "react";
 import { Helmet } from "react-helmet";
 
