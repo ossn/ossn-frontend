@@ -10,6 +10,7 @@ import Layout2Cols from "./../components/layouts/layout-2col/layout-2col";
 import LayoutContained from "./../components/layouts/layout-contained/layout-contained";
 import Shape from "./../components/components/shape/shape";
 import FaqItem from "./../components/components/faq-item/faq-item";
+import { PlainHeader } from "./../components/components/plain-header/plain-header";
 
 /**
  * Faq page.
@@ -22,21 +23,10 @@ const Questions = props => {
       </Helmet>
 
       <LayoutContained>
-        <div className="faq__header">
-          <h1 className="faq__title title"> FAQ </h1>
-          <h2 className="faq__subtitle highlighted-text">
-            <div className="faq__subtitle-text">
-              The most Frequently Asked Questions on OSSN. <br />
-              And their answers!
-              <span className="faq__header-shape faq__header-shape--square">
-                <Shape square seafoamBlue />
-              </span>
-              <span className="faq__header-shape faq__header-shape--waves">
-                <Shape waves darkSkyBlue />
-              </span>
-            </div>
-          </h2>
-        </div>
+        <PlainHeader
+          title="FAQ"
+          subtitle="The most Frequently Asked Questions on OSSN. And their answers!"
+        />
 
         <Layout2Cols horizontalGutters>
           {/*First column*/}
