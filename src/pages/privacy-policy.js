@@ -25,7 +25,13 @@ const PrivacyPolicy = props => {
           We care about your privacy. That’s why Mozilla (that&#39;s us) puts
           you in charge of the information you share on the Open Source Student
           Network (OSSN) website.We also follow our{" "}
-          <a href="https://www.mozilla.org/privacy/">Mozilla Privacy Policy</a>{" "}
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.mozilla.org/privacy/"
+          >
+            Mozilla Privacy Policy
+          </a>{" "}
           for handling information you share with us. Here’s what you should
           know about the Open Source Student Network site:
           <ul>
@@ -42,7 +48,11 @@ const PrivacyPolicy = props => {
               metrics (such as number of site visits, source of web traffic,
               duration people stay on the site, and bounce rates). For more
               information, see our{" "}
-              <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=2ahUKEwifpuSu4M3gAhVKrVQKHecCCsYQFjAAegQIBxAB&url=https%3A%2F%2Fwww.mozilla.org%2Fen-US%2Fprivacy%2Fwebsites%2F&usg=AOvVaw1RZS2oczUre0JinqgjR6yp">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=2ahUKEwifpuSu4M3gAhVKrVQKHecCCsYQFjAAegQIBxAB&url=https%3A%2F%2Fwww.mozilla.org%2Fen-US%2Fprivacy%2Fwebsites%2F&usg=AOvVaw1RZS2oczUre0JinqgjR6yp"
+              >
                 Websites, Communications and Cookies Privacy Notice
               </a>
               .
@@ -50,7 +60,14 @@ const PrivacyPolicy = props => {
             <li>
               <b>Emails.</b> If you subscribe to our newsletter, we may send you
               occasional emails about topics we think you’d be interested in. We
-              use <a href="https://mailchimp.com/legal/privacy/">MailChimp</a>{" "}
+              use{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://mailchimp.com/legal/privacy/"
+              >
+                MailChimp
+              </a>{" "}
               to send these emails and you can unsubscribe from the footer of
               the email.
             </li>

@@ -131,13 +131,7 @@ const Footer = ({ user }) => {
             </p>
             <ul className="footer__terms">
               <li>
-                <a
-                  rel="nofollow noopener noreferrer"
-                  href="/privacy-policy"
-                  target="_blank"
-                >
-                  Website Privacy Notice
-                </a>
+                <Link to={`/privacy-policy`}>Website Privacy Notice</Link>
               </li>
               <li>
                 <a
