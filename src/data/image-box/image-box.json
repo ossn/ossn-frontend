@@ -49,8 +49,8 @@
     {
       "titleLargeTop": "Join our network",
       "titleSmall": "HELLO WORLD! Welcome to our new website!",
-      "link": "https://mozillafestival.org/",
-      "internalLink": false,
+      "link": "/contribute",
+      "internalLink": true,
       "image": {
         "src": "../../images/image-box/box-4.jpg"
       }
