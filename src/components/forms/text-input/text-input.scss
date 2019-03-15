@@ -13,6 +13,14 @@
   text-align: center;
   color: color('grey-dark');
 
+  &__label {
+    @include typeface(title);
+    @include font-size(18px);
+    @include line-height(22px);
+    color: color('title');
+    font-weight: 500;
+    padding-left: 0;
+  }
 
   &:active,
   &:focus,
