@@ -3,10 +3,18 @@ import "./member.scss";
 import { navigate } from "gatsby";
 import React from "react";
 import { withApollo } from "react-apollo";
-import { Check, Feather, GitHub, Link, Users, X } from "react-feather";
+import {
+  Check,
+  Feather,
+  GitHub,
+  Link,
+  Users,
+  X,
+  Calendar,
+  Inbox
+} from "react-feather";
 import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
-import MediaQuery from "react-responsive";
 
 import GatsbyConfig from "../../../../gatsby-config";
 import { returnKeyCheck } from "../../../utils/accessibility";
@@ -254,6 +262,7 @@ class Member extends React.PureComponent {
         className="member__text-field form-input--member form-input--member-name"
         placeholder="name"
         required
+        showLabel
       />
     ) : (
       <div> {snapshot.name} </div>
@@ -266,9 +275,15 @@ class Member extends React.PureComponent {
         onChange={this.handleChange}
         value={snapshot.sortDescription}
         className="member__text-field form-input--member form-input--member-name"
+        showLabel
       />
     ) : (
-      snapshot.sortDescription && <div> {snapshot.sortDescription} </div>
+      snapshot.sortDescription && (
+        <div className="member__location-content">
+          {" "}
+          {snapshot.sortDescription}{" "}
+        </div>
+      )
     );
 
     const description = snapshot.edit ? (
@@ -278,6 +293,8 @@ class Member extends React.PureComponent {
         name="description"
         onChange={this.handleChange}
         value={snapshot.description}
+        className="member__text-area"
+        showLabel
       />
     ) : (
       snapshot.description && <div> {snapshot.description} </div>
@@ -285,12 +302,18 @@ class Member extends React.PureComponent {
 
     const club = snapshot.edit ? (
       <div>
-        {snapshot.clubs.length > 0 && <h2>Unsubscribe from club</h2>}
+        {snapshot.clubs.length > 0 && (
+          <h2 className="member__checkbox-title">Unsubscribe from club</h2>
+        )}
 
         {snapshot.clubs.length > 0 &&
           snapshot.clubs.map((club, i) => {
             return (
-              <div className="member__checkbox" key={club.id}>
+              <div
+                className="member__checkbox member__checkbox--with-icon"
+                key={club.id}
+              >
+                <Users className="member__icon" />
                 <label htmlFor={"club-" + club.id}>
                   <input
                     name={club.id}
@@ -318,7 +341,8 @@ class Member extends React.PureComponent {
 
     const newsletter = snapshot.edit && (
       <div className="member__newsletter">
-        <div className="member__checkbox">
+        <div className="member__checkbox member__checkbox--with-icon">
+          <Inbox className="member__icon" />
           <label htmlFor="newsletter">
             <input
               name="receiveNewsletter"
@@ -337,7 +361,8 @@ class Member extends React.PureComponent {
       <div className="member__legal">
         <Shape seafoamBlue waveLarge divider className="member__divider" />
 
-        <div className="member__checkbox">
+        <div className="member__checkbox member__checkbox--with-icon">
+          <Calendar className="member__icon" />
           <label htmlFor="isOverTheLegalLimit">
             <input
               name="isOverTheLegalLimit"
@@ -345,7 +370,6 @@ class Member extends React.PureComponent {
               id="isOverTheLegalLimit"
               defaultChecked={snapshot.isOverTheLegalLimit}
               onChange={this.handleChange}
-              // required
             />
             I am older than 18 years old
           </label>
@@ -354,13 +378,16 @@ class Member extends React.PureComponent {
     );
 
     const github = snapshot.edit ? (
-      <TextInput
-        label="Github Url"
-        name="githubUrl"
-        onChange={this.handleChange}
-        value={snapshot.githubUrl}
-        className="member__text-field form-input--member form-input--member-name"
-      />
+      <div className="member__text-field--wrapper-with-icon">
+        <GitHub className="member__icon" />
+        <TextInput
+          label="Github Url"
+          name="githubUrl"
+          onChange={this.handleChange}
+          value={snapshot.githubUrl}
+          className="member__text-field form-input--member form-input--member-name"
+        />
+      </div>
     ) : (
       snapshot.githubUrl && (
         <a href={snapshot.githubUrl} target="_blank" rel="noopener noreferrer">
@@ -371,13 +398,16 @@ class Member extends React.PureComponent {
     );
 
     const personalUrl = snapshot.edit ? (
-      <TextInput
-        label="personal web page"
-        name="personalUrl"
-        onChange={this.handleChange}
-        value={snapshot.personalUrl}
-        className="member__text-field form-input--member form-input--member-name"
-      />
+      <div className="member__text-field--wrapper-with-icon">
+        <Link className="member__icon" />
+        <TextInput
+          label="personal web page"
+          name="personalUrl"
+          onChange={this.handleChange}
+          value={snapshot.personalUrl}
+          className="member__text-field form-input--member form-input--member-name"
+        />
+      </div>
     ) : (
       snapshot.personalUrl && (
         <a
@@ -435,12 +465,8 @@ class Member extends React.PureComponent {
 
     const memberInner = (
       <div className="member__inner">
-        <MediaQuery minWidth={576}>
-          <div className="member__shape-wrapper-left">{snapshot.shapes[1]}</div>
-          <div className="member__shape-wrapper-right">
-            {snapshot.shapes[2]}
-          </div>
-        </MediaQuery>
+        <div className="member__shape-wrapper-left">{snapshot.shapes[1]}</div>
+        <div className="member__shape-wrapper-right">{snapshot.shapes[2]}</div>
         <ShadowBox className="member__card" zeroPadding>
           <div className="member__card-shape-wrapper">{snapshot.shapes[0]}</div>
           <div className="member__card-inner">
@@ -453,11 +479,17 @@ class Member extends React.PureComponent {
                 />
               </div>
             </div>
-            <div className="title title--small member__name">{name}</div>
+            {name && (
+              <div className="title title--small member__name">{name}</div>
+            )}
 
-            <div className="member__location">{sortDescription}</div>
+            {sortDescription && (
+              <div className="member__location">{sortDescription}</div>
+            )}
 
-            <div className="member__description">{description}</div>
+            {description && (
+              <div className="member__description">{description}</div>
+            )}
 
             <Shape seafoamBlue waveLarge divider className="member__divider" />
 
@@ -474,18 +506,24 @@ class Member extends React.PureComponent {
               </div>
             )}
 
-            <div className="member__link member__link--github">{github}</div>
+            {github && (
+              <div className="member__link member__link--github">{github}</div>
+            )}
 
-            <div className="member__link member__link--personal-page">
-              {personalUrl}
-            </div>
+            {personalUrl && (
+              <div className="member__link member__link--personal-page">
+                {personalUrl}
+              </div>
+            )}
 
-            {isOverTheLegalLimit}
-            {newsletter}
+            {isOverTheLegalLimit && isOverTheLegalLimit}
+            {newsletter && newsletter}
           </div>
         </ShadowBox>
 
-        <div className="member__button-list">{buttonList}</div>
+        {buttonList.length > 0 && (
+          <div className="member__button-list">{buttonList}</div>
+        )}
       </div>
     );
 

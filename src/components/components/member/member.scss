@@ -62,6 +62,9 @@
     max-width: 275px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  &__location-content {
     opacity: .6;
   }
 
@@ -143,7 +146,7 @@
     // Positioning.
     &-wrapper-left {
       position: absolute;
-      display: inline-block;
+      display: none;
       left: 40px;
       bottom: 90px;
       z-index: -1;
@@ -159,6 +162,10 @@
           bottom: -60px;
         }
       }
+
+      @include breakpoint($mobile) {
+        display: inline-block;
+      }
     }
 
     &-wrapper-right {
@@ -166,8 +173,12 @@
       right: 50px;
       top: 0;
       z-index: -1;
-    }
+      display: none;
 
+      @include breakpoint($mobile) {
+        display: inline-block;
+      }
+    }
   }
 
   &__checkbox {
@@ -177,32 +188,57 @@
     padding-left: 5px;
     text-align: left;
 
+    &-title {
+      margin-bottom: 10px;
+    }
 
     input {
       margin-top: 5px;
       position: absolute;
       left: 0;
     }
+
+    &--with-icon {
+      padding-left: 0;
+      padding-right: 20px;
+
+      label {
+        padding-left: 0;
+      }
+
+      input {
+        left: auto;
+        right: 0;
+      }
+
+    }
+  }
+
+  .member__text-area {
+    width: 100%;
   }
 
   .member__text-field {
     padding: 0;
     border-radius: 0;
     border: none;
-    border-bottom: 1px solid rgba(0,0,0,0.25);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
     text-align: center;
     color: color('grey-dark');
 
-
     &:active,
     &:focus,
-    &:hover  {
+    &:hover {
       border: none;
       padding: 0;
-      border-bottom: 1px solid rgba(0,0,0,0.25);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    }
+
+    &--wrapper-with-icon {
+      display: flex;
+      justify-content: center;
     }
   }
-
   // Increase specificity to avoid regressions.
   .member__card {
     max-width: 330px;
@@ -217,7 +253,6 @@
       z-index: 1;
       width: 100%;
       min-width: 100%;
-      transform: translateX(-100%);
       padding: 30px 25px;
     }
 
@@ -225,8 +260,12 @@
       overflow: hidden;
       width: 100%;
       min-width: 100%;
-      position: relative;
+      position: absolute;
       z-index: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
     }
 
     // Shape positioning in card.

@@ -9,6 +9,10 @@
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     X-Content-Type-Options = "nosniff"
     Content-Security-Policy = "script-src 'self' 'unsafe-inline' www.google-analytics.com dev-api.ossn.club backend.ossn.club https:"
+[[headers]]
+  for = "*.svg"
+  [headers.values]
+    Content-Type = "image/svg+xml; charset=utf-8"
 [[redirects]]
   from = "https://dev.ossn.club/api/*"
   to = "https://dev-api.ossn.club/api/:splat"

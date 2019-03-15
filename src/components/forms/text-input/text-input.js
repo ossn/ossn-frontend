@@ -13,6 +13,7 @@ import React from "react";
  *  {String} label: the input label
  *  {String} id: the input id
  *  {boolean} required
+ *  {boolean} showLabel
  *  {boolean} multiline: defines textarea or input tag
  *  {String} className: classes added to the component
  *
@@ -29,7 +30,7 @@ export default props => {
 
   const input = props.multiline ? (
     <textarea
-      placeholder={label}
+      placeholder={props.showLabel ? "" : label}
       onChange={props.onChange}
       value={props.value}
       className={classes.join(" ")}
@@ -40,7 +41,7 @@ export default props => {
   ) : (
     <input
       type={type}
-      placeholder={label}
+      placeholder={props.showLabel ? "" : label}
       onChange={props.onChange}
       value={props.value}
       className={classes.join(" ")}
@@ -50,5 +51,14 @@ export default props => {
     />
   );
 
-  return <div>{input}</div>;
+  return (
+    <div>
+      {props.showLabel && (
+        <label className="text-input__label" htmlFor={id}>
+          {label}
+        </label>
+      )}
+      {input}
+    </div>
+  );
 };
