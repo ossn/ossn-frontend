@@ -117,6 +117,10 @@ class Member extends React.PureComponent {
       id = this.getIdFromPath();
     }
 
+    if (window.location.search.includes("edit=true")) {
+      this.setState({ edit: true });
+    }
+
     this.props.client
       .query({
         query: getUserQuery,
@@ -158,6 +162,10 @@ class Member extends React.PureComponent {
   componentDidUpdate(prevProps) {
     if ((prevProps.user.user || {}).id !== (this.props.user.user || {}).id) {
       this.setState({ editable: !!this.isCurrentUser() });
+    }
+    const urlHasEdit = window.location.search.includes("edit=true");
+    if (urlHasEdit !== this.state.edit) {
+      this.setState({ edit: urlHasEdit });
     }
   }
 
@@ -215,6 +223,7 @@ class Member extends React.PureComponent {
    * Updates the state's user edit state
    */
   handleEdit = () => {
+    navigate(`${window.location.pathname}?edit=true`);
     this.setState(state => ({ history: { ...state }, edit: true }));
   };
 
@@ -222,6 +231,7 @@ class Member extends React.PureComponent {
    * Updates the state's user edit state to false and reverts changes.
    */
   handleCancel = () => {
+    navigate(`${window.location.pathname}`);
     this.setState(state => ({ ...state.history, edit: false }));
   };
 
@@ -229,6 +239,7 @@ class Member extends React.PureComponent {
    * Updates state's user object and edit state.
    */
   handleSave = () => {
+    navigate(`${window.location.pathname}`);
     this.setState(({ clubsToPreserve, clubs }) => ({
       clubs: clubs.filter(club => clubsToPreserve.includes(club.id)),
       edit: false
@@ -251,8 +262,9 @@ class Member extends React.PureComponent {
 
   render() {
     const snapshot = this.state;
+    const isEditing = snapshot.edit && this.isCurrentUser();
 
-    const name = snapshot.edit ? (
+    const name = isEditing ? (
       <TextInput
         label="Name"
         name="name"
@@ -267,7 +279,7 @@ class Member extends React.PureComponent {
       <div> {snapshot.name} </div>
     );
 
-    const sortDescription = snapshot.edit ? (
+    const sortDescription = isEditing ? (
       <TextInput
         label="Short Description"
         name="sortDescription"
@@ -285,7 +297,7 @@ class Member extends React.PureComponent {
       )
     );
 
-    const description = snapshot.edit ? (
+    const description = isEditing ? (
       <TextInput
         multiline
         label="Description"
@@ -299,7 +311,7 @@ class Member extends React.PureComponent {
       snapshot.description && <div> {snapshot.description} </div>
     );
 
-    const club = snapshot.edit ? (
+    const club = isEditing ? (
       <div>
         {snapshot.clubs.length > 0 && (
           <h2 className="member__checkbox-title">Unsubscribe from club</h2>
@@ -338,7 +350,7 @@ class Member extends React.PureComponent {
       )
     );
 
-    const newsletter = snapshot.edit && (
+    const newsletter = isEditing && (
       <div className="member__newsletter">
         <div className="member__checkbox member__checkbox--with-icon">
           <Inbox className="member__icon" />
@@ -356,7 +368,7 @@ class Member extends React.PureComponent {
       </div>
     );
 
-    const isOverTheLegalLimit = snapshot.edit && (
+    const isOverTheLegalLimit = isEditing && (
       <div className="member__legal">
         <Shape seafoamBlue waveLarge divider className="member__divider" />
 
@@ -377,7 +389,7 @@ class Member extends React.PureComponent {
       </div>
     );
 
-    const github = snapshot.edit ? (
+    const github = isEditing ? (
       <div className="member__text-field--wrapper-with-icon">
         <GitHub className="member__icon" />
         <TextInput
@@ -397,7 +409,7 @@ class Member extends React.PureComponent {
       )
     );
 
-    const personalUrl = snapshot.edit ? (
+    const personalUrl = isEditing ? (
       <div className="member__text-field--wrapper-with-icon">
         <Link className="member__icon" />
         <TextInput
@@ -423,7 +435,7 @@ class Member extends React.PureComponent {
 
     let buttonList = [];
 
-    if (snapshot.edit) {
+    if (isEditing) {
       buttonList.push(
         <div
           tabIndex={0}
@@ -445,7 +457,7 @@ class Member extends React.PureComponent {
           <Check size={16} /> Save changes
         </button>
       );
-    } else if (snapshot.editable) {
+    } else if (this.isCurrentUser()) {
       buttonList.push(
         <div
           tabIndex={0}
@@ -516,8 +528,8 @@ class Member extends React.PureComponent {
               </div>
             )}
 
-            {isOverTheLegalLimit && isOverTheLegalLimit}
-            {newsletter && newsletter}
+            {isOverTheLegalLimit}
+            {newsletter}
           </div>
         </ShadowBox>
 
@@ -534,7 +546,7 @@ class Member extends React.PureComponent {
             {`${snapshot.name} | ${GatsbyConfig.siteMetadata.title}`}
           </title>
         </Helmet>
-        {snapshot.edit ? (
+        {isEditing ? (
           <form onSubmit={e => e.preventDefault() || this.handleSubmit(e)}>
             {memberInner}
           </form>
