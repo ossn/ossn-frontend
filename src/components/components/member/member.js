@@ -1,22 +1,20 @@
-import "./member.scss";
-
 import { navigate } from "gatsby";
 import React from "react";
 import { withApollo } from "react-apollo";
 import {
+  Calendar,
   Check,
   Feather,
   GitHub,
+  Inbox,
   Link,
   Users,
-  X,
-  Calendar,
-  Inbox
+  X
 } from "react-feather";
 import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
-
 import GatsbyConfig from "../../../../gatsby-config";
+import memberImage from "../../../images/member-136x136.png";
 import { returnKeyCheck } from "../../../utils/accessibility";
 import { mapUserToProps } from "../../../utils/redux-utils";
 import TextInput from "../../forms/text-input/text-input";
@@ -24,7 +22,7 @@ import LayoutContained from "../../layouts/layout-contained/layout-contained";
 import ShadowBox from "../shadow-box/shadow-box";
 import Shape from "../shape/shape";
 import { editUserMutation, getUserQuery } from "./member-queries";
-import memberImage from "../../../images/member-136x136.png";
+import "./member.scss";
 
 /**
  * Profile page template.
@@ -199,8 +197,9 @@ class Member extends React.PureComponent {
    * Updates the state's user object club subscriptions.
    *
    * @param {React.ChangeEvent<HTMLInputElement>} event
-   * @param {boolean} checked
-   * @param {string} clubId
+   * @param {object} event.target
+   * @param {boolean} event.target.checked
+   * @param {string} event.target.name
    */
   handleClubSubscription = ({ target: { checked, name: clubId } }) => {
     this.setState(({ clubsToPreserve }) => ({
@@ -370,6 +369,7 @@ class Member extends React.PureComponent {
               id="isOverTheLegalLimit"
               defaultChecked={snapshot.isOverTheLegalLimit}
               onChange={this.handleChange}
+              required
             />
             I am older than 18 years old
           </label>
