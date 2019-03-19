@@ -17,7 +17,7 @@ export default () => {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfYQEKz8gMnxWrIxJZer6lJG1p08LtPboV3Aupfj2PtWmKD1A/viewform"
+              href="http://eepurl.com/glb1Nj"
             >
               Register your Club with OSSN here
             </a>
