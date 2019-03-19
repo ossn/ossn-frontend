@@ -4,7 +4,7 @@ import Member from "../../components/components/member/member";
 import BasicLayout from "../../components/layouts/layout-base/layout-base";
 
 /**
- * A wrapper component for the clubs full page.
+ * A wrapper component for the member full page.
  * Is used for clubs page generator.
  *
  * @param {Object} member
