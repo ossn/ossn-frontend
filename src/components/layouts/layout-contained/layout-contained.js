@@ -14,7 +14,9 @@ import React, { memo } from "react";
 
 const LayoutContained = props => {
   return (
-    <div className={`layout-contained ${props.className}`}>
+    <div
+      className={`layout-contained ${props.className ? props.className : ""}`}
+    >
       {props.children}
     </div>
   );

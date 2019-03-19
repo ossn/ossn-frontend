@@ -540,19 +540,21 @@ class Member extends React.PureComponent {
     );
 
     return (
-      <LayoutContained className="member">
-        <Helmet>
-          <title>
-            {`${snapshot.name} | ${GatsbyConfig.siteMetadata.title}`}
-          </title>
-        </Helmet>
-        {isEditing ? (
-          <form onSubmit={e => e.preventDefault() || this.handleSubmit(e)}>
-            {memberInner}
-          </form>
-        ) : (
-          memberInner
-        )}
+      <LayoutContained>
+        <div className="member">
+          <Helmet>
+            <title>
+              {`${snapshot.name} | ${GatsbyConfig.siteMetadata.title}`}
+            </title>
+          </Helmet>
+          {isEditing ? (
+            <form onSubmit={e => e.preventDefault() || this.handleSubmit(e)}>
+              {memberInner}
+            </form>
+          ) : (
+            memberInner
+          )}
+        </div>
       </LayoutContained>
     );
   }
