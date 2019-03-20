@@ -361,6 +361,7 @@ class Member extends React.PureComponent {
               id="newsletter"
               defaultChecked={snapshot.receiveNewsletter}
               onChange={this.handleChange}
+              checked="checked"
             />
             I want to receive newsletter
           </label>
