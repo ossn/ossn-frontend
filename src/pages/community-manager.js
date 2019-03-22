@@ -7,7 +7,7 @@ import LayoutContained from "./../components/layouts/layout-contained/layout-con
 import { PlainHeader } from "./../components/components/plain-header/plain-header";
 
 /**
- * Privacy policy page.
+ * Community Manager page.
  */
 const CommunityManager = props => {
   return (
