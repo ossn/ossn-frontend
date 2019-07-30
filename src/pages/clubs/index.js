@@ -251,6 +251,17 @@ class Clubs extends React.PureComponent {
                 </div>
               </ShadowBox>
             </div>
+            <div className="find-club__register">
+              <div className="button button--header">
+                <a
+                  href="https://community.us12.list-manage.com/subscribe?u=6bca92e1ba0eb8733fd7cc5bf&id=107bf7d6b8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Register your club
+                </a>
+              </div>
+            </div>
           </div>
           {content}
 
