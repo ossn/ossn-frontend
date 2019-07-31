@@ -43,10 +43,18 @@ export const ChannelList = props => {
 
   return (
     <div className="communication-channels__list">
-      <h2 className="communication-channels__list-title title title--x-small">
+      <h2
+        className="communication-channels__list-title title title--x-small"
+        id="communication"
+      >
         Communication channels
       </h2>
-      <div className="communication-channels__list-wrapper">{channels}</div>
+      <div
+        className="communication-channels__list-wrapper"
+        aria-labelledby="communication"
+      >
+        {channels}
+      </div>
     </div>
   );
 };

@@ -20,17 +20,23 @@ export const ClubTeaser = props => {
   const image = props.club.imageUrl;
   const classes = props.className ? props.className : "";
   return (
-    <Link to={`/clubs/${props.club.id}`} className={`${classes} club-teaser`}>
+    <Link
+      to={`/clubs/${props.club.id}`}
+      className={`${classes} club-teaser`}
+      aria-labelledby={title.replace(/\s/g, "")}
+    >
       <ShadowBox className="club-teaser__inner">
         <div className="club-teaser__image-wrapper">
           <img
             src={image || groupSmallImage}
-            alt={title}
+            alt={`${title} club logo`}
             className="club-teaser__image"
           />
         </div>
         <div className="club-teaser__text">
-          <h2 className="club-teaser__title">{title}</h2>
+          <h2 className="club-teaser__title" id={title.replace(/\s/g, "")}>
+            {title}
+          </h2>
           <span className="club-teaser__description"> {subtitle} </span>
           <div className="button button--x-small club-teaser__button">
             Club page <ChevronRight size={16} className="icon" />
