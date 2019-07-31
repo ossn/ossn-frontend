@@ -24,13 +24,13 @@
 
   "Code of Conduct examples": [
     {
-      "title": "RCOS Conde of Conduct",
-      "link": "https://handbook.rcos.io/#/resources/CODE_OF_CONDUCT",
+      "title": "RCOS Code of Conduct",
+      "link": "https://handbook.rcos.io/#/community/CODE_OF_CONDUCT",
       "attachment": "./GitLab_Logo.svg"
     },
     {
       "title": "UF OSC Code of Conduct",
-      "link": "https://github.com/ufosc/resources/blob/master/project-template/CODE_OF_CONDUCT.md",
+      "link": "https://github.com/ufosc/club-project-template/blob/master/CODE_OF_CONDUCT.md",
       "attachment": "./Antu_trello.svg"
     }
   ],
@@ -61,7 +61,7 @@
     },
     {
       "title": "RIT LUG Handbook",
-      "link": "http://runbook.ritlug.com/en/latest/",
+      "link": "http://runbook.ritlug.com/",
       "attachment": "./Antu_trello.svg"
     },
     {
