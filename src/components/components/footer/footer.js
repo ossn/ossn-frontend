@@ -68,6 +68,11 @@ const Footer = ({ user }) => {
     {
       title: "About Us",
       target: "/about-us"
+    },
+    {
+      title: "GitHub (Issue Tracker)",
+      target: "https://github.com/ossn/ossn-frontend/issues",
+      external: true
     }
   ];
 
