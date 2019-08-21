@@ -38,13 +38,11 @@ const Questions = props => {
               >
                 In order to have your club be formally recognized at least one
                 club leader must fill the Club&#39;s registration form{" "}
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfYQEKz8gMnxWrIxJZer6lJG1p08LtPboV3Aupfj2PtWmKD1A/viewform">
-                  here.
-                </a>{" "}
-                Then, in the next 24 hours, you will receive a confirmation that
-                your club is registered and a Club profile will automatically be
-                created on the website. It&#39;s time to invite your Club&#39;s
-                members to join the network and the Club!
+                <a href="http://eepurl.com/glb1Nj">here.</a> Then, in the next
+                24 hours, you will receive a confirmation that your club is
+                registered and a Club profile will automatically be created on
+                the website. It&#39;s time to invite your Club&#39;s members to
+                join the network and the Club!
               </FaqItem>
               <FaqItem
                 header="What if I don’t have an existing club, and want to start a new Open Source Student Club?"
