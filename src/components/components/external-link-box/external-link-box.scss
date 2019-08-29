@@ -13,6 +13,7 @@
     flex-direction: column;
     max-width: 160px;
     min-height: 120px;
+    text-decoration: none;
 
     @include breakpoint($tablet) {
       max-width: 100%;

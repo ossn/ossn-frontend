@@ -15,6 +15,7 @@
     @include font-size(18px);
     @include line-height(27px);
     color: color('navigation');
+    text-decoration: none;
     transition: .3s cubic-bezier(0.19, 1, 0.22, 1);
     display: block;
     padding-top: 5px;
