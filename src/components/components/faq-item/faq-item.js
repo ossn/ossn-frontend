@@ -48,7 +48,7 @@ class FaqItem extends React.PureComponent {
           </button>
         </h3>
         <div id={id} className="faq__item-content" hidden={isHidden}>
-          {this.props.children}
+          <p>{this.props.children}</p>
         </div>
       </li>
     );
