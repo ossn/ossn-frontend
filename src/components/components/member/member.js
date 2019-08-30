@@ -508,7 +508,7 @@ class Member extends React.PureComponent {
 
             {snapshot.clubs.length > 0 && (
               <div>
-                <div className="member__club">{club}</div>
+                <Link to={`/clubs/${club.id}`}>{club}</Link>
 
                 <Shape
                   seafoamBlue
