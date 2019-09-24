@@ -4,18 +4,38 @@
     "description": "Got 15 minutes and want to learn Git? Git allows groups of people to work on the same documents at the same time, and without stepping on each other's toes.",
     "link": "https://try.github.io/levels/1/challenges/1",
     "attachment": "./git-icon.png"
-  },{
+  },
+  {
+    "title": "Installing Git",
+    "description": "First, learn how to install Git on your computer on whatever OS you use. ",
+    "link": "https://git-scm.com/book/en/v2/Getting-Started-Installing-Git",
+    "attachment": "./git-icon.png"
+  },
+  {
+    "title": "Learning Git",
+    "description": "This is a comprehensive and interactive tutorial that covers everything you need to become familiar with using Git.",
+    "link": "https://www.codecademy.com/courses/learn-git/",
+    "attachment": "./git-icon.png"
+  },
+  {
+    "title": "Git Tips and Tricks",
+    "description": "Learn how to fix some of the most common Git problems you may run into.",
+    "link": "https://dev.to/citizen428/10-common-git-problems-and-how-to-fix-them-234o ",
+    "attachment": "./git-icon.png"
+  },
+  {
     "title": "Introduction to browser extensions",
     "description": "Add-ons provide a safe, simple, and powerful way to personalize your browsing experience. Now, it’s easier than ever to create add-ons",
     "link": "https://mozillacampusclubs.github.io/teach-how-to-build-addons/paperprototype.html",
     "attachment": "./octopus-icon.png"
-  },{
+  },
+  {
     "title": "Build Your Virtual World",
     "description": "Help bring Virtual Reality to the web by learning and using an awesome open source web framework, A-FRAME, with HTML!",
     "link": "https://mozillacampusclubs.github.io/Build-a-Virtual-World/",
     "attachment": "./fox-icon.png"
-
-  },{
+  },
+  {
     "title": "Learn to contribute on GitHub",
     "description": "Want to contribute to open source through GitHub? A guide to making open source contributions, for first-timers and for veterans.",
     "link": "https://guides.github.com/activities/contributing-to-open-source/",
