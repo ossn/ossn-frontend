@@ -20,7 +20,12 @@ const JoinCta = props => {
     props.className
   }`;
   return (
-    <a href={`${BACKEND_URL}/oidc/login`} className={classString}>
+    <a
+      href={`${BACKEND_URL}/oidc/login`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={classString}
+    >
       <Img
         fluid={props.imageJoinCta.childImageSharp.fluid}
         className="join-cta__image"
