@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import "../../components/pages-styles/members.scss";
 
 import React from "react";
@@ -103,6 +104,7 @@ class Members extends React.PureComponent {
   onMembersFetched = data => {
     this.setState(state => {
       const shownMembers = state.shownMembers.concat(data.users.users);
+      shownMembers.sort(this.sortMembers);
       return {
         shownMembersCount: shownMembers.length,
         shownMembers: shownMembers,
@@ -113,7 +115,32 @@ class Members extends React.PureComponent {
       };
     });
   };
-
+  /**
+   * Sort the member so that leader should be on top
+   */
+  sortMembers = (a, b) => {
+    const isALeader = this.checkForLeader(a);
+    const isBLeader = this.checkForLeader(b);
+    if (isALeader === isBLeader) {
+      return 0;
+    } else if (isALeader < isBLeader) {
+      return 1;
+    } else {
+      return -1;
+    }
+  };
+  /**
+   * Check the member for being a leader or not
+   */
+  checkForLeader = member => {
+    return member.clubs
+      ? member.clubs.length > 0 &&
+          member.clubs.some(club => {
+            return club.role === "admin" || club.role === "club_owner";
+          })
+      : member.role &&
+          (member.role === "admin" || member.role === "club_owner");
+  };
   /**
    * Fetches default results on first load.
    */
