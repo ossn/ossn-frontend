@@ -30,12 +30,7 @@ export const TeaserBox = props => {
 
   return (
     <div className={classes.join(" ")}>
-      <a
-        href={target}
-        className="teaser-box__wrapper-link"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href={target} className="teaser-box__wrapper-link">
         <ShadowBox smallPaddings className="teaser-box__link-inner">
           <div className="teaser-box__inner">
             {imageContent}
