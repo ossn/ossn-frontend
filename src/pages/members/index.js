@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import "../../components/pages-styles/members.scss";
 
 import React from "react";
@@ -57,6 +56,33 @@ const GET_MEMBERS = gql`
   }
 `;
 
+/**
+ * Sort the member so that leader should be on top
+ */
+const sortMembers = (a, b) => {
+  const isALeader = checkForLeader(a);
+  const isBLeader = checkForLeader(b);
+  if (isALeader === isBLeader) {
+    return 0;
+  } else if (isALeader < isBLeader) {
+    return 1;
+  } else {
+    return -1;
+  }
+};
+
+/**
+ * Check the member for being a leader or not
+ */
+const checkForLeader = member => {
+  return member.clubs
+    ? member.clubs.length > 0 &&
+        member.clubs.some(club => {
+          return club.role === "admin" || club.role === "club_owner";
+        })
+    : member.role && (member.role === "admin" || member.role === "club_owner");
+};
+
 // TODO: Refactor this component to leverage only the <Query> component
 // from the apollo library (along with the refetch and fetchMore
 // properties of the Query component in order to cover load more and search
@@ -104,7 +130,7 @@ class Members extends React.PureComponent {
   onMembersFetched = data => {
     this.setState(state => {
       const shownMembers = state.shownMembers.concat(data.users.users);
-      shownMembers.sort(this.sortMembers);
+      shownMembers.sort(sortMembers);
       return {
         shownMembersCount: shownMembers.length,
         shownMembers: shownMembers,
@@ -115,32 +141,7 @@ class Members extends React.PureComponent {
       };
     });
   };
-  /**
-   * Sort the member so that leader should be on top
-   */
-  sortMembers = (a, b) => {
-    const isALeader = this.checkForLeader(a);
-    const isBLeader = this.checkForLeader(b);
-    if (isALeader === isBLeader) {
-      return 0;
-    } else if (isALeader < isBLeader) {
-      return 1;
-    } else {
-      return -1;
-    }
-  };
-  /**
-   * Check the member for being a leader or not
-   */
-  checkForLeader = member => {
-    return member.clubs
-      ? member.clubs.length > 0 &&
-          member.clubs.some(club => {
-            return club.role === "admin" || club.role === "club_owner";
-          })
-      : member.role &&
-          (member.role === "admin" || member.role === "club_owner");
-  };
+
   /**
    * Fetches default results on first load.
    */
