@@ -32,8 +32,6 @@ export const LoginLink = ({ label = "Login", className = "" }) => (
   <a
     className={className}
     href={`${BACKEND_URL}/oidc/login`}
-    target="_blank"
-    rel="noopener noreferrer"
     onClick={saveCurrentLocation}
   >
     {label}
