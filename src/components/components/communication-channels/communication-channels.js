@@ -21,7 +21,12 @@ export const Channel = props => {
   const icon = props.channel.attachment.publicURL;
 
   return (
-    <a href={url} className="communication-channels">
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="communication-channels"
+    >
       <span className="communication-channels__image-wrapper">
         <img src={icon} alt={title} className="communication-channels__image" />
       </span>

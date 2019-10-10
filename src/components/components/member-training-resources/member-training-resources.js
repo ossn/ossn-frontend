@@ -29,7 +29,12 @@ const TrainingResource = props => {
 
   return (
     <div className={classes}>
-      <a href={url} className="member-training-resources__wrapper-link">
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="member-training-resources__wrapper-link"
+      >
         <ShadowBox className="member-training-resources__content">
           <div className="member-training-resources__image-wrapper">
             <img

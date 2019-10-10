@@ -33,7 +33,13 @@ const LeaderTool = props => {
 
   return (
     <li className="leader-tool">
-      <a href={url} className="leader-tool__link" title={title}>
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="leader-tool__link"
+        title={title}
+      >
         <div className="leader-tool__icon-wrapper">
           <img src={icon} className="leader-tool__icon" alt={title} />
         </div>
