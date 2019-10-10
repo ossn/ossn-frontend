@@ -13,13 +13,16 @@ export default props => {
     <div className={classes}>
       <ShadowBox>
         <div className="faq__group-header">
-          <h2 title="title title--x-small" id={props.header.replace(/\s/g, "")}>
+          <h2
+            title="title title--x-small"
+            id={(props.header || "").replace(/\s/g, "")}
+          >
             {props.header}
           </h2>
         </div>
         <ul
           className="faq__group-content"
-          aria-labelledby={props.header.replace(/\s/g, "")}
+          aria-labelledby={(props.header || "").replace(/\s/g, "")}
         >
           {props.children}
         </ul>

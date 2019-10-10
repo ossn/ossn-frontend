@@ -34,7 +34,10 @@ export const ClubTeaser = props => {
           />
         </div>
         <div className="club-teaser__text">
-          <h2 className="club-teaser__title" id={title.replace(/\s/g, "")}>
+          <h2
+            className="club-teaser__title"
+            id={(title || "").replace(/\s/g, "")}
+          >
             {title}
           </h2>
           <span className="club-teaser__description"> {subtitle} </span>
