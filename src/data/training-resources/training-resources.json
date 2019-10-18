@@ -36,9 +36,21 @@
     "attachment": "./fox-icon.png"
   },
   {
-    "title": "Learn to contribute on GitHub",
-    "description": "Want to contribute to open source through GitHub? A guide to making open source contributions, for first-timers and for veterans.",
-    "link": "https://guides.github.com/activities/contributing-to-open-source/",
-    "attachment": "./github-icon.png"
+    "title": "Dive into Rust",
+    "description": "Rust is blazingly fast and memory-efficient: with no runtime or garbage collector, it can power performance-critical services, run on embedded devices, and easily integrate with other languages. ",
+    "link": "https://activate.mozilla.community/en-US/rust-hack",
+    "attachment": "./rust-icon.png"
+  },
+  {
+    "title": "Web Compatability Sprint",
+    "description": "Help report bugs you find on the same webpage between browsers. Different web content engines run on different devices, and with a little testing, developers can ensure that more users can have the full experience that is desired.",
+    "link": "https://activate.mozilla.community/en-US/webcompat-sprint",
+    "attachment": "./web-compat-icon.jpg"
+  },
+  {
+    "title": "WebVR Camp",
+    "description": "A-Frame is a web framework for building virtual reality experiences, making it easy for anyone to get involved with virtual reality. Help us build community around the A-Frame library by hosting a learning event.",
+    "link": "https://activate.mozilla.community/en-US/webvr-camp",
+    "attachment": "./aframe-icon.png"
   }
 ]
