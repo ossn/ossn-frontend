@@ -25,7 +25,7 @@ export const ContributingToolSet = props => {
 
   return (
     <div>
-      <h2> Tools for contributing code to open source projects </h2>
+      <h2>Tools for contributing code to open source projects</h2>
       <MediaQuery maxWidth={767}>
         <LayoutScroll>{tools}</LayoutScroll>
       </MediaQuery>

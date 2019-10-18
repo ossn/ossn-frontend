@@ -17,8 +17,10 @@ export default props => {
 
   return (
     <div>
-      <h2 className="teaser-box__list-title"> Latest announcements </h2>
-      <div>
+      <h2 className="teaser-box__list-title" id="announcements">
+        Latest announcements
+      </h2>
+      <div aria-labelledby="announcements">
         <TeaserBoxList items={items} dummyData={props.dummyData} />
       </div>
     </div>

@@ -91,6 +91,9 @@
     word-break: break-all;
     margin-left: auto;
     margin-right: auto;
+    a {
+      text-decoration: none;
+    }
   }
 
   &__link-content {
