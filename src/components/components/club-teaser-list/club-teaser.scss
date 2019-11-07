@@ -14,7 +14,7 @@
     display: flex;
     width: 100%;
     @include breakpoint($mobile-small) {
-      height: 192px;
+      min-height: 192px;
     }
   }
 
