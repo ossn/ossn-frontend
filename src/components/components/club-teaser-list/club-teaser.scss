@@ -13,6 +13,9 @@
     @include padding-bottom(20px);
     display: flex;
     width: 100%;
+    @include breakpoint($mobile-small) {
+      min-height: 192px;
+    }
   }
 
   &__content-wrapper {
