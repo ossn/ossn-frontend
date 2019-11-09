@@ -5,6 +5,10 @@
 //  Themes the club listing page.
 //  Alters the layout of filter components.
 .find-club {
+  &__register {
+    display: flex;
+    justify-content: flex-end;
+  }
   &__header {
     @include margin-bottom(50px);
     width: 100%;

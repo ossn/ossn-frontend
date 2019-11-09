@@ -228,7 +228,7 @@ class Clubs extends React.PureComponent {
         </Helmet>
         <LayoutContained>
           <div className="find-club__header">
-            <h1> Clubs </h1>
+            <h1>Clubs</h1>
             <div className="find-club__filters-wrapper">
               <ShadowBox className="find-club__filters-wrapper-inner">
                 <div className="find-club__filter-toggle">
@@ -251,6 +251,16 @@ class Clubs extends React.PureComponent {
                 </div>
               </ShadowBox>
             </div>
+          </div>
+          <div className="find-club__register">
+            <a
+              className="button button--header"
+              href="http://eepurl.com/glb1Nj"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Register your club
+            </a>
           </div>
           {content}
 
