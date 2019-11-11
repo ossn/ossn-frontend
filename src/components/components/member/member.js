@@ -5,7 +5,7 @@ import {
   Calendar,
   Check,
   Feather,
-  GitHub,
+  GitCommit,
   Inbox,
   Link,
   Users,
@@ -392,9 +392,9 @@ class Member extends React.PureComponent {
 
     const github = isEditing ? (
       <div className="member__text-field--wrapper-with-icon">
-        <GitHub className="member__icon" />
+        <GitCommit className="member__icon" />
         <TextInput
-          label="Github Url"
+          label="Git account url (Github/Gitlab/Bitbucket)"
           name="githubUrl"
           onChange={this.handleChange}
           value={snapshot.githubUrl}
@@ -404,7 +404,7 @@ class Member extends React.PureComponent {
     ) : (
       snapshot.githubUrl && (
         <a href={snapshot.githubUrl} target="_blank" rel="noopener noreferrer">
-          <GitHub className="member__icon" />
+          <GitCommit className="member__icon" />
           <span className="member__link-content">{snapshot.githubUrl}</span>
         </a>
       )
