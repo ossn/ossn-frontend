@@ -62,7 +62,11 @@ export class LeaderToolList extends React.PureComponent {
    * Creates the tool header.
    */
   getSimpleHeader() {
-    return <span className="title title--x-small"> {this.props.title} </span>;
+    return (
+      <span className="title title--x-small" id={this.props.detailsId}>
+        {this.props.title}
+      </span>
+    );
   }
 
   /**
@@ -129,6 +133,7 @@ export class LeaderToolList extends React.PureComponent {
             className="leader-tools-list"
             hidden={hideDetails}
             aria-hidden={hideDetails}
+            aria-labelledby={this.props.detailsId}
           >
             {tools}
           </ul>
