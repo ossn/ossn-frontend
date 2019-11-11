@@ -394,7 +394,7 @@ class Member extends React.PureComponent {
       <div className="member__text-field--wrapper-with-icon">
         <GitCommit className="member__icon" />
         <TextInput
-          label="Github/Gitlab/Bitbucket Url"
+          label="Git account url (Github/Gitlab/Bitbucket)"
           name="githubUrl"
           onChange={this.handleChange}
           value={snapshot.githubUrl}
