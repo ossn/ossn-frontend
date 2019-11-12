@@ -6,6 +6,7 @@
 .club-teaser {
   color: color('text');
   display: flex;
+  text-decoration: none;
 
   &__inner {
     @include padding-top(20px);

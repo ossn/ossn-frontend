@@ -5,6 +5,7 @@
 // Used for organization page listing.
 .organization {
   display: flex;
+  text-decoration: none;
 
   &__inner {
     padding: 5px;

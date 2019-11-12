@@ -11,7 +11,7 @@
 
   a {
     color: color('white');
-
+    text-decoration: none;
     &:hover,
     &:focus {
       color: color('white');
@@ -108,8 +108,7 @@
           display: flex;
           flex-direction: column;
           flex-wrap: wrap;
-          height: 97px;
-          max-height: 97px;
+          max-height: 128px;
 
           li {
             width: 50%;

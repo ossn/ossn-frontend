@@ -11,6 +11,9 @@ import Navigation from "../../navigation/footer-navigation/footer-navigation";
 /**
  * Contains the footer section.
  */
+
+const currentYear = new Date().getFullYear();
+
 const footerNavigationList2 = [
   {
     title: "Slack",
@@ -65,6 +68,11 @@ const Footer = ({ user }) => {
     {
       title: "About Us",
       target: "/about-us"
+    },
+    {
+      title: "GitHub (Issue Tracker)",
+      target: "https://github.com/ossn/ossn-frontend/issues",
+      external: true
     }
   ];
 
@@ -118,8 +126,8 @@ const Footer = ({ user }) => {
         <nav className="footer__secondary">
           <div className="footer__legal">
             <p className="footer__licence">
-              Portions of this content are ©1998–2018 by individual mozilla.org
-              contributors. Content available under a{" "}
+              Portions of this content are ©1998–{currentYear} by individual
+              mozilla.org contributors. Content available under a{" "}
               <a
                 rel="license noopener noreferrer"
                 href="https://www.mozilla.org/foundation/licensing/website-content/"

@@ -130,7 +130,11 @@ const Questions = props => {
                 clubs with a discrete focus on making technical contributions to
                 open source projects. In the meantime we’re continuing to
                 support the work of our non-US student clubs through the{" "}
-                <a href="https://campus.mozilla.community/">
+                <a
+                  href="https://campus.mozilla.community/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Campus Clubs program
                 </a>
                 . To learn about the global campus program visit -
@@ -144,8 +148,21 @@ const Questions = props => {
           <h2 className="faq__footer-title"> Have more questions? </h2>
           <p className="faq__footer-text title title--x-small">
             Cool! Reach out to us on{" "}
-            <a href="https://mossn.slack.com/">Slack</a> or{" "}
-            <a href="https://twitter.com/ossn_club">Twitter</a>
+            <a
+              href="https://mossn.slack.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Slack
+            </a>{" "}
+            or{" "}
+            <a
+              href="https://twitter.com/ossn_club"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Twitter
+            </a>
             <Shape waveLarge sunnyYellow className="faq__footer-shape" />
           </p>
         </div>
