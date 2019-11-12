@@ -29,7 +29,12 @@ const TrainingResource = props => {
 
   return (
     <div className={classes}>
-      <a href={url} className="member-training-resources__wrapper-link">
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="member-training-resources__wrapper-link"
+      >
         <ShadowBox className="member-training-resources__content">
           <div className="member-training-resources__image-wrapper">
             <img
@@ -64,10 +69,13 @@ export default props => {
 
   return (
     <LayoutContained>
-      <h2 className="member-training-resources__list-title">
+      <h2 className="member-training-resources__list-title" id="resources">
         Training & various resources
       </h2>
-      <div className="member-training-resources__list">
+      <div
+        className="member-training-resources__list"
+        aria-labelledby="resources"
+      >
         <MediaQuery maxWidth={767}>
           <LayoutScroll stretchItems>{resources}</LayoutScroll>
         </MediaQuery>

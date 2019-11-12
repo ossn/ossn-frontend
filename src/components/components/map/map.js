@@ -106,7 +106,8 @@ class ClubMap extends React.Component {
         <Map bounds={bounds} style={{ height: "400px" }}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            attribution='&copy; <a href="http://osm.org/copyright" target="_blank"
+        rel="noopener noreferrer">OpenStreetMap</a> contributors'
           />
           {markers}
         </Map>

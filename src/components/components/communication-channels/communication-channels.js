@@ -21,7 +21,12 @@ export const Channel = props => {
   const icon = props.channel.attachment.publicURL;
 
   return (
-    <a href={url} className="communication-channels">
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="communication-channels"
+    >
       <span className="communication-channels__image-wrapper">
         <img src={icon} alt={title} className="communication-channels__image" />
       </span>
@@ -43,10 +48,18 @@ export const ChannelList = props => {
 
   return (
     <div className="communication-channels__list">
-      <h2 className="communication-channels__list-title title title--x-small">
+      <h2
+        className="communication-channels__list-title title title--x-small"
+        id="communication"
+      >
         Communication channels
       </h2>
-      <div className="communication-channels__list-wrapper">{channels}</div>
+      <div
+        className="communication-channels__list-wrapper"
+        aria-labelledby="communication"
+      >
+        {channels}
+      </div>
     </div>
   );
 };

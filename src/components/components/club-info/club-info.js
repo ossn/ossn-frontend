@@ -46,7 +46,12 @@ export const ClubInfoItem = props => {
     );
   } else if (props.email) {
     content = (
-      <a href={props.email} className={classes.join(" ")}>
+      <a
+        href={props.email}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={classes.join(" ")}
+      >
         {props.children}
       </a>
     );
