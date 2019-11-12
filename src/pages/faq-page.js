@@ -37,28 +37,34 @@ const Questions = props => {
                 id="faq-2-item-1"
               >
                 In order to have your club be formally recognized at least one
-                club leader must fill the Club&#39;s registration form{" "}
+                club leader must fill the Club&#39;s registration form&nbsp;
                 <a
-                  href="https://docs.google.com/forms/d/e/1FAIpQLSfYQEKz8gMnxWrIxJZer6lJG1p08LtPboV3Aupfj2PtWmKD1A/viewform"
+                  href="https://community.us12.list-manage.com/subscribe?u=6bca92e1ba0eb8733fd7cc5bf&id=107bf7d6b8"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  here.
-                </a>{" "}
-                Then, in the next 24 hours, you will receive a confirmation that
-                your club is registered and a Club profile will automatically be
-                created on the website. It&#39;s time to invite your Club&#39;s
-                members to join the network and the Club!
+                  here
+                </a>
+                .&nbsp;Then, in the next 24 hours, you will receive a
+                confirmation that your club is registered and a Club profile
+                will automatically be created on the website. It&#39;s time to
+                invite your Club&#39;s members to join the network and the Club!
               </FaqItem>
               <FaqItem
                 header="What if I don’t have an existing club, and want to start a new Open Source Student Club?"
                 id="faq-1-item-1"
               >
                 If you don’t have an established club but would like to start an
-                open source club you are welcome to apply. Fill out the
-                registration form and indicate that you’re starting a new club.
-                We’ll send you materials and tips for launching a successful
-                club.
+                open source club you are welcome to apply. Fill out the&nbsp;
+                <a
+                  href="https://community.us12.list-manage.com/subscribe?u=6bca92e1ba0eb8733fd7cc5bf&id=107bf7d6b8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  registration form
+                </a>
+                &nbsp;and indicate that you’re starting a new club. We’ll send
+                you materials and tips for launching a successful club.
               </FaqItem>
             </FaqGroup>
           </div>
